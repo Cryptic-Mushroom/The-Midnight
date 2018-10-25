@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {"item": "midnight:dead_wood_planks"}
+  },
+  "result": {
+    "item": "midnight:dead_wood_stairs",
+    "count": 4
+  }
+}

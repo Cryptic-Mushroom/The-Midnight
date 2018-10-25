@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,variant=dark_willow": { "model": "midnight:bottom_dark_willow_slab" },
+        "half=top,variant=dark_willow": { "model": "midnight:top_dark_willow_slab" }
+    }
+}

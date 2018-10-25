@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,variant=nightshroom": { "model": "midnight:double_nightshroom_slab" },
+        "half=top,variant=nightshroom": { "model": "midnight:double_nightshroom_slab" }
+    }
+}

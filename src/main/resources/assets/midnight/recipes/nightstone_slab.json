@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {"item": "midnight:nightstone"}
+  },
+  "result": {
+    "item": "midnight:nightstone_slab",
+    "count": 6
+  }
+}

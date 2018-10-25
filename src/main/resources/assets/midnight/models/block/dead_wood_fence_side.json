@@ -1,0 +1,6 @@
+{
+    "parent": "block/fence_side",
+    "textures": {
+        "texture": "midnight:blocks/dead_wood_planks"
+    }
+}

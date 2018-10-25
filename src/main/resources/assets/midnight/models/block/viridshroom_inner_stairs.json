@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "midnight:blocks/viridshroom_planks",
+        "top": "midnight:blocks/viridshroom_planks",
+        "side": "midnight:blocks/viridshroom_planks"
+    }
+}

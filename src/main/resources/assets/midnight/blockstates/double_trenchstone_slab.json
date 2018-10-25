@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,variant=trenchstone": { "model": "midnight:double_trenchstone_slab" },
+        "half=top,variant=trenchstone": { "model": "midnight:double_trenchstone_slab" }
+    }
+}

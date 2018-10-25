@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_side",
+    "textures": {
+        "wall": "midnight:blocks/trenchstone"
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,variant=viridshroom": { "model": "midnight:bottom_viridshroom_slab" },
+        "half=top,variant=viridshroom": { "model": "midnight:top_viridshroom_slab" }
+    }
+}

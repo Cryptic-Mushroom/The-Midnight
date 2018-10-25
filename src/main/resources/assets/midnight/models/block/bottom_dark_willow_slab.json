@@ -1,0 +1,8 @@
+{
+    "parent": "block/half_slab",
+    "textures": {
+        "bottom": "midnight:blocks/dark_willow_planks",
+        "top": "midnight:blocks/dark_willow_planks",
+        "side": "midnight:blocks/dark_willow_planks"
+    }
+}

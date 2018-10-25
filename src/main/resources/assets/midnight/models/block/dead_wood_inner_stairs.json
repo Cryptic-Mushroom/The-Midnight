@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "midnight:blocks/dead_wood_planks",
+        "top": "midnight:blocks/dead_wood_planks",
+        "side": "midnight:blocks/dead_wood_planks"
+    }
+}

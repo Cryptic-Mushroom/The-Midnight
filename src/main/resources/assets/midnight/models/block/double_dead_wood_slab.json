@@ -1,0 +1,6 @@
+{
+  	"parent": "block/cube_all",
+  	"textures": {
+    	"all": "midnight:blocks/dead_wood_planks"
+  	}
+}

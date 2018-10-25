@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,variant=dewshroom": { "model": "midnight:bottom_dewshroom_slab" },
+        "half=top,variant=dewshroom": { "model": "midnight:top_dewshroom_slab" }
+    }
+}

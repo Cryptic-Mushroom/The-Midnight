@@ -12,6 +12,7 @@
 /.metadata/
 /libs/
 /classes/
+/.settings/
 
 # File Extensions
 *.psd
@@ -23,3 +24,5 @@
 
 # Specific Files
 Thumbs.db
+Midnight_Client.launch
+Midnight_Server.launch

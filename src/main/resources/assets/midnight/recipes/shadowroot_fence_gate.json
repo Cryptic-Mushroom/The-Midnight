@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#X#",
+    "#X#"
+  ],
+  "key": {
+    "#": {
+      "item": "midnight:shadowroot_stick"
+    },
+    "X": {
+      "item": "midnight:shadowroot_planks"
+    }
+  },
+  "result": {
+    "item": "midnight:shadowroot_fence_gate"
+  }
+}

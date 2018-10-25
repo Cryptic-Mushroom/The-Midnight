@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,variant=dead_wood": { "model": "midnight:bottom_dead_wood_slab" },
+        "half=top,variant=dead_wood": { "model": "midnight:top_dead_wood_slab" }
+    }
+}

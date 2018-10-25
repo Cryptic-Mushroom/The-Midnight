@@ -91,6 +91,49 @@ tile.midnight.viridshroom_planks.name=Viridshroom Planks
 tile.midnight.viridshroom_shelf.name=Viridshroom Shelf
 tile.midnight.viridshroom_trapdoor.name=Viridshroom Trapdoor
 
+tile.midnight.shadowroot_slab.name=Shadowroot Slab
+tile.midnight.double_shadowroot_slab.name=Double Shadowroot Slab
+tile.midnight.dark_willow_slab.name=Dark Willow Slab
+tile.midnight.double_dark_willow_slab.name=Double Dark Willow Slab
+tile.midnight.dead_wood_slab.name=Dead Wood Slab
+tile.midnight.double_dead_wood_slab.name=Double Dead Wood Slab
+tile.midnight.nightshroom_slab.name=Nightshroom Slab
+tile.midnight.double_nightshroom_slab.name=Double Nightshroom Slab
+tile.midnight.viridshroom_slab.name=Viridshroom Slab
+tile.midnight.double_viridshroom_slab.name=Double Viridshroom Slab
+tile.midnight.dewshroom_slab.name=Dewshroom Slab
+tile.midnight.double_dewshroom_slab.name=Double Dewshroom Slab
+tile.midnight.trenchstone_slab.name=Trenchstone Slab
+tile.midnight.double_trenchstone_slab.name=Double Trenchstone Slab
+tile.midnight.nightstone_slab.name=Nightstone Slab
+tile.midnight.double_nightstone_slab.name=Double Nightstone Slab
+
+tile.midnight.shadowroot_stairs.name=Shadowroot Stairs
+tile.midnight.dark_willow_stairs.name=Dark Willow Stairs
+tile.midnight.dead_wood_stairs.name=Dead Wood Stairs
+tile.midnight.nightshroom_stairs.name=Nightshroom Stairs
+tile.midnight.viridshroom_stairs.name=Viridshroom Stairs
+tile.midnight.dewshroom_stairs.name=Dewshroom Stairs
+tile.midnight.trenchstone_stairs.name=Trenchstone Stairs
+tile.midnight.nightstone_stairs.name=Nightstone Stairs
+
+tile.midnight.trenchstone_wall.name=Trenchstone Wall
+tile.midnight.nightstone_wall.name=Nightstone Wall
+
+tile.midnight.shadowroot_fence.name=Shadowroot Fence
+tile.midnight.dark_willow_fence.name=Dark Willow Fence
+tile.midnight.dead_wood_fence.name=Dead Wood Fence
+tile.midnight.nightshroom_fence.name=Nightshroom Fence
+tile.midnight.viridshroom_fence.name=Viridshroom Fence
+tile.midnight.dewshroom_fence.name=Dewshroom Fence
+
+tile.midnight.shadowroot_fence_gate.name=Shadowroot Fence Gate
+tile.midnight.dark_willow_fence_gate.name=Dark Willow Fence Gate
+tile.midnight.dead_wood_fence_gate.name=Dead Wood Fence Gate
+tile.midnight.nightshroom_fence_gate.name=Nightshroom Fence Gate
+tile.midnight.viridshroom_fence_gate.name=Viridshroom Fence Gate
+tile.midnight.dewshroom_fence_gate.name=Dewshroom Fence Gate
+
 # Items
 
 item.midnight.shadowroot_door.name=Shadowroot Door

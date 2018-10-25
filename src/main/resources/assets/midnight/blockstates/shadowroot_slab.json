@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,variant=shadowroot": { "model": "midnight:bottom_shadowroot_slab" },
+        "half=top,variant=shadowroot": { "model": "midnight:top_shadowroot_slab" }
+    }
+}

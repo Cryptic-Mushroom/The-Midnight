@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "midnight:blocks/dewshroom_planks",
+        "top": "midnight:blocks/dewshroom_planks",
+        "side": "midnight:blocks/dewshroom_planks"
+    }
+}

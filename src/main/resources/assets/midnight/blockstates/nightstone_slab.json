@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,variant=nightstone": { "model": "midnight:bottom_nightstone_slab" },
+        "half=top,variant=nightstone": { "model": "midnight:top_nightstone_slab" }
+    }
+}

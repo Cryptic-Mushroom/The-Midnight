@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {"item": "midnight:trenchstone"}
+  },
+  "result": {
+    "item": "midnight:trenchstone_stairs",
+    "count": 4
+  }
+}
