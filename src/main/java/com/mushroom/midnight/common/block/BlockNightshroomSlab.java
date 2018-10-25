@@ -22,168 +22,169 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-public abstract class BlockNightshroomSlab extends BlockSlab {
-	
-	public static final PropertyEnum<BlockNightshroomSlab.EnumType> VARIANT = PropertyEnum.<BlockNightshroomSlab.EnumType>create("variant", BlockNightshroomSlab.EnumType.class);
-	
-	public BlockNightshroomSlab() {
-		
-		super(Material.WOOD);
-		this.setSoundType(SoundType.WOOD);
-		IBlockState iblockstate = this.blockState.getBaseState();
+public class BlockNightshroomSlab extends BlockSlab {
+
+    private boolean isDouble;
+
+    public static final PropertyEnum<BlockNightshroomSlab.EnumType> VARIANT = PropertyEnum.<BlockNightshroomSlab.EnumType>create("variant", BlockNightshroomSlab.EnumType.class);
+
+    public BlockNightshroomSlab(boolean isDouble) {
+
+        super(Material.WOOD);
+        this.setSoundType(SoundType.WOOD);
+        IBlockState iblockstate = this.blockState.getBaseState();
+        this.isDouble = isDouble;
 
         if (!this.isDouble()) {
             iblockstate = iblockstate.withProperty(HALF, BlockSlab.EnumBlockHalf.BOTTOM);
             this.setCreativeTab(Midnight.MIDNIGHT_TAB);
         }
-		
-	}
 
-	@Override
-	public String getTranslationKey(int meta) {
-		
-		return super.getTranslationKey() + "." + BlockNightshroomSlab.EnumType.byMetadata(meta).getTranslationKey();
-		
-	}
+        this.setDefaultState(iblockstate);
 
-	@Override
-	public IProperty<?> getVariantProperty() {
-		
-		return VARIANT;
-		
-	}
-
-	@Override
-	public Comparable<?> getTypeForItem(ItemStack stack) {
-		
-		return BlockNightshroomSlab.EnumType.byMetadata(stack.getMetadata() & 7);
-		
-	}
-
-	@Override
-	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
-		
-		for (BlockNightshroomSlab.EnumType blocknightshroomslab$enumtype : BlockNightshroomSlab.EnumType.values()) {
-			items.add(new ItemStack(this, 1, blocknightshroomslab$enumtype.getMetadata()));
-		}
-		
-	}
-	
-	@Override
-	public IBlockState getStateFromMeta(int meta) {
-		
-		IBlockState iblockstate = this.getDefaultState().withProperty(VARIANT, BlockNightshroomSlab.EnumType.byMetadata(meta & 7));
-		
-		if (!this.isDouble()) {
-			iblockstate = iblockstate.withProperty(HALF, (meta & 8) == 0 ? BlockSlab.EnumBlockHalf.BOTTOM : BlockSlab.EnumBlockHalf.TOP);
-		}
-		
-		return iblockstate;
-		
-	}
-	
-	@Override
-	public int getMetaFromState(IBlockState state) {
-		
-		int i = 0;
-		i = i | ((BlockNightshroomSlab.EnumType)state.getValue(VARIANT)).getMetadata();
-		
-		if (!this.isDouble() && state.getValue(HALF) == BlockSlab.EnumBlockHalf.TOP) {
-			i |= 8;
-		}
-		
-		return i;
-		
-	}
-	
-	@Override
-	protected BlockStateContainer createBlockState() {
-		
-        return new BlockStateContainer(this, new IProperty[] {HALF, VARIANT});
-        
     }
-	
-	@Override
-	public int damageDropped(IBlockState state) {
-		
-        return ((BlockNightshroomSlab.EnumType)state.getValue(VARIANT)).getMetadata();
-        
+
+    @Override
+    public String getTranslationKey(int meta) {
+
+        return super.getTranslationKey() + "." + BlockNightshroomSlab.EnumType.byMetadata(meta).getTranslationKey();
+
     }
-	
-	@Override
-	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		
-		return Item.getItemFromBlock(ModBlocks.NIGHTSHROOM_SLAB);
-		
-	}
-	
-	@Override
-	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
-		
-		return new ItemStack(ModBlocks.NIGHTSHROOM_SLAB, 1, ((BlockNightshroomSlab.EnumType)state.getValue(VARIANT)).getMetadata());
-		
-	}
-	
-	public static enum EnumType implements IStringSerializable
-	{
-		NIGHTSHROOM(0, "nightshroom");
 
-	    private static final BlockNightshroomSlab.EnumType[] META_LOOKUP = new BlockNightshroomSlab.EnumType[values().length];
-	    private final int meta;
-	    private final String name;
-	    private final String translationKey;
+    @Override
+    public IProperty<?> getVariantProperty() {
 
-	    private EnumType(int metaIn, String nameIn)
-	    {
-	    	this(metaIn, nameIn, nameIn);
-	    }
+        return VARIANT;
 
-	    private EnumType(int metaIn, String nameIn, String unlocalizedNameIn)
-	    {
-	    	this.meta = metaIn;
-	    	this.name = nameIn;
-	        this.translationKey = unlocalizedNameIn;
-	    }
+    }
 
-	    public int getMetadata()
-	    {
-	    	return this.meta;
-	    }
+    @Override
+    public Comparable<?> getTypeForItem(ItemStack stack) {
 
-	    @Override
-	    public String toString()
-	    {
-	    	return this.name;
-	    }
+        return BlockNightshroomSlab.EnumType.byMetadata(stack.getMetadata() & 7);
 
-	    public static BlockNightshroomSlab.EnumType byMetadata(int meta)
-	    {
-	    	if (meta < 0 || meta >= META_LOOKUP.length)
-	        {
-	    		meta = 0;
-	        }
+    }
 
-	    	return META_LOOKUP[meta];
-	    }
+    @Override
+    public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) {
 
-	    @Override
-	    public String getName()
-	    {
-	    	return this.name;
-	    }
+        for (BlockNightshroomSlab.EnumType blocknightshroomslab$enumtype : BlockNightshroomSlab.EnumType.values()) {
+            items.add(new ItemStack(this, 1, blocknightshroomslab$enumtype.getMetadata()));
+        }
 
-	    public String getTranslationKey()
-	    {
-	    	return this.translationKey;
-	    }
+    }
 
-	    static
-	    {
-	    	for (BlockNightshroomSlab.EnumType blocknightshroomslab$enumtype : values())
-	        {
-	    		META_LOOKUP[blocknightshroomslab$enumtype.getMetadata()] = blocknightshroomslab$enumtype;
-	        }
-	    }
-	}
-	
+    @Override
+    public IBlockState getStateFromMeta(int meta) {
+
+        IBlockState iblockstate = this.getDefaultState().withProperty(VARIANT, BlockNightshroomSlab.EnumType.byMetadata(meta & 7));
+
+        if (!this.isDouble()) {
+            iblockstate = iblockstate.withProperty(HALF, (meta & 8) == 0 ? BlockSlab.EnumBlockHalf.BOTTOM : BlockSlab.EnumBlockHalf.TOP);
+        }
+
+        return iblockstate;
+
+    }
+
+    @Override
+    public int getMetaFromState(IBlockState state) {
+
+        int i = 0;
+        i = i | ((BlockNightshroomSlab.EnumType) state.getValue(VARIANT)).getMetadata();
+
+        if (!this.isDouble() && state.getValue(HALF) == BlockSlab.EnumBlockHalf.TOP) {
+            i |= 8;
+        }
+
+        return i;
+
+    }
+
+    @Override
+    protected BlockStateContainer createBlockState() {
+
+        return new BlockStateContainer(this, new IProperty[] { HALF, VARIANT });
+
+    }
+
+    @Override
+    public int damageDropped(IBlockState state) {
+
+        return ((BlockNightshroomSlab.EnumType) state.getValue(VARIANT)).getMetadata();
+
+    }
+
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+
+        return Item.getItemFromBlock(ModBlocks.NIGHTSHROOM_SLAB);
+
+    }
+
+    @Override
+    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+
+        return new ItemStack(ModBlocks.NIGHTSHROOM_SLAB, 1, ((BlockNightshroomSlab.EnumType) state.getValue(VARIANT)).getMetadata());
+
+    }
+
+    @Override
+    public boolean isDouble() {
+
+        return this.isDouble;
+
+    }
+
+    public static enum EnumType implements IStringSerializable {
+        NIGHTSHROOM(0, "nightshroom");
+
+        private static final BlockNightshroomSlab.EnumType[] META_LOOKUP = new BlockNightshroomSlab.EnumType[values().length];
+        private final int meta;
+        private final String name;
+        private final String translationKey;
+
+        private EnumType(int metaIn, String nameIn) {
+            this(metaIn, nameIn, nameIn);
+        }
+
+        private EnumType(int metaIn, String nameIn, String unlocalizedNameIn) {
+            this.meta = metaIn;
+            this.name = nameIn;
+            this.translationKey = unlocalizedNameIn;
+        }
+
+        public int getMetadata() {
+            return this.meta;
+        }
+
+        @Override
+        public String toString() {
+            return this.name;
+        }
+
+        public static BlockNightshroomSlab.EnumType byMetadata(int meta) {
+            if (meta < 0 || meta >= META_LOOKUP.length) {
+                meta = 0;
+            }
+
+            return META_LOOKUP[meta];
+        }
+
+        @Override
+        public String getName() {
+            return this.name;
+        }
+
+        public String getTranslationKey() {
+            return this.translationKey;
+        }
+
+        static {
+            for (BlockNightshroomSlab.EnumType blocknightshroomslab$enumtype : values()) {
+                META_LOOKUP[blocknightshroomslab$enumtype.getMetadata()] = blocknightshroomslab$enumtype;
+            }
+        }
+    }
+
 }

@@ -22,21 +22,26 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-public abstract class BlockViridshroomSlab extends BlockSlab {
+public class BlockViridshroomSlab extends BlockSlab {
 	
+    private boolean isDouble;
+    
 	public static final PropertyEnum<BlockViridshroomSlab.EnumType> VARIANT = PropertyEnum.<BlockViridshroomSlab.EnumType>create("variant", BlockViridshroomSlab.EnumType.class);
 	
-	public BlockViridshroomSlab() {
+	public BlockViridshroomSlab(boolean isDouble) {
 		
 		super(Material.WOOD);
 		this.setSoundType(SoundType.WOOD);
 		IBlockState iblockstate = this.blockState.getBaseState();
+		this.isDouble = isDouble;
 
         if (!this.isDouble()) {
             iblockstate = iblockstate.withProperty(HALF, BlockSlab.EnumBlockHalf.BOTTOM);
             this.setCreativeTab(Midnight.MIDNIGHT_TAB);
         }
 		
+        this.setDefaultState(iblockstate);
+        
 	}
 
 	@Override
@@ -123,6 +128,13 @@ public abstract class BlockViridshroomSlab extends BlockSlab {
 		return new ItemStack(ModBlocks.VIRIDSHROOM_SLAB, 1, ((BlockViridshroomSlab.EnumType)state.getValue(VARIANT)).getMetadata());
 		
 	}
+	
+	@Override
+    public boolean isDouble() {
+
+        return this.isDouble;
+
+    }
 	
 	public static enum EnumType implements IStringSerializable
 	{

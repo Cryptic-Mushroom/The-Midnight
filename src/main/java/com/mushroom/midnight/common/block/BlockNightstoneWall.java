@@ -15,7 +15,7 @@ import net.minecraft.util.text.translation.I18n;
 
 public class BlockNightstoneWall extends BlockWall {
 	
-	public BlockNightstoneWall() {
+    public BlockNightstoneWall() {
 		
 		super(ModBlocks.NIGHTSTONE);
 		this.setCreativeTab(Midnight.MIDNIGHT_TAB);

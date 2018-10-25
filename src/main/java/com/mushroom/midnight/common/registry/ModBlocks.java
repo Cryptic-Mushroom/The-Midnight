@@ -8,38 +8,21 @@ import com.google.common.collect.Lists;
 import com.mushroom.midnight.Midnight;
 import com.mushroom.midnight.common.block.BlockBasic;
 import com.mushroom.midnight.common.block.BlockCrystal;
-import com.mushroom.midnight.common.block.BlockDarkWillowFence;
-import com.mushroom.midnight.common.block.BlockDarkWillowFenceGate;
+import com.mushroom.midnight.common.block.BlockDarkWillowSlab;
 import com.mushroom.midnight.common.block.BlockDarkWillowStairs;
-import com.mushroom.midnight.common.block.BlockDeadWoodFence;
-import com.mushroom.midnight.common.block.BlockDeadWoodFenceGate;
+import com.mushroom.midnight.common.block.BlockDeadWoodSlab;
 import com.mushroom.midnight.common.block.BlockDeadWoodStairs;
-import com.mushroom.midnight.common.block.BlockDewshroomFence;
-import com.mushroom.midnight.common.block.BlockDewshroomFenceGate;
+import com.mushroom.midnight.common.block.BlockDewshroomSlab;
 import com.mushroom.midnight.common.block.BlockDewshroomStairs;
-import com.mushroom.midnight.common.block.BlockDoubleDarkWillowSlab;
-import com.mushroom.midnight.common.block.BlockDoubleDeadWoodSlab;
-import com.mushroom.midnight.common.block.BlockDoubleDewshroomSlab;
 import com.mushroom.midnight.common.block.BlockDoubleMidnightPlant;
-import com.mushroom.midnight.common.block.BlockDoubleNightshroomSlab;
-import com.mushroom.midnight.common.block.BlockDoubleNightstoneSlab;
-import com.mushroom.midnight.common.block.BlockDoubleShadowrootSlab;
-import com.mushroom.midnight.common.block.BlockDoubleTrenchstoneSlab;
-import com.mushroom.midnight.common.block.BlockDoubleViridshroomSlab;
 import com.mushroom.midnight.common.block.BlockGlowingDoublePlant;
 import com.mushroom.midnight.common.block.BlockGlowingPlant;
-import com.mushroom.midnight.common.block.BlockHalfDarkWillowSlab;
-import com.mushroom.midnight.common.block.BlockHalfDeadWoodSlab;
-import com.mushroom.midnight.common.block.BlockHalfDewshroomSlab;
-import com.mushroom.midnight.common.block.BlockHalfNightshroomSlab;
-import com.mushroom.midnight.common.block.BlockHalfNightstoneSlab;
-import com.mushroom.midnight.common.block.BlockHalfShadowrootSlab;
-import com.mushroom.midnight.common.block.BlockHalfTrenchstoneSlab;
-import com.mushroom.midnight.common.block.BlockHalfViridshroomSlab;
 import com.mushroom.midnight.common.block.BlockMiasmaFluid;
 import com.mushroom.midnight.common.block.BlockMiasmaSurface;
 import com.mushroom.midnight.common.block.BlockMidnightDirt;
 import com.mushroom.midnight.common.block.BlockMidnightDoor;
+import com.mushroom.midnight.common.block.BlockMidnightFence;
+import com.mushroom.midnight.common.block.BlockMidnightFenceGate;
 import com.mushroom.midnight.common.block.BlockMidnightFungi;
 import com.mushroom.midnight.common.block.BlockMidnightFungiHat;
 import com.mushroom.midnight.common.block.BlockMidnightFungiShelf;
@@ -53,21 +36,20 @@ import com.mushroom.midnight.common.block.BlockMidnightPlant;
 import com.mushroom.midnight.common.block.BlockMidnightSapling;
 import com.mushroom.midnight.common.block.BlockMidnightTrapDoor;
 import com.mushroom.midnight.common.block.BlockMushroomInside;
-import com.mushroom.midnight.common.block.BlockNightshroomFence;
-import com.mushroom.midnight.common.block.BlockNightshroomFenceGate;
+import com.mushroom.midnight.common.block.BlockNightshroomSlab;
 import com.mushroom.midnight.common.block.BlockNightshroomStairs;
 import com.mushroom.midnight.common.block.BlockNightstone;
+import com.mushroom.midnight.common.block.BlockNightstoneSlab;
 import com.mushroom.midnight.common.block.BlockNightstoneStairs;
 import com.mushroom.midnight.common.block.BlockNightstoneWall;
 import com.mushroom.midnight.common.block.BlockShadowrootChest;
 import com.mushroom.midnight.common.block.BlockShadowrootCraftingTable;
-import com.mushroom.midnight.common.block.BlockShadowrootFence;
-import com.mushroom.midnight.common.block.BlockShadowrootFenceGate;
+import com.mushroom.midnight.common.block.BlockShadowrootSlab;
 import com.mushroom.midnight.common.block.BlockShadowrootStairs;
+import com.mushroom.midnight.common.block.BlockTrenchstoneSlab;
 import com.mushroom.midnight.common.block.BlockTrenchstoneStairs;
 import com.mushroom.midnight.common.block.BlockTrenchstoneWall;
-import com.mushroom.midnight.common.block.BlockViridshroomFence;
-import com.mushroom.midnight.common.block.BlockViridshroomFenceGate;
+import com.mushroom.midnight.common.block.BlockViridshroomSlab;
 import com.mushroom.midnight.common.block.BlockViridshroomStairs;
 import com.mushroom.midnight.common.block.PlantBehaviorType;
 import com.mushroom.midnight.common.tile.base.TileEntityMidnightFurnace;
@@ -78,6 +60,7 @@ import com.mushroom.midnight.common.world.feature.ShadowrootTreeFeature;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
+import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -338,54 +321,54 @@ public class ModBlocks {
                 RegUtil.withName(new BlockMidnightFurnace(false), "midnight_furnace"),
                 RegUtil.withName(new BlockMidnightFurnace(true), "midnight_furnace_lit"),
                 RegUtil.withName(new BlockMushroomInside(), "mushroom_inside"),
-                RegUtil.withName(new BlockHalfShadowrootSlab(), "shadowroot_slab")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockDoubleShadowrootSlab(), "double_shadowroot_slab")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockHalfDarkWillowSlab(), "dark_willow_slab")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockDoubleDarkWillowSlab(), "double_dark_willow_slab")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockHalfDeadWoodSlab(), "dead_wood_slab")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockDoubleDeadWoodSlab(), "double_dead_wood_slab")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockHalfNightshroomSlab(), "nightshroom_slab")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockDoubleNightshroomSlab(), "double_nightshroom_slab")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockHalfViridshroomSlab(), "viridshroom_slab")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockDoubleViridshroomSlab(), "double_viridshroom_slab")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockHalfDewshroomSlab(), "dewshroom_slab")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockDoubleDewshroomSlab(), "double_dewshroom_slab")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockHalfTrenchstoneSlab(), "trenchstone_slab")
-                	.setHardness(5.0F)
-                	.setResistance(200.0F),
-                RegUtil.withName(new BlockDoubleTrenchstoneSlab(), "double_trenchstone_slab")
-                	.setHardness(5.0F)
-                	.setResistance(200.0F),
-                RegUtil.withName(new BlockHalfNightstoneSlab(), "nightstone_slab")
-                	.setHardness(1.5F)
-                	.setResistance(10.0F),
-                RegUtil.withName(new BlockDoubleNightstoneSlab(), "double_nightstone_slab")
-                	.setHardness(1.5F)
-                	.setResistance(10.0F),
+                RegUtil.withName(new BlockShadowrootSlab(false), "shadowroot_slab")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockShadowrootSlab(true), "double_shadowroot_slab")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockDarkWillowSlab(false), "dark_willow_slab")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockDarkWillowSlab(true), "double_dark_willow_slab")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockDeadWoodSlab(false), "dead_wood_slab")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockDeadWoodSlab(true), "double_dead_wood_slab")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockNightshroomSlab(false), "nightshroom_slab")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockNightshroomSlab(true), "double_nightshroom_slab")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockViridshroomSlab(false), "viridshroom_slab")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockViridshroomSlab(true), "double_viridshroom_slab")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockDewshroomSlab(false), "dewshroom_slab")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockDewshroomSlab(true), "double_dewshroom_slab")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockTrenchstoneSlab(false), "trenchstone_slab")
+                    .setHardness(5.0F)
+                    .setResistance(200.0F),
+                RegUtil.withName(new BlockTrenchstoneSlab(true), "double_trenchstone_slab")
+                    .setHardness(5.0F)
+                    .setResistance(200.0F),
+                RegUtil.withName(new BlockNightstoneSlab(false), "nightstone_slab")
+                    .setHardness(1.5F)
+                    .setResistance(10.0F),
+                RegUtil.withName(new BlockNightstoneSlab(true), "double_nightstone_slab")
+                    .setHardness(1.5F)
+                    .setResistance(10.0F),
                 RegUtil.withName(new BlockShadowrootStairs(), "shadowroot_stairs"),
                 RegUtil.withName(new BlockDarkWillowStairs(), "dark_willow_stairs"),
                 RegUtil.withName(new BlockDeadWoodStairs(), "dead_wood_stairs"),
@@ -396,42 +379,42 @@ public class ModBlocks {
                 RegUtil.withName(new BlockNightstoneStairs(), "nightstone_stairs"),
                 RegUtil.withName(new BlockTrenchstoneWall(), "trenchstone_wall"),
                 RegUtil.withName(new BlockNightstoneWall(), "nightstone_wall"),
-                RegUtil.withName(new BlockShadowrootFence(), "shadowroot_fence")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockDarkWillowFence(), "dark_willow_fence")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockDeadWoodFence(), "dead_wood_fence")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockNightshroomFence(), "nightshroom_fence")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockViridshroomFence(), "viridshroom_fence")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockDewshroomFence(), "dewshroom_fence")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockShadowrootFenceGate(), "shadowroot_fence_gate")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockDarkWillowFenceGate(), "dark_willow_fence_gate")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockDeadWoodFenceGate(), "dead_wood_fence_gate")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockNightshroomFenceGate(), "nightshroom_fence_gate")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockViridshroomFenceGate(), "viridshroom_fence_gate")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F),
-                RegUtil.withName(new BlockDewshroomFenceGate(), "dewshroom_fence_gate")
-                	.setHardness(2.0F)
-                	.setResistance(5.0F)
+                RegUtil.withName(new BlockMidnightFence(MapColor.CYAN_STAINED_HARDENED_CLAY), "shadowroot_fence")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockMidnightFence(MapColor.CYAN_STAINED_HARDENED_CLAY), "dark_willow_fence")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockMidnightFence(MapColor.GRAY), "dead_wood_fence")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockMidnightFence(MapColor.LIGHT_BLUE), "nightshroom_fence")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockMidnightFence(MapColor.GREEN_STAINED_HARDENED_CLAY), "viridshroom_fence")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockMidnightFence(MapColor.PURPLE), "dewshroom_fence")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockMidnightFenceGate(MapColor.CYAN_STAINED_HARDENED_CLAY), "shadowroot_fence_gate")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockMidnightFenceGate(MapColor.CYAN_STAINED_HARDENED_CLAY), "dark_willow_fence_gate")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockMidnightFenceGate(MapColor.GRAY), "dead_wood_fence_gate")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockMidnightFenceGate(MapColor.LIGHT_BLUE), "nightshroom_fence_gate")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockMidnightFenceGate(MapColor.GREEN_STAINED_HARDENED_CLAY), "viridshroom_fence_gate")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockMidnightFenceGate(MapColor.PURPLE), "dewshroom_fence_gate")
+                    .setHardness(2.0F)
+                    .setResistance(5.0F)
         );
 
         blocks.forEach(event.getRegistry()::register);

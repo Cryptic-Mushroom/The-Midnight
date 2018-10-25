@@ -15,7 +15,7 @@ import net.minecraft.util.text.translation.I18n;
 
 public class BlockTrenchstoneWall extends BlockWall {
 	
-	public BlockTrenchstoneWall() {
+    public BlockTrenchstoneWall() {
 		
 		super(ModBlocks.TRENCHSTONE);
 		this.setCreativeTab(Midnight.MIDNIGHT_TAB);
