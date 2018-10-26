@@ -20,6 +20,7 @@ public class BlockTrenchstoneWall extends BlockWall {
 		super(ModBlocks.TRENCHSTONE);
 		this.setCreativeTab(Midnight.MIDNIGHT_TAB);
 		this.setSoundType(SoundType.STONE);
+		this.setHarvestLevel("pickaxe", 2);
 		
 	}
 	

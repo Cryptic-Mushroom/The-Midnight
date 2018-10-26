@@ -19,6 +19,7 @@ import com.mushroom.midnight.common.block.BlockGlowingDoublePlant;
 import com.mushroom.midnight.common.block.BlockGlowingPlant;
 import com.mushroom.midnight.common.block.BlockMiasmaFluid;
 import com.mushroom.midnight.common.block.BlockMiasmaSurface;
+import com.mushroom.midnight.common.block.BlockMidnightButton;
 import com.mushroom.midnight.common.block.BlockMidnightDirt;
 import com.mushroom.midnight.common.block.BlockMidnightDoor;
 import com.mushroom.midnight.common.block.BlockMidnightFence;
@@ -33,6 +34,7 @@ import com.mushroom.midnight.common.block.BlockMidnightGrass;
 import com.mushroom.midnight.common.block.BlockMidnightLeaves;
 import com.mushroom.midnight.common.block.BlockMidnightLog;
 import com.mushroom.midnight.common.block.BlockMidnightPlant;
+import com.mushroom.midnight.common.block.BlockMidnightPressurePlate;
 import com.mushroom.midnight.common.block.BlockMidnightSapling;
 import com.mushroom.midnight.common.block.BlockMidnightTrapDoor;
 import com.mushroom.midnight.common.block.BlockMushroomInside;
@@ -210,6 +212,24 @@ public class ModBlocks {
     public static final Block NIGHTSHROOM_FENCE_GATE = Blocks.AIR;
     public static final Block VIRIDSHROOM_FENCE_GATE = Blocks.AIR;
     public static final Block DEWSHROOM_FENCE_GATE = Blocks.AIR;
+    
+    public static final Block SHADOWROOT_BUTTON = Blocks.AIR;
+    public static final Block DARK_WILLOW_BUTTON = Blocks.AIR;
+    public static final Block DEAD_WOOD_BUTTON = Blocks.AIR;
+    public static final Block NIGHTSHROOM_BUTTON = Blocks.AIR;
+    public static final Block VIRIDSHROOM_BUTTON = Blocks.AIR;
+    public static final Block DEWSHROOM_BUTTON = Blocks.AIR;
+    public static final Block TRENCHSTONE_BUTTON = Blocks.AIR;
+    public static final Block NIGHTSTONE_BUTTON = Blocks.AIR;
+    
+    public static final Block SHADOWROOT_PRESSURE_PLATE = Blocks.AIR;
+    public static final Block DARK_WILLOW_PRESSURE_PLATE = Blocks.AIR;
+    public static final Block DEAD_WOOD_PRESSURE_PLATE = Blocks.AIR;
+    public static final Block NIGHTSHROOM_PRESSURE_PLATE = Blocks.AIR;
+    public static final Block VIRIDSHROOM_PRESSURE_PLATE = Blocks.AIR;
+    public static final Block DEWSHROOM_PRESSURE_PLATE = Blocks.AIR;
+    public static final Block TRENCHSTONE_PRESSURE_PLATE = Blocks.AIR;
+    public static final Block NIGHTSTONE_PRESSURE_PLATE = Blocks.AIR;
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
@@ -414,7 +434,39 @@ public class ModBlocks {
                     .setResistance(5.0F),
                 RegUtil.withName(new BlockMidnightFenceGate(MapColor.PURPLE), "dewshroom_fence_gate")
                     .setHardness(2.0F)
-                    .setResistance(5.0F)
+                    .setResistance(5.0F),
+                RegUtil.withName(new BlockMidnightButton(true), "shadowroot_button")
+                    .setHardness(1.0F),
+                RegUtil.withName(new BlockMidnightButton(true), "dark_willow_button")
+                    .setHardness(1.0F),
+                RegUtil.withName(new BlockMidnightButton(true), "dead_wood_button")
+                    .setHardness(1.0F),
+                RegUtil.withName(new BlockMidnightButton(true), "nightshroom_button")
+                    .setHardness(1.0F),
+                RegUtil.withName(new BlockMidnightButton(true), "viridshroom_button")
+                    .setHardness(1.0F),
+                RegUtil.withName(new BlockMidnightButton(true), "dewshroom_button")
+                    .setHardness(1.0F),
+                RegUtil.withName(new BlockMidnightButton(false), "trenchstone_button")
+                    .setHardness(4.0F),
+                RegUtil.withName(new BlockMidnightButton(false), "nightstone_button")
+                    .setHardness(0.5F),
+                RegUtil.withName(new BlockMidnightPressurePlate(true), "shadowroot_pressure_plate")
+                    .setHardness(1.0F),
+                RegUtil.withName(new BlockMidnightPressurePlate(true), "dark_willow_pressure_plate")
+                    .setHardness(1.0F),
+                RegUtil.withName(new BlockMidnightPressurePlate(true), "dead_wood_pressure_plate")
+                    .setHardness(1.0F),
+                RegUtil.withName(new BlockMidnightPressurePlate(true), "nightshroom_pressure_plate")
+                    .setHardness(1.0F),
+                RegUtil.withName(new BlockMidnightPressurePlate(true), "viridshroom_pressure_plate")
+                    .setHardness(1.0F),
+                RegUtil.withName(new BlockMidnightPressurePlate(true), "dewshroom_pressure_plate")
+                    .setHardness(1.0F),
+                RegUtil.withName(new BlockMidnightPressurePlate(false), "trenchstone_pressure_plate")
+                    .setHardness(4.0F),
+                RegUtil.withName(new BlockMidnightPressurePlate(false), "nightstone_pressure_plate")
+                    .setHardness(0.5F)
         );
 
         blocks.forEach(event.getRegistry()::register);
@@ -456,7 +508,9 @@ public class ModBlocks {
                 SHADOWROOT_STAIRS, DARK_WILLOW_STAIRS, DEAD_WOOD_STAIRS, NIGHTSHROOM_STAIRS, VIRIDSHROOM_STAIRS, DEWSHROOM_STAIRS, TRENCHSTONE_STAIRS, NIGHTSTONE_STAIRS,
                 TRENCHSTONE_WALL, NIGHTSTONE_WALL,
                 SHADOWROOT_FENCE, DARK_WILLOW_FENCE, DEAD_WOOD_FENCE, NIGHTSHROOM_FENCE, VIRIDSHROOM_FENCE, DEWSHROOM_FENCE,
-                SHADOWROOT_FENCE_GATE, DARK_WILLOW_FENCE_GATE, DEAD_WOOD_FENCE_GATE, NIGHTSHROOM_FENCE_GATE, VIRIDSHROOM_FENCE_GATE, DEWSHROOM_FENCE_GATE
+                SHADOWROOT_FENCE_GATE, DARK_WILLOW_FENCE_GATE, DEAD_WOOD_FENCE_GATE, NIGHTSHROOM_FENCE_GATE, VIRIDSHROOM_FENCE_GATE, DEWSHROOM_FENCE_GATE,
+                SHADOWROOT_BUTTON, DARK_WILLOW_BUTTON, DEAD_WOOD_BUTTON, NIGHTSHROOM_BUTTON, VIRIDSHROOM_BUTTON, DEWSHROOM_BUTTON, TRENCHSTONE_BUTTON, NIGHTSTONE_BUTTON,
+                SHADOWROOT_PRESSURE_PLATE, DARK_WILLOW_PRESSURE_PLATE, DEAD_WOOD_PRESSURE_PLATE, NIGHTSHROOM_PRESSURE_PLATE, VIRIDSHROOM_PRESSURE_PLATE, DEWSHROOM_PRESSURE_PLATE, TRENCHSTONE_PRESSURE_PLATE, NIGHTSTONE_PRESSURE_PLATE
         ));
     }
 

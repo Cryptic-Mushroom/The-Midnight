@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "powered=false": { "model": "midnight:dewshroom_pressure_plate_up" },
+        "powered=true": { "model": "midnight:dewshroom_pressure_plate_down" }
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "powered=false": { "model": "midnight:nightshroom_pressure_plate_up" },
+        "powered=true": { "model": "midnight:nightshroom_pressure_plate_down" }
+    }
+}

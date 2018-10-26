@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "powered=false": { "model": "midnight:shadowroot_pressure_plate_up" },
+        "powered=true": { "model": "midnight:shadowroot_pressure_plate_down" }
+    }
+}

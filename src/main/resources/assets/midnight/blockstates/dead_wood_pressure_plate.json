@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "powered=false": { "model": "midnight:dead_wood_pressure_plate_up" },
+        "powered=true": { "model": "midnight:dead_wood_pressure_plate_down" }
+    }
+}

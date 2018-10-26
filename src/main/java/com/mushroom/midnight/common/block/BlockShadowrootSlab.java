@@ -73,7 +73,7 @@ public class BlockShadowrootSlab extends BlockSlab {
         }
 
     }
-
+    
     @Override
     public IBlockState getStateFromMeta(int meta) {
 
@@ -107,7 +107,7 @@ public class BlockShadowrootSlab extends BlockSlab {
         return new BlockStateContainer(this, new IProperty[] { HALF, VARIANT });
 
     }
-
+    
     @Override
     public int damageDropped(IBlockState state) {
 

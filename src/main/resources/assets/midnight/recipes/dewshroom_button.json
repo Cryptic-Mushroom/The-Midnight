@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "midnight:dewshroom_planks"
+    }
+  ],
+  "result": {
+    "item": "midnight:dewshroom_button"
+  }
+}

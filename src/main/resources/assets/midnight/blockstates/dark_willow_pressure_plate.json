@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "powered=false": { "model": "midnight:dark_willow_pressure_plate_up" },
+        "powered=true": { "model": "midnight:dark_willow_pressure_plate_down" }
+    }
+}

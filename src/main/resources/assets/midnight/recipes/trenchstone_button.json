@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "midnight:trenchstone"
+    }
+  ],
+  "result": {
+    "item": "midnight:trenchstone_button"
+  }
+}

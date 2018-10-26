@@ -107,7 +107,7 @@ public class BlockNightshroomSlab extends BlockSlab {
         return new BlockStateContainer(this, new IProperty[] { HALF, VARIANT });
 
     }
-
+    
     @Override
     public int damageDropped(IBlockState state) {
 

@@ -75,44 +75,44 @@ public class BlockViridshroomSlab extends BlockSlab {
 	}
 	
 	@Override
-	public IBlockState getStateFromMeta(int meta) {
-		
-		IBlockState iblockstate = this.getDefaultState().withProperty(VARIANT, BlockViridshroomSlab.EnumType.byMetadata(meta & 7));
-		
-		if (!this.isDouble()) {
-			iblockstate = iblockstate.withProperty(HALF, (meta & 8) == 0 ? BlockSlab.EnumBlockHalf.BOTTOM : BlockSlab.EnumBlockHalf.TOP);
-		}
-		
-		return iblockstate;
-		
-	}
-	
-	@Override
-	public int getMetaFromState(IBlockState state) {
-		
-		int i = 0;
-		i = i | ((BlockViridshroomSlab.EnumType)state.getValue(VARIANT)).getMetadata();
-		
-		if (!this.isDouble() && state.getValue(HALF) == BlockSlab.EnumBlockHalf.TOP) {
-			i |= 8;
-		}
-		
-		return i;
-		
-	}
-	
-	@Override
-	protected BlockStateContainer createBlockState() {
-		
-        return new BlockStateContainer(this, new IProperty[] {HALF, VARIANT});
-        
+    public IBlockState getStateFromMeta(int meta) {
+
+        IBlockState iblockstate = this.getDefaultState().withProperty(VARIANT, BlockViridshroomSlab.EnumType.byMetadata(meta & 7));
+
+        if (!this.isDouble()) {
+            iblockstate = iblockstate.withProperty(HALF, (meta & 8) == 0 ? BlockSlab.EnumBlockHalf.BOTTOM : BlockSlab.EnumBlockHalf.TOP);
+        }
+
+        return iblockstate;
+
+    }
+
+    @Override
+    public int getMetaFromState(IBlockState state) {
+
+        int i = 0;
+        i = i | ((BlockViridshroomSlab.EnumType) state.getValue(VARIANT)).getMetadata();
+
+        if (!this.isDouble() && state.getValue(HALF) == BlockSlab.EnumBlockHalf.TOP) {
+            i |= 8;
+        }
+
+        return i;
+
+    }
+
+    @Override
+    protected BlockStateContainer createBlockState() {
+
+        return new BlockStateContainer(this, new IProperty[] { HALF, VARIANT });
+
     }
 	
 	@Override
-	public int damageDropped(IBlockState state) {
-		
-        return ((BlockViridshroomSlab.EnumType)state.getValue(VARIANT)).getMetadata();
-        
+    public int damageDropped(IBlockState state) {
+
+        return ((BlockViridshroomSlab.EnumType) state.getValue(VARIANT)).getMetadata();
+
     }
 	
 	@Override

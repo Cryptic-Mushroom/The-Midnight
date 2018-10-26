@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "midnight:dark_willow_planks"
+    }
+  ],
+  "result": {
+    "item": "midnight:dark_willow_button"
+  }
+}

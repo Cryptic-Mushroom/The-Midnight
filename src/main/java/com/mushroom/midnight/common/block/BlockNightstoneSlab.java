@@ -107,14 +107,14 @@ public class BlockNightstoneSlab extends BlockSlab {
         return new BlockStateContainer(this, new IProperty[] { HALF, VARIANT });
 
     }
-
+    
     @Override
     public int damageDropped(IBlockState state) {
 
         return ((BlockNightstoneSlab.EnumType) state.getValue(VARIANT)).getMetadata();
 
     }
-
+    
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 

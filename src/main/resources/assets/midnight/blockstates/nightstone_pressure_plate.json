@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "powered=false": { "model": "midnight:nightstone_pressure_plate_up" },
+        "powered=true": { "model": "midnight:nightstone_pressure_plate_down" }
+    }
+}

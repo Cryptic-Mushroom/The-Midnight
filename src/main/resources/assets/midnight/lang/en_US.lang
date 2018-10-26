@@ -134,6 +134,24 @@ tile.midnight.nightshroom_fence_gate.name=Nightshroom Fence Gate
 tile.midnight.viridshroom_fence_gate.name=Viridshroom Fence Gate
 tile.midnight.dewshroom_fence_gate.name=Dewshroom Fence Gate
 
+tile.midnight.shadowroot_button.name=Shadowroot Button
+tile.midnight.dark_willow_button.name=Dark Willow Button
+tile.midnight.dead_wood_button.name=Dead Wood Button
+tile.midnight.nightshroom_button.name=Nightshroom Button
+tile.midnight.viridshroom_button.name=Viridshroom Button
+tile.midnight.dewshroom_button.name=Dewshroom Button
+tile.midnight.trenchstone_button.name=Trenchstone Button
+tile.midnight.nightstone_button.name=Nightstone Button
+
+tile.midnight.shadowroot_pressure_plate.name=Shadowroot Pressure Plate
+tile.midnight.dark_willow_pressure_plate.name=Dark Willow Pressure Plate
+tile.midnight.dead_wood_pressure_plate.name=Dead Wood Pressure Plate
+tile.midnight.nightshroom_pressure_plate.name=Nightshroom Pressure Plate
+tile.midnight.viridshroom_pressure_plate.name=Viridshroom Pressure Plate
+tile.midnight.dewshroom_pressure_plate.name=Dewshroom Pressure Plate
+tile.midnight.trenchstone_pressure_plate.name=Trenchstone Pressure Plate
+tile.midnight.nightstone_pressure_plate.name=Nightstone Pressure Plate
+
 # Items
 
 item.midnight.shadowroot_door.name=Shadowroot Door
