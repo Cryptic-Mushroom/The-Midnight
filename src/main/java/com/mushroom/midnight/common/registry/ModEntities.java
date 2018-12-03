@@ -4,6 +4,7 @@ import com.mushroom.midnight.Midnight;
 import com.mushroom.midnight.common.entity.EntityBladeshroomCap;
 import com.mushroom.midnight.common.entity.EntityRift;
 import com.mushroom.midnight.common.entity.creature.EntityHunter;
+import com.mushroom.midnight.common.entity.creature.EntityNova;
 import com.mushroom.midnight.common.entity.creature.EntityRifter;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
@@ -50,6 +51,14 @@ public class ModEntities {
                         .id(new ResourceLocation(Midnight.MODID, "bladeshroom_cap"), currentEntityId++)
                         .name(Midnight.MODID + ".bladeshroom_cap")
                         .tracker(64, 1, true)
+                        .build(),
+                EntityEntryBuilder.create()
+                        .entity(EntityNova.class)
+                        .factory(EntityNova::new)
+                        .id(new ResourceLocation(Midnight.MODID, "nova"), currentEntityId++)
+                        .name(Midnight.MODID + ".nova")
+                        .tracker(80, 2, true)
+                        .egg(0x932C3B, 0x47415E)
                         .build()
         );
 

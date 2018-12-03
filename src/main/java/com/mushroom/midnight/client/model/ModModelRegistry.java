@@ -4,12 +4,14 @@ import com.mushroom.midnight.Midnight;
 import com.mushroom.midnight.client.IModelProvider;
 import com.mushroom.midnight.client.render.RenderBladeshroomCap;
 import com.mushroom.midnight.client.render.RenderHunter;
+import com.mushroom.midnight.client.render.RenderNova;
 import com.mushroom.midnight.client.render.RenderRift;
 import com.mushroom.midnight.client.render.RenderRifter;
 import com.mushroom.midnight.common.block.BlockShadowrootChest;
 import com.mushroom.midnight.common.entity.EntityBladeshroomCap;
 import com.mushroom.midnight.common.entity.EntityRift;
 import com.mushroom.midnight.common.entity.creature.EntityHunter;
+import com.mushroom.midnight.common.entity.creature.EntityNova;
 import com.mushroom.midnight.common.entity.creature.EntityRifter;
 import com.mushroom.midnight.common.registry.ModBlocks;
 import com.mushroom.midnight.common.registry.ModDimensions;
@@ -60,6 +62,7 @@ public class ModModelRegistry {
         RenderingRegistry.registerEntityRenderingHandler(EntityRifter.class, RenderRifter::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityHunter.class, RenderHunter::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityBladeshroomCap.class, RenderBladeshroomCap::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityNova.class, RenderNova::new);
 
         ModItems.getItems().stream().filter(i -> i instanceof IModelProvider).forEach(ModModelRegistry::registerItemModel);
         ModBlocks.getBlocks().stream().filter(b -> b instanceof IModelProvider).forEach(ModModelRegistry::registerBlockModel);

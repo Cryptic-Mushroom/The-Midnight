@@ -236,6 +236,8 @@ fluid.midnight.dark_water=Dark Water
 entity.midnight.rift.name=Midnight Rift
 entity.midnight.rifter.name=Rifter
 entity.midnight.hunter.name=Hunter
+entity.midnight.bladeshroom.name=Bladeshroom Cap
+entity.midnight.nova.name=Nova
 
 # Config
 
