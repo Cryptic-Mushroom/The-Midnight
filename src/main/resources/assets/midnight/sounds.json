@@ -88,5 +88,17 @@
       "midnight:blocks/step/mud_3",
       "midnight:blocks/step/mud_4"
     ]
+  },
+  "midnight.bladeshroom_cap_shoot": {
+    "category": "hostile",
+    "sounds": [
+      "midnight:entity/bladeshroom_cap_shoot"
+    ]
+  },
+  "midnight.bladeshroom_cap_hit": {
+    "category": "hostile",
+    "sounds": [
+      "midnight:entity/bladeshroom_cap_hit"
+    ]
   }
 }

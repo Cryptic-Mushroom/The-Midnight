@@ -1,12 +1,15 @@
 package com.mushroom.midnight.common.entity;
 
+import com.mushroom.midnight.common.entity.projectile.EntityProjectile;
 import com.mushroom.midnight.common.registry.ModItems;
+import com.mushroom.midnight.common.registry.ModSounds;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-public class EntityBladeshroomCap extends EntityArrow {
+public class EntityBladeshroomCap extends EntityProjectile {
     private static final float DAMAGE = 1.0F;
     private static final double GRAVITY = 0.015;
 
@@ -42,4 +45,7 @@ public class EntityBladeshroomCap extends EntityArrow {
     protected ItemStack getArrowStack() {
         return new ItemStack(ModItems.BLADESHROOM_CAP);
     }
+
+    @Override
+    public SoundEvent getSoundOnHit() { return ModSounds.BLADESHROOM_CAP_HIT; }
 }
