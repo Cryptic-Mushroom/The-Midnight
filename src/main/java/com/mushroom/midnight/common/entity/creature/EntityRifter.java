@@ -94,7 +94,7 @@ public class EntityRifter extends EntityMob implements IRiftTraveler, IEntityAdd
 
     @Override
     protected PathNavigate createNavigator(World world) {
-        return new PathNavigateGround(this, world) {
+        PathNavigateGround groundNavigator = new PathNavigateGround(this, world) {
             @Override
             protected PathFinder getPathFinder() {
                 nodeProcessor = new CustomWalkNodeProcessor();
@@ -103,6 +103,8 @@ public class EntityRifter extends EntityMob implements IRiftTraveler, IEntityAdd
                 return new PathFinder(nodeProcessor);
             }
         };
+        groundNavigator.setAvoidSun(false);
+        return groundNavigator;
     }
 
     @Override
