@@ -11,6 +11,8 @@ public class MidnightBiomeConfig {
     private final SurfaceConfig surfaceConfig;
     private final float ridgeWeight;
     private final float densityScale;
+    private final boolean wet;
+
     private final int grassColor;
     private final int foliageColor;
 
@@ -20,7 +22,7 @@ public class MidnightBiomeConfig {
 
     private MidnightBiomeConfig(
             SurfaceConfig surfaceConfig,
-            float ridgeWeight, float densityScale,
+            float ridgeWeight, float densityScale, boolean wet,
             int grassColor, int foliageColor,
             ImmutableList<FeatureEntry> features,
             ImmutableList<Biome.SpawnListEntry> monsterSpawns,
@@ -29,6 +31,7 @@ public class MidnightBiomeConfig {
         this.surfaceConfig = surfaceConfig;
         this.ridgeWeight = ridgeWeight;
         this.densityScale = densityScale;
+        this.wet = wet;
         this.grassColor = grassColor;
         this.foliageColor = foliageColor;
         this.features = features;
@@ -64,6 +67,10 @@ public class MidnightBiomeConfig {
         return this.densityScale;
     }
 
+    public boolean isWet() {
+        return this.wet;
+    }
+
     public int getGrassColor() {
         return this.grassColor;
     }
@@ -80,6 +87,8 @@ public class MidnightBiomeConfig {
         private SurfaceConfig surfaceConfig = new SurfaceConfig();
         private float ridgeWeight = 1.0F;
         private float densityScale = 1.0F;
+        private boolean wet;
+
         private int grassColor = 0xB084BC;
         private int foliageColor = 0x8F6DBC;
 
@@ -142,10 +151,15 @@ public class MidnightBiomeConfig {
             return this;
         }
 
+        public Builder wet() {
+            this.wet = true;
+            return this;
+        }
+
         public MidnightBiomeConfig build() {
             return new MidnightBiomeConfig(
                     this.surfaceConfig,
-                    this.ridgeWeight, this.densityScale,
+                    this.ridgeWeight, this.densityScale, this.wet,
                     this.grassColor, this.foliageColor,
                     this.features.build(),
                     this.monsterSpawns.build(),

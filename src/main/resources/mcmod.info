@@ -4,7 +4,7 @@
   "description": "A spooky biome",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "logoFile": "",
+  "logoFile": "assets/midnight/logo.png",
   "url": "",
   "updateJSON": "",
   "authorList": ["Martacus", "Gegy", "cipherzerox", "Endergized", "Lachney"],

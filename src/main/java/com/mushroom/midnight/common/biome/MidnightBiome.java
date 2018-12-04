@@ -54,6 +54,11 @@ public class MidnightBiome extends Biome implements IMidnightBiome {
     }
 
     @Override
+    public boolean isWet() {
+        return this.config.isWet();
+    }
+
+    @Override
     public void genTerrainBlocks(World world, Random rand, ChunkPrimer primer, int z, int x, double noiseVal) {
         this.configureSurface(this.localSurfaceConfig, this.surfaceConfig, x, z, rand);
 

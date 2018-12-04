@@ -1,5 +1,6 @@
 package com.mushroom.midnight.common.world.generator;
 
+import com.mushroom.midnight.common.biome.IMidnightBiome;
 import com.mushroom.midnight.common.registry.ModBlocks;
 import com.mushroom.midnight.common.world.PartialChunkGenerator;
 import com.mushroom.midnight.common.world.noise.INoiseSampler;
@@ -9,6 +10,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.MapGenBase;
 
@@ -56,8 +58,12 @@ public class WorldGenMoltenCrater extends MapGenBase {
 
             int centerX = globalX + this.rand.nextInt(16);
             int centerZ = globalZ + this.rand.nextInt(16);
-            int centerY = findSurfaceFixed(contextPrimer, centerX & 15, centerZ & 15);
+            Biome biome = world.getBiomeProvider().getBiome(new BlockPos(centerX, 0, centerZ));
+            if (this.isBiomeInvalid(biome)) {
+                return;
+            }
 
+            int centerY = findSurfaceFixed(contextPrimer, centerX & 15, centerZ & 15);
             if (centerY >= MAX_GENERATION_Y) {
                 return;
             }
@@ -65,6 +71,10 @@ public class WorldGenMoltenCrater extends MapGenBase {
             int radius = this.rand.nextInt(MAX_RADIUS - MIN_RADIUS + 1) + MIN_RADIUS;
             this.generateCrater(centerX, centerY, centerZ, radius, genChunkX, genChunkZ, primer);
         }
+    }
+
+    private boolean isBiomeInvalid(Biome biome) {
+        return IMidnightBiome.isWet(biome);
     }
 
     private void generateCrater(int centerX, int centerY, int centerZ, int radius, int genChunkX, int genChunkZ, ChunkPrimer primer) {
@@ -120,6 +130,9 @@ public class WorldGenMoltenCrater extends MapGenBase {
     }
 
     private void carveCraterBlock(ChunkPrimer primer, int poolLevel, int localX, int localY, int localZ) {
+        if (primer.getBlockState(localX, localY, localZ) == AIR_STATE) {
+            return;
+        }
         if (localY <= poolLevel) {
             primer.setBlockState(localX, localY, localZ, MIASMA_STATE);
         } else {
