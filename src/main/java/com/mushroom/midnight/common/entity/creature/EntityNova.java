@@ -1,5 +1,6 @@
 package com.mushroom.midnight.common.entity.creature;
 
+import com.mushroom.midnight.common.entity.pathfinding.CustomWalkNodeProcessor;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.IEntityLivingData;
@@ -15,6 +16,9 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.pathfinding.PathFinder;
+import net.minecraft.pathfinding.PathNavigate;
+import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
@@ -28,6 +32,19 @@ public class EntityNova extends EntityMob { // ? implements IRangedAttackMob
         super(world);
         setSize(1f, 1f);
         // ? experienceValue
+    }
+
+    @Override
+    protected PathNavigate createNavigator(World world) {
+        return new PathNavigateGround(this, world) {
+            @Override
+            protected PathFinder getPathFinder() {
+                nodeProcessor = new CustomWalkNodeProcessor();
+                //nodeProcessor.setCanEnterDoors(true);
+                //nodeProcessor.setCanEnterDoors(true); // is breakDoor
+                return new PathFinder(nodeProcessor);
+            }
+        };
     }
 
     @Override
