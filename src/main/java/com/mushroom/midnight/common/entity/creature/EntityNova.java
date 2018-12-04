@@ -41,7 +41,7 @@ public class EntityNova extends EntityMob { // ? implements IRangedAttackMob
             protected PathFinder getPathFinder() {
                 nodeProcessor = new CustomWalkNodeProcessor();
                 //nodeProcessor.setCanEnterDoors(true);
-                //nodeProcessor.setCanEnterDoors(true); // is breakDoor
+                //nodeProcessor.setCanOpenDoors(true); // is breakDoor
                 return new PathFinder(nodeProcessor);
             }
         };
