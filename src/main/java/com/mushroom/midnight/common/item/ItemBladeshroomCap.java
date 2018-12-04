@@ -9,6 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.CooldownTracker;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
@@ -22,6 +23,9 @@ public class ItemBladeshroomCap extends Item implements IModelProvider {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+        CooldownTracker cd = player.getCooldownTracker();
+        if (cd.hasCooldown(this)) { return super.onItemRightClick(world, player, hand); }
+        cd.setCooldown(this, 10);
         ItemStack heldItem = player.getHeldItem(hand);
         if (!player.capabilities.isCreativeMode) {
             heldItem.shrink(1);
