@@ -8,6 +8,7 @@ import com.mushroom.midnight.common.entity.task.EntityTaskHunterTarget;
 import com.mushroom.midnight.common.entity.task.EntityTaskHunterTrack;
 import com.mushroom.midnight.common.entity.util.ChainSolver;
 import com.mushroom.midnight.common.network.MessageHunterAttack;
+import com.mushroom.midnight.common.registry.ModLootTables;
 import com.mushroom.midnight.common.util.MeanValueRecorder;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -24,11 +25,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
 import javax.vecmath.Point3f;
 
 public class EntityHunter extends EntityMob implements EntityFlying {
@@ -286,4 +289,8 @@ public class EntityHunter extends EntityMob implements EntityFlying {
             }
         }
     }
+
+    @Override
+    @Nullable
+    protected ResourceLocation getLootTable() { return ModLootTables.LOOT_TABLE_HUNTER; }
 }

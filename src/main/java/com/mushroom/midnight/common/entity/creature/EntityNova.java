@@ -1,6 +1,7 @@
 package com.mushroom.midnight.common.entity.creature;
 
 import com.mushroom.midnight.common.entity.pathfinding.CustomWalkNodeProcessor;
+import com.mushroom.midnight.common.registry.ModLootTables;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.IEntityLivingData;
@@ -19,6 +20,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathFinder;
 import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.pathfinding.PathNavigateGround;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
@@ -131,11 +133,11 @@ public class EntityNova extends EntityMob { // ? implements IRangedAttackMob
     protected SoundEvent getDeathSound() { return null; }
 
 	@Override
-	protected void playStepSound(BlockPos pos, Block blockIn) { playSound(SoundEvents.BLOCK_WOOD_STEP, 0.15f, 1f); }
+	protected void playStepSound(BlockPos pos, Block blockIn) { playSound(SoundEvents.BLOCK_WOOD_STEP, 0.15f, 1f); }*/
 
 	@Override
     @Nullable
-    protected ResourceLocation getLootTable() { return null; }*/
+    protected ResourceLocation getLootTable() { return ModLootTables.LOOT_TABLE_NOVA; }
 
     @Override
     @Nullable
