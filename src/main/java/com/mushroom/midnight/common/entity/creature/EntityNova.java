@@ -14,12 +14,10 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.pathfinding.PathNavigate;
-import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 
 public class EntityNova extends EntityMob {
     public EntityNova(World world) {
@@ -50,7 +48,7 @@ public class EntityNova extends EntityMob {
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityLivingBase.class, 10, true, false, p -> true));
     }
 
-	  @Override
+    @Override
     @Nullable
     protected ResourceLocation getLootTable() {
         return ModLootTables.LOOT_TABLE_NOVA;
