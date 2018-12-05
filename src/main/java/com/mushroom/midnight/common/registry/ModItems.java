@@ -152,13 +152,7 @@ public class ModItems {
                 RegUtil.withName(new ItemMidnightChestplate(MidnightArmorMaterials.TENEBRUM), "tenebrum_chestplate"),
                 RegUtil.withName(new ItemMidnightLeggings(MidnightArmorMaterials.TENEBRUM), "tenebrum_leggings"),
                 RegUtil.withName(new ItemMidnightBoots(MidnightArmorMaterials.TENEBRUM), "tenebrum_boots"),
-                RegUtil.withName(new ItemBasic() {
-                    @Override
-                    @SideOnly(Side.CLIENT)
-                    public boolean hasEffect(ItemStack stack) {
-                        return true;
-                    }
-                }.setCreativeTab(null), "advancement_rift")
+                RegUtil.withName(new ItemBasic().setCreativeTab(null), "advancement_rift")
         );
 
         items.forEach(event.getRegistry()::register);
