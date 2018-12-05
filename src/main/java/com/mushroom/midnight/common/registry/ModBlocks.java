@@ -143,6 +143,7 @@ public class ModBlocks {
     public static final Block DOUBLE_LUMEN_BUD = Blocks.AIR;
 
     public static final Block BLADESHROOM = Blocks.AIR;
+
     public static final Block CRYSTAL_FLOWER = Blocks.AIR;
 
     public static final Block SHADOWROOT_SAPLING = Blocks.AIR;
@@ -471,7 +472,6 @@ public class ModBlocks {
                 NIGHTSHROOM_PLANKS, DEWSHROOM_PLANKS, VIRIDSHROOM_PLANKS,
                 LUMEN_BUD, DOUBLE_LUMEN_BUD,
                 CRYSTAL_FLOWER,
-                BLADESHROOM,
                 SHADOWROOT_SAPLING, DARK_WILLOW_SAPLING,
                 SHADOWROOT_TRAPDOOR, DARK_WILLOW_TRAPDOOR, DEAD_WOOD_TRAPDOOR, TENEBRUM_TRAPDOOR,
                 NIGHTSHROOM_TRAPDOOR, DEWSHROOM_TRAPDOOR, VIRIDSHROOM_TRAPDOOR,

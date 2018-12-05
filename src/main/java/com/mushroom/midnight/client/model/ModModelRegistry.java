@@ -33,6 +33,7 @@ import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -162,8 +163,8 @@ public class ModModelRegistry {
     private static void registerBlockModel(Block block) {
         ResourceLocation identifier = block.getRegistryName();
         Item item = Item.getItemFromBlock(block);
-        if (identifier == null || item == null) {
-            throw new IllegalStateException("Cannot register model for improperly registered block");
+        if (identifier == null || item == Items.AIR) {
+            return;
         }
 
         Int2ObjectMap<String> variants = new Int2ObjectOpenHashMap<>();
@@ -179,7 +180,7 @@ public class ModModelRegistry {
     private static void registerItemModel(Item item) {
         ResourceLocation identifier = item.getRegistryName();
         if (identifier == null) {
-            throw new IllegalStateException("Cannot register model for block without identifier");
+            return;
         }
 
         Int2ObjectMap<String> variants = new Int2ObjectOpenHashMap<>();

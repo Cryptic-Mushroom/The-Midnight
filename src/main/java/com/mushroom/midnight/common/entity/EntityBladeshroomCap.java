@@ -26,6 +26,11 @@ public class EntityBladeshroomCap extends EntityProjectile {
         this.setDamage(DAMAGE);
     }
 
+    public EntityBladeshroomCap(World world, double x, double y, double z) {
+        super(world, x, y, z);
+        this.setDamage(DAMAGE);
+    }
+
     @Override
     public void onUpdate() {
         super.onUpdate();

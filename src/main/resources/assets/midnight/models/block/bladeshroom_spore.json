@@ -1,0 +1,21 @@
+{
+  "credit": "Made with Blockbench",
+  "textures": {
+    "0": "midnight:blocks/bladeshroom_spore",
+    "particle": "midnight:blocks/bladeshroom_spore"
+  },
+  "elements": [
+    {
+      "from": [7, 0, 7],
+      "to": [9, 2, 9],
+      "faces": {
+        "north": {"uv": [0, 2, 2, 4], "texture": "#0"},
+        "east": {"uv": [6, 2, 8, 4], "texture": "#0"},
+        "south": {"uv": [4, 2, 6, 4], "texture": "#0"},
+        "west": {"uv": [2, 2, 4, 4], "texture": "#0"},
+        "up": {"uv": [2, 0, 4, 2], "texture": "#0"},
+        "down": {"uv": [4, 0, 6, 2], "texture": "#0"}
+      }
+    }
+  ]
+}

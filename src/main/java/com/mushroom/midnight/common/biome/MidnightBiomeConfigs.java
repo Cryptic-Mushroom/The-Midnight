@@ -1,5 +1,6 @@
 package com.mushroom.midnight.common.biome;
 
+import com.mushroom.midnight.common.block.BlockBladeshroom;
 import com.mushroom.midnight.common.entity.creature.EntityHunter;
 import com.mushroom.midnight.common.entity.creature.EntityRifter;
 import com.mushroom.midnight.common.registry.ModBlocks;
@@ -44,7 +45,7 @@ public class MidnightBiomeConfigs {
     );
 
     public static final IMidnightFeature BLADESHROOM_FEATURE = new PlantFeature(
-            ModBlocks.BLADESHROOM.getDefaultState(),
+            ModBlocks.BLADESHROOM.getDefaultState().withProperty(BlockBladeshroom.STAGE, BlockBladeshroom.Stage.CAPPED),
             ((BlockBush) ModBlocks.BLADESHROOM)::canBlockStay
     );
 

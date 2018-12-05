@@ -3,6 +3,7 @@
   "defaults": {
     "model": "midnight:empty",
     "textures": {
+      "particle": "midnight:blocks/nightstone",
       "wall": "midnight:blocks/nightstone"
     },
     "uvlock": true

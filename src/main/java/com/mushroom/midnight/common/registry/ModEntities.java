@@ -58,7 +58,7 @@ public class ModEntities {
                         .id(new ResourceLocation(Midnight.MODID, "nova"), currentEntityId++)
                         .name(Midnight.MODID + ".nova")
                         .tracker(80, 2, true)
-                        .egg(0x932C3B, 0x47415E)
+                        /*.egg(0x932C3B, 0x47415E)*/
                         .build()
         );
 

@@ -1,3 +1,3 @@
 @javax.annotation.ParametersAreNonnullByDefault
 @mcp.MethodsReturnNonnullByDefault
-package com.mushroom.midnight.common.entity.pathfinding;
+package com.mushroom.midnight.common.entity.navigation;

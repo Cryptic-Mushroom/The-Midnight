@@ -7,7 +7,7 @@ import com.mushroom.midnight.common.entity.EntityRift;
 import com.mushroom.midnight.common.entity.IRiftTraveler;
 import com.mushroom.midnight.common.entity.RiftTravelEntry;
 import com.mushroom.midnight.common.entity.RiftVoidTravelEntry;
-import com.mushroom.midnight.common.entity.pathfinding.CustomWalkNodeProcessor;
+import com.mushroom.midnight.common.entity.navigation.CustomPathNavigateGround;
 import com.mushroom.midnight.common.entity.task.EntityTaskRifterCapture;
 import com.mushroom.midnight.common.entity.task.EntityTaskRifterKeepNearRift;
 import com.mushroom.midnight.common.entity.task.EntityTaskRifterMelee;
@@ -40,9 +40,7 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.pathfinding.PathFinder;
 import net.minecraft.pathfinding.PathNavigate;
-import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
@@ -96,17 +94,7 @@ public class EntityRifter extends EntityMob implements IRiftTraveler, IEntityAdd
 
     @Override
     protected PathNavigate createNavigator(World world) {
-        PathNavigateGround groundNavigator = new PathNavigateGround(this, world) {
-            @Override
-            protected PathFinder getPathFinder() {
-                nodeProcessor = new CustomWalkNodeProcessor();
-                nodeProcessor.setCanEnterDoors(true);
-                nodeProcessor.setCanOpenDoors(true); // is breakDoor
-                return new PathFinder(nodeProcessor);
-            }
-        };
-        groundNavigator.setAvoidSun(false);
-        return groundNavigator;
+        return new CustomPathNavigateGround(this, world);
     }
 
     @Override

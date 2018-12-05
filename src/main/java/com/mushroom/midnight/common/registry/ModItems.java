@@ -7,12 +7,17 @@ import com.mushroom.midnight.common.item.ItemBasic;
 import com.mushroom.midnight.common.item.ItemBladeshroomCap;
 import com.mushroom.midnight.common.item.ItemCookSuavis;
 import com.mushroom.midnight.common.item.ItemMidnightDoor;
+import com.mushroom.midnight.common.item.ItemMidnightSeed;
 import com.mushroom.midnight.common.item.ItemRawSuavis;
-import com.mushroom.midnight.common.item.tools.*;
 import com.mushroom.midnight.common.item.armors.ItemMidnightBoots;
 import com.mushroom.midnight.common.item.armors.ItemMidnightChestplate;
 import com.mushroom.midnight.common.item.armors.ItemMidnightHelmet;
 import com.mushroom.midnight.common.item.armors.ItemMidnightLeggings;
+import com.mushroom.midnight.common.item.tools.ItemMidnightAxe;
+import com.mushroom.midnight.common.item.tools.ItemMidnightHoe;
+import com.mushroom.midnight.common.item.tools.ItemMidnightPickaxe;
+import com.mushroom.midnight.common.item.tools.ItemMidnightShovel;
+import com.mushroom.midnight.common.item.tools.ItemMidnightSword;
 import com.mushroom.midnight.common.util.MidnightArmorMaterials;
 import com.mushroom.midnight.common.util.MidnightToolMaterials;
 import net.minecraft.init.Items;
@@ -40,7 +45,7 @@ public class ModItems {
     public static final Item NIGHTSHROOM_DOOR = Items.AIR;
     public static final Item DEWSHROOM_DOOR = Items.AIR;
     public static final Item VIRIDSHROOM_DOOR = Items.AIR;
-    public static final Item TENEBRUM_DOOR =Items.AIR;
+    public static final Item TENEBRUM_DOOR = Items.AIR;
 
     public static final Item GEODE = Items.AIR;
     public static final Item DARK_PEARL = Items.AIR;
@@ -53,6 +58,7 @@ public class ModItems {
     public static final Item EBONYS = Items.AIR;
 
     public static final Item BLADESHROOM_CAP = Items.AIR;
+    public static final Item BLADESHROOM_SPORES = Items.AIR;
 
     public static final Item RAW_SUAVIS = Items.AIR;
     public static final Item COOK_SUAVIS = Items.AIR;
@@ -117,6 +123,7 @@ public class ModItems {
                 RegUtil.withName(new ItemBasic(), "nagrilite_nugget"),
                 RegUtil.withName(new ItemBasic(), "ebonys"),
                 RegUtil.withName(new ItemBladeshroomCap(), "bladeshroom_cap"),
+                RegUtil.withName(new ItemMidnightSeed(() -> ModBlocks.BLADESHROOM.getDefaultState()), "bladeshroom_spores"),
                 RegUtil.withName(new ItemRawSuavis(), "raw_suavis"),
                 RegUtil.withName(new ItemCookSuavis(), "cook_suavis"),
                 RegUtil.withName(new ItemMidnightPickaxe(MidnightToolMaterials.SHADOWROOT), "shadowroot_pickaxe"),
