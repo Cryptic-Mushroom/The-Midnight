@@ -27,6 +27,7 @@ import com.mushroom.midnight.common.block.BlockMidnightFurnace;
 import com.mushroom.midnight.common.block.BlockMidnightGem;
 import com.mushroom.midnight.common.block.BlockMidnightGlass;
 import com.mushroom.midnight.common.block.BlockMidnightGrass;
+import com.mushroom.midnight.common.block.BlockMidnightLadder;
 import com.mushroom.midnight.common.block.BlockMidnightLeaves;
 import com.mushroom.midnight.common.block.BlockMidnightLog;
 import com.mushroom.midnight.common.block.BlockMidnightOre;
@@ -50,6 +51,7 @@ import com.mushroom.midnight.common.world.feature.DarkWillowTreeFeature;
 import com.mushroom.midnight.common.world.feature.LargeFungiFeature;
 import com.mushroom.midnight.common.world.feature.ShadowrootTreeFeature;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockLadder;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
@@ -237,6 +239,9 @@ public class ModBlocks {
     public static final Block NIGHTSHROOM_FENCE_GATE = Blocks.AIR;
 
     public static final Block SUAVIS = Blocks.AIR;
+
+    public static final Block SHADOWROOT_LADDER = Blocks.AIR;
+    public static final Block DARK_WILLOW_LADDER = Blocks.AIR;
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
@@ -427,7 +432,9 @@ public class ModBlocks {
                 RegUtil.withName(new BlockMidnightFenceGate(() -> DEWSHROOM_PLANKS.getDefaultState()), "dewshroom_fence_gate"),
                 RegUtil.withName(new BlockMidnightFenceGate(() -> VIRIDSHROOM_PLANKS.getDefaultState()), "viridshroom_fence_gate"),
                 RegUtil.withName(new BlockMidnightFenceGate(() -> NIGHTSHROOM_PLANKS.getDefaultState()), "nightshroom_fence_gate"),
-                RegUtil.withName(new BlockSuavis(), "suavis")
+                RegUtil.withName(new BlockSuavis(), "suavis"),
+                RegUtil.withName(new BlockMidnightLadder(), "shadowroot_ladder"),
+                RegUtil.withName(new BlockMidnightLadder(), "dark_willow_ladder")
         ));
 
         blocks.forEach(event.getRegistry()::register);
@@ -484,7 +491,7 @@ public class ModBlocks {
                 DEWSHROOM_FENCE, VIRIDSHROOM_FENCE, NIGHTSHROOM_FENCE,
                 SHADOWROOT_FENCE_GATE, DEAD_WOOD_FENCE_GATE, DARK_WILLOW_FENCE_GATE,
                 DEWSHROOM_FENCE_GATE, VIRIDSHROOM_FENCE_GATE, NIGHTSHROOM_FENCE_GATE,
-                SUAVIS
+                SUAVIS, SHADOWROOT_LADDER, DARK_WILLOW_LADDER
         ));
 
         registry.register(itemBlock(DECEITFUL_ALGAE, ItemDeceitfulAlgae::new));
