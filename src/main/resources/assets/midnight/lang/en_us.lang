@@ -261,3 +261,9 @@ biome.midnight.phantasmal_valley.name=Phantasmal Valley
 
 # Potions
 potion.midnight.stunned.name=Stunned
+
+# Advancements
+advancement.midnight.title=The Midnight
+advancement.midnight.desc=Welcome to The Midnight !
+advancement.into_darkness.title=Into Darkness
+advancement.into_darkness.desc=It's very dark

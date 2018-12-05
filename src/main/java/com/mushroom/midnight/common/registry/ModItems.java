@@ -2,6 +2,7 @@ package com.mushroom.midnight.common.registry;
 
 import com.google.common.collect.Lists;
 import com.mushroom.midnight.Midnight;
+import com.mushroom.midnight.client.IModelProvider;
 import com.mushroom.midnight.common.item.ItemBasic;
 import com.mushroom.midnight.common.item.ItemBladeshroomCap;
 import com.mushroom.midnight.common.item.ItemCookSuavis;
@@ -16,10 +17,13 @@ import com.mushroom.midnight.common.util.MidnightArmorMaterials;
 import com.mushroom.midnight.common.util.MidnightToolMaterials;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.Collection;
@@ -89,6 +93,8 @@ public class ModItems {
     public static final Item TENEBRUM_LEGGINGS = Items.AIR;
     public static final Item TENEBRUM_BOOTS = Items.AIR;
 
+    public static final Item ADVANCEMENT_RIFT = Items.AIR;
+
     static List<Item> items;
 
     @SubscribeEvent
@@ -145,7 +151,14 @@ public class ModItems {
                 RegUtil.withName(new ItemMidnightHelmet(MidnightArmorMaterials.TENEBRUM), "tenebrum_helmet"),
                 RegUtil.withName(new ItemMidnightChestplate(MidnightArmorMaterials.TENEBRUM), "tenebrum_chestplate"),
                 RegUtil.withName(new ItemMidnightLeggings(MidnightArmorMaterials.TENEBRUM), "tenebrum_leggings"),
-                RegUtil.withName(new ItemMidnightBoots(MidnightArmorMaterials.TENEBRUM), "tenebrum_boots")
+                RegUtil.withName(new ItemMidnightBoots(MidnightArmorMaterials.TENEBRUM), "tenebrum_boots"),
+                RegUtil.withName(new ItemBasic() {
+                    @Override
+                    @SideOnly(Side.CLIENT)
+                    public boolean hasEffect(ItemStack stack) {
+                        return true;
+                    }
+                }.setCreativeTab(null), "advancement_rift")
         );
 
         items.forEach(event.getRegistry()::register);

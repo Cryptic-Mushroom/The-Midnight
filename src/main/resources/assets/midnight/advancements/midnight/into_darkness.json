@@ -1,0 +1,25 @@
+{
+	"display": {
+		"icon": {
+			"item": "midnight:advancement_rift"
+		},
+		"title": {
+			"translate": "advancement.into_darkness.title"
+		},
+		"description": {
+			"translate": "advancement.into_darkness.desc"
+		},
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true
+	},
+	"parent": "midnight:midnight/root",
+	"criteria": {
+        "enter_midnight": {
+            "trigger": "minecraft:changed_dimension",
+            "conditions": {
+                "to": "midnight"
+            }
+        }
+	}
+}

@@ -1,0 +1,22 @@
+{
+	"display": {
+		"icon": {
+			"item": "midnight:midnight_grass"
+		},
+		"title": {
+			"translate": "advancement.midnight.title"
+		},
+		"description": {
+			"translate": "advancement.midnight.desc"
+		},
+		"background": "midnight:textures/blocks/nightstone.png",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"frame": "challenge"
+	},
+	"criteria": {
+		"auto": {
+			"trigger": "location"
+		}
+	}
+}
