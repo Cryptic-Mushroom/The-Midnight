@@ -3,14 +3,12 @@ package com.mushroom.midnight.common.item;
 import com.mushroom.midnight.Midnight;
 import com.mushroom.midnight.client.IModelProvider;
 import com.mushroom.midnight.common.entity.EntityBladeshroomCap;
-import com.mushroom.midnight.common.entity.projectile.EntityProjectile;
 import com.mushroom.midnight.common.registry.ModSounds;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.dispenser.BehaviorProjectileDispense;
 import net.minecraft.dispenser.IPosition;
 import net.minecraft.entity.IProjectile;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -57,7 +55,7 @@ public class ItemBladeshroomCap extends Item implements IModelProvider {
         @Override
         protected IProjectile getProjectileEntity(World world, IPosition pos, ItemStack stack) {
             EntityBladeshroomCap cap = new EntityBladeshroomCap(world, pos.getX(), pos.getY(), pos.getZ());
-            cap.pickupStatus = EntityProjectile.PickupStatus.ALLOWED;
+            cap.pickupStatus = EntityArrow.PickupStatus.ALLOWED;
             return cap;
         }
     }
