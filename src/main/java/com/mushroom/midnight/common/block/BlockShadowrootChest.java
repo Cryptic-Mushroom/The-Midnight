@@ -168,11 +168,11 @@ public class BlockShadowrootChest extends BlockChest implements IModelProvider {
                         {
                             if (enumfacing != EnumFacing.WEST && enumfacing != EnumFacing.NORTH)
                             {
-                                ilockablecontainer = new InventoryLargeChest("container.chestDouble", ilockablecontainer, (TileEntityShadowrootChest)tileentity1);
+                                ilockablecontainer = new InventoryLargeChest("tile.midnight.shadowroot_double_chest.name", ilockablecontainer, (TileEntityShadowrootChest)tileentity1);
                             }
                             else
                             {
-                                ilockablecontainer = new InventoryLargeChest("container.chestDouble", (TileEntityShadowrootChest)tileentity1, ilockablecontainer);
+                                ilockablecontainer = new InventoryLargeChest("tile.midnight.shadowroot_double_chest.name", (TileEntityShadowrootChest)tileentity1, ilockablecontainer);
                             }
                         }
                     }
