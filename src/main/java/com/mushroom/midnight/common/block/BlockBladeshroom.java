@@ -7,8 +7,10 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -35,6 +37,12 @@ public class BlockBladeshroom extends BlockMidnightPlant implements IGrowable {
         this.setDefaultState(this.blockState.getBaseState().withProperty(STAGE, Stage.SPORE));
         this.setTickRandomly(true);
         this.setCreativeTab(null);
+    }
+
+    @Override
+    @Nullable
+    public PathNodeType getAiPathNodeType(IBlockState state, IBlockAccess world, BlockPos pos, @Nullable EntityLiving entity) {
+        return PathNodeType.DAMAGE_CACTUS;
     }
 
     @Override
