@@ -1,0 +1,32 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "name": "midnight_fish",
+      "entries": [
+        {
+          "type": "item",
+          "name": "midnight:deceitful_algae",
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 0
+            }
+          ],
+          "weight": 60
+        },
+        {
+          "type": "item",
+          "name": "midnight:deceitful_moss",
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 0
+            }
+          ],
+          "weight": 40
+        }
+      ]
+    }
+  ]
+}
