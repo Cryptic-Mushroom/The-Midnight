@@ -5,6 +5,7 @@ import com.mushroom.midnight.common.CommonProxy;
 import com.mushroom.midnight.common.capability.RiftCooldownCapability;
 import com.mushroom.midnight.common.capability.RifterCapturedCapability;
 import com.mushroom.midnight.common.capability.VoidStorage;
+import com.mushroom.midnight.common.loot.InBiomeLootCondition;
 import com.mushroom.midnight.common.network.MessageBridgeCreate;
 import com.mushroom.midnight.common.network.MessageBridgeRemoval;
 import com.mushroom.midnight.common.network.MessageBridgeState;
@@ -21,6 +22,7 @@ import com.mushroom.midnight.common.util.EntityUtil;
 import com.mushroom.midnight.common.world.generator.MidnightOreGenerator;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.storage.loot.conditions.LootConditionManager;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -109,6 +111,8 @@ public class Midnight {
         EntityUtil.onPreInit();
         ModFluids.register();
         ModDimensions.register();
+
+        LootConditionManager.registerCondition(new InBiomeLootCondition.Serialiser());
     }
 
     @Mod.EventHandler

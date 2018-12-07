@@ -18,6 +18,12 @@
         {
           "type": "item",
           "name": "midnight:deceitful_moss",
+          "conditions": [
+            {
+              "condition": "midnight:in_biome",
+              "biome": "midnight:deceitful_bog"
+            }
+          ],
           "functions": [
             {
               "function": "set_data",
