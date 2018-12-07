@@ -13,7 +13,6 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.List;
 
 import static com.mushroom.midnight.Midnight.MODID;
@@ -24,13 +23,6 @@ public class FishingLoot {
     static {
         poolConditions = ObfuscationReflectionHelper.findField(LootPool.class, "field_186454_b");
         poolConditions.setAccessible(true);
-        Field modifiersField = ObfuscationReflectionHelper.findField(Field.class, "modifiers");
-        modifiersField.setAccessible(true);
-        try {
-            modifiersField.setInt(poolConditions, poolConditions.getModifiers() & ~Modifier.FINAL);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
     }
 
     @SubscribeEvent(priority= EventPriority.LOWEST)
