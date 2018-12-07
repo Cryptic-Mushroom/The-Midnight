@@ -4,7 +4,7 @@ import com.mushroom.midnight.Midnight;
 import com.mushroom.midnight.client.sound.MidnightCaveSound;
 import com.mushroom.midnight.client.sound.MidnightIdleSound;
 import com.mushroom.midnight.common.entity.util.ToggleAnimation;
-import com.mushroom.midnight.common.registry.ModDimensions;
+import com.mushroom.midnight.common.helper.Helper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.SoundHandler;
@@ -31,7 +31,7 @@ public class IdleSoundController {
                 return;
             }
 
-            if (player.world.provider.getDimensionType() == ModDimensions.MIDNIGHT) {
+            if (Helper.isMidnightDimension(player.world)) {
                 CAVE_ANIMATION.set(player.posY < 62 && !player.world.canSeeSky(player.getPosition()));
                 CAVE_ANIMATION.update();
 

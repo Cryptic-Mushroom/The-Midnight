@@ -4,6 +4,7 @@ import com.mushroom.midnight.Midnight;
 import com.mushroom.midnight.client.particle.RiftParticleSystem;
 import com.mushroom.midnight.common.capability.RiftCooldownCapability;
 import com.mushroom.midnight.common.entity.creature.EntityRifter;
+import com.mushroom.midnight.common.helper.Helper;
 import com.mushroom.midnight.common.registry.ModDimensions;
 import com.mushroom.midnight.common.registry.ModSounds;
 import com.mushroom.midnight.common.world.BridgeManager;
@@ -88,7 +89,7 @@ public class EntityRift extends Entity implements IEntityAdditionalSpawnData {
                 return;
             }
 
-            if (this.world.provider.getDimensionType() != ModDimensions.MIDNIGHT) {
+            if (!Helper.isMidnightDimension(this.world)) {
                 this.updateOverworldBehavior();
             }
 
@@ -299,7 +300,7 @@ public class EntityRift extends Entity implements IEntityAdditionalSpawnData {
     }
 
     public DimensionType getEndpointDimension() {
-        if (this.world.provider.getDimensionType() == ModDimensions.MIDNIGHT) {
+        if (Helper.isMidnightDimension(this.world)) {
             return DimensionType.OVERWORLD;
         } else {
             return ModDimensions.MIDNIGHT;

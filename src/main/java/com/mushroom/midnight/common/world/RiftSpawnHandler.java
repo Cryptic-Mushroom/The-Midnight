@@ -4,6 +4,7 @@ import com.mushroom.midnight.Midnight;
 import com.mushroom.midnight.common.entity.EntityRift;
 import com.mushroom.midnight.common.entity.RiftAttachment;
 import com.mushroom.midnight.common.entity.RiftBridge;
+import com.mushroom.midnight.common.helper.Helper;
 import com.mushroom.midnight.common.registry.ModDimensions;
 import com.mushroom.midnight.common.util.WorldUtil;
 import net.minecraft.block.material.Material;
@@ -131,7 +132,7 @@ public class RiftSpawnHandler {
             return false;
         }
 
-        if (world.provider.getDimensionType() == ModDimensions.MIDNIGHT) {
+        if (Helper.isMidnightDimension(world)) {
             return true;
         } else {
             if (world.isMaterialInBB(bounds, Material.WATER) || world.isMaterialInBB(bounds, Material.LAVA)) {

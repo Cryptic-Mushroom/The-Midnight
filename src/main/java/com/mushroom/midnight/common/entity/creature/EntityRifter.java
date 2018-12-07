@@ -19,8 +19,8 @@ import com.mushroom.midnight.common.entity.util.DragSolver;
 import com.mushroom.midnight.common.entity.util.EntityReference;
 import com.mushroom.midnight.common.event.RifterCaptureEvent;
 import com.mushroom.midnight.common.event.RifterReleaseEvent;
+import com.mushroom.midnight.common.helper.Helper;
 import com.mushroom.midnight.common.network.MessageCaptureEntity;
-import com.mushroom.midnight.common.registry.ModDimensions;
 import com.mushroom.midnight.common.registry.ModEffects;
 import com.mushroom.midnight.common.registry.ModLootTables;
 import com.mushroom.midnight.common.registry.ModSounds;
@@ -91,7 +91,7 @@ public class EntityRifter extends EntityMob implements IRiftTraveler, IEntityAdd
         this.homeRift = new EntityReference<>(world);
         this.dragSolver = new DragSolver(this);
 
-        float scaleModifier = world.provider.getDimensionType() == ModDimensions.MIDNIGHT ? HOME_SCALE_MODIFIER : 1.0F;
+        float scaleModifier = Helper.isMidnightDimension(world) ? HOME_SCALE_MODIFIER : 1.0F;
         this.setSize(0.6F * scaleModifier, 1.8F * scaleModifier);
     }
 
@@ -142,8 +142,6 @@ public class EntityRifter extends EntityMob implements IRiftTraveler, IEntityAdd
             this.applyHomeModifier(SharedMonsterAttributes.ATTACK_DAMAGE, HOME_ATTACK_MODIFIER);
             this.applyHomeModifier(SharedMonsterAttributes.ARMOR, HOME_ARMOR_MODIFIER);
 
-            this.checkBurn();
-
             if (this.capturedEntity != null && !this.capturedEntity.isEntityAlive()) {
                 this.setCapturedEntity(null);
             }
@@ -152,7 +150,7 @@ public class EntityRifter extends EntityMob implements IRiftTraveler, IEntityAdd
                 this.captureCooldown--;
             }
 
-            if (this.world.provider.getDimensionType() != ModDimensions.MIDNIGHT) {
+            if (!Helper.isMidnightDimension(this.world)) {
                 this.updateHomeRift();
                 if (this.ticksExisted % 20 == 0 && !this.homeRift.isPresent()) {
                     this.attackEntityFrom(DamageSource.OUT_OF_WORLD, 2.0F);
@@ -172,7 +170,7 @@ public class EntityRifter extends EntityMob implements IRiftTraveler, IEntityAdd
     }
 
     public boolean shouldCapture() {
-        if (this.world.provider.getDimensionType() == ModDimensions.MIDNIGHT) {
+        if (Helper.isMidnightDimension(this.world)) {
             return false;
         }
         return this.homeRift.isPresent();
@@ -180,7 +178,7 @@ public class EntityRifter extends EntityMob implements IRiftTraveler, IEntityAdd
 
     private void applyHomeModifier(IAttribute attribute, AttributeModifier modifier) {
         IAttributeInstance instance = this.getEntityAttribute(attribute);
-        boolean home = this.world.provider.getDimensionType() == ModDimensions.MIDNIGHT;
+        boolean home = Helper.isMidnightDimension(this.world);
         if (home != instance.hasModifier(modifier)) {
             if (home) {
                 instance.applyModifier(modifier);
@@ -197,19 +195,6 @@ public class EntityRifter extends EntityMob implements IRiftTraveler, IEntityAdd
             if (!rifts.isEmpty()) {
                 rifts.sort(Comparator.comparingDouble(this::getDistanceSq));
                 this.homeRift.set(rifts.get(0));
-            }
-        }
-    }
-
-    private void checkBurn() {
-        if (this.world.isDaytime()) {
-            float brightness = this.getBrightness();
-            if (brightness > 0.5F && this.rand.nextFloat() * 30.0F < (brightness - 0.4F) * 2.0F) {
-                if (!this.world.canSeeSky(this.getPosition())) {
-                    return;
-                }
-                this.setFire(8);
-                this.setCapturedEntity(null);
             }
         }
     }

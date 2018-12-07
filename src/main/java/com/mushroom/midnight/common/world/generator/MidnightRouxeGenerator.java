@@ -1,8 +1,8 @@
 package com.mushroom.midnight.common.world.generator;
 
 import com.mushroom.midnight.Midnight;
+import com.mushroom.midnight.common.helper.Helper;
 import com.mushroom.midnight.common.registry.ModBlocks;
-import com.mushroom.midnight.common.registry.ModDimensions;
 import com.mushroom.midnight.common.world.feature.CrystalClusterFeature;
 import com.mushroom.midnight.common.world.noise.INoiseSampler;
 import com.mushroom.midnight.common.world.noise.OctaveNoiseSampler;
@@ -36,7 +36,7 @@ public class MidnightRouxeGenerator {
     @SubscribeEvent
     public static void onDecorate(DecorateBiomeEvent.Pre event) {
         World world = event.getWorld();
-        if (world.provider.getDimensionType() != ModDimensions.MIDNIGHT) {
+        if (!Helper.isMidnightDimension(world)) {
             return;
         }
 

@@ -1,7 +1,7 @@
 package com.mushroom.midnight.client.sound;
 
 import com.mushroom.midnight.client.IdleSoundController;
-import com.mushroom.midnight.common.registry.ModDimensions;
+import com.mushroom.midnight.common.helper.Helper;
 import com.mushroom.midnight.common.registry.ModSounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ITickableSound;
@@ -22,7 +22,7 @@ public class MidnightCaveSound extends PositionedSound implements ITickableSound
 
     @Override
     public boolean isDonePlaying() {
-        return MC.player == null || MC.player.world.provider.getDimensionType() != ModDimensions.MIDNIGHT;
+        return MC.player == null || !Helper.isMidnightDimension(MC.player.world);
     }
 
     @Override

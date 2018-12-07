@@ -1,7 +1,7 @@
 package com.mushroom.midnight.common.world.generator;
 
+import com.mushroom.midnight.common.helper.Helper;
 import com.mushroom.midnight.common.registry.ModBlocks;
-import com.mushroom.midnight.common.registry.ModDimensions;
 import net.minecraft.block.state.pattern.BlockMatcher;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -28,7 +28,7 @@ public class MidnightOreGenerator implements IWorldGenerator {
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator generator, IChunkProvider provider) {
-        if (world.provider.getDimensionType() != ModDimensions.MIDNIGHT) {
+        if (!Helper.isMidnightDimension(world)) {
             return;
         }
 

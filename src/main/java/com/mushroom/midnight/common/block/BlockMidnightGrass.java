@@ -2,8 +2,8 @@ package com.mushroom.midnight.common.block;
 
 import com.mushroom.midnight.Midnight;
 import com.mushroom.midnight.client.IModelProvider;
+import com.mushroom.midnight.common.helper.Helper;
 import com.mushroom.midnight.common.registry.ModBlocks;
-import com.mushroom.midnight.common.registry.ModDimensions;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -42,7 +42,7 @@ public class BlockMidnightGrass extends Block implements IModelProvider {
         }
 
         BlockPos abovePos = pos.up();
-        if (world.provider.getDimensionType() != ModDimensions.MIDNIGHT || world.getBlockState(abovePos).getLightOpacity(world, abovePos) > 2) {
+        if (!Helper.isMidnightDimension(world) || world.getBlockState(abovePos).getLightOpacity(world, abovePos) > 2) {
             world.setBlockState(pos, ModBlocks.MIDNIGHT_DIRT.getDefaultState());
             return;
         }

@@ -2,7 +2,7 @@ package com.mushroom.midnight.common.entity.task;
 
 import com.mushroom.midnight.common.entity.EntityRift;
 import com.mushroom.midnight.common.entity.creature.EntityRifter;
-import com.mushroom.midnight.common.registry.ModDimensions;
+import com.mushroom.midnight.common.helper.Helper;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.RandomPositionGenerator;
 import net.minecraft.entity.player.EntityPlayer;
@@ -32,7 +32,7 @@ public class EntityTaskRifterKeepNearRift extends EntityAIBase {
     }
 
     private boolean shouldReturn() {
-        if (this.owner.world.provider.getDimensionType() == ModDimensions.MIDNIGHT || this.owner.getAttackTarget() instanceof EntityPlayer) {
+        if (Helper.isMidnightDimension(this.owner.world) || this.owner.getAttackTarget() instanceof EntityPlayer) {
             return false;
         }
         Optional<EntityRift> homeRift = this.owner.getHomeRift().deref(false);

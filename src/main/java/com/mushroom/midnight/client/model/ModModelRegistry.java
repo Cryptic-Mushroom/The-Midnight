@@ -13,8 +13,8 @@ import com.mushroom.midnight.common.entity.EntityRift;
 import com.mushroom.midnight.common.entity.creature.EntityHunter;
 import com.mushroom.midnight.common.entity.creature.EntityNova;
 import com.mushroom.midnight.common.entity.creature.EntityRifter;
+import com.mushroom.midnight.common.helper.Helper;
 import com.mushroom.midnight.common.registry.ModBlocks;
-import com.mushroom.midnight.common.registry.ModDimensions;
 import com.mushroom.midnight.common.registry.ModItems;
 import com.mushroom.midnight.common.tile.base.TileEntityShadowrootChest;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -156,7 +156,7 @@ public class ModModelRegistry {
     }
 
     private static boolean isMidnight() {
-        return MC.world != null && MC.world.provider.getDimensionType() == ModDimensions.MIDNIGHT;
+        return Helper.isMidnightDimension(MC.world);
     }
 
     @SideOnly(Side.CLIENT)

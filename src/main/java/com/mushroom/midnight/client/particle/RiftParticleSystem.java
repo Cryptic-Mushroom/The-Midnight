@@ -1,7 +1,7 @@
 package com.mushroom.midnight.client.particle;
 
 import com.mushroom.midnight.common.entity.EntityRift;
-import com.mushroom.midnight.common.registry.ModDimensions;
+import com.mushroom.midnight.common.helper.Helper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.ParticleManager;
 import net.minecraft.util.math.MathHelper;
@@ -28,7 +28,7 @@ public class RiftParticleSystem implements ParticleSystem<EntityRift> {
             return;
         }
 
-        if (this.rift.world.provider.getDimensionType() != ModDimensions.MIDNIGHT && random.nextInt(10) == 0) {
+        if (!Helper.isMidnightDimension(rift.world) && random.nextInt(10) == 0) {
             this.spawnSpore(this.rift, random, 3.0F);
         }
 

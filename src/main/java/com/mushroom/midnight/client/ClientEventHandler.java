@@ -5,8 +5,8 @@ import com.mushroom.midnight.client.particle.MidnightParticles;
 import com.mushroom.midnight.client.sound.IdleRiftSound;
 import com.mushroom.midnight.common.capability.RifterCapturedCapability;
 import com.mushroom.midnight.common.entity.EntityRift;
+import com.mushroom.midnight.common.helper.Helper;
 import com.mushroom.midnight.common.registry.ModBiomes;
-import com.mushroom.midnight.common.registry.ModDimensions;
 import com.mushroom.midnight.common.registry.ModEffects;
 import com.mushroom.midnight.common.registry.ModSounds;
 import com.mushroom.midnight.common.util.EntityUtil;
@@ -72,7 +72,7 @@ public class ClientEventHandler {
                     playingMusic = null;
                 }
 
-                if (player.world.provider.getDimensionType() == ModDimensions.MIDNIGHT) {
+                if (Helper.isMidnightDimension(player.world)) {
                     spawnAmbientParticles(player);
                     playAmbientSounds(player);
                 } else {
@@ -136,7 +136,7 @@ public class ClientEventHandler {
         if (FluidImmersionRenderer.immersedState.getBlock() != Blocks.AIR) {
             return;
         }
-        if (entity.world.provider.getDimensionType() == ModDimensions.MIDNIGHT) {
+        if (Helper.isMidnightDimension(entity.world)) {
             GlStateManager.setFog(GlStateManager.FogMode.EXP);
             event.setCanceled(true);
             event.setDensity(0.015F);
@@ -198,7 +198,7 @@ public class ClientEventHandler {
             return;
         }
 
-        if (MC.player != null && MC.player.world.provider.getDimensionType() == ModDimensions.MIDNIGHT) {
+        if (MC.player != null && Helper.isMidnightDimension(MC.player.world)) {
             SoundEvent sound = getMusicSound(MC.player);
             if (sound == null || playingMusic != null) {
                 event.setResultSound(null);
