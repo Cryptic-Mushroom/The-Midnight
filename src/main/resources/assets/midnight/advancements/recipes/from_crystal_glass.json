@@ -1,0 +1,16 @@
+{
+	"parent": "midnight:recipes/root",
+	"rewards": {
+		"recipes": ["midnight:crystal_glass_pane"]
+	},
+	"criteria": {
+		"requirement_1": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [{
+					"item": "midnight:crystal_glass"
+				}]
+			}
+		}
+	}
+}
