@@ -2,12 +2,12 @@ package com.mushroom.midnight.common.block;
 
 import com.mushroom.midnight.Midnight;
 import com.mushroom.midnight.client.IModelProvider;
+import com.mushroom.midnight.common.network.GuiHandler;
 import com.mushroom.midnight.common.registry.ModBlocks;
 import com.mushroom.midnight.common.tile.base.TileEntityMidnightFurnace;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -34,14 +34,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class BlockMidnightFurnace extends BlockContainer implements IModelProvider
-{
+public class BlockMidnightFurnace extends BlockContainer implements IModelProvider {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     private final boolean isBurning;
     private static boolean keepInventory;
 
-    public BlockMidnightFurnace(boolean isBurning)
-    {
+    public BlockMidnightFurnace(boolean isBurning) {
         super(Material.ROCK);
         this.setHardness(3.5F);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
@@ -53,8 +51,7 @@ public class BlockMidnightFurnace extends BlockContainer implements IModelProvid
      * Get the Item that this Block should drop when harvested.
      */
     @Override
-    public Item getItemDropped(IBlockState state, Random rand, int fortune)
-    {
+    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         return Item.getItemFromBlock(ModBlocks.MIDNIGHT_FURNACE);
     }
 
@@ -62,35 +59,25 @@ public class BlockMidnightFurnace extends BlockContainer implements IModelProvid
      * Called after the block is set in the Chunk data, but before the Tile Entity is set
      */
     @Override
-    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
-    {
+    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
         this.setDefaultFacing(worldIn, pos, state);
     }
 
-    private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state)
-    {
-        if (!worldIn.isRemote)
-        {
+    private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state) {
+        if (!worldIn.isRemote) {
             IBlockState iblockstate = worldIn.getBlockState(pos.north());
             IBlockState iblockstate1 = worldIn.getBlockState(pos.south());
             IBlockState iblockstate2 = worldIn.getBlockState(pos.west());
             IBlockState iblockstate3 = worldIn.getBlockState(pos.east());
             EnumFacing enumfacing = state.getValue(FACING);
 
-            if (enumfacing == EnumFacing.NORTH && iblockstate.isFullBlock() && !iblockstate1.isFullBlock())
-            {
+            if (enumfacing == EnumFacing.NORTH && iblockstate.isFullBlock() && !iblockstate1.isFullBlock()) {
                 enumfacing = EnumFacing.SOUTH;
-            }
-            else if (enumfacing == EnumFacing.SOUTH && iblockstate1.isFullBlock() && !iblockstate.isFullBlock())
-            {
+            } else if (enumfacing == EnumFacing.SOUTH && iblockstate1.isFullBlock() && !iblockstate.isFullBlock()) {
                 enumfacing = EnumFacing.NORTH;
-            }
-            else if (enumfacing == EnumFacing.WEST && iblockstate2.isFullBlock() && !iblockstate3.isFullBlock())
-            {
+            } else if (enumfacing == EnumFacing.WEST && iblockstate2.isFullBlock() && !iblockstate3.isFullBlock()) {
                 enumfacing = EnumFacing.EAST;
-            }
-            else if (enumfacing == EnumFacing.EAST && iblockstate3.isFullBlock() && !iblockstate2.isFullBlock())
-            {
+            } else if (enumfacing == EnumFacing.EAST && iblockstate3.isFullBlock() && !iblockstate2.isFullBlock()) {
                 enumfacing = EnumFacing.WEST;
             }
 
@@ -101,39 +88,35 @@ public class BlockMidnightFurnace extends BlockContainer implements IModelProvid
     @SideOnly(Side.CLIENT)
     @SuppressWarnings("incomplete-switch")
     @Override
-    public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
-    {
-        if (this.isBurning)
-        {
-            EnumFacing enumfacing = (EnumFacing)stateIn.getValue(FACING);
-            double d0 = (double)pos.getX() + 0.5D;
-            double d1 = (double)pos.getY() + rand.nextDouble() * 6.0D / 16.0D;
-            double d2 = (double)pos.getZ() + 0.5D;
+    public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+        if (this.isBurning) {
+            EnumFacing enumfacing = stateIn.getValue(FACING);
+            double d0 = (double) pos.getX() + 0.5D;
+            double d1 = (double) pos.getY() + rand.nextDouble() * 6.0D / 16.0D;
+            double d2 = (double) pos.getZ() + 0.5D;
             double d3 = 0.52D;
             double d4 = rand.nextDouble() * 0.6D - 0.3D;
 
-            if (rand.nextDouble() < 0.1D)
-            {
-                worldIn.playSound((double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+            if (rand.nextDouble() < 0.1D) {
+                worldIn.playSound((double) pos.getX() + 0.5D, (double) pos.getY(), (double) pos.getZ() + 0.5D, SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
             }
 
-            switch (enumfacing)
-            {
-            case WEST:
-                worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 - 0.52D, d1, d2 + d4, 0.0D, 0.0D, 0.0D);
-                worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 - 0.52D, d1, d2 + d4, 0.0D, 0.0D, 0.0D);
-                break;
-            case EAST:
-                worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + 0.52D, d1, d2 + d4, 0.0D, 0.0D, 0.0D);
-                worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + 0.52D, d1, d2 + d4, 0.0D, 0.0D, 0.0D);
-                break;
-            case NORTH:
-                worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + d4, d1, d2 - 0.52D, 0.0D, 0.0D, 0.0D);
-                worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + d4, d1, d2 - 0.52D, 0.0D, 0.0D, 0.0D);
-                break;
-            case SOUTH:
-                worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + d4, d1, d2 + 0.52D, 0.0D, 0.0D, 0.0D);
-                worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + d4, d1, d2 + 0.52D, 0.0D, 0.0D, 0.0D);
+            switch (enumfacing) {
+                case WEST:
+                    worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 - 0.52D, d1, d2 + d4, 0.0D, 0.0D, 0.0D);
+                    worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 - 0.52D, d1, d2 + d4, 0.0D, 0.0D, 0.0D);
+                    break;
+                case EAST:
+                    worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + 0.52D, d1, d2 + d4, 0.0D, 0.0D, 0.0D);
+                    worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + 0.52D, d1, d2 + d4, 0.0D, 0.0D, 0.0D);
+                    break;
+                case NORTH:
+                    worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + d4, d1, d2 - 0.52D, 0.0D, 0.0D, 0.0D);
+                    worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + d4, d1, d2 - 0.52D, 0.0D, 0.0D, 0.0D);
+                    break;
+                case SOUTH:
+                    worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + d4, d1, d2 + 0.52D, 0.0D, 0.0D, 0.0D);
+                    worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + d4, d1, d2 + 0.52D, 0.0D, 0.0D, 0.0D);
             }
         }
     }
@@ -142,47 +125,31 @@ public class BlockMidnightFurnace extends BlockContainer implements IModelProvid
      * Called when the block is right clicked by a player.
      */
     @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
-        if (worldIn.isRemote)
-        {
-            return true;
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        TileEntity tileentity = world.getTileEntity(pos);
+        if (tileentity instanceof TileEntityMidnightFurnace) {
+            playerIn.openGui(Midnight.instance, GuiHandler.MIDNIGHT_FURNACE, world, pos.getX(), pos.getY(), pos.getZ());
+            playerIn.addStat(StatList.FURNACE_INTERACTION);
         }
-        else
-        {
-            TileEntity tileentity = worldIn.getTileEntity(pos);
-
-            if (tileentity instanceof TileEntityMidnightFurnace)
-            {
-                playerIn.displayGUIChest((TileEntityMidnightFurnace)tileentity);
-                playerIn.addStat(StatList.FURNACE_INTERACTION);
-            }
-
-            return true;
-        }
+        return true;
     }
 
-    public static void setState(boolean active, World worldIn, BlockPos pos)
-    {
+    public static void setState(boolean active, World worldIn, BlockPos pos) {
         IBlockState iblockstate = worldIn.getBlockState(pos);
         TileEntity tileentity = worldIn.getTileEntity(pos);
         keepInventory = true;
 
-        if (active)
-        {
+        if (active) {
             worldIn.setBlockState(pos, ModBlocks.MIDNIGHT_FURNACE_LIT.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
             worldIn.setBlockState(pos, ModBlocks.MIDNIGHT_FURNACE_LIT.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
-        }
-        else
-        {
+        } else {
             worldIn.setBlockState(pos, ModBlocks.MIDNIGHT_FURNACE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
-            worldIn.setBlockState(pos,ModBlocks.MIDNIGHT_FURNACE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+            worldIn.setBlockState(pos, ModBlocks.MIDNIGHT_FURNACE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
         }
 
         keepInventory = false;
 
-        if (tileentity != null)
-        {
+        if (tileentity != null) {
             tileentity.validate();
             worldIn.setTileEntity(pos, tileentity);
         }
@@ -192,8 +159,7 @@ public class BlockMidnightFurnace extends BlockContainer implements IModelProvid
      * Returns a new instance of a block's tile entity class. Called on placing the block.
      */
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta)
-    {
+    public TileEntity createNewTileEntity(World worldIn, int meta) {
         return new TileEntityMidnightFurnace();
     }
 
@@ -202,8 +168,7 @@ public class BlockMidnightFurnace extends BlockContainer implements IModelProvid
      * IBlockstate
      */
     @Override
-    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
-    {
+    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
         return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
     }
 
@@ -211,17 +176,14 @@ public class BlockMidnightFurnace extends BlockContainer implements IModelProvid
      * Called by ItemBlocks after a block is set in the world, to allow post-place logic
      */
     @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
-    {
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
         worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
 
-        if (stack.hasDisplayName())
-        {
+        if (stack.hasDisplayName()) {
             TileEntity tileentity = worldIn.getTileEntity(pos);
 
-            if (tileentity instanceof TileEntityMidnightFurnace)
-            {
-                ((TileEntityMidnightFurnace)tileentity).setCustomInventoryName(stack.getDisplayName());
+            if (tileentity instanceof TileEntityMidnightFurnace) {
+                ((TileEntityMidnightFurnace) tileentity).setCustomInventoryName(stack.getDisplayName());
             }
         }
     }
@@ -230,15 +192,12 @@ public class BlockMidnightFurnace extends BlockContainer implements IModelProvid
      * Called serverside after this block is replaced with another in Chunk, but before the Tile Entity is updated
      */
     @Override
-    public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
-    {
-        if (!keepInventory)
-        {
+    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+        if (!keepInventory) {
             TileEntity tileentity = worldIn.getTileEntity(pos);
 
-            if (tileentity instanceof TileEntityMidnightFurnace)
-            {
-                InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityMidnightFurnace)tileentity);
+            if (tileentity instanceof TileEntityMidnightFurnace) {
+                InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityMidnightFurnace) tileentity);
                 worldIn.updateComparatorOutputLevel(pos, this);
             }
         }
@@ -251,35 +210,32 @@ public class BlockMidnightFurnace extends BlockContainer implements IModelProvid
      * is fine.
      */
     @Override
-    public boolean hasComparatorInputOverride(IBlockState state)
-    {
+    public boolean hasComparatorInputOverride(IBlockState state) {
         return true;
     }
 
     /**
-     * @deprecated call via {@link IBlockState#getComparatorInputOverride(World,BlockPos)} whenever possible.
+     * @deprecated call via {@link IBlockState#getComparatorInputOverride(World, BlockPos)} whenever possible.
      * Implementing/overriding is fine.
      */
     @Override
-    public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos)
-    {
+    public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
         return Container.calcRedstone(worldIn.getTileEntity(pos));
     }
 
     @Override
-    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
-    {
+    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
         return new ItemStack(ModBlocks.MIDNIGHT_FURNACE);
     }
 
     /**
      * The type of render function called. MODEL for mixed tesr and static model, MODELBLOCK_ANIMATED for TESR-only,
      * LIQUID for vanilla liquids, INVISIBLE to skip all rendering
+     *
      * @deprecated call via {@link IBlockState#getRenderType()} whenever possible. Implementing/overriding is fine.
      */
     @Override
-    public EnumBlockRenderType getRenderType(IBlockState state)
-    {
+    public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.MODEL;
     }
 
@@ -287,12 +243,10 @@ public class BlockMidnightFurnace extends BlockContainer implements IModelProvid
      * Convert the given metadata into a BlockState for this Block
      */
     @Override
-    public IBlockState getStateFromMeta(int meta)
-    {
+    public IBlockState getStateFromMeta(int meta) {
         EnumFacing enumfacing = EnumFacing.byIndex(meta);
 
-        if (enumfacing.getAxis() == EnumFacing.Axis.Y)
-        {
+        if (enumfacing.getAxis() == EnumFacing.Axis.Y) {
             enumfacing = EnumFacing.NORTH;
         }
 
@@ -303,38 +257,36 @@ public class BlockMidnightFurnace extends BlockContainer implements IModelProvid
      * Convert the BlockState into the correct metadata value
      */
     @Override
-    public int getMetaFromState(IBlockState state)
-    {
-        return ((EnumFacing)state.getValue(FACING)).getIndex();
+    public int getMetaFromState(IBlockState state) {
+        return (state.getValue(FACING)).getIndex();
     }
 
     /**
      * Returns the blockstate with the given rotation from the passed blockstate. If inapplicable, returns the passed
      * blockstate.
+     *
      * @deprecated call via {@link IBlockState#withRotation(Rotation)} whenever possible. Implementing/overriding is
      * fine.
      */
     @Override
-    public IBlockState withRotation(IBlockState state, Rotation rot)
-    {
-        return state.withProperty(FACING, rot.rotate((EnumFacing)state.getValue(FACING)));
+    public IBlockState withRotation(IBlockState state, Rotation rot) {
+        return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
     /**
      * Returns the blockstate with the given mirror of the passed blockstate. If inapplicable, returns the passed
      * blockstate.
+     *
      * @deprecated call via {@link IBlockState#withMirror(Mirror)} whenever possible. Implementing/overriding is fine.
      */
     @Override
-    public IBlockState withMirror(IBlockState state, Mirror mirrorIn)
-    {
-        return state.withRotation(mirrorIn.toRotation((EnumFacing)state.getValue(FACING)));
+    public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
+        return state.withRotation(mirrorIn.toRotation(state.getValue(FACING)));
     }
 
     @Override
-    protected BlockStateContainer createBlockState()
-    {
-        return new BlockStateContainer(this, new IProperty[] {FACING});
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, FACING);
     }
 }
 
