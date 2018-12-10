@@ -4,7 +4,8 @@
 		"recipes": [ 
 			"midnight:trenchstone_slab",
 			"midnight:trenchstone_stairs",
-			"midnight:trenchstone_wall"
+			"midnight:trenchstone_wall",
+			"midnight:trenchstone_bricks"
 		]
 	},
 	"criteria": {
@@ -12,7 +13,7 @@
 			"trigger": "minecraft:inventory_changed",
 			"conditions": {
 				"items": [{
-					"item": "midnight:trenchstone_bricks"
+					"item": "midnight:trenchstone"
 				}]
 			}
 		}
