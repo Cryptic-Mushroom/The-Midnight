@@ -5,7 +5,9 @@ import com.mushroom.midnight.common.CommonProxy;
 import com.mushroom.midnight.common.capability.RiftCooldownCapability;
 import com.mushroom.midnight.common.capability.RifterCapturedCapability;
 import com.mushroom.midnight.common.capability.VoidStorage;
+import com.mushroom.midnight.common.network.GuiHandler;
 import com.mushroom.midnight.common.loot.InBiomeLootCondition;
+import com.mushroom.midnight.common.loot.InBlockLootCondition;
 import com.mushroom.midnight.common.network.MessageBridgeCreate;
 import com.mushroom.midnight.common.network.MessageBridgeRemoval;
 import com.mushroom.midnight.common.network.MessageBridgeState;
@@ -33,6 +35,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -115,6 +118,7 @@ public class Midnight {
         ModDimensions.register();
 
         LootConditionManager.registerCondition(new InBiomeLootCondition.Serialiser());
+        LootConditionManager.registerCondition(new InBlockLootCondition.Serialiser());
     }
 
     @Mod.EventHandler
@@ -126,6 +130,7 @@ public class Midnight {
         ModBlocks.onInit();
         ModRecipes.onInit();
 
+        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
         proxy.onInit();
     }
 

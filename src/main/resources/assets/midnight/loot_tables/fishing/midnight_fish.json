@@ -7,6 +7,12 @@
         {
           "type": "item",
           "name": "midnight:deceitful_algae",
+          "conditions": [
+            {
+              "condition": "midnight:in_block",
+              "block": "midnight:dark_water"
+            }
+          ],
           "functions": [
             {
               "function": "set_data",

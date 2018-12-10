@@ -1,37 +1,71 @@
 package com.mushroom.midnight.common.tile.base;
 
-import com.mushroom.midnight.Midnight;
 import com.mushroom.midnight.common.block.BlockMidnightFurnace;
+import com.mushroom.midnight.common.container.ContainerMidnightFurnace;
 import com.mushroom.midnight.common.registry.ModBlocks;
 import com.mushroom.midnight.common.registry.ModItems;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod.EventBusSubscriber(modid = Midnight.MODID)
 public class TileEntityMidnightFurnace extends TileEntityFurnace {
-    
+
+    @Override
+    public void readFromNBT(NBTTagCompound compound) {
+        super.readFromNBT(compound);
+        currentItemBurnTime = TileEntityMidnightFurnace.getItemBurnTime(furnaceItemStacks.get(1));
+    }
+
     @Override
     public String getName() {
         return hasCustomName() ? furnaceCustomName : "tile.midnight.midnight_furnace.name";
     }
 
-    @SubscribeEvent
-    public static void onFuelBurnTime(FurnaceFuelBurnTimeEvent event) {
-        Item item = event.getItemStack().getItem();
-        if (item == Item.getItemFromBlock(ModBlocks.SHADOWROOT_SLAB) || item == Item.getItemFromBlock(ModBlocks.DARK_WILLOW_SLAB) || item == Item.getItemFromBlock(ModBlocks.DEAD_WOOD_SLAB)) {
-            event.setBurnTime(150);
-        } else if (item == ModItems.DARK_STICK) {
-            event.setBurnTime(100);
-        } else if (item == ModItems.DARK_PEARL) {
-            event.setBurnTime(1600);
-        } else if (event.getItemStack().getItem() == Item.getItemFromBlock(ModBlocks.DARK_PEARL_BLOCK)) {
-            event.setBurnTime(16000);
+    @Override
+    public ContainerMidnightFurnace createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
+        return new ContainerMidnightFurnace(playerIn.inventory, this);
+    }
+
+    @Override
+    public boolean isItemValidForSlot(int index, ItemStack stack) {
+        if (index == 1) {
+            ItemStack itemstack = this.furnaceItemStacks.get(1);
+            return TileEntityMidnightFurnace.isItemFuel(stack) || SlotFurnaceFuel.isBucket(stack) && itemstack.getItem() != Items.BUCKET;
+        }
+        return index != 2;
+    }
+
+    public static boolean isItemFuel(ItemStack stack) {
+        return TileEntityMidnightFurnace.getItemBurnTime(stack) > 0;
+    }
+
+    public static int getItemBurnTime(ItemStack stack) {
+        if (stack.isEmpty()) {
+            return 0;
+        } else {
+            int burnTime = net.minecraftforge.event.ForgeEventFactory.getItemBurnTime(stack);
+            if (burnTime >= 0) {
+                return burnTime;
+            }
+            Item item = stack.getItem();
+            if (item == Item.getItemFromBlock(ModBlocks.SHADOWROOT_SLAB) || item == Item.getItemFromBlock(ModBlocks.DARK_WILLOW_SLAB) || item == Item.getItemFromBlock(ModBlocks.DEAD_WOOD_SLAB)) {
+                return 150;
+            } else if (item == Item.getItemFromBlock(ModBlocks.DARK_PEARL_BLOCK)) {
+                return 16000;
+            } else if (item == ModItems.DARK_STICK) {
+                return 100;
+            } else if (item == ModItems.DARK_PEARL) {
+                return 1600;
+            } else {
+                return TileEntityFurnace.getItemBurnTime(stack);
+            }
         }
     }
 
@@ -46,7 +80,7 @@ public class TileEntityMidnightFurnace extends TileEntityFurnace {
             ItemStack itemstack = furnaceItemStacks.get(1);
             if (isBurning() || !itemstack.isEmpty() && !(furnaceItemStacks.get(0)).isEmpty()) {
                 if (!isBurning() && canSmelt()) {
-                    furnaceBurnTime = getItemBurnTime(itemstack);
+                    furnaceBurnTime = TileEntityMidnightFurnace.getItemBurnTime(itemstack);
                     currentItemBurnTime = furnaceBurnTime;
                     if (isBurning()) {
                         flag1 = true;
@@ -62,7 +96,6 @@ public class TileEntityMidnightFurnace extends TileEntityFurnace {
                 }
                 if (isBurning() && canSmelt()) {
                     ++cookTime;
-
                     if (cookTime == totalCookTime) {
                         cookTime = 0;
                         totalCookTime = getCookTime(furnaceItemStacks.get(0));
