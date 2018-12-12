@@ -22,6 +22,12 @@ public class MidnightConfig {
     @Config.Comment("If true, rifts will be rendered with custom shaders for standard effects. If false, a simpler texture will be rendered.")
     public static boolean riftShaders = true;
 
+    @Config.Name("bladeshroom_damage_chance")
+    @Config.LangKey("config.midnight.bladeshroom_damage_chance")
+    @Config.Comment("The chance to get damages when picking a bladeshroom cap")
+    @Config.RangeInt(min=0, max=100)
+    public static int bladeshroomDamageChance = 5;
+
     @SubscribeEvent
     public static void configChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
         if (event.getModID().equals(Midnight.MODID)) {

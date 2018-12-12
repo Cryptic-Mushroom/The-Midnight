@@ -1,5 +1,7 @@
 package com.mushroom.midnight.common.block;
 
+import com.mushroom.midnight.common.config.MidnightConfig;
+import com.mushroom.midnight.common.helper.Helper;
 import com.mushroom.midnight.common.registry.ModBlocks;
 import com.mushroom.midnight.common.registry.ModItems;
 import com.mushroom.midnight.common.registry.ModSourceDamages;
@@ -54,8 +56,9 @@ public class BlockBladeshroom extends BlockMidnightPlant implements IGrowable {
         if (state.getValue(STAGE) == Stage.CAPPED) {
             player.addItemStackToInventory(new ItemStack(ModItems.BLADESHROOM_CAP));
             world.setBlockState(pos, state.withProperty(STAGE, Stage.STEM));
-            player.attackEntityFrom(ModSourceDamages.BLADESHROOM_CAP, 1.0F);
-
+            if (MidnightConfig.bladeshroomDamageChance == 0 || world.rand.nextInt(100) < MidnightConfig.bladeshroomDamageChance) {
+                player.attackEntityFrom(ModSourceDamages.BLADESHROOM_CAP, 1.0F);
+            }
             return true;
         }
 
