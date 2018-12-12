@@ -281,6 +281,9 @@ biome.midnight.phantasmal_valley.name=Phantasmal Valley
 
 potion.midnight.stunned.name=Stunned
 
+# DamageSources
+death.midnight.bladeshroom_cap=%s died of Bladeshroom Spines
+
 # Advancements
 
 advancement.midnight.title=The Midnight

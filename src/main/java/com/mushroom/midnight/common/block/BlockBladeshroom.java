@@ -2,16 +2,15 @@ package com.mushroom.midnight.common.block;
 
 import com.mushroom.midnight.common.registry.ModBlocks;
 import com.mushroom.midnight.common.registry.ModItems;
+import com.mushroom.midnight.common.registry.ModSourceDamages;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNodeType;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.IStringSerializable;
@@ -55,7 +54,7 @@ public class BlockBladeshroom extends BlockMidnightPlant implements IGrowable {
         if (state.getValue(STAGE) == Stage.CAPPED) {
             player.addItemStackToInventory(new ItemStack(ModItems.BLADESHROOM_CAP));
             world.setBlockState(pos, state.withProperty(STAGE, Stage.STEM));
-            player.attackEntityFrom(DamageSource.CACTUS, 1.0F);
+            player.attackEntityFrom(ModSourceDamages.BLADESHROOM_CAP, 1.0F);
 
             return true;
         }
@@ -98,7 +97,7 @@ public class BlockBladeshroom extends BlockMidnightPlant implements IGrowable {
     @Override
     public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
         if (state.getValue(STAGE) == Stage.CAPPED) {
-            entity.attackEntityFrom(DamageSource.CACTUS, 1.0F);
+            entity.attackEntityFrom(ModSourceDamages.BLADESHROOM_CAP, 1.0F);
         }
     }
 
