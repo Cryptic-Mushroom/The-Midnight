@@ -13,13 +13,12 @@
               "block": "midnight:dark_water"
             }
           ],
-          "functions": [
-            {
-              "function": "set_data",
-              "data": 0
-            }
-          ],
           "weight": 60
+        },
+        {
+          "type": "item",
+          "name": "midnight:raw_deceitful_snapper",
+          "weight": 40
         },
         {
           "type": "item",
@@ -28,12 +27,6 @@
             {
               "condition": "midnight:in_biome",
               "biome": "midnight:deceitful_bog"
-            }
-          ],
-          "functions": [
-            {
-              "function": "set_data",
-              "data": 0
             }
           ],
           "weight": 40

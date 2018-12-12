@@ -5,6 +5,7 @@ import com.mushroom.midnight.Midnight;
 import com.mushroom.midnight.common.item.ItemBasic;
 import com.mushroom.midnight.common.item.ItemBladeshroomCap;
 import com.mushroom.midnight.common.item.ItemCookSuavis;
+import com.mushroom.midnight.common.item.ItemFoodBasic;
 import com.mushroom.midnight.common.item.ItemMidnightDoor;
 import com.mushroom.midnight.common.item.ItemMidnightSeed;
 import com.mushroom.midnight.common.item.ItemRawSuavis;
@@ -58,6 +59,7 @@ public class ModItems {
 
     public static final Item RAW_SUAVIS = Items.AIR;
     public static final Item COOK_SUAVIS = Items.AIR;
+    public static final Item RAW_DECEITFUL_SNAPPER = Items.AIR;
 
     public static final Item SHADOWROOT_PICKAXE = Items.AIR;
     public static final Item NIGHTSTONE_PICKAXE = Items.AIR;
@@ -122,6 +124,7 @@ public class ModItems {
                 RegUtil.withName(new ItemMidnightSeed(() -> ModBlocks.BLADESHROOM.getDefaultState()), "bladeshroom_spores"),
                 RegUtil.withName(new ItemRawSuavis(), "raw_suavis"),
                 RegUtil.withName(new ItemCookSuavis(), "cook_suavis"),
+                RegUtil.withName(new ItemFoodBasic(3, 0.3f, false), "raw_deceitful_snapper"),
                 RegUtil.withName(new ItemMidnightPickaxe(ModToolMaterials.SHADOWROOT), "shadowroot_pickaxe"),
                 RegUtil.withName(new ItemMidnightPickaxe(ModToolMaterials.NIGHTSTONE), "nightstone_pickaxe"),
                 RegUtil.withName(new ItemMidnightPickaxe(ModToolMaterials.EBONYS), "ebonys_pickaxe"),
