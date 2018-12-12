@@ -15,4 +15,9 @@ public class BlockBogweed extends BlockGlowingPlant {
     protected boolean canSustainBush(IBlockState state) {
         return state.getBlock() == ModBlocks.DECEITFUL_PEAT;
     }
+
+    @Override
+    public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
+        return canSustainBush(worldIn.getBlockState(pos.down())) && super.canPlaceBlockAt(worldIn, pos);
+    }
 }
