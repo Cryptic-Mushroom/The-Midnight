@@ -10,11 +10,13 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -91,7 +93,11 @@ public class BlockMidnightStairs extends BlockStairs implements IModelProvider {
 
     @Override
     public boolean canCollideCheck(IBlockState state, boolean hitIfLiquid) {
-        IBlockState parentState = this.parentSupplier.get();
-        return parentState.getBlock().canCollideCheck(state, hitIfLiquid);
+        return parentSupplier.get().getBlock().canCollideCheck(state, hitIfLiquid);
+    }
+
+    @Override
+    public boolean canSustainPlant(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing direction, IPlantable plantable) {
+        return parentSupplier.get().getBlock().canSustainPlant(state, world, pos, direction, plantable);
     }
 }

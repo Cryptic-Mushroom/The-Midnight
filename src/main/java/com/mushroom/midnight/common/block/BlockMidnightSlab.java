@@ -128,4 +128,8 @@ public class BlockMidnightSlab extends BlockSlab implements IModelProvider {
     public MapColor getMapColor(IBlockState state, IBlockAccess world, BlockPos pos) {
         return this.parentSupplier.get().getMapColor(world, pos);
     }
+
+    IBlockState getParentstate() {
+        return parentSupplier.get();
+    }
 }

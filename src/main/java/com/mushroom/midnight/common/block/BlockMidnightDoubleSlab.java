@@ -4,8 +4,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IPlantable;
 
 import java.util.function.Supplier;
 
@@ -46,5 +49,10 @@ public class BlockMidnightDoubleSlab extends BlockMidnightSlab {
     @Override
     protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this);
+    }
+
+    @Override
+    public boolean canSustainPlant(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing direction, IPlantable plantable) {
+        return ((BlockMidnightSlab)singleSlabSupplier.get()).getParentstate().getBlock().canSustainPlant(state, world, pos, direction, plantable);
     }
 }
