@@ -1,5 +1,6 @@
 package com.mushroom.midnight.common.world.feature;
 
+import com.mushroom.midnight.common.registry.ModBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -10,18 +11,19 @@ import java.util.Random;
 public class BoulderFeature extends MidnightAbstractFeature {
     private final IBlockState state;
     private final float radius;
+    private final float chanceArchaicOreInside;
 
-    public BoulderFeature(IBlockState state, float radius) {
+    public BoulderFeature(IBlockState state, float radius, float chanceArchaicOreInside) {
         this.state = state;
         this.radius = radius;
+        this.chanceArchaicOreInside = chanceArchaicOreInside;
     }
 
     @Override
     public boolean placeFeature(World world, Random random, BlockPos origin) {
-        origin = origin.up(MathHelper.floor(this.radius / 2.0F));
+        origin = origin.up(MathHelper.floor(radius / 2.0F));
 
-        this.generateBlob(world, origin, this.radius);
-
+        generateBlob(world, random, origin, radius);
         for (int i = 0; i < 2; i++) {
             int offsetX = random.nextInt(5) - 2;
             int offsetY = -random.nextInt(2);
@@ -29,21 +31,22 @@ public class BoulderFeature extends MidnightAbstractFeature {
             BlockPos center = origin.add(offsetX, offsetY, offsetZ);
 
             float radius = this.radius + random.nextFloat() * 0.5F;
-            this.generateBlob(world, center, radius);
+            generateBlob(world, random, center, radius);
         }
-
         return true;
     }
 
-    private void generateBlob(World world, BlockPos origin, float radius) {
+    private void generateBlob(World world, Random random, BlockPos origin, float radius) {
         float radiusSquare = radius * radius;
         int radiusCeil = MathHelper.ceil(radius);
+        float radiusSquareIn = (radius - 1F) * (radius - 1F);
 
         BlockPos minPos = origin.add(-radiusCeil, -radiusCeil, -radiusCeil);
         BlockPos maxPos = origin.add(radiusCeil, radiusCeil, radiusCeil);
+        double dist;
         for (BlockPos pos : BlockPos.getAllInBox(minPos, maxPos)) {
-            if (pos.distanceSq(origin) <= radiusSquare) {
-                this.setBlockAndNotifyAdequately(world, pos, this.state);
+            if ((dist = pos.distanceSq(origin)) <= radiusSquare) {
+                setBlockAndNotifyAdequately(world, pos, dist <= radiusSquareIn && random.nextFloat() < chanceArchaicOreInside ? ModBlocks.ARCHAIC_ORE.getDefaultState() : state);
             }
         }
     }
