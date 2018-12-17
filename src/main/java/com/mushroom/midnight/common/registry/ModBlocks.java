@@ -11,6 +11,7 @@ import com.mushroom.midnight.common.block.BlockDeceitfulAlgae;
 import com.mushroom.midnight.common.block.BlockDeceitfulMoss;
 import com.mushroom.midnight.common.block.BlockDeceitfulMud;
 import com.mushroom.midnight.common.block.BlockDoubleMidnightPlant;
+import com.mushroom.midnight.common.block.BlockFingeredGrass;
 import com.mushroom.midnight.common.block.BlockGlowingDoublePlant;
 import com.mushroom.midnight.common.block.BlockGlowingPlant;
 import com.mushroom.midnight.common.block.BlockMiasmaFluid;
@@ -150,6 +151,8 @@ public class ModBlocks {
 
     public static final Block BLADESHROOM = Blocks.AIR;
     public static final Block BOGWEED = Blocks.AIR;
+    public static final Block GHOST_PLANT = Blocks.AIR;
+    public static final Block FINGERED_GRASS = Blocks.AIR;
 
     public static final Block CRYSTAL_FLOWER = Blocks.AIR;
 
@@ -297,6 +300,8 @@ public class ModBlocks {
                 RegUtil.withName(new BlockGlowingDoublePlant(), "double_lumen_bud"),
                 RegUtil.withName(new BlockBladeshroom(), "bladeshroom"),
                 RegUtil.withName(new BlockBogweed(), "bogweed"),
+                RegUtil.withName(new BlockGlowingPlant(), "ghost_plant"),
+                RegUtil.withName(new BlockFingeredGrass(), "fingered_grass"),
                 RegUtil.withName(new BlockGlowingPlant(), "crystal_flower"),
                 RegUtil.withName(new BlockMidnightSapling(ShadowrootTreeFeature::new), "shadowroot_sapling"),
                 RegUtil.withName(new BlockMidnightSapling(DarkWillowTreeFeature::new), "dark_willow_sapling"),
@@ -496,7 +501,7 @@ public class ModBlocks {
                 NIGHTSHROOM_PLANKS, DEWSHROOM_PLANKS, VIRIDSHROOM_PLANKS,
                 ROCKSHROOM, ROCKSHROOM_BRICKS,
                 LUMEN_BUD, DOUBLE_LUMEN_BUD,
-                BOGWEED, CRYSTAL_FLOWER,
+                BOGWEED, GHOST_PLANT, FINGERED_GRASS, CRYSTAL_FLOWER,
                 SHADOWROOT_SAPLING, DARK_WILLOW_SAPLING,
                 SHADOWROOT_TRAPDOOR, DARK_WILLOW_TRAPDOOR, DEAD_WOOD_TRAPDOOR, TENEBRUM_TRAPDOOR,
                 NIGHTSHROOM_TRAPDOOR, DEWSHROOM_TRAPDOOR, VIRIDSHROOM_TRAPDOOR,

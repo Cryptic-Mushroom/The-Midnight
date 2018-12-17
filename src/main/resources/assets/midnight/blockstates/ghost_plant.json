@@ -1,0 +1,27 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "forge:multi-layer",
+    "transform": "forge:default-block",
+    "custom": {
+      "base": "midnight:ghost_plant#base",
+      "Cutout": "midnight:ghost_plant#base",
+      "Translucent": "midnight:ghost_plant#glow"
+    }
+  },
+  "variants": {
+    "normal": [{}],
+    "base": [
+      {
+        "model": "cross",
+        "textures": {"cross": "midnight:blocks/ghost_plant"}
+      }
+    ],
+    "glow": [
+      {
+        "model": "cross",
+        "textures": {"cross": "midnight:blocks/ghost_plant_glow"}
+      }
+    ]
+  }
+}

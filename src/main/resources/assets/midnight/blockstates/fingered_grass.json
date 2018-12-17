@@ -1,0 +1,12 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "tinted_cross",
+    "textures": {
+      "cross": "midnight:blocks/fingered_grass"
+    }
+  },
+  "variants": {
+    "normal": [{}]
+  }
+}
