@@ -15,6 +15,7 @@ public class BlockFingeredGrass extends BlockMidnightPlant {
         setTickRandomly(true);
     }
 
+    @Override
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         super.randomDisplayTick(stateIn, worldIn, pos, rand);
