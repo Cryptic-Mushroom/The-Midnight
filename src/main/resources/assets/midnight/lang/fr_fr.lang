@@ -1,36 +1,41 @@
 # Item Groups
 
 itemGroup.midnight_building=Midnight Construction
-itemGroup.midnight_decoration=Midnight Décoration
+itemGroup.midnight_decoration=Midnight Décorations
 itemGroup.midnight_items=Midnight Objets
+itemGroup.midnight_tools=Midnight Outils
+itemGroup.midnight_combat=Midnight Combat
 
 # Blocks
 
-tile.midnight.nightstone.name=Pierre de nuit
+tile.midnight.nightstone.name=Pierre de Nuit
 tile.midnight.midnight_grass.name=Herbe de Minuit
 tile.midnight.midnight_dirt.name=Terre de Minuit
 
-tile.midnight.trenchstone.name=Pierre de tranchée
+tile.midnight.trenchstone.name=Pierre de Tranchée
+tile.midnight.trenchstone_bricks.name=Briques de Tranchée
 
-tile.midnight.shadowroot_log.name=Bûche de racine d'ombre
-tile.midnight.shadowroot_planks.name=Planches de racine d'ombre
-tile.midnight.shadowroot_leaves.name=Feuilles de racine d'ombre
+tile.midnight.shadowroot_log.name=Bûche d'Ombreracine
+tile.midnight.shadowroot_planks.name=Planches d'Ombreracine
+tile.midnight.shadowroot_leaves.name=Feuilles d'Ombreracine
 
-tile.midnight.dead_wood_log.name=Bûche de bois mort
-tile.midnight.dead_wood_planks.name=Planches de bois mort
+tile.midnight.dead_wood_log.name=Bûche de Bois Mort
+tile.midnight.dead_wood_planks.name=Planches de Bois Mort
 
-tile.midnight.dark_willow_log.name=Bûche de Saule Noir
-tile.midnight.dark_willow_planks.name=Planches de Saule Noir
-tile.midnight.dark_willow_leaves.name=Feuilles de Saule Noir
+tile.midnight.dark_willow_log.name=Bûche de Saule Sombre
+tile.midnight.dark_willow_planks.name=Planches de Saule Sombre
+tile.midnight.dark_willow_leaves.name=Feuilles de Saule Sombre
 
-tile.midnight.nightstone_bricks.name=Briques en pierre de nuit
-tile.midnight.chiseled_nightstone_bricks.name=Briques ciselées en pierre de nuit
+tile.midnight.nightstone_bricks.name=Briques en Pierre de Nuit
+tile.midnight.chiseled_nightstone_bricks.name=Briques ciselées en Pierre de Nuit
 
-tile.midnight.dark_pearl_ore.name=Minerai de perle noire
-tile.midnight.dark_pearl_block.name=Bloc de perle noire
+tile.midnight.dark_pearl_ore.name=Minerai de Perle Noire
+tile.midnight.dark_pearl_block.name=Bloc de Perle Noire
 
-tile.midnight.ebonys_ore.name=Minerai d'Ebonys
-tile.midnight.ebonys_block.name=Bloc d'Ebonys
+tile.midnight.ebonys_ore.name=Minerai d'Ébène
+tile.midnight.ebonys_block.name=Bloc d'Ébène
+
+tile.midnight.archaic_ore.name=Minerai Archaïque
 
 tile.midnight.nagrilite_ore.name=Minerai de Nagrilite
 tile.midnight.nagrilite_block.name=Bloc de Nagrilite
@@ -38,140 +43,277 @@ tile.midnight.nagrilite_block.name=Bloc de Nagrilite
 tile.midnight.tenebrum_ore.name=Minerai de Tenebrum
 tile.midnight.tenebrum_block.name=Bloc de Tenebrum
 
-tile.midnight.shadowroot_chest.name=Coffre en racine d'ombre
-tile.midnight.shadowroot_crafting_table.name=Etabli en racine d'ombre
-tile.midnight.midnight_furnace.name=Fourneau de Midnight
+tile.midnight.shadowroot_chest.name=Coffre en Ombreracine
+tile.midnight.shadowroot_double_chest.name=Coffre Double en Ombreracine
+tile.midnight.shadowroot_crafting_table.name=Établi en Ombreracine
+tile.midnight.midnight_furnace.name=Fourneau de Minuit
 
-tile.midnight.tall_midnight_grass.name=Hautes herbes de Midnight
-tile.midnight.double_midnight_grass.name=Double herbes de Midnight
+tile.midnight.tall_midnight_grass.name=Hautes Herbes de Minuit
+tile.midnight.double_midnight_grass.name=Très Hautes Herbes de Minuit
 
 tile.midnight.lumen_bud.name=Bourgeon de Lumen
-tile.midnight.double_lumen_bud.name=Double bourgeon de Lumen
+tile.midnight.double_lumen_bud.name=Grand Bourgeon de Lumen
 
-tile.midnight.shadowroot_trapdoor.name=Trappe en racine d'ombre
-tile.midnight.dark_willow_trapdoor.name=Trappe en saule noir
-tile.midnight.dead_wood_trapdoor.name=Trappe en bois mort
+tile.midnight.shadowroot_trapdoor.name=Trappe en Ombreracine
+tile.midnight.dark_willow_trapdoor.name=Trappe en Saule Sombre
+tile.midnight.dead_wood_trapdoor.name=Trappe en Bois Mort
 tile.midnight.tenebrum_trapdoor.name=Trappe en Tenebrum
 
-tile.midnight.shadowroot_sapling.name=Pousse de racine d'ombre
-tile.midnight.dark_willow_sapling.name=Pousse de saule noir
+tile.midnight.shadowroot_sapling.name=Pousse d'Ombreracine
+tile.midnight.dark_willow_sapling.name=Pousse de Saule Sombre
 
-tile.midnight.bloomcrystal.name=Cristal de bloom
-tile.midnight.bloomcrystal_rock.name=Roche de Cristal de Bloom
+tile.midnight.bloomcrystal.name=Cristal de Floraison
+tile.midnight.bloomcrystal_rock.name=Roche de Cristal de Floraison
 
 tile.midnight.rouxe.name=Cristal de Rouxe
 tile.midnight.rouxe_rock.name=Roche de Rouxe
 
-tile.midnight.miasma_surface.name=Miasmes de Surface
-tile.midnight.misama.name=Miasmes
+tile.midnight.crystal_glass.name=Verre de Cristal
+tile.midnight.crystal_glass_pane.name=Vitre de Cristal
 
-tile.midnight.crystal_flower.name=Crystal de fleur
+tile.midnight.miasma_surface.name=Surface de Miasme
+tile.midnight.misama.name=Miasme
 
-tile.midnight.dewshroom.name=Champignon de rosée
-tile.midnight.double_dewshroom.name=Double champignon de rosée
+tile.midnight.crystal_flower.name=Fleur de Cristal
+tile.midnight.ghost_plant.name=Plante Fantôme
+tile.midnight.fingered_grass.name=Herbe Fourchue
+tile.midnight.bogweed.name=Mauvaise Herbe de Tourbière
 
-tile.midnight.nightshroom.name=Champignon de nuit
-tile.midnight.double_nightshroom.name=Double champignon de nuit
+tile.midnight.dewshroom.name=ChampiRosée
+tile.midnight.double_dewshroom.name=Grand ChampiRosée
 
-tile.midnight.viridshroom.name=Champignon viride
-tile.midnight.double_viridshroom.name=Double champignon viride
+tile.midnight.nightshroom.name=ChampiNuit
+tile.midnight.double_nightshroom.name=Grand ChampiNuit
 
-tile.midnight.nightshroom_stem.name=Tronc de champignon de nuit
-tile.midnight.nightshroom_hat.name=Chapeau en champignon de nuit
-tile.midnight.nightshroom_planks.name=Planches de champignon de nuit
-tile.midnight.nightshroom_shelf.name=Etagères en champignon de nuit
-tile.midnight.nightshroom_trapdoor.name=Trappe en champignon de nuit
+tile.midnight.viridshroom.name=ChampiViride
+tile.midnight.double_viridshroom.name=Grand ChampiViride
 
-tile.midnight.dewshroom_stem.name=Tronc de champignon de rosée
-tile.midnight.dewshroom_hat.name=Chapeau en champignon de rosée
-tile.midnight.dewshroom_planks.name=Planches de champignon de rosée
-tile.midnight.dewshroom_shelf.name=Étagères en champignon de rosée
-tile.midnight.dewshroom_trapdoor.name=Trappe en champignon de rosée
+tile.midnight.bladeshroom.name=ChampiLame
 
-tile.midnight.viridshroom_stem.name=Tronc de champignon viride
-tile.midnight.viridshroom_hat.name=Chapeau en champignon viride
-tile.midnight.viridshroom_planks.name=Planches de champignon viride
-tile.midnight.viridshroom_shelf.name=Étagères en champignon viride
-tile.midnight.viridshroom_trapdoor.name=Trappe en champignon viride
+tile.midnight.nightshroom_stem.name=Tronc de ChampiNuit
+tile.midnight.nightshroom_hat.name=Chapeau en ChampiNuit
+tile.midnight.nightshroom_planks.name=Planches de ChampiNuit
+tile.midnight.nightshroom_shelf.name=Étagères en ChampiNuit
+tile.midnight.nightshroom_trapdoor.name=Trappe en ChampiNuit
 
-tile.midnight.deceitful_peat.name=Deceitful Peat
-tile.midnight.deceitful_algae.name=Deceitful Algae
-tile.midnight.deceitful_moss.name=Deceitful Moss
-tile.midnight.shadowroot_slab.name=Dalle en racine d’ombre
-tile.midnight.shadowroot_double_slab.name=Double Dalle en racine d’ombre
-tile.midnight.dead_wood_slab.name=Dalle en bois Mort
-tile.midnight.dead_wood_double_slab.name=Double Dalle en bois Mort
-tile.midnight.dark_willow_slab.name=Dalle en saule noir
-tile.midnight.dark_willow_double_slab.name=Double Dalle en saule noir
+tile.midnight.dewshroom_stem.name=Tronc de ChampiRosée
+tile.midnight.dewshroom_hat.name=Chapeau en ChampiRosée
+tile.midnight.dewshroom_planks.name=Planches de ChampiRosée
+tile.midnight.dewshroom_shelf.name=Étagères en ChampiRosée
+tile.midnight.dewshroom_trapdoor.name=Trappe en ChampiRosée
+
+tile.midnight.viridshroom_stem.name=Tronc de ChampiViride
+tile.midnight.viridshroom_hat.name=Chapeau en ChampiViride
+tile.midnight.viridshroom_planks.name=Planches de ChampiViride
+tile.midnight.viridshroom_shelf.name=Étagères en ChampiViride
+tile.midnight.viridshroom_trapdoor.name=Trappe en ChampiViride
+
+tile.midnight.deceitful_mud.name=Boue Trompeuse
+tile.midnight.deceitful_peat.name=Tourbe Trompeuse
+tile.midnight.deceitful_algae.name=Algues Trompeuse
+tile.midnight.deceitful_moss.name=Mouse Trompeuse
+
+tile.midnight.shadowroot_ladder.name=Échelle en Ombreracine
+tile.midnight.dead_wood_ladder.name=Échelle en Bois Mort
+tile.midnight.dark_willow_ladder.name=Échelle en Saule Sombre
+tile.midnight.dewshroom_ladder.name=Échelle en ChampiRosée
+tile.midnight.viridshroom_ladder.name=Échelle en ChampiViride
+tile.midnight.nightshroom_ladder.name=Échelle en ChampiNuit
+
+tile.midnight.shadowroot_slab.name=Dalle en Ombreracine
+tile.midnight.shadowroot_double_slab.name=Double Dalle en Ombreracine
+tile.midnight.dead_wood_slab.name=Dalle en Bois Mort
+tile.midnight.dead_wood_double_slab.name=Double Dalle en Bois Mort
+tile.midnight.dark_willow_slab.name=Dalle en Saule Sombre
+tile.midnight.dark_willow_double_slab.name=Double Dalle en Saule Sombre
 tile.midnight.nightstone_slab.name=Dalle en Pierre de Nuit
 tile.midnight.nightstone_double_slab.name=Double Dalle en Pierre de Nuit
-tile.midnight.nightstone_brick_slab.name=Dalle en Brique de Pierre de Nuit
-tile.midnight.nightstone_brick_double_slab.name=Double Dalle en Brique de Pierre de Nuit
-tile.midnight.dewshroom_slab.name=Dalle en Champignon de rosée
-tile.midnight.dewshroom_double_slab.name=Double Dalle en Champignon de rosée
-tile.midnight.viridshroom_slab.name=Dalle en Champignon viride
-tile.midnight.viridshroom_double_slab.name=Double Dalle en Champignon viride
-tile.midnight.nightshroom_slab.name=Dalle en Champignon de nuit
-tile.midnight.nightshroom_double_slab.name=Double Dalle en Champignon de nuit
-tile.midnight.shadowroot_stairs.name=Escaliers en racine d’ombre
-tile.midnight.dead_wood_stairs.name=Escaliers en bois mort
-tile.midnight.dark_willow_stairs.name=Escaliers en saule noir
-tile.midnight.nightstone_stairs.name=Escaliers en pierre de nuit
-tile.midnight.nightstone_brick_stairs.name=Escaliers en brique de pierre de nuit
-tile.midnight.dewshroom_stairs.name=Escaliers en Champignon de rosée
-tile.midnight.viridshroom_stairs.name=Escaliers en Champignon viride
-tile.midnight.nightshroom_stairs.name=Escaliers en Champignon de nuit
-tile.midnight.shadowroot_fence.name=Barrières en racine d’ombre
-tile.midnight.dead_wood_fence.name=Barrières en bois mort
-tile.midnight.dark_willow_fence.name=Barrières en saule noir
-tile.midnight.nightstone_wall.name=Muret en pierre de nuit
-tile.midnight.nightstone_brick_wall.name=Muret en briques de pierre de nuit
-tile.midnight.dewshroom_fence.name=Barrières en Champignon de rosée
-tile.midnight.viridshroom_fence.name=Barrières en Champignon viride
-tile.midnight.nightshroom_fence.name=Barrières en Champignon de nuit
-tile.midnight.shadowroot_fence_gate.name=Portillon en racine d’ombre
-tile.midnight.dead_wood_fence_gate.name=Portillon en bois mort
-tile.midnight.dark_willow_fence_gate.name=Portillon en saule noir
-tile.midnight.dewshroom_fence_gate.name=Portillon en Champignon de rosée
-tile.midnight.viridshroom_fence_gate.name=Portillon en Champignon viride
-tile.midnight.nightshroom_fence_gate.name=Portillon en Champignon de nuit
+tile.midnight.nightstone_brick_slab.name=Dalle en Briques de Pierre de Nuit
+tile.midnight.nightstone_brick_double_slab.name=Double Dalle en Briques de Pierre de Nuit
+tile.midnight.trenchstone_slab.name=Dalle en Pierre de Tranchée
+tile.midnight.trenchstone_double_slab.name=Double Dalle en Pierre de Tranchée
+tile.midnight.trenchstone_brick_slab.name=Dalle en Briques de Tranchée
+tile.midnight.trenchstone_brick_double_slab.name=Double Dalle en Briques de Tranchée
+tile.midnight.dewshroom_slab.name=Dalle en ChampiRosée
+tile.midnight.dewshroom_double_slab.name=Double Dalle en ChampiRosée
+tile.midnight.viridshroom_slab.name=Dalle en ChampiViride
+tile.midnight.viridshroom_double_slab.name=Double Dalle en ChampiViride
+tile.midnight.nightshroom_slab.name=Dalle en ChampiNuit
+tile.midnight.nightshroom_double_slab.name=Double Dalle en ChampiNuit
+tile.midnight.rockshroom_bricks_slab.name=Dalle en Briques de ChampiRoche
+tile.midnight.rockshroom_bricks_double_slab.name=Double Dalle en Briques de ChampiRoche
+
+tile.midnight.shadowroot_stairs.name=Escaliers en Ombreracine
+tile.midnight.dead_wood_stairs.name=Escaliers en Bois Mort
+tile.midnight.dark_willow_stairs.name=Escaliers en Saule Sombre
+tile.midnight.nightstone_stairs.name=Escaliers en Pierre de Nuit
+tile.midnight.nightstone_brick_stairs.name=Escaliers en Briques de Pierre de Nuit
+tile.midnight.trenchstone_stairs.name=Escaliers en Pierre de Tranchée
+tile.midnight.trenchstone_brick_stairs.name=Escaliers en Briques de Tranchée
+tile.midnight.dewshroom_stairs.name=Escaliers en ChampiRosée
+tile.midnight.viridshroom_stairs.name=Escaliers en ChampiViride
+tile.midnight.nightshroom_stairs.name=Escaliers en ChampiNuit
+tile.midnight.rockshroom_bricks_stairs.name=Escaliers en Briques de ChampiRoche
+
+tile.midnight.shadowroot_fence.name=Barrière en Ombreracine
+tile.midnight.dead_wood_fence.name=Barrière en Bois Mort
+tile.midnight.dark_willow_fence.name=Barrière en Saule Sombre
+tile.midnight.dewshroom_fence.name=Barrière en ChampiRosée
+tile.midnight.viridshroom_fence.name=Barrière en ChampiViride
+tile.midnight.nightshroom_fence.name=Barrière en ChampiNuit
+
+tile.midnight.nightstone_wall.name=Muret en Pierre de Nuit
+tile.midnight.nightstone_brick_wall.name=Muret en Briques de Pierre de Nuit
+tile.midnight.trenchstone_wall.name=Muret en Pierre de Tranchée
+tile.midnight.trenchstone_brick_wall.name=Muret en Briques de Tranchée
+tile.midnight.rockshroom_bricks_wall.name=Muret en Briques de ChampiRoche
+
+tile.midnight.shadowroot_fence_gate.name=Portillon en Ombreracine
+tile.midnight.dead_wood_fence_gate.name=Portillon en Bois Mort
+tile.midnight.dark_willow_fence_gate.name=Portillon en Saule Sombre
+tile.midnight.dewshroom_fence_gate.name=Portillon en ChampiRosée
+tile.midnight.viridshroom_fence_gate.name=Portillon en ChampiViride
+tile.midnight.nightshroom_fence_gate.name=Portillon en ChampiNuit
 
 tile.midnight.suavis.name=Suavis
+tile.midnight.rockshroom.name=ChampiRoche
+tile.midnight.rockshroom_bricks.name=Briques de ChampiRoche
 
 # Items
 
-item.midnight.shadowroot_door.name=Porte en racine d'ombre
-item.midnight.dark_willow_door.name=Porte en saule noir
-item.midnight.dead_wood_door.name=Porte en bois mort
+item.midnight.shadowroot_door.name=Porte en Ombreracine
+item.midnight.dark_willow_door.name=Porte en Saule Sombre
+item.midnight.dead_wood_door.name=Porte en Bois Mort
 item.midnight.tenebrum_door.name=Porte en Tenebrum
 
-item.midnight.nightshroom_door.name=Porte en champignon de nuit
-item.midnight.dewshroom_door.name=Porte en champignon de rosée
-item.midnight.viridshroom_door.name=Porte en champignon viride
+item.midnight.nightshroom_door.name=Porte en ChampiNuit
+item.midnight.dewshroom_door.name=Porte en ChampiRosée
+item.midnight.viridshroom_door.name=Porte en ChampiViride
 
-item.midnight.dark_pearl.name=Perle sombre
-item.midnight.shadowroot_stick.name=Bâton en bois de midnight
+item.midnight.geode.name=Géode
+item.midnight.dark_pearl.name=Perle Sombre
+item.midnight.dark_stick.name=Bâton Sombre
+item.midnight.rockshroom_clump.name=Amas de ChampiRoche
+item.midnight.tenebrum_ingot.name=Lingot de Tenebrum
+item.midnight.tenebrum_nugget.name=Pépite de Tenebrum
+item.midnight.nagrilite_ingot.name=Lingot de Nagrilite
+item.midnight.nagrilite_nugget.name=Pépite de Nagrilite
+item.midnight.ebonys.name=Ébène
+item.midnight.archaic_shard.name=Tesson Archaïque
 
-item.midnight.raw_suavis.name=Suavis Cru
-item.midnight.cook_suavis.name=Suavis Cuit
+item.midnight.raw_suavis.name=Tranche de Suavis Cru
+item.midnight.cook_suavis.name=Tranche de Suavis Cuit
+item.midnight.raw_deceitful_snapper.name=Baffeur-Trompeur
+
+item.midnight.bladeshroom_cap.name=Chapeau de ChampiLame
+item.midnight.bladeshroom_spores.name=Spores de ChampiLame
+
+# Tools, Weapons and Armors
+
+item.midnight.shadowroot_pickaxe.name=Pioche en OmbreRacine
+item.midnight.tenebrum_pickaxe.name=Pioche en Tenebrum
+item.midnight.nagrilite_pickaxe.name=Pioche en Nagrilite
+item.midnight.ebonys_pickaxe.name=Pioche en Ébène
+item.midnight.nightstone_pickaxe.name=Pioche en Pierre de Nuit
+
+item.midnight.shadowroot_shovel.name=Pelle en OmbreRacine
+item.midnight.tenebrum_shovel.name=Pelle en Tenebrum
+item.midnight.nagrilite_shovel.name=Pelle en Nagrilite
+item.midnight.ebonys_shovel.name=Pelle en Ébène
+item.midnight.nightstone_shovel.name=Pelle en Pierre de Nuit
+
+item.midnight.shadowroot_axe.name=Hache en OmbreRacine
+item.midnight.tenebrum_axe.name=Hache en Tenebrum
+item.midnight.nagrilite_axe.name=Hache en Nagrilite
+item.midnight.ebonys_axe.name=Hache en Ébène
+item.midnight.nightstone_axe.name=Hache en Pierre de Nuit
+
+item.midnight.shadowroot_hoe.name=Houe en OmbreRacine
+item.midnight.tenebrum_hoe.name=Houe en Tenebrum
+item.midnight.nagrilite_hoe.name=Houe en Nagrilite
+item.midnight.ebonys_hoe.name=Houe en Ébène
+item.midnight.nightstone_hoe.name=Houe en Pierre de Nuit
+
+item.midnight.shadowroot_sword.name=Épée en OmbreRacine
+item.midnight.tenebrum_sword.name=Épée en Tenebrum
+item.midnight.nagrilite_sword.name=Épée en Nagrilite
+item.midnight.ebonys_sword.name=Épée en Ébène
+item.midnight.nightstone_sword.name=Épée en Pierre de Nuit
+
+item.midnight.rockshroom_helmet.name=Heaume en ChampiRoche
+item.midnight.rockshroom_chestplate.name=Plastron en ChampiRoche
+item.midnight.rockshroom_leggings.name=Jambières en ChampiRoche
+item.midnight.rockshroom_boots.name=Bottes en ChampiRoche
+
+item.midnight.tenebrum_helmet.name=Heaume en Tenebrum
+item.midnight.tenebrum_chestplate.name=Plastron en Tenebrum
+item.midnight.tenebrum_leggings.name=Jambières en Tenebrum
+item.midnight.tenebrum_boots.name=Bottes en Tenebrum
 
 # Fluids
 
-fluid.midnight.miasma=Miasmes
+fluid.midnight.miasma=Miasme
 fluid.midnight.dark_water=Eau Sombre
 
 # Entities
 
-entity.midnight.rift.name=Faille de Midnight
-entity.midnight.rifter.name=Rifter
-entity.midnight.hunter.name=Chasseur de Midnight
+entity.midnight.rift.name=Faille de Minuit
+entity.midnight.rifter.name=Passeur de Faille
+entity.midnight.hunter.name=Chasseur de Minuit
+entity.midnight.bladeshroom_cap.name=Chapeau de ChampiLame
+entity.midnight.nova.name=Nova
 
 # Config
 
 config.midnight.midnight_dimension_id=ID de la dimension de Minuit
 config.midnight.midnight_dimension_id.tooltip=L'ID qui va être utilisé pour la dimension de Minuit
 
+config.midnight.rift_shaders=Ombrages des Failles
+config.midnight.rift_shaders.tooltip=Si vrai, les failles seront affichées avec des ombrages personalisés pour les effets standards. Si faux, une texture plus simple sera utilisée.
+
+config.midnight.bladeshroom_damage_chance=Chance de dégâts des ChampiLames
+config.midnight.bladeshroom_damage_chance.tooltip=La chance de subir des dégâts quand un Chapeau de ChampiLame est ramassé
+
 status.midnight.rift_nearby=Vous ne pouvez pas rester ici pour l'instant, il y a une présence démoniaque à proximitée
+status.midnight.snapped=Le poisson t'a baffé
+
+# Biomes
+
+biome.midnight.vigilant_forest.name=Forêt Vigilante
+biome.midnight.black_ridge.name=Crête Noire
+biome.midnight.deceitful_bog.name=Tourbière Trompeuse
+biome.midnight.fungi_forest.name=Forêt Fongique
+biome.midnight.obscured_peaks.name=Pics Obscures
+biome.midnight.warped_fields.name=Champs Fields
+biome.midnight.crystal_spires.name=Cimes de Cristal
+biome.midnight.night_plains.name=Plaines de Nuit
+biome.midnight.obscured_plateau.name=Plateau Obscure
+biome.midnight.phantasmal_valley.name=Vallée Fantasmatique
 
 # Potions
-potion.midnight.stunned.name=Etourdi
+
+potion.midnight.stunned.name=Étourdi
+
+# DamageSources
+death.midnight.bladeshroom=%s a été piqué mortellement par un ChampiLame
+death.midnight.deceitful_snapper=%s a été rongé
+
+# Advancements
+
+advancement.midnight.title=Le Minuit
+advancement.midnight.desc=Progrès pour la dimension de Minuit
+
+advancement.into_darkness.title=Dans l'obscurité
+advancement.into_darkness.desc=Entre dans la dimension Minuit
+
+advancement.inebriated.title=Imbriqué
+advancement.inebriated.desc=Casse une plante de Suavis
+
+advancement.shroomikens.title=Champikens
+advancement.shroomikens.desc=Lance un chapeau de ChampiLame
+
+advancement.fungi_forest.title=Éclairage
+advancement.fungi_forest.desc=Trouver le biome de Forêt Fongique
+
+advancement.snapped_by_snapper.title=TODO
+advancement.snapped_by_snapper.desc=TODO

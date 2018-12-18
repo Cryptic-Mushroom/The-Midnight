@@ -78,7 +78,6 @@ tile.midnight.crystal_flower.name=Crystal Flower
 tile.midnight.ghost_plant.name=Ghost Plant
 tile.midnight.fingered_grass.name=Fingered Grass
 tile.midnight.bogweed.name=Bogweed
-tile.midnight.ghost_plant.name=Ghost Plant
 
 tile.midnight.dewshroom.name=Dewshroom
 tile.midnight.double_dewshroom.name=Tall Dewshroom
@@ -114,16 +113,15 @@ tile.midnight.deceitful_peat.name=Deceitful Peat
 tile.midnight.deceitful_algae.name=Deceitful Algae
 tile.midnight.deceitful_moss.name=Deceitful Moss
 
-tile.midnight.shadowroot_slab.name=Shadowroot Slab
-tile.midnight.shadowroot_double_slab.name=Shadowroot Double Slab
 tile.midnight.shadowroot_ladder.name=Shadowroot Ladder
 tile.midnight.dead_wood_ladder.name=Dead Wood Ladder
 tile.midnight.dark_willow_ladder.name=Dark Willow Ladder
-
 tile.midnight.dewshroom_ladder.name=Dewshroom Ladder
 tile.midnight.viridshroom_ladder.name=Viridshroom Ladder
 tile.midnight.nightshroom_ladder.name=Nightshroom Ladder
 
+tile.midnight.shadowroot_slab.name=Shadowroot Slab
+tile.midnight.shadowroot_double_slab.name=Shadowroot Double Slab
 tile.midnight.dead_wood_slab.name=Dead Wood Slab
 tile.midnight.dead_wood_double_slab.name=Dead Wood Double Slab
 tile.midnight.dark_willow_slab.name=Dark Willow Slab
@@ -160,14 +158,15 @@ tile.midnight.rockshroom_bricks_stairs.name=Rockshroom Brick Stairs
 tile.midnight.shadowroot_fence.name=Shadowroot Fence
 tile.midnight.dead_wood_fence.name=Dead Wood Fence
 tile.midnight.dark_willow_fence.name=Dark Willow Fence
+tile.midnight.dewshroom_fence.name=Dewshroom Fence
+tile.midnight.viridshroom_fence.name=Viridshroom Fence
+tile.midnight.nightshroom_fence.name=Nightshroom Fence
+
 tile.midnight.nightstone_wall.name=Nightstone Wall
 tile.midnight.nightstone_brick_wall.name=Nightstone Brick Wall
 tile.midnight.trenchstone_wall.name=Trenchstone Wall
 tile.midnight.trenchstone_brick_wall.name=Trenchstone Brick Wall
 tile.midnight.rockshroom_bricks_wall.name=Rockshroom Brick Wall
-tile.midnight.dewshroom_fence.name=Dewshroom Fence
-tile.midnight.viridshroom_fence.name=Viridshroom Fence
-tile.midnight.nightshroom_fence.name=Nightshroom Fence
 
 tile.midnight.shadowroot_fence_gate.name=Shadowroot Fence Gate
 tile.midnight.dead_wood_fence_gate.name=Dead Wood Fence Gate
