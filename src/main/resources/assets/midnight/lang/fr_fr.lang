@@ -1,7 +1,7 @@
 # Item Groups
 
 itemGroup.midnight_building=Midnight Construction
-itemGroup.midnight_decoration=Midnight Décorations
+itemGroup.midnight_decoration=Midnight Décoration
 itemGroup.midnight_items=Midnight Objets
 itemGroup.midnight_tools=Midnight Outils
 itemGroup.midnight_combat=Midnight Combat
@@ -72,7 +72,7 @@ tile.midnight.crystal_glass.name=Verre de Cristal
 tile.midnight.crystal_glass_pane.name=Vitre de Cristal
 
 tile.midnight.miasma_surface.name=Surface de Miasme
-tile.midnight.misama.name=Miasme
+tile.midnight.miasma.name=Miasme
 
 tile.midnight.crystal_flower.name=Fleur de Cristal
 tile.midnight.ghost_plant.name=Plante Fantôme
@@ -203,7 +203,7 @@ item.midnight.archaic_shard.name=Tesson Archaïque
 
 item.midnight.raw_suavis.name=Tranche de Suavis Cru
 item.midnight.cook_suavis.name=Tranche de Suavis Cuit
-item.midnight.raw_deceitful_snapper.name=Baffeur-Trompeur
+item.midnight.raw_deceitful_snapper.name=Baffeur Fourbe
 
 item.midnight.bladeshroom_cap.name=Chapeau de ChampiLame
 item.midnight.bladeshroom_spores.name=Spores de ChampiLame
@@ -296,7 +296,7 @@ potion.midnight.stunned.name=Étourdi
 
 # DamageSources
 death.midnight.bladeshroom=%s a été piqué mortellement par un ChampiLame
-death.midnight.deceitful_snapper=%s a été rongé
+death.midnight.deceitful_snapper=%s a été dévoré
 
 # Advancements
 
