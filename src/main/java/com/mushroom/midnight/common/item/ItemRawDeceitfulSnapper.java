@@ -3,6 +3,7 @@ package com.mushroom.midnight.common.item;
 import com.mushroom.midnight.Midnight;
 import com.mushroom.midnight.common.network.MessageItemActivation;
 import com.mushroom.midnight.common.registry.ModCriterion;
+import com.mushroom.midnight.common.registry.ModItems;
 import com.mushroom.midnight.common.util.MidnightDamageSource;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLivingBase;
@@ -31,13 +32,12 @@ public class ItemRawDeceitfulSnapper extends ItemFoodBasic {
         if (!world.isRemote && entity instanceof EntityPlayerMP) {
             EntityPlayerMP player = (EntityPlayerMP) entity;
             if (player.world.rand.nextInt(3) == 0) {
-                PotionEffect eff = player.getActivePotionEffect(MobEffects.SLOWNESS);
                 player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200, 5, false, true));
                 player.attackEntityFrom(DECEITFUL_SNAPPER_DAMAGE, player.world.rand.nextInt(3) + 1);
                 player.sendStatusMessage(new TextComponentTranslation("status.midnight.snapped"), true);
                 world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.EVOCATION_FANGS_ATTACK, SoundCategory.PLAYERS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
                 ModCriterion.SNAPPED_BY_SNAPPER.trigger(player);
-                Midnight.NETWORK.sendTo(new MessageItemActivation(stack), player);
+                Midnight.NETWORK.sendTo(new MessageItemActivation(new ItemStack(ModItems.ADVANCEMENT_SNAPPER)), player);
             } else {
                 player.getFoodStats().addStats(this, stack);
                 world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);

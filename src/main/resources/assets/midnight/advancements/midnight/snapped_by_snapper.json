@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "midnight:raw_deceitful_snapper"
+      "item": "midnight:advancement_snapper"
     },
     "title": {
       "translate": "advancement.snapped_by_snapper.title"

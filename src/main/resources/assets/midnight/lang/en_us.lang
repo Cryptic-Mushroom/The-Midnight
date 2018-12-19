@@ -78,6 +78,7 @@ tile.midnight.crystal_flower.name=Crystal Flower
 tile.midnight.ghost_plant.name=Ghost Plant
 tile.midnight.fingered_grass.name=Fingered Grass
 tile.midnight.bogweed.name=Bogweed
+tile.midnight.tendrilweed.name=Tendrilweed
 
 tile.midnight.dewshroom.name=Dewshroom
 tile.midnight.double_dewshroom.name=Tall Dewshroom
@@ -293,6 +294,7 @@ biome.midnight.phantasmal_valley.name=Phantasmal Valley
 # Potions
 
 potion.midnight.stunned.name=Stunned
+potion.midnight.pollinated.name=Pollinated
 
 # DamageSources
 death.midnight.bladeshroom=%s was pricked to death by a bladeshroom

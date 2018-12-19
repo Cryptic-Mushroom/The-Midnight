@@ -99,6 +99,7 @@ public class ModItems {
     public static final Item TENEBRUM_BOOTS = Items.AIR;
 
     public static final Item ADVANCEMENT_RIFT = Items.AIR;
+    public static final Item ADVANCEMENT_SNAPPER = Items.AIR;
 
     static List<Item> items;
 
@@ -160,7 +161,8 @@ public class ModItems {
                 RegUtil.withName(new ItemMidnightChestplate(ModArmorMaterials.TENEBRUM), "tenebrum_chestplate"),
                 RegUtil.withName(new ItemMidnightLeggings(ModArmorMaterials.TENEBRUM), "tenebrum_leggings"),
                 RegUtil.withName(new ItemMidnightBoots(ModArmorMaterials.TENEBRUM), "tenebrum_boots"),
-                RegUtil.withName(new ItemBasic().setCreativeTab(null), "advancement_rift")
+                RegUtil.withName(new ItemBasic().setCreativeTab(null), "advancement_rift"),
+                RegUtil.withName(new ItemBasic().setCreativeTab(null), "advancement_snapper")
         );
 
         items.forEach(event.getRegistry()::register);

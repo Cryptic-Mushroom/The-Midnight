@@ -78,6 +78,7 @@ tile.midnight.crystal_flower.name=Fleur de Cristal
 tile.midnight.ghost_plant.name=Plante Fantôme
 tile.midnight.fingered_grass.name=Herbe Fourchue
 tile.midnight.bogweed.name=Mauvaise Herbe de Tourbière
+tile.midnight.tendrilweed.name=Mauvaise Herbe Torsadée
 
 tile.midnight.dewshroom.name=ChampiRosée
 tile.midnight.double_dewshroom.name=Grand ChampiRosée
@@ -293,6 +294,7 @@ biome.midnight.phantasmal_valley.name=Vallée Fantasmatique
 # Potions
 
 potion.midnight.stunned.name=Étourdi
+potion.midnight.pollinated.name=Pollinisé
 
 # DamageSources
 death.midnight.bladeshroom=%s a été piqué mortellement par un ChampiLame

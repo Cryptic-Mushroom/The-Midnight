@@ -1,0 +1,27 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "forge:multi-layer",
+    "transform": "forge:default-block",
+    "custom": {
+      "base": "midnight:tendrilweed#base",
+      "Cutout": "midnight:tendrilweed#base",
+      "Translucent": "midnight:tendrilweed#glow"
+    }
+  },
+  "variants": {
+    "normal": [{}],
+    "base": [
+      {
+        "model": "cross",
+        "textures": {"cross": "midnight:blocks/tendrilweed"}
+      }
+    ],
+    "glow": [
+      {
+        "model": "cross",
+        "textures": {"cross": "midnight:blocks/tendrilweed_glow"}
+      }
+    ]
+  }
+}
