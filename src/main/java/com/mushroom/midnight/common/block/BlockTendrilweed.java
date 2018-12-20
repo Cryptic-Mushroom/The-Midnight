@@ -25,7 +25,7 @@ public class BlockTendrilweed extends BlockGlowingPlant {
     @Override
     public void randomTick(World world, BlockPos pos, IBlockState state, Random random) {
         super.randomTick(world, pos, state, random);
-        if (random.nextFloat() < 0.01f) {
+        if (!world.isRemote && random.nextFloat() < 0.01f) {
             BlockPos placePos = pos.add(random.nextInt(5) - 2, random.nextInt(3) - 1, random.nextInt(5) - 2);
             if (ModBlocks.TENDRILWEED.canPlaceBlockAt(world, placePos)) {
                 int flowers = 0;
@@ -43,7 +43,7 @@ public class BlockTendrilweed extends BlockGlowingPlant {
 
     @Override
     public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
-        if (entity instanceof EntityLivingBase && entity.ticksExisted % 20 == 0) {
+        if (entity instanceof EntityLivingBase && !entity.world.isRemote && entity.ticksExisted % 20 == 0) {
             ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(ModEffects.POLLINATED, 200, 1, false, true));
         }
     }
