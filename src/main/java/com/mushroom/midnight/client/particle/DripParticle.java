@@ -54,7 +54,7 @@ public class DripParticle extends Particle {
         @Nullable
         @Override
         public Particle createParticle(int particleID, World world, double x, double y, double z, double motionX, double motionY, double motionZ, int... params) {
-            return new DripParticle(world, x, y, z, params[0] / 255f, params[1] / 255f, params[2] / 255f);
+            return new DripParticle(world, x, y, z, params.length > 0 ? params[0] / 255f : 0f, params.length > 1 ? params[1] / 255f : 0f, params.length > 2 ? params[2] / 255f : 0f);
         }
     }
 }
