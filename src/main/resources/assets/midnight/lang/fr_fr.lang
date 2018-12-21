@@ -297,6 +297,7 @@ biome.midnight.phantasmal_valley.name=Vallée Fantasmatique
 
 potion.midnight.stunned.name=Étourdi
 potion.midnight.pollinated.name=Pollinisé
+potion.midnight.dragon_guard.name=Garde du Dragon
 
 # DamageSources
 death.midnight.bladeshroom=%s a été piqué mortellement par un ChampiLame

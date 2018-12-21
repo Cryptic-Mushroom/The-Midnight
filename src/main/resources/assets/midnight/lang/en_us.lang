@@ -297,6 +297,7 @@ biome.midnight.phantasmal_valley.name=Phantasmal Valley
 
 potion.midnight.stunned.name=Stunned
 potion.midnight.pollinated.name=Pollinated
+potion.midnight.dragon_guard.name=Dragon's Guard
 
 # DamageSources
 death.midnight.bladeshroom=%s was pricked to death by a bladeshroom

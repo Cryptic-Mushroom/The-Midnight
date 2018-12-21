@@ -11,6 +11,7 @@ import com.mushroom.midnight.common.block.BlockDeceitfulAlgae;
 import com.mushroom.midnight.common.block.BlockDeceitfulMoss;
 import com.mushroom.midnight.common.block.BlockDeceitfulMud;
 import com.mushroom.midnight.common.block.BlockDoubleMidnightPlant;
+import com.mushroom.midnight.common.block.BlockDragonNest;
 import com.mushroom.midnight.common.block.BlockFingeredGrass;
 import com.mushroom.midnight.common.block.BlockGhostPlant;
 import com.mushroom.midnight.common.block.BlockGlowingDoublePlant;
@@ -59,18 +60,11 @@ import com.mushroom.midnight.common.world.feature.ShadowrootTreeFeature;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -320,15 +314,7 @@ public class ModBlocks {
                 RegUtil.withName(new BlockFingeredGrass(), "fingered_grass"),
                 RegUtil.withName(new BlockTendrilweed(), "tendrilweed"),
                 RegUtil.withName(new BlockMidnightPlant(), "runebush"),
-                RegUtil.withName(new BlockGlowingPlant() {
-                    @Override
-                    public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
-                        if (entity instanceof EntityLivingBase && !entity.world.isRemote && entity.ticksExisted % 20 == 0) {
-                            // TODO replace with a custom effect providing 50% to avoid burn damages (name of the effect? icon?)
-                            ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 100, 0, false, true));
-                        }
-                    }
-                }, "dragon_nest"),
+                RegUtil.withName(new BlockDragonNest(), "dragon_nest"),
                 RegUtil.withName(new BlockGlowingPlant(), "crystal_flower"),
                 RegUtil.withName(new BlockMidnightSapling(ShadowrootTreeFeature::new), "shadowroot_sapling"),
                 RegUtil.withName(new BlockMidnightSapling(DarkWillowTreeFeature::new), "dark_willow_sapling"),
