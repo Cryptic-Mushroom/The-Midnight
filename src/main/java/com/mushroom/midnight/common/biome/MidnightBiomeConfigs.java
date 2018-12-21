@@ -156,7 +156,7 @@ public class MidnightBiomeConfigs {
             .withFeature(DOUBLE_LUMEN_FEATURE, new ScatterPlacementConfig(1, 16))
             .withFeature(FUNGI_FEATURE, new ScatterPlacementConfig(1, 16))
             .withFeature(GHOST_PLANT_FEATURE, new ScatterPlacementConfig(3, 6))
-            .withFeature(TENDRILWEED_FEATURE, new UndergroundPlacementConfig(1))
+            .withFeature(TENDRILWEED_FEATURE, new UndergroundPlacementConfig(1, 10, 50))
             .build();
 
     public static final MidnightBiomeConfig ROCKY_CONFIG = MidnightBiomeConfig.builder()
@@ -165,7 +165,7 @@ public class MidnightBiomeConfigs {
             .withFeature(FUNGI_FEATURE, new ScatterPlacementConfig(1, 16))
             .withFeature(TRENCHSTONE_BOULDER_FEATURE, new SurfacePlacementConfig(-3, 1))
             .withFeature(GHOST_PLANT_FEATURE, new ScatterPlacementConfig(3, 6))
-            .withFeature(TENDRILWEED_FEATURE, new UndergroundPlacementConfig(1))
+            .withFeature(TENDRILWEED_FEATURE, new UndergroundPlacementConfig(1, 10, 50))
             .withSurface(ROCKY_SURFACE_CONFIG)
             .withMonster(new Biome.SpawnListEntry(EntityHunter.class, 1, 0, 2))
             .build();
@@ -206,7 +206,7 @@ public class MidnightBiomeConfigs {
             .withFeature(DOUBLE_LUMEN_FEATURE, new ScatterPlacementConfig(1, 16))
             .withFeature(CRYSTAL_FLOWER_FEATURE, new ScatterPlacementConfig(5, 12))
             .withFeature(GHOST_PLANT_FEATURE, new ScatterPlacementConfig(3, 6))
-            .withFeature(TENDRILWEED_FEATURE, new UndergroundPlacementConfig(1))
+            .withFeature(TENDRILWEED_FEATURE, new UndergroundPlacementConfig(1, 10, 50))
             .withGrassColor(0xBAA3C6)
             .build();
 
@@ -233,7 +233,7 @@ public class MidnightBiomeConfigs {
             .withFeature(DEAD_LOG_FEATURE, new SurfacePlacementConfig(5))
             .withFeature(DECEITFUL_ALGAE_FEATURE, new ScatterPlacementConfig(10, 20))
             .withFeature(GHOST_PLANT_FEATURE, new ScatterPlacementConfig(3, 6))
-            .withFeature(TENDRILWEED_FEATURE, new UndergroundPlacementConfig(1))
+            .withFeature(TENDRILWEED_FEATURE, new UndergroundPlacementConfig(1, 10, 50))
             .withGrassColor(0x8893AD)
             .withRidgeWeight(0.0F)
             .wet()
@@ -250,7 +250,7 @@ public class MidnightBiomeConfigs {
                     }
                 }
             })
-            .withFeature(TENDRILWEED_FEATURE, new UndergroundPlacementConfig(1))
+            .withFeature(TENDRILWEED_FEATURE, new UndergroundPlacementConfig(1, 10, 50))
             .withFeature(new IMidnightFeature[] {
                     SHADOWROOT_TREE_FEATURE,
                     DEAD_TREE_FEATURE
@@ -270,7 +270,7 @@ public class MidnightBiomeConfigs {
 
     public static final MidnightBiomeConfig PHANTASMAL_VALLEY_CONFIG = MidnightBiomeConfig.builder()
             .withFeature(GHOST_PLANT_FEATURE, new ScatterPlacementConfig(3, 6))
-            .withFeature(TENDRILWEED_FEATURE, new UndergroundPlacementConfig(1))
+            .withFeature(TENDRILWEED_FEATURE, new UndergroundPlacementConfig(1, 10, 50))
             .withMonster(new Biome.SpawnListEntry(EntityHunter.class, 1, 0, 2))
             .withRidgeWeight(0.0F)
             .wet()
