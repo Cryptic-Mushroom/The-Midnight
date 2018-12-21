@@ -44,6 +44,7 @@ public class UndergroundPlacementConfig implements IPlacementConfig {
                 while (mutablePos.getY() <= currentMaxHeight) {
                     if (world.isAirBlock(mutablePos)) {
                         generator.accept(mutablePos.toImmutable());
+                        break;
                     }
                     mutablePos.move(EnumFacing.UP);
                 }
