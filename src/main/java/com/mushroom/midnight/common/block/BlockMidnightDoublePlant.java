@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Random;
 
 public class BlockMidnightDoublePlant extends BlockBush implements IModelProvider, IShearable {
-    private static final PropertyEnum<BlockDoublePlant.EnumBlockHalf> HALF = BlockDoublePlant.HALF;
+    protected static final PropertyEnum<BlockDoublePlant.EnumBlockHalf> HALF = BlockDoublePlant.HALF;
     private final PlantBehaviorType behaviorType;
     private final boolean glowing;
 
@@ -193,6 +193,11 @@ public class BlockMidnightDoublePlant extends BlockBush implements IModelProvide
             return Items.AIR;
         }
         return super.getItemDropped(state, rand, fortune);
+    }
+
+    public void placeAt(World world, BlockPos lowerPos, int flags) {
+        world.setBlockState(lowerPos, this.getDefaultState().withProperty(HALF, BlockDoublePlant.EnumBlockHalf.LOWER), flags);
+        world.setBlockState(lowerPos.up(), this.getDefaultState().withProperty(HALF, BlockDoublePlant.EnumBlockHalf.UPPER), flags);
     }
 
     @Override

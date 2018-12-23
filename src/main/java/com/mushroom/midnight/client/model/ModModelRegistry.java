@@ -88,9 +88,9 @@ public class ModModelRegistry {
         ModelLoader.setCustomStateMapper(ModBlocks.SHADOWROOT_SAPLING, new StateMap.Builder().ignore(BlockSapling.STAGE).build());
         ModelLoader.setCustomStateMapper(ModBlocks.DARK_WILLOW_SAPLING, new StateMap.Builder().ignore(BlockSapling.STAGE).build());
 
-        ModelLoader.setCustomStateMapper(ModBlocks.DEWSHROOM, new StateMap.Builder().ignore(BlockSapling.STAGE).build());
-        ModelLoader.setCustomStateMapper(ModBlocks.NIGHTSHROOM, new StateMap.Builder().ignore(BlockSapling.STAGE).build());
-        ModelLoader.setCustomStateMapper(ModBlocks.VIRIDSHROOM, new StateMap.Builder().ignore(BlockSapling.STAGE).build());
+        ModelLoader.setCustomStateMapper(ModBlocks.DOUBLE_DEWSHROOM, new StateMap.Builder().ignore(BlockSapling.STAGE).build());
+        ModelLoader.setCustomStateMapper(ModBlocks.DOUBLE_NIGHTSHROOM, new StateMap.Builder().ignore(BlockSapling.STAGE).build());
+        ModelLoader.setCustomStateMapper(ModBlocks.DOUBLE_VIRIDSHROOM, new StateMap.Builder().ignore(BlockSapling.STAGE).build());
 
         ModelLoader.setCustomStateMapper(ModBlocks.MIASMA, new StateMap.Builder().ignore(BlockFluidClassic.LEVEL).build());
         ModelLoader.setCustomStateMapper(ModBlocks.DARK_WATER, new StateMap.Builder().ignore(BlockFluidClassic.LEVEL).build());

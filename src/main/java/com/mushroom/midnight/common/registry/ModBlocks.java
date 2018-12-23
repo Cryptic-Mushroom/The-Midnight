@@ -11,6 +11,7 @@ import com.mushroom.midnight.common.block.BlockDeceitfulAlgae;
 import com.mushroom.midnight.common.block.BlockDeceitfulMoss;
 import com.mushroom.midnight.common.block.BlockDeceitfulMud;
 import com.mushroom.midnight.common.block.BlockLumenBud;
+import com.mushroom.midnight.common.block.BlockMidnightDoubleFungi;
 import com.mushroom.midnight.common.block.BlockMidnightDoublePlant;
 import com.mushroom.midnight.common.block.BlockDragonNest;
 import com.mushroom.midnight.common.block.BlockFingeredGrass;
@@ -289,21 +290,21 @@ public class ModBlocks {
                 RegUtil.withName(new BlockRockshroom(), "rockshroom"),
                 RegUtil.withName(new BlockMidnightTallGrass(), "tall_midnight_grass"),
                 RegUtil.withName(new BlockMidnightDoublePlant(PlantBehaviorType.BUSH, false), "double_midnight_grass"),
-                RegUtil.withName(new BlockMidnightFungi(() -> new LargeFungiFeature(
+                RegUtil.withName(new BlockMidnightFungi(), "nightshroom"),
+                RegUtil.withName(new BlockMidnightDoubleFungi(() -> new LargeFungiFeature(
                         ModBlocks.NIGHTSHROOM_STEM.getDefaultState(),
                         ModBlocks.NIGHTSHROOM_HAT.getDefaultState()
-                )), "nightshroom"),
-                RegUtil.withName(new BlockMidnightDoublePlant(true), "double_nightshroom"),
-                RegUtil.withName(new BlockMidnightFungi(() -> new LargeFungiFeature(
+                )), "double_nightshroom"),
+                RegUtil.withName(new BlockMidnightFungi(), "dewshroom"),
+                RegUtil.withName(new BlockMidnightDoubleFungi(() -> new LargeFungiFeature(
                         ModBlocks.DEWSHROOM_STEM.getDefaultState(),
                         ModBlocks.DEWSHROOM_HAT.getDefaultState()
-                )), "dewshroom"),
-                RegUtil.withName(new BlockMidnightDoublePlant(true), "double_dewshroom"),
-                RegUtil.withName(new BlockMidnightFungi(() -> new LargeFungiFeature(
+                )), "double_dewshroom"),
+                RegUtil.withName(new BlockMidnightFungi(), "viridshroom"),
+                RegUtil.withName(new BlockMidnightDoubleFungi(() -> new LargeFungiFeature(
                         ModBlocks.VIRIDSHROOM_STEM.getDefaultState(),
                         ModBlocks.VIRIDSHROOM_HAT.getDefaultState()
-                )), "viridshroom"),
-                RegUtil.withName(new BlockMidnightDoublePlant(true), "double_viridshroom"),
+                )), "double_viridshroom"),
                 RegUtil.withName(new BlockMidnightFungiShelf(), "nightshroom_shelf"),
                 RegUtil.withName(new BlockMidnightFungiShelf(), "dewshroom_shelf"),
                 RegUtil.withName(new BlockMidnightFungiShelf(), "viridshroom_shelf"),
