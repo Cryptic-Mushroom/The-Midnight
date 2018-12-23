@@ -1,6 +1,5 @@
 package com.mushroom.midnight.common.block;
 
-import com.mushroom.midnight.common.registry.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
@@ -9,11 +8,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.Random;
+import java.util.function.Supplier;
 
 public class BlockMidnightFungi extends BlockMidnightPlant implements IGrowable {
+    private final Supplier<Block> parentSupplier;
 
-    public BlockMidnightFungi() {
+    public BlockMidnightFungi(Supplier<Block> parentSupplier) {
         super(PlantBehaviorType.BUSH, true);
+        this.parentSupplier = parentSupplier;
     }
 
     @Override
@@ -33,16 +35,8 @@ public class BlockMidnightFungi extends BlockMidnightPlant implements IGrowable 
 
     @Override
     public void grow(World world, Random rand, BlockPos pos, IBlockState state) {
-        Block grownBlock = null;
-        if (state.getBlock() == ModBlocks.NIGHTSHROOM) {
-            grownBlock = ModBlocks.DOUBLE_NIGHTSHROOM;
-        } else if (state.getBlock() == ModBlocks.DEWSHROOM) {
-            grownBlock = ModBlocks.DOUBLE_DEWSHROOM;
-        } else if (state.getBlock() == ModBlocks.VIRIDSHROOM) {
-            grownBlock = ModBlocks.DOUBLE_VIRIDSHROOM;
-        }
-        if (grownBlock != null && grownBlock.canPlaceBlockAt(world, pos)) {
-            ((BlockMidnightDoubleFungi)grownBlock).placeAt(world, pos, 2);
+        if (parentSupplier.get().canPlaceBlockAt(world, pos)) {
+            ((BlockMidnightDoubleFungi)parentSupplier.get()).placeAt(world, pos, 2);
         }
     }
 }

@@ -290,17 +290,17 @@ public class ModBlocks {
                 RegUtil.withName(new BlockRockshroom(), "rockshroom"),
                 RegUtil.withName(new BlockMidnightTallGrass(), "tall_midnight_grass"),
                 RegUtil.withName(new BlockMidnightDoublePlant(PlantBehaviorType.BUSH, false), "double_midnight_grass"),
-                RegUtil.withName(new BlockMidnightFungi(), "nightshroom"),
+                RegUtil.withName(new BlockMidnightFungi(() -> DOUBLE_NIGHTSHROOM), "nightshroom"),
                 RegUtil.withName(new BlockMidnightDoubleFungi(() -> new LargeFungiFeature(
                         ModBlocks.NIGHTSHROOM_STEM.getDefaultState(),
                         ModBlocks.NIGHTSHROOM_HAT.getDefaultState()
                 )), "double_nightshroom"),
-                RegUtil.withName(new BlockMidnightFungi(), "dewshroom"),
+                RegUtil.withName(new BlockMidnightFungi(() -> DOUBLE_DEWSHROOM), "dewshroom"),
                 RegUtil.withName(new BlockMidnightDoubleFungi(() -> new LargeFungiFeature(
                         ModBlocks.DEWSHROOM_STEM.getDefaultState(),
                         ModBlocks.DEWSHROOM_HAT.getDefaultState()
                 )), "double_dewshroom"),
-                RegUtil.withName(new BlockMidnightFungi(), "viridshroom"),
+                RegUtil.withName(new BlockMidnightFungi(() -> DOUBLE_VIRIDSHROOM), "viridshroom"),
                 RegUtil.withName(new BlockMidnightDoubleFungi(() -> new LargeFungiFeature(
                         ModBlocks.VIRIDSHROOM_STEM.getDefaultState(),
                         ModBlocks.VIRIDSHROOM_HAT.getDefaultState()
