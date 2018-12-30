@@ -28,10 +28,10 @@ public class MidnightConfig {
     @Config.RangeInt(min=0, max=100)
     public static int bladeshroomDamageChance = 5;
 
-    @Config.Name("can_sleep_in_midnight")
-    @Config.LangKey("config.midnight.can_sleep_in_midnight")
-    @Config.Comment("If true, players will be allowed to sleep in Midnight.")
-    public static boolean canSleepInMidnight = false;
+    @Config.Name("can_respawn_in_midnight")
+    @Config.LangKey("config.midnight.can_respawn_in_midnight")
+    @Config.Comment("If true, players will be allowed to respawn in Midnight.")
+    public static boolean canRespawnInMidnight = false;
 
     @SubscribeEvent
     public static void configChanged(ConfigChangedEvent.OnConfigChangedEvent event) {

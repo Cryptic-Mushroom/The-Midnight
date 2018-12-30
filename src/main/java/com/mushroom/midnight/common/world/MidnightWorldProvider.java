@@ -16,6 +16,7 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nullable;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -45,12 +46,12 @@ public class MidnightWorldProvider extends WorldProvider {
 
     @Override
     public WorldSleepResult canSleepAt(EntityPlayer player, BlockPos pos) {
-        return MidnightConfig.canSleepInMidnight ? WorldSleepResult.ALLOW : WorldSleepResult.BED_EXPLODES;
+        return WorldSleepResult.BED_EXPLODES;
     }
 
     @Override
     public boolean isSurfaceWorld() {
-        return true;
+        return false;
     }
 
     @Override
@@ -155,6 +156,22 @@ public class MidnightWorldProvider extends WorldProvider {
 
     @Override
     public boolean canRespawnHere() {
-        return MidnightConfig.canSleepInMidnight;
+        return MidnightConfig.canRespawnInMidnight;
+    }
+
+    @Override
+    public boolean shouldClientCheckLighting() {
+        return true;
+    }
+
+    @Override
+    @Nullable
+    @SideOnly(Side.CLIENT)
+    public net.minecraftforge.client.IRenderHandler getCloudRenderer() {
+        return new net.minecraftforge.client.IRenderHandler() {
+            @Override
+            public void render(float partialTicks, net.minecraft.client.multiplayer.WorldClient world, net.minecraft.client.Minecraft mc) {
+            }
+        };
     }
 }

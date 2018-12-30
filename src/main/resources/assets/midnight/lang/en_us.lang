@@ -277,8 +277,8 @@ config.midnight.rift_shaders.tooltip=If true, rifts will be rendered with custom
 config.midnight.bladeshroom_damage_chance=Bladeshroom Damage Chance
 config.midnight.bladeshroom_damage_chance.tooltip=The chance to take damage when picking a bladeshroom cap
 
-config.midnight.can_sleep_in_midnight=Allow to sleep in Midnight
-config.midnight.can_sleep_in_midnight.tooltip=If true, players will be allowed to sleep in Midnight.
+config.midnight.can_respawn_in_midnight=Allow to respawn in Midnight
+config.midnight.can_respawn_in_midnight.tooltip=If true, players will be allowed to respawn in Midnight.
 
 status.midnight.rift_nearby=You may not rest now, there is an evil presence nearby
 status.midnight.snapped=The fish snapped at you

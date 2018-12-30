@@ -277,8 +277,8 @@ config.midnight.rift_shaders.tooltip=Si vrai, les failles seront affichées avec
 config.midnight.bladeshroom_damage_chance=Chance de dégâts des ChampiLames
 config.midnight.bladeshroom_damage_chance.tooltip=La chance de subir des dégâts quand un Chapeau de ChampiLame est ramassé
 
-config.midnight.can_sleep_in_midnight=Permet de dormir dans Minuit
-config.midnight.can_sleep_in_midnight.tooltip=Si vrai, les joueurs seront autorisés à dormir dans la dimension de Minuit.
+config.midnight.can_respawn_in_midnight=Permet de réapparaître dans Minuit
+config.midnight.can_respawn_in_midnight.tooltip=Si vrai, les joueurs seront autorisés à réapparaître dans la dimension de Minuit.
 
 status.midnight.rift_nearby=Vous ne pouvez pas rester ici pour l'instant, il y a une présence démoniaque à proximitée
 status.midnight.snapped=Le poisson t'a baffé
