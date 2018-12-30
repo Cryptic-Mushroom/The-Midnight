@@ -2,6 +2,8 @@ package com.mushroom.midnight.common.world;
 
 import com.mushroom.midnight.common.config.MidnightConfig;
 import com.mushroom.midnight.common.registry.ModDimensions;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,6 +15,7 @@ import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.IChunkGenerator;
+import net.minecraftforge.client.IRenderHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -167,10 +170,10 @@ public class MidnightWorldProvider extends WorldProvider {
     @Override
     @Nullable
     @SideOnly(Side.CLIENT)
-    public net.minecraftforge.client.IRenderHandler getCloudRenderer() {
-        return new net.minecraftforge.client.IRenderHandler() {
+    public IRenderHandler getCloudRenderer() {
+        return new IRenderHandler() {
             @Override
-            public void render(float partialTicks, net.minecraft.client.multiplayer.WorldClient world, net.minecraft.client.Minecraft mc) {
+            public void render(float partialTicks, WorldClient world, Minecraft mc) {
             }
         };
     }
