@@ -49,6 +49,11 @@ public class DripParticle extends Particle {
         }
     }
 
+    @Override
+    public int getBrightnessForRender(float partialTick) {
+        return bobTimer <= 0 ? 0xe000e0 : 0xe000e0 - (0x010001 * bobTimer);
+    }
+
     @SideOnly(Side.CLIENT)
     public static class Factory implements IParticleFactory {
         @Nullable
