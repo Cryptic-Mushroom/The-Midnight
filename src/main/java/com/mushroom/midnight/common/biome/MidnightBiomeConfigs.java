@@ -212,7 +212,6 @@ public class MidnightBiomeConfigs {
 
     public static final MidnightBiomeConfig WARPED_FIELDS_CONFIG = MidnightBiomeConfig.builder(VEGETATED_CONFIG)
             .withFeature(SHADOWROOT_TREE_FEATURE, new SurfacePlacementConfig(-3, 1))
-            .withFeature(CRYSTAL_FLOWER_FEATURE, new ScatterPlacementConfig(1, 12))
             .withMonster(new Biome.SpawnListEntry(EntityHunter.class, 1, 0, 2))
             .withDensityScale(0.5F)
             .withRidgeWeight(0.0F)
