@@ -48,7 +48,10 @@ public class BlockDragonNest extends BlockMidnightPlant {
         if (rand.nextInt(10) == 0) {
             Vec3d offset = getOffset(state, world, pos);
             double distX = rand.nextFloat() * 0.6 - 0.3d;
-            MidnightParticles.DRIP.spawn(world, pos.getX() + 0.5d + offset.x + distX, pos.getY() + offset.y + Math.abs(distX), pos.getZ() + 0.5d + offset.z + (rand.nextBoolean() ? distX : -distX), 0d, 0d, 0d,191, 70, 82);
+            double posX = pos.getX() + 0.5d + offset.x + distX;
+            double posY = pos.getY() + offset.y + Math.abs(distX);
+            double posZ = pos.getZ() + 0.5d + offset.z + (rand.nextBoolean() ? distX : -distX);
+            MidnightParticles.DRIP.spawn(world, posX, posY, posZ, 0d, 0d, 0d,191, 70, 82);
         }
     }
 }
