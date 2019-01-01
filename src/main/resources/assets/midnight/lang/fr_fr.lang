@@ -269,16 +269,19 @@ entity.midnight.nova.name=Nova
 # Config
 
 config.midnight.midnight_dimension_id=ID de la dimension de Minuit
-config.midnight.midnight_dimension_id.tooltip=L'ID qui va être utilisé pour la dimension de Minuit
+config.midnight.midnight_dimension_id.tooltip=L'ID qui va être utilisé pour la dimension de Minuit.
 
 config.midnight.rift_shaders=Ombrages des Failles
 config.midnight.rift_shaders.tooltip=Si vrai, les failles seront affichées avec des ombrages personalisés pour les effets standards. Si faux, une texture plus simple sera utilisée.
 
 config.midnight.bladeshroom_damage_chance=Chance de dégâts des ChampiLames
-config.midnight.bladeshroom_damage_chance.tooltip=La chance de subir des dégâts quand un Chapeau de ChampiLame est ramassé
+config.midnight.bladeshroom_damage_chance.tooltip=La chance de subir des dégâts quand un Chapeau de ChampiLame est ramassé.
 
 config.midnight.can_respawn_in_midnight=Permet de réapparaître dans Minuit
 config.midnight.can_respawn_in_midnight.tooltip=Si vrai, les joueurs seront autorisés à réapparaître dans la dimension de Minuit.
+
+config.midnight.hide_dark_overlay_in_midnight=Cache l'overlay sombre dans Minuit
+config.midnight.hide_dark_overlay_in_midnight.tooltip=Si vrai, l'overlay circulaire apparaissant dans les zones sombres sera caché dans Minuit, sans avoir besoin de désactiver les graphismes détaillés.
 
 status.midnight.rift_nearby=Vous ne pouvez pas rester ici pour l'instant, il y a une présence démoniaque à proximitée
 status.midnight.snapped=Le poisson t'a baffé

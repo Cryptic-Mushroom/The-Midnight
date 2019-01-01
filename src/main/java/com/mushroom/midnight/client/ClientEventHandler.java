@@ -4,6 +4,7 @@ import com.mushroom.midnight.Midnight;
 import com.mushroom.midnight.client.particle.MidnightParticles;
 import com.mushroom.midnight.client.sound.IdleRiftSound;
 import com.mushroom.midnight.common.capability.RifterCapturedCapability;
+import com.mushroom.midnight.common.config.MidnightConfig;
 import com.mushroom.midnight.common.entity.EntityRift;
 import com.mushroom.midnight.common.helper.Helper;
 import com.mushroom.midnight.common.registry.ModBiomes;
@@ -29,7 +30,9 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.border.WorldBorder;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -231,5 +234,19 @@ public class ClientEventHandler {
     private static boolean isMusicSound() {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         return Arrays.stream(stackTrace).anyMatch(e -> e.getClassName().equals(MusicTicker.class.getName()));
+    }
+
+    @SubscribeEvent(priority=EventPriority.LOWEST)
+    public static void onRenderVignetteOverLay(RenderGameOverlayEvent.Pre event) {
+        if (MidnightConfig.hideDarkOverlayInMidnight && event.getType() == RenderGameOverlayEvent.ElementType.VIGNETTE) {
+            Minecraft mc = Minecraft.getMinecraft();
+            if (Helper.isMidnightDimension(mc.world)) {
+                WorldBorder worldborder = mc.world.getWorldBorder();
+                float distWarn = Math.max(worldborder.getWarningDistance(), (float) Math.min(worldborder.getResizeSpeed() * worldborder.getWarningTime() * 1000d, Math.abs(worldborder.getTargetSize() - worldborder.getDiameter())));
+                if (worldborder.getClosestDistance(mc.player) >= distWarn) {
+                    event.setCanceled(true);
+                }
+            }
+        }
     }
 }
