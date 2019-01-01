@@ -12,6 +12,7 @@
 /.metadata/
 /libs/
 /classes/
+/.settings/
 
 # File Extensions
 *.psd
@@ -20,6 +21,7 @@
 *.iws
 *.classpath
 *.project
+*.launch
 
 # Specific Files
 Thumbs.db
