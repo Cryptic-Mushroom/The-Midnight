@@ -1,4 +1,4 @@
-package mushroom.midnight;
+package com.mushroom.midnight.client.model;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
