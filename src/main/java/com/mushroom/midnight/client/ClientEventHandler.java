@@ -239,11 +239,10 @@ public class ClientEventHandler {
     @SubscribeEvent(priority=EventPriority.LOWEST)
     public static void onRenderVignetteOverLay(RenderGameOverlayEvent.Pre event) {
         if (MidnightConfig.hideDarkOverlayInMidnight && event.getType() == RenderGameOverlayEvent.ElementType.VIGNETTE) {
-            Minecraft mc = Minecraft.getMinecraft();
-            if (Helper.isMidnightDimension(mc.world)) {
-                WorldBorder worldborder = mc.world.getWorldBorder();
+            if (Helper.isMidnightDimension(MC.world)) {
+                WorldBorder worldborder = MC.world.getWorldBorder();
                 float distWarn = Math.max(worldborder.getWarningDistance(), (float) Math.min(worldborder.getResizeSpeed() * worldborder.getWarningTime() * 1000d, Math.abs(worldborder.getTargetSize() - worldborder.getDiameter())));
-                if (worldborder.getClosestDistance(mc.player) >= distWarn) {
+                if (worldborder.getClosestDistance(MC.player) >= distWarn) {
                     event.setCanceled(true);
                 }
             }
