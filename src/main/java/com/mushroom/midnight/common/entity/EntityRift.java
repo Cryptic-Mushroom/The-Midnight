@@ -205,9 +205,8 @@ public class EntityRift extends Entity implements IEntityAdditionalSpawnData {
     private void teleportEntities() {
         AxisAlignedBB bounds = this.getEntityBoundingBox().grow(-0.4, 0.0, -0.4);
         DimensionType endpointDimension = this.getEndpointDimension();
-
         List<Entity> entities = this.world.getEntitiesInAABBexcluding(this, bounds, entity -> {
-            if (entity.isRiding()) {
+            if (entity.isRiding() || (entity instanceof EntityPlayer && ((EntityPlayer)entity).isSpectator())) {
                 return false;
             }
             RiftCooldownCapability cooldown = entity.getCapability(Midnight.riftCooldownCap, null);
