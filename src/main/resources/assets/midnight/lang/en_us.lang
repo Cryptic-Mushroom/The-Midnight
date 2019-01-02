@@ -280,8 +280,8 @@ config.midnight.bladeshroom_damage_chance.tooltip=The chance to take damage when
 config.midnight.can_respawn_in_midnight=Allow to respawn in Midnight
 config.midnight.can_respawn_in_midnight.tooltip=If true, players will be allowed to respawn in Midnight.
 
-config.midnight.hide_dark_overlay_in_midnight=Hide the dark overlay in Midnight
-config.midnight.hide_dark_overlay_in_midnight.tooltip=If true, the circular overlay appearing in dark areas will be hidden in Midnight, without the need to disable the fancy graphics.
+config.midnight.hide_vignette_effect=Hides the vignette effect
+config.midnight.hide_vignette_effect.tooltip=Hides the vignette effect in the dark areas of Midnight.
 
 status.midnight.rift_nearby=You may not rest now, there is an evil presence nearby
 status.midnight.snapped=The fish snapped at you

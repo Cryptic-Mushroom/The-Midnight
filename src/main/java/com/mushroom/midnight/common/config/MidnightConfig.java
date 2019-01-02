@@ -33,10 +33,10 @@ public class MidnightConfig {
     @Config.Comment("If true, players will be allowed to respawn in Midnight.")
     public static boolean canRespawnInMidnight = false;
 
-    @Config.Name("hide_dark_overlay_in_midnight")
-    @Config.LangKey("config.midnight.hide_dark_overlay_in_midnight")
-    @Config.Comment("If true, the circular overlay appearing in dark area will be hidden in midnight, without the need to disable the fancy graphics.")
-    public static boolean hideDarkOverlayInMidnight = false;
+    @Config.Name("hide_vignette_effect")
+    @Config.LangKey("config.midnight.hide_vignette_effect")
+    @Config.Comment("Hides the vignette effect in the dark areas of Midnight.")
+    public static boolean hideVignetteEffect = false;
 
     @SubscribeEvent
     public static void configChanged(ConfigChangedEvent.OnConfigChangedEvent event) {

@@ -280,8 +280,8 @@ config.midnight.bladeshroom_damage_chance.tooltip=La chance de subir des dégât
 config.midnight.can_respawn_in_midnight=Permet de réapparaître dans Minuit
 config.midnight.can_respawn_in_midnight.tooltip=Si vrai, les joueurs seront autorisés à réapparaître dans la dimension de Minuit.
 
-config.midnight.hide_dark_overlay_in_midnight=Cache l'overlay sombre dans Minuit
-config.midnight.hide_dark_overlay_in_midnight.tooltip=Si vrai, l'overlay circulaire apparaissant dans les zones sombres sera caché dans Minuit, sans avoir besoin de désactiver les graphismes détaillés.
+config.midnight.hide_vignette_effect=Cache l'effet de vignette
+config.midnight.hide_vignette_effect.tooltip=Cache l'effet de vignette dans les zones sombres de Minuit.
 
 status.midnight.rift_nearby=Vous ne pouvez pas rester ici pour l'instant, il y a une présence démoniaque à proximitée
 status.midnight.snapped=Le poisson t'a baffé

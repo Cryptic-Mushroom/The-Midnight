@@ -238,7 +238,7 @@ public class ClientEventHandler {
 
     @SubscribeEvent(priority=EventPriority.LOWEST)
     public static void onRenderVignetteOverLay(RenderGameOverlayEvent.Pre event) {
-        if (MidnightConfig.hideDarkOverlayInMidnight && event.getType() == RenderGameOverlayEvent.ElementType.VIGNETTE) {
+        if (MidnightConfig.hideVignetteEffect && event.getType() == RenderGameOverlayEvent.ElementType.VIGNETTE) {
             if (Helper.isMidnightDimension(MC.world)) {
                 WorldBorder worldborder = MC.world.getWorldBorder();
                 float distWarn = Math.max(worldborder.getWarningDistance(), (float) Math.min(worldborder.getResizeSpeed() * worldborder.getWarningTime() * 1000d, Math.abs(worldborder.getTargetSize() - worldborder.getDiameter())));
