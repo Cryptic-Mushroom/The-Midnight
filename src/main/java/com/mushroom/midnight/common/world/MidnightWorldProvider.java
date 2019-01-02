@@ -171,10 +171,13 @@ public class MidnightWorldProvider extends WorldProvider {
     @Nullable
     @SideOnly(Side.CLIENT)
     public IRenderHandler getCloudRenderer() {
-        return new IRenderHandler() {
-            @Override
-            public void render(float partialTicks, WorldClient world, Minecraft mc) {
-            }
-        };
+        if (super.getCloudRenderer() == null) {
+            setCloudRenderer(new IRenderHandler() {
+                @Override
+                public void render(float partialTicks, WorldClient world, Minecraft mc) {
+                }
+            });
+        }
+        return super.getCloudRenderer();
     }
 }
