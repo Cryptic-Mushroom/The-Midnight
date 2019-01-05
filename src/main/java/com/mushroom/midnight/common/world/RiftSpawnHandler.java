@@ -52,7 +52,6 @@ public class RiftSpawnHandler {
         }
 
         World endpointWorld = DimensionManager.getWorld(ModDimensions.MIDNIGHT.getId());
-
         if (!world.isDaytime()) {
             Random random = world.rand;
             Set<BlockPos> spawnRegions = collectPlayerRegions(world.playerEntities);
@@ -64,6 +63,9 @@ public class RiftSpawnHandler {
             for (BlockPos spawnRegion : spawnRegions) {
                 if (random.nextInt(REGION_SPAWN_CHANCE) == 0) {
                     BlockPos riftPosition = generateRiftPosition(random, spawnRegion);
+                    if (endpointWorld != null && (world.getWorldBorder().contains(riftPosition) != endpointWorld.getWorldBorder().contains(riftPosition))) {
+                        continue;
+                    }
                     if (world.isBlockLoaded(riftPosition)) {
                         trySpawnRift(world, riftPosition);
                     } else if (endpointWorld != null && endpointWorld.isBlockLoaded(riftPosition)) {
