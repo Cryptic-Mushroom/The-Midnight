@@ -27,6 +27,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
@@ -36,6 +37,7 @@ import java.util.List;
 public class CommonEventHandler {
     public static final float SOUND_TRAVEL_DISTANCE_MULTIPLIER = 2.0F;
     private static final ThreadLocal<DimensionType> TICKING_DIMENSION = ThreadLocal.withInitial(() -> null);
+    public static int startingTick;
 
     @SubscribeEvent
     public static void onAttachEntityCapabilities(AttachCapabilitiesEvent<Entity> event) {
@@ -78,7 +80,11 @@ public class CommonEventHandler {
     @SubscribeEvent
     public static void onServerTick(TickEvent.ServerTickEvent event) {
         if (event.phase == TickEvent.Phase.END) {
-            RiftSpawnHandler.update();
+            if (startingTick > 0) {
+                startingTick--;
+            } else {
+                RiftSpawnHandler.update();
+            }
         }
     }
 

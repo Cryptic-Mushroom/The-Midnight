@@ -1,6 +1,7 @@
 package com.mushroom.midnight;
 
 import com.google.common.reflect.Reflection;
+import com.mushroom.midnight.common.CommonEventHandler;
 import com.mushroom.midnight.common.CommonProxy;
 import com.mushroom.midnight.common.capability.RiftCooldownCapability;
 import com.mushroom.midnight.common.capability.RifterCapturedCapability;
@@ -36,6 +37,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -139,5 +141,10 @@ public class Midnight {
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
 
+    }
+
+    @Mod.EventHandler
+    public void onServerAboutToStart(FMLServerAboutToStartEvent event) {
+        CommonEventHandler.startingTick = 600;
     }
 }
