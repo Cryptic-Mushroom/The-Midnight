@@ -33,7 +33,10 @@ public class UndergroundPlacementConfig implements IPlacementConfig {
 
     @Override
     public void apply(World world, Random random, BlockPos chunkOrigin, Consumer<BlockPos> generator) {
-        int count = random.nextInt(this.maxCount - this.minCount + 1) + this.minCount;
+        int count = minCount;
+        if (minCount != maxCount) {
+            count = random.nextInt(maxCount - minCount + 1) + minCount;
+        }
         for (int i = 0; i < count; i++) {
             int offsetX = random.nextInt(16) + 8;
             int offsetZ = random.nextInt(16) + 8;
