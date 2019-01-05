@@ -52,7 +52,7 @@ public class ParcelPlacementConfig implements IPlacementConfig {
             int offsetX = random.nextInt(8) - random.nextInt(8);
             int offsetZ = random.nextInt(8) - random.nextInt(8);
 
-            mutablePos.setPos(pos.getX() + offsetX, Math.min(1, pos.getY() - 1), pos.getZ() + offsetZ);
+            mutablePos.setPos(pos.getX() + offsetX, Math.max(1, pos.getY() - 1), pos.getZ() + offsetZ);
             boolean isValid;
             while ((isValid = mutablePos.getY() <= pos.getY() + 1) && !world.isAirBlock(mutablePos)) {
                 mutablePos.move(EnumFacing.UP);
