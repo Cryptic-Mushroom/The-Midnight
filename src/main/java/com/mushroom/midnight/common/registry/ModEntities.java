@@ -3,6 +3,7 @@ package com.mushroom.midnight.common.registry;
 import com.mushroom.midnight.Midnight;
 import com.mushroom.midnight.common.entity.EntityBladeshroomCap;
 import com.mushroom.midnight.common.entity.EntityRift;
+import com.mushroom.midnight.common.entity.creature.EntityCrystalBug;
 import com.mushroom.midnight.common.entity.creature.EntityHunter;
 import com.mushroom.midnight.common.entity.creature.EntityNova;
 import com.mushroom.midnight.common.entity.creature.EntityRifter;
@@ -57,6 +58,14 @@ public class ModEntities {
                         .factory(EntityNova::new)
                         .id(new ResourceLocation(Midnight.MODID, "nova"), currentEntityId++)
                         .name(Midnight.MODID + ".nova")
+                        .tracker(80, 2, true)
+                        /*.egg(0x932C3B, 0x47415E)*/
+                        .build(),
+                EntityEntryBuilder.create()
+                        .entity(EntityCrystalBug.class)
+                        .factory(EntityCrystalBug::new)
+                        .id(new ResourceLocation(Midnight.MODID, "crystal_bug"), currentEntityId++)
+                        .name(Midnight.MODID + ".crystal_bug")
                         .tracker(80, 2, true)
                         /*.egg(0x932C3B, 0x47415E)*/
                         .build()

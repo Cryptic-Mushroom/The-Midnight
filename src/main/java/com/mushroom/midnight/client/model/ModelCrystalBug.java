@@ -1,78 +1,88 @@
 package com.mushroom.midnight.client.model;
 
+import com.mushroom.midnight.common.entity.creature.EntityCrystalBug;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.math.MathHelper;
 
 public class ModelCrystalBug extends ModelBase {
-    private final ModelRenderer Head;
-    private final ModelRenderer Body;
-    private final ModelRenderer Bulb;
-    private final ModelRenderer Wing11;
-    private final ModelRenderer Wing21;
-    private final ModelRenderer Antenna1;
-    private final ModelRenderer Antenna2;
-    private final ModelRenderer Wing12;
-    private final ModelRenderer Wing22;
+    private final ModelRenderer body;
+    private final ModelRenderer wingL;
+    private final ModelRenderer head;
+    private final ModelRenderer bulb;
+    private final ModelRenderer wingR;
+    private final ModelRenderer wingL2;
+    private final ModelRenderer antennaL;
+    private final ModelRenderer antennaR;
+    private final ModelRenderer wingR2;
 
     public ModelCrystalBug() {
         this.textureWidth = 64;
-        this.textureHeight = 64;
-        this.Wing11 = new ModelRenderer(this, 22, 1);
-        this.Wing11.setRotationPoint(-10.2F, 4.6F, 0.5F);
-        this.Wing11.addBox(2.7F, 0.0F, 0.0F, 6, 7, 1, 0.0F);
-        this.setRotateAngle(this.Wing11, 0.0F, 0.0F, 0.091106186954104F);
-        this.Wing21 = new ModelRenderer(this, 39, 1);
-        this.Wing21.setRotationPoint(-3.1F, 5.7F, 0.5F);
-        this.Wing21.addBox(2.7F, 0.0F, 0.0F, 6, 7, 1, 0.0F);
-        this.setRotateAngle(this.Wing21, 0.0F, 0.0F, -0.091106186954104F);
-        this.Head = new ModelRenderer(this, 0, 0);
-        this.Head.setRotationPoint(-3.5F, 0.0F, 0.0F);
-        this.Head.addBox(0.0F, 0.0F, 0.0F, 5, 5, 5, 0.0F);
-        this.Bulb = new ModelRenderer(this, 0, 24);
-        this.Bulb.setRotationPoint(-2.5F, 10.7F, 1.0F);
-        this.Bulb.addBox(0.0F, 0.0F, 0.0F, 3, 6, 3, 0.0F);
-        this.Antenna1 = new ModelRenderer(this, 17, 26);
-        this.Antenna1.setRotationPoint(-3.1F, -3.9F, 0.5F);
-        this.Antenna1.addBox(0.0F, 0.0F, 0.0F, 0, 4, 1, 0.0F);
-        this.Body = new ModelRenderer(this, 0, 11);
-        this.Body.setRotationPoint(-3.0F, 4.8F, 0.5F);
-        this.Body.addBox(0.0F, 0.0F, 0.0F, 4, 6, 4, 0.0F);
-        this.Wing12 = new ModelRenderer(this, 21, 13);
-        this.Wing12.setRotationPoint(-0.7F, 5.4F, 0.5F);
-        this.Wing12.addBox(2.7F, 0.0F, 0.0F, 7, 5, 1, 0.0F);
-        this.setRotateAngle(this.Wing12, 0.0F, 0.0F, 0.091106186954104F);
-        this.Wing22 = new ModelRenderer(this, 39, 13);
-        this.Wing22.setRotationPoint(-0.3F, 6.5F, 0.5F);
-        this.Wing22.addBox(2.7F, 0.0F, 0.0F, 7, 5, 1, 0.0F);
-        this.setRotateAngle(this.Wing22, 0.0F, 0.0F, -0.091106186954104F);
-        this.Antenna2 = new ModelRenderer(this, 22, 26);
-        this.Antenna2.setRotationPoint(0.9F, -3.9F, 0.5F);
-        this.Antenna2.addBox(0.0F, 0.0F, 0.0F, 0, 4, 1, 0.0F);
-        this.Wing11.addChild(this.Wing12);
-        this.Wing21.addChild(this.Wing22);
+        this.textureHeight = 32;
+        this.wingL = new ModelRenderer(this, 0, 11);
+        this.wingL.setRotationPoint(2.0F, 1.1F, 3.1F);
+        this.wingL.addBox(0.0F, 0.0F, 0.0F, 6, 7, 1, 0.0F);
+        this.setRotateAngle(wingL, 0.0F, 0.0F, -0.08726646259971647F);
+        this.antennaR = new ModelRenderer(this, 0, -1);
+        this.antennaR.setRotationPoint(0.5F, -4.0F, 3.0F);
+        this.antennaR.addBox(0.0F, 0.0F, 0.0F, 0, 4, 1, 0.0F);
+        this.antennaL = new ModelRenderer(this, 0, -1);
+        this.antennaL.setRotationPoint(4.5F, -4.0F, 3.0F);
+        this.antennaL.addBox(0.0F, 0.0F, 0.0F, 0, 4, 1, 0.0F);
+        this.head = new ModelRenderer(this, 17, 0);
+        this.head.setRotationPoint(-0.5F, -5.0F, -0.5F);
+        this.head.addBox(0.0F, 0.0F, 0.0F, 5, 5, 5, 0.0F);
+        this.wingR = new ModelRenderer(this, 15, 11);
+        this.wingR.setRotationPoint(2.0F, 1.1F, 3.1F);
+        this.wingR.addBox(-6.0F, 0.0F, 0.0F, 6, 7, 1, 0.0F);
+        this.setRotateAngle(wingR, 0.0F, 0.0F, 0.08726646259971647F);
+        this.wingL2 = new ModelRenderer(this, 0, 20);
+        this.wingL2.setRotationPoint(0.0F, 7.0F, 0.1F);
+        this.wingL2.addBox(0.0F, 0.0F, 0.0F, 7, 5, 1, 0.0F);
+        this.setRotateAngle(wingL2, 0.0F, 0.0F, -0.08726646259971647F);
+        this.bulb = new ModelRenderer(this, 38, 0);
+        this.bulb.setRotationPoint(0.5F, 6.0F, 0.5F);
+        this.bulb.addBox(0.0F, 0.0F, 0.0F, 3, 6, 3, 0.0F);
+        this.wingR2 = new ModelRenderer(this, 0, 26);
+        this.wingR2.setRotationPoint(-1.0F, 7.0F, 0.1F);
+        this.wingR2.addBox(-6.0F, 0.0F, 0.0F, 7, 5, 1, 0.0F);
+        this.setRotateAngle(wingR2, 0.0F, 0.0F, 0.08726646259971647F);
+        this.body = new ModelRenderer(this, 0, 0);
+        this.body.setRotationPoint(-2.0F, -3.0F, -2.0F);
+        this.body.addBox(0.0F, 0.0F, 0.0F, 4, 6, 4, 0.0F);
+
+        this.head.addChild(this.antennaR);
+        this.head.addChild(this.antennaL);
+        this.body.addChild(this.head);
+        this.wingL.addChild(this.wingL2);
+        this.body.addChild(this.wingL);
+        this.wingR.addChild(this.wingR2);
+        this.body.addChild(this.wingR);
+        this.body.addChild(this.bulb);
     }
 
     @Override
-    public void render(Entity entity, float limbSwing, float limbSwingAmount, float age, float yaw, float pitch, float scale) {
-        this.setRotationAngles(limbSwing, limbSwingAmount, age, yaw, pitch, scale, entity);
-
-        this.Wing11.render(scale);
-        this.Wing21.render(scale);
-        this.Head.render(scale);
-        this.Bulb.render(scale);
-        this.Antenna1.render(scale);
-        this.Body.render(scale);
-        this.Antenna2.render(scale);
+    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+        setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entity);
+        body.render(scale);
     }
 
     @Override
-    public void setRotationAngles(float limbSwing, float limbSwingAmount, float age, float yaw, float pitch, float scale, Entity entity) {
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
+        if (((EntityCrystalBug) entityIn).isStanding()) {
+            body.rotateAngleX = 0f;
+            wingR.rotateAngleY = wingL.rotateAngleY = 0f;
+        } else {
+            body.rotateAngleX = (float) Math.PI / 4f + MathHelper.cos(ageInTicks * 0.1f) * 0.15f;
+            wingR.rotateAngleY = Math.abs(MathHelper.cos(ageInTicks)) * (float) Math.PI * 0.35f;
+            wingL.rotateAngleY = -wingR.rotateAngleY;
+        }
     }
 
-    private void setRotateAngle(ModelRenderer box, float x, float y, float z) {
-        box.rotateAngleX = x;
-        box.rotateAngleY = y;
-        box.rotateAngleZ = z;
+    private void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+        modelRenderer.rotateAngleX = x;
+        modelRenderer.rotateAngleY = y;
+        modelRenderer.rotateAngleZ = z;
     }
 }
