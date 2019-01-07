@@ -1,7 +1,8 @@
 package com.mushroom.midnight.common.entity.creature;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityAmbientCreature;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
@@ -9,14 +10,15 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 
 import javax.annotation.Nullable;
+
+import static com.mushroom.midnight.common.registry.ModLootTables.LOOT_TABLE_CRYSTAL_BUG;
 
 public class EntityCrystalBug extends EntityAmbientCreature {
     private static final DataParameter<Boolean> IS_STANDING = EntityDataManager.createKey(EntityCrystalBug.class, DataSerializers.BOOLEAN);
@@ -31,28 +33,6 @@ public class EntityCrystalBug extends EntityAmbientCreature {
     protected void entityInit() {
         super.entityInit();
         dataManager.register(IS_STANDING, false);
-    }
-
-    @Override
-    protected void updateFallState(double y, boolean onGround, IBlockState state, BlockPos pos) {
-        if (!isInWater()) {
-            handleWaterMovement();
-        }
-        if (!world.isRemote && fallDistance > 3f && onGround) {
-            float f = (float) MathHelper.ceil(fallDistance - 3f);
-            if (!state.getBlock().isAir(state, world, pos)) {
-                double d0 = Math.min((double) (0.2f + f / 15f), 2.5d);
-                int i = (int) (150d * d0);
-                if (!state.getBlock().addLandingEffects(state, (WorldServer) world, pos, state, this, i)) {
-                    ((WorldServer) world).spawnParticle(EnumParticleTypes.BLOCK_DUST, posX, posY, posZ, i, 0d, 0d, 0d, 0.15d, Block.getStateId(state));
-                }
-            }
-        }
-        if (onGround) {
-            fallDistance = 0f;
-        } else if (y < 0d) {
-            fallDistance = fallDistance - (float)y;
-        }
     }
 
     @Override
@@ -142,5 +122,54 @@ public class EntityCrystalBug extends EntityAmbientCreature {
                 spawnPosition = blockpos1;
             }
         }
+    }
+
+    @Override
+    protected void collideWithEntity(Entity entityIn) {
+    }
+
+    @Override
+    protected void collideWithNearbyEntities() {
+    }
+
+    @Override
+    public boolean canBePushed() {
+        return false;
+    }
+
+    @Override
+    protected void applyEntityAttributes() {
+        super.applyEntityAttributes();
+        getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(3d);
+    }
+
+    @Override
+    protected boolean canTriggerWalking()
+    {
+        return false;
+    }
+
+    @Override
+    public void fall(float distance, float damageMultiplier) {
+    }
+
+    @Override
+    protected void updateFallState(double y, boolean onGroundIn, IBlockState state, BlockPos pos) {
+    }
+
+    @Override
+    public boolean doesEntityNotTriggerPressurePlate() {
+        return true;
+    }
+
+    @Override
+    public float getEyeHeight() {
+        return height / 3f;
+    }
+
+    @Override
+    @Nullable
+    protected ResourceLocation getLootTable() {
+        return LOOT_TABLE_CRYSTAL_BUG;
     }
 }

@@ -8,4 +8,5 @@ public class ModLootTables {
     public static final ResourceLocation LOOT_TABLE_HUNTER = new ResourceLocation(MODID, "hunter");
     public static final ResourceLocation LOOT_TABLE_RIFTER = new ResourceLocation(MODID, "rifter");
     public static final ResourceLocation LOOT_TABLE_NOVA = new ResourceLocation(MODID, "nova");
+    public static final ResourceLocation LOOT_TABLE_CRYSTAL_BUG = new ResourceLocation(MODID, "crystal_bug");
 }
