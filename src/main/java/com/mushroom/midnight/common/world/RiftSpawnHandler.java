@@ -36,8 +36,8 @@ public class RiftSpawnHandler {
             return;
         }
 
-        World overworld = DimensionManager.getWorld(0);
-        if (overworld == null) {
+        World world = DimensionManager.getWorld(0);
+        if (world == null) {
             if (!warnedOverworldUnloaded) {
                 Midnight.LOGGER.warn("Overworld unloaded! Cannot spawn Midnight rifts");
                 warnedOverworldUnloaded = true;
@@ -45,29 +45,29 @@ public class RiftSpawnHandler {
             return;
         }
 
-        if (!overworld.getGameRules().getBoolean("doRiftSpawning")) {
+        if (!world.getGameRules().getBoolean("doRiftSpawning")) {
             return;
         }
 
-        World midnight = DimensionManager.getWorld(ModDimensions.MIDNIGHT.getId());
-        if (!overworld.isDaytime()) {
-            Random random = overworld.rand;
-            Set<BlockPos> spawnRegions = collectPlayerRegions(overworld.playerEntities);
+        World endpointWorld = DimensionManager.getWorld(ModDimensions.MIDNIGHT.getId());
+        if (!world.isDaytime()) {
+            Random random = world.rand;
+            Set<BlockPos> spawnRegions = collectPlayerRegions(world.playerEntities);
 
-            if (midnight != null) {
-                spawnRegions.addAll(collectPlayerRegions(midnight.playerEntities));
+            if (endpointWorld != null) {
+                spawnRegions.addAll(collectPlayerRegions(endpointWorld.playerEntities));
             }
 
             for (BlockPos spawnRegion : spawnRegions) {
                 if (random.nextInt(MidnightConfig.general.riftSpawnRarity) == 0) {
                     BlockPos riftPosition = generateRiftPosition(random, spawnRegion);
-                    if (midnight != null && (overworld.getWorldBorder().contains(riftPosition) != midnight.getWorldBorder().contains(riftPosition))) {
+                    if (endpointWorld != null && (world.getWorldBorder().contains(riftPosition) != endpointWorld.getWorldBorder().contains(riftPosition))) {
                         continue;
                     }
-                    if (overworld.isBlockLoaded(riftPosition)) {
-                        trySpawnRift(overworld, riftPosition, overworld);
-                    } else if (midnight != null && midnight.isBlockLoaded(riftPosition)) {
-                        trySpawnRift(midnight, riftPosition, overworld);
+                    if (world.isBlockLoaded(riftPosition)) {
+                        trySpawnRift(world, riftPosition);
+                    } else if (endpointWorld != null && endpointWorld.isBlockLoaded(riftPosition)) {
+                        trySpawnRift(endpointWorld, riftPosition);
                     }
                 }
             }
@@ -91,10 +91,10 @@ public class RiftSpawnHandler {
         return spawnRegions;
     }
 
-    private static void trySpawnRift(World world, BlockPos riftPosition, World overworld) {
+    private static void trySpawnRift(World world, BlockPos riftPosition) {
         if (world.isAirBlock(riftPosition)) {
             BlockPos correctedPosition = WorldUtil.findSurface(world, riftPosition, 6);
-            if (correctedPosition == null || !canRiftSpawn(world, correctedPosition, overworld)) {
+            if (correctedPosition == null || !canRiftSpawn(world, correctedPosition)) {
                 return;
             }
             spawnRift(world, correctedPosition);
@@ -117,7 +117,7 @@ public class RiftSpawnHandler {
         world.spawnEntity(rift);
     }
 
-    private static boolean canRiftSpawn(World world, BlockPos pos, World overworld) {
+    private static boolean canRiftSpawn(World world, BlockPos pos) {
         if (world.isAnyPlayerWithinRangeAt(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, PLAYER_SEPARATION)) {
             return false;
         }
@@ -129,7 +129,7 @@ public class RiftSpawnHandler {
         if (!world.getCollisionBoxes(null, bounds).isEmpty()) {
             return false;
         }
-        return !overworld.containsAnyLiquid(bounds) && (Helper.isMidnightDimension(world) || world.getLightFor(EnumSkyBlock.BLOCK, pos) < 4);
+        return Helper.isMidnightDimension(world) || (!world.containsAnyLiquid(bounds) && world.getLightFor(EnumSkyBlock.BLOCK, pos) < 4);
     }
 
     private static BlockPos generateRiftPosition(Random random, BlockPos region) {
