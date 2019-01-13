@@ -93,6 +93,7 @@ public class EntityRifter extends EntityMob implements IRiftTraveler, IEntityAdd
 
         float scaleModifier = Helper.isMidnightDimension(world) ? HOME_SCALE_MODIFIER : 1.0F;
         this.setSize(0.6F * scaleModifier, 1.8F * scaleModifier);
+        stepHeight = 1f;
     }
 
     @Override
@@ -245,7 +246,7 @@ public class EntityRifter extends EntityMob implements IRiftTraveler, IEntityAdd
         return to.getHealth() > from.getHealth();
     }
 
-    public void setCapturedEntity(EntityLivingBase capturedEntity) {
+    public void setCapturedEntity(@Nullable EntityLivingBase capturedEntity) {
         this.captureCooldown = CAPTURE_COOLDOWN;
 
         if (MinecraftForge.EVENT_BUS.post(new RifterReleaseEvent(this, this.capturedEntity))) {

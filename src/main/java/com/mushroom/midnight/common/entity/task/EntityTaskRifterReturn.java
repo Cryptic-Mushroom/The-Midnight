@@ -21,7 +21,7 @@ public class EntityTaskRifterReturn extends EntityAIBase {
     protected final EntityRifter owner;
     protected final double returnSpeed;
 
-    protected int invalidCount;
+    protected int invalidCount = 0;
     protected Path path;
 
     public EntityTaskRifterReturn(EntityRifter owner, double returnSpeed) {
@@ -38,7 +38,7 @@ public class EntityTaskRifterReturn extends EntityAIBase {
 
     @Override
     public boolean shouldContinueExecuting() {
-        return this.shouldReturn() && this.path != null;
+        return this.shouldReturn() && invalidCount <= INVALIDATE_TIME;
     }
 
     public boolean shouldReturn() {
@@ -67,11 +67,12 @@ public class EntityTaskRifterReturn extends EntityAIBase {
         if (currentPath != targetPath) {
             this.owner.getNavigator().setPath(targetPath, this.returnSpeed);
         }
+        invalidCount = this.path == null ? invalidCount++ : 0;
     }
 
     @Nullable
     private Path computeFollowPath() {
-        if (++this.invalidCount > INVALIDATE_TIME || this.isPathComplete(this.path)) {
+        if (this.isPathComplete(this.path)) {
             this.path = null;
             this.invalidCount = 0;
         }
@@ -93,7 +94,6 @@ public class EntityTaskRifterReturn extends EntityAIBase {
                 this.path = this.computePathTowards(surface);
             }
         }
-
         return this.path;
     }
 
