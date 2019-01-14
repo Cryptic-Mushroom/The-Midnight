@@ -11,6 +11,16 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Config.LangKey("midnight.config.title")
 @Mod.EventBusSubscriber(modid = Midnight.MODID)
 public class MidnightConfig {
+    @Config.Name("general")
+    @Config.LangKey("config_cat.midnight.general")
+    @Config.Comment("All the options that can only be set on the server.")
+    public static CatGeneral general = new CatGeneral();
+
+    @Config.Name("client")
+    @Config.LangKey("config_cat.midnight.client")
+    @Config.Comment("All the options that can be modified by players on server.")
+    public static CatClient client = new CatClient();
+
     public static class CatGeneral {
         @Config.Name("midnight_dimension_id")
         @Config.LangKey("config.midnight.midnight_dimension_id")
@@ -43,7 +53,19 @@ public class MidnightConfig {
         @Config.LangKey("config.midnight.rift_spawn_rarity")
         @Config.Comment("The rarity that a rift appears. Larger numbers increase rarity. If 0, rifts don't spawn.")
         @Config.RangeInt(min=0, max=10000)
-        public int riftSpawnRarity = 960;
+        public int riftSpawnRarity = 1000;
+
+        @Config.Name("rifter_spawn_rarity")
+        @Config.LangKey("config.midnight.rifter_spawn_rarity")
+        @Config.Comment("The rarity that rifts spawn rifters. Larger numbers increase rarity. If 0, rifters don't spawn.")
+        @Config.RangeInt(min=0, max=10000)
+        public int rifterSpawnRarity = 1000;
+
+        @Config.Name("max_rifter_by_rift")
+        @Config.LangKey("config.midnight.max_rifter_by_rift")
+        @Config.Comment("The maximum of rifters spawning from a rift.")
+        @Config.RangeInt(min=1, max=5)
+        public int maxRifterByRift = 1;
     }
 
     public static class CatClient {
@@ -52,16 +74,6 @@ public class MidnightConfig {
         @Config.Comment("Hides the vignette effect in the dark areas of Midnight.")
         public boolean hideVignetteEffect = false;
     }
-
-    @Config.Name("general")
-    @Config.LangKey("config_cat.midnight.general")
-    @Config.Comment("All the options that can only be set on the server.")
-    public static CatGeneral general = new CatGeneral();
-
-    @Config.Name("client")
-    @Config.LangKey("config_cat.midnight.client")
-    @Config.Comment("All the options that can be modified by players on server.")
-    public static CatClient client = new CatClient();
 
     @SubscribeEvent
     public static void configChanged(ConfigChangedEvent.OnConfigChangedEvent event) {

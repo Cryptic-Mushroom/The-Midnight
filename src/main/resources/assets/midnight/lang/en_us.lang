@@ -292,8 +292,14 @@ config.midnight.hide_vignette_effect.tooltip=Hides the vignette effect in the da
 config.midnight.allow_lightning_damage=Allow lightning damage
 config.midnight.allow_lightning_damage.tooltip=Allows the lightnings in Midnight to burn the lands and do damage to entities.
 
-config.midnight.rift_spawn_rarity=Rarity for a rift to appear
+config.midnight.rift_spawn_rarity=Rarity of rifts
 config.midnight.rift_spawn_rarity.tooltip=The rarity that a rift appears. Larger numbers increase rarity. If 0, rifts don't spawn.
+
+config.midnight.rifter_spawn_rarity=Rarity of rifters
+config.midnight.rifter_spawn_rarity.tooltip=The rarity that rifts spawn rifters. Larger numbers increase rarity. If 0, rifters don't spawn.
+
+config.midnight.max_rifter_by_rift=Maximum rifters by rift
+config.midnight.max_rifter_by_rift.tooltip=The maximum of rifters spawning from a rift.
 
 status.midnight.rift_nearby=You may not rest now, there is an evil presence nearby
 status.midnight.snapped=The fish snapped at you

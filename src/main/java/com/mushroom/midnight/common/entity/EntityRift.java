@@ -3,6 +3,7 @@ package com.mushroom.midnight.common.entity;
 import com.mushroom.midnight.Midnight;
 import com.mushroom.midnight.client.particle.RiftParticleSystem;
 import com.mushroom.midnight.common.capability.RiftCooldownCapability;
+import com.mushroom.midnight.common.config.MidnightConfig;
 import com.mushroom.midnight.common.entity.creature.EntityRifter;
 import com.mushroom.midnight.common.helper.Helper;
 import com.mushroom.midnight.common.registry.ModDimensions;
@@ -49,7 +50,7 @@ public class EntityRift extends Entity implements IEntityAdditionalSpawnData {
 
     private boolean wasStable = true;
 
-    private boolean spawnedRifter;
+    private int spawnedRifters;
 
     private boolean invalid;
 
@@ -121,33 +122,32 @@ public class EntityRift extends Entity implements IEntityAdditionalSpawnData {
         }
 
         if (this.world.getGameRules().getBoolean("doMobSpawning")) {
-            if (!this.spawnedRifter && !this.isUnstable() && this.world.rand.nextInt(1000) == 0) {
-                AxisAlignedBB existingRifterBounds = this.getEntityBoundingBox().grow(16.0);
-                List<EntityRifter> existingRifters = this.world.getEntitiesWithinAABB(EntityRifter.class, existingRifterBounds);
-                if (existingRifters.isEmpty()) {
-                    this.trySpawnRifter();
+            if (!this.isUnstable() && MidnightConfig.general.rifterSpawnRarity > 0 && this.spawnedRifters < MidnightConfig.general.maxRifterByRift) {
+                if (trySpawnRifter()) {
+                    this.countRifters++;
                 }
             }
         }
     }
 
-    private void trySpawnRifter() {
-        for (int attempts = 0; attempts < 4; attempts++) {
-            float theta = (float) (this.world.rand.nextFloat() * Math.PI * 2.0F);
-            float offsetX = -MathHelper.sin(theta) * this.width * 0.9F;
-            float offsetZ = MathHelper.cos(theta) * this.width * 0.9F;
-
-            EntityRifter rifter = new EntityRifter(this.world);
-            rifter.spawnedThroughRift = true;
-
-            rifter.setPositionAndRotation(this.posX + offsetX, this.posY, this.posZ + offsetZ, (float) Math.toDegrees(theta), 0.0F);
-
-            if (rifter.isNotColliding()) {
-                this.world.spawnEntity(rifter);
-                this.spawnedRifter = true;
-                return;
-            }
+    private boolean trySpawnRifter() {
+        if (this.world.rand.nextInt(MidnightConfig.general.rifterSpawnRarity) != 0) {
+            return false;
         }
+        float theta = (float) (this.world.rand.nextFloat() * Math.PI * 2.0F);
+        float offsetX = -MathHelper.sin(theta) * this.width * 0.9F;
+        float offsetZ = MathHelper.cos(theta) * this.width * 0.9F;
+
+        EntityRifter rifter = new EntityRifter(this.world);
+        rifter.spawnedThroughRift = true;
+
+        rifter.setPositionAndRotation(this.posX + offsetX, this.posY, this.posZ + offsetZ, (float) Math.toDegrees(theta), 0.0F);
+
+        if (rifter.isNotColliding()) {
+            this.world.spawnEntity(rifter);
+            return true;
+        }
+        return false;
     }
 
     private void pullEntities() {
@@ -317,7 +317,7 @@ public class EntityRift extends Entity implements IEntityAdditionalSpawnData {
     @Override
     protected void writeEntityToNBT(NBTTagCompound compound) {
         compound.setLong("geometry_seed", this.geometry.getSeed());
-        compound.setBoolean("spawned_rifter", this.spawnedRifter);
+        compound.setInteger("spawned_rifters", this.spawnedRifters);
         if (this.bridge != null) {
             compound.setInteger("bridge_id", this.bridge.getId());
         }
@@ -326,7 +326,7 @@ public class EntityRift extends Entity implements IEntityAdditionalSpawnData {
     @Override
     protected void readEntityFromNBT(NBTTagCompound compound) {
         this.initGeometry(compound.getLong("geometry_seed"));
-        this.spawnedRifter = compound.getBoolean("spawned_rifter");
+        this.spawnedRifters = compound.getInteger("spawned_rifters");
         if (compound.hasKey("bridge_id")) {
             this.invalid = this.initBridge(compound.getInteger("bridge_id"));
         }
