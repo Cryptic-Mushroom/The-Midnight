@@ -6,7 +6,9 @@ import com.mushroom.midnight.common.entity.EntityRift;
 import com.mushroom.midnight.common.entity.creature.EntityCrystalBug;
 import com.mushroom.midnight.common.entity.creature.EntityHunter;
 import com.mushroom.midnight.common.entity.creature.EntityNova;
+import com.mushroom.midnight.common.entity.creature.EntityPenumbrian;
 import com.mushroom.midnight.common.entity.creature.EntityRifter;
+import com.mushroom.midnight.common.entity.creature.EntityTreeHopper;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.util.ResourceLocation;
@@ -68,6 +70,22 @@ public class ModEntities {
                         .name(Midnight.MODID + ".crystal_bug")
                         .tracker(80, 3, false)
                         .egg(0x4B2277, 0xAF27E0)
+                        .build(),
+                EntityEntryBuilder.create()
+                        .entity(EntityPenumbrian.class)
+                        .factory(EntityPenumbrian::new)
+                        .id(new ResourceLocation(Midnight.MODID, "penumbrian"), currentEntityId++)
+                        .name(Midnight.MODID + ".penumbrian")
+                        .tracker(80, 3, true)
+                        //.egg(0x4B2277, 0xAF27E0)
+                        .build(),
+                EntityEntryBuilder.create()
+                        .entity(EntityTreeHopper.class)
+                        .factory(EntityTreeHopper::new)
+                        .id(new ResourceLocation(Midnight.MODID, "tree_hopper"), currentEntityId++)
+                        .name(Midnight.MODID + ".tree_hopper")
+                        .tracker(80, 3, true)
+                        //.egg(0x4B2277, 0xAF27E0)
                         .build()
         );
 
