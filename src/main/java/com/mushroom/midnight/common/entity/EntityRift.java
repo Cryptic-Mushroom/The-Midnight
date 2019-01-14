@@ -124,7 +124,7 @@ public class EntityRift extends Entity implements IEntityAdditionalSpawnData {
         }
 
         if (this.world.getGameRules().getBoolean("doMobSpawning")) {
-            if (!this.isUnstable() && MidnightConfig.general.rifterSpawnRarity > 0 && this.spawnedRifters < MidnightConfig.general.maxRifterByRift) {
+            if (!this.isUnstable() && MidnightConfig.general.rifterSpawnRarity > 0 && this.spawnedRifters < MidnightConfig.general.maxRifterByRift && this.world.rand.nextInt(MidnightConfig.general.rifterSpawnRarity) != 0) {
                 if (trySpawnRifter()) {
                     this.spawnedRifters++;
                     this.failedSpawn = 0;
@@ -138,9 +138,6 @@ public class EntityRift extends Entity implements IEntityAdditionalSpawnData {
     }
 
     private boolean trySpawnRifter() {
-        if (this.world.rand.nextInt(MidnightConfig.general.rifterSpawnRarity) != 0) {
-            return false;
-        }
         float theta = (float) (this.world.rand.nextFloat() * Math.PI * 2.0F);
         float offsetX = -MathHelper.sin(theta) * this.width * 0.9F;
         float offsetZ = MathHelper.cos(theta) * this.width * 0.9F;
