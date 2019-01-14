@@ -127,6 +127,7 @@ public class EntityRift extends Entity implements IEntityAdditionalSpawnData {
             if (!this.isUnstable() && MidnightConfig.general.rifterSpawnRarity > 0 && this.spawnedRifters < MidnightConfig.general.maxRifterByRift) {
                 if (trySpawnRifter()) {
                     this.spawnedRifters++;
+                    this.failedSpawn = 0;
                 } else {
                     if (++failedSpawn > 5) {
                         this.spawnedRifters = MidnightConfig.general.maxRifterByRift;
