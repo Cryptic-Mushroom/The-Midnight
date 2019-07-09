@@ -1,5 +1,6 @@
 package com.mushroom.midnight.common.entity.creature;
 
+import com.mushroom.midnight.common.entity.task.FishJumpGoal;
 import com.mushroom.midnight.common.registry.MidnightItems;
 import com.mushroom.midnight.common.registry.MidnightLootTables;
 import com.mushroom.midnight.common.registry.MidnightSounds;
@@ -19,11 +20,9 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class DeceitfulSnapperEntity extends AbstractFishEntity {
-    private BlockPos spawnPosition;
 
     public DeceitfulSnapperEntity(EntityType<? extends DeceitfulSnapperEntity> entityType, World world) {
         super(entityType, world);
@@ -51,11 +50,13 @@ public class DeceitfulSnapperEntity extends AbstractFishEntity {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.1D, false) {
+        this.goalSelector.addGoal(2, new FishJumpGoal(this, 60));
+        this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.1D, false) {
         });
-        this.goalSelector.addGoal(4, new RandomSwimmingGoal(this, 1.0D, 40){});
+        this.goalSelector.addGoal(4, new RandomSwimmingGoal(this, 1.0D, 40) {
+        });
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class,true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
 
     }
 
@@ -87,7 +88,7 @@ public class DeceitfulSnapperEntity extends AbstractFishEntity {
     }
 
     public boolean attackEntityAsMob(Entity entityIn) {
-        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float)((int)this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getValue()));
+        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getValue()));
         if (flag) {
             this.applyEnchantments(this, entityIn);
         }
