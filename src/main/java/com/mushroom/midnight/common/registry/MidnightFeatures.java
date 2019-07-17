@@ -1,46 +1,18 @@
 package com.mushroom.midnight.common.registry;
 
 import com.mushroom.midnight.Midnight;
-import com.mushroom.midnight.common.world.feature.AlgaeFeature;
-import com.mushroom.midnight.common.world.feature.BogFungiFlowersFeature;
-import com.mushroom.midnight.common.world.feature.BogweedFlowersFeature;
-import com.mushroom.midnight.common.world.feature.BulbFungiFlowersFeature;
-import com.mushroom.midnight.common.world.feature.CrystalClusterFeature;
-import com.mushroom.midnight.common.world.feature.CrystalFlowersFeature;
-import com.mushroom.midnight.common.world.feature.DeadLogFeature;
-import com.mushroom.midnight.common.world.feature.FungiFlowersFeature;
-import com.mushroom.midnight.common.world.feature.HeapFeature;
-import com.mushroom.midnight.common.world.feature.MidnightDoublePlantFeature;
-import com.mushroom.midnight.common.world.feature.MidnightOreFeature;
-import com.mushroom.midnight.common.world.feature.MossFeature;
-import com.mushroom.midnight.common.world.feature.NightstoneBoulderFeature;
-import com.mushroom.midnight.common.world.feature.ScatteredPlantFeature;
-import com.mushroom.midnight.common.world.feature.SpikeFeature;
-import com.mushroom.midnight.common.world.feature.TallBogFungiFeature;
-import com.mushroom.midnight.common.world.feature.TallFungiFeature;
-import com.mushroom.midnight.common.world.feature.TrenchstoneBoulderFeature;
+import com.mushroom.midnight.common.world.feature.*;
 import com.mushroom.midnight.common.world.feature.config.CrystalClusterConfig;
 import com.mushroom.midnight.common.world.feature.config.MidnightOreConfig;
 import com.mushroom.midnight.common.world.feature.config.UniformCompositionConfig;
-import com.mushroom.midnight.common.world.feature.tree.DarkWillowTreeFeature;
-import com.mushroom.midnight.common.world.feature.tree.DeadTreeFeature;
-import com.mushroom.midnight.common.world.feature.tree.LargeBogshroomFeature;
-import com.mushroom.midnight.common.world.feature.tree.LargeBulbFungusFeature;
-import com.mushroom.midnight.common.world.feature.tree.LargeDewshroomFeature;
-import com.mushroom.midnight.common.world.feature.tree.LargeNightshroomFeature;
-import com.mushroom.midnight.common.world.feature.tree.LargeViridshroomFeature;
-import com.mushroom.midnight.common.world.feature.tree.MediumDewshroomFeature;
-import com.mushroom.midnight.common.world.feature.tree.MediumNightshroomFeature;
-import com.mushroom.midnight.common.world.feature.tree.MediumViridshroomFeature;
-import com.mushroom.midnight.common.world.feature.tree.ShadowrootTreeFeature;
-import com.mushroom.midnight.common.world.feature.tree.SmallDewshroomFeature;
-import com.mushroom.midnight.common.world.feature.tree.SmallNightshroomFeature;
-import com.mushroom.midnight.common.world.feature.tree.SmallViridshroomFeature;
+import com.mushroom.midnight.common.world.feature.structure.WellStructure;
+import com.mushroom.midnight.common.world.feature.tree.*;
 import com.mushroom.midnight.common.world.template.ShelfAttachProcessor;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.DoublePlantConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.ObjectHolder;
@@ -103,7 +75,6 @@ public class MidnightFeatures {
 //                }
 //            }
 //    };
-
     public static final AbstractTreeFeature<NoFeatureConfig> SHADOWROOT_TREE = new ShadowrootTreeFeature(NoFeatureConfig::deserialize);
     public static final AbstractTreeFeature<NoFeatureConfig> DARK_WILLOW_TREE = new DarkWillowTreeFeature(NoFeatureConfig::deserialize);
     public static final Feature<NoFeatureConfig> DEAD_TREE = new DeadTreeFeature(NoFeatureConfig::deserialize, ShelfAttachProcessor.FOREST_SHELF_BLOCKS);
@@ -147,6 +118,8 @@ public class MidnightFeatures {
 
     public static final Feature<MidnightOreConfig> ORE = new MidnightOreFeature(MidnightOreConfig::deserialize);
 
+    //structure
+    public static final Structure<NoFeatureConfig> WELL = new WellStructure(NoFeatureConfig::deserialize);
     @SubscribeEvent
     public static void registerFeatures(IForgeRegistry<Feature<?>> event) {
         RegUtil.generic(event)
@@ -183,6 +156,7 @@ public class MidnightFeatures {
                 .add("trenchstone_boulder", TRENCHSTONE_BOULDER)
                 .add("crystal_cluster", CRYSTAL_CLUSTER)
                 .add("crystal_spire", CRYSTAL_SPIRE)
-                .add("ore", ORE);
+                .add("ore", ORE)
+                .add("well", WELL);
     }
 }

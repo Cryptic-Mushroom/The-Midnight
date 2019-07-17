@@ -28,6 +28,7 @@ public class NightPlainsBiome extends SurfaceBiome {
 
         MidnightBiomeConfigurator.addStandardMonsterSpawns(this);
         MidnightBiomeConfigurator.addStandardCreatureSpawns(this);
+        MidnightBiomeConfigurator.addWell(this);
 
         add(Midnight.MIDNIGHT_MOB, new SpawnListEntry(MidnightEntities.HUNTER, 5, 1, 2));
     }

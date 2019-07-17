@@ -13,19 +13,8 @@ import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.feature.BushConfig;
-import net.minecraft.world.gen.feature.DoublePlantConfig;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.GrassFeatureConfig;
-import net.minecraft.world.gen.feature.IFeatureConfig;
-import net.minecraft.world.gen.feature.SingleRandomFeature;
-import net.minecraft.world.gen.feature.TwoFeatureChoiceConfig;
-import net.minecraft.world.gen.placement.ChanceConfig;
-import net.minecraft.world.gen.placement.CountRangeConfig;
-import net.minecraft.world.gen.placement.FrequencyConfig;
-import net.minecraft.world.gen.placement.HeightWithChanceConfig;
-import net.minecraft.world.gen.placement.IPlacementConfig;
-import net.minecraft.world.gen.placement.Placement;
+import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.placement.*;
 
 public class MidnightBiomeConfigurator {
     public static void addGlobalOres(ConfigurableBiome biome) {
@@ -349,6 +338,13 @@ public class MidnightBiomeConfigurator {
                 MidnightFeatures.LARGE_BULB_FUNGUS, IFeatureConfig.NO_FEATURE_CONFIG,
                 MidnightPlacements.COUNT_UNDERGROUND, new FrequencyConfig(3)
         ));
+    }
+
+    public static void addWell(ConfigurableBiome biome) {
+        biome.add(GenerationStage.Decoration.SURFACE_STRUCTURES, Biome.createDecoratedFeature(
+                MidnightFeatures.WELL, IFeatureConfig.NO_FEATURE_CONFIG,
+                Placement.NOPE, IPlacementConfig.NO_PLACEMENT_CONFIG)
+        );
     }
 
     public static void addStandardCreatureSpawns(ConfigurableBiome biome) {
