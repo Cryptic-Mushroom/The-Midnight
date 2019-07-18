@@ -354,7 +354,7 @@ public class MidnightBiomeConfigurator {
     public static void addWell(ConfigurableBiome biome) {
         biome.add(GenerationStage.Decoration.SURFACE_STRUCTURES, Biome.createDecoratedFeature(
                 MidnightFeatures.WELL, IFeatureConfig.NO_FEATURE_CONFIG,
-                Placement.NOPE, IPlacementConfig.NO_PLACEMENT_CONFIG)
+                MidnightPlacements.CHANCE_SURFACE, new ChanceConfig(60))
         );
     }
 

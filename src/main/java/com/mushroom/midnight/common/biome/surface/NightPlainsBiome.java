@@ -25,7 +25,6 @@ public class NightPlainsBiome extends SurfaceBiome {
         MidnightBiomeConfigurator.addNightstoneSpikesAndBoulders(this);
 
         MidnightBiomeConfigurator.addGlobalFeatures(this);
-
         MidnightBiomeConfigurator.addStandardMonsterSpawns(this);
         MidnightBiomeConfigurator.addStandardCreatureSpawns(this);
         MidnightBiomeConfigurator.addWell(this);

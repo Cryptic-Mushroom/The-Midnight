@@ -42,7 +42,6 @@ import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.DoublePlantConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
-import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.ObjectHolder;
@@ -149,7 +148,7 @@ public class MidnightFeatures {
     public static final Feature<MidnightOreConfig> ORE = new MidnightOreFeature(MidnightOreConfig::deserialize);
 
     //structure
-    public static final Structure<NoFeatureConfig> WELL = new WellStructure(NoFeatureConfig::deserialize);
+    public static final Feature<NoFeatureConfig> WELL = new WellStructure(NoFeatureConfig::deserialize);
     @SubscribeEvent
     public static void registerFeatures(IForgeRegistry<Feature<?>> event) {
         RegUtil.generic(event)
@@ -188,5 +187,10 @@ public class MidnightFeatures {
                 .add("crystal_spire", CRYSTAL_SPIRE)
                 .add("ore", ORE)
                 .add("well", WELL);
+
+        //I think it is necessary when generating the structure
+        //Feature.STRUCTURES.put("Well".toLowerCase(Locale.ROOT), WELL);
+        //Registry.register(Registry.STRUCTURE_FEATURE, new ResourceLocation(Midnight.MODID,"well"), WELL);
     }
+
 }

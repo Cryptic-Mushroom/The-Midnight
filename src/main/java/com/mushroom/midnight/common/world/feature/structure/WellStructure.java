@@ -1,83 +1,67 @@
 package com.mushroom.midnight.common.world.feature.structure;
 
 import com.mojang.datafixers.Dynamic;
-import com.mushroom.midnight.common.registry.MidnightFeatures;
-import net.minecraft.util.Rotation;
-import net.minecraft.util.SharedSeedRandom;
+import com.mushroom.midnight.Midnight;
+import com.mushroom.midnight.common.world.template.CompiledTemplate;
+import com.mushroom.midnight.common.world.template.RotatedSettingConfigurator;
+import com.mushroom.midnight.common.world.template.TemplateCompiler;
+import com.mushroom.midnight.common.world.template.TemplateMarkers;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.ChunkPos;
-import net.minecraft.util.math.MutableBoundingBox;
-import net.minecraft.world.biome.Biome;
+import net.minecraft.world.IWorld;
+import net.minecraft.world.IWorldReader;
 import net.minecraft.world.gen.ChunkGenerator;
+import net.minecraft.world.gen.GenerationSettings;
+import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
-import net.minecraft.world.gen.feature.structure.Structure;
-import net.minecraft.world.gen.feature.structure.StructureStart;
-import net.minecraft.world.gen.feature.template.TemplateManager;
+import net.minecraft.world.gen.feature.template.PlacementSettings;
+import net.minecraft.world.gen.feature.template.Template;
 
 import java.util.Random;
 import java.util.function.Function;
 
-public class WellStructure extends Structure<NoFeatureConfig> {
+public class WellStructure extends Feature<NoFeatureConfig> {
+    protected final ResourceLocation template;
+
+    private TemplateCompiler templateCompiler;
+
     public WellStructure(Function<Dynamic<?>, ? extends NoFeatureConfig> p_i49910_1_) {
         super(p_i49910_1_);
+        this.template = new ResourceLocation(Midnight.MODID, "well");
     }
 
-    protected ChunkPos getStartPositionForPosition(ChunkGenerator<?> chunkGenerator, Random random, int x, int z, int spacingOffsetsX, int spacingOffsetsZ) {
-        int i = 16;//distance
-        int j = 8;//separation
-
-
-        int k = x + i * spacingOffsetsX;
-        int l = z + i * spacingOffsetsZ;
-        int i1 = k < 0 ? k - i + 1 : k;
-        int j1 = l < 0 ? l - i + 1 : l;
-        int k1 = i1 / i;
-        int l1 = j1 / i;
-        ((SharedSeedRandom) random).setLargeFeatureSeedWithSalt(chunkGenerator.getSeed(), k1, l1, 14357618);
-        k1 = k1 * i;
-        l1 = l1 * i;
-        k1 = k1 + random.nextInt(i - j);
-        l1 = l1 + random.nextInt(i - j);
-        return new ChunkPos(k1, l1);
-    }
-
-
-    public boolean hasStartAt(ChunkGenerator<?> chunkGen, Random rand, int chunkPosX, int chunkPosZ) {
-        Biome biome = chunkGen.getBiomeProvider().getBiome(new BlockPos((chunkPosX << 4) + 9, 0, (chunkPosZ << 4) + 9));
-
-        if (chunkGen.hasStructure(biome, MidnightFeatures.WELL)) {
-            return true;
+    @Override
+    public boolean place(IWorld world, ChunkGenerator<? extends GenerationSettings> generator, Random random, BlockPos pos, NoFeatureConfig config) {
+        if (this.templateCompiler == null) {
+            this.templateCompiler = this.buildCompiler();
         }
 
-        return false;
+        CompiledTemplate template = this.templateCompiler.compile(world, random, pos.down(9));
+        TemplateMarkers markers = template.markers;
+
+
+        template.addTo(world, random, 2 | 16);
+
+        return true;
     }
 
-    public Structure.IStartFactory getStartFactory() {
-        return WellStructure.Start::new;
+    protected TemplateCompiler buildCompiler() {
+        return TemplateCompiler.of(this.template)
+                .withSettingConfigurator(RotatedSettingConfigurator.INSTANCE)
+                .withProcessor(this::processState);
     }
 
-    public String getStructureName() {
-        return "Well";
-    }
-
-    public int getSize() {
-        return 3;
-    }
-
-    public static class Start extends StructureStart {
-        public Start(Structure<?> p_i51165_1_, int p_i51165_2_, int p_i51165_3_, Biome p_i51165_4_, MutableBoundingBox p_i51165_5_, int p_i51165_6_, long p_i51165_7_) {
-            super(p_i51165_1_, p_i51165_2_, p_i51165_3_, p_i51165_4_, p_i51165_5_, p_i51165_6_, p_i51165_7_);
+    protected Template.BlockInfo processState(IWorldReader world, BlockPos origin, Template.BlockInfo srcInfo, Template.BlockInfo info, PlacementSettings settings) {
+        BlockState state = info.state;
+        Block block = state.getBlock();
+        if (block == Blocks.STRUCTURE_BLOCK || block == Blocks.AIR) {
+            return null;
         }
-
-        public void init(ChunkGenerator<?> generator, TemplateManager templateManagerIn, int chunkX, int chunkZ, Biome biomeIn) {
-            Rotation rotation = Rotation.values()[this.rand.nextInt(Rotation.values().length)];
-            BlockPos blockpos = new BlockPos(chunkX * 16, 90, chunkZ * 16);
-            WellPieces.generateWell(templateManagerIn, blockpos, rotation, this.components, this.rand);
-            this.recalculateStructureSize();
-        }
-
-        public BlockPos getPos() {
-            return new BlockPos((this.getChunkPosX() << 4) + 9, 0, (this.getChunkPosZ() << 4) + 9);
-        }
+        return info;
     }
+
+
 }
