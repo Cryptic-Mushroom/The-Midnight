@@ -20,7 +20,6 @@ public class HillyFungiForestBiome extends SurfaceBiome {
         MidnightBiomeConfigurator.addDenseSmallFungis(this);
         MidnightBiomeConfigurator.addDenseTallFungis(this);
         MidnightBiomeConfigurator.addDeadViridShroomAndCache(this);
-        MidnightBiomeConfigurator.addDeadViridShroomAndCache(this);
         MidnightBiomeConfigurator.addGrasses(this);
         MidnightBiomeConfigurator.addBladeshrooms(this);
 
