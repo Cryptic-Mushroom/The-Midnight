@@ -354,8 +354,15 @@ public class MidnightBiomeConfigurator {
     public static void addWell(ConfigurableBiome biome) {
         biome.add(GenerationStage.Decoration.SURFACE_STRUCTURES, Biome.createDecoratedFeature(
                 MidnightFeatures.WELL, IFeatureConfig.NO_FEATURE_CONFIG,
-                MidnightPlacements.CHANCE_SURFACE, new ChanceConfig(60))
+                MidnightPlacements.CHANCE_SURFACE, new ChanceConfig(100))
         );
+    }
+
+    public static void addDeadViridShroomAndCache(ConfigurableBiome biome) {
+        biome.add(GenerationStage.Decoration.SURFACE_STRUCTURES, Biome.createDecoratedFeature(
+                MidnightFeatures.DEAD_VIRIDSHROOM_AND_CACHE, IFeatureConfig.NO_FEATURE_CONFIG,
+                MidnightPlacements.CHANCE_SURFACE, new ChanceConfig(45)
+        ));
     }
 
     public static void addStandardCreatureSpawns(ConfigurableBiome biome) {
@@ -378,7 +385,7 @@ public class MidnightBiomeConfigurator {
 
     public static void addForestSpawns(ConfigurableBiome biome) {
         addMonster(biome, MidnightEntities.SKULK, 100, 1, 2);
-        addCreature(biome, MidnightEntities.SHADE_SQUIRREL, 60, 2, 3);
+        addCreature(biome, MidnightEntities.SHADE_SQUIRREL, 65, 2, 3);
     }
 
     private static void addCreature(ConfigurableBiome biome, EntityType<?> type, int weight, int minGroupSize, int maxGroupSize) {

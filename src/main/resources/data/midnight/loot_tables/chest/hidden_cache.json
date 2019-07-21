@@ -1,0 +1,53 @@
+{
+  "pools": [
+    {
+      "name": "midnight:hidden_cache",
+      "rolls": {
+        "min": 2.0,
+        "max": 4.0,
+        "type": "minecraft:uniform"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 20,
+          "name": "midnight:bladeshroom_cap"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "midnight:dark_stick",
+          "weight": 30
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 30,
+          "name": "midnight:glob_fungus_hand"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 25,
+          "name": "midnight:deceitful_snapper"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "midnight:shadowroot_sword",
+          "functions": [
+            {
+              "function": "set_damage",
+              "damage": {
+                "min": 0.15,
+                "max": 0.80
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "midnight:rockshroom_clump"
+        }
+      ]
+    }
+  ]
+}

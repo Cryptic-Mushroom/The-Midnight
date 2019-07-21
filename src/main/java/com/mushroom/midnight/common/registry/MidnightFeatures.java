@@ -19,6 +19,7 @@ import com.mushroom.midnight.common.world.feature.SpikeFeature;
 import com.mushroom.midnight.common.world.feature.TallBogFungiFeature;
 import com.mushroom.midnight.common.world.feature.TallFungiFeature;
 import com.mushroom.midnight.common.world.feature.TrenchstoneBoulderFeature;
+import com.mushroom.midnight.common.world.feature.ViridshroomCacheFeature;
 import com.mushroom.midnight.common.world.feature.config.CrystalClusterConfig;
 import com.mushroom.midnight.common.world.feature.config.MidnightOreConfig;
 import com.mushroom.midnight.common.world.feature.config.UniformCompositionConfig;
@@ -149,6 +150,8 @@ public class MidnightFeatures {
 
     //structure
     public static final Feature<NoFeatureConfig> WELL = new WellStructure(NoFeatureConfig::deserialize);
+    public static final Feature<NoFeatureConfig> DEAD_VIRIDSHROOM_AND_CACHE = new ViridshroomCacheFeature(NoFeatureConfig::deserialize);
+
     @SubscribeEvent
     public static void registerFeatures(IForgeRegistry<Feature<?>> event) {
         RegUtil.generic(event)
@@ -168,6 +171,7 @@ public class MidnightFeatures {
                 .add("small_nightshroom", SMALL_NIGHTSHROOM)
                 .add("small_dewshroom", SMALL_DEWSHROOM)
                 .add("small_viridshroom", SMALL_VIRIDSHROOM)
+                .add("vidshoroom_cache", DEAD_VIRIDSHROOM_AND_CACHE)
                 .add("suavis", SUAVIS)
                 .add("deceitful_algae", DECEITFUL_ALGAE)
                 .add("deceitful_moss", DECEITFUL_MOSS)

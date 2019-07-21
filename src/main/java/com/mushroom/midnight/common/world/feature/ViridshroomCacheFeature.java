@@ -1,4 +1,4 @@
-package com.mushroom.midnight.common.world.feature.structure;
+package com.mushroom.midnight.common.world.feature;
 
 import com.mojang.datafixers.Dynamic;
 import com.mushroom.midnight.Midnight;
@@ -25,14 +25,14 @@ import net.minecraft.world.gen.feature.template.Template;
 import java.util.Random;
 import java.util.function.Function;
 
-public class WellStructure extends Feature<NoFeatureConfig> {
+public class ViridshroomCacheFeature extends Feature<NoFeatureConfig> {
     protected final ResourceLocation template;
 
     private TemplateCompiler templateCompiler;
 
-    public WellStructure(Function<Dynamic<?>, ? extends NoFeatureConfig> p_i49910_1_) {
+    public ViridshroomCacheFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> p_i49910_1_) {
         super(p_i49910_1_);
-        this.template = new ResourceLocation(Midnight.MODID, "well");
+        this.template = new ResourceLocation(Midnight.MODID, "mushroom/viridshroom_cache");
     }
 
     @Override
@@ -45,7 +45,7 @@ public class WellStructure extends Feature<NoFeatureConfig> {
             this.templateCompiler = this.buildCompiler();
         }
 
-        CompiledTemplate template = this.templateCompiler.compile(world, random, pos.down(9));
+        CompiledTemplate template = this.templateCompiler.compile(world, random, pos.down(1));
         TemplateMarkers markers = template.markers;
 
 
