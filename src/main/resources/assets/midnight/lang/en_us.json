@@ -463,6 +463,7 @@
   "potion.midnight.confusion": "Confusion",
 
   "_comment": "DamageSources",
+
   "death.midnight.bladeshroom": "%s was pricked to death by a bladeshroom",
   "death.midnight.deceitful_snapper": "%s was chomped up",
   "death.midnight.rockshroom_spore": "%s was hit by rockshroom spores",
@@ -504,6 +505,7 @@
   "tooltip.midnight.pressure_plate.light_weighted": "Light weighted",
 
   "_comment": "Subtitles",
+
   "subtitles.ambient.midnight": "Eerie howling",
   "subtitles.entity.rift.idle": "Rift hums",
   "subtitles.entity.rift.unstable": "Rift phases",

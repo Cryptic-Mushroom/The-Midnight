@@ -297,11 +297,11 @@
 
   "item.midnight.bladeshroom_cap": "Chapeau de ChampiLame",
   "item.midnight.bladeshroom_spores": "Spores de ChampiLame",
-  
+
   "item.midnight.deceitful_snapper_bucket": "Vivaneau Fourbe dans un sceau",
-  
+
   "_comment": "Spawn Eggs",
-  
+
   "item.midnight.rifter_spawn_egg": "Oeuf d'apparition de Passeur de Faille",
   "item.midnight.hunter_spawn_egg": "Oeuf d'apparition de Chasseur",
   "item.midnight.nova_spawn_egg": "Oeuf d'apparition de Nova",
@@ -463,6 +463,7 @@
   "potion.midnight.confusion": "Confusion",
 
   "_comment": "DamageSources",
+
   "death.midnight.bladeshroom": "%s a été piqué mortellement par un ChampiLame",
   "death.midnight.deceitful_snapper": "%s a été dévoré",
   "death.midnight.rockshroom_spore": "%s a été touché par un spore de ChampiRoche",
@@ -504,6 +505,7 @@
   "tooltip.midnight.pressure_plate.light_weighted": "pondérée légère",
 
   "_comment": "Subtitles",
+
   "subtitles.ambient.midnight": "Hurlement étrange",
   "subtitles.entity.rift.idle": "Faille bourdonne",
   "subtitles.entity.rift.unstable": "Faille vascille",
