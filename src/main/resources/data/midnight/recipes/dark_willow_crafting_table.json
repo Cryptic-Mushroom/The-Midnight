@@ -5,7 +5,12 @@
     "AA"
   ],
   "key": {
-    "A": {"item": "midnight:dark_willow_planks"}
+    "A": {
+      "item": "midnight:dark_willow_planks"
+    }
   },
-  "result": {"item": "midnight:dark_willow_crafting_table"}
+  "result": {
+    "item": "midnight:dark_willow_crafting_table",
+    "count": 1
+  }
 }

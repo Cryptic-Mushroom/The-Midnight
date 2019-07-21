@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "midnight:viridshroom_roots"
+      "item": "midnight:viridshroom_flowering_roots"
     }
   ],
   "result": {
     "item": "midnight:viridshroom_powder",
-    "count": 1
+    "count": 2
   }
 }

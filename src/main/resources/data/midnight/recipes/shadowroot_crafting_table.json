@@ -5,7 +5,12 @@
     "AA"
   ],
   "key": {
-    "A": {"item": "midnight:shadowroot_planks"}
+    "A": {
+      "item": "midnight:shadowroot_planks"
+    }
   },
-  "result": {"item": "midnight:shadowroot_crafting_table"}
+  "result": {
+    "item": "midnight:shadowroot_crafting_table",
+    "count": 1
+  }
 }

@@ -1,12 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "|#|",
-    "|#|"
+    "BAB",
+    "BAB"
   ],
   "key": {
-    "|": {"item": "midnight:dark_stick"},
-    "#": {"item": "midnight:dewshroom_planks"}
+    "A": {
+      "item": "midnight:dewshroom_planks"
+    },
+    "B": {
+      "item": "midnight:dark_stick"
+    }
   },
   "result": {
     "item": "midnight:dewshroom_fence_gate",

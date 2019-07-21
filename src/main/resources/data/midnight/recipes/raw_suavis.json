@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "midnight:suavis"
+    }
+  ],
+  "result": {
+    "item": "midnight:raw_suavis",
+    "count": 4
+  }
+}

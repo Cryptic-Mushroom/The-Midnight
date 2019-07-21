@@ -2,18 +2,19 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "AA",
-    "SA",
-    "S "
+    "BA",
+    "B "
   ],
   "key": {
     "A": {
       "item": "midnight:ebonite"
     },
-    "S": {
+    "B": {
       "item": "midnight:dark_stick"
     }
   },
   "result": {
-    "item": "midnight:ebonite_axe"
+    "item": "midnight:ebonite_axe",
+    "count": 1
   }
 }

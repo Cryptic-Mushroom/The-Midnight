@@ -1,11 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "###",
-    "###"
+    "AAA",
+    "AAA"
   ],
   "key": {
-    "#": {"item": "midnight:tenebrum_ingot"}
+    "A": {
+      "item": "midnight:tenebrum_ingot"
+    }
   },
   "result": {
     "item": "midnight:tenebrum_trapdoor",

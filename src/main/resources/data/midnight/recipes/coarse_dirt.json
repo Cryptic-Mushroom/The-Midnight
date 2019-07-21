@@ -1,14 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "DG",
-    "GD"
+    "AB",
+    "BA"
   ],
   "key": {
-    "D": {
+    "A": {
       "item": "midnight:dirt"
     },
-    "G": {
+    "B": {
       "item": "midnight:deceitful_peat"
     }
   },

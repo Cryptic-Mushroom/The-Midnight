@@ -1,16 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "###",
-    "# #",
-    "###"
+    "AAA",
+    "A A",
+    "AAA"
   ],
   "key": {
-    "#": {
+    "A": {
       "item": "midnight:shadowroot_planks"
     }
   },
   "result": {
-    "item": "midnight:shadowroot_chest"
+    "item": "midnight:shadowroot_chest",
+    "count": 1
   }
 }

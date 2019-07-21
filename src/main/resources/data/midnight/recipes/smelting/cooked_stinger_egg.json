@@ -1,0 +1,10 @@
+{
+  "experience": 0.35,
+  "cookingtime": 200,
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "midnight:stinger_egg"
+  },
+  "result": "midnight:cooked_stinger_egg",
+  "count": 1
+}

@@ -1,13 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "wooden_door",
   "pattern": [
-    "##",
-    "##",
-    "##"
+    "AA",
+    "AA",
+    "AA"
   ],
   "key": {
-    "#": {"item": "midnight:dewshroom_planks"}
+    "A": {
+      "item": "midnight:dewshroom_planks"
+    }
   },
   "result": {
     "item": "midnight:dewshroom_door",

@@ -1,12 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "#  ",
-    "## ",
-    "###"
+    "A  ",
+    "AA ",
+    "AAA"
   ],
   "key": {
-    "#": {"item": "midnight:nightstone"}
+    "A": {
+      "item": "midnight:nightstone"
+    }
   },
   "result": {
     "item": "midnight:nightstone_stairs",

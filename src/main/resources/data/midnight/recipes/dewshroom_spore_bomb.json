@@ -1,16 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "spore_bomb",
   "pattern": [
-    " 0 ",
-    "010",
-	" 0 "
+    " A ",
+    "ABA",
+    " A "
   ],
   "key": {
-    "0": {"item": "midnight:dewshroom_powder"},
-    "1": {"item": "midnight:dark_pearl"}
+    "A": {
+      "item": "midnight:dewshroom_powder"
+    },
+    "B": {
+      "item": "midnight:dark_pearl"
+    }
   },
   "result": {
-    "item": "midnight:dewshroom_spore_bomb"
+    "item": "midnight:dewshroom_spore_bomb",
+    "count": 1
   }
 }

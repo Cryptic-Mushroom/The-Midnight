@@ -1,14 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "##"
+    "AA"
   ],
   "key": {
-    "#": {
+    "A": {
       "item": "midnight:tenebrum_ingot"
     }
   },
   "result": {
-    "item": "midnight:tenebrum_pressure_plate"
+    "item": "midnight:tenebrum_pressure_plate",
+    "count": 1
   }
 }

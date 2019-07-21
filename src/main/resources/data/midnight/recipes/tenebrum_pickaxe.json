@@ -2,18 +2,19 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "AAA",
-    " S ",
-    " S "
+    " B ",
+    " B "
   ],
   "key": {
     "A": {
       "item": "midnight:tenebrum_ingot"
     },
-    "S": {
+    "B": {
       "item": "midnight:dark_stick"
     }
   },
   "result": {
-    "item": "midnight:tenebrum_pickaxe"
+    "item": "midnight:tenebrum_pickaxe",
+    "count": 1
   }
 }

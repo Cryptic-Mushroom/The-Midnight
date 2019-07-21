@@ -1,13 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "| |",
-    "|#|",
-    "| |"
+    "B B",
+    "BAB",
+    "B B"
   ],
   "key": {
-    "|": {"item": "midnight:dark_stick"},
-    "#": {"item": "midnight:nightshroom_planks"}
+    "A": {
+      "item": "midnight:nightshroom_planks"
+    },
+    "B": {
+      "item": "midnight:dark_stick"
+    }
   },
   "result": {
     "item": "midnight:nightshroom_ladder",

@@ -1,11 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "###",
-    "###"
+    "AAA",
+    "AAA"
   ],
   "key": {
-    "#": {"item": "midnight:rockshroom_bricks"}
+    "A": {
+      "item": "midnight:rockshroom_bricks"
+    }
   },
   "result": {
     "item": "midnight:rockshroom_brick_wall",

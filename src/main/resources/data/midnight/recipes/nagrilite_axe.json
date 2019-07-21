@@ -2,18 +2,19 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "AA",
-    "SA",
-    "S "
+    "BA",
+    "B "
   ],
   "key": {
     "A": {
       "item": "midnight:nagrilite_ingot"
     },
-    "S": {
+    "B": {
       "item": "midnight:dark_stick"
     }
   },
   "result": {
-    "item": "midnight:nagrilite_axe"
+    "item": "midnight:nagrilite_axe",
+    "count": 1
   }
 }

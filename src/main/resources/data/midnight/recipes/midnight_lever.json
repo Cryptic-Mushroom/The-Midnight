@@ -1,18 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "X",
-    "#"
+    "A",
+    "B"
   ],
   "key": {
-    "#": {
-      "item": "midnight:nightstone"
-    },
-    "X": {
+    "A": {
       "item": "midnight:dark_stick"
+    },
+    "B": {
+      "item": "midnight:nightstone"
     }
   },
   "result": {
-    "item": "midnight:midnight_lever"
+    "item": "midnight:midnight_lever",
+    "count": 1
   }
 }

@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "item": "midnight:ebonite_ore"
-  },
-  "result": "midnight:ebonite",
-  "experience": 1.0,
-  "cookingtime": 100
-}

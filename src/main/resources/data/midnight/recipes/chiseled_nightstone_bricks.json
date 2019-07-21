@@ -1,11 +1,14 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {"item": "midnight:nightstone_bricks"},
-    {"item": "midnight:nightstone_bricks"},
-    {"item": "midnight:nightstone_bricks"},
-    {"item": "midnight:nightstone_bricks"}
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AA",
+    "AA"
   ],
+  "key": {
+    "A": {
+      "item": "midnight:nightstone_bricks"
+    }
+  },
   "result": {
     "item": "midnight:chiseled_nightstone_bricks",
     "count": 4

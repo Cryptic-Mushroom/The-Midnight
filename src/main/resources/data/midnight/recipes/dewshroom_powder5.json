@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "midnight:dewshroom_roots"
+      "item": "midnight:dewshroom_flowering_roots"
     }
   ],
   "result": {
     "item": "midnight:dewshroom_powder",
-    "count": 1
+    "count": 2
   }
 }

@@ -3,17 +3,18 @@
   "pattern": [
     "A",
     "A",
-    "S"
+    "B"
   ],
   "key": {
     "A": {
       "item": "midnight:ebonite"
     },
-    "S": {
+    "B": {
       "item": "midnight:dark_stick"
     }
   },
   "result": {
-    "item": "midnight:ebonite_sword"
+    "item": "midnight:ebonite_sword",
+    "count": 1
   }
 }

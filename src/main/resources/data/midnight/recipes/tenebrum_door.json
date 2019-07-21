@@ -1,12 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "##",
-    "##",
-    "##"
+    "AA",
+    "AA",
+    "AA"
   ],
   "key": {
-    "#": {
+    "A": {
       "item": "midnight:tenebrum_ingot"
     }
   },

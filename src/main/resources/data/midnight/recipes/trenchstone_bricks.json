@@ -1,13 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "##",
-	"##"
+    "AA",
+    "AA"
   ],
   "key": {
-    "#": {"item": "midnight:trenchstone"}
+    "A": {
+      "item": "midnight:trenchstone"
+    }
   },
   "result": {
-    "item": "midnight:trenchstone_bricks"
+    "item": "midnight:trenchstone_bricks",
+    "count": 4
   }
 }

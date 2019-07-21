@@ -1,11 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "###",
-    "###"
+    "AAA",
+    "AAA"
   ],
   "key": {
-    "#": {"item": "midnight:viridshroom_planks"}
+    "A": {
+      "item": "midnight:viridshroom_planks"
+    }
   },
   "result": {
     "item": "midnight:viridshroom_trapdoor",

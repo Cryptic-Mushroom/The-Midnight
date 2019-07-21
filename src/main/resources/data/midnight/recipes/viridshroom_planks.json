@@ -1,7 +1,9 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {"item": "midnight:viridshroom_stem"}
+    {
+      "item": "midnight:viridshroom_stem"
+    }
   ],
   "result": {
     "item": "midnight:viridshroom_planks",

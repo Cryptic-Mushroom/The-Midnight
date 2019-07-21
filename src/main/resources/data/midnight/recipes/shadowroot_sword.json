@@ -3,17 +3,18 @@
   "pattern": [
     "A",
     "A",
-    "S"
+    "B"
   ],
   "key": {
     "A": {
       "item": "midnight:shadowroot_planks"
     },
-    "S": {
+    "B": {
       "item": "midnight:dark_stick"
     }
   },
   "result": {
-    "item": "midnight:shadowroot_sword"
+    "item": "midnight:shadowroot_sword",
+    "count": 1
   }
 }

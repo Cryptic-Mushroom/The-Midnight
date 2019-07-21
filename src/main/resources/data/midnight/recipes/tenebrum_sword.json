@@ -3,17 +3,18 @@
   "pattern": [
     "A",
     "A",
-    "S"
+    "B"
   ],
   "key": {
     "A": {
       "item": "midnight:tenebrum_ingot"
     },
-    "S": {
+    "B": {
       "item": "midnight:dark_stick"
     }
   },
   "result": {
-    "item": "midnight:tenebrum_sword"
+    "item": "midnight:tenebrum_sword",
+    "count": 1
   }
 }

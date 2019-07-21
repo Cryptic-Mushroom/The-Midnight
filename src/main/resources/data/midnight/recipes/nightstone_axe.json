@@ -2,18 +2,19 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "AA",
-    "SA",
-    "S "
+    "BA",
+    "B "
   ],
   "key": {
     "A": {
       "item": "midnight:nightstone"
     },
-    "S": {
+    "B": {
       "item": "midnight:dark_stick"
     }
   },
   "result": {
-    "item": "midnight:nightstone_axe"
+    "item": "midnight:nightstone_axe",
+    "count": 1
   }
 }

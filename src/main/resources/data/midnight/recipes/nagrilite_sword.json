@@ -3,17 +3,18 @@
   "pattern": [
     "A",
     "A",
-    "S"
+    "B"
   ],
   "key": {
     "A": {
       "item": "midnight:nagrilite_ingot"
     },
-    "S": {
+    "B": {
       "item": "midnight:dark_stick"
     }
   },
   "result": {
-    "item": "midnight:nagrilite_sword"
+    "item": "midnight:nagrilite_sword",
+    "count": 1
   }
 }

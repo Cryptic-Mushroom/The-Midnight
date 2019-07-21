@@ -1,10 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "###"
+    "AAA"
   ],
   "key": {
-    "#": {"item": "midnight:nightstone"}
+    "A": {
+      "item": "midnight:nightstone"
+    }
   },
   "result": {
     "item": "midnight:nightstone_slab",

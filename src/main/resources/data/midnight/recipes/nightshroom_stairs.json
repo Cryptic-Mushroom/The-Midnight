@@ -1,12 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "#  ",
-    "## ",
-    "###"
+    "A  ",
+    "AA ",
+    "AAA"
   ],
   "key": {
-    "#": {"item": "midnight:nightshroom_planks"}
+    "A": {
+      "item": "midnight:nightshroom_planks"
+    }
   },
   "result": {
     "item": "midnight:nightshroom_stairs",

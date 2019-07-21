@@ -5,7 +5,12 @@
     "AA"
   ],
   "key": {
-    "A": {"item": "midnight:dewshroom_planks"}
+    "A": {
+      "item": "midnight:dewshroom_planks"
+    }
   },
-  "result": {"item": "midnight:dewshroom_crafting_table"}
+  "result": {
+    "item": "midnight:dewshroom_crafting_table",
+    "count": 1
+  }
 }

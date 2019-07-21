@@ -5,7 +5,12 @@
     "AA"
   ],
   "key": {
-    "A": {"item": "midnight:viridshroom_planks"}
+    "A": {
+      "item": "midnight:viridshroom_planks"
+    }
   },
-  "result": {"item": "midnight:viridshroom_crafting_table"}
+  "result": {
+    "item": "midnight:viridshroom_crafting_table",
+    "count": 1
+  }
 }

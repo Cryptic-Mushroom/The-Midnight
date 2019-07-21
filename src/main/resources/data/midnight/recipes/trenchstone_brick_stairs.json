@@ -1,12 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "#  ",
-    "## ",
-    "###"
+    "A  ",
+    "AA ",
+    "AAA"
   ],
   "key": {
-    "#": {"item": "midnight:trenchstone_bricks"}
+    "A": {
+      "item": "midnight:trenchstone_bricks"
+    }
   },
   "result": {
     "item": "midnight:trenchstone_brick_stairs",

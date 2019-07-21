@@ -1,12 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "#  ",
-    "## ",
-    "###"
+    "A  ",
+    "AA ",
+    "AAA"
   ],
   "key": {
-    "#": {"item": "midnight:dark_willow_planks"}
+    "A": {
+      "item": "midnight:dark_willow_planks"
+    }
   },
   "result": {
     "item": "midnight:dark_willow_stairs",

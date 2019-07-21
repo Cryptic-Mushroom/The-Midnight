@@ -1,12 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "#  ",
-    "## ",
-    "###"
+    "A  ",
+    "AA ",
+    "AAA"
   ],
   "key": {
-    "#": {"item": "midnight:shadowroot_planks"}
+    "A": {
+      "item": "midnight:shadowroot_planks"
+    }
   },
   "result": {
     "item": "midnight:shadowroot_stairs",

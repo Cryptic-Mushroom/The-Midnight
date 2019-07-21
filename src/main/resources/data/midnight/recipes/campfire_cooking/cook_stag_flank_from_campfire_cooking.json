@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:campfire_cooking",
-  "ingredient": {
-    "item": "midnight:raw_stag_flank"
-  },
-  "result": "midnight:cooked_stag_flank",
-  "experience": 0.35,
-  "cookingtime": 400
-}
