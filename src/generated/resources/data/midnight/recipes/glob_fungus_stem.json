@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "midnight:glob_fungus_hand"
+    }
+  },
+  "result": {
+    "item": "midnight:glob_fungus_stem"
+  }
+}

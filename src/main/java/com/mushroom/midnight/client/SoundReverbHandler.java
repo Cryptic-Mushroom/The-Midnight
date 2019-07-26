@@ -1,7 +1,7 @@
 package com.mushroom.midnight.client;
 
 import com.mushroom.midnight.Midnight;
-import com.mushroom.midnight.common.helper.Helper;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.World;
 import org.lwjgl.openal.AL;
@@ -80,6 +80,6 @@ public class SoundReverbHandler {
     }
 
     private static boolean shouldEcho(World world) {
-        return Helper.isMidnightDimension(world);
+        return MidnightUtil.isMidnightDimension(world);
     }
 }

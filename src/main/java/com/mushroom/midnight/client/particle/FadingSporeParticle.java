@@ -1,6 +1,6 @@
 package com.mushroom.midnight.client.particle;
 
-import com.mushroom.midnight.common.helper.Helper;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
@@ -18,7 +18,7 @@ public class FadingSporeParticle extends MidnightParticle {
         this.motionX = motionX;
         this.motionY = motionY + 0.01d;
         this.motionZ = motionZ;
-        float[] rgbF = Helper.getRGBColorF(color);
+        float[] rgbF = MidnightUtil.getRGBColorF(color);
         setColor(MathHelper.clamp(rgbF[0] + (this.rand.nextFloat() * 0.2f - 0.1f), 0f, 1f), MathHelper.clamp(rgbF[1] + (this.rand.nextFloat() * 0.2f - 0.1f), 0f, 1f), MathHelper.clamp(rgbF[2] + (this.rand.nextFloat() * 0.2f - 0.1f), 0f, 1f));
         this.particleAlpha = 1f;
         this.particleScale = 0f;

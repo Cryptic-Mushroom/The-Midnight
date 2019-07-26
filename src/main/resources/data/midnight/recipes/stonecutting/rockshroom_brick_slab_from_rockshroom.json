@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "midnight:rockshroom"
-  },
-  "result": "midnight:rockshroom_brick_slab",
-  "count": 2
-}

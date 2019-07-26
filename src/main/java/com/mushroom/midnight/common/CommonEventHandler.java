@@ -9,7 +9,7 @@ import com.mushroom.midnight.common.config.MidnightConfig;
 import com.mushroom.midnight.common.entity.RiftEntity;
 import com.mushroom.midnight.common.event.RifterCaptureEvent;
 import com.mushroom.midnight.common.event.RifterReleaseEvent;
-import com.mushroom.midnight.common.helper.Helper;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import com.mushroom.midnight.common.registry.MidnightDimensions;
 import com.mushroom.midnight.common.registry.MidnightEffects;
 import com.mushroom.midnight.common.world.GlobalBridgeManager;
@@ -69,7 +69,7 @@ public class CommonEventHandler {
 
     @SubscribeEvent
     public static void onAttachChunkCapabilities(AttachCapabilitiesEvent<Chunk> event) {
-        if (Helper.isMidnightDimension(event.getObject().getWorld())) {
+        if (MidnightUtil.isMidnightDimension(event.getObject().getWorld())) {
             event.addCapability(new ResourceLocation(Midnight.MODID, "cavernous_biomes"), new CavernousBiomeStore());
         }
     }
@@ -78,7 +78,7 @@ public class CommonEventHandler {
     public static void onAttachWorldCapabilities(AttachCapabilitiesEvent<World> event) {
         World world = event.getObject();
 
-        if (Helper.isMidnightDimension(world)) {
+        if (MidnightUtil.isMidnightDimension(world)) {
             if (!world.isRemote && world instanceof ServerWorld) {
                 MidnightWorldSpawners spawners = new MidnightWorldSpawners.SurfaceAndCave((ServerWorld) world);
                 event.addCapability(new ResourceLocation(Midnight.MODID, "world_spawners"), spawners);

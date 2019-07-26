@@ -1,7 +1,7 @@
 package com.mushroom.midnight.client.sound;
 
 import com.mushroom.midnight.client.IdleSoundController;
-import com.mushroom.midnight.common.helper.Helper;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ITickableSound;
 import net.minecraft.client.audio.LocatableSound;
@@ -25,7 +25,7 @@ public class MidnightIdleSound extends LocatableSound implements ITickableSound 
 
     @Override
     public boolean isDonePlaying() {
-        return MC.player == null || !Helper.isMidnightDimension(MC.player.world);
+        return MC.player == null || !MidnightUtil.isMidnightDimension(MC.player.world);
     }
 
     @Override

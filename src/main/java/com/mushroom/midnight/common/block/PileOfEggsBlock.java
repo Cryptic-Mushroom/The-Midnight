@@ -1,6 +1,6 @@
 package com.mushroom.midnight.common.block;
 
-import com.mushroom.midnight.common.helper.Helper;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import com.mushroom.midnight.common.registry.MidnightEntities;
 import com.mushroom.midnight.common.registry.MidnightSounds;
 import net.minecraft.block.Block;
@@ -127,7 +127,7 @@ public abstract class PileOfEggsBlock extends Block {
 
         float chance = (EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, stack) > 0 ? 0.6f : 0.2f) + 0.1f * EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, player.getHeldItemMainhand());
         if (world.rand.nextFloat() <= chance) {
-            Helper.spawnItemStack(world, pos, this);
+            MidnightUtil.spawnItemStack(world, pos, this);
         } else {
             breakEggs(world, pos, state);
         }

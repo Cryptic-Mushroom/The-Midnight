@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "midnight:trenchstone"
-  },
-  "result": "midnight:trenchstone_brick_stairs",
-  "count": 1
-}

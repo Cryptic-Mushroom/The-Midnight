@@ -2,7 +2,7 @@ package com.mushroom.midnight.common.entity.task;
 
 import com.mushroom.midnight.common.entity.RiftEntity;
 import com.mushroom.midnight.common.entity.creature.RifterEntity;
-import com.mushroom.midnight.common.helper.Helper;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import net.minecraft.entity.ai.RandomPositionGenerator;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.player.PlayerEntity;
@@ -32,7 +32,7 @@ public class RifterKeepNearRiftGoal extends Goal {
     }
 
     private boolean shouldReturn() {
-        if (Helper.isMidnightDimension(this.owner.world) || this.owner.getAttackTarget() instanceof PlayerEntity) {
+        if (MidnightUtil.isMidnightDimension(this.owner.world) || this.owner.getAttackTarget() instanceof PlayerEntity) {
             return false;
         }
         Optional<RiftEntity> homeRift = this.owner.getHomeRift().deref(false);

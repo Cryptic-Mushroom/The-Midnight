@@ -1,6 +1,6 @@
 package com.mushroom.midnight.common.block;
 
-import com.mushroom.midnight.common.helper.Helper;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import com.mushroom.midnight.common.registry.MidnightCriterion;
 import com.mushroom.midnight.common.registry.MidnightItems;
 import net.minecraft.block.Block;
@@ -109,7 +109,7 @@ public class SuavisBlock extends Block implements IGrowable {
         player.addStat(Stats.BLOCK_MINED.get(this));
         player.addExhaustion(0.005F);
         //harvesters.set(player);
-        Helper.spawnItemStack(world, pos, state.getBlock()); //dropBlockAsItem(world, pos, state, EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, stack));
+        MidnightUtil.spawnItemStack(world, pos, state.getBlock()); //dropBlockAsItem(world, pos, state, EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, stack));
 
         //harvesters.set(null);
         if (!world.isRemote && !player.isCreative() && player instanceof ServerPlayerEntity) {

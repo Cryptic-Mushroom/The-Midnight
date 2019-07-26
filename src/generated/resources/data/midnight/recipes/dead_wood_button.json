@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "midnight_buttons",
+  "ingredients": [
+    {
+      "item": "midnight:dead_wood_planks"
+    }
+  ],
+  "result": {
+    "item": "midnight:dead_wood_button"
+  }
+}

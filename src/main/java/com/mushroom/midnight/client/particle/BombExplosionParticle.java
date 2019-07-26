@@ -1,7 +1,7 @@
 package com.mushroom.midnight.client.particle;
 
 import com.mojang.blaze3d.platform.GlStateManager;
-import com.mushroom.midnight.common.helper.Helper;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.ActiveRenderInfo;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -26,7 +26,7 @@ public class BombExplosionParticle extends MidnightParticle {
         super(world, x, y, z, 0d, 0d, 0d);
         this.lifeTime = 6 + this.rand.nextInt(4);
         //float f = this.rand.nextFloat() * 0.6f + 0.4f;
-        float[] rgbF = Helper.getRGBColorF(color);
+        float[] rgbF = MidnightUtil.getRGBColorF(color);
         setColor(rgbF[0], rgbF[1], rgbF[2]);
         this.size = 1f - (float) scale * 0.5f;
     }

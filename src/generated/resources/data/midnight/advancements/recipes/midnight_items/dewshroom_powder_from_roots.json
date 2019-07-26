@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "midnight:dewshroom_powder_from_roots"
+    ]
+  },
+  "criteria": {
+    "has_fungi": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "midnight:dewshroom"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "midnight:dewshroom_powder_from_roots"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_fungi",
+      "has_the_recipe"
+    ]
+  ]
+}

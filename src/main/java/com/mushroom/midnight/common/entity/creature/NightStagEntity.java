@@ -9,7 +9,7 @@ import com.mushroom.midnight.common.entity.task.ChargeGoal;
 import com.mushroom.midnight.common.entity.task.EatGrassGoal;
 import com.mushroom.midnight.common.entity.task.NeutralGoal;
 import com.mushroom.midnight.common.entity.task.SearchForBlockGoal;
-import com.mushroom.midnight.common.helper.Helper;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import com.mushroom.midnight.common.item.UnstableFruitItem;
 import com.mushroom.midnight.common.registry.MidnightBlocks;
 import com.mushroom.midnight.common.registry.MidnightCriterion;
@@ -100,7 +100,7 @@ public class NightStagEntity extends AnimalEntity {
         if (this.rand.nextInt(5) == 0) {
             setGrowingAge(GROWING_TIME);
         }
-        if (Helper.isMidnightDimension(world)) {
+        if (MidnightUtil.isMidnightDimension(world)) {
             Biome biome = world.getBiome(getPosition());
             int random = this.rand.nextInt(3);
             if (biome == MidnightSurfaceBiomes.VIGILANT_FOREST || biome == MidnightSurfaceBiomes.HILLY_VIGILANT_FOREST) {
@@ -367,7 +367,7 @@ public class NightStagEntity extends AnimalEntity {
         public void startExecuting() {
             super.startExecuting();
             if (!isChild() && getAttackTarget() == null && getRNG().nextFloat() < 0.1f) {
-                if (closestEntity instanceof ServerPlayerEntity && Helper.isNotFakePlayer(closestEntity)) {
+                if (closestEntity instanceof ServerPlayerEntity && MidnightUtil.isNotFakePlayer(closestEntity)) {
                     MidnightCriterion.NIGHTSTAG_BOW[getAntlerType()].trigger((ServerPlayerEntity) closestEntity);
                 }
                 animCap.setAnimation(this.entity, Type.CURTSEY, 40);

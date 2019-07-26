@@ -7,7 +7,7 @@ import com.mushroom.midnight.client.sound.IdleRiftSound;
 import com.mushroom.midnight.common.capability.RifterCapturable;
 import com.mushroom.midnight.common.config.MidnightConfig;
 import com.mushroom.midnight.common.entity.RiftEntity;
-import com.mushroom.midnight.common.helper.Helper;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import com.mushroom.midnight.common.registry.MidnightEffects;
 import com.mushroom.midnight.common.registry.MidnightSounds;
 import com.mushroom.midnight.common.registry.MidnightSurfaceBiomes;
@@ -87,7 +87,7 @@ public class ClientEventHandler {
                     playingMusic = null;
                 }
 
-                if (Helper.isMidnightDimension(player.world)) {
+                if (MidnightUtil.isMidnightDimension(player.world)) {
                     spawnAmbientParticles(player);
                     playAmbientSounds(player);
                 } else {
@@ -158,7 +158,7 @@ public class ClientEventHandler {
                 return;
             }
         }
-        if (Helper.isMidnightDimension(event.getInfo().getRenderViewEntity().world)) {
+        if (MidnightUtil.isMidnightDimension(event.getInfo().getRenderViewEntity().world)) {
             GlStateManager.fogMode(GlStateManager.FogMode.EXP);
             event.setCanceled(true);
             event.setDensity(0.015f);
@@ -226,7 +226,7 @@ public class ClientEventHandler {
             return;
         }
 
-        if (CLIENT.player != null && Helper.isMidnightDimension(CLIENT.player.world)) {
+        if (CLIENT.player != null && MidnightUtil.isMidnightDimension(CLIENT.player.world)) {
             SoundEvent sound = getMusicSound(CLIENT.player);
             if (sound == null || playingMusic != null) {
                 event.setResultSound(null);
@@ -266,7 +266,7 @@ public class ClientEventHandler {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onRenderVignetteOverLay(RenderGameOverlayEvent.Pre event) {
         if (MidnightConfig.client.hideVignetteEffect.get() && event.getType() == RenderGameOverlayEvent.ElementType.VIGNETTE) {
-            if (Helper.isMidnightDimension(CLIENT.world)) {
+            if (MidnightUtil.isMidnightDimension(CLIENT.world)) {
                 WorldBorder worldborder = CLIENT.world.getWorldBorder();
                 float distWarn = Math.max(worldborder.getWarningDistance(), (float) Math.min(worldborder.getResizeSpeed() * worldborder.getWarningTime() * 1000d, Math.abs(worldborder.getTargetSize() - worldborder.getDiameter())));
                 if (worldborder.getClosestDistance(CLIENT.player) >= distWarn) {

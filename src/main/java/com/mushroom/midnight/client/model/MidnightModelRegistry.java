@@ -35,7 +35,7 @@ import com.mushroom.midnight.common.entity.projectile.BladeshroomCapEntity;
 import com.mushroom.midnight.common.entity.projectile.NovaSpikeEntity;
 import com.mushroom.midnight.common.entity.projectile.SporeBombEntity;
 import com.mushroom.midnight.common.entity.projectile.ThrownGeodeEntity;
-import com.mushroom.midnight.common.helper.Helper;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import com.mushroom.midnight.common.registry.MidnightBlocks;
 import com.mushroom.midnight.common.registry.MidnightContainers;
 import com.mushroom.midnight.common.tile.base.CacheTileEntity;
@@ -122,6 +122,6 @@ public class MidnightModelRegistry {
     }
 
     private static boolean isMidnight() {
-        return Helper.isMidnightDimension(MC.world);
+        return MidnightUtil.isMidnightDimension(MC.world);
     }
 }

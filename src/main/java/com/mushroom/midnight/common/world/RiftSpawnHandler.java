@@ -5,7 +5,7 @@ import com.mushroom.midnight.common.config.MidnightConfig;
 import com.mushroom.midnight.common.entity.RiftAttachment;
 import com.mushroom.midnight.common.entity.RiftBridge;
 import com.mushroom.midnight.common.entity.RiftEntity;
-import com.mushroom.midnight.common.helper.Helper;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import com.mushroom.midnight.common.registry.MidnightDimensions;
 import com.mushroom.midnight.common.registry.MidnightEntities;
 import com.mushroom.midnight.common.registry.MidnightGameRules;
@@ -132,7 +132,7 @@ public class RiftSpawnHandler {
         if (!world.areCollisionShapesEmpty(bounds)) {
             return false;
         }
-        return Helper.isMidnightDimension(world) || (!world.containsAnyLiquid(bounds) && world.getLightFor(LightType.BLOCK, pos) < 4);
+        return MidnightUtil.isMidnightDimension(world) || (!world.containsAnyLiquid(bounds) && world.getLightFor(LightType.BLOCK, pos) < 4);
     }
 
     private static BlockPos generateRiftPosition(Random random, BlockPos region) {

@@ -21,6 +21,10 @@ public class MidnightTags {
         public static final Tag<Block> LOGS = tag("logs");
         public static final Tag<Block> BONEMEAL_GROUNDS = tag("bonemeal_grounds");
         public static final Tag<Block> PLANTABLE_GROUNDS = tag("plantable_grounds");
+        public static final Tag<Block> BOGSHROOM = tag("bogshroom");
+        public static final Tag<Block> DEWSHROOM = tag("dewshroom");
+        public static final Tag<Block> NIGHTSHROOM = tag("nightshroom");
+        public static final Tag<Block> VIRIDSHROOM = tag("viridshroom");
 
         private static Tag<Block> tag(String name) {
             return new BlockTags.Wrapper(new ResourceLocation(MODID, name));
@@ -30,9 +34,13 @@ public class MidnightTags {
     public static class Items {
         public static final Tag<Item> SPORE_BOMBS = tag("spore_bombs");
         public static final Tag<Item> UNSTABLE_FRUITS = tag("unstable_fruits");
-        public static final Tag<Item> MIDNIGHT_PLANKS = tag("midnight_planks");
         public static final Tag<Item> FUNGI_STEMS = tag("fungi_stems");
         public static final Tag<Item> LOGS = tag("logs");
+        public static final Tag<Item> STICKS = tag("sticks");
+        public static final Tag<Item> BOGSHROOM = tag("bogshroom");
+        public static final Tag<Item> DEWSHROOM = tag("dewshroom");
+        public static final Tag<Item> NIGHTSHROOM = tag("nightshroom");
+        public static final Tag<Item> VIRIDSHROOM = tag("viridshroom");
 
         private static Tag<Item> tag(String name) {
             return new ItemTags.Wrapper(new ResourceLocation(MODID, name));

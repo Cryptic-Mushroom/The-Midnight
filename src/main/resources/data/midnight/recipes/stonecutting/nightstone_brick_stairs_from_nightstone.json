@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "midnight:nightstone"
-  },
-  "result": "midnight:nightstone_brick_stairs",
-  "count": 1
-}

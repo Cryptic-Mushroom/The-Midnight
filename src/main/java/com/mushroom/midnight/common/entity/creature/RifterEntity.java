@@ -17,7 +17,7 @@ import com.mushroom.midnight.common.entity.util.DragSolver;
 import com.mushroom.midnight.common.entity.util.EntityReference;
 import com.mushroom.midnight.common.event.RifterCaptureEvent;
 import com.mushroom.midnight.common.event.RifterReleaseEvent;
-import com.mushroom.midnight.common.helper.Helper;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import com.mushroom.midnight.common.network.CaptureEntityMessage;
 import com.mushroom.midnight.common.registry.MidnightEffects;
 import com.mushroom.midnight.common.registry.MidnightSounds;
@@ -93,7 +93,7 @@ public class RifterEntity extends MonsterEntity implements IRiftTraveler, IEntit
         this.homeRift = new EntityReference<>(world);
         this.dragSolver = new DragSolver(this);
 
-        float scaleModifier = Helper.isMidnightDimension(world) ? HOME_SCALE_MODIFIER : 1.0F;
+        float scaleModifier = MidnightUtil.isMidnightDimension(world) ? HOME_SCALE_MODIFIER : 1.0F;
         stepHeight = 1f;
     }
 
@@ -158,7 +158,7 @@ public class RifterEntity extends MonsterEntity implements IRiftTraveler, IEntit
                 this.captureCooldown--;
             }
 
-            if (!Helper.isMidnightDimension(this.world)) {
+            if (!MidnightUtil.isMidnightDimension(this.world)) {
                 this.updateHomeRift();
                 if (this.ticksExisted % 20 == 0 && !this.homeRift.isPresent()) {
                     this.attackEntityFrom(DamageSource.OUT_OF_WORLD, 2.0F);
@@ -178,7 +178,7 @@ public class RifterEntity extends MonsterEntity implements IRiftTraveler, IEntit
     }
 
     public boolean shouldCapture() {
-        if (Helper.isMidnightDimension(this.world)) {
+        if (MidnightUtil.isMidnightDimension(this.world)) {
             return false;
         }
         return this.homeRift.isPresent();
@@ -186,7 +186,7 @@ public class RifterEntity extends MonsterEntity implements IRiftTraveler, IEntit
 
     private void applyHomeModifier(IAttribute attribute, AttributeModifier modifier) {
         IAttributeInstance instance = this.getAttribute(attribute);
-        boolean home = Helper.isMidnightDimension(this.world);
+        boolean home = MidnightUtil.isMidnightDimension(this.world);
         if (home != instance.hasModifier(modifier)) {
             if (home) {
                 instance.applyModifier(modifier);
@@ -238,7 +238,7 @@ public class RifterEntity extends MonsterEntity implements IRiftTraveler, IEntit
             return false;
         }
         if (entity instanceof AnimalEntity) {
-            return !Helper.isMidnightDimension(entity.world);
+            return !MidnightUtil.isMidnightDimension(entity.world);
         }
         if (entity instanceof PlayerEntity && ((PlayerEntity) entity).isSleeping()) {
             return false;

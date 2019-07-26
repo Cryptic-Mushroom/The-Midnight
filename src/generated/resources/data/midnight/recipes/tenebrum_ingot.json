@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "midnight:tenebrum_ore"
+  },
+  "result": "midnight:tenebrum_ingot",
+  "experience": 1.0,
+  "cookingtime": 200
+}

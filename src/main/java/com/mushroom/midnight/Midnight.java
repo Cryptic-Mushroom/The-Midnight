@@ -12,7 +12,15 @@ import com.mushroom.midnight.common.capability.NullStorage;
 import com.mushroom.midnight.common.capability.RiftTraveller;
 import com.mushroom.midnight.common.capability.RifterCapturable;
 import com.mushroom.midnight.common.config.MidnightConfig;
-import com.mushroom.midnight.common.json.GenRecipes;
+import com.mushroom.midnight.common.data.recipe.MidnightDecorativeRecipes;
+import com.mushroom.midnight.common.data.recipe.MidnightFabricatedRecipes;
+import com.mushroom.midnight.common.data.recipe.MidnightFoodRecipes;
+import com.mushroom.midnight.common.data.recipe.MidnightMaterialRecipes;
+import com.mushroom.midnight.common.data.recipe.MidnightPlantRecipes;
+import com.mushroom.midnight.common.data.recipe.MidnightStoneRecipes;
+import com.mushroom.midnight.common.data.recipe.MidnightWoodenRecipes;
+import com.mushroom.midnight.common.data.tag.MidnightBlockTagsProvider;
+import com.mushroom.midnight.common.data.tag.MidnightItemTagsProvider;
 import com.mushroom.midnight.common.loot.InBiomeLootCondition;
 import com.mushroom.midnight.common.loot.InBlockLootCondition;
 import com.mushroom.midnight.common.loot.IsChildLootCondition;
@@ -32,7 +40,7 @@ import com.mushroom.midnight.common.registry.MidnightSurfaceBiomes;
 import com.mushroom.midnight.common.registry.RegUtil;
 import com.mushroom.midnight.common.util.EntityUtil;
 import com.mushroom.midnight.common.util.IProxy;
-import net.minecraft.command.Commands;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.conditions.LootConditionManager;
@@ -41,14 +49,13 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
+import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
@@ -99,6 +106,7 @@ public class Midnight {
 
         bus.addListener(this::setup);
         bus.addListener(this::registerModels);
+        bus.addListener(this::gatherData);
 
         FluidRegistry.enableUniversalBucket();
     }
@@ -170,8 +178,20 @@ public class Midnight {
         MidnightModelRegistry.registerModels(event);
     }
 
-    @SubscribeEvent
-    public static void onServerStarting(FMLServerStartingEvent event) {
-        event.getCommandDispatcher().register(Commands.literal("gen_recipes").executes(c -> GenRecipes.genRecipes(c.getSource())));
+    private void gatherData(GatherDataEvent event) {
+        DataGenerator generator = event.getGenerator();
+        if (event.includeServer()) {
+            // TODO: Data providers for loot tables
+            generator.addProvider(new MidnightBlockTagsProvider(generator));
+            generator.addProvider(new MidnightItemTagsProvider(generator));
+
+            generator.addProvider(new MidnightDecorativeRecipes(generator));
+            generator.addProvider(new MidnightFabricatedRecipes(generator));
+            generator.addProvider(new MidnightFoodRecipes(generator));
+            generator.addProvider(new MidnightMaterialRecipes(generator));
+            generator.addProvider(new MidnightPlantRecipes(generator));
+            generator.addProvider(new MidnightStoneRecipes(generator));
+            generator.addProvider(new MidnightWoodenRecipes(generator));
+        }
     }
 }

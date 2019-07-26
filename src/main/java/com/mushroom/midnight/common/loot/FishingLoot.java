@@ -1,7 +1,7 @@
 package com.mushroom.midnight.common.loot;
 
 import com.mushroom.midnight.Midnight;
-import com.mushroom.midnight.common.helper.Helper;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.LootPool;
@@ -43,10 +43,10 @@ public class FishingLoot {
                         // because modded loot tables are not fired here
                         fieldIsFrozen.setBoolean(midnightFishing, false);
                         fieldIsFrozen.setBoolean(event.getTable(), false);
-                        addConditionToAllMainPools(event.getTable(), context -> !Helper.isMidnightDimension(context.getWorld()));
+                        addConditionToAllMainPools(event.getTable(), context -> !MidnightUtil.isMidnightDimension(context.getWorld()));
 
                         LootPool midnightPool = midnightFishing.getPool("midnight_fishing");
-                        addConditionToPool(context -> Helper.isMidnightDimension(context.getWorld()), midnightPool);
+                        addConditionToPool(context -> MidnightUtil.isMidnightDimension(context.getWorld()), midnightPool);
                         event.getTable().addPool(midnightPool);
 
                         fieldIsFrozen.setBoolean(event.getTable(), true);

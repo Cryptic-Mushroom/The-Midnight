@@ -1,6 +1,6 @@
 package com.mushroom.midnight.common.block;
 
-import com.mushroom.midnight.common.helper.Helper;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
@@ -41,7 +41,7 @@ public class SpreadableSoilBlock extends SoilBlock {
         }
         BlockPos abovePos = pos.up();
         BlockState aboveState;
-        if (!Helper.isMidnightDimension(world) || LightEngine.func_215613_a(world, state, pos, (aboveState = world.getBlockState(abovePos)), abovePos, Direction.UP, aboveState.getOpacity(world, abovePos)) > 2) {
+        if (!MidnightUtil.isMidnightDimension(world) || LightEngine.func_215613_a(world, state, pos, (aboveState = world.getBlockState(abovePos)), abovePos, Direction.UP, aboveState.getOpacity(world, abovePos)) > 2) {
             world.setBlockState(pos, this.groundSupplier.get().getDefaultState());
             return;
         }

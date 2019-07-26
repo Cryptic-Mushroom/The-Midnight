@@ -17,7 +17,13 @@ archivesBaseName = "themidnight"
 
 sourceCompatibility = targetCompatibility = '1.8'
 
-def core_plugin = "com.mushroom.midnight.core.MidnightLoadingPlugin"
+sourceSets {
+  main {
+    resources {
+      srcDirs += "src/generated/resources"
+    }
+  }
+}
 
 minecraft {
   mappings channel: 'snapshot', version: '20190704-1.14.3'
@@ -29,7 +35,7 @@ minecraft {
       property 'forge.logging.console.level', 'debug'
       mods {
         midnight {
-          source sourceSets.main
+          sources sourceSets.main
         }
       }
     }
@@ -37,6 +43,19 @@ minecraft {
       workingDirectory project.file('run')
       property 'forge.logging.markers', 'REGISTRIES'
       property 'forge.logging.console.level', 'debug'
+      mods {
+        midnight {
+          sources sourceSets.main
+        }
+      }
+    }
+    data {
+      workingDirectory project.file('run')
+      property 'forge.logging.markers', 'REGISTRIES'
+      property 'forge.logging.console.level', 'debug'
+
+      args '--mod', 'midnight', '--all', '--output', file('src/generated/resources/')
+
       mods {
         midnight {
           source sourceSets.main

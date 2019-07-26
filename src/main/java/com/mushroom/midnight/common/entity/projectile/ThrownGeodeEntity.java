@@ -1,7 +1,7 @@
 package com.mushroom.midnight.common.entity.projectile;
 
 import com.mushroom.midnight.client.particle.MidnightParticles;
-import com.mushroom.midnight.common.helper.Helper;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import com.mushroom.midnight.common.registry.MidnightCriterion;
 import com.mushroom.midnight.common.registry.MidnightEntities;
 import com.mushroom.midnight.common.registry.MidnightItems;
@@ -104,7 +104,7 @@ public class ThrownGeodeEntity extends ThrowableEntity implements IRendersAsItem
                 this.world.setEntityState(this, POPPED_STATE_ID);
 
             } else {
-                Helper.spawnItemStack(this.world, getPosition(), MidnightItems.GEODE);
+                MidnightUtil.spawnItemStack(this.world, getPosition(), MidnightItems.GEODE);
             }
 
             this.remove();

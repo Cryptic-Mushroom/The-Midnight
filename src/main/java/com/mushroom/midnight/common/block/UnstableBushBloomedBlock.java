@@ -1,7 +1,7 @@
 package com.mushroom.midnight.common.block;
 
 import com.mushroom.midnight.client.particle.MidnightParticles;
-import com.mushroom.midnight.common.helper.Helper;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import com.mushroom.midnight.common.item.UnstableFruitItem;
 import com.mushroom.midnight.common.registry.MidnightBlocks;
 import net.minecraft.block.Block;
@@ -53,7 +53,7 @@ public class UnstableBushBloomedBlock extends MidnightPlantBlock implements IGro
             if (!world.isRemote) {
                 int fruitCount = world.rand.nextInt(3) + 1;
                 for (int i = 0; i < fruitCount; i++) {
-                    Helper.spawnItemStack(world, pos, this.fruitSupplier.get())
+                    MidnightUtil.spawnItemStack(world, pos, this.fruitSupplier.get())
                             .move(MoverType.SELF, new Vec3d(world.rand.nextFloat() * 0.12f - 0.06f, -0.06f, world.rand.nextFloat() * 0.12f - 0.06f));
                 }
                 world.setBlockState(pos, MidnightBlocks.UNSTABLE_BUSH.getDefaultState().with(UnstableBushBlock.STAGE, UnstableBushBlock.MAX_STAGE), 2);

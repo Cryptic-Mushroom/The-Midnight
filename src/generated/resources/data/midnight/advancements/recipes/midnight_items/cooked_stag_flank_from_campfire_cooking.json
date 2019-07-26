@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "midnight:cooked_stag_flank_from_campfire_cooking"
+    ]
+  },
+  "criteria": {
+    "has_raw": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "midnight:raw_stag_flank"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "midnight:cooked_stag_flank_from_campfire_cooking"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw",
+      "has_the_recipe"
+    ]
+  ]
+}

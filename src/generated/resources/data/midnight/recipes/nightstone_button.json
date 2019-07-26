@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "midnight_buttons",
+  "ingredients": [
+    {
+      "item": "midnight:nightstone"
+    }
+  ],
+  "result": {
+    "item": "midnight:nightstone_button"
+  }
+}

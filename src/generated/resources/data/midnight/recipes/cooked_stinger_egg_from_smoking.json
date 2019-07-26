@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "midnight:stinger_egg"
+  },
+  "result": "midnight:cooked_stinger_egg",
+  "experience": 0.35,
+  "cookingtime": 100
+}

@@ -5,7 +5,7 @@ import com.mushroom.midnight.Midnight;
 import com.mushroom.midnight.client.particle.RiftParticleSystem;
 import com.mushroom.midnight.common.config.MidnightConfig;
 import com.mushroom.midnight.common.entity.creature.RifterEntity;
-import com.mushroom.midnight.common.helper.Helper;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import com.mushroom.midnight.common.registry.MidnightDimensions;
 import com.mushroom.midnight.common.registry.MidnightEntities;
 import com.mushroom.midnight.common.registry.MidnightSounds;
@@ -99,7 +99,7 @@ public class RiftEntity extends Entity implements IEntityAdditionalSpawnData {
                 return;
             }
 
-            if (!Helper.isMidnightDimension(this.world)) {
+            if (!MidnightUtil.isMidnightDimension(this.world)) {
                 this.updateOverworldBehavior();
             }
 
@@ -327,7 +327,7 @@ public class RiftEntity extends Entity implements IEntityAdditionalSpawnData {
     }
 
     public DimensionType getEndpointDimension() {
-        if (Helper.isMidnightDimension(this.world)) {
+        if (MidnightUtil.isMidnightDimension(this.world)) {
             return DimensionType.OVERWORLD;
         } else {
             return MidnightDimensions.midnight();

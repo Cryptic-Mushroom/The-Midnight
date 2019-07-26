@@ -2,7 +2,7 @@ package com.mushroom.midnight.client.render;
 
 import com.mojang.blaze3d.platform.GLX;
 import com.mojang.blaze3d.platform.GlStateManager;
-import com.mushroom.midnight.common.helper.Helper;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.IEntityRenderer;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
@@ -43,7 +43,7 @@ public class EmissiveLayerRenderer<T extends LivingEntity, M extends EntityModel
 
         int brightness = this.brightnessFunction.apply(entity, partialTicks);
         GLX.glMultiTexCoord2f(GLX.GL_TEXTURE1, brightness, brightness);
-        float[] rgbF = Helper.getRGBColorF(colorFunction.getColor(entity, partialTicks));
+        float[] rgbF = MidnightUtil.getRGBColorF(colorFunction.getColor(entity, partialTicks));
         GlStateManager.color4f(rgbF[0], rgbF[1], rgbF[2], 1f);
         GlStateManager.disableLighting();
 

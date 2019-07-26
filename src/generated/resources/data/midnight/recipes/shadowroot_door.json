@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "midnight_doors",
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "midnight:shadowroot_planks"
+    }
+  },
+  "result": {
+    "item": "midnight:shadowroot_door",
+    "count": 3
+  }
+}

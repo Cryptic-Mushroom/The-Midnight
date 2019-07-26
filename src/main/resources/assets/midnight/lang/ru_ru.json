@@ -212,17 +212,17 @@
   "block.midnight.rockshroom": "Камнегриб",
   "block.midnight.rockshroom_bricks": "Кирпичи из камнегриба",
 
-  "block.midnight.stinger_egg": "Яйцо стингера",
+  "block.midnight.stinger_egg": "Яйцо стингерона",
   "block.midnight.violeaf": "Фиалка",
   "block.midnight.unstable_bush": "Неустойчивый куст",
   "block.midnight.unstable_bush_blue": "Синий неустойчивый куст",
   "block.midnight.unstable_bush_green": "Зелёный неустойчивый куст",
   "block.midnight.unstable_bush_lime": "Лаймовый неустойчивый куст",
 
-  "block.midnight.bogshroom_sporch": "Кольцо болотника",
-  "block.midnight.nightshroom_sporch": "Кольцо ночегриба",
-  "block.midnight.dewshroom_sporch": "Кольцо росгриба",
-  "block.midnight.viridshroom_sporch": "Кольцо виргриба",
+  "block.midnight.bogshroom_sporch": "Факел из спор болотника",
+  "block.midnight.nightshroom_sporch": "Факел из спор ночегриба",
+  "block.midnight.dewshroom_sporch": "Факел из спор росгриба",
+  "block.midnight.viridshroom_sporch": "Факел из спор виргриба",
 
   "block.midnight.crystalotus": "Хрустальный лотос",
 
@@ -260,10 +260,10 @@
 
   "_comment": "Items",
 
-  "item.midnight.bogshroom_powder": "Прах болника",
-  "item.midnight.nightshroom_powder": "Прах ночегриба",
-  "item.midnight.dewshroom_powder": "Прах росгриба",
-  "item.midnight.viridshroom_powder": "Прах виргриба",
+  "item.midnight.bogshroom_powder": "Споровая пыль болотника",
+  "item.midnight.nightshroom_powder": "Споровая пыль ночегриба",
+  "item.midnight.dewshroom_powder": "Споровая пыль росгриба",
+  "item.midnight.viridshroom_powder": "Споровая пыль виргриба",
 
   "item.midnight.geode": "Геод",
   "item.midnight.dark_pearl": "Тёмный жемчуг",
@@ -281,7 +281,7 @@
   "item.midnight.deceitful_snapper": "Ложный окунь",
   "item.midnight.raw_stag_flank": "Сырая оленина",
   "item.midnight.cooked_stag_flank": "Приготовленная оленина",
-  "item.midnight.cooked_stinger_egg": "Приготовленное яйцо стингера",
+  "item.midnight.cooked_stinger_egg": "Приготовленное яйцо стингерона",
   "item.midnight.hunter_wing": "Крыло охотника",
   "item.midnight.cooked_hunter_wing": "Приготовленное крыло охотника",
   "item.midnight.glob_fungus_hand": "Кусок капельника",
@@ -372,7 +372,7 @@
   "entity.midnight.bladeshroom_cap": "Шляпка клинкогриба",
   "entity.midnight.nova": "Нова",
   "entity.midnight.crystal_bug": "Кристальный жук",
-  "entity.midnight.stinger": "Стингер",
+  "entity.midnight.stinger": "Стингерон",
   "entity.midnight.penumbrian": "Полутень",
   "entity.midnight.tree_hopper": "Горбатка",
   "entity.midnight.nightstag": "Ночнолень",

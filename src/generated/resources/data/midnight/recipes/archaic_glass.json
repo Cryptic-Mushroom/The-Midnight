@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "midnight:archaic_shard"
+    }
+  },
+  "result": {
+    "item": "midnight:archaic_glass",
+    "count": 8
+  }
+}
