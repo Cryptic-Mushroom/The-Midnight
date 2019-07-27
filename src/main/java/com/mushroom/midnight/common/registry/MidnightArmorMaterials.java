@@ -11,7 +11,7 @@ public class MidnightArmorMaterials {
     private static final int[] DURABILITY = new int[] { 13, 15, 16, 11 };
 
     public static final IArmorMaterial ROCKSHROOM = new Builder()
-            .withName(Midnight.MODID + ".rockshroom")
+            .withName(Midnight.MODID + ":rockshroom")
             .withDurabilityFactor(15)
             .withDamageReductionAmounts(new int[] { 2, 3, 4, 1 })
             .withEnchantability(5)
@@ -20,7 +20,7 @@ public class MidnightArmorMaterials {
             .build();
 
     public static final IArmorMaterial TENEBRUM = new Builder()
-            .withName(Midnight.MODID + ".tenebrum")
+            .withName(Midnight.MODID + ":tenebrum")
             .withDurabilityFactor(30)
             .withDamageReductionAmounts(new int[] { 3, 6, 8, 3 })
             .withEnchantability(9)
