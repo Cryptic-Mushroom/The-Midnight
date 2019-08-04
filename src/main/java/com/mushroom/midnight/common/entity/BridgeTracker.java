@@ -5,8 +5,8 @@ import com.mushroom.midnight.common.network.BridgeCreateMessage;
 import com.mushroom.midnight.common.network.BridgeRemovalMessage;
 import com.mushroom.midnight.common.network.BridgeStateMessage;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.world.ServerWorld;
-import net.minecraft.world.chunk.ChunkManager;
+import net.minecraft.world.server.ChunkManager;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.network.PacketDistributor;
 
 import java.util.ArrayList;

@@ -9,7 +9,7 @@ import com.mushroom.midnight.common.world.feature.placement.SurfacePlacementLeve
 import com.mushroom.midnight.common.world.feature.placement.UndergroundPlacementLevel;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.ServerWorld;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;

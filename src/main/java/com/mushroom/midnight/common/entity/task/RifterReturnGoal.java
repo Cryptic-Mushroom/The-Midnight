@@ -89,7 +89,7 @@ public class RifterReturnGoal extends Goal {
             RiftEntity homeRift = derefRift.get();
             BlockPos surface = WorldUtil.findSurfaceOrInput(homeRift.world, homeRift.getPosition(), 16);
 
-            this.path = this.owner.getNavigator().getPathToPos(surface);
+            this.path = this.owner.getNavigator().getPathToPos(surface, 0);
 
             if (this.path == null) {
                 this.path = this.computePathTowards(surface);
@@ -106,7 +106,7 @@ public class RifterReturnGoal extends Goal {
             if (pathPos == null) {
                 continue;
             }
-            Path path = this.owner.getNavigator().getPathToXYZ(pathPos.x, pathPos.y, pathPos.z);
+            Path path = this.owner.getNavigator().func_225466_a(pathPos.x, pathPos.y, pathPos.z, 0);
             if (path != null) {
                 return path;
             }

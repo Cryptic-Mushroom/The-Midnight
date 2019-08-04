@@ -1,7 +1,7 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "midnight:moss"
+    "model": "midnight:block/moss"
   },
   "variants": {
     "facing": {

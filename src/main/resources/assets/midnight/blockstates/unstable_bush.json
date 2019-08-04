@@ -3,27 +3,27 @@
   "variants": {
     "stage=0": [
       {
-        "model": "midnight:unstable_bush_stage_0"
+        "model": "midnight:block/unstable_bush_stage_0"
       }
     ],
     "stage=1": [
       {
-        "model": "midnight:unstable_bush_stage_1"
+        "model": "midnight:block/unstable_bush_stage_1"
       }
     ],
     "stage=2": [
       {
-        "model": "midnight:unstable_bush_stage_2"
+        "model": "midnight:block/unstable_bush_stage_2"
       }
     ],
     "stage=3": [
       {
-        "model": "midnight:unstable_bush_stage_3"
+        "model": "midnight:block/unstable_bush_stage_3"
       }
     ],
     "stage=4": [
       {
-        "model": "midnight:unstable_bush_stage_4"
+        "model": "midnight:block/unstable_bush_stage_4"
       }
     ]
   }

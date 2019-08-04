@@ -1,6 +1,5 @@
 package com.mushroom.midnight.common.block;
 
-import com.mushroom.midnight.common.util.MidnightUtil;
 import com.mushroom.midnight.common.registry.MidnightCriterion;
 import com.mushroom.midnight.common.registry.MidnightItems;
 import net.minecraft.block.Block;
@@ -10,6 +9,8 @@ import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -23,7 +24,6 @@ import net.minecraft.potion.Effects;
 import net.minecraft.potion.Potions;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
-import net.minecraft.stats.Stats;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
@@ -54,14 +54,16 @@ public class SuavisBlock extends Block implements IGrowable {
             makeCuboidShape(0.0, 0.0, 0.0, 16.0, 16.0, 16.0),
     };
 
+    private static final ThreadLocal<PlayerEntity> HARVESTER = new ThreadLocal<>();
+
     public SuavisBlock() {
         super(Properties.create(Material.GOURD, MaterialColor.LIGHT_BLUE).lightValue(12).hardnessAndResistance(1f, 0f).sound(SoundType.SLIME).tickRandomly());
-        setDefaultState(getStateContainer().getBaseState().with(STAGE, 3));
+        this.setDefaultState(this.getStateContainer().getBaseState().with(STAGE, 3));
     }
 
     @Override
     public BlockState getStateForPlacement(BlockState state, Direction facing, BlockState state2, IWorld world, BlockPos pos1, BlockPos pos2, Hand hand) {
-        return getDefaultState();
+        return this.getDefaultState();
     }
 
     @Override
@@ -106,12 +108,13 @@ public class SuavisBlock extends Block implements IGrowable {
 
     @Override
     public void harvestBlock(World world, PlayerEntity player, BlockPos pos, BlockState state, @Nullable TileEntity te, ItemStack stack) {
-        player.addStat(Stats.BLOCK_MINED.get(this));
-        player.addExhaustion(0.005F);
-        //harvesters.set(player);
-        MidnightUtil.spawnItemStack(world, pos, state.getBlock()); //dropBlockAsItem(world, pos, state, EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, stack));
+        try {
+            HARVESTER.set(player);
+            super.harvestBlock(world, player, pos, state, te, stack);
+        } finally {
+            HARVESTER.remove();
+        }
 
-        //harvesters.set(null);
         if (!world.isRemote && !player.isCreative() && player instanceof ServerPlayerEntity) {
             MidnightCriterion.HARVESTED_SUAVIS.trigger((ServerPlayerEntity) player);
         }
@@ -158,10 +161,10 @@ public class SuavisBlock extends Block implements IGrowable {
         /*if (!isSideSolid(world.getBlockState(pos.down()), world, pos, Direction.UP)) {
             world.destroyBlock(pos, true);
         } else {*/
-            if (state.get(STAGE) < 3 && ForgeHooks.onCropsGrowPre(world, pos, state, rand.nextInt(5) == 0)) {
-                grow(world, rand, pos, state);
-                ForgeHooks.onCropsGrowPost(world, pos, state);
-            }
+        if (state.get(STAGE) < 3 && ForgeHooks.onCropsGrowPre(world, pos, state, rand.nextInt(5) == 0)) {
+            this.grow(world, rand, pos, state);
+            ForgeHooks.onCropsGrowPost(world, pos, state);
+        }
         //}
     }
 
@@ -175,48 +178,15 @@ public class SuavisBlock extends Block implements IGrowable {
         return world.getBlockState(pos).get(STAGE) < 2;
     }
 
-    /*@Override
-    public Item getItemDropped(BlockState state, Random rand, int fortune) {
-        return MidnightItems.RAW_SUAVIS;
-    }
-
     @Override
-    public boolean canSilkHarvest() { // json loot tables
-        return true;
-    }
+    public void spawnAdditionalDrops(BlockState state, World world, BlockPos pos, ItemStack stack) {
+        super.spawnAdditionalDrops(state, world, pos, stack);
 
-    @Override
-    public void dropBlockAsItemWithChance(World world, BlockPos pos, BlockState state, float chance, int fortune) {
-        super.dropBlockAsItemWithChance(world, pos, state, chance, fortune);
-        if (!world.isRemote) {
-            PlayerEntity player = harvesters.get();
-            if (player == null || (!player.isCreative() && EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, player.getHeldItemMainhand()) == 0)) {
-                createNauseaCloud(world, pos, state.get(STAGE));
-            }
+        if (world.isRemote()) return;
+
+        PlayerEntity player = HARVESTER.get();
+        if (player == null || (!player.isCreative() && EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, player.getHeldItemMainhand()) == 0)) {
+            createNauseaCloud(world, pos, state.get(STAGE));
         }
     }
-
-    @Override
-    public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, BlockState state, int fortune) {
-        boolean isSilkTouch = harvesters.get() != null && EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, harvesters.get().getHeldItemMainhand()) > 0;
-        int stage = state.get(STAGE);
-        if (isSilkTouch && stage == 3) {
-            drops.add(new ItemStack(this));
-            return;
-        }
-        Random rand = world instanceof World ? ((World) world).rand : RANDOM;
-        int count = isSilkTouch ? stage + 1 : quantityDropped(state, fortune, rand);
-        for (int i = 0; i < count; i++) {
-            Item item = getItemDropped(state, rand, fortune);
-            if (item != Items.AIR) {
-                drops.add(new ItemStack(item, 1, damageDropped(state)));
-            }
-        }
-    }
-
-    private int quantityDropped(BlockState state, int fortune, Random random) { // json drop or getDrops()
-        int maxSlice = state.get(STAGE) + 1;
-        int minSlice = Math.min(1 + fortune, maxSlice);
-        return random.nextInt(maxSlice - minSlice + 1) + minSlice;
-    }*/
 }

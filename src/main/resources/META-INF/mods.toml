@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[27,)"
+loaderVersion="[28,)"
 issueTrackerURL="https://github.com/Cryptic-Mushroom/The-Midnight/issues"
 
 [[mods]]
@@ -20,13 +20,13 @@ You may travel willingly to this dimension, though you may unwillingly be dragge
 [[dependencies.midnight]]
     modId="forge"
     mandatory=true
-    versionRange="[27.0.50,)"
+    versionRange="[28.0.38,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.midnight]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.14.3]"
+    versionRange="[1.14.4]"
     ordering="NONE"
     side="BOTH"

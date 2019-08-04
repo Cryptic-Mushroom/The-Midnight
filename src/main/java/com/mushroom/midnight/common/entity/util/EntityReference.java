@@ -3,7 +3,7 @@ package com.mushroom.midnight.common.entity.util;
 import com.mushroom.midnight.Midnight;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.world.ServerWorld;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;

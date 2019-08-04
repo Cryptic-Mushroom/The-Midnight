@@ -1,7 +1,7 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "midnight:dead_wood_ladder"
+    "model": "midnight:block/dead_wood_ladder"
   },
   "variants": {
     "facing": {

@@ -12,6 +12,7 @@ import com.mushroom.midnight.common.capability.NullStorage;
 import com.mushroom.midnight.common.capability.RiftTraveller;
 import com.mushroom.midnight.common.capability.RifterCapturable;
 import com.mushroom.midnight.common.config.MidnightConfig;
+import com.mushroom.midnight.common.data.loot.MidnightBlockLootProvider;
 import com.mushroom.midnight.common.data.recipe.MidnightDecorativeRecipes;
 import com.mushroom.midnight.common.data.recipe.MidnightFabricatedRecipes;
 import com.mushroom.midnight.common.data.recipe.MidnightFoodRecipes;
@@ -20,6 +21,7 @@ import com.mushroom.midnight.common.data.recipe.MidnightPlantRecipes;
 import com.mushroom.midnight.common.data.recipe.MidnightStoneRecipes;
 import com.mushroom.midnight.common.data.recipe.MidnightWoodenRecipes;
 import com.mushroom.midnight.common.data.tag.MidnightBlockTagsProvider;
+import com.mushroom.midnight.common.data.tag.MidnightFluidTagsProvider;
 import com.mushroom.midnight.common.data.tag.MidnightItemTagsProvider;
 import com.mushroom.midnight.common.loot.InBiomeLootCondition;
 import com.mushroom.midnight.common.loot.InBlockLootCondition;
@@ -181,8 +183,8 @@ public class Midnight {
     private void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
         if (event.includeServer()) {
-            // TODO: Data providers for loot tables
             generator.addProvider(new MidnightBlockTagsProvider(generator));
+            generator.addProvider(new MidnightFluidTagsProvider(generator));
             generator.addProvider(new MidnightItemTagsProvider(generator));
 
             generator.addProvider(new MidnightDecorativeRecipes(generator));
@@ -192,6 +194,8 @@ public class Midnight {
             generator.addProvider(new MidnightPlantRecipes(generator));
             generator.addProvider(new MidnightStoneRecipes(generator));
             generator.addProvider(new MidnightWoodenRecipes(generator));
+
+            generator.addProvider(new MidnightBlockLootProvider(generator));
         }
     }
 }

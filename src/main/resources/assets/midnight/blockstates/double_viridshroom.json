@@ -3,10 +3,10 @@
   "variants": {
     "half": {
       "lower": {
-        "model": "midnight:double_viridshroom_lower"
+        "model": "midnight:block/double_viridshroom_lower"
       },
       "upper": {
-        "model": "midnight:double_viridshroom_upper"
+        "model": "midnight:block/double_viridshroom_upper"
       }
     }
   }

@@ -43,7 +43,7 @@ public class IdleSoundController {
 
     private static void retainIdleSound(ISound sound) {
         SoundHandler soundHandler = CLIENT.getSoundHandler();
-        if (!soundHandler.func_215294_c(sound)) {
+        if (!soundHandler.isPlaying(sound)) {
             try {
                 // Fix very odd bug where playSound would complain that the sound is already playing
                 soundHandler.stop(sound);

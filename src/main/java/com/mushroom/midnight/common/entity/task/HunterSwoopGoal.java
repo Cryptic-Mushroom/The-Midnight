@@ -99,7 +99,7 @@ public class HunterSwoopGoal extends Goal {
             }
             return null;
         } else {
-            return this.owner.getNavigator().getPathToPos(target.getPosition().up(ATTACK_OFFSET_Y));
+            return this.owner.getNavigator().getPathToPos(target.getPosition().up(ATTACK_OFFSET_Y), 0);
         }
     }
 
@@ -109,7 +109,7 @@ public class HunterSwoopGoal extends Goal {
         if (flightPos == null) {
             return null;
         }
-        return this.owner.getNavigator().getPathToPos(flightPos);
+        return this.owner.getNavigator().getPathToPos(flightPos, 0);
     }
 
     @Override

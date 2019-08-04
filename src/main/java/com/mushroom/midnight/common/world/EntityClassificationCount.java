@@ -1,7 +1,7 @@
 package com.mushroom.midnight.common.world;
 
 import net.minecraft.entity.EntityClassification;
-import net.minecraft.world.ServerWorld;
+import net.minecraft.world.server.ServerWorld;
 
 import java.util.Arrays;
 import java.util.Collection;

@@ -76,7 +76,7 @@ public class RifterTeleportGoal extends Goal {
         if (this.owner.world.checkBlockCollision(this.getEntityBoundAt(this.owner, target))) {
             return false;
         }
-        return this.owner.getNavigator().getPathToPos(target) != null;
+        return this.owner.getNavigator().getPathToPos(target, 0) != null;
     }
 
     private AxisAlignedBB getEntityBoundAt(Entity entity, BlockPos pos) {

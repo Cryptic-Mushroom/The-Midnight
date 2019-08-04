@@ -1,7 +1,7 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "midnight:violeaf",
+    "model": "midnight:block/violeaf",
     "textures": {
       "leaf": "midnight:blocks/violeaf_decayed"
     }

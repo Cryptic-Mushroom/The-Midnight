@@ -1,7 +1,7 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "midnight:shadowroot_ladder"
+    "model": "midnight:block/shadowroot_ladder"
   },
   "variants": {
     "facing": {

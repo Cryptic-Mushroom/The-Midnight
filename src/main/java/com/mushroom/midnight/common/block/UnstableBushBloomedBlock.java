@@ -109,9 +109,4 @@ public class UnstableBushBloomedBlock extends MidnightPlantBlock implements IGro
             MidnightParticles.UNSTABLE_BUSH.spawn(world, pos.getX() + 0.5d, pos.getY() + 0.5d, pos.getZ() + 0.5d, rand.nextFloat() * 0.1d - 0.05d, rand.nextFloat() * 0.03d, rand.nextFloat() * 0.1d - 0.05d, fruitType);
         }
     }
-
-    /*@Override
-    public int quantityDropped(BlockState state, int fortune, Random random) { // json drop or getDrops()
-        return random.nextInt(3) + (state.get(HAS_FRUIT) ? 3 : 0);
-    }*/
 }

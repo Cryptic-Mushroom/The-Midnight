@@ -1,0 +1,55 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "midnight:bladeshroom",
+              "properties": {
+                "stage": "capped"
+              }
+            }
+          ],
+          "name": "midnight:bladeshroom_cap"
+        },
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "midnight:bladeshroom",
+                  "properties": {
+                    "stage": "capped"
+                  }
+                }
+              ],
+              "name": "midnight:bladeshroom_spores"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "min": 0.0,
+                    "max": 1.0,
+                    "type": "minecraft:uniform"
+                  }
+                }
+              ],
+              "name": "midnight:bladeshroom_spores"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

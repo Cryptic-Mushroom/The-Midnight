@@ -35,7 +35,7 @@ public abstract class RifterFollowGoal extends Goal {
     public boolean shouldExecute() {
         LivingEntity target = this.owner.getAttackTarget();
         if (this.shouldFollow(target)) {
-            this.path = this.owner.getNavigator().getPathToEntityLiving(target);
+            this.path = this.owner.getNavigator().getPathToEntityLiving(target, 0);
             return this.path != null;
         }
 
@@ -86,7 +86,7 @@ public abstract class RifterFollowGoal extends Goal {
             this.updateFollowVisible(target);
         } else if (!this.navigatingFromMemory && this.lastSeenPos != null) {
             this.owner.getNavigator().clearPath();
-            this.path = this.owner.getNavigator().getPathToPos(this.lastSeenPos);
+            this.path = this.owner.getNavigator().getPathToPos(this.lastSeenPos, 0);
             this.navigatingFromMemory = true;
         }
 
@@ -98,7 +98,7 @@ public abstract class RifterFollowGoal extends Goal {
             this.invalidCounter = 0;
 
             this.owner.getNavigator().clearPath();
-            this.path = this.owner.getNavigator().getPathToEntityLiving(target);
+            this.path = this.owner.getNavigator().getPathToEntityLiving(target, 0);
             if (this.path != null) {
                 this.lastSeenPos = target.getPosition();
                 this.navigatingFromMemory = false;

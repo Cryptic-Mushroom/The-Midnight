@@ -3,10 +3,10 @@
   "variants": {
     "half": {
       "lower": {
-        "model": "midnight:double_lumen_bud_lower"
+        "model": "midnight:block/double_lumen_bud_lower"
       },
       "upper": {
-        "model": "midnight:double_lumen_bud_upper"
+        "model": "midnight:block/double_lumen_bud_upper"
       }
     }
   }

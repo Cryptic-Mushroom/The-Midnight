@@ -1,7 +1,7 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "midnight:viridshroom_ladder"
+    "model": "midnight:block/viridshroom_ladder"
   },
   "variants": {
     "facing": {

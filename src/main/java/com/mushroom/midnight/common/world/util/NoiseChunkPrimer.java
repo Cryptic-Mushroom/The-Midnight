@@ -91,7 +91,7 @@ public class NoiseChunkPrimer {
                                     int localY = y & 15;
                                     int localZ = z & 15;
 
-                                    section.set(localX, localY, localZ, state, false);
+                                    section.setBlockState(localX, localY, localZ, state, false);
                                     oceanFloor.update(localX, y, localZ, state);
                                     worldSurface.update(localX, y, localZ, state);
                                 }

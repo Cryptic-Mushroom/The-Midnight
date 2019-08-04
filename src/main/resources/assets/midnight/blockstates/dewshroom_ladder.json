@@ -1,7 +1,7 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "midnight:dewshroom_ladder"
+    "model": "midnight:block/dewshroom_ladder"
   },
   "variants": {
     "facing": {

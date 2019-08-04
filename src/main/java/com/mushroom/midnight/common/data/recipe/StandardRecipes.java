@@ -43,17 +43,17 @@ public final class StandardRecipes {
     public StandardRecipes addFood(IItemProvider raw, IItemProvider cooked) {
         ResourceLocation id = ForgeRegistries.ITEMS.getKey(cooked.asItem());
 
-        CookingRecipeBuilder.func_218629_c(Ingredient.fromItems(raw), cooked, 0.35F, 200)
-                .func_218628_a("has_raw", Triggers.hasItem(raw))
-                .func_218630_a(this.consumer);
+        CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(raw), cooked, 0.35F, 200)
+                .addCriterion("has_raw", Triggers.hasItem(raw))
+                .build(this.consumer);
 
-        CookingRecipeBuilder.func_218631_a(Ingredient.fromItems(raw), cooked, 0.35F, 100, IRecipeSerializer.SMOKING)
-                .func_218628_a("has_raw", Triggers.hasItem(raw))
-                .func_218635_a(this.consumer, MidnightUtil.transformPath(id, path -> path + "_from_smoking"));
+        CookingRecipeBuilder.cookingRecipe(Ingredient.fromItems(raw), cooked, 0.35F, 100, IRecipeSerializer.SMOKING)
+                .addCriterion("has_raw", Triggers.hasItem(raw))
+                .build(this.consumer, MidnightUtil.transformPath(id, path -> path + "_from_smoking"));
 
-        CookingRecipeBuilder.func_218631_a(Ingredient.fromItems(raw), cooked, 0.35F, 400, IRecipeSerializer.CAMPFIRE_COOKING)
-                .func_218628_a("has_raw", Triggers.hasItem(raw))
-                .func_218635_a(this.consumer, MidnightUtil.transformPath(id, path -> path + "_from_campfire_cooking"));
+        CookingRecipeBuilder.cookingRecipe(Ingredient.fromItems(raw), cooked, 0.35F, 400, IRecipeSerializer.CAMPFIRE_COOKING)
+                .addCriterion("has_raw", Triggers.hasItem(raw))
+                .build(this.consumer, MidnightUtil.transformPath(id, path -> path + "_from_campfire_cooking"));
 
         return this;
     }
@@ -61,13 +61,13 @@ public final class StandardRecipes {
     public StandardRecipes addIngot(IItemProvider ore, IItemProvider ingot) {
         ResourceLocation id = ForgeRegistries.ITEMS.getKey(ingot.asItem());
 
-        CookingRecipeBuilder.func_218629_c(Ingredient.fromItems(ore), ingot, 1.0F, 200)
-                .func_218628_a("has_ore", Triggers.hasItem(ore))
-                .func_218630_a(this.consumer);
+        CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(ore), ingot, 1.0F, 200)
+                .addCriterion("has_ore", Triggers.hasItem(ore))
+                .build(this.consumer);
 
-        CookingRecipeBuilder.func_218633_b(Ingredient.fromItems(ore), ingot, 1.0F, 100)
-                .func_218628_a("has_ore", Triggers.hasItem(ore))
-                .func_218635_a(this.consumer, MidnightUtil.transformPath(id, path -> path + "_from_blasting"));
+        CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(ore), ingot, 1.0F, 100)
+                .addCriterion("has_ore", Triggers.hasItem(ore))
+                .build(this.consumer, MidnightUtil.transformPath(id, path -> path + "_from_blasting"));
 
         return this;
     }

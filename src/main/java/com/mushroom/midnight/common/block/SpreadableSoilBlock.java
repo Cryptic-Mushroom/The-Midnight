@@ -3,19 +3,15 @@ package com.mushroom.midnight.common.block;
 import com.mushroom.midnight.common.util.MidnightUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.lighting.LightEngine;
-import net.minecraft.world.storage.loot.LootContext;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.function.Supplier;
 
@@ -63,13 +59,5 @@ public class SpreadableSoilBlock extends SoilBlock {
     @Override
     public void onPlantGrow(BlockState state, IWorld world, BlockPos pos, BlockPos source) {
         world.setBlockState(pos, this.groundSupplier.get().getDefaultState(), 2);
-    }
-
-    @Override
-    public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-        // TODO make in json (grass block drop dirt)
-        ArrayList<ItemStack> drops = new ArrayList<>();
-        drops.add(new ItemStack(this.groundSupplier.get()));
-        return drops;
     }
 }

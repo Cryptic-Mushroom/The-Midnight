@@ -3,10 +3,10 @@
   "variants": {
     "half": {
       "lower": {
-        "model": "midnight:double_bogshroom_lower"
+        "model": "midnight:block/double_bogshroom_lower"
       },
       "upper": {
-        "model": "midnight:double_bogshroom_upper"
+        "model": "midnight:block/double_bogshroom_upper"
       }
     }
   }

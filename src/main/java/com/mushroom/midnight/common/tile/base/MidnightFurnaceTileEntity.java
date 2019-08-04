@@ -27,6 +27,6 @@ public class MidnightFurnaceTileEntity extends AbstractFurnaceTileEntity {
 
     @Override
     protected Container createMenu(int id, PlayerInventory player) {
-        return new FurnaceContainer(id, player, this, this.field_214013_b); //new MidnightFurnaceContainer(playerIn.inventory, this);
+        return new FurnaceContainer(id, player, this, this.furnaceData); //new MidnightFurnaceContainer(playerIn.inventory, this);
     }
 }

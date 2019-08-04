@@ -3,10 +3,10 @@
   "variants": {
     "half": {
       "lower": {
-        "model": "midnight:double_dewshroom_lower"
+        "model": "midnight:block/double_dewshroom_lower"
       },
       "upper": {
-        "model": "midnight:double_dewshroom_upper"
+        "model": "midnight:block/double_dewshroom_upper"
       }
     }
   }

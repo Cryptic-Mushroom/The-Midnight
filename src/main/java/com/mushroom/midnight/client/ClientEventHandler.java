@@ -83,7 +83,7 @@ public class ClientEventHandler {
             }
 
             if (event.phase == TickEvent.Phase.END) {
-                if (playingMusic != null && !CLIENT.getSoundHandler().func_215294_c(playingMusic)) {
+                if (playingMusic != null && !CLIENT.getSoundHandler().isPlaying(playingMusic)) {
                     playingMusic = null;
                 }
 

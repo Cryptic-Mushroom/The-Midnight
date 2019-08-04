@@ -84,19 +84,4 @@ public class UnstableBushBlock extends MidnightPlantBlock implements IGrowable {
     public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
         return BOUNDS[state.get(STAGE)];
     }
-
-    /*    @Override
-    public boolean canSilkHarvest() {
-        return false;
-    } // json drop
-
-    @Override
-    public Item getItemDropped(BlockState state, Random rand, int fortune) {
-        return MidnightItems.UNSTABLE_SEEDS;
-    }
-
-    @Override
-    public int quantityDropped(BlockState state, int fortune, Random random) {
-        return state.get(STAGE) == 0 ? 1 : 0;
-    }*/
 }

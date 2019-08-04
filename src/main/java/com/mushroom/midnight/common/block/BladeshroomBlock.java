@@ -33,12 +33,9 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
-import net.minecraft.world.storage.loot.LootContext;
 import net.minecraftforge.items.ItemHandlerHelper;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
@@ -128,25 +125,6 @@ public class BladeshroomBlock extends MidnightPlantBlock implements IGrowable {
         }
 
         return false;
-    }
-
-    @Override
-    public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-        ArrayList<ItemStack> drops = new ArrayList<>();
-        if (state.get(STAGE) == Stage.CAPPED) {
-            drops.add(new ItemStack(MidnightItems.BLADESHROOM_CAP));
-        }
-
-        Random random = builder.getWorld().rand;
-        int quantity = 0;
-        if (state.get(STAGE) == Stage.CAPPED) {
-            quantity += 1;
-        }
-        if (random.nextInt(3) == 0) {
-            quantity += 1;
-        }
-        drops.add(new ItemStack(MidnightItems.BLADESHROOM_SPORES, quantity));
-        return drops;
     }
 
     @Override

@@ -58,7 +58,7 @@ public class HunterTrackGoal extends Goal {
             return null;
         }
 
-        return this.owner.getNavigator().getPathToPos(flightPos);
+        return this.owner.getNavigator().getPathToPos(flightPos, 0);
     }
 }
  

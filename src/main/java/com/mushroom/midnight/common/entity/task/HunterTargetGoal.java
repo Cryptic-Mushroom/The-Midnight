@@ -16,8 +16,8 @@ public class HunterTargetGoal<T extends LivingEntity> extends NearestAttackableT
     }
 
     @Override
-    protected boolean func_220777_a(@Nullable LivingEntity target, EntityPredicate predicate) {
-        return super.func_220777_a(target, predicate) && target != null && this.canSee(target);
+    protected boolean isSuitableTarget(@Nullable LivingEntity target, EntityPredicate predicate) {
+        return super.isSuitableTarget(target, predicate) && target != null && this.canSee(target);
     }
 
     private boolean canSee(LivingEntity target) {
