@@ -1,5 +1,6 @@
-package com.mushroom.midnight.client.render;
+package com.mushroom.midnight.client.render.item;
 
+import com.mushroom.midnight.client.render.entity.NightStagRenderer;
 import com.mushroom.midnight.common.entity.creature.NightStagEntity;
 import com.mushroom.midnight.common.registry.MidnightEntities;
 import net.minecraft.client.Minecraft;

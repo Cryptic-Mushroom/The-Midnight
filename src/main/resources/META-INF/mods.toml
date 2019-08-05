@@ -20,7 +20,7 @@ You may travel willingly to this dimension, though you may unwillingly be dragge
 [[dependencies.midnight]]
     modId="forge"
     mandatory=true
-    versionRange="[28.0.38,)"
+    versionRange="[28.0.27,)"
     ordering="NONE"
     side="BOTH"
 

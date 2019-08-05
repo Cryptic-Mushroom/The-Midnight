@@ -1,4 +1,4 @@
-package com.mushroom.midnight.client.render;
+package com.mushroom.midnight.client.render.block;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mushroom.midnight.common.block.MidnightChestBlock;

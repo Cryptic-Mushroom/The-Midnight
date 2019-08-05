@@ -1,4 +1,4 @@
-package com.mushroom.midnight.client.render;
+package com.mushroom.midnight.client.render.item;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.Minecraft;

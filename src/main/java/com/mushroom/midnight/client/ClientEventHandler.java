@@ -7,11 +7,11 @@ import com.mushroom.midnight.client.sound.IdleRiftSound;
 import com.mushroom.midnight.common.capability.RifterCapturable;
 import com.mushroom.midnight.common.config.MidnightConfig;
 import com.mushroom.midnight.common.entity.RiftEntity;
-import com.mushroom.midnight.common.util.MidnightUtil;
 import com.mushroom.midnight.common.registry.MidnightEffects;
 import com.mushroom.midnight.common.registry.MidnightSounds;
 import com.mushroom.midnight.common.registry.MidnightSurfaceBiomes;
 import com.mushroom.midnight.common.util.EntityUtil;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import com.mushroom.midnight.common.util.ResetHookHandler;
 import com.mushroom.midnight.common.world.GlobalBridgeManager;
 import net.minecraft.client.Minecraft;
@@ -142,30 +142,36 @@ public class ClientEventHandler {
     }
 
     @SubscribeEvent
+    public static void onRenderFog(EntityViewRenderEvent.RenderFogEvent event) {
+        Entity entity = event.getInfo().getRenderViewEntity();
+
+        if (MidnightUtil.isMidnightDimension(entity.world)) {
+            float farDistance = event.getFarPlaneDistance();
+            float fogStart = 20.0F;
+            float fogEnd = 200.0F;
+
+            GlStateManager.fogStart(Math.min(fogStart, farDistance));
+            GlStateManager.fogEnd(Math.min(fogEnd, farDistance));
+        }
+    }
+
+    @SubscribeEvent
     public static void onSetupFogDensity(EntityViewRenderEvent.RenderFogEvent.FogDensity event) {
-        if (FluidImmersionRenderer.immersedFluid.isEmpty()) {
+        if (!FluidImmersionRenderer.immersedFluid.isEmpty()) {
             return;
         }
+
         LivingEntity entity = event.getInfo().getRenderViewEntity() instanceof LivingEntity ? (LivingEntity) event.getInfo().getRenderViewEntity() : null;
-        if (entity != null) {
-            if (entity.isPotionActive(Effects.BLINDNESS)) {
-                return;
-            }
+        if (entity != null && !entity.isPotionActive(Effects.BLINDNESS)) {
             if (entity.isPotionActive(MidnightEffects.DARKNESS)) {
                 GlStateManager.fogMode(GlStateManager.FogMode.EXP);
                 event.setCanceled(true);
                 event.setDensity(0.15f);
-                return;
+            } else if (entity.isPotionActive(MidnightEffects.STUNNED)) {
+                GlStateManager.fogMode(GlStateManager.FogMode.EXP);
+                event.setCanceled(true);
+                event.setDensity(0.15f);
             }
-        }
-        if (MidnightUtil.isMidnightDimension(event.getInfo().getRenderViewEntity().world)) {
-            GlStateManager.fogMode(GlStateManager.FogMode.EXP);
-            event.setCanceled(true);
-            event.setDensity(0.015f);
-        } else if (entity != null && entity.isPotionActive(MidnightEffects.STUNNED)) {
-            GlStateManager.fogMode(GlStateManager.FogMode.EXP);
-            event.setCanceled(true);
-            event.setDensity(0.15f);
         }
     }
 

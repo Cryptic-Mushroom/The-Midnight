@@ -1,6 +1,6 @@
 package com.mushroom.midnight.common.registry;
 
-import com.mushroom.midnight.client.render.MidnightChestItemRenderer;
+import com.mushroom.midnight.client.render.item.MidnightChestItemRenderer;
 import com.mushroom.midnight.common.block.BasicBlock;
 import com.mushroom.midnight.common.block.BladeshroomBlock;
 import com.mushroom.midnight.common.block.BloomCrystalBlock;

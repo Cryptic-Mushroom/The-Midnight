@@ -13,6 +13,7 @@ public class CrystalSpiresBiome extends SurfaceBiome {
                 .surfaceBuilder(MidnightSurfaceBuilders.SURFACE, MidnightSurfaceBuilders.GRASS_DIRT_MUD_CONFIG)
                 .category(Category.PLAINS)
                 .grassColor(0xD184BC)
+                .skyColor(0x543353)
                 .depth(0.6F)
                 .scale(0.26F)
                 .ridgeWeight(0.0F)

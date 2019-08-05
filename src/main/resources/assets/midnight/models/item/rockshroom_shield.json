@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "Desktop/rockshroom_Shield",
-		"particle": "Desktop/rockshroom_Shield"
+		"0": "midnight:rockshroom_shield",
+		"particle": "midnight:rockshroom_shield"
 	},
 	"elements": [
 		{

@@ -1,10 +1,12 @@
 package com.mushroom.midnight.common.world;
 
+import com.mushroom.midnight.client.render.MidnightSkyRenderer;
 import com.mushroom.midnight.common.biome.BiomeLayerType;
 import com.mushroom.midnight.common.biome.BiomeLayers;
 import com.mushroom.midnight.common.biome.cavern.CavernousBiome;
 import com.mushroom.midnight.common.config.MidnightConfig;
 import com.mushroom.midnight.common.registry.MidnightDimensions;
+import com.mushroom.midnight.common.world.util.SkyColorInterpolator;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
@@ -20,12 +22,12 @@ import net.minecraft.world.server.ServerChunkProvider;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.IRenderHandler;
 
 import javax.annotation.Nullable;
 
 public class MidnightDimension extends Dimension {
-    private static final Vec3d FOG_COLOR = new Vec3d(0.085, 0.04, 0.1225);
-    private static final Vec3d LIGHTING_FOG_COLOR = new Vec3d(1.0, 0.35, 0.25);
+    private static final Vec3d LIGHTING_SKY_COLOR = new Vec3d(1.0, 0.35, 0.25);
 
     public MidnightDimension(World world, DimensionType type) {
         super(world, type);
@@ -121,9 +123,9 @@ public class MidnightDimension extends Dimension {
     @OnlyIn(Dist.CLIENT)
     public Vec3d getFogColor(float celestialAngle, float partialTicks) {
         if (this.world.getLastLightningBolt() > 0 && Minecraft.getInstance().player.posY > 50) {
-            return LIGHTING_FOG_COLOR;
+            return LIGHTING_SKY_COLOR;
         }
-        return FOG_COLOR;
+        return SkyColorInterpolator.INSTANCE.get(partialTicks);
     }
 
     @Override
@@ -181,5 +183,16 @@ public class MidnightDimension extends Dimension {
     @Override
     public boolean doesXZShowFog(int x, int z) {
         return false;
+    }
+
+    @Override
+    public Vec3d getSkyColor(BlockPos cameraPos, float partialTicks) {
+        return SkyColorInterpolator.INSTANCE.get(partialTicks);
+    }
+
+    @Nullable
+    @Override
+    public IRenderHandler getSkyRenderer() {
+        return MidnightSkyRenderer.INSTANCE;
     }
 }

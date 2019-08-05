@@ -1,4 +1,4 @@
-package com.mushroom.midnight.client.render;
+package com.mushroom.midnight.client.render.block;
 
 import com.mushroom.midnight.common.tile.base.CacheTileEntity;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;

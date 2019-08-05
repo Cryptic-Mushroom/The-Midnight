@@ -1,4 +1,4 @@
-package com.mushroom.midnight.client.render;
+package com.mushroom.midnight.client.render.entity;
 
 import com.mushroom.midnight.Midnight;
 import com.mushroom.midnight.client.model.ShadeSquirrelModel;

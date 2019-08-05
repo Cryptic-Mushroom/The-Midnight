@@ -1,4 +1,4 @@
-package com.mushroom.midnight.client.render;
+package com.mushroom.midnight.client.render.entity;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mushroom.midnight.common.entity.projectile.BladeshroomCapEntity;

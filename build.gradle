@@ -26,7 +26,7 @@ sourceSets {
 }
 
 minecraft {
-  mappings channel: 'snapshot', version: '20190724-1.14.3'
+  mappings channel: 'snapshot', version: '20190802-1.14.3'
   accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
   runs {
     client {
@@ -70,7 +70,7 @@ repositories {
 }
 
 dependencies {
-  minecraft 'net.minecraftforge:forge:1.14.4-28.0.38'
+  minecraft 'net.minecraftforge:forge:1.14.4-28.0.27'
   runtimeOnly fg.deobf("mezz.jei:jei-1.14.3:6.0.0.8")
   compileOnly fg.deobf("mezz.jei:jei-1.14.3:6.0.0.8:api")
 }

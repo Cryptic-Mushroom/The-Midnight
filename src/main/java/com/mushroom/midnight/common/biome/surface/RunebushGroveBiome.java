@@ -9,6 +9,7 @@ public class RunebushGroveBiome extends SurfaceBiome {
                 .surfaceBuilder(MidnightSurfaceBuilders.SURFACE, MidnightSurfaceBuilders.GRASS_DIRT_MUD_CONFIG)
                 .category(Category.FOREST)
                 .grassColor(0x8C84BC)
+                .skyColor(0x1F3B4A)
                 .depth(0.155F)
                 .scale(0.07F)
         );

@@ -9,6 +9,7 @@ public class HillyFungiForestBiome extends SurfaceBiome {
                 .surfaceBuilder(MidnightSurfaceBuilders.SURFACE, MidnightSurfaceBuilders.GRASS_DIRT_MUD_CONFIG)
                 .category(Category.FOREST)
                 .grassColor(0x8489B5)
+                .skyColor(0x15292D)
                 .depth(2.25F)
                 .scale(0.4F)
         );

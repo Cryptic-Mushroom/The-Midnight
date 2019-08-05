@@ -30,6 +30,7 @@ public abstract class SurfaceBiome extends Biome implements ConfigurableBiome {
 
     private final int grassColor;
     private final int foliageColor;
+    private final int skyColor;
 
     protected SurfaceBiome(Properties properties) {
         super(properties);
@@ -40,6 +41,7 @@ public abstract class SurfaceBiome extends Biome implements ConfigurableBiome {
 
         this.grassColor = properties.grassColor;
         this.foliageColor = properties.foliageColor;
+        this.skyColor = properties.skyColor;
     }
 
     @Override
@@ -67,6 +69,15 @@ public abstract class SurfaceBiome extends Biome implements ConfigurableBiome {
 
     public boolean isWet() {
         return this.wet;
+    }
+
+    public int getSkyColor() {
+        return this.skyColor;
+    }
+
+    @Override
+    public int getSkyColorByTemp(float temperature) {
+        return this.skyColor;
     }
 
     @Override
@@ -110,6 +121,7 @@ public abstract class SurfaceBiome extends Biome implements ConfigurableBiome {
         private boolean wet;
         private int grassColor = 0xB084BC;
         private int foliageColor = 0x8F6DBC;
+        private int skyColor = 0x171B32;
 
         public Properties() {
             super.precipitation(RainType.NONE);
@@ -141,6 +153,11 @@ public abstract class SurfaceBiome extends Biome implements ConfigurableBiome {
 
         public Properties foliageColor(int foliageColor) {
             this.foliageColor = foliageColor;
+            return this;
+        }
+
+        public Properties skyColor(int skyColor) {
+            this.skyColor = skyColor;
             return this;
         }
 

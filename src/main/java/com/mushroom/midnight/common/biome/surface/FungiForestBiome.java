@@ -9,6 +9,7 @@ public class FungiForestBiome extends SurfaceBiome {
                 .surfaceBuilder(MidnightSurfaceBuilders.SURFACE, MidnightSurfaceBuilders.GRASS_DIRT_MUD_CONFIG)
                 .category(Category.FOREST)
                 .grassColor(0x8489B5)
+                .skyColor(0x15292D)
                 .depth(0.155F)
                 .scale(0.07F)
         );

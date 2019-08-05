@@ -1,4 +1,4 @@
-package com.mushroom.midnight.client.render;
+package com.mushroom.midnight.client.render.item;
 
 import com.mushroom.midnight.common.tile.base.MidnightChestTileEntity;
 import net.minecraft.block.Block;
