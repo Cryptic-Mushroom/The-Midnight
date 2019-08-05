@@ -23,6 +23,7 @@ import com.mushroom.midnight.common.world.feature.ViridshroomCacheFeature;
 import com.mushroom.midnight.common.world.feature.config.CrystalClusterConfig;
 import com.mushroom.midnight.common.world.feature.config.MidnightOreConfig;
 import com.mushroom.midnight.common.world.feature.config.UniformCompositionConfig;
+import com.mushroom.midnight.common.world.feature.structure.ShadowrootGuardTowerStructure;
 import com.mushroom.midnight.common.world.feature.structure.WellStructure;
 import com.mushroom.midnight.common.world.feature.tree.DarkWillowTreeFeature;
 import com.mushroom.midnight.common.world.feature.tree.DeadTreeFeature;
@@ -39,13 +40,17 @@ import com.mushroom.midnight.common.world.feature.tree.SmallDewshroomFeature;
 import com.mushroom.midnight.common.world.feature.tree.SmallNightshroomFeature;
 import com.mushroom.midnight.common.world.feature.tree.SmallViridshroomFeature;
 import com.mushroom.midnight.common.world.template.ShelfAttachProcessor;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.DoublePlantConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.ObjectHolder;
+
+import java.util.Locale;
 
 // TODO: Register from correct event when Forge is fixed
 @ObjectHolder(Midnight.MODID)
@@ -105,6 +110,7 @@ public class MidnightFeatures {
 //                }
 //            }
 //    };
+
     public static final AbstractTreeFeature<NoFeatureConfig> SHADOWROOT_TREE = new ShadowrootTreeFeature(NoFeatureConfig::deserialize);
     public static final AbstractTreeFeature<NoFeatureConfig> DARK_WILLOW_TREE = new DarkWillowTreeFeature(NoFeatureConfig::deserialize);
     public static final Feature<NoFeatureConfig> DEAD_TREE = new DeadTreeFeature(NoFeatureConfig::deserialize, ShelfAttachProcessor.FOREST_SHELF_BLOCKS);
@@ -151,6 +157,7 @@ public class MidnightFeatures {
     //structure
     public static final Feature<NoFeatureConfig> WELL = new WellStructure(NoFeatureConfig::deserialize);
     public static final Feature<NoFeatureConfig> DEAD_VIRIDSHROOM_AND_CACHE = new ViridshroomCacheFeature(NoFeatureConfig::deserialize);
+    public static final Structure<NoFeatureConfig> SHADOWROOT_GUARDTOWER = new ShadowrootGuardTowerStructure(NoFeatureConfig::deserialize);
 
     @SubscribeEvent
     public static void registerFeatures(IForgeRegistry<Feature<?>> event) {
@@ -190,11 +197,15 @@ public class MidnightFeatures {
                 .add("crystal_cluster", CRYSTAL_CLUSTER)
                 .add("crystal_spire", CRYSTAL_SPIRE)
                 .add("ore", ORE)
-                .add("well", WELL);
+                .add("well", WELL)
+                .add("shadowroot_guardtower", SHADOWROOT_GUARDTOWER);
 
-        //I think it is necessary when generating the structure
-        //Feature.STRUCTURES.put("Well".toLowerCase(Locale.ROOT), WELL);
-        //Registry.register(Registry.STRUCTURE_FEATURE, new ResourceLocation(Midnight.MODID,"well"), WELL);
+        Feature.STRUCTURES.put("ShadowrootGuardTower".toLowerCase(Locale.ROOT), SHADOWROOT_GUARDTOWER);
+        register("ShadowrootGuardTower".toLowerCase(Locale.ROOT), SHADOWROOT_GUARDTOWER);
+    }
+
+    private static Structure<?> register(String key, Structure<?> p_215141_1_) {
+        return Registry.register(Registry.STRUCTURE_FEATURE, key.toLowerCase(Locale.ROOT), p_215141_1_);
     }
 
 }
