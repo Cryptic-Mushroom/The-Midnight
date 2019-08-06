@@ -2,8 +2,6 @@ package com.mushroom.midnight.common.biome.surface;
 
 import com.mushroom.midnight.common.biome.MidnightBiomeConfigurator;
 import com.mushroom.midnight.common.biome.MidnightSurfaceBuilders;
-import com.mushroom.midnight.common.registry.MidnightFeatures;
-import net.minecraft.world.gen.feature.IFeatureConfig;
 
 public class VigilantForestBiome extends SurfaceBiome {
     public VigilantForestBiome() {
@@ -15,6 +13,8 @@ public class VigilantForestBiome extends SurfaceBiome {
         );
 
         MidnightBiomeConfigurator.addGlobalOres(this);
+
+        MidnightBiomeConfigurator.addShadowRootGuardTower(this);
 
         MidnightBiomeConfigurator.addVigilantForestTrees(this);
         MidnightBiomeConfigurator.addDeadLogs(this);
@@ -32,7 +32,5 @@ public class VigilantForestBiome extends SurfaceBiome {
         MidnightBiomeConfigurator.addStandardCreatureSpawns(this);
         MidnightBiomeConfigurator.addStandardMonsterSpawns(this);
         MidnightBiomeConfigurator.addForestSpawns(this);
-
-        this.add(MidnightFeatures.SHADOWROOT_GUARDTOWER, IFeatureConfig.NO_FEATURE_CONFIG);
     }
 }

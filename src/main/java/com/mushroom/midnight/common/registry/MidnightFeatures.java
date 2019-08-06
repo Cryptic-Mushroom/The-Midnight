@@ -40,7 +40,6 @@ import com.mushroom.midnight.common.world.feature.tree.SmallDewshroomFeature;
 import com.mushroom.midnight.common.world.feature.tree.SmallNightshroomFeature;
 import com.mushroom.midnight.common.world.feature.tree.SmallViridshroomFeature;
 import com.mushroom.midnight.common.world.template.ShelfAttachProcessor;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.DoublePlantConfig;
 import net.minecraft.world.gen.feature.Feature;
@@ -49,8 +48,6 @@ import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.ObjectHolder;
-
-import java.util.Locale;
 
 // TODO: Register from correct event when Forge is fixed
 @ObjectHolder(Midnight.MODID)
@@ -200,12 +197,7 @@ public class MidnightFeatures {
                 .add("well", WELL)
                 .add("shadowroot_guardtower", SHADOWROOT_GUARDTOWER);
 
-        Feature.STRUCTURES.put("ShadowrootGuardTower".toLowerCase(Locale.ROOT), SHADOWROOT_GUARDTOWER);
-        register("ShadowrootGuardTower".toLowerCase(Locale.ROOT), SHADOWROOT_GUARDTOWER);
-    }
-
-    private static Structure<?> register(String key, Structure<?> p_215141_1_) {
-        return Registry.register(Registry.STRUCTURE_FEATURE, key.toLowerCase(Locale.ROOT), p_215141_1_);
+        RegUtil.registerStructure("ShadowrootGuardTower", SHADOWROOT_GUARDTOWER);
     }
 
 }

@@ -1,6 +1,8 @@
 package com.mushroom.midnight.common.world.feature.structure;
 
 import com.mushroom.midnight.Midnight;
+import com.mushroom.midnight.common.registry.MidnightLootTables;
+import com.mushroom.midnight.common.registry.MidnightStructurePieceType;
 import net.minecraft.block.Blocks;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ChestTileEntity;
@@ -19,7 +21,6 @@ import net.minecraft.world.gen.feature.template.BlockIgnoreStructureProcessor;
 import net.minecraft.world.gen.feature.template.PlacementSettings;
 import net.minecraft.world.gen.feature.template.Template;
 import net.minecraft.world.gen.feature.template.TemplateManager;
-import net.minecraft.world.storage.loot.LootTables;
 
 import java.util.List;
 import java.util.Random;
@@ -27,7 +28,7 @@ import java.util.Random;
 public class ShadowrootGuardTowerPieces {
     private static final ResourceLocation field_202592_e = new ResourceLocation(Midnight.MODID, "shadowroot_guardtower");
 
-    public static void func_207617_a(TemplateManager p_207617_0_, BlockPos p_207617_1_, Rotation p_207617_2_, List<StructurePiece> p_207617_3_, Random p_207617_4_) {
+    public static void addTowerPieces(TemplateManager p_207617_0_, BlockPos p_207617_1_, Rotation p_207617_2_, List<StructurePiece> p_207617_3_, Random p_207617_4_) {
 
         p_207617_3_.add(new ShadowrootGuardTowerPieces.Piece(p_207617_0_, field_202592_e, p_207617_1_, p_207617_2_, 0));
     }
@@ -37,7 +38,7 @@ public class ShadowrootGuardTowerPieces {
         private final Rotation field_207616_e;
 
         public Piece(TemplateManager p_i49313_1_, ResourceLocation p_i49313_2_, BlockPos p_i49313_3_, Rotation p_i49313_4_, int p_i49313_5_) {
-            super(IMidnightStructurePieceType.SHADOWROOT_GUARDTOWER, 0);
+            super(MidnightStructurePieceType.SHADOWROOT_GUARDTOWER, 0);
             this.field_207615_d = p_i49313_2_;
             this.templatePosition = p_i49313_3_;
             this.field_207616_e = p_i49313_4_;
@@ -45,7 +46,7 @@ public class ShadowrootGuardTowerPieces {
         }
 
         public Piece(TemplateManager p_i50566_1_, CompoundNBT p_i50566_2_) {
-            super(IMidnightStructurePieceType.SHADOWROOT_GUARDTOWER, p_i50566_2_);
+            super(MidnightStructurePieceType.SHADOWROOT_GUARDTOWER, p_i50566_2_);
             this.field_207615_d = new ResourceLocation(p_i50566_2_.getString("Template"));
             this.field_207616_e = Rotation.valueOf(p_i50566_2_.getString("Rot"));
             this.func_207614_a(p_i50566_1_);
@@ -71,7 +72,7 @@ public class ShadowrootGuardTowerPieces {
                 worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
                 TileEntity tileentity = worldIn.getTileEntity(pos.down());
                 if (tileentity instanceof ChestTileEntity) {
-                    ((ChestTileEntity) tileentity).setLootTable(LootTables.CHESTS_IGLOO_CHEST, rand.nextLong());
+                    ((ChestTileEntity) tileentity).setLootTable(MidnightLootTables.LOOT_TABLE_SHADOWROOT_GUARDTOWER, rand.nextLong());
                 }
 
             }

@@ -358,6 +358,13 @@ public class MidnightBiomeConfigurator {
         );
     }
 
+    public static void addShadowRootGuardTower(ConfigurableBiome biome) {
+        biome.add(GenerationStage.Decoration.SURFACE_STRUCTURES, Biome.createDecoratedFeature(
+                MidnightFeatures.SHADOWROOT_GUARDTOWER, IFeatureConfig.NO_FEATURE_CONFIG, Placement.NOPE, IPlacementConfig.NO_PLACEMENT_CONFIG)
+        );
+        biome.add(MidnightFeatures.SHADOWROOT_GUARDTOWER, IFeatureConfig.NO_FEATURE_CONFIG);
+    }
+
     public static void addDeadViridShroomAndCache(ConfigurableBiome biome) {
         biome.add(GenerationStage.Decoration.SURFACE_STRUCTURES, Biome.createDecoratedFeature(
                 MidnightFeatures.DEAD_VIRIDSHROOM_AND_CACHE, IFeatureConfig.NO_FEATURE_CONFIG,

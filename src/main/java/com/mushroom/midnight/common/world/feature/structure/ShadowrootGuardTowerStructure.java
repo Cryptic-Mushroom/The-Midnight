@@ -1,7 +1,6 @@
 package com.mushroom.midnight.common.world.feature.structure;
 
 import com.mojang.datafixers.Dynamic;
-import com.mushroom.midnight.common.registry.MidnightFeatures;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableBoundingBox;
@@ -42,12 +41,11 @@ public class ShadowrootGuardTowerStructure extends ScatteredStructure<NoFeatureC
         }
 
         public void init(ChunkGenerator<?> generator, TemplateManager templateManagerIn, int chunkX, int chunkZ, Biome biomeIn) {
-            NoFeatureConfig nofeatureconfig = (NoFeatureConfig) generator.getStructureConfig(biomeIn, MidnightFeatures.SHADOWROOT_GUARDTOWER);
             int i = chunkX * 16;
             int j = chunkZ * 16;
             BlockPos blockpos = new BlockPos(i, 90, j);
             Rotation rotation = Rotation.values()[this.rand.nextInt(Rotation.values().length)];
-            ShadowrootGuardTowerPieces.func_207617_a(templateManagerIn, blockpos, rotation, this.components, this.rand);
+            ShadowrootGuardTowerPieces.addTowerPieces(templateManagerIn, blockpos, rotation, this.components, this.rand);
             this.recalculateStructureSize();
         }
     }
