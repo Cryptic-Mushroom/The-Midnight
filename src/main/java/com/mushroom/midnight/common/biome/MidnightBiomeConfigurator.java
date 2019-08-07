@@ -66,9 +66,10 @@ public class MidnightBiomeConfigurator {
                 MidnightPlacements.DRAGON_NEST, IPlacementConfig.NO_PLACEMENT_CONFIG
         ));
 
-        // TODO
-//      .withFeature(FeatureSorting.LAST, UNSTABLE_BUSH_FEATURE, new ParcelPlacementConfig(6, 10, 0.2f))
-//      .withFeature(FeatureSorting.LAST, UNDERGROUND_FEATURES, new UndergroundPlacementConfig(1, 3, 10, 50))
+        biome.add(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(
+                MidnightFeatures.UNSTABLE_BUSH, IFeatureConfig.NO_FEATURE_CONFIG,
+                MidnightPlacements.CHANCE_SURFACE_DOUBLE, new ChanceConfig(5)
+        ));
     }
 
     public static void addLumen(ConfigurableBiome biome) {
@@ -341,12 +342,12 @@ public class MidnightBiomeConfigurator {
 
     public static void addUndergroundBulbFungi(ConfigurableBiome biome) {
         biome.add(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(
-                MidnightFeatures.BULB_FUNGI_FLOWERS, IFeatureConfig.NO_FEATURE_CONFIG,
+                MidnightFeatures.GLOB_FUNGI_FLOWERS, IFeatureConfig.NO_FEATURE_CONFIG,
                 MidnightPlacements.COUNT_UNDERGROUND_32, new FrequencyConfig(7)
         ));
 
         biome.add(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(
-                MidnightFeatures.LARGE_BULB_FUNGUS, IFeatureConfig.NO_FEATURE_CONFIG,
+                MidnightFeatures.LARGE_GLOB_FUNGUS, IFeatureConfig.NO_FEATURE_CONFIG,
                 MidnightPlacements.COUNT_UNDERGROUND, new FrequencyConfig(3)
         ));
     }

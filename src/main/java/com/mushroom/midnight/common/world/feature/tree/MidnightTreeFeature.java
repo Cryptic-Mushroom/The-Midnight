@@ -58,6 +58,15 @@ public abstract class MidnightTreeFeature extends AbstractTreeFeature<NoFeatureC
         return positions;
     }
 
+    protected static boolean canGrowInto(IWorld world, BlockPos pos) {
+        return world.hasBlockState(pos, state -> {
+            return state.isAir(world, pos)
+                    || state.isIn(BlockTags.LEAVES)
+                    || state.isIn(BlockTags.DIRT_LIKE)
+                    || !state.isOpaqueCube(world, pos);
+        });
+    }
+
     private static class WorldWrapper extends AbstractWrappedWorld {
         private final Set<BlockPos> logs;
         private final MutableBoundingBox bounds;

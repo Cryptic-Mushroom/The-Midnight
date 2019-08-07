@@ -7,5 +7,5 @@ import net.minecraft.world.IWorld;
 import java.util.Random;
 
 public interface TemplatePostProcessor {
-    void process(IWorld world, Random random, BlockPos pos, BlockState state);
+    void process(CompiledTemplate template, IWorld world, Random random, BlockPos pos, BlockState state);
 }

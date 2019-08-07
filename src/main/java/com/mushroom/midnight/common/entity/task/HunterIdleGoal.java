@@ -48,14 +48,13 @@ public class HunterIdleGoal extends Goal {
 
     @Nullable
     private Path produceWanderPath() {
-        return null; // TODO check creatureEntity home
-        /*BlockPos homePos = this.owner.hasHome() ? this.owner.getHomePosition() : null;
+        BlockPos homePos = this.owner.detachHome() ? this.owner.getHomePosition() : null;
         BlockPos flightPos = this.targetGenerator.generate(homePos);
         if (flightPos == null) {
             return null;
         }
 
-        return this.owner.getNavigator().getPathToPos(flightPos);*/
+        return this.owner.getNavigator().getPathToPos(flightPos, 0);
     }
 }
  

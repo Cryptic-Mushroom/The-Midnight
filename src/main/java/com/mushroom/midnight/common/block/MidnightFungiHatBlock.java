@@ -9,7 +9,6 @@ import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.state.BooleanProperty;
@@ -26,7 +25,6 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-import java.util.function.Supplier;
 
 public class MidnightFungiHatBlock extends Block {
     public static final BooleanProperty UP = BooleanProperty.create("up");
@@ -36,13 +34,8 @@ public class MidnightFungiHatBlock extends Block {
     public static final BooleanProperty SOUTH = BooleanProperty.create("south");
     public static final BooleanProperty WEST = BooleanProperty.create("west");
 
-    private final Supplier<Block> saplingSupplier;
-    private final Supplier<Item> powderSupplier;
-
-    public MidnightFungiHatBlock(Supplier<Block> saplingSupplier, Supplier<Item> powderSupplier, MaterialColor materialColor) {
+    public MidnightFungiHatBlock(MaterialColor materialColor) {
         super(Block.Properties.create(Material.WOOD, materialColor).sound(SoundType.WOOD).hardnessAndResistance(0.5f, 0f));
-        this.saplingSupplier = saplingSupplier;
-        this.powderSupplier = powderSupplier;
         this.setDefaultState(this.getStateContainer().getBaseState()
                 .with(UP, false)
                 .with(DOWN, false)
@@ -161,15 +154,4 @@ public class MidnightFungiHatBlock extends Block {
 
         return state;
     }
-
-    // TODO
-    /*@Override
-    public int quantityDropped(Random random) {
-        return random.nextInt(5) == 0 ? 1 : 0;
-    }
-
-    @Override
-    public Item getItemDropped(BlockState state, Random rand, int fortune) {
-        return rand.nextBoolean() ? Item.getItemFromBlock(this.saplingSupplier.get()) : powderSupplier.get();
-    }*/
 }

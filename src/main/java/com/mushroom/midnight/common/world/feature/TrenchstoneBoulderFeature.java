@@ -11,17 +11,20 @@ import java.util.Random;
 import java.util.function.Function;
 
 public class TrenchstoneBoulderFeature extends BoulderFeature {
+    private static final float RADIUS = 2.0F;
+    private static final float INNER_RADIUS_SQ = (RADIUS / 2.0F) * (RADIUS / 2.0F);
+
     public TrenchstoneBoulderFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> deserialize) {
         super(deserialize);
     }
 
     @Override
     protected float getRadius(Random random) {
-        return 1.0F;
+        return RADIUS;
     }
 
     @Override
-    protected BlockState getStateForPlacement(IWorld world, BlockPos origin, BlockPos pos, double dist, float radiusSquare, Random random) {
-        return dist <= radiusSquare && random.nextFloat() < 0.1f ? MidnightBlocks.ARCHAIC_ORE.getDefaultState() : MidnightBlocks.TRENCHSTONE.getDefaultState();
+    protected BlockState getStateForPlacement(IWorld world, BlockPos origin, BlockPos pos, double distSquare, float radiusSquare, Random random) {
+        return distSquare <= INNER_RADIUS_SQ && random.nextFloat() < 0.1f ? MidnightBlocks.ARCHAIC_ORE.getDefaultState() : MidnightBlocks.TRENCHSTONE.getDefaultState();
     }
 }

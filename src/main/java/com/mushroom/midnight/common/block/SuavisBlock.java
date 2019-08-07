@@ -157,15 +157,10 @@ public class SuavisBlock extends Block implements IGrowable {
 
     @Override
     public void tick(BlockState state, World world, BlockPos pos, Random rand) {
-        // TODO check isSideSolid
-        /*if (!isSideSolid(world.getBlockState(pos.down()), world, pos, Direction.UP)) {
-            world.destroyBlock(pos, true);
-        } else {*/
         if (state.get(STAGE) < 3 && ForgeHooks.onCropsGrowPre(world, pos, state, rand.nextInt(5) == 0)) {
             this.grow(world, rand, pos, state);
             ForgeHooks.onCropsGrowPost(world, pos, state);
         }
-        //}
     }
 
     @Override

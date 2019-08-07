@@ -7,6 +7,7 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
+import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.lighting.LightEngine;
 import net.minecraftforge.api.distmarker.Dist;
@@ -59,5 +60,10 @@ public class SpreadableSoilBlock extends SoilBlock {
     @Override
     public void onPlantGrow(BlockState state, IWorld world, BlockPos pos, BlockPos source) {
         world.setBlockState(pos, this.groundSupplier.get().getDefaultState(), 2);
+    }
+
+    @Override
+    public boolean canBeReplacedByLogs(BlockState state, IWorldReader world, BlockPos pos) {
+        return true;
     }
 }

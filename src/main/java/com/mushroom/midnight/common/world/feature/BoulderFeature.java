@@ -46,14 +46,14 @@ public abstract class BoulderFeature extends Feature<NoFeatureConfig> {
         BlockPos maxPos = origin.add(radiusCeil, radiusCeil, radiusCeil);
 
         BlockPos.getAllInBox(minPos, maxPos).forEach(pos -> {
-            double dist = pos.distanceSq(origin);
-            if (dist <= radiusSquare) {
-                this.setBlockState(world, pos, this.getStateForPlacement(world, origin, pos, dist, radiusSquare, random));
+            double distSquare = pos.distanceSq(origin);
+            if (distSquare <= radiusSquare) {
+                this.setBlockState(world, pos, this.getStateForPlacement(world, origin, pos, distSquare, radiusSquare, random));
             }
         });
     }
 
     protected abstract float getRadius(Random random);
 
-    protected abstract BlockState getStateForPlacement(IWorld world, BlockPos origin, BlockPos pos, double dist, float radiusSquare, Random random);
+    protected abstract BlockState getStateForPlacement(IWorld world, BlockPos origin, BlockPos pos, double distSquare, float radiusSquare, Random random);
 }

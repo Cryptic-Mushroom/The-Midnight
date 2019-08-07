@@ -8,6 +8,7 @@ import net.minecraft.block.IGrowable;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.DecoratedFeatureConfig;
@@ -61,20 +62,20 @@ public class SoilBlock extends Block implements IGrowable {
 
     @Override
     public void grow(World world, Random rand, BlockPos pos, BlockState state) {
-        if (!canUseBonemeal(world, rand, pos, state)) {
+        if (!this.canUseBonemeal(world, rand, pos, state)) {
             return;
         }
-        BlockPos blockpos = pos.up();
+        BlockPos abovePos = pos.up();
         BlockState grassState = MidnightBlocks.GRASS.getDefaultState();
         for (int i = 0; i < 128; ++i) {
-            BlockPos blockpos1 = blockpos;
+            BlockPos placePos = abovePos;
             int j = 0;
             while (true) {
                 if (j >= i / 16) {
-                    BlockState upperState = world.getBlockState(blockpos1);
+                    BlockState upperState = world.getBlockState(placePos);
                     // grow grass to tallgrass
                     if (upperState.getBlock() == grassState.getBlock() && rand.nextInt(10) == 0) {
-                        ((IGrowable) grassState.getBlock()).grow(world, rand, blockpos1, upperState);
+                        ((IGrowable) grassState.getBlock()).grow(world, rand, placePos, upperState);
                     }
                     if (!upperState.isAir()) { // !canGrow()
                         break;
@@ -82,26 +83,31 @@ public class SoilBlock extends Block implements IGrowable {
                     BlockState plantState;
                     // get a flower or the default grass
                     if (rand.nextInt(8) == 0) {
-                        List<ConfiguredFeature<?>> list = world.getBiome(blockpos1).getFlowers();
-                        if (list.isEmpty()) {
+                        List<ConfiguredFeature<?>> flowers = world.getBiome(placePos).getFlowers();
+                        if (flowers.isEmpty()) {
                             break;
                         }
                         // TODO integrate cavern biomes
-                        plantState = ((FlowersFeature) ((DecoratedFeatureConfig) (list.get(0)).config).feature.feature).getRandomFlower(rand, blockpos1);
+                        plantState = ((FlowersFeature) ((DecoratedFeatureConfig) (flowers.get(0)).config).feature.feature).getRandomFlower(rand, placePos);
                     } else {
                         plantState = grassState;
                     }
-                    if (plantState.isValidPosition(world, blockpos1)) {
-                        world.setBlockState(blockpos1, grassState, 3);
+                    if (plantState.isValidPosition(world, placePos)) {
+                        world.setBlockState(placePos, grassState, 3);
                     }
                     break;
                 }
-                blockpos1 = blockpos1.add(rand.nextInt(3) - 1, (rand.nextInt(3) - 1) * rand.nextInt(3) / 2, rand.nextInt(3) - 1);
-                if (!world.getBlockState(blockpos1.down()).getBlock().isIn(MidnightTags.Blocks.BONEMEAL_GROUNDS) || isOpaque(world.getBlockState(blockpos1).getCollisionShape(world, blockpos1))) {
+                placePos = placePos.add(rand.nextInt(3) - 1, (rand.nextInt(3) - 1) * rand.nextInt(3) / 2, rand.nextInt(3) - 1);
+                if (!world.getBlockState(placePos.down()).getBlock().isIn(MidnightTags.Blocks.BONEMEAL_GROUNDS) || isOpaque(world.getBlockState(placePos).getCollisionShape(world, placePos))) {
                     break;
                 }
                 ++j;
             }
         }
+    }
+
+    @Override
+    public boolean canBeReplacedByLogs(BlockState state, IWorldReader world, BlockPos pos) {
+        return true;
     }
 }

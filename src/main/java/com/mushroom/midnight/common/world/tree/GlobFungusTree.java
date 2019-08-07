@@ -12,6 +12,6 @@ public class GlobFungusTree extends Tree {
     @Nullable
     @Override
     protected AbstractTreeFeature<NoFeatureConfig> getTreeFeature(Random random) {
-        return MidnightFeatures.LARGE_BULB_FUNGUS;
+        return MidnightFeatures.LARGE_GLOB_FUNGUS;
     }
 }

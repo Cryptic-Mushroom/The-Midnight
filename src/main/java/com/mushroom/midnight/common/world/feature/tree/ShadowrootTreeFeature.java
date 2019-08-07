@@ -73,12 +73,12 @@ public class ShadowrootTreeFeature extends MidnightTreeFeature {
         return false;
     }
 
-    private boolean canFit(IWorldGenerationReader world, BlockPos origin, int width, int height) {
+    private boolean canFit(IWorld world, BlockPos origin, int width, int height) {
         BlockPos min = origin.add(-width, 0, -width);
         BlockPos max = origin.add(width, height, width);
 
         for (BlockPos pos : BlockPos.getAllInBoxMutable(min, max)) {
-            if (!isAirOrLeaves(world, pos)) {
+            if (!canGrowInto(world, pos)) {
                 return false;
             }
         }

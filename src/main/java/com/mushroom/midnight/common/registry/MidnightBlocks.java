@@ -486,7 +486,6 @@ public class MidnightBlocks {
                 .add("dewshroom_stem", Block::new)
                 .add("viridshroom_stem", Block::new)
                 .add("bogshroom_stem", Block::new)
-                // TODO glob fungus stem drops 4 GLOB_FUNGUS_HAND, can silk touch & sheared
                 .add("glob_fungus_stem", props -> new LogBlock(MaterialColor.BROWN, props.hardnessAndResistance(0.5f)))
                 .add("fungi_inside", new FungiInsideBlock(Block.Properties.create(Material.AIR).doesNotBlockMovement()));
 
@@ -496,8 +495,8 @@ public class MidnightBlocks {
                         .tickRandomly()
                         .sound(SoundType.PLANT)
                 )
-                .add("shadowroot_leaves", LeavesBlock::new) // SHADOWROOT_SAPLING TODO checks if saplings are in json loottables
-                .add("dark_willow_leaves", LeavesBlock::new); // DARK_WILLOW_SAPLING
+                .add("shadowroot_leaves", LeavesBlock::new)
+                .add("dark_willow_leaves", LeavesBlock::new);
 
         RegUtil.blocks(event.getRegistry())
                 .withProperties(() -> Block.Properties.create(Material.PLANTS)
@@ -510,10 +509,10 @@ public class MidnightBlocks {
                 .add("dark_willow_sapling", props -> new MidnightSaplingBlock(new DarkWillowTree(), props));
 
         RegUtil.blocks(event.getRegistry())
-                .add("nightshroom_hat", new MidnightFungiHatBlock(() -> NIGHTSHROOM, () -> MidnightItems.NIGHTSHROOM_POWDER, MaterialColor.CYAN))
-                .add("dewshroom_hat", new MidnightFungiHatBlock(() -> DEWSHROOM, () -> MidnightItems.DEWSHROOM_POWDER, MaterialColor.PURPLE))
-                .add("viridshroom_hat", new MidnightFungiHatBlock(() -> VIRIDSHROOM, () -> MidnightItems.VIRIDSHROOM_POWDER, MaterialColor.EMERALD))
-                .add("bogshroom_hat", new MidnightFungiHatBlock(() -> BOGSHROOM, () -> MidnightItems.BOGSHROOM_POWDER, MaterialColor.ADOBE))
+                .add("nightshroom_hat", new MidnightFungiHatBlock(MaterialColor.CYAN))
+                .add("dewshroom_hat", new MidnightFungiHatBlock(MaterialColor.PURPLE))
+                .add("viridshroom_hat", new MidnightFungiHatBlock(MaterialColor.EMERALD))
+                .add("bogshroom_hat", new MidnightFungiHatBlock(MaterialColor.ADOBE))
                 .add("glob_fungus_hat", new GlobFungusHatBlock());
 
         RegUtil.blocks(event.getRegistry())

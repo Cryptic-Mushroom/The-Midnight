@@ -48,8 +48,7 @@ public abstract class TemplateTreeFeature extends MidnightTreeFeature {
         return TemplateCompiler.of(this.templates)
                 .withAnchor(ANCHOR_MARKER)
                 .withSettingConfigurator(RotatedSettingConfigurator.INSTANCE)
-                .withProcessor(this::processState)
-                .withMarkerProcessor(this::processMarker);
+                .withProcessor(this::processState);
     }
 
     @Override
@@ -103,7 +102,7 @@ public abstract class TemplateTreeFeature extends MidnightTreeFeature {
         BlockPos maxFit = new BlockPos(maxCorner.getX(), trunkTop.getY(), maxCorner.getZ());
 
         for (BlockPos pos : BlockPos.getAllInBoxMutable(minCorner, maxFit)) {
-            if (!isAirOrLeaves(world, pos)) {
+            if (!canGrowInto(world, pos)) {
                 return false;
             }
         }
@@ -112,17 +111,7 @@ public abstract class TemplateTreeFeature extends MidnightTreeFeature {
     }
 
     protected Template.BlockInfo processState(IWorldReader world, BlockPos origin, Template.BlockInfo srcInfo, Template.BlockInfo info, PlacementSettings settings) {
-        BlockState state = info.state;
-        Block block = state.getBlock();
-        if (block == Blocks.STRUCTURE_BLOCK || block == Blocks.AIR) {
-            return null;
-        }
-        return info;
-    }
-
-    protected void processMarker(IWorld world, BlockPos pos, String key) {
-        if (key.equals(ANCHOR_MARKER) || key.equals(TRUNK_TOP_MARKER)) {
-            this.setBlockState(world, pos, this.log);
-        }
+        Block block = info.state.getBlock();
+        return block == Blocks.STRUCTURE_BLOCK || block == Blocks.AIR ? null : info;
     }
 }

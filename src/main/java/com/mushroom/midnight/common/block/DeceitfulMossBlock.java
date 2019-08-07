@@ -96,7 +96,6 @@ public class DeceitfulMossBlock extends DirectionalBlock {
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    // TODO check this it's static
     public boolean doesSideBlockRendering(BlockState state, IEnviromentBlockReader world, BlockPos pos, Direction side) {
         if (side == Direction.UP) {
             return true;

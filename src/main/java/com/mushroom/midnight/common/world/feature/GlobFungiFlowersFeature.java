@@ -10,8 +10,8 @@ import net.minecraft.world.gen.feature.NoFeatureConfig;
 import java.util.Random;
 import java.util.function.Function;
 
-public class BulbFungiFlowersFeature extends FlowersFeature {
-    public BulbFungiFlowersFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> deserialize) {
+public class GlobFungiFlowersFeature extends FlowersFeature {
+    public GlobFungiFlowersFeature(Function<Dynamic<?>, ? extends NoFeatureConfig> deserialize) {
         super(deserialize);
     }
 

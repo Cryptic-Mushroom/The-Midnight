@@ -22,6 +22,6 @@ public class PresentShaderHandle implements ShaderHandle {
 
     @Override
     public void close() {
-        this.handle.close();
+        this.handle.func_216544_e();
     }
 }

@@ -37,7 +37,7 @@ public class ShelfAttachProcessor implements TemplatePostProcessor {
     }
 
     @Override
-    public void process(IWorld world, Random random, BlockPos pos, BlockState state) {
+    public void process(CompiledTemplate template, IWorld world, Random random, BlockPos pos, BlockState state) {
         if (state.isSolid() && random.nextInt(this.attachChance) == 0) {
             this.attachShelf(world, random, pos);
         }

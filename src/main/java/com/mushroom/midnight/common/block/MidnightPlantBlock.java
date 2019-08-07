@@ -6,7 +6,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.BushBlock;
 import net.minecraft.block.IGrowable;
 import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -14,27 +13,23 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IEnviromentBlockReader;
-import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.MinecraftForgeClient;
-import net.minecraftforge.common.IShearable;
 
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Random;
 import java.util.function.Supplier;
 
-// TODO: Shearability in loot table
 @SuppressWarnings("deprecation")
-public class MidnightPlantBlock extends BushBlock implements IGrowable, IShearable, GeneratablePlant {
+public class MidnightPlantBlock extends BushBlock implements IGrowable, GeneratablePlant {
     private static final VoxelShape SHAPE = Block.makeCuboidShape(2d, 0d, 2d, 14d, 13d, 14d);
 
     @Nullable
     protected final Supplier<Block> growSupplier;
     private final boolean glowing;
-    private boolean replacable, shearable;
+    private boolean replacable;
 
     public MidnightPlantBlock(Block.Properties properties) {
         this(properties, false, null);
@@ -56,11 +51,6 @@ public class MidnightPlantBlock extends BushBlock implements IGrowable, IShearab
         return this;
     }
 
-    public MidnightPlantBlock setShearable() {
-        this.shearable = true;
-        return this;
-    }
-
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
         return SHAPE;
@@ -69,11 +59,6 @@ public class MidnightPlantBlock extends BushBlock implements IGrowable, IShearab
     @Override
     protected boolean isValidGround(BlockState state, IBlockReader world, BlockPos pos) {
             return state.getBlock().isIn(MidnightTags.Blocks.PLANTABLE_GROUNDS);
-    }
-
-    @Override
-    public boolean isShearable(@Nonnull ItemStack item, IWorldReader world, BlockPos pos) {
-        return this.shearable;
     }
 
     @Override

@@ -21,7 +21,7 @@ public class NightstoneBoulderFeature extends BoulderFeature {
     }
 
     @Override
-    protected BlockState getStateForPlacement(IWorld world, BlockPos origin, BlockPos pos, double dist, float radiusSquare, Random random) {
+    protected BlockState getStateForPlacement(IWorld world, BlockPos origin, BlockPos pos, double distSquare, float radiusSquare, Random random) {
         return MidnightBlocks.NIGHTSTONE.getDefaultState();
     }
 }

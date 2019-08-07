@@ -99,7 +99,6 @@ public final class MidnightBlockLootProvider extends MidnightLootTableProvider {
         this.add(MidnightBlocks.BOGSHROOM_SHELF);
         this.add(MidnightBlocks.BOGSHROOM_STEM);
         this.add(MidnightBlocks.GLOB_FUNGUS);
-        this.add(MidnightBlocks.GLOB_FUNGUS_STEM);
         this.add(MidnightBlocks.ROCKSHROOM);
         this.add(MidnightBlocks.ROCKSHROOM_BRICKS);
         this.add(MidnightBlocks.LUMEN_BUD);
@@ -225,10 +224,10 @@ public final class MidnightBlockLootProvider extends MidnightLootTableProvider {
         this.addSlab(MidnightBlocks.NIGHTSHROOM_SLAB);
         this.addSlab(MidnightBlocks.ROCKSHROOM_BRICK_SLAB);
 
-        this.addFungiHat(MidnightBlocks.VIRIDSHROOM_HAT, MidnightItems.VIRIDSHROOM_POWDER);
-        this.addFungiHat(MidnightBlocks.NIGHTSHROOM_HAT, MidnightItems.NIGHTSHROOM_POWDER);
-        this.addFungiHat(MidnightBlocks.DEWSHROOM_HAT, MidnightItems.DEWSHROOM_POWDER);
-        this.addFungiHat(MidnightBlocks.BOGSHROOM_HAT, MidnightItems.BOGSHROOM_POWDER);
+        this.addFungiHat(MidnightBlocks.VIRIDSHROOM_HAT, MidnightBlocks.VIRIDSHROOM, MidnightItems.VIRIDSHROOM_POWDER);
+        this.addFungiHat(MidnightBlocks.NIGHTSHROOM_HAT, MidnightBlocks.NIGHTSHROOM, MidnightItems.NIGHTSHROOM_POWDER);
+        this.addFungiHat(MidnightBlocks.DEWSHROOM_HAT, MidnightBlocks.DEWSHROOM, MidnightItems.DEWSHROOM_POWDER);
+        this.addFungiHat(MidnightBlocks.BOGSHROOM_HAT, MidnightBlocks.BOGSHROOM, MidnightItems.BOGSHROOM_POWDER);
 
         this.addSilkTouchedAlternative(MidnightBlocks.GRASS_BLOCK, MidnightBlocks.DIRT);
         this.addSilkTouchedAlternative(MidnightBlocks.MYCELIUM, MidnightBlocks.NIGHTSTONE);
@@ -282,6 +281,12 @@ public final class MidnightBlockLootProvider extends MidnightLootTableProvider {
                                 .acceptFunction(SetCount.func_215932_a(RandomValueRange.func_215837_a(1.0F, 1.0F)))
                 ))
         ));
+
+        this.add(MidnightBlocks.GLOB_FUNGUS_STEM, block ->
+                silkOrSheared(block, ItemLootEntry.builder(MidnightItems.GLOB_FUNGUS_HAND)
+                        .acceptFunction(SetCount.func_215932_a(ConstantRange.of(4)))
+                )
+        );
 
         this.lootTables.forEach(consumer::accept);
     }
@@ -385,10 +390,10 @@ public final class MidnightBlockLootProvider extends MidnightLootTableProvider {
         this.add(block, table);
     }
 
-    private void addFungiHat(Block block, IItemProvider powder) {
+    private void addFungiHat(Block block, IItemProvider fungi, IItemProvider powder) {
         LootPool.Builder pool = LootPool.builder()
                 .addEntry(AlternativesLootEntry.func_216149_a(
-                        ItemLootEntry.builder(block).acceptCondition(RandomChance.builder(0.5F)),
+                        ItemLootEntry.builder(fungi).acceptCondition(RandomChance.builder(0.5F)),
                         ItemLootEntry.builder(powder)
                 ))
                 .rolls(ONE);

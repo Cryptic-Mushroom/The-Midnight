@@ -108,8 +108,6 @@ public class WorldShader implements ISelectiveResourceReloadListener {
     }
 
     public boolean isAvailable() {
-        // TODO: Fix JVM crash with shader
-        if (true) return false;
         if (!GLX.usePostProcess) {
             return false;
         }
