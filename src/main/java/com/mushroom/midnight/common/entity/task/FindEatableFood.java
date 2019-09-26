@@ -17,7 +17,8 @@ public class FindEatableFood extends Goal {
         return !item.cannotPickup() && getCanEatItem(item.getItem()) && item.isAlive();
     };
     private final double speed;
-    public FindEatableFood(MobEntity entity,ItemStack stack,double speed) {
+
+    public FindEatableFood(MobEntity entity, ItemStack stack, double speed) {
         this.mobEntity = entity;
         this.itemStack = stack;
         this.speed = speed;
@@ -28,7 +29,7 @@ public class FindEatableFood extends Goal {
      * Returns whether the EntityAIBase should begin execution.
      */
     public boolean shouldExecute() {
-        if (mobEntity.getAttackTarget() == null &&mobEntity.getRevengeTarget() == null) {
+        if (mobEntity.getAttackTarget() == null && mobEntity.getRevengeTarget() == null) {
             if (mobEntity.getRNG().nextInt(10) != 0) {
                 return false;
             } else {
@@ -46,7 +47,7 @@ public class FindEatableFood extends Goal {
     public void tick() {
         List<ItemEntity> list = mobEntity.world.getEntitiesWithinAABB(ItemEntity.class, mobEntity.getBoundingBox().grow(8.0D, 8.0D, 8.0D), canPickUp);
         if (!list.isEmpty()) {
-            mobEntity.getNavigator().tryMoveToEntityLiving(list.get(0), (double)speed);
+            mobEntity.getNavigator().tryMoveToEntityLiving(list.get(0), (double) speed);
         }
 
     }
@@ -57,7 +58,7 @@ public class FindEatableFood extends Goal {
     public void startExecuting() {
         List<ItemEntity> list = mobEntity.world.getEntitiesWithinAABB(ItemEntity.class, mobEntity.getBoundingBox().grow(8.0D, 8.0D, 8.0D), canPickUp);
         if (!list.isEmpty()) {
-            mobEntity.getNavigator().tryMoveToEntityLiving(list.get(0), (double)1.2F);
+            mobEntity.getNavigator().tryMoveToEntityLiving(list.get(0), (double) 1.2F);
         }
 
     }

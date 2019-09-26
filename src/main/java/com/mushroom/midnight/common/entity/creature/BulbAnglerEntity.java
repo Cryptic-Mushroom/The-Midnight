@@ -33,7 +33,7 @@ public class BulbAnglerEntity extends AbstractFishEntity {
         if (!(p_213470_0_ instanceof LivingEntity)) {
             return false;
         } else {
-            LivingEntity livingentity = (LivingEntity)p_213470_0_;
+            LivingEntity livingentity = (LivingEntity) p_213470_0_;
             return livingentity.getLastAttackedEntity() != null && livingentity.getLastAttackedEntityTime() < livingentity.ticksExisted + 100;
         }
     };
@@ -67,11 +67,11 @@ public class BulbAnglerEntity extends AbstractFishEntity {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(2, new FindEatableFood(this,new ItemStack(MidnightItems.DECEITFUL_SNAPPER), 1.15D));
+        this.goalSelector.addGoal(2, new FindEatableFood(this, new ItemStack(MidnightItems.DECEITFUL_SNAPPER), 1.15D));
         this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.15D, false));
         this.goalSelector.addGoal(4, new RandomSwimmingGoal(this, 1.05D, 45));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, DeceitfulSnapperEntity.class, 4,true, false, canEatEntity::test));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, DeceitfulSnapperEntity.class, 4, true, false, canEatEntity::test));
 
     }
 
@@ -136,8 +136,8 @@ public class BulbAnglerEntity extends AbstractFishEntity {
         if (id == 45) {
             ItemStack itemstack = this.getItemStackFromSlot(EquipmentSlotType.MAINHAND);
             if (!itemstack.isEmpty()) {
-                for(int i = 0; i < 8; ++i) {
-                    Vec3d vec3d = (new Vec3d(((double)this.rand.nextFloat() - 0.5D) * 0.1D, Math.random() * 0.1D + 0.1D, 0.0D)).rotatePitch(-this.rotationPitch * ((float)Math.PI / 180F)).rotateYaw(-this.rotationYaw * ((float)Math.PI / 180F));
+                for (int i = 0; i < 8; ++i) {
+                    Vec3d vec3d = (new Vec3d(((double) this.rand.nextFloat() - 0.5D) * 0.1D, Math.random() * 0.1D + 0.1D, 0.0D)).rotatePitch(-this.rotationPitch * ((float) Math.PI / 180F)).rotateYaw(-this.rotationYaw * ((float) Math.PI / 180F));
                     this.world.addParticle(new ItemParticleData(ParticleTypes.ITEM, itemstack), this.posX + this.getLookVec().x / 2.0D, this.posY, this.posZ + this.getLookVec().z / 2.0D, vec3d.x, vec3d.y + 0.05D, vec3d.z);
                 }
             }
