@@ -387,6 +387,7 @@
   "item.midnight.stinger_spawn_egg": "Stinger Spawn Egg",
   "item.midnight.nightstag_spawn_egg": "Nightstag Spawn Egg",
   "item.midnight.deceitful_snapper_spawn_egg": "Deceitful Snapper Spawn Egg",
+  "item.midnight.bulb_angler_spawn_egg": "Bulb Angler Spawn Egg",
   "item.midnight.skulk_spawn_egg": "Skulk Spawn Egg",
   "item.midnight.shade_squirrel_spawn_egg": "Shade Squirrel Egg",
 
@@ -453,6 +454,7 @@
   "entity.midnight.tree_hopper": "Treehopper",
   "entity.midnight.nightstag": "Nightstag",
   "entity.midnight.deceitful_snapper": "Deceitful Snapper",
+  "entity.midnight.bulb_angler": "Bulb Angler",
   "entity.midnight.skulk": "Skulk",
   "entity.midnight.thrown_geode": "Thrown Geode",
   "entity.midnight.shade_squirrel": "Shade Squirrel",

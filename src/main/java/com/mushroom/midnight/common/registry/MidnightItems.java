@@ -229,6 +229,7 @@ public class MidnightItems {
                 .add("stinger_spawn_egg", props -> new SpawnEggItem(MidnightEntities.STINGER, 0x291E23, 0x4D6A43, props))
                 .add("nightstag_spawn_egg", props -> new SpawnEggItem(MidnightEntities.NIGHTSTAG, 0x946CC2, 0x221F1D, props))
                 .add("deceitful_snapper_spawn_egg", props -> new SpawnEggItem(MidnightEntities.DECEITFUL_SNAPPER, 0x45404E, 0x906F99, props))
+                .add("bulb_angler_spawn_egg", props -> new SpawnEggItem(MidnightEntities.BULB_ANGLER, 0x1f042e, 0xebe579, props))
                 .add("skulk_spawn_egg", props -> new SpawnEggItem(MidnightEntities.SKULK, 0x4B5065, 0x4E268A, props));
 //                .add("shade_squirrel_spawn_egg", props -> new SpawnEggItem(MidnightEntities.SHADE_SQUIRREL, 0x4f435a, 0xdccf70, props))
 

@@ -42,5 +42,6 @@ public class DeceitfulBogBiome extends SurfaceBiome {
         MidnightSurfaceConfigurator.addStandardMonsterSpawns(this);
 
         this.add(EntityClassification.WATER_CREATURE, new Biome.SpawnListEntry(MidnightEntities.DECEITFUL_SNAPPER, 100, 5, 10));
+        this.add(EntityClassification.WATER_CREATURE, new Biome.SpawnListEntry(MidnightEntities.BULB_ANGLER, 60, 2, 4));
     }
 }

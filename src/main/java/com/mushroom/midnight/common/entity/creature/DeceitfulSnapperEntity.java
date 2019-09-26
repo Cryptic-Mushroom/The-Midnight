@@ -1,15 +1,13 @@
 package com.mushroom.midnight.common.entity.creature;
 
 import com.mushroom.midnight.common.entity.task.FishJumpGoal;
+import com.mushroom.midnight.common.registry.MidnightEntities;
 import com.mushroom.midnight.common.registry.MidnightItems;
 import com.mushroom.midnight.common.registry.MidnightSounds;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.goal.HurtByTargetGoal;
-import net.minecraft.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
-import net.minecraft.entity.ai.goal.RandomSwimmingGoal;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.passive.fish.AbstractFishEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -48,7 +46,8 @@ public class DeceitfulSnapperEntity extends AbstractFishEntity {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(2, new FishJumpGoal(this, 60));
+        this.goalSelector.addGoal(1, new FishJumpGoal(this, 60));
+        this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, BulbAnglerEntity.class, 10.0F,1.1D,1.25F));
         this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.1D, false) {
         });
         this.goalSelector.addGoal(4, new RandomSwimmingGoal(this, 1.0D, 40) {
@@ -87,5 +86,10 @@ public class DeceitfulSnapperEntity extends AbstractFishEntity {
         }
 
         return flag;
+    }
+
+    @Override
+    public boolean canAttack(EntityType<?> typeIn) {
+        return typeIn != MidnightEntities.BULB_ANGLER && super.canAttack(typeIn);
     }
 }

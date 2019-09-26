@@ -1,17 +1,7 @@
 package com.mushroom.midnight.common.registry;
 
 import com.mushroom.midnight.common.entity.CloudEntity;
-import com.mushroom.midnight.common.entity.creature.CrystalBugEntity;
-import com.mushroom.midnight.common.entity.creature.DeceitfulSnapperEntity;
-import com.mushroom.midnight.common.entity.creature.HunterEntity;
-import com.mushroom.midnight.common.entity.creature.NightStagEntity;
-import com.mushroom.midnight.common.entity.creature.NovaEntity;
-import com.mushroom.midnight.common.entity.creature.PenumbrianEntity;
-import com.mushroom.midnight.common.entity.creature.RifterEntity;
-import com.mushroom.midnight.common.entity.creature.ShadeSquirrelEntity;
-import com.mushroom.midnight.common.entity.creature.SkulkEntity;
-import com.mushroom.midnight.common.entity.creature.StingerEntity;
-import com.mushroom.midnight.common.entity.creature.TreeHopperEntity;
+import com.mushroom.midnight.common.entity.creature.*;
 import com.mushroom.midnight.common.entity.projectile.BladeshroomCapEntity;
 import com.mushroom.midnight.common.entity.projectile.NovaSpikeEntity;
 import com.mushroom.midnight.common.entity.projectile.SporeBombEntity;
@@ -109,6 +99,12 @@ public class MidnightEntities {
             .setShouldReceiveVelocityUpdates(true)
             .size(0.4f, 0.4f)
             .build(MODID + ":deceitful_snapper");
+    public static final EntityType<BulbAnglerEntity> BULB_ANGLER = EntityType.Builder.create(BulbAnglerEntity::new, EntityClassification.WATER_CREATURE)
+            .setTrackingRange(80)
+            .setUpdateInterval(3)
+            .setShouldReceiveVelocityUpdates(true)
+            .size(0.6f, 0.6f)
+            .build(MODID + ":bulb_angler");
     public static final EntityType<SkulkEntity> SKULK = EntityType.Builder.create(SkulkEntity::new, EntityClassification.CREATURE)
             .setTrackingRange(80)
             .setUpdateInterval(3)
@@ -168,6 +164,8 @@ public class MidnightEntities {
         event.getRegistry().register(NIGHTSTAG);
         DECEITFUL_SNAPPER.setRegistryName(MODID, "deceitful_snapper");
         event.getRegistry().register(DECEITFUL_SNAPPER);
+        BULB_ANGLER.setRegistryName(MODID, "bulb_angler");
+        event.getRegistry().register(BULB_ANGLER);
         SKULK.setRegistryName(MODID, "skulk");
         event.getRegistry().register(SKULK);
 //        SHADE_SQUIRREL.setRegistryName(MODID, "shade_squirrel");
@@ -183,6 +181,7 @@ public class MidnightEntities {
         EntitySpawnPlacementRegistry.register(CRYSTAL_BUG, EntitySpawnPlacementRegistry.PlacementType.NO_RESTRICTIONS, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MidnightEntities::mobCondition);
         EntitySpawnPlacementRegistry.register(NOVA, EntitySpawnPlacementRegistry.PlacementType.NO_RESTRICTIONS, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MidnightEntities::monsterCondition);
         EntitySpawnPlacementRegistry.register(DECEITFUL_SNAPPER, EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MidnightEntities::fishCondition);
+        EntitySpawnPlacementRegistry.register(BULB_ANGLER, EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MidnightEntities::fishCondition);
 
         EntitySpawnPlacementRegistry.register(RIFTER, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MidnightEntities::monsterCondition);
 
