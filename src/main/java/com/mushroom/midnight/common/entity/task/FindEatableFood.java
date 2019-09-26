@@ -33,7 +33,7 @@ public class FindEatableFood extends Goal {
                 return false;
             } else {
                 List<ItemEntity> list = mobEntity.world.getEntitiesWithinAABB(ItemEntity.class, mobEntity.getBoundingBox().grow(8.0D, 8.0D, 8.0D), canPickUp);
-                return !list.isEmpty() && mobEntity.getItemStackFromSlot(EquipmentSlotType.MAINHAND).isEmpty();
+                return !list.isEmpty();
             }
         } else {
             return false;
