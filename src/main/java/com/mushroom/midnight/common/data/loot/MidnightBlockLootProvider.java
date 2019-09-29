@@ -34,6 +34,7 @@ import net.minecraft.world.storage.loot.functions.ApplyBonus;
 import net.minecraft.world.storage.loot.functions.CopyName;
 import net.minecraft.world.storage.loot.functions.ExplosionDecay;
 import net.minecraft.world.storage.loot.functions.SetCount;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -386,19 +387,19 @@ public final class MidnightBlockLootProvider extends MidnightLootTableProvider {
                 ));
     }
 
-    private static LootTable.Builder selfOrAlternative(Block block, ILootCondition.IBuilder condition, LootEntry.Builder<?> alternative) {
+    private static LootTable.Builder selfOrAlternatives(Block block, ILootCondition.IBuilder condition, LootEntry.Builder<?>... alternatives) {
         return LootTable.builder().addLootPool(LootPool.builder()
-                .addEntry(ItemLootEntry.builder(block).acceptCondition(condition).func_216080_a(alternative))
+                .addEntry(new AlternativesLootEntry.Builder(ArrayUtils.insert(0, alternatives, ItemLootEntry.builder(block).acceptCondition(condition))))
                 .rolls(ONE)
         );
     }
 
-    private static LootTable.Builder silkTouched(Block block, LootEntry.Builder<?> alternative) {
-        return selfOrAlternative(block, Conditions.HAS_SILK_TOUCH, alternative);
+    private static LootTable.Builder silkTouched(Block block, LootEntry.Builder<?>... alternatives) {
+        return selfOrAlternatives(block, Conditions.HAS_SILK_TOUCH, alternatives);
     }
 
-    private static LootTable.Builder silkOrSheared(Block block, LootEntry.Builder<?> alternative) {
-        return selfOrAlternative(block, Conditions.HAS_SHEARS_OR_SILK_TOUCH, alternative);
+    private static LootTable.Builder silkOrSheared(Block block, LootEntry.Builder<?>... alternatives) {
+        return selfOrAlternatives(block, Conditions.HAS_SHEARS_OR_SILK_TOUCH, alternatives);
     }
 
     private static LootTable.Builder copyName(Block block) {
@@ -461,14 +462,11 @@ public final class MidnightBlockLootProvider extends MidnightLootTableProvider {
     }
 
     private void addFungiHat(Block block, IItemProvider fungi, IItemProvider powder) {
-        LootPool.Builder pool = LootPool.builder()
-                .addEntry(AlternativesLootEntry.func_216149_a(
+        this.add(block, explosionDecay(silkTouched(
+                        block,
                         ItemLootEntry.builder(fungi).acceptCondition(RandomChance.builder(0.5F)),
                         ItemLootEntry.builder(powder)
-                ))
-                .rolls(ONE);
-
-        this.add(block, LootTable.builder().addLootPool(explosionDecay(pool)));
+        )));
     }
 
     private void addUnstableBush(Block block, IItemProvider fruit) {

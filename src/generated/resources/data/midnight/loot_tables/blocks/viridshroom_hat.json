@@ -11,6 +11,25 @@
               "type": "minecraft:item",
               "conditions": [
                 {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "enchantments": [
+                      {
+                        "enchantment": "minecraft:silk_touch",
+                        "levels": {
+                          "min": 1
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "name": "midnight:viridshroom_hat"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
                   "condition": "minecraft:random_chance",
                   "chance": 0.5
                 }
@@ -23,12 +42,12 @@
             }
           ]
         }
-      ],
-      "functions": [
-        {
-          "function": "minecraft:explosion_decay"
-        }
       ]
+    }
+  ],
+  "functions": [
+    {
+      "function": "minecraft:explosion_decay"
     }
   ]
 }
