@@ -1,9 +1,28 @@
 package com.mushroom.midnight.common.registry;
 
 import com.mushroom.midnight.common.entity.CloudEntity;
-import com.mushroom.midnight.common.entity.creature.*;
-import com.mushroom.midnight.common.entity.projectile.*;
-import net.minecraft.entity.*;
+import com.mushroom.midnight.common.entity.creature.BulbAnglerEntity;
+import com.mushroom.midnight.common.entity.creature.CrystalBugEntity;
+import com.mushroom.midnight.common.entity.creature.DeceitfulSnapperEntity;
+import com.mushroom.midnight.common.entity.creature.HunterEntity;
+import com.mushroom.midnight.common.entity.creature.NightStagEntity;
+import com.mushroom.midnight.common.entity.creature.NovaEntity;
+import com.mushroom.midnight.common.entity.creature.PenumbrianEntity;
+import com.mushroom.midnight.common.entity.creature.RifterEntity;
+import com.mushroom.midnight.common.entity.creature.ShadeSquirrelEntity;
+import com.mushroom.midnight.common.entity.creature.SkulkEntity;
+import com.mushroom.midnight.common.entity.creature.StingerEntity;
+import com.mushroom.midnight.common.entity.creature.TreeHopperEntity;
+import com.mushroom.midnight.common.entity.projectile.BladeshroomCapEntity;
+import com.mushroom.midnight.common.entity.projectile.CrystalBulbSpearEntity;
+import com.mushroom.midnight.common.entity.projectile.NovaSpikeEntity;
+import com.mushroom.midnight.common.entity.projectile.SporeBombEntity;
+import com.mushroom.midnight.common.entity.projectile.ThrownGeodeEntity;
+import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.EntitySpawnPlacementRegistry;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.passive.fish.AbstractFishEntity;
 import net.minecraft.util.math.BlockPos;
@@ -18,7 +37,9 @@ import net.minecraftforge.registries.ObjectHolder;
 
 import java.util.Random;
 
-import static com.mushroom.midnight.Midnight.*;
+import static com.mushroom.midnight.Midnight.MIDNIGHT_AMBIENT;
+import static com.mushroom.midnight.Midnight.MIDNIGHT_MOB;
+import static com.mushroom.midnight.Midnight.MODID;
 
 @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 @ObjectHolder(MODID)
