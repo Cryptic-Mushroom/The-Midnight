@@ -459,18 +459,18 @@
 
   "_comment": "Config",
 
-  "config_cat.midnight.general": "General",
+  "config_cat.midnight.general": "総合",
   "config_cat.midnight.general.tooltip": "All the options that can only be set on the server.",
-  "config_cat.midnight.client": "Client",
+  "config_cat.midnight.client": "クライアント",
   "config_cat.midnight.client.tooltip": "All the options that can be modified by players on server.",
 
-  "config.midnight.midnight_dimension_id": "Midnight Dimension ID",
+  "config.midnight.midnight_dimension_id": "ミッドナイトのディメンションID",
   "config.midnight.midnight_dimension_id.tooltip": "The ID to be used for the Midnight Dimension.",
 
-  "config.midnight.rift_shaders": "Rift Shaders",
+  "config.midnight.rift_shaders": "裂け目のシェーダー",
   "config.midnight.rift_shaders.tooltip": "If true, rifts will be rendered with custom shaders for standard effects. If false, a simpler (motionless) texture will be rendered.",
 
-  "config.midnight.bladeshroom_damage_chance": "Bladeshroom Damage Chance",
+  "config.midnight.bladeshroom_damage_chance": "ヤイバタケからダメージを受ける確率",
   "config.midnight.bladeshroom_damage_chance.tooltip": "The chance to take a small amount of damage when picking a bladeshroom cap as a percentage. If 0, this is disabled.",
 
   "config.midnight.can_respawn_in_midnight": "Allow players to respawn in Midnight",
@@ -551,7 +551,7 @@
   "advancement.midnight.desc": "光が無い！",
 
   "advancement.inebriated.title": "人を酔わせる",
-  "advancement.inebriated.desc": "スアヴィスの木を破壊する",
+  "advancement.inebriated.desc": "スアビスの木を破壊する",
 
   "advancement.shroomikens.title": "キノコ手裏剣",
   "advancement.shroomikens.desc": "ヤイバタケの傘を投げる",
