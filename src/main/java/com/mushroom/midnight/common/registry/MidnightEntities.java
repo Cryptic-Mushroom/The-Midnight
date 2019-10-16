@@ -2,15 +2,8 @@ package com.mushroom.midnight.common.registry;
 
 import com.mushroom.midnight.common.entity.CloudEntity;
 import com.mushroom.midnight.common.entity.creature.*;
-import com.mushroom.midnight.common.entity.projectile.BladeshroomCapEntity;
-import com.mushroom.midnight.common.entity.projectile.NovaSpikeEntity;
-import com.mushroom.midnight.common.entity.projectile.SporeBombEntity;
-import com.mushroom.midnight.common.entity.projectile.ThrownGeodeEntity;
-import net.minecraft.entity.EntityClassification;
-import net.minecraft.entity.EntitySpawnPlacementRegistry;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.SpawnReason;
+import com.mushroom.midnight.common.entity.projectile.*;
+import net.minecraft.entity.*;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.passive.fish.AbstractFishEntity;
 import net.minecraft.util.math.BlockPos;
@@ -139,6 +132,13 @@ public class MidnightEntities {
             .immuneToFire()
             .size(6f, 0.5f)
             .build(MODID + ":cloud");
+    public static final EntityType<CrystalBulbSpearEntity> CRYSTA_BLUB_SPEAR = EntityType.Builder.<CrystalBulbSpearEntity>create(CrystalBulbSpearEntity::new, EntityClassification.MISC)
+            .setTrackingRange(64)
+            .setUpdateInterval(10)
+            .setShouldReceiveVelocityUpdates(true)
+            .setCustomClientFactory(CrystalBulbSpearEntity::new)
+            .size(0.5f, 0.5f)
+            .build(MODID + ":crystal_bulb_spear");
 
     @SubscribeEvent
     public static void onRegisterEntities(final RegistryEvent.Register<EntityType<?>> event) {
@@ -176,6 +176,8 @@ public class MidnightEntities {
         event.getRegistry().register(SPORE_BOMB);
         CLOUD.setRegistryName(MODID, "cloud");
         event.getRegistry().register(CLOUD);
+        CRYSTA_BLUB_SPEAR.setRegistryName(MODID, "crystal_bulb_spear");
+        event.getRegistry().register(CRYSTA_BLUB_SPEAR);
 
         EntitySpawnPlacementRegistry.register(HUNTER, EntitySpawnPlacementRegistry.PlacementType.NO_RESTRICTIONS, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MidnightEntities::monsterCondition);
         EntitySpawnPlacementRegistry.register(CRYSTAL_BUG, EntitySpawnPlacementRegistry.PlacementType.NO_RESTRICTIONS, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MidnightEntities::mobCondition);

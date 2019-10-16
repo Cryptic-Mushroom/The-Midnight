@@ -6,10 +6,7 @@ import com.mushroom.midnight.client.render.block.RiftPortalBlockRenderer;
 import com.mushroom.midnight.client.render.entity.*;
 import com.mushroom.midnight.common.entity.CloudEntity;
 import com.mushroom.midnight.common.entity.creature.*;
-import com.mushroom.midnight.common.entity.projectile.BladeshroomCapEntity;
-import com.mushroom.midnight.common.entity.projectile.NovaSpikeEntity;
-import com.mushroom.midnight.common.entity.projectile.SporeBombEntity;
-import com.mushroom.midnight.common.entity.projectile.ThrownGeodeEntity;
+import com.mushroom.midnight.common.entity.projectile.*;
 import com.mushroom.midnight.common.registry.MidnightBlocks;
 import com.mushroom.midnight.common.tile.CacheTileEntity;
 import com.mushroom.midnight.common.tile.MidnightChestTileEntity;
@@ -55,6 +52,7 @@ public class MidnightModelRegistry {
         RenderingRegistry.registerEntityRenderingHandler(SporeBombEntity.class, manager -> new SpriteRenderer(MC.getRenderManager(), MC.getItemRenderer()));
         RenderingRegistry.registerEntityRenderingHandler(CloudEntity.class, CloudRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(NovaSpikeEntity.class, NovaSpikeRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(CrystalBulbSpearEntity.class, CrystalBulbSpearRenderer::new);
 
         ClientRegistry.bindTileEntitySpecialRenderer(MidnightChestTileEntity.class, new MidnightChestBlockRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(CacheTileEntity.class, new CacheBlockRenderer());

@@ -3,28 +3,10 @@ package com.mushroom.midnight.common.registry;
 import com.mushroom.midnight.Midnight;
 import com.mushroom.midnight.client.render.item.HighnessItemRenderer;
 import com.mushroom.midnight.client.render.item.ShieldItemRenderer;
-import com.mushroom.midnight.common.item.BladeshroomCapItem;
-import com.mushroom.midnight.common.item.DeceitfulSnapperItem;
-import com.mushroom.midnight.common.item.DrinkableItem;
-import com.mushroom.midnight.common.item.GeodeItem;
-import com.mushroom.midnight.common.item.RawSuavisItem;
-import com.mushroom.midnight.common.item.SporeBombItem;
-import com.mushroom.midnight.common.item.UnstableFruitItem;
-import com.mushroom.midnight.common.item.tool.MidnightAxeItem;
-import com.mushroom.midnight.common.item.tool.MidnightHoeItem;
-import com.mushroom.midnight.common.item.tool.MidnightPickaxeItem;
-import com.mushroom.midnight.common.item.tool.MidnightShieldItem;
-import com.mushroom.midnight.common.item.tool.MidnightShovelItem;
+import com.mushroom.midnight.common.item.*;
+import com.mushroom.midnight.common.item.tool.*;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.BlockNamedItem;
-import net.minecraft.item.BucketItem;
-import net.minecraft.item.FishBucketItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.Items;
-import net.minecraft.item.SpawnEggItem;
-import net.minecraft.item.SwordItem;
+import net.minecraft.item.*;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -48,6 +30,8 @@ public class MidnightItems {
     public static final Item NAGRILITE_NUGGET = Items.AIR;
     public static final Item EBONITE = Items.AIR;
     public static final Item ARCHAIC_SHARD = Items.AIR;
+    public static final Item CRYSTAL_BULB = Items.AIR;
+
 
     public static final Item BLADESHROOM_CAP = Items.AIR;
     public static final Item BLADESHROOM_SPORES = Items.AIR;
@@ -108,6 +92,8 @@ public class MidnightItems {
     public static final Item TENEBRUM_BOOTS = Items.AIR;
     public static final Item ROCKSHROOM_SHIELD = Items.AIR;
 
+    public static final Item CRYSTAL_BLUB_SPEAR = Items.AIR;
+
     public static final Item DECEITFUL_SNAPPER_BUCKET = Items.AIR;
 
     public static final Item DARK_WATER_BUCKET = Items.AIR;
@@ -136,6 +122,7 @@ public class MidnightItems {
                 .add("nagrilite_nugget", Item::new)
                 .add("ebonite", Item::new)
                 .add("archaic_shard", Item::new)
+                .add("crystal_bulb", Item::new)
 
                 .add("raw_suavis", props -> new RawSuavisItem(props.food(MidnightFood.RAW_SUAVIS)))
                 .add("cooked_suavis", props -> new Item(props.food(MidnightFood.COOKED_SUAVIS)))
@@ -195,7 +182,8 @@ public class MidnightItems {
                 .add("tenebrum_boots", props -> new ArmorItem(MidnightArmorMaterials.TENEBRUM, EquipmentSlotType.FEET, props))
                 .add("rockshroom_shield", props -> new MidnightShieldItem(MidnightArmorMaterials.ROCKSHROOM, props.maxDamage(336).setTEISR(() -> ShieldItemRenderer::new)))
 
-                .add("bladeshroom_cap", BladeshroomCapItem::new);
+                .add("bladeshroom_cap", BladeshroomCapItem::new)
+                .add("crystal_bulb_spear", props -> new CrystalBulbSpearItem(props.maxDamage(60)));
 
         RegUtil.items(event.getRegistry())
                 .withProperties(() -> new Item.Properties().group(MidnightItemGroups.COMBAT).maxStackSize(1))
