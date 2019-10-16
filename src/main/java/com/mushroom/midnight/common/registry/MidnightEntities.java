@@ -1,18 +1,7 @@
 package com.mushroom.midnight.common.registry;
 
 import com.mushroom.midnight.common.entity.CloudEntity;
-import com.mushroom.midnight.common.entity.creature.BulbAnglerEntity;
-import com.mushroom.midnight.common.entity.creature.CrystalBugEntity;
-import com.mushroom.midnight.common.entity.creature.DeceitfulSnapperEntity;
-import com.mushroom.midnight.common.entity.creature.HunterEntity;
-import com.mushroom.midnight.common.entity.creature.NightStagEntity;
-import com.mushroom.midnight.common.entity.creature.NovaEntity;
-import com.mushroom.midnight.common.entity.creature.PenumbrianEntity;
-import com.mushroom.midnight.common.entity.creature.RifterEntity;
-import com.mushroom.midnight.common.entity.creature.ShadeSquirrelEntity;
-import com.mushroom.midnight.common.entity.creature.SkulkEntity;
-import com.mushroom.midnight.common.entity.creature.StingerEntity;
-import com.mushroom.midnight.common.entity.creature.TreeHopperEntity;
+import com.mushroom.midnight.common.entity.creature.*;
 import com.mushroom.midnight.common.entity.projectile.BladeshroomCapEntity;
 import com.mushroom.midnight.common.entity.projectile.CrystalBulbSpearEntity;
 import com.mushroom.midnight.common.entity.projectile.NovaSpikeEntity;
