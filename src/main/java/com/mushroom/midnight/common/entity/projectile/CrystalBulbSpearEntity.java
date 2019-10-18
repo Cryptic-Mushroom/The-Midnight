@@ -35,12 +35,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-import javax.annotation.Nullable;
-
 public class CrystalBulbSpearEntity extends AbstractArrowEntity {
     private static final DataParameter<Byte> LOYALTY_LEVEL = EntityDataManager.createKey(CrystalBulbSpearEntity.class, DataSerializers.BYTE);
     private static final DataParameter<ItemStack> ITEMSTACK = EntityDataManager.createKey(CrystalBulbSpearEntity.class, DataSerializers.ITEMSTACK);
-
 
     private ItemStack thrownStack = new ItemStack(MidnightItems.CRYSTAL_BLUB_SPEAR);
     private boolean dealtDamage;
@@ -51,7 +48,7 @@ public class CrystalBulbSpearEntity extends AbstractArrowEntity {
     }
 
     public CrystalBulbSpearEntity(World p_i48790_1_, LivingEntity p_i48790_2_, ItemStack p_i48790_3_) {
-        super(MidnightEntities.CRYSTA_BLUB_SPEAR, p_i48790_2_, p_i48790_1_);
+        super(MidnightEntities.CRYSTAL_BLUB_SPEAR, p_i48790_2_, p_i48790_1_);
         this.thrownStack = p_i48790_3_.copy();
         this.dataManager.set(LOYALTY_LEVEL, (byte) EnchantmentHelper.getLoyaltyModifier(p_i48790_3_));
         this.setRenderStack(this.thrownStack);
@@ -59,11 +56,11 @@ public class CrystalBulbSpearEntity extends AbstractArrowEntity {
 
     @OnlyIn(Dist.CLIENT)
     public CrystalBulbSpearEntity(World p_i48791_1_, double p_i48791_2_, double p_i48791_4_, double p_i48791_6_) {
-        super(MidnightEntities.CRYSTA_BLUB_SPEAR, p_i48791_2_, p_i48791_4_, p_i48791_6_, p_i48791_1_);
+        super(MidnightEntities.CRYSTAL_BLUB_SPEAR, p_i48791_2_, p_i48791_4_, p_i48791_6_, p_i48791_1_);
     }
 
     public CrystalBulbSpearEntity(FMLPlayMessages.SpawnEntity spawnEntity, World world) {
-        this(MidnightEntities.CRYSTA_BLUB_SPEAR, world);
+        this(MidnightEntities.CRYSTAL_BLUB_SPEAR, world);
     }
 
     protected void registerData() {
@@ -146,7 +143,6 @@ public class CrystalBulbSpearEntity extends AbstractArrowEntity {
         this.dataManager.set(ITEMSTACK, stack);
     }
 
-    @Nullable
     protected EntityRayTraceResult func_213866_a(Vec3d p_213866_1_, Vec3d p_213866_2_) {
         return this.dealtDamage ? null : super.func_213866_a(p_213866_1_, p_213866_2_);
     }

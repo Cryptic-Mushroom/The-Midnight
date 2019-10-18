@@ -142,7 +142,7 @@ public class MidnightEntities {
             .immuneToFire()
             .size(6f, 0.5f)
             .build(MODID + ":cloud");
-    public static final EntityType<CrystalBulbSpearEntity> CRYSTA_BLUB_SPEAR = EntityType.Builder.<CrystalBulbSpearEntity>create(CrystalBulbSpearEntity::new, EntityClassification.MISC)
+    public static final EntityType<CrystalBulbSpearEntity> CRYSTAL_BLUB_SPEAR = EntityType.Builder.<CrystalBulbSpearEntity>create(CrystalBulbSpearEntity::new, EntityClassification.MISC)
             .setTrackingRange(64)
             .setUpdateInterval(10)
             .setShouldReceiveVelocityUpdates(true)
@@ -186,8 +186,8 @@ public class MidnightEntities {
         event.getRegistry().register(SPORE_BOMB);
         CLOUD.setRegistryName(MODID, "cloud");
         event.getRegistry().register(CLOUD);
-        CRYSTA_BLUB_SPEAR.setRegistryName(MODID, "crystal_bulb_spear");
-        event.getRegistry().register(CRYSTA_BLUB_SPEAR);
+        CRYSTAL_BLUB_SPEAR.setRegistryName(MODID, "crystal_bulb_spear");
+        event.getRegistry().register(CRYSTAL_BLUB_SPEAR);
 
         EntitySpawnPlacementRegistry.register(HUNTER, EntitySpawnPlacementRegistry.PlacementType.NO_RESTRICTIONS, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MidnightEntities::monsterCondition);
         EntitySpawnPlacementRegistry.register(CRYSTAL_BUG, EntitySpawnPlacementRegistry.PlacementType.NO_RESTRICTIONS, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MidnightEntities::mobCondition);
