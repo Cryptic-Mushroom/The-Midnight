@@ -12,6 +12,7 @@ import net.minecraft.entity.item.ArmorStandEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
+import net.minecraft.entity.projectile.TridentEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
@@ -35,7 +36,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public class CrystalBulbSpearEntity extends AbstractArrowEntity {
+public class CrystalBulbSpearEntity extends TridentEntity {
     private static final DataParameter<Byte> LOYALTY_LEVEL = EntityDataManager.createKey(CrystalBulbSpearEntity.class, DataSerializers.BYTE);
     private static final DataParameter<ItemStack> ITEMSTACK = EntityDataManager.createKey(CrystalBulbSpearEntity.class, DataSerializers.ITEMSTACK);
 
@@ -48,15 +49,20 @@ public class CrystalBulbSpearEntity extends AbstractArrowEntity {
     }
 
     public CrystalBulbSpearEntity(World p_i48790_1_, LivingEntity p_i48790_2_, ItemStack p_i48790_3_) {
-        super(MidnightEntities.CRYSTAL_BLUB_SPEAR, p_i48790_2_, p_i48790_1_);
+        this(p_i48790_1_, p_i48790_2_.posX, p_i48790_2_.posY + (double)p_i48790_2_.getEyeHeight() - (double)0.1F, p_i48790_2_.posZ);
         this.thrownStack = p_i48790_3_.copy();
         this.dataManager.set(LOYALTY_LEVEL, (byte) EnchantmentHelper.getLoyaltyModifier(p_i48790_3_));
         this.setRenderStack(this.thrownStack);
+        this.setShooter(p_i48790_2_);
+        if (p_i48790_2_ instanceof PlayerEntity) {
+            this.pickupStatus = AbstractArrowEntity.PickupStatus.ALLOWED;
+        }
     }
 
     @OnlyIn(Dist.CLIENT)
     public CrystalBulbSpearEntity(World p_i48791_1_, double p_i48791_2_, double p_i48791_4_, double p_i48791_6_) {
-        super(MidnightEntities.CRYSTAL_BLUB_SPEAR, p_i48791_2_, p_i48791_4_, p_i48791_6_, p_i48791_1_);
+        this(MidnightEntities.CRYSTAL_BLUB_SPEAR, p_i48791_1_);
+        this.setPosition(p_i48791_2_,p_i48791_4_,p_i48791_6_);
     }
 
     public CrystalBulbSpearEntity(FMLPlayMessages.SpawnEntity spawnEntity, World world) {
