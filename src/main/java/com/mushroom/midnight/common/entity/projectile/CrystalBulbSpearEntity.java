@@ -37,12 +37,10 @@ import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 public class CrystalBulbSpearEntity extends TridentEntity {
-    private static final DataParameter<Byte> LOYALTY_LEVEL = EntityDataManager.createKey(CrystalBulbSpearEntity.class, DataSerializers.BYTE);
     private static final DataParameter<ItemStack> ITEMSTACK = EntityDataManager.createKey(CrystalBulbSpearEntity.class, DataSerializers.ITEMSTACK);
 
     private ItemStack thrownStack = new ItemStack(MidnightItems.CRYSTAL_BLUB_SPEAR);
     private boolean dealtDamage;
-    public int returningTicks;
 
     public CrystalBulbSpearEntity(EntityType<? extends CrystalBulbSpearEntity> p_i50148_1_, World p_i50148_2_) {
         super(p_i50148_1_, p_i50148_2_);
@@ -51,7 +49,6 @@ public class CrystalBulbSpearEntity extends TridentEntity {
     public CrystalBulbSpearEntity(World p_i48790_1_, LivingEntity p_i48790_2_, ItemStack p_i48790_3_) {
         this(p_i48790_1_, p_i48790_2_.posX, p_i48790_2_.posY + (double)p_i48790_2_.getEyeHeight() - (double)0.1F, p_i48790_2_.posZ);
         this.thrownStack = p_i48790_3_.copy();
-        this.dataManager.set(LOYALTY_LEVEL, (byte) EnchantmentHelper.getLoyaltyModifier(p_i48790_3_));
         this.setRenderStack(this.thrownStack);
         this.setShooter(p_i48790_2_);
         if (p_i48790_2_ instanceof PlayerEntity) {
@@ -71,7 +68,6 @@ public class CrystalBulbSpearEntity extends TridentEntity {
 
     protected void registerData() {
         super.registerData();
-        this.dataManager.register(LOYALTY_LEVEL, (byte) 0);
         this.dataManager.register(ITEMSTACK, ItemStack.EMPTY);
     }
 
@@ -89,52 +85,6 @@ public class CrystalBulbSpearEntity extends TridentEntity {
         super.handleStatusUpdate(id);
     }
 
-    /**
-     * Called to update the entity's position/logic.
-     */
-    public void tick() {
-        if (this.timeInGround > 4) {
-            this.dealtDamage = true;
-        }
-
-        Entity entity = this.getShooter();
-        if ((this.dealtDamage || this.func_203047_q()) && entity != null) {
-            int i = this.dataManager.get(LOYALTY_LEVEL);
-            if (i > 0 && !this.shouldReturnToThrower()) {
-                if (!this.world.isRemote && this.pickupStatus == AbstractArrowEntity.PickupStatus.ALLOWED) {
-                    this.entityDropItem(this.getArrowStack(), 0.1F);
-                }
-
-                this.remove();
-            } else if (i > 0) {
-                this.func_203045_n(true);
-                Vec3d vec3d = new Vec3d(entity.posX - this.posX, entity.posY + (double) entity.getEyeHeight() - this.posY, entity.posZ - this.posZ);
-                this.posY += vec3d.y * 0.015D * (double) i;
-                if (this.world.isRemote) {
-                    this.lastTickPosY = this.posY;
-                }
-
-                double d0 = 0.05D * (double) i;
-                this.setMotion(this.getMotion().scale(0.95D).add(vec3d.normalize().scale(d0)));
-                if (this.returningTicks == 0) {
-                    this.playSound(SoundEvents.ITEM_TRIDENT_RETURN, 10.0F, 1.0F);
-                }
-
-                ++this.returningTicks;
-            }
-        }
-
-        super.tick();
-    }
-
-    private boolean shouldReturnToThrower() {
-        Entity entity = this.getShooter();
-        if (entity != null && entity.isAlive()) {
-            return !(entity instanceof ServerPlayerEntity) || !entity.isSpectator();
-        } else {
-            return false;
-        }
-    }
 
     protected ItemStack getArrowStack() {
         return this.thrownStack.copy();
@@ -225,7 +175,6 @@ public class CrystalBulbSpearEntity extends TridentEntity {
         }
 
         this.dealtDamage = compound.getBoolean("DealtDamage");
-        this.dataManager.set(LOYALTY_LEVEL, (byte) EnchantmentHelper.getLoyaltyModifier(this.thrownStack));
     }
 
     public void writeAdditional(CompoundNBT compound) {
@@ -234,13 +183,6 @@ public class CrystalBulbSpearEntity extends TridentEntity {
         compound.putBoolean("DealtDamage", this.dealtDamage);
     }
 
-    protected void tryDespawn() {
-        int i = this.dataManager.get(LOYALTY_LEVEL);
-        if (this.pickupStatus != AbstractArrowEntity.PickupStatus.ALLOWED || i <= 0) {
-            super.tryDespawn();
-        }
-
-    }
 
     protected float getWaterDrag() {
         return 0.985F;
