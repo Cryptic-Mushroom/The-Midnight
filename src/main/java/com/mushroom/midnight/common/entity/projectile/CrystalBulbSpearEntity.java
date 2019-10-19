@@ -215,16 +215,6 @@ public class CrystalBulbSpearEntity extends TridentEntity {
     }
 
     /**
-     * Called by a player entity when they collide with an entity
-     */
-    public void onCollideWithPlayer(PlayerEntity entityIn) {
-        Entity entity = this.getShooter();
-        if (entity == null || entity.getUniqueID() == entityIn.getUniqueID()) {
-            super.onCollideWithPlayer(entityIn);
-        }
-    }
-
-    /**
      * (abstract) Protected helper method to read subclass entity data from NBT.
      */
     public void readAdditional(CompoundNBT compound) {
@@ -259,23 +249,5 @@ public class CrystalBulbSpearEntity extends TridentEntity {
     @Override
     public IPacket<?> createSpawnPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
-    }
-
-    @OnlyIn(Dist.CLIENT)
-    @Override
-    public boolean isInRangeToRenderDist(double distance) {
-
-        double d0 = this.getBoundingBox().getAverageEdgeLength() * 10.0D;
-
-        if (Double.isNaN(d0)) {
-
-            d0 = 1.0D;
-
-        }
-
-        d0 = d0 * 64.0D * getRenderDistanceWeight();
-
-        return distance < d0 * d0;
-
     }
 }
