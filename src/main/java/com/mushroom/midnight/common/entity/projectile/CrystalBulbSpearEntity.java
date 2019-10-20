@@ -3,14 +3,11 @@ package com.mushroom.midnight.common.entity.projectile;
 import com.mushroom.midnight.Midnight;
 import com.mushroom.midnight.common.registry.MidnightEntities;
 import com.mushroom.midnight.common.registry.MidnightItems;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.item.ArmorStandEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.entity.projectile.TridentEntity;
 import net.minecraft.item.ItemStack;
@@ -20,17 +17,12 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.EntityRayTraceResult;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.FMLPlayMessages;
@@ -40,7 +32,6 @@ public class CrystalBulbSpearEntity extends TridentEntity {
     private static final DataParameter<ItemStack> ITEMSTACK = EntityDataManager.createKey(CrystalBulbSpearEntity.class, DataSerializers.ITEMSTACK);
 
     private ItemStack thrownStack = new ItemStack(MidnightItems.CRYSTAL_BLUB_SPEAR);
-    private boolean dealtDamage;
 
     public CrystalBulbSpearEntity(EntityType<? extends CrystalBulbSpearEntity> p_i50148_1_, World p_i50148_2_) {
         super(p_i50148_1_, p_i50148_2_);
@@ -99,65 +90,27 @@ public class CrystalBulbSpearEntity extends TridentEntity {
         this.dataManager.set(ITEMSTACK, stack);
     }
 
-    protected EntityRayTraceResult func_213866_a(Vec3d p_213866_1_, Vec3d p_213866_2_) {
-        return this.dealtDamage ? null : super.func_213866_a(p_213866_1_, p_213866_2_);
-    }
-
-    protected void func_213868_a(EntityRayTraceResult p_213868_1_) {
-        Entity entity = p_213868_1_.getEntity();
-        float f = 5.0F;
-        if (entity instanceof LivingEntity) {
-            LivingEntity livingentity = (LivingEntity) entity;
-            f += EnchantmentHelper.getModifierForCreature(this.thrownStack, livingentity.getCreatureAttribute());
-        }
-
+    @Override
+    protected void arrowHit(LivingEntity living) {
+        super.arrowHit(living);
         Entity entity1 = this.getShooter();
-        DamageSource damagesource = DamageSource.causeTridentDamage(this, (Entity) (entity1 == null ? this : entity1));
-        this.dealtDamage = true;
-        SoundEvent soundevent = SoundEvents.ITEM_TRIDENT_HIT;
-        if (entity.attackEntityFrom(damagesource, f) && entity instanceof LivingEntity) {
-            LivingEntity livingentity1 = (LivingEntity) entity;
-            if (entity1 instanceof LivingEntity) {
-                EnchantmentHelper.applyThornEnchantments(livingentity1, entity1);
-                EnchantmentHelper.applyArthropodEnchantments((LivingEntity) entity1, livingentity1);
-            }
 
-            this.world.setEntityState(this, (byte) 4);
+        for (LivingEntity shockedEntity : this.world.getEntitiesWithinAABB(LivingEntity.class, this.getBoundingBox().grow(2.0D, 2.0D, 2.0D))) {
+            if (shockedEntity != entity1 && (!(shockedEntity instanceof ArmorStandEntity) || !((ArmorStandEntity) shockedEntity).hasMarker()) && this.getDistanceSq(shockedEntity) < 14.0D) {
+                float f2 = 2.0F;
 
-            for (LivingEntity shockedEntity : this.world.getEntitiesWithinAABB(LivingEntity.class, this.getBoundingBox().grow(2.0D, 2.0D, 2.0D))) {
-                if (shockedEntity != entity1 && (!(shockedEntity instanceof ArmorStandEntity) || !((ArmorStandEntity) shockedEntity).hasMarker()) && this.getDistanceSq(shockedEntity) < 14.0D) {
-                    float f2 = 2.0F;
-
-                    if (shockedEntity.isWet()) {
-                        f2 += 4.0F;
-                    }
-
-                    shockedEntity.attackEntityFrom(new EntityDamageSource("shocked", entity1) {
-                        @Override
-                        public ITextComponent getDeathMessage(LivingEntity entityLivingBaseIn) {
-                            return new TranslationTextComponent("death." + Midnight.MODID + "." + damageType, entity.getDisplayName());
-                        }
-                    }.setDamageIsAbsolute(), f2);
+                if (shockedEntity.isWet()) {
+                    f2 += 4.0F;
                 }
-            }
 
-            this.arrowHit(livingentity1);
-        }
-
-        this.setMotion(this.getMotion().mul(-0.01D, -0.1D, -0.01D));
-        float f1 = 1.0F;
-        if (this.world instanceof ServerWorld && this.world.isThundering() && EnchantmentHelper.hasChanneling(this.thrownStack)) {
-            BlockPos blockpos = entity.getPosition();
-            if (this.world.isSkyLightMax(blockpos)) {
-                LightningBoltEntity lightningboltentity = new LightningBoltEntity(this.world, (double) blockpos.getX() + 0.5D, (double) blockpos.getY(), (double) blockpos.getZ() + 0.5D, false);
-                lightningboltentity.setCaster(entity1 instanceof ServerPlayerEntity ? (ServerPlayerEntity) entity1 : null);
-                ((ServerWorld) this.world).addLightningBolt(lightningboltentity);
-                soundevent = SoundEvents.ITEM_TRIDENT_THUNDER;
-                f1 = 5.0F;
+                shockedEntity.attackEntityFrom(new EntityDamageSource("shocked", entity1) {
+                    @Override
+                    public ITextComponent getDeathMessage(LivingEntity entityLivingBaseIn) {
+                        return new TranslationTextComponent("death." + Midnight.MODID + "." + damageType, living.getDisplayName());
+                    }
+                }.setDamageIsAbsolute(), f2);
             }
         }
-
-        this.playSound(soundevent, f1, 1.0F);
     }
 
     protected SoundEvent func_213867_k() {
@@ -173,14 +126,11 @@ public class CrystalBulbSpearEntity extends TridentEntity {
             this.thrownStack = ItemStack.read(compound.getCompound("Spear"));
             this.setRenderStack(this.thrownStack);
         }
-
-        this.dealtDamage = compound.getBoolean("DealtDamage");
     }
 
     public void writeAdditional(CompoundNBT compound) {
         super.writeAdditional(compound);
         compound.put("Spear", this.thrownStack.write(new CompoundNBT()));
-        compound.putBoolean("DealtDamage", this.dealtDamage);
     }
 
 
