@@ -1,8 +1,8 @@
 package com.mushroom.midnight.common.block;
 
 import com.mushroom.midnight.Midnight;
-import com.mushroom.midnight.client.particle.MidnightParticles;
 import com.mushroom.midnight.common.network.RockshroomBrokenMessage;
+import com.mushroom.midnight.common.registry.MidnightParticleTypes;
 import com.mushroom.midnight.common.util.MidnightDamageSource;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -85,7 +85,7 @@ public class RockshroomBlock extends Block {
             double z = pos.getZ() + 0.5 + direction.z * 0.4;
 
             Vec3d vel = direction.scale(SPORE_SPEED);
-            MidnightParticles.SPORE.spawn(world, x, y, z, vel.x, vel.y + 0.05, vel.z);
+            world.addParticle(MidnightParticleTypes.SPORE, x, y, z, vel.x, vel.y + 0.05, vel.z);
         }
     }
 

@@ -1,16 +1,21 @@
 package com.mushroom.midnight.client.particle;
 
+import net.minecraft.client.particle.IAnimatedSprite;
+import net.minecraft.client.particle.IParticleFactory;
+import net.minecraft.client.particle.IParticleRenderType;
 import net.minecraft.client.particle.Particle;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.particle.SpriteTexturedParticle;
+import net.minecraft.particles.BasicParticleType;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class FurnaceFlameParticle extends MidnightParticle {
+public class FurnaceFlameParticle extends SpriteTexturedParticle {
+    private final IAnimatedSprite spriteSet;
 
-    public FurnaceFlameParticle(World world, double posX, double posY, double posZ, double motionX, double motionY, double motionZ) {
+    public FurnaceFlameParticle(IAnimatedSprite spriteSet, World world, double posX, double posY, double posZ, double motionX, double motionY, double motionZ) {
         super(world, posX, posY, posZ, motionX, motionY, motionZ);
         this.motionX = this.motionX * 0.009999999776482582d + motionX;
         this.motionY = this.motionY * 0.009999999776482582d + motionY;
@@ -19,18 +24,22 @@ public class FurnaceFlameParticle extends MidnightParticle {
         this.posY += (double)((this.rand.nextFloat() - this.rand.nextFloat()) * 0.05f);
         this.posZ += (double)((this.rand.nextFloat() - this.rand.nextFloat()) * 0.05f);
         this.maxAge = (int)(8.0d / (Math.random() * 0.8d + 0.2d)) + 4;
+        selectSpriteWithAge(this.spriteSet = spriteSet);
     }
 
+    @Override
     public void move(double x, double y, double z) {
         setBoundingBox(this.getBoundingBox().offset(x, y, z));
         resetPositionToBB();
     }
 
-    public float func_217561_b(float partialTicks) {
+    @Override
+    public float getScale(float partialTicks) {
         float ratio = ((float)this.age + partialTicks) / (float)this.maxAge;
         return this.particleScale * (1f - ratio * ratio * 0.5f);
     }
 
+    @Override
     public int getBrightnessForRender(float partialTicks) {
         float ratio = ((float)this.age + partialTicks) / (float)this.maxAge;
         ratio = MathHelper.clamp(ratio, 0f, 1f);
@@ -44,7 +53,9 @@ public class FurnaceFlameParticle extends MidnightParticle {
         return j | k << 16;
     }
 
+    @Override
     public void tick() {
+        selectSpriteWithAge(this.spriteSet);
         this.prevPosX = this.posX;
         this.prevPosY = this.posY;
         this.prevPosZ = this.posZ;
@@ -64,15 +75,20 @@ public class FurnaceFlameParticle extends MidnightParticle {
     }
 
     @Override
-    ResourceLocation getTexture() {
-        return MidnightParticleSprites.FURNACE_FLAME;
+    public IParticleRenderType getRenderType() {
+        return IParticleRenderType.PARTICLE_SHEET_OPAQUE;
     }
 
-    @OnlyIn(Dist.CLIENT)
-    public static class Factory implements IParticle {
+    public static class Factory implements IParticleFactory<BasicParticleType> {
+        private IAnimatedSprite spriteSet;
+
+        public Factory(IAnimatedSprite spriteSet) {
+            this.spriteSet = spriteSet;
+        }
+
         @Override
-        public Particle makeParticle(World world, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, int... params) {
-            return new FurnaceFlameParticle(world, x, y, z, xSpeed, ySpeed, zSpeed);
+        public Particle makeParticle(BasicParticleType particleType, World world, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+            return new FurnaceFlameParticle(this.spriteSet, world, x, y, z, xSpeed, ySpeed, zSpeed);
         }
     }
 }

@@ -1,9 +1,9 @@
 package com.mushroom.midnight.common.block;
 
-import com.mushroom.midnight.client.particle.MidnightParticles;
-import com.mushroom.midnight.common.util.MidnightUtil;
 import com.mushroom.midnight.common.item.UnstableFruitItem;
 import com.mushroom.midnight.common.registry.MidnightBlocks;
+import com.mushroom.midnight.common.registry.MidnightParticleTypes;
+import com.mushroom.midnight.common.util.MidnightUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IGrowable;
@@ -106,7 +106,7 @@ public class UnstableBushBloomedBlock extends MidnightPlantBlock implements IGro
     public void animateTick(BlockState state, World world, BlockPos pos, Random rand) {
         int fruitType = this.fruitSupplier.get() instanceof UnstableFruitItem ? ((UnstableFruitItem) this.fruitSupplier.get()).color.ordinal() : 0;
         if (rand.nextInt(10) == 0) {
-            MidnightParticles.UNSTABLE_BUSH.spawn(world, pos.getX() + 0.5d, pos.getY() + 0.5d, pos.getZ() + 0.5d, rand.nextFloat() * 0.1d - 0.05d, rand.nextFloat() * 0.03d, rand.nextFloat() * 0.1d - 0.05d, fruitType);
+            world.addParticle(fruitType == 0 ? MidnightParticleTypes.BLUE_UNSTABLE_BUSH : fruitType == 1 ? MidnightParticleTypes.LIME_UNSTABLE_BUSH : MidnightParticleTypes.GREEN_UNSTABLE_BUSH, pos.getX() + 0.5d, pos.getY() + 0.5d, pos.getZ() + 0.5d, rand.nextFloat() * 0.1d - 0.05d, rand.nextFloat() * 0.03d, rand.nextFloat() * 0.1d - 0.05d);
         }
     }
 }

@@ -21,6 +21,7 @@ import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.util.Constants;
@@ -33,6 +34,10 @@ import net.minecraftforge.fml.network.NetworkHooks;
 )
 public class SporeBombEntity extends ThrowableEntity implements IRendersAsItem {
     private static final DataParameter<ItemStack> BOMB_STACK = EntityDataManager.createKey(SporeBombEntity.class, DataSerializers.ITEMSTACK);
+
+    public SporeBombEntity(World world) {
+        super(MidnightEntities.SPORE_BOMB, world);
+    }
 
     public SporeBombEntity(EntityType<? extends ThrowableEntity> entityType, World world) {
         super(entityType, world);
@@ -92,7 +97,7 @@ public class SporeBombEntity extends ThrowableEntity implements IRendersAsItem {
             } else {
                 SporeBombItem bomb = (SporeBombItem) getBombStack().getItem();
                 if (bomb.checkExplode(this.world, getBombStack())) {
-                    bomb.explode(this.world, this.posX, this.posY, this.posZ);
+                    bomb.explode((ServerWorld) this.world, this.posX, this.posY, this.posZ);
                     remove();
                 }
             }
@@ -106,7 +111,7 @@ public class SporeBombEntity extends ThrowableEntity implements IRendersAsItem {
         }
         if (!world.isRemote) {
             if (canBreakOn(result)) {
-                ((SporeBombItem) getBombStack().getItem()).explode(this.world, this.posX, this.posY, this.posZ);
+                ((SporeBombItem) getBombStack().getItem()).explode((ServerWorld) this.world, this.posX, this.posY, this.posZ);
             } else {
                 entityDropItem(getBombStack().copy(), 0.01f);
             }

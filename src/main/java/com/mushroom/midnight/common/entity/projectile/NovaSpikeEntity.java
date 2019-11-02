@@ -1,7 +1,7 @@
 package com.mushroom.midnight.common.entity.projectile;
 
-import com.mushroom.midnight.client.particle.MidnightParticles;
 import com.mushroom.midnight.common.registry.MidnightEntities;
+import com.mushroom.midnight.common.registry.MidnightParticleTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -34,6 +34,10 @@ public class NovaSpikeEntity extends ThrowableEntity {
     protected int timeInGround;
     private int ticksInGround;
     private int ticksInAir;
+
+    public NovaSpikeEntity(World world) {
+        super(MidnightEntities.NOVA_SPIKE, world);
+    }
 
     public NovaSpikeEntity(EntityType<NovaSpikeEntity> entityType, World world) {
         super(entityType, world);
@@ -120,7 +124,7 @@ public class NovaSpikeEntity extends ThrowableEntity {
         } else {
             super.tick();
             this.doBlockCollisions();
-            MidnightParticles.SPORE.spawn(this.world, this.posX, this.posY, this.posZ, 0.0D, 0.05, 0.0D);
+            this.world.addParticle(MidnightParticleTypes.SPORE, this.posX, this.posY, this.posZ, 0.0D, 0.05, 0.0D);
         }
     }
 

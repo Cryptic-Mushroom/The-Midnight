@@ -1,11 +1,14 @@
 package com.mushroom.midnight.client.particle;
 
-import com.mushroom.midnight.common.block.SporchBlock.SporchType;
+import net.minecraft.client.particle.IAnimatedSprite;
+import net.minecraft.client.particle.IParticleFactory;
+import net.minecraft.client.particle.IParticleRenderType;
 import net.minecraft.client.particle.Particle;
+import net.minecraft.client.particle.SpriteTexturedParticle;
 import net.minecraft.client.renderer.ActiveRenderInfo;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.particles.BasicParticleType;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -13,15 +16,15 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 @SuppressWarnings("FieldCanBeLocal")
-public class SporchParticle extends MidnightParticle {
+public class SporchParticle extends SpriteTexturedParticle {
+    private final IAnimatedSprite spriteSet;
     private final float flameScale;
     private final int MAX_FRAME_ID = 2;
-    private final SporchType sporchType;
     private int currentFrame = 0;
     private boolean directionRight = true;
     private int lastTick = 0;
 
-    public SporchParticle(World world, double posX, double posY, double posZ, double motionX, double motionY, double motionZ, int sporchType) {
+    private SporchParticle(IAnimatedSprite spriteSet, World world, double posX, double posY, double posZ, double motionX, double motionY, double motionZ) {
         super(world, posX, posY, posZ, motionX, motionY, motionZ);
         this.motionX = this.motionX * 0.009999999776482582d + motionX;
         this.motionY = this.motionY * 0.009999999776482582d + motionY;
@@ -34,7 +37,20 @@ public class SporchParticle extends MidnightParticle {
         this.particleGreen = 1f;
         this.particleBlue = 1f;
         this.maxAge = (int) (8d / (Math.random() * 0.8d + 0.2d)) + 4;
-        this.sporchType = SporchType.values()[sporchType];
+        selectSpriteWithAge(this.spriteSet = spriteSet);
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        if (isAlive()) {
+            selectSpriteWithAge(this.spriteSet);
+        }
+    }
+
+    @Override
+    public IParticleRenderType getRenderType() {
+        return IParticleRenderType.PARTICLE_SHEET_OPAQUE;
     }
 
     @Override
@@ -44,7 +60,7 @@ public class SporchParticle extends MidnightParticle {
     }
 
     @Override
-    public void onPreRender(BufferBuilder buffer, ActiveRenderInfo activeInfo, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ) {
+    public void renderParticle(BufferBuilder buffer, ActiveRenderInfo activeInfo, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ) {
         Entity entity = activeInfo.getRenderViewEntity();
         if (entity.ticksExisted >= this.lastTick + 5) {
             if (this.currentFrame == MAX_FRAME_ID) {
@@ -57,6 +73,7 @@ public class SporchParticle extends MidnightParticle {
         }
         float f = ((float) this.age + partialTicks) / (float) this.maxAge;
         this.particleScale = this.flameScale * (1f - f * f * 0.5f);
+        super.renderParticle(buffer, activeInfo, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY, rotationXZ);
     }
 
     @Override
@@ -73,16 +90,16 @@ public class SporchParticle extends MidnightParticle {
         return j | k << 16;
     }
 
-    @Override
-    ResourceLocation getTexture() {
-        return MidnightParticleSprites.SPORCHES.get(sporchType).get(currentFrame);
-    }
+    public static class Factory implements IParticleFactory<BasicParticleType> {
+        private IAnimatedSprite spriteSet;
 
-    @OnlyIn(Dist.CLIENT)
-    public static class Factory implements IParticle {
+        public Factory(IAnimatedSprite spriteSet) {
+            this.spriteSet = spriteSet;
+        }
+
         @Override
-        public Particle makeParticle(World world, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, int... params) {
-            return new SporchParticle(world, x, y, z, xSpeed, ySpeed, zSpeed, params.length > 0 ? params[0] : world.rand.nextInt(SporchType.values().length));
+        public Particle makeParticle(BasicParticleType particleType, World world, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+            return new SporchParticle(spriteSet, world, x, y, z, xSpeed, ySpeed, zSpeed);
         }
     }
 }

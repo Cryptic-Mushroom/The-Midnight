@@ -2,7 +2,6 @@ package com.mushroom.midnight.common.block;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import com.mushroom.midnight.client.particle.MidnightParticles;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -30,26 +29,23 @@ import java.util.Random;
 public class WallSporchBlock extends SporchBlock {
     public static final DirectionProperty HORIZONTAL_FACING = HorizontalBlock.HORIZONTAL_FACING;
     private static final Map<Direction, VoxelShape> SHAPES = Maps.newEnumMap(ImmutableMap.of(Direction.NORTH, Block.makeCuboidShape(5.5d, 3d, 11d, 10.5d, 13d, 16d), Direction.SOUTH, Block.makeCuboidShape(5.5d, 3d, 0d, 10.5d, 13d, 5d), Direction.WEST, Block.makeCuboidShape(11d, 3d, 5.5d, 16d, 13d, 10.5d), Direction.EAST, Block.makeCuboidShape(0d, 3d, 5.5d, 5d, 13d, 10.5d)));
-    private SporchType sporchType;
 
     public WallSporchBlock(SporchType sporchType, Properties properties) {
         super(sporchType, properties);
-        this.sporchType = sporchType;
         setDefaultState(this.stateContainer.getBaseState().with(HORIZONTAL_FACING, Direction.NORTH));
     }
 
+    @Override
     public String getTranslationKey() {
         return this.asItem().getTranslationKey();
     }
 
+    @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        return func_220289_j(state);
+        return SHAPES.get(state.get(HORIZONTAL_FACING));
     }
 
-    public static VoxelShape func_220289_j(BlockState p_220289_0_) {
-        return SHAPES.get(p_220289_0_.get(HORIZONTAL_FACING));
-    }
-
+    @Override
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
         Direction direction = state.get(HORIZONTAL_FACING);
         BlockPos blockpos = pos.offset(direction.getOpposite());
@@ -57,6 +53,7 @@ public class WallSporchBlock extends SporchBlock {
         return Block.hasSolidSide(blockstate, worldIn, blockpos, direction);
     }
 
+    @Override
     @Nullable
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         BlockState blockstate = this.getDefaultState();
@@ -75,6 +72,7 @@ public class WallSporchBlock extends SporchBlock {
         return null;
     }
 
+    @Override
     public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
         return facing.getOpposite() == stateIn.get(HORIZONTAL_FACING) && !stateIn.isValidPosition(worldIn, currentPos) ? Blocks.AIR.getDefaultState() : stateIn;
     }
@@ -89,17 +87,20 @@ public class WallSporchBlock extends SporchBlock {
         double d3 = 0.18d;
         double d4 = 0.2d;
         Direction facing = direction.getOpposite();
-        MidnightParticles.SPORCH.spawn(world, d0 + d4 * (double) facing.getXOffset(), d1 + d3, d2 + d4 * (double) facing.getZOffset(), 0d, 0.004d, 0d, sporchType.ordinal());
+        world.addParticle(getParticleType(), d0 + d4 * (double) facing.getXOffset(), d1 + d3, d2 + d4 * (double) facing.getZOffset(), 0d, 0.004d, 0d);
     }
 
+    @Override
     public BlockState rotate(BlockState state, Rotation rot) {
         return state.with(HORIZONTAL_FACING, rot.rotate(state.get(HORIZONTAL_FACING)));
     }
 
+    @Override
     public BlockState mirror(BlockState state, Mirror mirrorIn) {
         return state.rotate(mirrorIn.toRotation(state.get(HORIZONTAL_FACING)));
     }
 
+    @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(HORIZONTAL_FACING);
     }

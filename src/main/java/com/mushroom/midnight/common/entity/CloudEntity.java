@@ -1,9 +1,12 @@
 package com.mushroom.midnight.common.entity;
 
-import com.mushroom.midnight.client.particle.MidnightParticles;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mushroom.midnight.Midnight;
 import com.mushroom.midnight.common.registry.MidnightEntities;
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.block.material.PushReaction;
+import net.minecraft.command.arguments.ParticleArgument;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntitySize;
 import net.minecraft.entity.EntityType;
@@ -15,6 +18,8 @@ import net.minecraft.network.IPacket;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.particles.IParticleData;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtils;
@@ -41,8 +46,7 @@ public class CloudEntity extends Entity {
     private static final DataParameter<Float> RADIUS = EntityDataManager.createKey(CloudEntity.class, DataSerializers.FLOAT);
     private static final DataParameter<Integer> COLOR = EntityDataManager.createKey(CloudEntity.class, DataSerializers.VARINT);
     private static final DataParameter<Boolean> IGNORE_RADIUS = EntityDataManager.createKey(CloudEntity.class, DataSerializers.BOOLEAN);
-    private static final DataParameter<Integer> PARTICLE = EntityDataManager.createKey(CloudEntity.class, DataSerializers.VARINT);
-    private static final DataParameter<Integer> PARTICLE_PARAM = EntityDataManager.createKey(CloudEntity.class, DataSerializers.VARINT);
+    private static final DataParameter<IParticleData> PARTICLE = EntityDataManager.createKey(CloudEntity.class, DataSerializers.PARTICLE_DATA);
     private Potion potion = Potions.EMPTY;
     private final List<EffectInstance> effects = new ArrayList<>();
     private final Map<Entity, Integer> reapplicationDelayMap = new HashMap<>();
@@ -56,6 +60,10 @@ public class CloudEntity extends Entity {
     private LivingEntity owner;
     private UUID ownerUniqueId;
     private boolean allowTeleport = false;
+
+    public CloudEntity(World world) {
+        super(MidnightEntities.CLOUD, world);
+    }
 
     public CloudEntity(EntityType<CloudEntity> entityType, World world) {
         super(entityType, world);
@@ -82,8 +90,7 @@ public class CloudEntity extends Entity {
         this.dataManager.register(COLOR, 0);
         this.dataManager.register(RADIUS, 0.5f);
         this.dataManager.register(IGNORE_RADIUS, false);
-        this.dataManager.register(PARTICLE, MidnightParticles.getDefaultParticle().ordinal());
-        this.dataManager.register(PARTICLE_PARAM, 0);
+        this.dataManager.register(PARTICLE, ParticleTypes.ENTITY_EFFECT);
     }
 
     @Override
@@ -140,21 +147,12 @@ public class CloudEntity extends Entity {
         return this;
     }
 
-    public MidnightParticles getParticle() {
-        return MidnightParticles.fromId(this.dataManager.get(PARTICLE));
+    public IParticleData getParticleData() {
+        return this.dataManager.get(PARTICLE);
     }
 
-    public CloudEntity setParticle(MidnightParticles particle) {
-        this.dataManager.set(PARTICLE, particle.ordinal());
-        return this;
-    }
-
-    public int getParticleParam() {
-        return this.dataManager.get(PARTICLE_PARAM);
-    }
-
-    public CloudEntity setParticleParam(int param) {
-        this.dataManager.set(PARTICLE_PARAM, param);
+    public CloudEntity setParticleData(IParticleData particle) {
+        this.dataManager.set(PARTICLE, particle);
         return this;
     }
 
@@ -181,7 +179,7 @@ public class CloudEntity extends Entity {
         boolean flag = shouldIgnoreRadius();
         float f = getRadius();
         if (this.world.isRemote) {
-            MidnightParticles particle = getParticle();
+            IParticleData particle = getParticleData();
             if (flag) {
                 if (this.rand.nextBoolean()) {
                     for (int i = 0; i < 2; ++i) {
@@ -189,7 +187,7 @@ public class CloudEntity extends Entity {
                         float f2 = MathHelper.sqrt(this.rand.nextFloat()) * 0.2f;
                         float f3 = MathHelper.cos(f1) * f2;
                         float f4 = MathHelper.sin(f1) * f2;
-                        particle.spawn(this.world, this.posX + (double) f3, this.posY, this.posZ + (double) f4, 0d, 0d, 0d, getParticleParam());
+                        this.world.addParticle(particle, this.posX + (double) f3, this.posY, this.posZ + (double) f4, 0d, 0d, 0d); //, getParticleParam()
                     }
                 }
             } else {
@@ -199,7 +197,7 @@ public class CloudEntity extends Entity {
                     float f7 = MathHelper.sqrt(this.rand.nextFloat()) * f;
                     float f8 = MathHelper.cos(f6) * f7;
                     float f9 = MathHelper.sin(f6) * f7;
-                    particle.spawn(this.world, this.posX + (double) f8, this.posY, this.posZ + (double) f9, (0.5d - this.rand.nextDouble()) * 0.15d, 0.009999999776482582d, (0.5d - this.rand.nextDouble()) * 0.15d, getParticleParam());
+                    this.world.addParticle(particle, this.posX + (double) f8, this.posY, this.posZ + (double) f9, (0.5d - this.rand.nextDouble()) * 0.15d, 0.009999999776482582d, (0.5d - this.rand.nextDouble()) * 0.15d); //, getParticleParam()
                 }
             }
         } else {
@@ -323,11 +321,12 @@ public class CloudEntity extends Entity {
         this.radiusPerTick = compound.getFloat("RadiusPerTick");
         setRadius(compound.getFloat("Radius"));
         this.ownerUniqueId = compound.getUniqueId("OwnerUUID");
-        if (compound.contains("particle_id", Constants.NBT.TAG_INT)) {
-            setParticle(MidnightParticles.fromId(compound.getInt("particle_id")));
-        }
-        if (compound.contains("particle_param", Constants.NBT.TAG_INT)) {
-            setParticleParam(compound.getInt("particle_param"));
+        if (compound.contains("Particle", 8)) {
+            try {
+                setParticleData(ParticleArgument.parseParticle(new StringReader(compound.getString("Particle"))));
+            } catch (CommandSyntaxException commandsyntaxexception) {
+                Midnight.LOGGER.warn("Couldn't load custom particle {}", compound.getString("Particle"), commandsyntaxexception);
+            }
         }
         if (compound.contains("Color", Constants.NBT.TAG_ANY_NUMERIC)) {
             setColor(compound.getInt("Color"));
@@ -357,8 +356,7 @@ public class CloudEntity extends Entity {
         compound.putFloat("RadiusOnUse", this.radiusOnUse);
         compound.putFloat("RadiusPerTick", this.radiusPerTick);
         compound.putFloat("Radius", getRadius());
-        compound.putInt("particle_id", getParticle().ordinal());
-        compound.putInt("particle_param", getParticleParam());
+        compound.putString("Particle", getParticleData().getParameters());
         if (this.ownerUniqueId != null) {
             compound.putUniqueId("OwnerUUID", this.ownerUniqueId);
         }

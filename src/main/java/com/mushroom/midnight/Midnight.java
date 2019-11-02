@@ -24,7 +24,6 @@ import com.mushroom.midnight.common.loot.InBiomeLootCondition;
 import com.mushroom.midnight.common.loot.InBlockLootCondition;
 import com.mushroom.midnight.common.loot.IsChildLootCondition;
 import com.mushroom.midnight.common.network.AnimationMessage;
-import com.mushroom.midnight.common.network.BombExplosionMessage;
 import com.mushroom.midnight.common.network.CaptureEntityMessage;
 import com.mushroom.midnight.common.network.ItemActivationMessage;
 import com.mushroom.midnight.common.network.RockshroomBrokenMessage;
@@ -136,11 +135,6 @@ public class Midnight {
         CHANNEL.messageBuilder(ItemActivationMessage.class, 3)
                 .encoder(ItemActivationMessage::serialize).decoder(ItemActivationMessage::deserialize)
                 .consumer(ItemActivationMessage::handle)
-                .add();
-
-        CHANNEL.messageBuilder(BombExplosionMessage.class, 4)
-                .encoder(BombExplosionMessage::serialize).decoder(BombExplosionMessage::deserialize)
-                .consumer(BombExplosionMessage::handle)
                 .add();
     }
 

@@ -1,7 +1,8 @@
 package com.mushroom.midnight.common.block;
 
-import com.mushroom.midnight.client.particle.MidnightParticles;
+import com.mushroom.midnight.common.particle.ParticleDataOneInt;
 import com.mushroom.midnight.common.registry.MidnightEffects;
+import com.mushroom.midnight.common.registry.MidnightParticleTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -37,7 +38,7 @@ public class DragonNestBlock extends HangablePlantBlock {
             double posX = pos.getX() + 0.5d + offset.x + distX;
             double posY = pos.getY() + offset.y + Math.abs(distX);
             double posZ = pos.getZ() + 0.5d + offset.z + (rand.nextBoolean() ? distX : -distX);
-            MidnightParticles.DRIP.spawn(world, posX, posY, posZ, 0d, 0d, 0d,191, 70, 82);
+            world.addParticle(new ParticleDataOneInt(MidnightParticleTypes.DRAGONS_NEST_DRIP, 0xbf4652), posX, posY, posZ, 0d, 0d, 0d);
         }
     }
 }

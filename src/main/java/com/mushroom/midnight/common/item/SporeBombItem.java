@@ -1,11 +1,10 @@
 package com.mushroom.midnight.common.item;
 
-import com.mushroom.midnight.Midnight;
-import com.mushroom.midnight.client.particle.MidnightParticles;
 import com.mushroom.midnight.common.entity.CloudEntity;
 import com.mushroom.midnight.common.entity.projectile.SporeBombEntity;
-import com.mushroom.midnight.common.network.BombExplosionMessage;
+import com.mushroom.midnight.common.particle.ParticleDataOneInt;
 import com.mushroom.midnight.common.registry.MidnightEffects;
+import com.mushroom.midnight.common.registry.MidnightParticleTypes;
 import com.mushroom.midnight.common.registry.MidnightTags;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.dispenser.IPosition;
@@ -26,10 +25,9 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.util.Constants;
-import net.minecraftforge.fml.network.PacketDistributor;
 
 public class SporeBombItem extends Item {
     public int maxFuseTime = 200;
@@ -106,7 +104,7 @@ public class SporeBombItem extends Item {
         if (!world.isRemote) {
             long fuseTime = getFuseTime(world, stack);
             if (fuseTime <= 0) {
-                this.explode(world, x, y, z);
+                this.explode((ServerWorld)world, x, y, z);
                 stack.shrink(1);
                 return true;
             } else if (fuseTime < maxFuseTime) {
@@ -138,22 +136,18 @@ public class SporeBombItem extends Item {
         return getFuseTime(world, stack) <= 0;
     }
 
-    public void explode(World world, double x, double y, double z) {
-        BombExplosionMessage message = new BombExplosionMessage(x, y, z, this.bombType.getColor());
-        Midnight.CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> world.getChunkAt(new BlockPos(x, y, z))), message);
-
+    public void explode(ServerWorld world, double x, double y, double z) {
+        world.spawnParticle(new ParticleDataOneInt(MidnightParticleTypes.BOMB_EXPLOSION, this.bombType.getColor()), x, y, z, 1, 0d, 0d, 0d, 1d);
         world.playSound(null, x, y, z, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.HOSTILE, 1f, 1f);
         switch (this.bombType) {
             case NIGHTSHROOM:
                 world.addEntity(createLingeringCloud(this.bombType, world, x, y, z)
-                        .setParticle(MidnightParticles.FADING_SPORE)
-                        .setParticleParam(this.bombType.getColor())
+                        .setParticleData(new ParticleDataOneInt(MidnightParticleTypes.FADING_SPORE, this.bombType.getColor()))
                         .addEffect(new EffectInstance(MidnightEffects.DARKNESS, 100, 0, false, true)));
                 break;
             case DEWSHROOM:
                 world.addEntity(createLingeringCloud(this.bombType, world, x, y, z)
-                        .setParticle(MidnightParticles.FADING_SPORE)
-                        .setParticleParam(this.bombType.getColor())
+                        .setParticleData(new ParticleDataOneInt(MidnightParticleTypes.FADING_SPORE, this.bombType.getColor()))
                         .setRadiusPerTick(0.0025f)
                         .addEffect(new EffectInstance(MidnightEffects.STUNNED, 100, 0, false, true))
                         .addEffect(new EffectInstance(Effects.SLOWNESS, 100, 5, false, true)));
@@ -161,14 +155,12 @@ public class SporeBombItem extends Item {
             case VIRIDSHROOM:
                 world.addEntity(createLingeringCloud(this.bombType, world, x, y, z)
                         .setAllowTeleport()
-                        .setParticle(MidnightParticles.FADING_SPORE)
-                        .setParticleParam(this.bombType.getColor())
+                        .setParticleData(new ParticleDataOneInt(MidnightParticleTypes.FADING_SPORE, this.bombType.getColor()))
                         .addEffect(new EffectInstance(MidnightEffects.TORMENTED, 100, 0, false, true)));
                 break;
             case BOGSHROOM:
                 world.addEntity(createLingeringCloud(this.bombType, world, x, y, z)
-                        .setParticle(MidnightParticles.FADING_SPORE)
-                        .setParticleParam(this.bombType.getColor())
+                        .setParticleData(new ParticleDataOneInt(MidnightParticleTypes.FADING_SPORE, this.bombType.getColor()))
                         .addEffect(new EffectInstance(MidnightEffects.CONFUSION, 200, 0, false, true)));
                 break;
         }

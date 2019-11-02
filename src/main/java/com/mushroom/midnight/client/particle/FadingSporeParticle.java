@@ -1,19 +1,23 @@
 package com.mushroom.midnight.client.particle;
 
+import com.mushroom.midnight.common.particle.ParticleDataOneInt;
 import com.mushroom.midnight.common.util.MidnightUtil;
+import net.minecraft.client.particle.IAnimatedSprite;
+import net.minecraft.client.particle.IParticleFactory;
+import net.minecraft.client.particle.IParticleRenderType;
 import net.minecraft.client.particle.Particle;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.particle.SpriteTexturedParticle;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class FadingSporeParticle extends MidnightParticle {
-
+public class FadingSporeParticle extends SpriteTexturedParticle {
+    private final IAnimatedSprite spriteSet;
     private final float scaleMax;
 
-    public FadingSporeParticle(World world, double x, double y, double z, double motionX, double motionY, double motionZ, int color) {
+    private FadingSporeParticle(IAnimatedSprite spriteSet, World world, double x, double y, double z, double motionX, double motionY, double motionZ, int color) {
         super(world, x, y, z, motionX, motionY, motionZ);
         this.motionX = motionX;
         this.motionY = motionY + 0.01d;
@@ -26,10 +30,12 @@ public class FadingSporeParticle extends MidnightParticle {
         this.maxAge = (int) (8d / (Math.random() * 0.8d + 0.2d)) + 4;
         this.canCollide = false;
         this.particleGravity = 0f;
+        selectSpriteWithAge(this.spriteSet = spriteSet);
     }
 
     @Override
     public void tick() {
+        selectSpriteRandomly(this.spriteSet);
         this.prevPosX = this.posX;
         this.prevPosY = this.posY;
         this.prevPosZ = this.posZ;
@@ -51,22 +57,27 @@ public class FadingSporeParticle extends MidnightParticle {
     }
 
     @Override
+    public IParticleRenderType getRenderType() {
+        return IParticleRenderType.PARTICLE_SHEET_OPAQUE;
+    }
+
+    @Override
     public int getBrightnessForRender(float partialTick) {
         int skylight = 10;
         int blocklight = 5;
         return skylight << 20 | blocklight << 4;
     }
 
-    @Override
-    ResourceLocation getTexture() {
-        return MidnightParticleSprites.FADING_SPORE;
-    }
+    public static class Factory implements IParticleFactory<ParticleDataOneInt> {
+        private IAnimatedSprite spriteSet;
 
-    @OnlyIn(Dist.CLIENT)
-    public static class Factory implements IParticle {
+        public Factory(IAnimatedSprite spriteSet) {
+            this.spriteSet = spriteSet;
+        }
+
         @Override
-        public Particle makeParticle(World world, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, int... params) {
-            return new FadingSporeParticle(world, x, y, z, xSpeed, ySpeed, zSpeed, params.length > 0 ? params[0] : 0xffffff);
+        public Particle makeParticle(ParticleDataOneInt particleType, World world, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
+            return new FadingSporeParticle(this.spriteSet, world, x, y, z, xSpeed, ySpeed, zSpeed, particleType.oneInt);
         }
     }
 }

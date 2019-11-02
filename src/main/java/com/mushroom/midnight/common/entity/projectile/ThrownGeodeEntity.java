@@ -1,6 +1,6 @@
 package com.mushroom.midnight.common.entity.projectile;
 
-import com.mushroom.midnight.client.particle.MidnightParticles;
+import com.mushroom.midnight.common.registry.MidnightParticleTypes;
 import com.mushroom.midnight.common.util.MidnightUtil;
 import com.mushroom.midnight.common.registry.MidnightCriterion;
 import com.mushroom.midnight.common.registry.MidnightEntities;
@@ -41,6 +41,10 @@ import javax.annotation.Nullable;
 )
 public class ThrownGeodeEntity extends ThrowableEntity implements IRendersAsItem {
     private static final byte POPPED_STATE_ID = 3;
+
+    public ThrownGeodeEntity(World world) {
+        super(MidnightEntities.THROWN_GEODE, world);
+    }
 
     public ThrownGeodeEntity(EntityType<? extends ThrownGeodeEntity> entityType, World world) {
         super(entityType, world);
@@ -84,7 +88,7 @@ public class ThrownGeodeEntity extends ThrowableEntity implements IRendersAsItem
             double offsetX = (this.rand.nextDouble() - 0.5) * 0.4;
             double offsetY = (this.rand.nextDouble() - 0.5) * 0.4;
             double offsetZ = (this.rand.nextDouble() - 0.5) * 0.4;
-            MidnightParticles.FURNACE_FLAME.spawn(this.world, this.posX + offsetX, this.posY + offsetY, this.posZ + offsetZ, 0.0, 0.0, 0.0);
+            this.world.addParticle(MidnightParticleTypes.FURNACE_FLAME, this.posX + offsetX, this.posY + offsetY, this.posZ + offsetZ, 0.0, 0.0, 0.0);
         }
     }
 

@@ -1,11 +1,10 @@
 package com.mushroom.midnight.common.block;
 
-import com.mushroom.midnight.client.particle.FurnaceFlameParticle;
+import com.mushroom.midnight.common.registry.MidnightParticleTypes;
 import com.mushroom.midnight.common.registry.MidnightTileEntities;
 import com.mushroom.midnight.common.tile.MidnightFurnaceTileEntity;
 import net.minecraft.block.AbstractFurnaceBlock;
 import net.minecraft.block.BlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.particles.ParticleTypes;
@@ -61,7 +60,7 @@ public class MidnightFurnaceBlock extends AbstractFurnaceBlock {
             double addY = random.nextDouble() * 6d / 16d;
             double addZ = facingAxis == Direction.Axis.Z ? (double) facing.getZOffset() * outwardOffset : sidewardOffset;
             world.addParticle(ParticleTypes.SMOKE, x + addX, y + addY, z + addZ, 0d, 0d, 0d);
-            Minecraft.getInstance().particles.addEffect(new FurnaceFlameParticle(world, x + addX, y + addY, z + addZ, 0d, 0d, 0d));
+            world.addParticle(MidnightParticleTypes.FURNACE_FLAME, x + addX, y + addY, z + addZ, 0d, 0d, 0d);
         }
     }
 }
