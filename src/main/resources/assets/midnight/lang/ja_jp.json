@@ -382,7 +382,7 @@
   "item.midnight.hunter_spawn_egg": "ハンターのスポーンエッグ",
   "item.midnight.nova_spawn_egg": "ノヴァのスポーンエッグ",
   "item.midnight.crystal_bug_spawn_egg": "結晶虫のスポーンエッグ",
-  "item.midnight.penumbrian_spawn_egg": "ペナンブリアンのスポーンエッグ",
+  "item.midnight.penumbrian_spawn_egg": "半影人のスポーンエッグ",
   "item.midnight.tree_hopper_spawn_egg": "ツリーホッパーのスポーンエッグ",
   "item.midnight.stinger_spawn_egg": "スティンガーのスポーンエッグ",
   "item.midnight.nightstag_spawn_egg": "ヨルジカのスポーンエッグ",
@@ -449,7 +449,7 @@
   "entity.midnight.nova": "ノヴァ",
   "entity.midnight.crystal_bug": "結晶虫",
   "entity.midnight.stinger": "スティンガー",
-  "entity.midnight.penumbrian": "ペナンブリアン",
+  "entity.midnight.penumbrian": "半影人",
   "entity.midnight.tree_hopper": "ツリーホッパー",
   "entity.midnight.nightstag": "ヨルジカ",
   "entity.midnight.deceitful_snapper": "偽りのタイ",
@@ -460,12 +460,12 @@
   "_comment": "Config",
 
   "config_cat.midnight.general": "総合",
-  "config_cat.midnight.general.tooltip": "All the options that can only be set on the server.",
+  "config_cat.midnight.general.tooltip": "サーバー側でのみ設定できるオプション",
   "config_cat.midnight.client": "クライアント",
-  "config_cat.midnight.client.tooltip": "All the options that can be modified by players on server.",
+  "config_cat.midnight.client.tooltip": "サーバー上のプレイヤーが変更できるオプション",
 
   "config.midnight.midnight_dimension_id": "ミッドナイトのディメンションID",
-  "config.midnight.midnight_dimension_id.tooltip": "The ID to be used for the Midnight Dimension.",
+  "config.midnight.midnight_dimension_id.tooltip": "このIDがミッドナイトディメンションのものとして使われます。",
 
   "config.midnight.rift_shaders": "裂け目のシェーダー",
   "config.midnight.rift_shaders.tooltip": "If true, rifts will be rendered with custom shaders for standard effects. If false, a simpler (motionless) texture will be rendered.",
@@ -473,44 +473,44 @@
   "config.midnight.bladeshroom_damage_chance": "ヤイバタケからダメージを受ける確率",
   "config.midnight.bladeshroom_damage_chance.tooltip": "The chance to take a small amount of damage when picking a bladeshroom cap as a percentage. If 0, this is disabled.",
 
-  "config.midnight.can_respawn_in_midnight": "Allow players to respawn in Midnight",
+  "config.midnight.can_respawn_in_midnight": "ミッドナイトでのプレイヤーのスポーンを有効化",
   "config.midnight.can_respawn_in_midnight.tooltip": "If true, players will respawn in Midnight after dying in the dimension.",
 
   "config.midnight.hide_vignette_effect": "Hide the vignette effect",
   "config.midnight.hide_vignette_effect.tooltip": "Hides the vignette effect in the darker areas of Midnight.",
 
-  "config.midnight.allow_lightning_damage": "Allow lightning damage",
+  "config.midnight.allow_lightning_damage": "雷のダメージを有効化",
   "config.midnight.allow_lightning_damage.tooltip": "Allows the lightning in Midnight to burn blocks and do damage to entities.",
 
-  "config.midnight.rift_spawn_rarity": "Rarity of rifts",
+  "config.midnight.rift_spawn_rarity": "裂け目のレア度",
   "config.midnight.rift_spawn_rarity.tooltip": "The rarity that a rift appears. Larger numbers increase rarity. If 0, rifts don't spawn.",
 
-  "config.midnight.rifter_spawn_rarity": "Rarity of rifters",
+  "config.midnight.rifter_spawn_rarity": "リフターのレア度",
   "config.midnight.rifter_spawn_rarity.tooltip": "The rarity that rifts spawn rifters. Larger numbers increase rarity. If 0, rifters don't spawn.",
 
-  "config.midnight.max_rifter_by_rift": "Maximum rifters from rifts",
+  "config.midnight.max_rifter_by_rift": "裂け目からのリフターの最大数",
   "config.midnight.max_rifter_by_rift.tooltip": "The maximum amount of rifters that spawn from a rift.",
 
-  "config.midnight.allow_rifter_teleport": "Rifter teleportation",
+  "config.midnight.allow_rifter_teleport": "リフターのテレポート",
   "config.midnight.allow_rifter_teleport.tooltip": "Allows rifters to teleport to players when they aren't being looked at.",
 
-  "config.midnight.monster_spawn_rate": "Monster spawn rate",
-  "config.midnight.monster_spawn_rate.tooltip": "Spawn rate of entities of the 'monster' type in midnight (eg. Rifter, Hunter).",
+  "config.midnight.monster_spawn_rate": "モンスターのスポーンのレア度",
+  "config.midnight.monster_spawn_rate.tooltip": "ミッドナイトでのモンスタータイプのエンティティーのスポーンのレア度(例：リフターやハンター)",
 
-  "config.midnight.rifter_capture_tamed_animal": "Capture tamed animals",
-  "config.midnight.rifter_capture_tamed_animal.tooltip": "Allows rifters to capture tamed entities and drag them into rifts.",
+  "config.midnight.rifter_capture_tamed_animal": "飼育している動物の捕獲",
+  "config.midnight.rifter_capture_tamed_animal.tooltip": "リフターが飼育しているエンティティーも捕獲して裂け目に引きずり込むのを有効化。",
 
-  "config.midnight.capturable_entities": "Capturable entities",
+  "config.midnight.capturable_entities": "捕獲可能なエンティティー",
   "config.midnight.capturable_entities.tooltip": "Mobs on this whitelist can be captured by rifters, players and animals are already captured by default. Format is mod id:name of creature, just use the modid to whitelist everything from it.",
 
-  "config.midnight.not_capturable_animals": "Not capturable entities",
-  "config.midnight.not_capturable_animals.tooltip": "Mobs on this blacklist cannot be captured by rifters. Format is mod id:name of creature, just use the mod id to blacklist everything from it.",
+  "config.midnight.not_capturable_animals": "捕獲不能なエンティティー",
+  "config.midnight.not_capturable_animals.tooltip": "このブラックリストに載るモブはリフターが捕獲できません。形式は「modID:クリーチャーの名前」です。modIDのみを載せるとそのmodの全てのモブがブラックリスト化されます。",
+  
+   "config.midnight.foreign_flowers_from_bonemeal": "骨粉で外部の花",
+  "config.midnight.foreign_flowers_from_bonemeal.tooltip": "ミッドナイトで骨粉で他のMODの花の出現を有効化",
 
-  "config.midnight.foreign_flowers_from_bonemeal": "Foreign flowers from bonemeal",
-  "config.midnight.foreign_flowers_from_bonemeal.tooltip": "Allows the flowers of others mods to appear with bonemeal in Midnight.",
-
-  "status.midnight.rift_nearby": "You may not rest now, there is an evil presence nearby",
-  "status.midnight.snapped": "The fish snapped at you",
+  "status.midnight.rift_nearby": "今は休んではいけない、近くに邪悪な存在がある。",
+  "status.midnight.snapped": "魚が噛みついてきた",
 
   "_comment": "Biomes",
 
@@ -569,7 +569,7 @@
   "advancement.thrown_geode.desc": "晶洞石を何か硬いものに投げつけて壊して開ける",
 
   "advancement.surface_biomes.title": "ナイトウォーカー",
-  "advancement.surface_biomes.desc": "ミッドナイトの全ての地上バイオームと地下バイオームを横断する",
+  "advancement.surface_biomes.desc": "ミッドナイトの全ての地上のバイオームとサブバイオームを横断する",
 
   "advancement.violeaf.title": "薬草レメディー",
   "advancement.violeaf.desc": "バイオリーフの中を歩くことで吐き気の症状を直す",
