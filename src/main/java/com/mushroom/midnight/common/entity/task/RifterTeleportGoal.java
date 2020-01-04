@@ -16,7 +16,7 @@ import java.util.List;
 public class RifterTeleportGoal extends Goal {
     private static final double MAX_DISTANCE_SQ = 24 * 24;
 
-    private static final int MIN_IDLE_TIME = 40;
+    private static final int MIN_IDLE_TIME = 80;
 
     private final RifterEntity owner;
 
@@ -58,7 +58,7 @@ public class RifterTeleportGoal extends Goal {
         BlockPos origin = target.getPosition();
         List<BlockPos> validPositions = new ArrayList<>();
 
-        for (BlockPos pos : BlockPos.getAllInBoxMutable(origin.add(-10, -10, -10), origin.add(10, 10, 10))) {
+        for (BlockPos pos : BlockPos.getAllInBoxMutable(origin.add(-6, -6, -6), origin.add(6, 6, 6))) {
             Vec3d vector = new Vec3d(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
             if (!this.canBeSeenBy(vector, target) && this.isTargetValid(pos) && target.getDistanceSq(vector) > 12.0F && this.owner.world.getLightValue(pos) < 6) {
                 validPositions.add(pos.toImmutable());
