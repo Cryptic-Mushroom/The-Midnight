@@ -28,7 +28,7 @@ public class BuildTestHandler {
         boolean isTestServer = testServerProof.exists();
         if (isTestServer)
         {
-            LOGGER.info("The Midnight server started successfully. The game will now crash.");
+            LOGGER.info("GitHub Actions server test successful. The game will now crash.");
 
             throw new Exception();
         }
