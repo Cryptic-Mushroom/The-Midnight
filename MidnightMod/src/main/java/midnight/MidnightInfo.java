@@ -5,6 +5,7 @@ public final class MidnightInfo {
     public static final String NAME = "The Midnight";
 
     public static final boolean IDE = isRunningFromIDE();
+    public static final boolean TEST_SERVER = isTestServer();
 
     @DynamicConstant("version")
     public static final String VERSION = "NOT.A.VERSION";
@@ -23,6 +24,11 @@ public final class MidnightInfo {
 
     private static boolean isRunningFromIDE() {
         String p = System.getProperty("midnight.iside");
+        return Boolean.parseBoolean(p);
+    }
+
+    private static boolean isTestServer() {
+        String p = System.getProperty("midnight.istestserver");
         return Boolean.parseBoolean(p);
     }
 }

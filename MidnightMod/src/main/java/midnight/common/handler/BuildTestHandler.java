@@ -8,6 +8,8 @@ import net.minecraftforge.fml.event.server.FMLServerStartedEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import midnight.MidnightInfo;
+
 @Mod.EventBusSubscriber(Dist.DEDICATED_SERVER)
 public class BuildTestHandler {
     private static final Logger LOGGER = LogManager.getLogger("MidnightMod");
@@ -17,8 +19,11 @@ public class BuildTestHandler {
 
     @SubscribeEvent
     public static void serverStarted(FMLServerStartedEvent event) throws Exception {
-        LOGGER.info("The Midnight server started successfully. The game will now crash.");
+        if (MidnightInfo.TEST_SERVER)
+        {
+            LOGGER.info("The Midnight server started successfully. The game will now crash.");
 
-        throw new Exception();
+            throw new Exception();
+        }
     }
 }
