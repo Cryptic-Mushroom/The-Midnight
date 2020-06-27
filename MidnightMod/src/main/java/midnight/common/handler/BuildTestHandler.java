@@ -28,7 +28,8 @@ public class BuildTestHandler {
         boolean isTestServer = testServerProof.exists();
         if (isTestServer)
         {
-            throw new Exception("GitHub Actions server test successful. The game will now crash.");
+            LOGGER.warn("GitHub Actions server test successful. The game will now crash.");
+            throw new Exception("Crash intended for GitHub Actions. If you are trying to run this server normally, delete the TESTSERVER file from your directory.");
         }
     }
 }

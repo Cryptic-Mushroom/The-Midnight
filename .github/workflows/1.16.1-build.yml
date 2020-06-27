@@ -98,8 +98,8 @@ jobs:
         id: log
         uses: juliangruber/read-file-action@v1
         with:
-          path: run/server/crash-reports/crash-*.txt
+          path: run/server/logs/latest.log
 
       - name: Check if server test was successful
-        if: contains( ${{ steps.log.outputs.content }}, 'GitHub Actions server test successful.') == false
+        if: contains( ${{ steps.log.outputs.contents }}, 'GitHub Actions server test successful.') == false
         run: echo "GitHub Actions was unable to successfully load the test server into a temporary world. Check the log in the \"Run test server\" step to see what went wrong."; exit 1
