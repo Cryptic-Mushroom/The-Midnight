@@ -56,8 +56,8 @@ public class MidnightMod {
 
     private void setup(FMLCommonSetupEvent event) {
         // some preinit code
-        LOGGER.info("Pre-Initialization");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+        LOGGER.info("Pre-Initialization of The Midnight successful");
     }
 
     private void doClientStuff(FMLClientSetupEvent event) {
