@@ -89,11 +89,16 @@ jobs:
           gradle-version: 4.10.3
           arguments: runServer
 
+      - name: Wait for 10 seconds
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '10s'
+
       - name: Read log file
         id: log
         uses: juliangruber/read-file-action@v1
         with:
-          path: run/server/logs/latest.log
+          path: run/server/crash-reports/crash-*.txt
 
       - name: Check if server test was successful
         if: contains( ${{ steps.log.outputs.content }}, 'GitHub Actions server test successful.') == false

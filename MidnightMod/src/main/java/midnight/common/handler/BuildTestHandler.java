@@ -15,7 +15,7 @@ import midnight.MidnightMod;
 
 import java.io.File;
 
-@Mod.EventBusSubscriber//(Dist.DEDICATED_SERVER)
+@Mod.EventBusSubscriber(Dist.DEDICATED_SERVER)
 public class BuildTestHandler {
     private static final Logger LOGGER = LogManager.getLogger("MidnightMod");
 
@@ -28,9 +28,7 @@ public class BuildTestHandler {
         boolean isTestServer = testServerProof.exists();
         if (isTestServer)
         {
-            LOGGER.info("GitHub Actions server test successful. The game will now crash.");
-
-            throw new Exception();
+            throw new Exception("GitHub Actions server test successful. The game will now crash.");
         }
     }
 }
