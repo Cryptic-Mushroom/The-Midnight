@@ -80,7 +80,7 @@ jobs:
           architecture: x64
 
       - name: Set up test server
-        run: mkdir run; mkdir run/server; echo "eula=true" >> run/server/eula.txt; echo "Set eula to true."; touch run/server/TESTSERVER; echo "Generated TESTSERVER file."
+        run: mkdir run; mkdir run/server; echo "eula=false" >> run/server/eula.txt; echo "Set eula to true."; echo "TEST FAILED" >> run/server/TESTSERVER.txt; echo "Generated TESTSERVER.txt file."
 
       - name: Run test server
         uses: eskatos/gradle-command-action@v1
@@ -89,17 +89,21 @@ jobs:
           gradle-version: 4.10.3
           arguments: runServer
 
-      - name: Wait for 10 seconds
-        uses: jakejarvis/wait-action@master
-        with:
-          time: '10s'
+#      - name: Wait for 10 seconds
+#        uses: jakejarvis/wait-action@master
+#        with:
+#          time: '10s'
 
       - name: Read log file
         id: log
-        uses: juliangruber/read-file-action@v1
+        uses: andstor/file-reader-action@v1
         with:
-          path: run/server/logs/latest.log
+          path: run/server/TESTSERVER.txt
+
+      - name: Check if server test was unsuccessful
+        if: contains( ${ steps.log.outputs.contents }, 'TEST FAILED')
+        run: echo "GitHub Actions was unable to successfully load the test server into a temporary world. Check the log in the \"Run test server\" step to see what went wrong."; exit 1
 
       - name: Check if server test was successful
-        if: contains( ${{ steps.log.outputs.contents }}, 'GitHub Actions server test successful.') == false
+        if: contains( ${ steps.log.outputs.contents }, 'TEST SUCCESS')
         run: echo "GitHub Actions was unable to successfully load the test server into a temporary world. Check the log in the \"Run test server\" step to see what went wrong."; exit 1

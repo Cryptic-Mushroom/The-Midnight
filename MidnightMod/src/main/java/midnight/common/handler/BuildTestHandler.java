@@ -14,6 +14,8 @@ import midnight.MidnightInfo;
 import midnight.MidnightMod;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 @Mod.EventBusSubscriber(Dist.DEDICATED_SERVER)
 public class BuildTestHandler {
@@ -24,10 +26,20 @@ public class BuildTestHandler {
 
     @SubscribeEvent
     public static void serverStarted(FMLServerStartedEvent event) throws Exception {
-        File testServerProof = new File("./TESTSERVER");
+        File testServerProof = new File("./TESTSERVER.txt");
         boolean isTestServer = testServerProof.exists();
-        if (isTestServer)
-        {
+        testServerProof.delete();
+        File testServerSuccess = new File("./TESTSERVER.txt");
+
+        try {
+            FileWriter fileWriter = new FileWriter(testServerSuccess, false);
+            fileWriter.write("TEST SUCCESS");
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (isTestServer) {
             LOGGER.warn("GitHub Actions server test successful. The game will now crash.");
             throw new Exception("Crash intended for GitHub Actions. If you are trying to run this server normally, delete the TESTSERVER file from your directory.");
         }
