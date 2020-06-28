@@ -42,7 +42,7 @@ public class BuildTestHandler {
             }
 
             LOGGER.warn("GitHub Actions server test successful. The game will now crash.");
-            throw new Exception("Crash intended for GitHub Actions. If you are trying to run this server normally, delete the TESTSERVER file from your directory.");
+            throw new Exception("Crash intended for GitHub Actions. If you are trying to run this server normally, delete the TESTSERVER.txt file from your directory.");
         }
     }
 }
