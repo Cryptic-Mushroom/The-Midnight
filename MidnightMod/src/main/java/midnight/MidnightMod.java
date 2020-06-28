@@ -19,6 +19,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import midnight.client.MidnightClient;
 import midnight.common.Midnight;
+import midnight.core.plugin.PluginManager;
 
 import java.util.stream.Collectors;
 
@@ -31,6 +32,7 @@ public class MidnightMod {
 
     public MidnightMod() {
         printVersion();
+        PluginManager.INSTANCE.loadPlugins();
 
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);

@@ -221,8 +221,9 @@ task collectClasses(type: Copy) {
     outputs.upToDateWhen { t -> false }
 
     doFirst {
-        delete "$buildDir/classes/java/main"
+        delete "$buildDir/classes/java"
         file("$buildDir/classes/java/main").mkdirs()
+        file("$buildDir/classes/java/test").mkdirs()
     }
 
     configurations.collectMany {
@@ -231,10 +232,10 @@ task collectClasses(type: Copy) {
         it instanceof ProjectDependency
     }.each {
         ProjectDependency dep = (ProjectDependency) it
-        from("$dep.dependencyProject.buildDir/classes/java/main")
+        from("$dep.dependencyProject.buildDir/classes/java")
     }
 
-    into("$buildDir/classes/java/main")
+    into("$buildDir/classes/java")
 }
 
 compileJava {
@@ -248,8 +249,9 @@ task collectResources(type: Copy) {
     dependsOn ':MidnightMod:classes'
 
     doFirst {
-        delete "$buildDir/resources/main"
+        delete "$buildDir/resources"
         file("$buildDir/resources/main").mkdirs()
+        file("$buildDir/resources/test").mkdirs()
     }
 
     outputs.upToDateWhen { t -> false }
@@ -260,10 +262,10 @@ task collectResources(type: Copy) {
         it instanceof ProjectDependency
     }.each {
         ProjectDependency dep = (ProjectDependency) it
-        from("$dep.dependencyProject.buildDir/resources/main")
+        from("$dep.dependencyProject.buildDir/resources")
     }
 
-    into("$buildDir/resources/main")
+    into("$buildDir/resources")
 }
 
 processResources {
