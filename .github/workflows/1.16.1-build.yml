@@ -101,9 +101,9 @@ jobs:
           path: run/server/TESTSERVER.txt
 
       - name: Check if server test was unsuccessful
-        if: contains( ${ steps.log.outputs.contents }, 'TEST FAILED')
+        if: contains( ${{ steps.log.outputs.contents }}, 'TEST FAILED')
         run: echo "GitHub Actions was unable to successfully load the test server into a temporary world. Check the log in the \"Run test server\" step to see what went wrong."; exit 1
 
       - name: Check if server test was successful
-        if: contains( ${ steps.log.outputs.contents }, 'TEST SUCCESS')
+        if: contains( ${{ steps.log.outputs.contents }}, 'TEST SUCCESS')
         run: echo "GitHub Actions was unable to successfully load the test server into a temporary world. Check the log in the \"Run test server\" step to see what went wrong."; exit 1
