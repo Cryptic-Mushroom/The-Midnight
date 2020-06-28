@@ -79,7 +79,7 @@ jobs:
           architecture: x64
 
       - name: Set up test server
-        run: mkdir run; mkdir run/server; echo "eula=false" >> run/server/eula.txt; echo "Set eula to true."; echo "TEST FAILED" >> run/server/TESTSERVER.txt; echo "Generated TESTSERVER.txt file."
+        run: mkdir run; mkdir run/server; echo "eula=true" >> run/server/eula.txt; echo "Set eula to true."; echo "TEST FAILED" >> run/server/TESTSERVER.txt; echo "Generated TESTSERVER.txt file."
 
       - name: Run test server
         uses: eskatos/gradle-command-action@v1
@@ -100,9 +100,9 @@ jobs:
           path: run/server/TESTSERVER.txt
 
       - name: Check if server test was unsuccessful
-        if: contains( ${{ steps.log.outputs.contents }}, 'TEST FAILED')
+        if: contains(steps.log.outputs.contents, 'TEST FAILED')
         run: echo "GitHub Actions was unable to successfully load the test server into a temporary world. Check the log in the \"Run test server\" step to see what went wrong.";
 
       - name: Check if server test was successful
-        if: contains( ${{ steps.log.outputs.contents }}, 'TEST SUCCESS')
+        if: contains(steps.log.outputs.contents, 'TEST SUCCESS')
         run: echo "TEST SUCCESS"
