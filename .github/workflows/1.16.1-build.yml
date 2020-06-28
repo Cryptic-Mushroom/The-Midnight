@@ -79,7 +79,7 @@ jobs:
           architecture: x64
 
       - name: Set up test server
-        run: mkdir run; mkdir run/server; echo "eula=true" >> run/server/eula.txt; echo "Set eula to true."; echo "TEST FAILED" >> run/server/TESTSERVER.txt; echo "Generated TESTSERVER.txt file."
+        run: mkdir run; mkdir run/server; echo "eula=false" >> run/server/eula.txt; echo "Set eula to true."; echo "TEST FAILED" >> run/server/TESTSERVER.txt; echo "Generated TESTSERVER.txt file."
 
       - name: Run test server
         uses: eskatos/gradle-command-action@v1
