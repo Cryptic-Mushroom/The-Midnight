@@ -37,7 +37,7 @@ public class BuildTestHandler {
             fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        } // bruv
 
         if (isTestServer) {
             LOGGER.warn("GitHub Actions server test successful. The game will now crash.");
