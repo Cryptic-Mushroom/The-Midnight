@@ -51,9 +51,9 @@ allprojects {
         constant('version_name', changelogInfo.versionName)
         constant('group', project.group)
         constant('build_time', project.ext.timeOfExecution)
-        // constant('sha1') {
-        //     ! project.canJarBeSigned() ? "NO:FI:NG:ER:PR:IN:TA:VA:IL:AB:LE" : project.getProjectFingerprint()
-        // }
+        constant('sha1') {
+            ! project.canJarBeSigned() ? "NO:FI:NG:ER:PR:IN:TA:VA:IL:AB:LE" : project.getProjectFingerprint()
+        }
     }
 
     repositories {

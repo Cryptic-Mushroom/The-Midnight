@@ -20,13 +20,14 @@ def canJarBeSigned() {
     return getVariable('mnKeyStore') != null
 }
 
-// // Returns the public fingerprint, may be empty ("")
-// def getProjectFingerprint() {
-//     if (canJarBeSigned()) {
-//         return getVariable('mnSignSHA1').replaceAll(':', '').toLowerCase()
-//     }
-//     return ''
-// }
+// Returns the public fingerprint, may be empty ("")
+def getProjectFingerprint() {
+    if (canJarBeSigned()) {
+        def sha1 = getVariable('mnSignSHA1')
+        if (sha1 == null) return ''
+        return sha1.replaceAll(':', '').toLowerCase()
+    }
+}
 
 // Attempts to get a project variable and if none is found it tries to read from a system environment variable
 String getVariable(String key) {
@@ -60,6 +61,6 @@ static def isOsx() {
 
 project.ext.getVariable = { String key -> return getVariable(key) }
 project.ext.canJarBeSigned = { return canJarBeSigned() }
-// project.ext.getProjectFingerprint = { return getProjectFingerprint() }
+project.ext.getProjectFingerprint = { return getProjectFingerprint() }
 project.ext.sign = { File jar -> return sign(jar) }
 project.ext.isOsx = { return isOsx() }
