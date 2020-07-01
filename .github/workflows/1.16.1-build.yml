@@ -8,7 +8,6 @@ on:
     branches:
       - 1.16.1
     paths-ignore:
-      - '.github/**'
       - 'curseforge/**'
       - 'versioninfo/**'
       - 'README.md'
@@ -27,6 +26,25 @@ jobs:
     steps:
     - name: Update CI Workspace
       uses: actions/checkout@v1
+
+    - name: Prepare to build The Midnight
+      env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
+          git clone git@github.com:${{ secrets.PRIVATE_REPO }}
+          echo "" >> gradle.properties
+          echo "mnKeyStore=${{ secrets.JKS_NAME }}" >> gradle.properties
+          echo "mnKeyStoreAlias=${{ secrets.JKS_ALIAS }}" >> gradle.properties
+          echo "mnKeyStorePass=${{ secrets.JKS_PASS }}" >> gradle.properties
+          echo "mnKeyStoreKeyPass=${{ secrets.JKS_PASS }}" >> gradle.properties
+          cp ${{ secrets.JKS_NAME }} MidnightAPI/${{ secrets.JKS_NAME }}
+          cp ${{ secrets.JKS_NAME }} MidnightCore/${{ secrets.JKS_NAME }}
+          cp ${{ secrets.JKS_NAME }} MidnightMod/${{ secrets.JKS_NAME }}
+
 
     - name: Set up JDK 1.8
       uses: actions/setup-java@v1
@@ -81,46 +99,37 @@ jobs:
         # A file, directory or wildcard pattern that describes what to upload
         path: MidnightMod/build/libs/*universal*.jar
 
-  test:
+  # test:
 
-    runs-on: ubuntu-latest
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - name: Update CI workspace
-        uses: actions/checkout@v1
+  #   steps:
+  #     - name: Update CI workspace
+  #       uses: actions/checkout@v1
 
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-          java-package: jdk
-          architecture: x64
+  #     - name: Set up JDK 1.8
+  #       uses: actions/setup-java@v1
+  #       with:
+  #         java-version: 1.8
+  #         java-package: jdk
+  #         architecture: x64
 
-      - name: Set up test server
-        run: mkdir run; mkdir run/server; echo "eula=true" >> run/server/eula.txt; echo "Set eula to true."; echo "TEST FAILED" >> run/server/TESTSERVER.txt; echo "Generated TESTSERVER.txt file."
+  #     - name: Set up test server
+  #       run: mkdir run; mkdir run/server; echo "eula=true" >> run/server/eula.txt; echo "Set eula to true."; echo "TEST FAILED" >> run/server/TESTSERVER.txt; echo "Generated TESTSERVER.txt file."
 
-      - name: Run test server
-        uses: eskatos/gradle-command-action@v1
-        continue-on-error: true
-        with:
-          gradle-version: 4.10.3
-          arguments: runServer
+  #     - name: Run test server
+  #       uses: eskatos/gradle-command-action@v1
+  #       continue-on-error: true
+  #       with:
+  #         gradle-version: 4.10.3
+  #         arguments: runServer
 
-#      - name: Wait for 10 seconds
-#        uses: jakejarvis/wait-action@master
-#        with:
-#          time: '10s'
+  #     - name: Read server test result
+  #       id: log
+  #       uses: andstor/file-reader-action@v1
+  #       with:
+  #         path: run/server/TESTSERVER.txt
 
-      - name: Read server test result
-        id: log
-        uses: andstor/file-reader-action@v1
-        with:
-          path: run/server/TESTSERVER.txt
-
-      - name: Determine if server test was unsuccessful
-        if: contains(steps.log.outputs.contents, 'TEST FAILED')
-        run: echo "GitHub Actions was unable to successfully load the test server into a temporary world. Check the log in the \"Run test server\" step to see what went wrong."; exit 1
-
-#      - name: Check if server test was successful
-#        if: contains(steps.log.outputs.contents, 'TEST SUCCESS')
-#        run: echo "TEST SUCCESS"
+  #     - name: Determine if server test was unsuccessful
+  #       if: contains(steps.log.outputs.contents, 'TEST FAILED')
+  #       run: echo "GitHub Actions was unable to successfully load the test server into a temporary world. Check the log in the \"Run test server\" step to see what went wrong."; exit 1
