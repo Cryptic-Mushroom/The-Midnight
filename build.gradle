@@ -83,7 +83,7 @@ allprojects {
     }
 
     dependencies {
-        minecraft 'net.minecraftforge:forge:1.16.1-32.0.24'
+        minecraft 'net.minecraftforge:forge:1.16.1-32.0.38'
 
         embed("net.rgsw:noise:1.0.5") {
             // The only dependency is it.unimi.dsi:fastutil:8.2.1 - this is included with forge and we don't need to
