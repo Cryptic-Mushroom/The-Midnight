@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "midnight:block/glowing_malignant_green_hanging_vines"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "stage=0": [
+      {
+        "model": "midnight:block/suavis_0"
+      },
+      {
+        "model": "midnight:block/suavis_0",
+        "y": 90
+      },
+      {
+        "model": "midnight:block/suavis_0",
+        "y": 180
+      },
+      {
+        "model": "midnight:block/suavis_0",
+        "y": 270
+      }
+    ],
+    "stage=1": [
+      {
+        "model": "midnight:block/suavis_1"
+      },
+      {
+        "model": "midnight:block/suavis_1",
+        "y": 90
+      },
+      {
+        "model": "midnight:block/suavis_1",
+        "y": 180
+      },
+      {
+        "model": "midnight:block/suavis_1",
+        "y": 270
+      }
+    ],
+    "stage=2": [
+      {
+        "model": "midnight:block/suavis_2"
+      },
+      {
+        "model": "midnight:block/suavis_2",
+        "y": 90
+      },
+      {
+        "model": "midnight:block/suavis_2",
+        "y": 180
+      },
+      {
+        "model": "midnight:block/suavis_2",
+        "y": 270
+      }
+    ],
+    "stage=3": [
+      {
+        "model": "midnight:block/suavis_3"
+      },
+      {
+        "model": "midnight:block/suavis_3",
+        "y": 90
+      },
+      {
+        "model": "midnight:block/suavis_3",
+        "y": 180
+      },
+      {
+        "model": "midnight:block/suavis_3",
+        "y": 270
+      }
+    ]
+  }
+}

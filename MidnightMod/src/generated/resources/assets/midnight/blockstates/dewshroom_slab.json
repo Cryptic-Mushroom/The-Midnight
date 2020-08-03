@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "midnight:block/dewshroom_slab"
+    },
+    "type=top": {
+      "model": "midnight:block/dewshroom_slab_top"
+    },
+    "type=double": {
+      "model": "midnight:block/dewshroom_planks"
+    }
+  }
+}

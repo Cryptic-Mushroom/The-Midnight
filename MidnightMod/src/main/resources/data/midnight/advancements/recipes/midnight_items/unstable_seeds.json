@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "midnight:unstable_seeds"
+    ]
+  },
+  "criteria": {
+    "has_fruit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "midnight:unstable_fruits"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "midnight:unstable_seeds"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_fruit",
+      "has_the_recipe"
+    ]
+  ]
+}

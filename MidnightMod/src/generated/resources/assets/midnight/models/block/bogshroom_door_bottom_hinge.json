@@ -1,0 +1,7 @@
+{
+  "parent": "block/door_bottom_rh",
+  "textures": {
+    "bottom": "midnight:block/bogshroom_door_bottom",
+    "top": "midnight:block/bogshroom_door_top"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "has_fruit=false": [
+      {
+        "model": "midnight:block/unstable_bush_bloomed_blue_no_fruit"
+      }
+    ],
+    "has_fruit=true": [
+      {
+        "model": "midnight:block/unstable_bush_bloomed_blue_fruit"
+      }
+    ]
+  }
+}

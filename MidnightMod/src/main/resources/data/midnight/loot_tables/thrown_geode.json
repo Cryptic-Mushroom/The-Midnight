@@ -1,0 +1,16 @@
+{
+  "pools": [
+    {
+      "name": "midnight:thrown_geode",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "midnight:dark_pearl",
+          "weight": 1,
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

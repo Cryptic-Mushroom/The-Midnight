@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "midnight:trenchstone"
+    }
+  },
+  "result": {
+    "item": "midnight:trenchstone_pressure_plate"
+  }
+}

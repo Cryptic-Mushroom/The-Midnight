@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "midnight_buttons",
+  "ingredients": [
+    {
+      "item": "midnight:viridshroom_planks"
+    }
+  ],
+  "result": {
+    "item": "midnight:viridshroom_button"
+  }
+}

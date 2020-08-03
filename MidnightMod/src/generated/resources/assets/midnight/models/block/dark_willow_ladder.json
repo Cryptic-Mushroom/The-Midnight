@@ -1,0 +1,6 @@
+{
+  "parent": "midnight:block/ladder",
+  "textures": {
+    "texture": "midnight:block/dark_willow_ladder"
+  }
+}

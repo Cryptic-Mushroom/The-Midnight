@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "facing=up,half=lower": {
+      "model": "midnight:block/malignant_baneberry_bottom"
+    },
+    "facing=down,half=lower": {
+      "model": "midnight:block/malignant_baneberry_bottom",
+      "x": 180
+    },
+    "facing=up,half=upper": {
+      "model": "midnight:block/malignant_baneberry_top"
+    },
+    "facing=down,half=upper": {
+      "model": "midnight:block/malignant_baneberry_top",
+      "x": 180
+    }
+  }
+}

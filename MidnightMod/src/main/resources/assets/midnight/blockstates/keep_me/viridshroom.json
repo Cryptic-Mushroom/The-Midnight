@@ -1,0 +1,33 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "forge:multi-layer",
+    "transform": "forge:default-block",
+    "custom": {
+      "base": "midnight:viridshroom#base",
+      "Cutout": "midnight:viridshroom#base",
+      "Translucent": "midnight:viridshroom#glow"
+    }
+  },
+  "variants": {
+    "normal": [
+      {}
+    ],
+    "base": [
+      {
+        "model": "cross",
+        "textures": {
+          "cross": "midnight:block/viridshroom"
+        }
+      }
+    ],
+    "glow": [
+      {
+        "model": "cross",
+        "textures": {
+          "cross": "midnight:block/viridshroom_glow"
+        }
+      }
+    ]
+  }
+}

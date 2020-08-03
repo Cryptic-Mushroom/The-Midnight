@@ -1,0 +1,121 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "name": "midnight_junk",
+      "entries": [
+        {
+          "type": "item",
+          "name": "midnight:rockshroom_boots",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "set_damage",
+              "damage": {
+                "min": 0,
+                "max": 0.90
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "midnight:rockshroom_leggings",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "set_damage",
+              "damage": {
+                "min": 0,
+                "max": 0.90
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "midnight:rockshroom_chestplate",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "set_damage",
+              "damage": {
+                "min": 0,
+                "max": 0.90
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "midnight:rockshroom_helmet",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "set_damage",
+              "damage": {
+                "min": 0,
+                "max": 0.90
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "midnight:bladeshroom_spores",
+          "weight": 4
+        },
+        {
+          "type": "item",
+          "name": "midnight:geode",
+          "weight": 2
+        },
+        {
+          "type": "item",
+          "name": "midnight:blue_unstable_fruit",
+          "weight": 5
+        },
+        {
+          "type": "item",
+          "name": "midnight:lime_unstable_fruit",
+          "weight": 4
+        },
+        {
+          "type": "item",
+          "name": "midnight:green_unstable_fruit",
+          "weight": 3
+        },
+        {
+          "type": "item",
+          "name": "midnight:archaic_shard",
+          "weight": 3
+        },
+        {
+          "type": "item",
+          "name": "midnight:dark_stick",
+          "weight": 5
+        },
+        {
+          "type": "item",
+          "name": "midnight:bogshroom_powder",
+          "weight": 10
+        },
+        {
+          "type": "item",
+          "name": "midnight:nightshroom_powder",
+          "weight": 10
+        },
+        {
+          "type": "item",
+          "name": "midnight:viridshroom_powder",
+          "weight": 10
+        },
+        {
+          "type": "item",
+          "name": "midnight:dewshroom_powder",
+          "weight": 10
+        }
+      ]
+    }
+  ]
+}

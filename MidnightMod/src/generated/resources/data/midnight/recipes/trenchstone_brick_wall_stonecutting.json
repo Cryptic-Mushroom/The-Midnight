@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "midnight:trenchstone_bricks"
+  },
+  "result": "midnight:trenchstone_brick_wall",
+  "count": 1
+}

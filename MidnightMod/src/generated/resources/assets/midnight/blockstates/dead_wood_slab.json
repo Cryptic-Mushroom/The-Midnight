@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "midnight:block/dead_wood_slab"
+    },
+    "type=top": {
+      "model": "midnight:block/dead_wood_slab_top"
+    },
+    "type=double": {
+      "model": "midnight:block/dead_wood_planks"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "forge:multi-layer",
+    "transform": "forge:default-block",
+    "custom": {
+      "base": "midnight:dragon_nest#base",
+      "Cutout": "midnight:dragon_nest#base",
+      "Translucent": "midnight:dragon_nest#glow"
+    }
+  },
+  "variants": {
+    "normal": [
+      {}
+    ],
+    "base": [
+      {
+        "model": "cross",
+        "textures": {
+          "cross": "midnight:block/dragons_nest"
+        }
+      }
+    ],
+    "glow": [
+      {
+        "model": "cross",
+        "textures": {
+          "cross": "midnight:block/dragons_nest_glow"
+        }
+      }
+    ]
+  }
+}

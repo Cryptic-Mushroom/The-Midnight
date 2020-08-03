@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "midnight:block/dewshroom_planks",
+    "top": "midnight:block/dewshroom_planks",
+    "side": "midnight:block/dewshroom_planks"
+  }
+}

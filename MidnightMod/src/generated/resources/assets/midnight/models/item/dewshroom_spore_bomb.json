@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "midnight:item/dewshroom_spore_bomb"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "blinking": 1
+      },
+      "model": "midnight:item/blinking_spore_bomb"
+    }
+  ]
+}

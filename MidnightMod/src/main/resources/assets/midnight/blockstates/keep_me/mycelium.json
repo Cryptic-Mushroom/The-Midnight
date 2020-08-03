@@ -1,0 +1,25 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "forge:multi-layer",
+    "smooth_lighting": false,
+    "transform": "forge:default-block",
+    "custom": {
+      "base": "midnight:mycelium#base",
+      "Solid": "midnight:mycelium#base",
+      "Cutout": "midnight:mycelium#glow"
+    }
+  },
+  "variants": {
+    "base": [
+      {
+        "model": "midnight:mycelium"
+      }
+    ],
+    "glow": [
+      {
+        "model": "midnight:grass_glow"
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "midnight:block/glob_fungus_stem"
+    },
+    "axis=z": {
+      "model": "midnight:block/glob_fungus_stem",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "midnight:block/glob_fungus_stem",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

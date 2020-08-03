@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "midnight:block/double_nightshroom_lower"
+    },
+    "half=upper": {
+      "model": "midnight:block/double_nightshroom_upper"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": [
+      {
+        "model": "midnight:block/viridshroom_stem_cache"
+      }
+    ],
+    "facing=south": [
+      {
+        "model": "midnight:block/viridshroom_stem_cache",
+        "y": 180
+      }
+    ],
+    "facing=west": [
+      {
+        "model": "midnight:block/viridshroom_stem_cache",
+        "y": 270
+      }
+    ],
+    "facing=east": [
+      {
+        "model": "midnight:block/viridshroom_stem_cache",
+        "y": 90
+      }
+    ]
+  }
+}

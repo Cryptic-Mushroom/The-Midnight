@@ -1,0 +1,7 @@
+{
+  "parent": "block/door_top",
+  "textures": {
+    "bottom": "midnight:block/dark_willow_door_bottom",
+    "top": "midnight:block/dark_willow_door_top"
+  }
+}

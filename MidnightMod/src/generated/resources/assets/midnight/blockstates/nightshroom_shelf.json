@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "midnight:block/nightshroom_shelf"
+    },
+    "facing=east": {
+      "model": "midnight:block/nightshroom_shelf",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "midnight:block/nightshroom_shelf",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "midnight:block/nightshroom_shelf",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "midnight:block/nightshroom_fan"
+    }
+  }
+}

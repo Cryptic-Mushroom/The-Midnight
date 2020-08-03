@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "midnight:block/dragons_nest",
+    "layer1": "midnight:block/dragons_nest_glow"
+  }
+}

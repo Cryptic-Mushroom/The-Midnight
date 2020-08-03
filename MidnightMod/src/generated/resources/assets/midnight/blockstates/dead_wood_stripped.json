@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "midnight:block/dead_wood_stripped"
+    },
+    "axis=z": {
+      "model": "midnight:block/dead_wood_stripped",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "midnight:block/dead_wood_stripped",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

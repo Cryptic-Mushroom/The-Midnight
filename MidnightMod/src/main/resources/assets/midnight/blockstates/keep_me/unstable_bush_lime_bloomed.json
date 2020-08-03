@@ -1,0 +1,60 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "normal": [
+      {}
+    ],
+    "has_fruit": {
+      "false": {
+        "model": "forge:multi-layer",
+        "transform": "forge:default-block",
+        "custom": {
+          "base": "midnight:unstable_bush_lime_bloomed#no_fruit",
+          "Cutout": "midnight:unstable_bush_lime_bloomed#no_fruit",
+          "Translucent": "midnight:unstable_bush_lime_bloomed#no_fruit_glow"
+        }
+      },
+      "true": {
+        "model": "forge:multi-layer",
+        "transform": "forge:default-block",
+        "custom": {
+          "base": "midnight:unstable_bush_lime_bloomed#fruit",
+          "Cutout": "midnight:unstable_bush_lime_bloomed#fruit",
+          "Translucent": "midnight:unstable_bush_lime_bloomed#fruit_glow"
+        }
+      }
+    },
+    "no_fruit": [
+      {
+        "model": "cross",
+        "textures": {
+          "cross": "midnight:block/unstable_bush_stage_4_lime"
+        }
+      }
+    ],
+    "no_fruit_glow": [
+      {
+        "model": "cross",
+        "textures": {
+          "cross": "midnight:block/unstable_bush_stage_4_lime_glow"
+        }
+      }
+    ],
+    "fruit": [
+      {
+        "model": "cross",
+        "textures": {
+          "cross": "midnight:block/unstable_bush_stage_5_lime"
+        }
+      }
+    ],
+    "fruit_glow": [
+      {
+        "model": "cross",
+        "textures": {
+          "cross": "midnight:block/unstable_bush_stage_5_lime_glow"
+        }
+      }
+    ]
+  }
+}

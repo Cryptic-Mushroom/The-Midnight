@@ -1,0 +1,11 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "half=lower": {
+      "model": "midnight:block/double_viridshroom_lower"
+    },
+    "half=upper": {
+      "model": "midnight:block/double_viridshroom_upper"
+    }
+  }
+}

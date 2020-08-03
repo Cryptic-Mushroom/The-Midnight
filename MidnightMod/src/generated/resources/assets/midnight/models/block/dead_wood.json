@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "midnight:block/dead_wood_log",
+    "side": "midnight:block/dead_wood_log"
+  }
+}

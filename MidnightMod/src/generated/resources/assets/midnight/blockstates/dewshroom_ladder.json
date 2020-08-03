@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "midnight:block/dewshroom_ladder"
+    },
+    "facing=east": {
+      "model": "midnight:block/dewshroom_ladder",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "midnight:block/dewshroom_ladder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "midnight:block/dewshroom_ladder",
+      "y": 270
+    }
+  }
+}

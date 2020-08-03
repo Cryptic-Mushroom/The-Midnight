@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "midnight:block/deceitful_algae"
+      },
+      {
+        "model": "midnight:block/deceitful_algae",
+        "y": 90
+      },
+      {
+        "model": "midnight:block/deceitful_algae",
+        "y": 180
+      },
+      {
+        "model": "midnight:block/deceitful_algae",
+        "y": 270
+      }
+    ]
+  }
+}

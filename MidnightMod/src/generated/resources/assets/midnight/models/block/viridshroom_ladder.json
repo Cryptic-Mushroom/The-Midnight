@@ -1,0 +1,6 @@
+{
+  "parent": "midnight:block/ladder",
+  "textures": {
+    "texture": "midnight:block/viridshroom_ladder"
+  }
+}

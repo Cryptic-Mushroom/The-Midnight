@@ -1,0 +1,6 @@
+{
+  "parent": "midnight:block/moss",
+  "textures": {
+    "moss": "midnight:block/malignant_green_plant_surface"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "midnight:block/dark_willow_slab"
+    },
+    "type=top": {
+      "model": "midnight:block/dark_willow_slab_top"
+    },
+    "type=double": {
+      "model": "midnight:block/dark_willow_planks"
+    }
+  }
+}

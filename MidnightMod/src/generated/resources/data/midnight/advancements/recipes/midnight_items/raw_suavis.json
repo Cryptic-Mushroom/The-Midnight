@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "midnight:raw_suavis"
+    ]
+  },
+  "criteria": {
+    "has_suavis": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "midnight:suavis"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "midnight:raw_suavis"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_suavis",
+      "has_the_recipe"
+    ]
+  ]
+}

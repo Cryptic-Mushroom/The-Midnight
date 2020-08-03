@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "midnight_fence_gates",
+  "pattern": [
+    "|#|",
+    "|#|"
+  ],
+  "key": {
+    "#": {
+      "item": "midnight:bogshroom_planks"
+    },
+    "|": {
+      "tag": "midnight:sticks"
+    }
+  },
+  "result": {
+    "item": "midnight:bogshroom_fence_gate"
+  }
+}

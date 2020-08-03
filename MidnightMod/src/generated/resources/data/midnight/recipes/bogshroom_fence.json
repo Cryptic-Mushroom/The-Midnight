@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "midnight_fences",
+  "pattern": [
+    "#|#",
+    "#|#"
+  ],
+  "key": {
+    "#": {
+      "item": "midnight:bogshroom_planks"
+    },
+    "|": {
+      "tag": "midnight:sticks"
+    }
+  },
+  "result": {
+    "item": "midnight:bogshroom_fence",
+    "count": 3
+  }
+}

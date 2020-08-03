@@ -1,0 +1,346 @@
+{
+  "ambient": {
+    "category": "ambient",
+    "subtitle": "subtitles.ambient.midnight",
+    "sounds": [
+      "midnight:ambient/midnight_ambient_1",
+      "midnight:ambient/midnight_ambient_2",
+      "midnight:ambient/midnight_ambient_3"
+    ]
+  },
+  "idle": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "midnight:ambient/midnight_idle",
+        "stream": false
+      }
+    ]
+  },
+  "cave_idle": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "midnight:ambient/cave_idle",
+        "stream": false
+      }
+    ]
+  },
+  "music_generic": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "midnight:music/ultraviolet",
+        "stream": true
+      },
+      {
+        "name": "midnight:music/stegano",
+        "stream": true
+      }
+    ]
+  },
+  "music_crystal": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "midnight:music/crystal",
+        "stream": true
+      }
+    ]
+  },
+  "music_dark_willow": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "midnight:music/dark_willow",
+        "stream": true
+      }
+    ]
+  },
+  "rift_idle": {
+    "category": "ambient",
+    "subtitle": "subtitles.entity.rift.idle",
+    "sounds": [
+      "midnight:rift_idle"
+    ]
+  },
+  "rift_unstable": {
+    "category": "ambient",
+    "subtitle": "subtitles.entity.rift.unstable",
+    "sounds": [
+      "midnight:rift_unstable"
+    ]
+  },
+  "rifter_ambient": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.rifter.ambient",
+    "sounds": [
+      "midnight:entity/rifter_ambient_1",
+      "midnight:entity/rifter_ambient_2",
+      "midnight:entity/rifter_ambient_3"
+    ]
+  },
+  "rifter_hurt": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.rifter.hurt",
+    "sounds": [
+      "midnight:entity/rifter_hurt_1",
+      "midnight:entity/rifter_hurt_2",
+      "midnight:entity/rifter_hurt_3"
+    ]
+  },
+  "rifter_death": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.rifter.death",
+    "sounds": [
+      "midnight:entity/rifter_death_1"
+    ]
+  },
+  "mud_dig": {
+    "category": "block",
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "midnight:blocks/dig/mud_1",
+      "midnight:blocks/dig/mud_2",
+      "midnight:blocks/dig/mud_3",
+      "midnight:blocks/dig/mud_4"
+    ]
+  },
+  "mud_step": {
+    "category": "block",
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "midnight:blocks/step/mud_1",
+      "midnight:blocks/step/mud_2",
+      "midnight:blocks/step/mud_3",
+      "midnight:blocks/step/mud_4"
+    ]
+  },
+  "bladeshroom_cap_shoot": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.bladeshroom_cap.shoot",
+    "sounds": [
+      "midnight:entity/bladeshroom_cap_shoot"
+    ]
+  },
+  "bladeshroom_cap_hit": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.bladeshroom_cap.hit",
+    "sounds": [
+      "midnight:entity/bladeshroom_cap_hit"
+    ]
+  },
+  "nightstag_ambient": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.nightstag.ambient",
+    "sounds": [
+      "midnight:entity/nightstag_ambient_1"
+    ]
+  },
+  "nightstag_death": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.nightstag.death",
+    "sounds": [
+      "midnight:entity/nightstag_death_1"
+    ]
+  },
+  "nightstag_hurt": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.nightstag.hurt",
+    "sounds": [
+      "midnight:entity/nightstag_hurt_1"
+    ]
+  },
+  "nightstag_step": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.nightstag.step",
+    "sounds": [
+      "mob/llama/step1",
+      "mob/llama/step2",
+      "mob/llama/step3",
+      "mob/llama/step4",
+      "mob/llama/step5"
+    ]
+  },
+  "egg_cracked": {
+    "category": "block",
+    "subtitle": "subtitles.block.stinger_egg.crack",
+    "sounds": [
+      "midnight:blocks/egg_cracked"
+    ]
+  },
+  "miasma_ambient": {
+    "category": "block",
+    "subtitle": "subtitles.block.miasma.ambient",
+    "sounds": [
+      "midnight:blocks/miasma_ambient"
+    ]
+  },
+  "crystal_bug_flying": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.crystal_bug.flying",
+    "sounds": [
+      "midnight:entity/crystal_bug_flying"
+    ]
+  },
+  "crystal_bug_death": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.crystal_bug.death",
+    "sounds": [
+      "midnight:entity/crystal_bug_death"
+    ]
+  },
+  "crystal_bug_hurt": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.crystal_bug.hurt",
+    "sounds": [
+      "midnight:entity/crystal_bug_hurt_1"
+    ]
+  },
+  "nova_death": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.nova.death",
+    "sounds": [
+      "midnight:entity/nova_death"
+    ]
+  },
+  "nova_hurt": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.nova.hurt",
+    "sounds": [
+      "midnight:entity/nova_hurt1",
+      "midnight:entity/nova_hurt2",
+      "midnight:entity/nova_hurt3"
+    ]
+  },
+  "nova_idle": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.nova.idle",
+    "sounds": [
+      "midnight:entity/nova_idle1",
+      "midnight:entity/nova_idle2"
+    ]
+  },
+  "stinger_ambient": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.stinger.ambient",
+    "sounds": [
+      "mob/spider/say1",
+      "mob/spider/say2",
+      "mob/spider/say3",
+      "mob/spider/say4"
+    ]
+  },
+  "stinger_hurt": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.stinger.hurt",
+    "sounds": [
+      "mob/spider/say1",
+      "mob/spider/say2",
+      "mob/spider/say3",
+      "mob/spider/say4"
+    ]
+  },
+  "stinger_death": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.stinger.death",
+    "sounds": [
+      "mob/spider/death"
+    ]
+  },
+  "skulk_ambient": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.skulk.ambient",
+    "sounds": [
+      "midnight:entity/skulk_idle_1",
+      "midnight:entity/skulk_idle_2",
+      "midnight:entity/skulk_idle_3"
+    ]
+  },
+  "skulk_hurt": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.skulk.hurt",
+    "sounds": [
+      "midnight:entity/skulk_hurt_1",
+      "midnight:entity/skulk_hurt_2",
+      "midnight:entity/skulk_hurt_3"
+    ]
+  },
+  "skulk_death": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.skulk.death",
+    "sounds": [
+      "midnight:entity/skulk_death"
+    ]
+  },
+  "skulk_sniffing": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.skulk.sniffing",
+    "sounds": [
+      "midnight:entity/skulk_sniffing"
+    ]
+  },
+  "skulk_grab": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.skulk.grab",
+    "sounds": [
+      "midnight:entity/skulk_grab"
+    ]
+  },
+  "skulk_teleport": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.skulk.teleport",
+    "sounds": [
+      "midnight:entity/skulk_teleport_1",
+      "midnight:entity/skulk_teleport_2"
+    ]
+  },
+  "snapper_hurt": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.snapper.hurt",
+    "sounds": [
+      "damage/hit1",
+      "damage/hit2",
+      "damage/hit3"
+    ]
+  },
+  "snapper_death": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.snapper.death",
+    "sounds": [
+      "damage/hit1",
+      "damage/hit2",
+      "damage/hit3"
+    ]
+  },
+  "hunter_hurt": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.hunter.hurt",
+    "sounds": [
+      "damage/hit1",
+      "damage/hit2",
+      "damage/hit3"
+    ]
+  },
+  "hunter_death": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.hunter.death",
+    "sounds": [
+      "damage/hit1",
+      "damage/hit2",
+      "damage/hit3"
+    ]
+  },
+  "hunter_flying": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.hunter.flying",
+    "sounds": [
+      "mob/enderdragon/wings1",
+      "mob/enderdragon/wings2",
+      "mob/enderdragon/wings3",
+      "mob/enderdragon/wings4",
+      "mob/enderdragon/wings5",
+      "mob/enderdragon/wings6"
+    ]
+  }
+}

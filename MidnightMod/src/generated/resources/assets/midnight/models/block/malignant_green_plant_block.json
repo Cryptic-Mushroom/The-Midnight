@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "midnight:block/malignant_green_plant_block"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "pools": [
+    {
+      "name": "midnight:deceitful_snapper",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "midnight:deceitful_snapper",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "block/door_bottom",
+  "textures": {
+    "bottom": "midnight:block/dead_wood_door_bottom",
+    "top": "midnight:block/dead_wood_door_top"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "midnight:nightshroom",
+    "midnight:double_nightshroom",
+    "midnight:nightshroom_shelf",
+    "midnight:nightshroom_hat",
+    "midnight:nightshroom_stem",
+    "midnight:nightshroom_roots",
+    "midnight:nightshroom_flowering_roots"
+  ]
+}

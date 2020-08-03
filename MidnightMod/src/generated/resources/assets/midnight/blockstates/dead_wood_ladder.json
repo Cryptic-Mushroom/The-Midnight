@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "midnight:block/dead_wood_ladder"
+    },
+    "facing=east": {
+      "model": "midnight:block/dead_wood_ladder",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "midnight:block/dead_wood_ladder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "midnight:block/dead_wood_ladder",
+      "y": 270
+    }
+  }
+}

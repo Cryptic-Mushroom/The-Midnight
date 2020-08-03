@@ -1,0 +1,77 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "all": "midnight:block/stinger_egg",
+    "particle": "midnight:block/stinger_egg"
+  },
+  "elements": [
+    {
+      "from": [
+        5,
+        0,
+        3
+      ],
+      "to": [
+        11,
+        8,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            3,
+            3,
+            7
+          ],
+          "texture": "#all"
+        },
+        "east": {
+          "uv": [
+            9,
+            3,
+            12,
+            7
+          ],
+          "texture": "#all"
+        },
+        "south": {
+          "uv": [
+            6,
+            3,
+            9,
+            7
+          ],
+          "texture": "#all"
+        },
+        "west": {
+          "uv": [
+            3,
+            3,
+            6,
+            7
+          ],
+          "texture": "#all"
+        },
+        "up": {
+          "uv": [
+            3,
+            0,
+            6,
+            3
+          ],
+          "texture": "#all"
+        },
+        "down": {
+          "uv": [
+            3,
+            7,
+            6,
+            10
+          ],
+          "texture": "#all"
+        }
+      }
+    }
+  ]
+}

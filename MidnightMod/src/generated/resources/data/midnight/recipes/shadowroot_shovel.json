@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "|",
+    "|"
+  ],
+  "key": {
+    "#": {
+      "item": "midnight:shadowroot_planks"
+    },
+    "|": {
+      "tag": "midnight:sticks"
+    }
+  },
+  "result": {
+    "item": "midnight:shadowroot_shovel"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "midnight:nightstone",
+    "midnight:grass_block",
+    "midnight:mycelium",
+    "midnight:grass"
+  ]
+}

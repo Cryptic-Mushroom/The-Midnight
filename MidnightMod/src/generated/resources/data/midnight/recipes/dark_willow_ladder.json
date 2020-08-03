@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "| |",
+    "|#|",
+    "| |"
+  ],
+  "key": {
+    "#": {
+      "item": "midnight:dark_willow_planks"
+    },
+    "|": {
+      "tag": "midnight:sticks"
+    }
+  },
+  "result": {
+    "item": "midnight:dark_willow_ladder",
+    "count": 3
+  }
+}

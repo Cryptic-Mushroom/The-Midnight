@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "midnight:bogshroom_hat"
+    }
+  ],
+  "result": {
+    "item": "midnight:bogshroom_powder",
+    "count": 4
+  }
+}

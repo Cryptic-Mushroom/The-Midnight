@@ -134,7 +134,7 @@ public abstract class AbstractItemBuilder<T extends AbstractItemBuilder<T, I>, I
         props.group(group);
         props.rarity(rarity);
         props.food(food);
-        if (resistsFire) props.func_234689_a_();
+        if (resistsFire) props.isBurnable();
         if (!canRepair) props.setNoRepair();
         for (Map.Entry<ToolType, Integer> toolTier : toolClasses.entrySet()) {
             props.addToolType(toolTier.getKey(), toolTier.getValue());

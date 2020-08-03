@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "midnight:nagrilite_ingot"
+    }
+  },
+  "result": {
+    "item": "midnight:nagrilite_pressure_plate"
+  }
+}

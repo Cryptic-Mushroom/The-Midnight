@@ -1,0 +1,78 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "all": "midnight:block/dewshroom_hat_outside",
+      "outer": "midnight:block/dewshroom_hat_outside",
+      "inner": "midnight:block/dewshroom_hat_inside"
+    },
+    "uvlock": true
+  },
+  "variants": {
+    "normal": [
+      {}
+    ],
+    "up": {
+      "true": {
+        "submodel": "midnight:mushroom_inner",
+        "x": 90
+      },
+      "false": {
+        "submodel": "midnight:mushroom_outer",
+        "x": 90
+      }
+    },
+    "down": {
+      "true": {
+        "submodel": "midnight:mushroom_inner",
+        "x": 270
+      },
+      "false": {
+        "submodel": "midnight:mushroom_outer",
+        "x": 270
+      }
+    },
+    "south": {
+      "true": {
+        "submodel": "midnight:mushroom_inner"
+      },
+      "false": {
+        "submodel": "midnight:mushroom_outer"
+      }
+    },
+    "west": {
+      "true": {
+        "submodel": "midnight:mushroom_inner",
+        "y": 90
+      },
+      "false": {
+        "submodel": "midnight:mushroom_outer",
+        "y": 90
+      }
+    },
+    "north": {
+      "true": {
+        "submodel": "midnight:mushroom_inner",
+        "y": 180
+      },
+      "false": {
+        "submodel": "midnight:mushroom_outer",
+        "y": 180
+      }
+    },
+    "east": {
+      "true": {
+        "submodel": "midnight:mushroom_inner",
+        "y": 270
+      },
+      "false": {
+        "submodel": "midnight:mushroom_outer",
+        "y": 270
+      }
+    },
+    "inventory": {
+      "model": "cube_all"
+    }
+  }
+}
+

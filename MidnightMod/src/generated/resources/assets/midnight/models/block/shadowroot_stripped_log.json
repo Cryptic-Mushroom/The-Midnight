@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "midnight:block/shadowroot_stripped_log_top",
+    "side": "midnight:block/shadowroot_stripped_log"
+  }
+}

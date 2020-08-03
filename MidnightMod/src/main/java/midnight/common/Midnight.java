@@ -1,5 +1,6 @@
 package midnight.common;
 
+import com.google.common.reflect.Reflection;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import org.apache.logging.log4j.LogManager;
@@ -14,7 +15,10 @@ import midnight.api.event.MidnightInitEvent;
 import midnight.api.event.MidnightPostInitEvent;
 import midnight.api.event.MidnightPreInitEvent;
 import midnight.client.MidnightClient;
+import midnight.common.entity.MnEntities;
 import midnight.common.proxy.BlockItemProxy;
+import midnight.common.recipe.MidnightRecipeTypes;
+import midnight.common.registry.MidnightItemGroups;
 import midnight.core.plugin.PluginManager;
 import midnight.data.MidnightData;
 import midnight.server.MidnightServer;
@@ -68,6 +72,11 @@ public abstract class Midnight implements IMidnight {
      */
     public void init() {
         EVENT_BUS.post(new MidnightInitEvent(this, getRuntimeDist()));
+
+        Reflection.initialize(MidnightItemGroups.class);
+
+        MidnightRecipeTypes.init();
+        MnEntities.init();
     }
 
     /**

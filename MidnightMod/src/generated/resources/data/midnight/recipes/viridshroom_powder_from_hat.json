@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "midnight:viridshroom_hat"
+    }
+  ],
+  "result": {
+    "item": "midnight:viridshroom_powder",
+    "count": 4
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "midnight:block/bogshroom_shelf"
+    },
+    "facing=east": {
+      "model": "midnight:block/bogshroom_shelf",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "midnight:block/bogshroom_shelf",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "midnight:block/bogshroom_shelf",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "midnight:block/bogshroom_fan"
+    }
+  }
+}

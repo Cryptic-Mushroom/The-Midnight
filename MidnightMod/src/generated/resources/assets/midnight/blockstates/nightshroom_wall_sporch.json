@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "midnight:block/nightshroom_wall_sporch"
+    },
+    "facing=south": {
+      "model": "midnight:block/nightshroom_wall_sporch",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "midnight:block/nightshroom_wall_sporch",
+      "y": 180
+    },
+    "facing=north": {
+      "model": "midnight:block/nightshroom_wall_sporch",
+      "y": 270
+    }
+  }
+}

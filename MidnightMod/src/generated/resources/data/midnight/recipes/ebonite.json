@@ -1,0 +1,9 @@
+{
+  "type": "midnight:smelting",
+  "ingredient": {
+    "item": "midnight:ebonite_ore"
+  },
+  "result": "midnight:ebonite",
+  "experience": 1.0,
+  "cookingtime": 200
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "midnight:nagrilite_ingot"
+    }
+  ],
+  "result": {
+    "item": "midnight:nagrilite_nugget",
+    "count": 9
+  }
+}

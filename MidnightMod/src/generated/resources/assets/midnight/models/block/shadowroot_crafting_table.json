@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "all": "midnight:block/shadowroot_crafting_table_front",
+    "particle": "midnight:block/shadowroot_crafting_table_front",
+    "down": "midnight:block/shadowroot_planks",
+    "up": "midnight:block/shadowroot_crafting_table_top",
+    "north": "midnight:block/shadowroot_crafting_table_front",
+    "east": "midnight:block/shadowroot_crafting_table_side",
+    "south": "midnight:block/shadowroot_crafting_table_side",
+    "west": "midnight:block/shadowroot_crafting_table_front"
+  }
+}

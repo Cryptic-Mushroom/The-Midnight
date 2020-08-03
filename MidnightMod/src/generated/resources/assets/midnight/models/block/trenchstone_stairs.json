@@ -1,0 +1,8 @@
+{
+  "parent": "block/stairs",
+  "textures": {
+    "bottom": "midnight:block/trenchstone",
+    "top": "midnight:block/trenchstone",
+    "side": "midnight:block/trenchstone"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "all": "midnight:block/dead_wood_crafting_table_front",
+    "particle": "midnight:block/dead_wood_crafting_table_front",
+    "down": "midnight:block/dead_wood_planks",
+    "up": "midnight:block/dead_wood_crafting_table_top",
+    "north": "midnight:block/dead_wood_crafting_table_front",
+    "east": "midnight:block/dead_wood_crafting_table_side",
+    "south": "midnight:block/dead_wood_crafting_table_side",
+    "west": "midnight:block/dead_wood_crafting_table_front"
+  }
+}

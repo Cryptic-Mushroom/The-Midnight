@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "all": "midnight:block/dark_willow_crafting_table_front",
+    "particle": "midnight:block/dark_willow_crafting_table_front",
+    "down": "midnight:block/dark_willow_planks",
+    "up": "midnight:block/dark_willow_crafting_table_top",
+    "north": "midnight:block/dark_willow_crafting_table_front",
+    "east": "midnight:block/dark_willow_crafting_table_side",
+    "south": "midnight:block/dark_willow_crafting_table_side",
+    "west": "midnight:block/dark_willow_crafting_table_front"
+  }
+}

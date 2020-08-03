@@ -37,7 +37,7 @@ public final class WarningMessageHandler {
         // Null-check the player
         if (player != null) {
             LOGGER.warn(MidnightMod.DEV_WARNING);
-            event.getPlayer().sendMessage(new TranslationTextComponent(MidnightMod.DEV_WARNING).func_240699_a_(TextFormatting.RED), event.getPlayer().getUniqueID());
+            event.getPlayer().sendMessage(new TranslationTextComponent(MidnightMod.DEV_WARNING).mergeStyle(TextFormatting.RED), event.getPlayer().getUniqueID());
         }
     }
 

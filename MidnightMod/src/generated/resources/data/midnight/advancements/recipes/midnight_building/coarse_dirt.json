@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "midnight:coarse_dirt"
+    ]
+  },
+  "criteria": {
+    "has_peat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "midnight:deceitful_peat"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "midnight:coarse_dirt"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_peat",
+      "has_the_recipe"
+    ]
+  ]
+}

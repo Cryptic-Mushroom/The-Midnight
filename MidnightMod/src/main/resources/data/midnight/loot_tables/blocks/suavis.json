@@ -1,0 +1,106 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "enchantments": [
+                      {
+                        "enchantment": "minecraft:silk_touch",
+                        "levels": {
+                          "min": 1
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "midnight:suavis",
+                  "properties": {
+                    "stage": "3"
+                  }
+                }
+              ],
+              "name": "midnight:suavis"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "midnight:suavis",
+                  "properties": {
+                    "stage": "3"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "min": 2.0,
+                    "max": 3.0,
+                    "type": "minecraft:uniform"
+                  }
+                }
+              ],
+              "name": "midnight:raw_suavis"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "midnight:suavis",
+                  "properties": {
+                    "stage": "2"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "min": 1.0,
+                    "max": 2.0,
+                    "type": "minecraft:uniform"
+                  }
+                }
+              ],
+              "name": "midnight:raw_suavis"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "midnight:suavis",
+                  "properties": {
+                    "stage": "1"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 1.0
+                }
+              ],
+              "name": "midnight:raw_suavis"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

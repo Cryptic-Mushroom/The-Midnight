@@ -1,0 +1,25 @@
+{
+  "display": {
+    "icon": {
+      "item": "midnight:grass_block"
+    },
+    "title": {
+      "translate": "advancement.midnight.title"
+    },
+    "description": {
+      "translate": "advancement.midnight.desc"
+    },
+    "background": "midnight:textures/blocks/nightstone.png",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "frame": "task"
+  },
+  "criteria": {
+    "enter_midnight": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "midnight:midnight"
+      }
+    }
+  }
+}

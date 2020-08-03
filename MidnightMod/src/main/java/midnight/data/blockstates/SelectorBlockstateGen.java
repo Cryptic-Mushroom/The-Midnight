@@ -25,7 +25,7 @@ public class SelectorBlockstateGen implements IBlockstateGen {
 
     @SuppressWarnings({"unchecked", "rawtypes"})
     public SelectorBlockstateGen variant(BlockState state, ModelVariant... variants) {
-        String selector = state.func_235904_r_() // getProperties()
+        String selector = state.getProperties() // getProperties()
                                .stream()
                                .map(prop -> prop.getName() + "=" + ((Property) prop).getName(state.get(prop)))
                                .collect(Collectors.joining(","));

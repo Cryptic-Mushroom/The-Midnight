@@ -1,0 +1,9 @@
+{
+  "type": "midnight:smelting",
+  "ingredient": {
+    "item": "midnight:nagrilite_ore"
+  },
+  "result": "midnight:nagrilite_ingot",
+  "experience": 1.0,
+  "cookingtime": 200
+}

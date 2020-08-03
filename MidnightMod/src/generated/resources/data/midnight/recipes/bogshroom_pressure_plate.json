@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "midnight:bogshroom_planks"
+    }
+  },
+  "result": {
+    "item": "midnight:bogshroom_pressure_plate"
+  }
+}

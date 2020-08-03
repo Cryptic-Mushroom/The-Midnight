@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "midnight:block/malignant_tailflower",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "midnight:block/malignant_tailflower",
+      "x": 90,
+      "y": 90
+    },
+    "facing=south": {
+      "model": "midnight:block/malignant_tailflower",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west": {
+      "model": "midnight:block/malignant_tailflower",
+      "x": 90,
+      "y": 270
+    },
+    "facing=up": {
+      "model": "midnight:block/malignant_tailflower"
+    },
+    "facing=down": {
+      "model": "midnight:block/malignant_tailflower",
+      "x": 180
+    }
+  }
+}

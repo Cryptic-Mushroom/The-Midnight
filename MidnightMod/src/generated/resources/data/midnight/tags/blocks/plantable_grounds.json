@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "midnight:grass_block",
+    "midnight:mycelium",
+    "midnight:night_dirt",
+    "midnight:deceitful_mud",
+    "midnight:deceitful_peat",
+    "minecraft:grass_block",
+    "minecraft:farmland",
+    "minecraft:dirt"
+  ]
+}

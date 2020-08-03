@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "midnight:suavis"
+    },
+    "title": {
+      "translate": "advancement.inebriated.title"
+    },
+    "description": {
+      "translate": "advancement.inebriated.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "midnight:midnight/root",
+  "criteria": {
+    "gathered_suavis": {
+      "trigger": "midnight:harvested_suavis"
+    }
+  }
+}

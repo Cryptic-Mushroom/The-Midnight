@@ -1,0 +1,6 @@
+{
+  "parent": "midnight:block/cube_all_no_shade",
+  "textures": {
+    "all": "midnight:block/bloomcrystal_rock"
+  }
+}

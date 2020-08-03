@@ -1,0 +1,6 @@
+{
+  "parent": "block/button",
+  "textures": {
+    "texture": "midnight:block/dark_willow_planks"
+  }
+}

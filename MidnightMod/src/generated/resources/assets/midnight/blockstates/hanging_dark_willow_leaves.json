@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "is_tip=true": {
+      "model": "midnight:block/hanging_dark_willow_leaves_tip"
+    },
+    "is_tip=false": {
+      "model": "midnight:block/hanging_dark_willow_leaves"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "midnight:nightshroom_spore_bomb"
+    ]
+  },
+  "criteria": {
+    "has_powder": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "midnight:nightshroom_powder"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "midnight:nightshroom_spore_bomb"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_powder",
+      "has_the_recipe"
+    ]
+  ]
+}

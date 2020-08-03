@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "midnight:block/deceitful_moss",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "midnight:block/deceitful_moss",
+      "x": 90,
+      "y": 90
+    },
+    "facing=south": {
+      "model": "midnight:block/deceitful_moss",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west": {
+      "model": "midnight:block/deceitful_moss",
+      "x": 90,
+      "y": 270
+    },
+    "facing=up": {
+      "model": "midnight:block/deceitful_moss"
+    },
+    "facing=down": {
+      "model": "midnight:block/deceitful_moss",
+      "x": 180
+    }
+  }
+}

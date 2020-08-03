@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "midnight:glob_fungus_stem"
+    ]
+  },
+  "criteria": {
+    "has_hand": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "midnight:glob_fungus_hand"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "midnight:glob_fungus_stem"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_hand",
+      "has_the_recipe"
+    ]
+  ]
+}

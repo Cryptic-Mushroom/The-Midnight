@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "midnight:nightshroom_flowering_roots"
+    }
+  ],
+  "result": {
+    "item": "midnight:nightshroom_powder",
+    "count": 2
+  }
+}

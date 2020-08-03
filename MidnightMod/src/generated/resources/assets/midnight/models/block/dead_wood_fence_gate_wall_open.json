@@ -1,0 +1,6 @@
+{
+  "parent": "block/template_fence_gate_wall_open",
+  "textures": {
+    "texture": "midnight:block/dead_wood_planks"
+  }
+}

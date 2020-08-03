@@ -1,0 +1,7 @@
+{
+  "parent": "block/door_top",
+  "textures": {
+    "bottom": "midnight:block/nightshroom_door_bottom",
+    "top": "midnight:block/nightshroom_door_top"
+  }
+}

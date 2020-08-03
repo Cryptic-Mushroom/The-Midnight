@@ -1,0 +1,60 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "normal": [
+      {}
+    ],
+    "half": {
+      "lower": {
+        "model": "forge:multi-layer",
+        "transform": "forge:default-block",
+        "custom": {
+          "base": "midnight:double_lumen_bud#lower",
+          "Cutout": "midnight:double_lumen_bud#lower",
+          "Translucent": "midnight:double_lumen_bud#lower_glow"
+        }
+      },
+      "upper": {
+        "model": "forge:multi-layer",
+        "transform": "forge:default-block",
+        "custom": {
+          "base": "midnight:double_lumen_bud#upper",
+          "Cutout": "midnight:double_lumen_bud#upper",
+          "Translucent": "midnight:double_lumen_bud#upper_glow"
+        }
+      }
+    },
+    "lower": [
+      {
+        "model": "cross",
+        "textures": {
+          "cross": "midnight:block/double_lumen_bud_lower"
+        }
+      }
+    ],
+    "lower_glow": [
+      {
+        "model": "cross",
+        "textures": {
+          "cross": "midnight:block/double_lumen_bud_lower_glow"
+        }
+      }
+    ],
+    "upper": [
+      {
+        "model": "cross",
+        "textures": {
+          "cross": "midnight:block/double_lumen_bud_upper"
+        }
+      }
+    ],
+    "upper_glow": [
+      {
+        "model": "cross",
+        "textures": {
+          "cross": "midnight:block/double_lumen_bud_upper_glow"
+        }
+      }
+    ]
+  }
+}

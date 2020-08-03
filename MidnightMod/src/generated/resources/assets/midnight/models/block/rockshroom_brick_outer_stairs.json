@@ -1,0 +1,8 @@
+{
+  "parent": "block/outer_stairs",
+  "textures": {
+    "bottom": "midnight:block/rockshroom_bricks",
+    "top": "midnight:block/rockshroom_bricks",
+    "side": "midnight:block/rockshroom_bricks"
+  }
+}

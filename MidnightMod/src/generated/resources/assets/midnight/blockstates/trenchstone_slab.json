@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "midnight:block/trenchstone_slab"
+    },
+    "type=top": {
+      "model": "midnight:block/trenchstone_slab_top"
+    },
+    "type=double": {
+      "model": "midnight:block/trenchstone"
+    }
+  }
+}

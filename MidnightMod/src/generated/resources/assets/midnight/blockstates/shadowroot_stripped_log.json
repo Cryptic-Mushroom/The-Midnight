@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "midnight:block/shadowroot_stripped_log"
+    },
+    "axis=z": {
+      "model": "midnight:block/shadowroot_stripped_log",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "midnight:block/shadowroot_stripped_log",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

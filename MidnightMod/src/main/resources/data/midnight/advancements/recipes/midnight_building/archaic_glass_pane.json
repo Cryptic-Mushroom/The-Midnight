@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "midnight:archaic_glass_pane"
+    ]
+  },
+  "criteria": {
+    "has_shards": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "midnight:archaic_shard"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "midnight:archaic_glass_pane"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_shards",
+      "has_the_recipe"
+    ]
+  ]
+}

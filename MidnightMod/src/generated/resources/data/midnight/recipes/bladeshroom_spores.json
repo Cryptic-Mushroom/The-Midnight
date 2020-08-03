@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "midnight:bladeshroom_cap"
+    }
+  ],
+  "result": {
+    "item": "midnight:bladeshroom_spores"
+  }
+}

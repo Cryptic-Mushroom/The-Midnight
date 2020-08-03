@@ -1,0 +1,69 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "normal": [
+      {}
+    ],
+    "inventory": [
+      {
+        "model": "builtin/generated",
+        "textures": {
+          "layer0": "midnight:block/bogshroom_lower"
+        },
+        "transform": "forge:default-item"
+      }
+    ],
+    "half": {
+      "lower": {
+        "model": "forge:multi-layer",
+        "transform": "forge:default-block",
+        "custom": {
+          "base": "midnight:double_bogshroom#lower",
+          "Cutout": "midnight:double_bogshroom#lower",
+          "Translucent": "midnight:double_bogshroom#lower_glow"
+        }
+      },
+      "upper": {
+        "model": "forge:multi-layer",
+        "transform": "forge:default-block",
+        "custom": {
+          "base": "midnight:double_bogshroom#upper",
+          "Cutout": "midnight:double_bogshroom#upper",
+          "Translucent": "midnight:double_bogshroom#upper_glow"
+        }
+      }
+    },
+    "lower": [
+      {
+        "model": "cross",
+        "textures": {
+          "cross": "midnight:block/bogshroom_lower"
+        }
+      }
+    ],
+    "lower_glow": [
+      {
+        "model": "cross",
+        "textures": {
+          "cross": "midnight:block/bogshroom_lower_glow"
+        }
+      }
+    ],
+    "upper": [
+      {
+        "model": "cross",
+        "textures": {
+          "cross": "midnight:block/bogshroom_upper"
+        }
+      }
+    ],
+    "upper_glow": [
+      {
+        "model": "cross",
+        "textures": {
+          "cross": "midnight:block/bogshroom_upper_glow"
+        }
+      }
+    ]
+  }
+}

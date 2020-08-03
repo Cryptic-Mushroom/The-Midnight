@@ -433,28 +433,28 @@ public class BlockItemBuilder<B extends Block> extends AbstractItemBuilder<Block
      * Makes the {@link AbstractBlock.Properties} instance using the configuration in this builder.
      */
     protected AbstractBlock.Properties makeBlockProps() {
-        AbstractBlock.Properties props = AbstractBlock.Properties.func_235836_a_(material, color);
+        AbstractBlock.Properties props = AbstractBlock.Properties.create(material, color);
         if (!blocksMovement) props.doesNotBlockMovement();
         props.sound(sound);
-        props.func_235838_a_(lightLevel);
+        props.setLightLevel(lightLevel);
         props.hardnessAndResistance((float) hardness, (float) resistance);
-        if (requiresTool) props.func_235861_h_();
+        if (requiresTool) props.setRequiresTool();
         if (ticksRandomly) props.tickRandomly();
         props.slipperiness((float) slipperiness);
         props.speedFactor((float) speedFactor);
         props.jumpFactor((float) jumpFactor);
         if (!drops) props.noDrops();
         if (!solid) props.notSolid();
-        if (air) props.func_235859_g_();
+        if (air) props.setAir();
         props.harvestLevel(harvestLevel);
         props.harvestTool(harvestTool);
         if (drops && lootFrom != null) props.lootFrom(lootFrom);
-        props.func_235827_a_(canEntitySpawn);
-        props.func_235828_a_(normalCube);
-        props.func_235842_b_(suffocation);
-        props.func_235847_c_(blockOverlay);
-        props.func_235852_d_(postProcessing);
-        props.func_235856_e_(emissiveRendering);
+        //IDK How to fix this //props.func_235827_a_(canEntitySpawn);
+        props.setOpaque(normalCube);
+        props.setSuffocates(suffocation);
+        props.setBlocksVision(blockOverlay);
+        props.setNeedsPostProcessing(postProcessing);
+        props.setEmmisiveRendering(emissiveRendering);
         if (variableOpacity) props.variableOpacity();
         return props;
     }

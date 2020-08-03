@@ -1,0 +1,9 @@
+{
+  "parent": "midnight:block/mushroom_inner",
+  "textures": {
+    "all": "midnight:block/viridshroom_hat_outside",
+    "outer": "midnight:block/viridshroom_hat_outside",
+    "inner": "midnight:block/viridshroom_hat_inside"
+  },
+  "uvlock": true
+}

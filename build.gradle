@@ -34,7 +34,7 @@ allprojects {
 
     // ForgeGradle setup
     minecraft {
-        mappings channel: 'snapshot', version: '20200514-1.16'
+        mappings channel: 'snapshot', version: '20200712-1.16.1'
 
         // Access transformer
         accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
@@ -83,7 +83,7 @@ allprojects {
     }
 
     dependencies {
-        minecraft 'net.minecraftforge:forge:1.16.1-32.0.46'
+        minecraft 'net.minecraftforge:forge:1.16.1-32.0.98'
 
         embed("net.rgsw:noise:1.0.5") {
             // The only transitive dependency is it.unimi.dsi:fastutil:8.2.1 - this is included with forge and we don't

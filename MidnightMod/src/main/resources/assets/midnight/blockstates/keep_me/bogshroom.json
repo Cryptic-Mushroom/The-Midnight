@@ -1,0 +1,42 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "forge:multi-layer",
+    "transform": "forge:default-block",
+    "custom": {
+      "base": "midnight:bogshroom#base",
+      "Cutout": "midnight:bogshroom#base",
+      "Translucent": "midnight:bogshroom#glow"
+    }
+  },
+  "variants": {
+    "normal": [
+      {}
+    ],
+    "inventory": [
+      {
+        "model": "builtin/generated",
+        "textures": {
+          "layer0": "midnight:block/bogshroom"
+        },
+        "transform": "forge:default-item"
+      }
+    ],
+    "base": [
+      {
+        "model": "cross",
+        "textures": {
+          "cross": "midnight:block/bogshroom"
+        }
+      }
+    ],
+    "glow": [
+      {
+        "model": "cross",
+        "textures": {
+          "cross": "midnight:block/bogshroom_glow"
+        }
+      }
+    ]
+  }
+}

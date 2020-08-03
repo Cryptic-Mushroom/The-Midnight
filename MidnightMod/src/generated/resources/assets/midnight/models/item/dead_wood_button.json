@@ -1,0 +1,6 @@
+{
+  "parent": "block/button_inventory",
+  "textures": {
+    "texture": "midnight:block/dead_wood_planks"
+  }
+}

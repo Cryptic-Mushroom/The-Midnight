@@ -5,8 +5,13 @@ import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityType;
+import net.minecraft.fluid.Fluid;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.crafting.IRecipeSerializer;
+import net.minecraft.particles.ParticleType;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
 import midnight.MidnightInfo;
 import midnight.common.Midnight;
@@ -24,6 +29,12 @@ import java.util.function.Supplier;
 public class RegistryManager<E extends IForgeRegistryEntry<E>> implements Iterable<E> {
     public static final RegistryManager<Block> BLOCKS = new RegistryManager<>();
     public static final RegistryManager<Item> ITEMS = new RegistryManager<>();
+    public static final RegistryManager<Fluid> FLUIDS = new RegistryManager<>();
+    public static final RegistryManager<EntityType<?>> ENTITY_TYPES = new RegistryManager<>();
+    public static final RegistryManager<IRecipeSerializer<?>> RECIPE_SERIALIZERS = new RegistryManager<>();
+    public static final RegistryManager<TileEntityType<?>> TILE_ENTITIES = new RegistryManager<>();
+    public static final RegistryManager<ParticleType<?>> PARTICLE_TYPES = new RegistryManager<>();
+
     public static final BlockItemRegistryManager BLOCKS_ITEMS = new BlockItemRegistryManager(BLOCKS, ITEMS);
 
     private final List<Entry> entries = new ArrayList<>();
