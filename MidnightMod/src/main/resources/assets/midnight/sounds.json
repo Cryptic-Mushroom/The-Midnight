@@ -18,5 +18,70 @@
       "midnight:blocks/step/mud_3",
       "midnight:blocks/step/mud_4"
     ]
+  },
+  "snapper_hurt": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.snapper.hurt",
+    "sounds": [
+      "damage/hit1",
+      "damage/hit2",
+      "damage/hit3"
+    ]
+  },
+  "snapper_death": {
+    "category": "hostile",
+    "subtitle": "subtitles.entity.snapper.death",
+    "sounds": [
+      "damage/hit1",
+      "damage/hit2",
+      "damage/hit3"
+    ]
+  },
+  "skulk_ambient": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.skulk.ambient",
+    "sounds": [
+      "midnight:entity/skulk_idle_1",
+      "midnight:entity/skulk_idle_2",
+      "midnight:entity/skulk_idle_3"
+    ]
+  },
+  "skulk_hurt": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.skulk.hurt",
+    "sounds": [
+      "midnight:entity/skulk_hurt_1",
+      "midnight:entity/skulk_hurt_2",
+      "midnight:entity/skulk_hurt_3"
+    ]
+  },
+  "skulk_death": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.skulk.death",
+    "sounds": [
+      "midnight:entity/skulk_death"
+    ]
+  },
+  "skulk_sniffing": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.skulk.sniffing",
+    "sounds": [
+      "midnight:entity/skulk_sniffing"
+    ]
+  },
+  "skulk_grab": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.skulk.grab",
+    "sounds": [
+      "midnight:entity/skulk_grab"
+    ]
+  },
+  "skulk_teleport": {
+    "category": "neutral",
+    "subtitle": "subtitles.entity.skulk.teleport",
+    "sounds": [
+      "midnight:entity/skulk_teleport_1",
+      "midnight:entity/skulk_teleport_2"
+    ]
   }
 }

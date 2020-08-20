@@ -12,6 +12,14 @@ public final class MnSoundEvents {
     public static final SoundEvent SNAPPER_DEATH = make("snapper_death");
     public static final SoundEvent SNAPPER_HURT = make("snapper_hurt");
 
+    public static final SoundEvent SKULK_DEATH = make("skulk_death");
+    public static final SoundEvent SKULK_HURT = make("skulk_hurt");
+    public static final SoundEvent SKULK_AMBIENT = make("skulk_ambient");
+    public static final SoundEvent SKULK_GRAB = make("skulk_grab");
+    public static final SoundEvent SKULK_SNIFFING = make("skulk_sniffing");
+    public static final SoundEvent SKULK_TELEPORT = make("skulk_teleport");
+
+
     private MnSoundEvents() {
     }
 

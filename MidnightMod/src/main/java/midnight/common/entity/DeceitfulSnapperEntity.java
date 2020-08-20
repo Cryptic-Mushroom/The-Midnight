@@ -33,7 +33,7 @@ public class DeceitfulSnapperEntity extends AbstractFishEntity {
 
     @Override
     protected ItemStack getFishBucket() {
-        return new ItemStack(Items.TROPICAL_FISH_BUCKET); //TODO YOOO, replace this
+        return new ItemStack(Items.TROPICAL_FISH_BUCKET); //TODO replace this
         //return new ItemStack(MidnightItems.DECEITFUL_SNAPPER_BUCKET);
     }
 

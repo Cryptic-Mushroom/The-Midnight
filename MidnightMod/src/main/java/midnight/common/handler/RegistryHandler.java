@@ -3,6 +3,7 @@ package midnight.common.handler;
 import com.google.common.reflect.Reflection;
 import midnight.common.block.MnBlocks;
 import midnight.common.block.fluid.MnFluids;
+import midnight.common.entity.MnEntitys;
 import midnight.common.item.MnItems;
 import midnight.common.registry.RegistryManager;
 import midnight.common.sound.MnSoundEvents;
@@ -31,6 +32,7 @@ public final class RegistryHandler {
         Reflection.initialize(
             MnBlocks.class,
             MnItems.class,
+            MnEntitys.class,
             MnFluids.class,
             MnDimensions.class,
             MnBiomes.class,

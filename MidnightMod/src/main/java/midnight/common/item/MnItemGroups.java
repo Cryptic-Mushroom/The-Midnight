@@ -17,4 +17,10 @@ public class MnItemGroups {
             return new ItemStack(MnBlocks.NIGHT_GRASS);
         }
     };
+    public static final ItemGroup ITEMS = new ItemGroup("midnight.items") {
+        @Override
+        public ItemStack createIcon() {
+            return new ItemStack(MnItems.DARK_STICK);
+        }
+    };
 }
