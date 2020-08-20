@@ -94,6 +94,13 @@ public final class MnBlocks {
                         .strength(100)
                         .makeBlock()
     );
+    public static final Block MIASMA = register(
+        "miasma",
+        BlockItemBuilder.builder(props -> new FlowingFluidBlock(() -> MnFluids.MIASMA, props))
+                        .material(Material.LAVA)
+                        .strength(100)
+                        .makeBlock()
+    );
 
     private static final Factory<MnPlantBlock> PLANTS = factory(
         () -> BlockItemBuilder.builder(MnPlantBlock::new)

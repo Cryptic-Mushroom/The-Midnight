@@ -9,6 +9,10 @@ import net.minecraft.fluid.Fluid;
 public final class MnFluids {
     public static final FlowingFluid DARK_WATER = register("dark_water", new DarkWaterFluid.Source());
     public static final FlowingFluid FLOWING_DARK_WATER = register("flowing_dark_water", new DarkWaterFluid.Flowing());
+    public static final FlowingFluid MIASMA = register("miasma", new MiasmaFluid.Source());
+    public static final FlowingFluid FLOWING_MIASMA = register("flowing_miasma", new MiasmaFluid.Flowing());
+
+
 
     private MnFluids() {
     }
