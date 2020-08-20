@@ -34,8 +34,8 @@ import java.util.Random;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public abstract class MiasmaFluid extends LavaFluid {
-    private static final ResourceLocation STILL_TEXTURE = new ResourceLocation(MidnightInfo.MODID, "blocks/miasma_still");
-    private static final ResourceLocation FLOW_TEXTURE = new ResourceLocation(MidnightInfo.MODID, "blocks/miasma_flow");
+    private static final ResourceLocation STILL_TEXTURE = new ResourceLocation(MidnightInfo.MODID, "block/miasma_still");
+    private static final ResourceLocation FLOW_TEXTURE = new ResourceLocation(MidnightInfo.MODID, "block/miasma_flow");
 
     @Override
     public Fluid getFlowingFluid() {
