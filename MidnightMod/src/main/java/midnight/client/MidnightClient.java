@@ -2,11 +2,14 @@ package midnight.client;
 
 import midnight.client.biome.BiomeColorCache;
 import midnight.client.proxy.ClientBlockItemProxy;
+import midnight.client.render.DeceitfulSnapperRenderer;
 import midnight.common.Midnight;
+import midnight.common.entity.MnEntitys;
 import midnight.common.proxy.BlockItemProxy;
 import midnight.core.util.MnUtil;
 import midnight.data.MidnightData;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 /**
  * The client-only main class of the Midnight, to handle certain client-only initialization and processing.
@@ -18,6 +21,9 @@ public class MidnightClient extends Midnight {
     @Override
     public void init() {
         getBlockItemProxy().init();
+
+        //TODO This is Temporary place,Free replace this
+        RenderingRegistry.registerEntityRenderingHandler(MnEntitys.DECEITFUL_SNAPPER, DeceitfulSnapperRenderer::new);
     }
 
     @Override

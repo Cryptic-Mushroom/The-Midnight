@@ -9,6 +9,7 @@ import midnight.common.sound.MnSoundEvents;
 import midnight.common.world.biome.MnBiomes;
 import midnight.common.world.dimension.MnDimensions;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityType;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
 import net.minecraft.util.SoundEvent;
@@ -50,6 +51,11 @@ public final class RegistryHandler {
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         RegistryManager.ITEMS.fillRegistry(event.getRegistry());
+    }
+
+    @SubscribeEvent
+    public static void registerEntity(RegistryEvent.Register<EntityType<?>> event) {
+        RegistryManager.ENTITY_TYPES.fillRegistry(event.getRegistry());
     }
 
     @SubscribeEvent

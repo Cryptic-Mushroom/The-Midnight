@@ -4,6 +4,7 @@ import com.mojang.datafixers.util.Pair;
 import midnight.MidnightInfo;
 import midnight.common.Midnight;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityType;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -29,6 +30,7 @@ public class RegistryManager<E extends IForgeRegistryEntry<E>> implements Iterab
     public static final RegistryManager<Item> ITEMS = new RegistryManager<>();
     public static final BlockItemRegistryManager BLOCKS_ITEMS = new BlockItemRegistryManager(BLOCKS, ITEMS);
 
+    public static final RegistryManager<EntityType<?>> ENTITY_TYPES = new RegistryManager<>();
     public static final RegistryManager<Fluid> FLUIDS = new RegistryManager<>();
     public static final RegistryManager<ModDimension> DIMENSIONS = new RegistryManager<>();
     public static final RegistryManager<Biome> BIOMES = new RegistryManager<>();
