@@ -20,12 +20,12 @@ public class MnEntitys {
                                                                                                                                .setShouldReceiveVelocityUpdates(true)
                                                                                                                                .size(0.4f, 0.4f)
                                                                                                                                .build(MidnightInfo.MODID + ":deceitful_snapper"));
-    public static final EntityType<SkulkEntity> SKULK = EntityType.Builder.create(SkulkEntity::new, EntityClassification.CREATURE)
-                                                                          .setTrackingRange(80)
-                                                                          .setUpdateInterval(3)
-                                                                          .setShouldReceiveVelocityUpdates(true)
-                                                                          .size(0.6f, 0.6f)
-                                                                          .build(MidnightInfo.MODID + ":skulk");
+    public static final EntityType<SkulkEntity> SKULK = register("skulk", EntityType.Builder.create(SkulkEntity::new, EntityClassification.CREATURE)
+                                                                                            .setTrackingRange(80)
+                                                                                            .setUpdateInterval(3)
+                                                                                            .setShouldReceiveVelocityUpdates(true)
+                                                                                            .size(0.6f, 0.6f)
+                                                                                            .build(MidnightInfo.MODID + ":skulk"));
 
     private static <T extends Entity> EntityType<T> register(String type, EntityType<T> entityType) {
         ResourceLocation id = Midnight.resLoc(type);
