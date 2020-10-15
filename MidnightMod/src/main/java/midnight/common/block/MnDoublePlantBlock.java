@@ -58,4 +58,9 @@ public class MnDoublePlantBlock extends DoublePlantBlock {
         this.offsetType = offsetType;
         return this;
     }
+
+    @Override
+    public OffsetType getOffsetType() {
+        return offsetType;
+    }
 }
