@@ -73,6 +73,10 @@ public final class BlockStateTable {
 
         register(MnBlocks.NIGHTSHROOM_CAP, block -> shroomCap(block, name(block, "block/%s"), name(block, "block/%s"), name(block, "block/%s_inner")));
         register(MnBlocks.NIGHTSHROOM_STEM, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.NIGHTSHROOM_PLANKS, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.NIGHTSHROOM, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
+        register(MnBlocks.NIGHTSHROOM_FIBRE, block -> fibre(name(block, "block/%s"), name(block, "block/%s"), name(block, "block/%s_dense")));
+        register(MnBlocks.TALL_NIGHTSHROOM, block -> doublePlant(name(block, "block/%s_lower"), cross(name(block, "block/%s_lower")), name(block, "block/%s_upper"), cross(name(block, "block/%s_upper"))));
     }
 
     private static IBlockStateGen none() {
@@ -86,6 +90,11 @@ public final class BlockStateTable {
     private static IBlockStateGen hangingPlant(String endName, IModelGen endModel, String rootName, IModelGen rootModel) {
         return VariantBlockStateGen.create("end=true", ModelInfo.create(endName, endModel))
                                    .variant("end=false", ModelInfo.create(rootName, rootModel));
+    }
+
+    private static IBlockStateGen fibre(String model, String lessFibre, String moreFibre) {
+        return VariantBlockStateGen.create("dense=true", ModelInfo.create(model + "_dense", layeredPlant(moreFibre, lessFibre)))
+                                   .variant("dense=false", ModelInfo.create(model, layeredPlant(lessFibre)));
     }
 
     private static IBlockStateGen rotateY(String name, IModelGen model) {

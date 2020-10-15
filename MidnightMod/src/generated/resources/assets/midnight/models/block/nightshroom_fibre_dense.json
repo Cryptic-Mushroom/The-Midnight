@@ -1,0 +1,7 @@
+{
+  "parent": "midnight:block/layered_plant_2",
+  "textures": {
+    "layer1": "midnight:block/nightshroom_fibre_dense",
+    "layer2": "midnight:block/nightshroom_fibre"
+  }
+}

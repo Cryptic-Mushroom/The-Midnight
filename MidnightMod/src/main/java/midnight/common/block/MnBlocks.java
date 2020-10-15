@@ -89,6 +89,10 @@ public final class MnBlocks {
 
     public static final Block NIGHTSHROOM_CAP = inj();
     public static final Block NIGHTSHROOM_STEM = inj();
+    public static final Block NIGHTSHROOM_PLANKS = inj();
+    public static final Block NIGHTSHROOM = inj();
+    public static final Block TALL_NIGHTSHROOM = inj();
+    public static final Block NIGHTSHROOM_FIBRE = inj();
 
     public static void registerBlocks(IRegistry<Block> registry) {
         registry.registerAll(
@@ -139,7 +143,11 @@ public final class MnBlocks {
             shroomAir("shroom_air"),
 
             shroomCap("nightshroom_cap", MaterialColor.BLUE, 0x7566B0),
-            stem("nightshroom_stem", MaterialColor.BLUE)
+            stem("nightshroom_stem", MaterialColor.BLUE),
+            wood("nightshroom_planks", MaterialColor.BLUE),
+            smallShroom("nightshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.BLUE, () -> (MnDoublePlantBlock) TALL_NIGHTSHROOM).setPlantHitbox(14, 14).setOffsetType(Block.OffsetType.XZ),
+            tallShroom("tall_nightshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.BLUE).setPlantHitbox(14, 30).setOffsetType(Block.OffsetType.XZ),
+            fibre("nightshroom_fibre", Material.TALL_PLANTS, MaterialColor.BLUE)
         );
     }
 
@@ -188,7 +196,11 @@ public final class MnBlocks {
             item(DARK_WILLOW_SAPLING, MnItemCategory.SAPLINGS, MnItemGroup.DECOR),
 
             item(NIGHTSHROOM_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
-            item(NIGHTSHROOM_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS)
+            item(NIGHTSHROOM_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
+            item(NIGHTSHROOM_PLANKS, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
+            item(NIGHTSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(TALL_NIGHTSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(NIGHTSHROOM_FIBRE, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR)
         );
     }
 
@@ -211,6 +223,9 @@ public final class MnBlocks {
         RenderTypeLookup.setRenderLayer(DARK_WILLOW_LEAVES, RenderType.getCutoutMipped());
         RenderTypeLookup.setRenderLayer(HANGING_DARK_WILLOW_LEAVES, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(DARK_WILLOW_SAPLING, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(NIGHTSHROOM, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(TALL_NIGHTSHROOM, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(NIGHTSHROOM_FIBRE, RenderType.getCutout());
 
 
         BlockColors blockColors = Minecraft.getInstance().getBlockColors();
@@ -218,7 +233,7 @@ public final class MnBlocks {
 
         blockColors.register(
             (state, world, pos, tint) -> {
-                if(pos == null || world == null) return 0x9A63B8;
+                if (pos == null || world == null) return 0x9A63B8;
                 return MidnightClient.get().getNightGrassColorCache().getColor(pos, MnBiomeColors.NIGHT_GRASS);
             },
             NIGHT_GRASS_BLOCK
@@ -230,7 +245,7 @@ public final class MnBlocks {
 
         blockColors.register(
             (state, world, pos, tint) -> {
-                if(pos == null || world == null) return 0x8C74A1;
+                if (pos == null || world == null) return 0x8C74A1;
                 int color = MidnightClient.get().getNightGrassColorCache().getColor(pos, MnBiomeColors.NIGHT_GRASS);
                 color = ColorUtil.darker(color, 0.3);
                 return color;
@@ -244,7 +259,7 @@ public final class MnBlocks {
 
         blockColors.register(
             (state, world, pos, tint) -> {
-                if(pos == null || world == null) return 0x3A3154;
+                if (pos == null || world == null) return 0x3A3154;
                 return MidnightClient.get().getShadowrootColorCache().getColor(pos, MnBiomeColors.SHADOWROOT);
             },
             SHADOWROOT_LEAVES
@@ -371,6 +386,38 @@ public final class MnBlocks {
         ));
     }
 
+    private static MnDoublePlantBlock tallShroom(String id, double hardness, double resistance, Material material, MaterialColor color) {
+        return block(id, new MnDoublePlantBlock(
+            AbstractBlock.Properties.create(material, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.FUNGUS)
+                                    .luminance(state -> 10)
+                                    .emissiveLighting((state, world, pos) -> true)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
+        ));
+    }
+
+    private static MnPlantBlock smallShroom(String id, double hardness, double resistance, Material material, MaterialColor color, Supplier<MnDoublePlantBlock> tall) {
+        return block(id, new SmallGrowablePlantBlock(
+            AbstractBlock.Properties.create(material, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.FUNGUS)
+                                    .luminance(state -> 10)
+                                    .emissiveLighting((state, world, pos) -> true)
+                                    .hardnessAndResistance((float) hardness, (float) resistance),
+            tall
+        ));
+    }
+
+    private static MnPlantBlock fibre(String id, Material material, MaterialColor color) {
+        return block(id, new FibreBlock(
+            AbstractBlock.Properties.create(material, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.NETHER_SPROUTS)
+                                    .hardnessAndResistance(0, 0)
+        ));
+    }
+
     private static Block giantGhostPlant(String id, Function<Block.Properties, Block> factory) {
         return block(id, factory.apply(
             AbstractBlock.Properties.create(Material.WOOD, MaterialColor.SNOW)
@@ -466,6 +513,7 @@ public final class MnBlocks {
         return block(id, new ShroomCapBlock(
             AbstractBlock.Properties.create(Material.ORGANIC, color)
                                     .harvestTool(ToolType.HOE)
+                                    .hardnessAndResistance(1.7f)
                                     .sound(SoundType.WART_BLOCK),
             sporeColor
         ));

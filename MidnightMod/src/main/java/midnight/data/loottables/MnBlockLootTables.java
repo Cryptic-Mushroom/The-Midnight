@@ -1,19 +1,24 @@
 package midnight.data.loottables;
 
+import midnight.common.block.MnBlockStateProperties;
 import midnight.common.block.MnBlocks;
 import midnight.common.item.MnItems;
 import net.minecraft.advancements.criterion.EnchantmentPredicate;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.advancements.criterion.MinMaxBounds;
+import net.minecraft.advancements.criterion.StatePropertiesPredicate;
 import net.minecraft.block.Block;
+import net.minecraft.block.DoublePlantBlock;
 import net.minecraft.data.loot.BlockLootTables;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Items;
 import net.minecraft.loot.*;
+import net.minecraft.loot.conditions.BlockStateProperty;
 import net.minecraft.loot.conditions.ILootCondition;
 import net.minecraft.loot.conditions.MatchTool;
 import net.minecraft.loot.conditions.TableBonus;
 import net.minecraft.loot.functions.SetCount;
+import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 
@@ -56,13 +61,20 @@ public class MnBlockLootTables extends BlockLootTables {
         registerDropSelfLootTable(MnBlocks.DARK_WILLOW_SAPLING);
         registerDropSelfLootTable(MnBlocks.NIGHTSHROOM_CAP);
         registerDropSelfLootTable(MnBlocks.NIGHTSHROOM_STEM);
+        registerDropSelfLootTable(MnBlocks.NIGHTSHROOM_PLANKS);
+        registerDropSelfLootTable(MnBlocks.NIGHTSHROOM);
+        registerLootTable(MnBlocks.NIGHTSHROOM_FIBRE, MnBlockLootTables::droppingFibre);
+        registerLootTable(MnBlocks.TALL_NIGHTSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
         registerLootTable(MnBlocks.DARK_WILLOW_LEAVES, block -> droppingWithChancesAndDarkSticks(block, MnBlocks.DARK_WILLOW_SAPLING, DEFAULT_SAPLING_DROP_RATES)); // TODO Stick should be dark stick later
         registerLootTable(MnBlocks.HANGING_DARK_WILLOW_LEAVES, onlyWithShears(MnBlocks.HANGING_DARK_WILLOW_LEAVES));
         registerDropSelfLootTable(MnBlocks.STRIPPED_DARK_WILLOW_WOOD);
         registerDropSelfLootTable(MnBlocks.STRIPPED_DARK_WILLOW_LOG);
         registerLootTable(MnBlocks.NIGHT_BEDROCK, block -> droppingNothing());
         registerLootTable(MnBlocks.NIGHT_GRASS, onlyWithShears(MnBlocks.NIGHT_GRASS));
+
+        // TODO Shadew: Ensure that this drops only once when using shears, regardless of which half was broken - look at vanilla
         registerLootTable(MnBlocks.TALL_NIGHT_GRASS, onlyWithShears(MnBlocks.TALL_NIGHT_GRASS));
+
         registerLootTable(MnBlocks.NIGHT_GRASS_BLOCK, block -> droppingWithSilkTouch(block, MnBlocks.NIGHT_DIRT));
         registerLootTable(MnBlocks.DARK_WATER, block -> droppingNothing());
     }
@@ -89,6 +101,26 @@ public class MnBlockLootTables extends BlockLootTables {
                             TableBonus.builder(Enchantments.FORTUNE, 1 / 50F, 1 / 45F, 1 / 40F, 1 / 30F, 1 / 10F)
                         )
                     )
+        );
+    }
+
+    protected static LootTable.Builder droppingFibre(Block block) {
+        return LootTable.builder().addLootPool(
+            LootPool.builder().addEntry(
+                ItemLootEntry.builder(block)
+                             .acceptFunction(
+                                 SetCount.builder(ConstantRange.of(2))
+                                         .acceptCondition(BlockStateProperty.builder(block).properties(
+                                             StatePropertiesPredicate.Builder.create().exactMatch(
+                                                 MnBlockStateProperties.DENSE,
+                                                 true
+                                             )
+                                         ))
+                             )
+                             .acceptCondition(
+                                 SILK_TOUCH_OR_SHEARS
+                             )
+            )
         );
     }
 

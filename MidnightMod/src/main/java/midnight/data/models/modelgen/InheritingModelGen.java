@@ -349,4 +349,32 @@ public class InheritingModelGen implements IModelGen {
         return new InheritingModelGen("block/tinted_cross")
                    .texture("cross", texture);
     }
+
+    public static InheritingModelGen fan(String texture) {
+        return new InheritingModelGen("midnight:block/fan")
+                   .texture("fan", texture);
+    }
+
+    public static InheritingModelGen shelf(String texture) {
+        return new InheritingModelGen("midnight:block/shelf")
+                   .texture("shelf", texture);
+    }
+
+    public static InheritingModelGen layeredPlant(String layer1) {
+        return new InheritingModelGen("midnight:block/layered_plant_1")
+                   .texture("layer1", layer1);
+    }
+
+    public static InheritingModelGen layeredPlant(String layer1, String layer2) {
+        return new InheritingModelGen("midnight:block/layered_plant_2")
+                   .texture("layer1", layer1)
+                   .texture("layer2", layer2);
+    }
+
+    public static InheritingModelGen layeredPlant(String layer1, String layer2, String layer3) {
+        return new InheritingModelGen("midnight:block/layered_plant_3")
+                   .texture("layer1", layer1)
+                   .texture("layer2", layer2)
+                   .texture("layer3", layer3);
+    }
 }

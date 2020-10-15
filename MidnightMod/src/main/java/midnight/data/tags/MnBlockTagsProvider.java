@@ -37,6 +37,7 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
             MnBlocks.TRENCHSTONE,
             MnBlocks.STRANGE_SAND,
             MnBlocks.COARSE_NIGHT_DIRT,
+            MnBlocks.NIGHTSHROOM,
             MnBlocks.GHOST_PLANT
         );
         getOrCreateTagBuilder(MnBlockTags.DARK_WILLOW_LOGS).replace(false).add(
@@ -69,7 +70,8 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
         getOrCreateTagBuilder(BlockTags.PLANKS).replace(false).add(
             MnBlocks.DEAD_WOOD_PLANKS,
             MnBlocks.SHADOWROOT_PLANKS,
-            MnBlocks.DARK_WILLOW_PLANKS
+            MnBlocks.DARK_WILLOW_PLANKS,
+            MnBlocks.NIGHTSHROOM_PLANKS
         );
     }
 
