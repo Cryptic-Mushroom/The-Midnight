@@ -72,6 +72,11 @@ public class MnBlockLootTables extends BlockLootTables {
         registerLootTable(MnBlocks.NIGHT_BEDROCK, block -> droppingNothing());
         registerLootTable(MnBlocks.NIGHT_GRASS, onlyWithShears(MnBlocks.NIGHT_GRASS));
 
+        registerLootTable(MnBlocks.DARK_PEARL_ORE, block -> {
+            return droppingItemWithFortune(block, MnItems.GEODE);
+        });
+        registerDropSelfLootTable(MnBlocks.DARK_PEARL_BLOCK);
+
         // TODO Shadew: Ensure that this drops only once when using shears, regardless of which half was broken - look at vanilla
         registerLootTable(MnBlocks.TALL_NIGHT_GRASS, onlyWithShears(MnBlocks.TALL_NIGHT_GRASS));
 

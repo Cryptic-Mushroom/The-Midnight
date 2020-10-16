@@ -68,6 +68,11 @@ public final class ItemModelTable {
         register(MnBlocks.TALL_NIGHTSHROOM, item -> generated(name(item, "block/%s_upper")));
 
         register(MnItems.DARK_STICK, item -> generated(name(item, "item/%s")));
+        register(MnItems.DARK_PEARL, item -> generated(name(item, "item/%s")));
+        register(MnItems.GEODE, item -> generated(name(item, "item/%s")));
+
+        register(MnBlocks.DARK_PEARL_ORE, item -> inherit(name(item, "item/%s")));
+        register(MnBlocks.DARK_PEARL_BLOCK, item -> inherit(name(item, "item/%s")));
     }
 
 

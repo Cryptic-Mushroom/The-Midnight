@@ -77,6 +77,9 @@ public final class BlockStateTable {
         register(MnBlocks.NIGHTSHROOM, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
         register(MnBlocks.NIGHTSHROOM_FIBRE, block -> fibre(name(block, "block/%s"), name(block, "block/%s"), name(block, "block/%s_dense")));
         register(MnBlocks.TALL_NIGHTSHROOM, block -> doublePlant(name(block, "block/%s_lower"), cross(name(block, "block/%s_lower")), name(block, "block/%s_upper"), cross(name(block, "block/%s_upper"))));
+
+        register(MnBlocks.DARK_PEARL_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.DARK_PEARL_BLOCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
     }
 
     private static IBlockStateGen none() {
