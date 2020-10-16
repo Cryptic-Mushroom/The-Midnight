@@ -63,6 +63,7 @@ public class MnBlockLootTables extends BlockLootTables {
         registerDropSelfLootTable(MnBlocks.NIGHTSHROOM_STEM);
         registerDropSelfLootTable(MnBlocks.NIGHTSHROOM_PLANKS);
         registerDropSelfLootTable(MnBlocks.NIGHTSHROOM);
+        registerDropSelfLootTable(MnBlocks.NIGHTSHROOM_SHELF);
         registerLootTable(MnBlocks.NIGHTSHROOM_FIBRE, MnBlockLootTables::droppingFibre);
         registerLootTable(MnBlocks.TALL_NIGHTSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
         registerLootTable(MnBlocks.DARK_WILLOW_LEAVES, block -> droppingWithChancesAndDarkSticks(block, MnBlocks.DARK_WILLOW_SAPLING, DEFAULT_SAPLING_DROP_RATES)); // TODO Stick should be dark stick later
@@ -71,15 +72,9 @@ public class MnBlockLootTables extends BlockLootTables {
         registerDropSelfLootTable(MnBlocks.STRIPPED_DARK_WILLOW_LOG);
         registerLootTable(MnBlocks.NIGHT_BEDROCK, block -> droppingNothing());
         registerLootTable(MnBlocks.NIGHT_GRASS, onlyWithShears(MnBlocks.NIGHT_GRASS));
-
-        registerLootTable(MnBlocks.DARK_PEARL_ORE, block -> {
-            return droppingItemWithFortune(block, MnItems.GEODE);
-        });
+        registerLootTable(MnBlocks.DARK_PEARL_ORE, block -> droppingItemWithFortune(block, MnItems.GEODE));
         registerDropSelfLootTable(MnBlocks.DARK_PEARL_BLOCK);
-
-        // TODO Shadew: Ensure that this drops only once when using shears, regardless of which half was broken - look at vanilla
         registerLootTable(MnBlocks.TALL_NIGHT_GRASS, onlyWithShears(MnBlocks.TALL_NIGHT_GRASS));
-
         registerLootTable(MnBlocks.NIGHT_GRASS_BLOCK, block -> droppingWithSilkTouch(block, MnBlocks.NIGHT_DIRT));
         registerLootTable(MnBlocks.DARK_WATER, block -> droppingNothing());
     }

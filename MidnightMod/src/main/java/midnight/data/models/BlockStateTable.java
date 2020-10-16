@@ -3,6 +3,7 @@ package midnight.data.models;
 import midnight.common.block.MnBlocks;
 import midnight.common.block.ShroomCapBlock;
 import midnight.data.models.modelgen.IModelGen;
+import midnight.data.models.modelgen.InheritingModelGen;
 import midnight.data.models.stategen.IBlockStateGen;
 import midnight.data.models.stategen.ModelInfo;
 import midnight.data.models.stategen.VariantBlockStateGen;
@@ -76,6 +77,7 @@ public final class BlockStateTable {
         register(MnBlocks.NIGHTSHROOM_PLANKS, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.NIGHTSHROOM, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
         register(MnBlocks.NIGHTSHROOM_FIBRE, block -> fibre(name(block, "block/%s"), name(block, "block/%s"), name(block, "block/%s_dense")));
+        register(MnBlocks.NIGHTSHROOM_SHELF, block -> shelf(name(block, "block/%s"), name(block, "block/%s"), name(block, "block/%s_fan", "_shelf")));
         register(MnBlocks.TALL_NIGHTSHROOM, block -> doublePlant(name(block, "block/%s_lower"), cross(name(block, "block/%s_lower")), name(block, "block/%s_upper"), cross(name(block, "block/%s_upper"))));
 
         register(MnBlocks.DARK_PEARL_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
@@ -139,6 +141,16 @@ public final class BlockStateTable {
         return VariantBlockStateGen.create("axis=y", ModelInfo.create(name, model).rotate(0, 0))
                                    .variant("axis=z", ModelInfo.create(name, model).rotate(90, 0))
                                    .variant("axis=x", ModelInfo.create(name, model).rotate(90, 90));
+    }
+
+    private static IBlockStateGen shelf(String name, String shelf, String fan) {
+        IModelGen fanModel = InheritingModelGen.fan(name);
+        IModelGen shelfModel = InheritingModelGen.shelf(name);
+        return VariantBlockStateGen.create("facing=up", ModelInfo.create(fan, fanModel))
+                                   .variant("facing=north", ModelInfo.create(shelf, shelfModel).rotate(0, 0))
+                                   .variant("facing=east", ModelInfo.create(shelf, shelfModel).rotate(0, 90))
+                                   .variant("facing=south", ModelInfo.create(shelf, shelfModel).rotate(0, 180))
+                                   .variant("facing=west", ModelInfo.create(shelf, shelfModel).rotate(0, 270));
     }
 
     private static IBlockStateGen shroomCap(Block block, String name, String capTex, String innerTex) {

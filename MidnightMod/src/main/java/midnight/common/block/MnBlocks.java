@@ -92,6 +92,7 @@ public final class MnBlocks {
     public static final Block NIGHTSHROOM_PLANKS = inj();
     public static final Block NIGHTSHROOM = inj();
     public static final Block TALL_NIGHTSHROOM = inj();
+    public static final Block NIGHTSHROOM_SHELF = inj();
     public static final Block NIGHTSHROOM_FIBRE = inj();
 
     public static final Block DARK_PEARL_ORE = inj();
@@ -150,6 +151,7 @@ public final class MnBlocks {
             wood("nightshroom_planks", MaterialColor.BLUE),
             smallShroom("nightshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.BLUE, () -> (MnDoublePlantBlock) TALL_NIGHTSHROOM).setPlantHitbox(14, 14).setOffsetType(Block.OffsetType.XZ),
             tallShroom("tall_nightshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.BLUE).setPlantHitbox(14, 30).setOffsetType(Block.OffsetType.XZ),
+            shelf("nightshroom_shelf", 0, 0, Material.TALL_PLANTS, MaterialColor.BLUE),
             fibre("nightshroom_fibre", Material.TALL_PLANTS, MaterialColor.BLUE),
 
             stone("dark_pearl_ore", 3f, 6, MaterialColor.OBSIDIAN),
@@ -210,6 +212,7 @@ public final class MnBlocks {
             item(NIGHTSHROOM_PLANKS, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
             item(NIGHTSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(TALL_NIGHTSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(NIGHTSHROOM_SHELF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(NIGHTSHROOM_FIBRE, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
 
             item(DARK_PEARL_ORE, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
@@ -239,6 +242,7 @@ public final class MnBlocks {
         RenderTypeLookup.setRenderLayer(NIGHTSHROOM, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(TALL_NIGHTSHROOM, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(NIGHTSHROOM_FIBRE, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(NIGHTSHROOM_SHELF, RenderType.getCutout());
 
 
         BlockColors blockColors = Minecraft.getInstance().getBlockColors();
@@ -419,6 +423,16 @@ public final class MnBlocks {
                                     .emissiveLighting((state, world, pos) -> true)
                                     .hardnessAndResistance((float) hardness, (float) resistance),
             tall
+        ));
+    }
+
+    private static ShroomShelfBlock shelf(String id, double hardness, double resistance, Material material, MaterialColor color) {
+        return block(id, new ShroomShelfBlock(
+            AbstractBlock.Properties.create(material, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.FUNGUS)
+                                    .emissiveLighting((state, world, pos) -> true)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
         ));
     }
 

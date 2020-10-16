@@ -65,6 +65,7 @@ public final class ItemModelTable {
         register(MnBlocks.NIGHTSHROOM_PLANKS, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.NIGHTSHROOM, item -> generated(name(item, "block/%s")));
         register(MnBlocks.NIGHTSHROOM_FIBRE, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.NIGHTSHROOM_SHELF, item -> generated(name(item, "block/%s")));
         register(MnBlocks.TALL_NIGHTSHROOM, item -> generated(name(item, "block/%s_upper")));
 
         register(MnItems.DARK_STICK, item -> generated(name(item, "item/%s")));
