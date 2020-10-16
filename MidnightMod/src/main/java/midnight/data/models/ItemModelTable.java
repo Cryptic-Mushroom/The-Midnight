@@ -71,8 +71,8 @@ public final class ItemModelTable {
         register(MnItems.DARK_PEARL, item -> generated(name(item, "item/%s")));
         register(MnItems.GEODE, item -> generated(name(item, "item/%s")));
 
-        register(MnBlocks.DARK_PEARL_ORE, item -> inherit(name(item, "item/%s")));
-        register(MnBlocks.DARK_PEARL_BLOCK, item -> inherit(name(item, "item/%s")));
+        register(MnBlocks.DARK_PEARL_ORE, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.DARK_PEARL_BLOCK, item -> inherit(name(item, "block/%s")));
     }
 
 
