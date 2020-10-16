@@ -94,6 +94,9 @@ public final class MnBlocks {
     public static final Block TALL_NIGHTSHROOM = inj();
     public static final Block NIGHTSHROOM_FIBRE = inj();
 
+    public static final Block DARK_PEARL_ORE = inj();
+    public static final Block DARK_PEARL_BLOCK = inj();
+
     public static void registerBlocks(IRegistry<Block> registry) {
         registry.registerAll(
             stone("night_stone", 1.5, 6, MaterialColor.OBSIDIAN),
@@ -147,7 +150,14 @@ public final class MnBlocks {
             wood("nightshroom_planks", MaterialColor.BLUE),
             smallShroom("nightshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.BLUE, () -> (MnDoublePlantBlock) TALL_NIGHTSHROOM).setPlantHitbox(14, 14).setOffsetType(Block.OffsetType.XZ),
             tallShroom("tall_nightshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.BLUE).setPlantHitbox(14, 30).setOffsetType(Block.OffsetType.XZ),
-            fibre("nightshroom_fibre", Material.TALL_PLANTS, MaterialColor.BLUE)
+            fibre("nightshroom_fibre", Material.TALL_PLANTS, MaterialColor.BLUE),
+
+            stone("dark_pearl_ore", 3f, 6, MaterialColor.OBSIDIAN),
+            block("dark_pearl_block", new Block(
+                AbstractBlock.Properties.create(Material.ROCK, MaterialColor.PURPLE)
+                                        .sound(SoundType.STONE)
+                                        .hardnessAndResistance(3f, 5f)
+                                        .harvestTool(ToolType.PICKAXE)))
         );
     }
 
@@ -200,7 +210,10 @@ public final class MnBlocks {
             item(NIGHTSHROOM_PLANKS, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
             item(NIGHTSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(TALL_NIGHTSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(NIGHTSHROOM_FIBRE, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR)
+            item(NIGHTSHROOM_FIBRE, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+
+            item(DARK_PEARL_ORE, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
+            item(DARK_PEARL_BLOCK, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS)
         );
     }
 

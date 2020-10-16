@@ -20,13 +20,17 @@ import javax.annotation.Nonnull;
 @ObjectHolder("midnight")
 public final class MnItems {
     public static final Item DARK_STICK = inj();
+    public static final Item DARK_PEARL = inj();
+    public static final Item GEODE = inj();
 
     private MnItems() {
     }
 
     public static void registerItems(IRegistry<Item> registry) {
         registry.registerAll(
-            item("dark_stick", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC)
+            item("dark_stick", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
+            item("dark_pearl", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
+            item("geode", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC)
         );
     }
 
