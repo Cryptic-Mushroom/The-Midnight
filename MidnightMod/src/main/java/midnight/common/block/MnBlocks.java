@@ -154,12 +154,8 @@ public final class MnBlocks {
             shelf("nightshroom_shelf", 0, 0, Material.TALL_PLANTS, MaterialColor.BLUE),
             fibre("nightshroom_fibre", Material.TALL_PLANTS, MaterialColor.BLUE),
 
-            stone("dark_pearl_ore", 3f, 6, MaterialColor.OBSIDIAN),
-            block("dark_pearl_block", new Block(
-                AbstractBlock.Properties.create(Material.ROCK, MaterialColor.PURPLE)
-                                        .sound(SoundType.STONE)
-                                        .hardnessAndResistance(3f, 5f)
-                                        .harvestTool(ToolType.PICKAXE)))
+            stone("dark_pearl_ore", 3, 6, MaterialColor.OBSIDIAN),
+            darkPearl("dark_pearl_block", 3, 6, MaterialColor.BLACK)
         );
     }
 
@@ -543,6 +539,15 @@ public final class MnBlocks {
                                     .hardnessAndResistance(1.7f)
                                     .sound(SoundType.WART_BLOCK),
             sporeColor
+        ));
+    }
+
+    private static Block darkPearl(String id, double hardness, double resistance, MaterialColor color) {
+        return block(id, new Block(
+            AbstractBlock.Properties.create(Material.IRON, color)
+                                    .sound(SoundType.BONE)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
+                                    .harvestTool(ToolType.PICKAXE)
         ));
     }
 

@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "midnight:dark_willow_wood_4x4"
+      "midnight:dark_willow_wood_2x2"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "midnight:dark_willow_wood_4x4"
+        "recipe": "midnight:dark_willow_wood_2x2"
       }
     }
   },

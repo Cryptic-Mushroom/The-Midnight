@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "midnight:dead_wood_4x4"
+      "midnight:stripped_dark_willow_wood_2x2"
     ]
   },
   "criteria": {
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "item": "midnight:dead_wood_log"
+            "item": "midnight:stripped_dark_willow_log"
           }
         ]
       }
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "midnight:dead_wood_4x4"
+        "recipe": "midnight:stripped_dark_willow_wood_2x2"
       }
     }
   },

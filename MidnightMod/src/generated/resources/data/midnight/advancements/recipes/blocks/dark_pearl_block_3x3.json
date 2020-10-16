@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "midnight:stripped_dead_wood_4x4"
+      "midnight:dark_pearl_block_3x3"
     ]
   },
   "criteria": {
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "item": "midnight:stripped_dead_wood_log"
+            "item": "midnight:dark_pearl"
           }
         ]
       }
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "midnight:stripped_dead_wood_4x4"
+        "recipe": "midnight:dark_pearl_block_3x3"
       }
     }
   },
