@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "midnight:dead_wood_log",
+    "midnight:dead_wood",
+    "midnight:stripped_dead_wood_log",
+    "midnight:stripped_dead_wood"
+  ]
+}
