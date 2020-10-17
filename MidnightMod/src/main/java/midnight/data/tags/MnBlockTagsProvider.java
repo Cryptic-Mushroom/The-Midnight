@@ -38,6 +38,9 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
             MnBlocks.STRANGE_SAND,
             MnBlocks.COARSE_NIGHT_DIRT,
             MnBlocks.NIGHTSHROOM,
+            MnBlocks.NIGHTSHROOM_SHELF,
+            MnBlocks.NIGHTSHROOM_ROOTS,
+            MnBlocks.FLOWERING_NIGHTSHROOM_ROOTS,
             MnBlocks.GHOST_PLANT
         );
         getOrCreateTagBuilder(MnBlockTags.DARK_WILLOW_LOGS).replace(false).add(

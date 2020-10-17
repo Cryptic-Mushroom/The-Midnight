@@ -66,7 +66,10 @@ public final class ItemModelTable {
         register(MnBlocks.NIGHTSHROOM, item -> generated(name(item, "block/%s")));
         register(MnBlocks.NIGHTSHROOM_FIBRE, item -> generated(name(item, "block/%s")));
         register(MnBlocks.NIGHTSHROOM_SHELF, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.NIGHTSHROOM_ROOTS, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.FLOWERING_NIGHTSHROOM_ROOTS, item -> generated(name(item, "block/%s")));
         register(MnBlocks.TALL_NIGHTSHROOM, item -> generated(name(item, "block/%s_upper")));
+        register(MnItems.NIGHTSHROOM_POWDER, item -> generated(name(item, "item/%s")));
 
         register(MnItems.DARK_STICK, item -> generated(name(item, "item/%s")));
         register(MnItems.DARK_PEARL, item -> generated(name(item, "item/%s")));

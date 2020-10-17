@@ -19,6 +19,7 @@ import net.minecraft.loot.conditions.MatchTool;
 import net.minecraft.loot.conditions.TableBonus;
 import net.minecraft.loot.functions.SetCount;
 import net.minecraft.state.properties.DoubleBlockHalf;
+import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 
@@ -29,6 +30,7 @@ public class MnBlockLootTables extends BlockLootTables {
     private static final ILootCondition.IBuilder SILK_TOUCH_OR_SHEARS = SHEARS.alternative(SILK_TOUCH);
     private static final ILootCondition.IBuilder NOT_SILK_TOUCH_OR_SHEARS = SILK_TOUCH_OR_SHEARS.inverted();
     private static final float[] DEFAULT_SAPLING_DROP_RATES = {1 / 20F, 1 / 16F, 1 / 12F, 1 / 10F};
+    private static final float[] DEFAULT_POWDER_DROP_RATES = {1 / 5F, 1 / 3F, 2 / 3F, 1};
 
     @Override
     protected void addTables() {
@@ -52,21 +54,23 @@ public class MnBlockLootTables extends BlockLootTables {
         registerDropSelfLootTable(MnBlocks.SHADOWROOT_LOG);
         registerDropSelfLootTable(MnBlocks.SHADOWROOT_PLANKS);
         registerDropSelfLootTable(MnBlocks.SHADOWROOT_SAPLING);
-        registerLootTable(MnBlocks.SHADOWROOT_LEAVES, block -> droppingWithChancesAndDarkSticks(block, MnBlocks.SHADOWROOT_SAPLING, DEFAULT_SAPLING_DROP_RATES)); // TODO Stick should be dark stick later
+        registerLootTable(MnBlocks.SHADOWROOT_LEAVES, block -> droppingWithChancesAndDarkSticks(block, MnBlocks.SHADOWROOT_SAPLING, DEFAULT_SAPLING_DROP_RATES));
         registerDropSelfLootTable(MnBlocks.STRIPPED_SHADOWROOT_WOOD);
         registerDropSelfLootTable(MnBlocks.STRIPPED_SHADOWROOT_LOG);
         registerDropSelfLootTable(MnBlocks.DARK_WILLOW_WOOD);
         registerDropSelfLootTable(MnBlocks.DARK_WILLOW_LOG);
         registerDropSelfLootTable(MnBlocks.DARK_WILLOW_PLANKS);
         registerDropSelfLootTable(MnBlocks.DARK_WILLOW_SAPLING);
-        registerDropSelfLootTable(MnBlocks.NIGHTSHROOM_CAP);
         registerDropSelfLootTable(MnBlocks.NIGHTSHROOM_STEM);
         registerDropSelfLootTable(MnBlocks.NIGHTSHROOM_PLANKS);
         registerDropSelfLootTable(MnBlocks.NIGHTSHROOM);
         registerDropSelfLootTable(MnBlocks.NIGHTSHROOM_SHELF);
         registerLootTable(MnBlocks.NIGHTSHROOM_FIBRE, MnBlockLootTables::droppingFibre);
+        registerLootTable(MnBlocks.NIGHTSHROOM_ROOTS, BlockLootTables::onlyWithShears);
+        registerLootTable(MnBlocks.FLOWERING_NIGHTSHROOM_ROOTS, BlockLootTables::onlyWithShears);
         registerLootTable(MnBlocks.TALL_NIGHTSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        registerLootTable(MnBlocks.DARK_WILLOW_LEAVES, block -> droppingWithChancesAndDarkSticks(block, MnBlocks.DARK_WILLOW_SAPLING, DEFAULT_SAPLING_DROP_RATES)); // TODO Stick should be dark stick later
+        registerLootTable(MnBlocks.NIGHTSHROOM_CAP, block -> droppingWithChances(block, MnItems.NIGHTSHROOM_POWDER, DEFAULT_POWDER_DROP_RATES));
+        registerLootTable(MnBlocks.DARK_WILLOW_LEAVES, block -> droppingWithChancesAndDarkSticks(block, MnBlocks.DARK_WILLOW_SAPLING, DEFAULT_SAPLING_DROP_RATES));
         registerLootTable(MnBlocks.HANGING_DARK_WILLOW_LEAVES, onlyWithShears(MnBlocks.HANGING_DARK_WILLOW_LEAVES));
         registerDropSelfLootTable(MnBlocks.STRIPPED_DARK_WILLOW_WOOD);
         registerDropSelfLootTable(MnBlocks.STRIPPED_DARK_WILLOW_LOG);
@@ -101,6 +105,14 @@ public class MnBlockLootTables extends BlockLootTables {
                             TableBonus.builder(Enchantments.FORTUNE, 1 / 50F, 1 / 45F, 1 / 40F, 1 / 30F, 1 / 10F)
                         )
                     )
+        );
+    }
+
+    protected static LootTable.Builder droppingWithChances(Block block, IItemProvider item, float... itemBonus) {
+        return droppingWithSilkTouch(
+            block,
+            withSurvivesExplosion(block, ItemLootEntry.builder(item))
+                .acceptCondition(TableBonus.builder(Enchantments.FORTUNE, itemBonus))
         );
     }
 

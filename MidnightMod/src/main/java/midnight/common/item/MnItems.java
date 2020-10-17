@@ -12,7 +12,7 @@ import net.minecraftforge.registries.ObjectHolder;
 import javax.annotation.Nonnull;
 
 /**
- * This class registers and stores the list of Midnight items.
+ * This class registers and stores all items of the Midnight.
  *
  * @version 0.6.0
  * @since 0.6.0
@@ -20,8 +20,11 @@ import javax.annotation.Nonnull;
 @ObjectHolder("midnight")
 public final class MnItems {
     public static final Item DARK_STICK = inj();
+
     public static final Item DARK_PEARL = inj();
     public static final Item GEODE = inj();
+
+    public static final Item NIGHTSHROOM_POWDER = inj();
 
     private MnItems() {
     }
@@ -29,8 +32,11 @@ public final class MnItems {
     public static void registerItems(IRegistry<Item> registry) {
         registry.registerAll(
             item("dark_stick", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
+
             item("dark_pearl", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
-            item("geode", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC)
+            item("geode", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
+
+            item("nightshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC)
         );
     }
 

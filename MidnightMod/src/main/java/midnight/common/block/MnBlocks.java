@@ -94,6 +94,8 @@ public final class MnBlocks {
     public static final Block TALL_NIGHTSHROOM = inj();
     public static final Block NIGHTSHROOM_SHELF = inj();
     public static final Block NIGHTSHROOM_FIBRE = inj();
+    public static final Block NIGHTSHROOM_ROOTS = inj();
+    public static final Block FLOWERING_NIGHTSHROOM_ROOTS = inj();
 
     public static final Block DARK_PEARL_ORE = inj();
     public static final Block DARK_PEARL_BLOCK = inj();
@@ -153,6 +155,8 @@ public final class MnBlocks {
             tallShroom("tall_nightshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.BLUE).setPlantHitbox(14, 30).setOffsetType(Block.OffsetType.XZ),
             shelf("nightshroom_shelf", 0, 0, Material.TALL_PLANTS, MaterialColor.BLUE),
             fibre("nightshroom_fibre", Material.TALL_PLANTS, MaterialColor.BLUE),
+            shroomRoots("nightshroom_roots", Material.TALL_PLANTS, MaterialColor.BLUE).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
+            shroomRoots("flowering_nightshroom_roots", Material.TALL_PLANTS, MaterialColor.BLUE).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
 
             stone("dark_pearl_ore", 3, 6, MaterialColor.OBSIDIAN),
             darkPearl("dark_pearl_block", 3, 6, MaterialColor.BLACK)
@@ -210,6 +214,8 @@ public final class MnBlocks {
             item(TALL_NIGHTSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(NIGHTSHROOM_SHELF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(NIGHTSHROOM_FIBRE, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(NIGHTSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(FLOWERING_NIGHTSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
 
             item(DARK_PEARL_ORE, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
             item(DARK_PEARL_BLOCK, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS)
@@ -239,6 +245,8 @@ public final class MnBlocks {
         RenderTypeLookup.setRenderLayer(TALL_NIGHTSHROOM, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(NIGHTSHROOM_FIBRE, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(NIGHTSHROOM_SHELF, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(NIGHTSHROOM_ROOTS, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(FLOWERING_NIGHTSHROOM_ROOTS, RenderType.getCutout());
 
 
         BlockColors blockColors = Minecraft.getInstance().getBlockColors();
@@ -422,12 +430,20 @@ public final class MnBlocks {
         ));
     }
 
+    private static MnPlantBlock shroomRoots(String id, Material material, MaterialColor color) {
+        return block(id, new ShroomRootsBlock(
+            AbstractBlock.Properties.create(material, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.ROOTS)
+                                    .hardnessAndResistance(0, 0)
+        ));
+    }
+
     private static ShroomShelfBlock shelf(String id, double hardness, double resistance, Material material, MaterialColor color) {
         return block(id, new ShroomShelfBlock(
             AbstractBlock.Properties.create(material, color)
                                     .nonOpaque()
                                     .sound(SoundType.FUNGUS)
-                                    .emissiveLighting((state, world, pos) -> true)
                                     .hardnessAndResistance((float) hardness, (float) resistance)
         ));
     }
