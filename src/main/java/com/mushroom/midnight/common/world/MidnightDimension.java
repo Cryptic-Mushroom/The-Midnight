@@ -34,9 +34,9 @@ public class MidnightDimension extends Dimension {
     public MidnightDimension(World world, DimensionType type) {
         super(world, type, 0.0F);
 
-        float baseLight = 0.06F;
+        float baseLight = 0.0F;
         for (int i = 0; i <= 15; ++i) {
-            float alpha = 1.0F - i / 15.0F;
+            float alpha = 1.0F - i / 14.0F;
             float brightness = (1.0F - alpha) / (alpha * 10.0F + 1.0F);
             this.lightBrightnessTable[i] = (float) (Math.pow(brightness, 2.5F) * 3.0F) + baseLight;
         }
@@ -92,7 +92,7 @@ public class MidnightDimension extends Dimension {
 
     @Override
     public void getLightmapColors(float partialTicks, float sunBrightness, float skyLight, float blockLight, Vector3f colors) {
-        float colors0 = blockLight * 0.93F + 0.07F;
+    	float colors0 = blockLight * 0.93F + 0.07F;
         float colors1 = blockLight * 0.96F + 0.03F;
         float colors2 = blockLight * 0.94F + 0.16F;
         if (Minecraft.getInstance().world != null && Minecraft.getInstance().world.getTimeLightningFlash() > 0) {
