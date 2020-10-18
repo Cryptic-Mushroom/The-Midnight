@@ -45,6 +45,10 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
             MnBlocks.DEWSHROOM_SHELF,
             MnBlocks.DEWSHROOM_ROOTS,
             MnBlocks.FLOWERING_DEWSHROOM_ROOTS,
+            MnBlocks.VIRIDSHROOM,
+            MnBlocks.VIRIDSHROOM_SHELF,
+            MnBlocks.VIRIDSHROOM_ROOTS,
+            MnBlocks.FLOWERING_VIRIDSHROOM_ROOTS,
             MnBlocks.GHOST_PLANT
         );
         getOrCreateTagBuilder(MnBlockTags.DARK_WILLOW_LOGS).replace(false).add(
@@ -79,7 +83,8 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
             MnBlocks.SHADOWROOT_PLANKS,
             MnBlocks.DARK_WILLOW_PLANKS,
             MnBlocks.NIGHTSHROOM_PLANKS,
-            MnBlocks.DEWSHROOM_PLANKS
+            MnBlocks.DEWSHROOM_PLANKS,
+            MnBlocks.VIRIDSHROOM_PLANKS
         );
     }
 

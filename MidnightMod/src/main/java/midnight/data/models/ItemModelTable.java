@@ -82,6 +82,17 @@ public final class ItemModelTable {
         register(MnBlocks.TALL_DEWSHROOM, item -> generated(name(item, "block/%s_upper")));
         register(MnItems.DEWSHROOM_POWDER, item -> generated(name(item, "item/%s")));
 
+        register(MnBlocks.VIRIDSHROOM_CAP, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.VIRIDSHROOM_STEM, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.VIRIDSHROOM_PLANKS, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.VIRIDSHROOM, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.VIRIDSHROOM_FIBRE, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.VIRIDSHROOM_SHELF, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.VIRIDSHROOM_ROOTS, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.FLOWERING_VIRIDSHROOM_ROOTS, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.TALL_VIRIDSHROOM, item -> generated(name(item, "block/%s_upper")));
+        register(MnItems.VIRIDSHROOM_POWDER, item -> generated(name(item, "item/%s")));
+
         register(MnItems.DARK_STICK, item -> generated(name(item, "item/%s")));
         register(MnItems.DARK_PEARL, item -> generated(name(item, "item/%s")));
         register(MnItems.GEODE, item -> generated(name(item, "item/%s")));

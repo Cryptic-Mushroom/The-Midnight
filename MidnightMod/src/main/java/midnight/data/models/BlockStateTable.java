@@ -92,6 +92,16 @@ public final class BlockStateTable {
         register(MnBlocks.DEWSHROOM_SHELF, block -> shelf(name(block, "block/%s"), name(block, "block/%s"), name(block, "block/%s_fan", "_shelf")));
         register(MnBlocks.TALL_DEWSHROOM, block -> doublePlant(name(block, "block/%s_lower"), cross(name(block, "block/%s_lower")), name(block, "block/%s_upper"), cross(name(block, "block/%s_upper"))));
 
+        register(MnBlocks.VIRIDSHROOM_CAP, block -> shroomCap(block, name(block, "block/%s"), name(block, "block/%s"), name(block, "block/%s_inner")));
+        register(MnBlocks.VIRIDSHROOM_STEM, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.VIRIDSHROOM_PLANKS, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.VIRIDSHROOM, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
+        register(MnBlocks.VIRIDSHROOM_ROOTS, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
+        register(MnBlocks.FLOWERING_VIRIDSHROOM_ROOTS, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
+        register(MnBlocks.VIRIDSHROOM_FIBRE, block -> fibre(name(block, "block/%s"), name(block, "block/%s"), name(block, "block/%s_dense")));
+        register(MnBlocks.VIRIDSHROOM_SHELF, block -> shelf(name(block, "block/%s"), name(block, "block/%s"), name(block, "block/%s_fan", "_shelf")));
+        register(MnBlocks.TALL_VIRIDSHROOM, block -> doublePlant(name(block, "block/%s_lower"), cross(name(block, "block/%s_lower")), name(block, "block/%s_upper"), cross(name(block, "block/%s_upper"))));
+
         register(MnBlocks.DARK_PEARL_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.DARK_PEARL_BLOCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
     }

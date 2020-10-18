@@ -53,7 +53,7 @@ public class ShroomAirBlock extends AirBlock {
         for (Direction dir : Direction.values()) {
             BlockState adjState = world.getBlockState(pos.offset(dir));
             Block adj = adjState.getBlock();
-            if (adj instanceof ShroomCapBlock) {
+            if (adj instanceof ShroomCapBlock && !adjState.get(ShroomCapBlock.getProp(dir.getOpposite()))) {
                 colors.add(((ShroomCapBlock) adj).getSporeColor());
             }
         }

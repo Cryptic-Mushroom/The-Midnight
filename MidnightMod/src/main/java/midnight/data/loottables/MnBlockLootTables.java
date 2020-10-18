@@ -13,10 +13,7 @@ import net.minecraft.data.loot.BlockLootTables;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Items;
 import net.minecraft.loot.*;
-import net.minecraft.loot.conditions.BlockStateProperty;
-import net.minecraft.loot.conditions.ILootCondition;
-import net.minecraft.loot.conditions.MatchTool;
-import net.minecraft.loot.conditions.TableBonus;
+import net.minecraft.loot.conditions.*;
 import net.minecraft.loot.functions.SetCount;
 import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.util.IItemProvider;
@@ -86,7 +83,7 @@ public class MnBlockLootTables extends BlockLootTables {
         registerLootTable(MnBlocks.NIGHTSHROOM_ROOTS, BlockLootTables::onlyWithShears);
         registerLootTable(MnBlocks.FLOWERING_NIGHTSHROOM_ROOTS, BlockLootTables::onlyWithShears);
         registerLootTable(MnBlocks.TALL_NIGHTSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        registerLootTable(MnBlocks.NIGHTSHROOM_CAP, block -> droppingWithChances(block, MnItems.NIGHTSHROOM_POWDER, DEFAULT_POWDER_DROP_RATES));
+        registerLootTable(MnBlocks.NIGHTSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.NIGHTSHROOM_POWDER, MnBlocks.NIGHTSHROOM, MnBlocks.TALL_NIGHTSHROOM, DEFAULT_POWDER_DROP_RATES));
 
         registerDropSelfLootTable(MnBlocks.DEWSHROOM_STEM);
         registerDropSelfLootTable(MnBlocks.DEWSHROOM_PLANKS);
@@ -96,7 +93,17 @@ public class MnBlockLootTables extends BlockLootTables {
         registerLootTable(MnBlocks.DEWSHROOM_ROOTS, BlockLootTables::onlyWithShears);
         registerLootTable(MnBlocks.FLOWERING_DEWSHROOM_ROOTS, BlockLootTables::onlyWithShears);
         registerLootTable(MnBlocks.TALL_DEWSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        registerLootTable(MnBlocks.DEWSHROOM_CAP, block -> droppingWithChances(block, MnItems.DEWSHROOM_POWDER, DEFAULT_POWDER_DROP_RATES));
+        registerLootTable(MnBlocks.DEWSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.DEWSHROOM_POWDER, MnBlocks.DEWSHROOM, MnBlocks.TALL_DEWSHROOM, DEFAULT_POWDER_DROP_RATES));
+
+        registerDropSelfLootTable(MnBlocks.VIRIDSHROOM_STEM);
+        registerDropSelfLootTable(MnBlocks.VIRIDSHROOM_PLANKS);
+        registerDropSelfLootTable(MnBlocks.VIRIDSHROOM);
+        registerDropSelfLootTable(MnBlocks.VIRIDSHROOM_SHELF);
+        registerLootTable(MnBlocks.VIRIDSHROOM_FIBRE, MnBlockLootTables::droppingFibre);
+        registerLootTable(MnBlocks.VIRIDSHROOM_ROOTS, BlockLootTables::onlyWithShears);
+        registerLootTable(MnBlocks.FLOWERING_VIRIDSHROOM_ROOTS, BlockLootTables::onlyWithShears);
+        registerLootTable(MnBlocks.TALL_VIRIDSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+        registerLootTable(MnBlocks.VIRIDSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.VIRIDSHROOM_POWDER, MnBlocks.VIRIDSHROOM, MnBlocks.TALL_VIRIDSHROOM, DEFAULT_POWDER_DROP_RATES));
 
         registerLootTable(MnBlocks.DARK_PEARL_ORE, block -> droppingItemWithFortune(block, MnItems.GEODE));
         registerDropSelfLootTable(MnBlocks.DARK_PEARL_BLOCK);
@@ -127,11 +134,15 @@ public class MnBlockLootTables extends BlockLootTables {
         );
     }
 
-    protected static LootTable.Builder droppingWithChances(Block block, IItemProvider item, float... itemBonus) {
+    protected static LootTable.Builder droppingShroomOrPowder(Block block, IItemProvider item, IItemProvider shroom, IItemProvider tall_shroom, float... itemBonus) {
         return droppingWithSilkTouch(
             block,
-            withSurvivesExplosion(block, ItemLootEntry.builder(item))
-                .acceptCondition(TableBonus.builder(Enchantments.FORTUNE, itemBonus))
+            withSurvivesExplosion(
+                block,
+                AlternativesLootEntry.builder(ItemLootEntry.builder(item).acceptCondition(RandomChance.builder(1 / 2F)))
+                                     .alternatively(ItemLootEntry.builder(shroom).acceptCondition(RandomChance.builder(2 / 3F)))
+                                     .alternatively(ItemLootEntry.builder(tall_shroom).acceptCondition(RandomChance.builder(1 / 2F)))
+            )
         );
     }
 

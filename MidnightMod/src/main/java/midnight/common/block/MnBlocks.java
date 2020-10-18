@@ -107,6 +107,16 @@ public final class MnBlocks {
     public static final Block DEWSHROOM_ROOTS = inj();
     public static final Block FLOWERING_DEWSHROOM_ROOTS = inj();
 
+    public static final Block VIRIDSHROOM_CAP = inj();
+    public static final Block VIRIDSHROOM_STEM = inj();
+    public static final Block VIRIDSHROOM_PLANKS = inj();
+    public static final Block VIRIDSHROOM = inj();
+    public static final Block TALL_VIRIDSHROOM = inj();
+    public static final Block VIRIDSHROOM_SHELF = inj();
+    public static final Block VIRIDSHROOM_FIBRE = inj();
+    public static final Block VIRIDSHROOM_ROOTS = inj();
+    public static final Block FLOWERING_VIRIDSHROOM_ROOTS = inj();
+
     public static final Block DARK_PEARL_ORE = inj();
     public static final Block DARK_PEARL_BLOCK = inj();
 
@@ -178,6 +188,16 @@ public final class MnBlocks {
             shroomRoots("dewshroom_roots", Material.TALL_PLANTS, MaterialColor.CYAN).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
             shroomRoots("flowering_dewshroom_roots", Material.TALL_PLANTS, MaterialColor.CYAN).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
 
+            shroomCap("viridshroom_cap", MaterialColor.LIME, 0x84F54C),
+            stem("viridshroom_stem", MaterialColor.LIME),
+            wood("viridshroom_planks", MaterialColor.LIME),
+            smallShroom("viridshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.LIME, () -> (MnDoublePlantBlock) TALL_VIRIDSHROOM).setPlantHitbox(14, 14).setOffsetType(Block.OffsetType.XZ),
+            tallShroom("tall_viridshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.LIME).setPlantHitbox(14, 30).setOffsetType(Block.OffsetType.XZ),
+            shelf("viridshroom_shelf", 0, 0, Material.TALL_PLANTS, MaterialColor.LIME),
+            fibre("viridshroom_fibre", Material.TALL_PLANTS, MaterialColor.LIME),
+            shroomRoots("viridshroom_roots", Material.TALL_PLANTS, MaterialColor.LIME).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
+            shroomRoots("flowering_viridshroom_roots", Material.TALL_PLANTS, MaterialColor.LIME).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
+
             stone("dark_pearl_ore", 3, 6, MaterialColor.OBSIDIAN),
             darkPearl("dark_pearl_block", 3, 6, MaterialColor.BLACK)
         );
@@ -247,6 +267,16 @@ public final class MnBlocks {
             item(DEWSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(FLOWERING_DEWSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
 
+            item(VIRIDSHROOM_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
+            item(VIRIDSHROOM_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
+            item(VIRIDSHROOM_PLANKS, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
+            item(VIRIDSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(TALL_VIRIDSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(VIRIDSHROOM_SHELF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(VIRIDSHROOM_FIBRE, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(VIRIDSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(FLOWERING_VIRIDSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+
             item(DARK_PEARL_ORE, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
             item(DARK_PEARL_BLOCK, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS)
         );
@@ -285,6 +315,13 @@ public final class MnBlocks {
         RenderTypeLookup.setRenderLayer(DEWSHROOM_SHELF, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(DEWSHROOM_ROOTS, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(FLOWERING_DEWSHROOM_ROOTS, RenderType.getCutout());
+
+        RenderTypeLookup.setRenderLayer(VIRIDSHROOM, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(TALL_VIRIDSHROOM, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(VIRIDSHROOM_FIBRE, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(VIRIDSHROOM_SHELF, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(VIRIDSHROOM_ROOTS, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(FLOWERING_VIRIDSHROOM_ROOTS, RenderType.getCutout());
 
 
         BlockColors blockColors = Minecraft.getInstance().getBlockColors();

@@ -60,6 +60,12 @@ public class MnRecipeProvider extends RecipeProvider {
         shapeless("dewshroom_powder_from_tall_shroom", MnBlocks.TALL_DEWSHROOM, MnItems.DEWSHROOM_POWDER, 2);
         shapeless("dewshroom_powder_from_shelf", MnBlocks.DEWSHROOM_SHELF, MnItems.DEWSHROOM_POWDER, 1);
 
+        shapeless("viridshroom_planks_from_stem", MnBlocks.VIRIDSHROOM_STEM, MnBlocks.VIRIDSHROOM_PLANKS, 4);
+        shapeless("viridshroom_powder_from_cap", MnBlocks.VIRIDSHROOM_CAP, MnItems.VIRIDSHROOM_POWDER, 4);
+        shapeless("viridshroom_powder_from_shroom", MnBlocks.VIRIDSHROOM, MnItems.VIRIDSHROOM_POWDER, 1);
+        shapeless("viridshroom_powder_from_tall_shroom", MnBlocks.TALL_VIRIDSHROOM, MnItems.VIRIDSHROOM_POWDER, 2);
+        shapeless("viridshroom_powder_from_shelf", MnBlocks.VIRIDSHROOM_SHELF, MnItems.VIRIDSHROOM_POWDER, 1);
+
         shapeless("dark_pearl_from_block", MnBlocks.DARK_PEARL_BLOCK, MnItems.DARK_PEARL, 9);
         generic3x3("dark_pearl_block_3x3", MnItems.DARK_PEARL, MnBlocks.DARK_PEARL_BLOCK, 1);
     }
