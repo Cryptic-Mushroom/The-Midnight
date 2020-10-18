@@ -1,7 +1,11 @@
 package com.mushroom.midnight.client.render;
 
+import org.lwjgl.opengl.GL11;
+
+import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.RenderHelper;
@@ -11,10 +15,9 @@ import net.minecraft.client.renderer.vertex.VertexBuffer;
 import net.minecraft.client.renderer.vertex.VertexFormat;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.client.IRenderHandler;
-import org.lwjgl.opengl.GL11;
+import net.minecraftforge.client.SkyRenderHandler;
 
-public final class MidnightSkyRenderer implements IRenderHandler {
+public final class MidnightSkyRenderer implements SkyRenderHandler {
     public static final MidnightSkyRenderer INSTANCE = new MidnightSkyRenderer();
 
     private static final float DARKNESS_RED = 14.5F / 255.0F;
@@ -35,7 +38,7 @@ public final class MidnightSkyRenderer implements IRenderHandler {
     }
 
     @Override
-    public void render(int ticks, float partialTicks, ClientWorld world, Minecraft client) {
+    public void render(int ticks, float partialTicks, MatrixStack matrixStack, ClientWorld world, Minecraft client) {
         this.generateVbos();
 
         GlStateManager.depthMask(false);
@@ -58,7 +61,7 @@ public final class MidnightSkyRenderer implements IRenderHandler {
         GlStateManager.enableClientState(GL11.GL_COLOR_ARRAY);
         GlStateManager.colorPointer(4, GL11.GL_UNSIGNED_BYTE, stride, 12);
 
-        //this.gradientVbo.drawArrays(GL11.GL_QUADS);
+        this.gradientVbo.draw(matrixStack.getLast().getMatrix(), 7); 
 
         VertexBuffer.unbindBuffer();
 
@@ -83,14 +86,16 @@ public final class MidnightSkyRenderer implements IRenderHandler {
             this.buildGradientVbo(builder);
 
             builder.finishDrawing();
+            
+            this.gradientVbo.upload(builder);
+
             builder.reset();
 
-            //this.gradientVbo.bufferData(builder.getByteBuffer());
         }
     }
 
     private void buildGradientVbo(BufferBuilder builder) {
-        builder.begin(GL11.GL_QUADS, FORMAT);
+        builder.begin(7, FORMAT);
 
         buildGradientFaceX(builder, -HALF_RESOLUTION, false);
         buildGradientFaceX(builder, HALF_RESOLUTION, true);
