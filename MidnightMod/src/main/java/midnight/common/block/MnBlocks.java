@@ -59,6 +59,7 @@ public final class MnBlocks {
     public static final Block DECEITFUL_PEAT = inj();
     public static final Block DECEITFUL_MUD = inj();
     public static final Block STRANGE_SAND = inj();
+    public static final Block NIGHT_MYCELIUM = inj();
 
     public static final Block DARK_WATER = inj();
 
@@ -154,6 +155,7 @@ public final class MnBlocks {
             dirt("deceitful_peat", MaterialColor.PURPLE_TERRACOTTA),
             mud("deceitful_mud"),
             sand("strange_sand"),
+            mycelium("night_mycelium", 2, 6, MaterialColor.MAGENTA),
 
             water("dark_water", () -> MnFluids.DARK_WATER),
 
@@ -229,7 +231,7 @@ public final class MnBlocks {
             fibre("bogshroom_fibre", Material.TALL_PLANTS, MaterialColor.ADOBE),
 
             smallFungus("glob_fungus", 0, 0, Material.TALL_PLANTS, MaterialColor.MAGENTA).setPlantHitbox(13, 13).setOffsetType(Block.OffsetType.XYZ),
-            bouncyShroomCap("glob_fungus_cap", MaterialColor.MAGENTA),
+            globCap("glob_fungus_cap", MaterialColor.MAGENTA),
             globStem("glob_fungus_stem", MaterialColor.PURPLE),
             globStem("glob_fungus_hyphae", MaterialColor.PURPLE),
             globThatch("glob_fungus_thatch", MaterialColor.PURPLE),
@@ -251,6 +253,7 @@ public final class MnBlocks {
             item(DECEITFUL_PEAT, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
             item(DECEITFUL_MUD, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
             item(STRANGE_SAND, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
+            item(NIGHT_MYCELIUM, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
 
             item(NIGHT_GRASS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(TALL_NIGHT_GRASS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
@@ -449,6 +452,15 @@ public final class MnBlocks {
 
     private static Block stone(String id, double hardness, double resistance, MaterialColor color) {
         return block(id, new Block(
+            AbstractBlock.Properties.create(Material.ROCK, color)
+                                    .sound(SoundType.STONE)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
+                                    .harvestTool(ToolType.PICKAXE)
+        ));
+    }
+
+    private static Block mycelium(String id, double hardness, double resistance, MaterialColor color) {
+        return block(id, new NightMyceliumBlock(
             AbstractBlock.Properties.create(Material.ROCK, color)
                                     .sound(SoundType.STONE)
                                     .hardnessAndResistance((float) hardness, (float) resistance)
@@ -719,11 +731,12 @@ public final class MnBlocks {
         ));
     }
 
-    private static Block bouncyShroomCap(String id, MaterialColor color) {
+    private static Block globCap(String id, MaterialColor color) {
         return block(id, new BouncyShroomCapBlock(
             AbstractBlock.Properties.create(Material.ORGANIC, color)
                                     .harvestTool(ToolType.HOE)
                                     .hardnessAndResistance(1.1f)
+                                    .luminance(state -> 15)
                                     .sound(SoundType.SLIME)
         ));
     }

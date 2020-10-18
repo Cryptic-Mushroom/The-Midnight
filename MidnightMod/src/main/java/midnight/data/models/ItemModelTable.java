@@ -31,6 +31,7 @@ public final class ItemModelTable {
         register(MnBlocks.TRENCHSTONE, item -> inherit(name(item, "block/%s")));
 
         register(MnBlocks.NIGHT_DIRT, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.NIGHT_MYCELIUM, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.NIGHT_GRASS_BLOCK, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.COARSE_NIGHT_DIRT, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.DECEITFUL_MUD, item -> inherit(name(item, "block/%s")));
