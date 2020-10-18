@@ -3,7 +3,7 @@
   "values": [
     "midnight:night_dirt",
     "midnight:night_grass_block",
-    "midnight:night_stone",
+    "midnight:nightstone",
     "midnight:deceitful_peat",
     "midnight:deceitful_mud",
     "midnight:trenchstone",
@@ -21,6 +21,8 @@
     "midnight:viridshroom_shelf",
     "midnight:viridshroom_roots",
     "midnight:flowering_viridshroom_roots",
+    "midnight:bogshroom",
+    "midnight:bogshroom_shelf",
     "midnight:ghost_plant"
   ]
 }

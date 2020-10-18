@@ -55,7 +55,7 @@ public class MidnightSurfaceGenerator extends MidnightGenerator {
                 world.getBiome(mpos.setPos(rx + x, hgt, rz + z))
                      .buildSurface(
                          rng, chunk, gx, gz, hgt, snoise,
-                         MnBlocks.NIGHT_STONE.getDefaultState(), //chunkGenerator.getSettings().getDefaultBlock(),
+                         MnBlocks.NIGHTSTONE.getDefaultState(), //chunkGenerator.getSettings().getDefaultBlock(),
                          MnBlocks.DARK_WATER.getDefaultState(),
                          chunkGenerator.getSeaLevel(),
                          world.getSeed()

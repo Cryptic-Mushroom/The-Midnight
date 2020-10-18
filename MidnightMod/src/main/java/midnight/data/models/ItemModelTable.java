@@ -26,7 +26,7 @@ public final class ItemModelTable {
     public static void registerItemModels(BiConsumer<Item, IModelGen> c) {
         consumer = c;
 
-        register(MnBlocks.NIGHT_STONE, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.NIGHTSTONE, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.NIGHT_BEDROCK, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.TRENCHSTONE, item -> inherit(name(item, "block/%s")));
 
@@ -100,6 +100,15 @@ public final class ItemModelTable {
         register(MnBlocks.FLOWERING_VIRIDSHROOM_ROOTS, item -> generated(name(item, "block/%s")));
         register(MnBlocks.TALL_VIRIDSHROOM, item -> generated(name(item, "block/%s_upper")));
         register(MnItems.VIRIDSHROOM_POWDER, item -> generated(name(item, "item/%s")));
+
+        register(MnBlocks.BOGSHROOM_CAP, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.BOGSHROOM_STEM, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.BOGSHROOM_PLANKS, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.BOGSHROOM, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.BOGSHROOM_FIBRE, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.BOGSHROOM_SHELF, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.TALL_BOGSHROOM, item -> generated(name(item, "block/%s_upper")));
+        register(MnItems.BOGSHROOM_POWDER, item -> generated(name(item, "item/%s")));
 
         register(MnItems.DARK_STICK, item -> generated(name(item, "item/%s")));
         register(MnItems.DARK_PEARL, item -> generated(name(item, "item/%s")));

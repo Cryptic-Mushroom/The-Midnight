@@ -35,6 +35,7 @@ public final class MnItems {
     public static final Item NIGHTSHROOM_POWDER = inj();
     public static final Item DEWSHROOM_POWDER = inj();
     public static final Item VIRIDSHROOM_POWDER = inj();
+    public static final Item BOGSHROOM_POWDER = inj();
 
     private MnItems() {
     }
@@ -48,7 +49,8 @@ public final class MnItems {
 
             item("nightshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
             item("dewshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
-            item("viridshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC)
+            item("viridshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
+            item("bogshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC)
         );
     }
 

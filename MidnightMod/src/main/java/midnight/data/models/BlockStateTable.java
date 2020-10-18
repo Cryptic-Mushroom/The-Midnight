@@ -33,7 +33,7 @@ public final class BlockStateTable {
 
         // Please keep these on single lines for the ease of line duplicating
 
-        register(MnBlocks.NIGHT_STONE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.NIGHTSTONE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.NIGHT_BEDROCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.TRENCHSTONE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
 
@@ -109,6 +109,14 @@ public final class BlockStateTable {
         register(MnBlocks.VIRIDSHROOM_FIBRE, block -> fibre(name(block, "block/%s"), name(block, "block/%s"), name(block, "block/%s_dense")));
         register(MnBlocks.VIRIDSHROOM_SHELF, block -> shelf(name(block, "block/%s"), name(block, "block/%s"), name(block, "block/%s_fan", "_shelf")));
         register(MnBlocks.TALL_VIRIDSHROOM, block -> doublePlant(name(block, "block/%s_lower"), cross(name(block, "block/%s_lower")), name(block, "block/%s_upper"), cross(name(block, "block/%s_upper"))));
+
+        register(MnBlocks.BOGSHROOM_CAP, block -> shroomCap(block, name(block, "block/%s"), name(block, "block/%s"), name(block, "block/%s_inner")));
+        register(MnBlocks.BOGSHROOM_STEM, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.BOGSHROOM_PLANKS, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.BOGSHROOM, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
+        register(MnBlocks.BOGSHROOM_FIBRE, block -> fibre(name(block, "block/%s"), name(block, "block/%s"), name(block, "block/%s_dense")));
+        register(MnBlocks.BOGSHROOM_SHELF, block -> shelf(name(block, "block/%s"), name(block, "block/%s"), name(block, "block/%s_fan", "_shelf")));
+        register(MnBlocks.TALL_BOGSHROOM, block -> doublePlant(name(block, "block/%s_lower"), cross(name(block, "block/%s_lower")), name(block, "block/%s_upper"), cross(name(block, "block/%s_upper"))));
 
         register(MnBlocks.DARK_PEARL_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.DARK_PEARL_BLOCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));

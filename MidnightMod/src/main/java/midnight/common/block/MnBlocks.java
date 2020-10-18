@@ -49,7 +49,7 @@ import java.util.function.Supplier;
 @ObjectHolder("midnight")
 public final class MnBlocks {
 
-    public static final Block NIGHT_STONE = inj();
+    public static final Block NIGHTSTONE = inj();
     public static final Block NIGHT_BEDROCK = inj();
     public static final Block TRENCHSTONE = inj();
 
@@ -125,12 +125,20 @@ public final class MnBlocks {
     public static final Block VIRIDSHROOM_ROOTS = inj();
     public static final Block FLOWERING_VIRIDSHROOM_ROOTS = inj();
 
+    public static final Block BOGSHROOM_CAP = inj();
+    public static final Block BOGSHROOM_STEM = inj();
+    public static final Block BOGSHROOM_PLANKS = inj();
+    public static final Block BOGSHROOM = inj();
+    public static final Block TALL_BOGSHROOM = inj();
+    public static final Block BOGSHROOM_SHELF = inj();
+    public static final Block BOGSHROOM_FIBRE = inj();
+
     public static final Block DARK_PEARL_ORE = inj();
     public static final Block DARK_PEARL_BLOCK = inj();
 
     public static void registerBlocks(IRegistry<Block> registry) {
         registry.registerAll(
-            stone("night_stone", 1.5, 6, MaterialColor.OBSIDIAN),
+            stone("nightstone", 1.5, 6, MaterialColor.OBSIDIAN),
             stone("night_bedrock", 1.5, 6, MaterialColor.LIGHT_GRAY_TERRACOTTA),
             stone("trenchstone", 1.5, 6, MaterialColor.BLACK),
 
@@ -206,6 +214,14 @@ public final class MnBlocks {
             shroomRoots("viridshroom_roots", Material.TALL_PLANTS, MaterialColor.LIME).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
             shroomRoots("flowering_viridshroom_roots", Material.TALL_PLANTS, MaterialColor.LIME).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
 
+            shroomCap("bogshroom_cap", MaterialColor.ADOBE, 0xF5AF4C),
+            stem("bogshroom_stem", MaterialColor.ADOBE),
+            wood("bogshroom_planks", MaterialColor.ADOBE),
+            smallShroom("bogshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.ADOBE, () -> (MnDoublePlantBlock) TALL_BOGSHROOM).setPlantHitbox(14, 14).setOffsetType(Block.OffsetType.XZ),
+            tallShroom("tall_bogshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.ADOBE).setPlantHitbox(14, 30).setOffsetType(Block.OffsetType.XZ),
+            shelf("bogshroom_shelf", 0, 0, Material.TALL_PLANTS, MaterialColor.ADOBE),
+            fibre("bogshroom_fibre", Material.TALL_PLANTS, MaterialColor.ADOBE),
+
             stone("dark_pearl_ore", 3, 6, MaterialColor.OBSIDIAN),
             darkPearl("dark_pearl_block", 3, 6, MaterialColor.BLACK)
         );
@@ -213,7 +229,7 @@ public final class MnBlocks {
 
     public static void registerItems(IRegistry<Item> registry) {
         registry.registerAll(
-            item(NIGHT_STONE, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
+            item(NIGHTSTONE, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
             item(NIGHT_BEDROCK, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
             item(TRENCHSTONE, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
 
@@ -285,6 +301,14 @@ public final class MnBlocks {
             item(VIRIDSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(FLOWERING_VIRIDSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
 
+            item(BOGSHROOM_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
+            item(BOGSHROOM_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
+            item(BOGSHROOM_PLANKS, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
+            item(BOGSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(TALL_BOGSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(BOGSHROOM_SHELF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(BOGSHROOM_FIBRE, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+
             item(DARK_PEARL_ORE, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
             item(DARK_PEARL_BLOCK, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS)
         );
@@ -330,6 +354,11 @@ public final class MnBlocks {
         RenderTypeLookup.setRenderLayer(VIRIDSHROOM_SHELF, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(VIRIDSHROOM_ROOTS, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(FLOWERING_VIRIDSHROOM_ROOTS, RenderType.getCutout());
+
+        RenderTypeLookup.setRenderLayer(BOGSHROOM, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(TALL_BOGSHROOM, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BOGSHROOM_FIBRE, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BOGSHROOM_SHELF, RenderType.getCutout());
 
 
         BlockColors blockColors = Minecraft.getInstance().getBlockColors();

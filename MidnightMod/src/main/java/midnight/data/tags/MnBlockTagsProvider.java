@@ -39,7 +39,7 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
         getOrCreateTagBuilder(BlockTags.ENDERMAN_HOLDABLE).replace(false).add(
             MnBlocks.NIGHT_DIRT,
             MnBlocks.NIGHT_GRASS_BLOCK,
-            MnBlocks.NIGHT_STONE,
+            MnBlocks.NIGHTSTONE,
             MnBlocks.DECEITFUL_PEAT,
             MnBlocks.DECEITFUL_MUD,
             MnBlocks.TRENCHSTONE,
@@ -57,6 +57,8 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
             MnBlocks.VIRIDSHROOM_SHELF,
             MnBlocks.VIRIDSHROOM_ROOTS,
             MnBlocks.FLOWERING_VIRIDSHROOM_ROOTS,
+            MnBlocks.BOGSHROOM,
+            MnBlocks.BOGSHROOM_SHELF,
             MnBlocks.GHOST_PLANT
         );
         getOrCreateTagBuilder(MnBlockTags.DARK_WILLOW_LOGS).replace(false).add(
@@ -92,7 +94,8 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
             MnBlocks.DARK_WILLOW_PLANKS,
             MnBlocks.NIGHTSHROOM_PLANKS,
             MnBlocks.DEWSHROOM_PLANKS,
-            MnBlocks.VIRIDSHROOM_PLANKS
+            MnBlocks.VIRIDSHROOM_PLANKS,
+            MnBlocks.BOGSHROOM_PLANKS
         );
     }
 

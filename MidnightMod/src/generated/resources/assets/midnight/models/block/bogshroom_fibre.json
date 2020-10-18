@@ -1,0 +1,6 @@
+{
+  "parent": "midnight:block/layered_plant_1",
+  "textures": {
+    "layer1": "midnight:block/bogshroom_fibre"
+  }
+}

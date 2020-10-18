@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "midnight:bogshroom_shelf"
+    }
+  ],
+  "result": {
+    "item": "midnight:bogshroom_powder"
+  }
+}

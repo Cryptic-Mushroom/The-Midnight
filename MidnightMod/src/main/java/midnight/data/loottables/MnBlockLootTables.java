@@ -39,7 +39,7 @@ public class MnBlockLootTables extends BlockLootTables {
 
     @Override
     protected void addTables() {
-        registerDropSelfLootTable(MnBlocks.NIGHT_STONE);
+        registerDropSelfLootTable(MnBlocks.NIGHTSTONE);
         registerDropSelfLootTable(MnBlocks.TRENCHSTONE);
         registerLootTable(MnBlocks.NIGHT_BEDROCK, block -> droppingNothing());
 
@@ -112,6 +112,14 @@ public class MnBlockLootTables extends BlockLootTables {
         registerLootTable(MnBlocks.FLOWERING_VIRIDSHROOM_ROOTS, BlockLootTables::onlyWithShears);
         registerLootTable(MnBlocks.TALL_VIRIDSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
         registerLootTable(MnBlocks.VIRIDSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.VIRIDSHROOM_POWDER, MnBlocks.VIRIDSHROOM, MnBlocks.TALL_VIRIDSHROOM, DEFAULT_POWDER_DROP_RATES));
+
+        registerDropSelfLootTable(MnBlocks.BOGSHROOM_STEM);
+        registerDropSelfLootTable(MnBlocks.BOGSHROOM_PLANKS);
+        registerDropSelfLootTable(MnBlocks.BOGSHROOM);
+        registerDropSelfLootTable(MnBlocks.BOGSHROOM_SHELF);
+        registerLootTable(MnBlocks.BOGSHROOM_FIBRE, MnBlockLootTables::droppingFibre);
+        registerLootTable(MnBlocks.TALL_BOGSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+        registerLootTable(MnBlocks.BOGSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.BOGSHROOM_POWDER, MnBlocks.BOGSHROOM, MnBlocks.TALL_BOGSHROOM, DEFAULT_POWDER_DROP_RATES));
 
         registerLootTable(MnBlocks.DARK_PEARL_ORE, block -> droppingItemWithFortune(block, MnItems.GEODE));
         registerDropSelfLootTable(MnBlocks.DARK_PEARL_BLOCK);
