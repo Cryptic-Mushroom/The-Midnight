@@ -25,6 +25,7 @@ public final class MnItems {
     public static final Item GEODE = inj();
 
     public static final Item NIGHTSHROOM_POWDER = inj();
+    public static final Item DEWSHROOM_POWDER = inj();
 
     private MnItems() {
     }
@@ -36,7 +37,8 @@ public final class MnItems {
             item("dark_pearl", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
             item("geode", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
 
-            item("nightshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC)
+            item("nightshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
+            item("dewshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC)
         );
     }
 

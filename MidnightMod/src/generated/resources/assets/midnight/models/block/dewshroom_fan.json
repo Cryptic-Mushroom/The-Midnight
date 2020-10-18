@@ -1,0 +1,6 @@
+{
+  "parent": "midnight:block/fan",
+  "textures": {
+    "fan": "midnight:block/dewshroom_shelf"
+  }
+}

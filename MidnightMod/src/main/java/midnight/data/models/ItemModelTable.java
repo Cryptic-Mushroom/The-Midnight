@@ -71,6 +71,17 @@ public final class ItemModelTable {
         register(MnBlocks.TALL_NIGHTSHROOM, item -> generated(name(item, "block/%s_upper")));
         register(MnItems.NIGHTSHROOM_POWDER, item -> generated(name(item, "item/%s")));
 
+        register(MnBlocks.DEWSHROOM_CAP, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.DEWSHROOM_STEM, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.DEWSHROOM_PLANKS, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.DEWSHROOM, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.DEWSHROOM_FIBRE, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.DEWSHROOM_SHELF, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.DEWSHROOM_ROOTS, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.FLOWERING_DEWSHROOM_ROOTS, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.TALL_DEWSHROOM, item -> generated(name(item, "block/%s_upper")));
+        register(MnItems.DEWSHROOM_POWDER, item -> generated(name(item, "item/%s")));
+
         register(MnItems.DARK_STICK, item -> generated(name(item, "item/%s")));
         register(MnItems.DARK_PEARL, item -> generated(name(item, "item/%s")));
         register(MnItems.GEODE, item -> generated(name(item, "item/%s")));

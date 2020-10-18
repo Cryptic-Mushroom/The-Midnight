@@ -13,6 +13,10 @@
     "midnight:nightshroom_shelf",
     "midnight:nightshroom_roots",
     "midnight:flowering_nightshroom_roots",
+    "midnight:dewshroom",
+    "midnight:dewshroom_shelf",
+    "midnight:dewshroom_roots",
+    "midnight:flowering_dewshroom_roots",
     "midnight:ghost_plant"
   ]
 }

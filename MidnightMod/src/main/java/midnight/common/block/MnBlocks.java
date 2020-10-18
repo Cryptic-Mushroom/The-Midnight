@@ -97,6 +97,16 @@ public final class MnBlocks {
     public static final Block NIGHTSHROOM_ROOTS = inj();
     public static final Block FLOWERING_NIGHTSHROOM_ROOTS = inj();
 
+    public static final Block DEWSHROOM_CAP = inj();
+    public static final Block DEWSHROOM_STEM = inj();
+    public static final Block DEWSHROOM_PLANKS = inj();
+    public static final Block DEWSHROOM = inj();
+    public static final Block TALL_DEWSHROOM = inj();
+    public static final Block DEWSHROOM_SHELF = inj();
+    public static final Block DEWSHROOM_FIBRE = inj();
+    public static final Block DEWSHROOM_ROOTS = inj();
+    public static final Block FLOWERING_DEWSHROOM_ROOTS = inj();
+
     public static final Block DARK_PEARL_ORE = inj();
     public static final Block DARK_PEARL_BLOCK = inj();
 
@@ -158,6 +168,16 @@ public final class MnBlocks {
             shroomRoots("nightshroom_roots", Material.TALL_PLANTS, MaterialColor.BLUE).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
             shroomRoots("flowering_nightshroom_roots", Material.TALL_PLANTS, MaterialColor.BLUE).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
 
+            shroomCap("dewshroom_cap", MaterialColor.CYAN, 0x72CFD4),
+            stem("dewshroom_stem", MaterialColor.CYAN),
+            wood("dewshroom_planks", MaterialColor.CYAN),
+            smallShroom("dewshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.CYAN, () -> (MnDoublePlantBlock) TALL_DEWSHROOM).setPlantHitbox(14, 14).setOffsetType(Block.OffsetType.XZ),
+            tallShroom("tall_dewshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.CYAN).setPlantHitbox(14, 30).setOffsetType(Block.OffsetType.XZ),
+            shelf("dewshroom_shelf", 0, 0, Material.TALL_PLANTS, MaterialColor.CYAN),
+            fibre("dewshroom_fibre", Material.TALL_PLANTS, MaterialColor.CYAN),
+            shroomRoots("dewshroom_roots", Material.TALL_PLANTS, MaterialColor.CYAN).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
+            shroomRoots("flowering_dewshroom_roots", Material.TALL_PLANTS, MaterialColor.CYAN).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
+
             stone("dark_pearl_ore", 3, 6, MaterialColor.OBSIDIAN),
             darkPearl("dark_pearl_block", 3, 6, MaterialColor.BLACK)
         );
@@ -217,6 +237,16 @@ public final class MnBlocks {
             item(NIGHTSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(FLOWERING_NIGHTSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
 
+            item(DEWSHROOM_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
+            item(DEWSHROOM_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
+            item(DEWSHROOM_PLANKS, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
+            item(DEWSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(TALL_DEWSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(DEWSHROOM_SHELF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(DEWSHROOM_FIBRE, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(DEWSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(FLOWERING_DEWSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+
             item(DARK_PEARL_ORE, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
             item(DARK_PEARL_BLOCK, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS)
         );
@@ -241,12 +271,20 @@ public final class MnBlocks {
         RenderTypeLookup.setRenderLayer(DARK_WILLOW_LEAVES, RenderType.getCutoutMipped());
         RenderTypeLookup.setRenderLayer(HANGING_DARK_WILLOW_LEAVES, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(DARK_WILLOW_SAPLING, RenderType.getCutout());
+
         RenderTypeLookup.setRenderLayer(NIGHTSHROOM, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(TALL_NIGHTSHROOM, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(NIGHTSHROOM_FIBRE, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(NIGHTSHROOM_SHELF, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(NIGHTSHROOM_ROOTS, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(FLOWERING_NIGHTSHROOM_ROOTS, RenderType.getCutout());
+
+        RenderTypeLookup.setRenderLayer(DEWSHROOM, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(TALL_DEWSHROOM, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(DEWSHROOM_FIBRE, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(DEWSHROOM_SHELF, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(DEWSHROOM_ROOTS, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(FLOWERING_DEWSHROOM_ROOTS, RenderType.getCutout());
 
 
         BlockColors blockColors = Minecraft.getInstance().getBlockColors();

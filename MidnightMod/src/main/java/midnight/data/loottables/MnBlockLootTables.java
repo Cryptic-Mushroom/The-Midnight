@@ -35,21 +35,32 @@ public class MnBlockLootTables extends BlockLootTables {
     @Override
     protected void addTables() {
         registerDropSelfLootTable(MnBlocks.NIGHT_STONE);
+        registerDropSelfLootTable(MnBlocks.TRENCHSTONE);
+        registerLootTable(MnBlocks.NIGHT_BEDROCK, block -> droppingNothing());
+
         registerDropSelfLootTable(MnBlocks.NIGHT_DIRT);
+        registerLootTable(MnBlocks.NIGHT_GRASS_BLOCK, block -> droppingWithSilkTouch(block, MnBlocks.NIGHT_DIRT));
         registerDropSelfLootTable(MnBlocks.DECEITFUL_PEAT);
         registerDropSelfLootTable(MnBlocks.DECEITFUL_MUD);
-        registerDropSelfLootTable(MnBlocks.TRENCHSTONE);
         registerDropSelfLootTable(MnBlocks.STRANGE_SAND);
         registerDropSelfLootTable(MnBlocks.COARSE_NIGHT_DIRT);
+
         registerDropSelfLootTable(MnBlocks.GHOST_PLANT_LEAF);
         registerDropSelfLootTable(MnBlocks.GHOST_PLANT_STEM);
         registerDropSelfLootTable(MnBlocks.GHOST_PLANT);
+
+        registerLootTable(MnBlocks.NIGHT_GRASS, onlyWithShears(MnBlocks.NIGHT_GRASS));
+        registerLootTable(MnBlocks.TALL_NIGHT_GRASS, onlyWithShears(MnBlocks.TALL_NIGHT_GRASS));
+
+        registerLootTable(MnBlocks.DARK_WATER, block -> droppingNothing());
+
         registerDropSelfLootTable(MnBlocks.DEAD_WOOD);
         registerDropSelfLootTable(MnBlocks.DEAD_WOOD_LOG);
         registerDropSelfLootTable(MnBlocks.DEAD_WOOD_PLANKS);
-        registerDropSelfLootTable(MnBlocks.DEAD_SAPLING);
         registerDropSelfLootTable(MnBlocks.STRIPPED_DEAD_WOOD);
         registerDropSelfLootTable(MnBlocks.STRIPPED_DEAD_WOOD_LOG);
+        registerDropSelfLootTable(MnBlocks.DEAD_SAPLING);
+
         registerDropSelfLootTable(MnBlocks.SHADOWROOT_WOOD);
         registerDropSelfLootTable(MnBlocks.SHADOWROOT_LOG);
         registerDropSelfLootTable(MnBlocks.SHADOWROOT_PLANKS);
@@ -57,10 +68,16 @@ public class MnBlockLootTables extends BlockLootTables {
         registerLootTable(MnBlocks.SHADOWROOT_LEAVES, block -> droppingWithChancesAndDarkSticks(block, MnBlocks.SHADOWROOT_SAPLING, DEFAULT_SAPLING_DROP_RATES));
         registerDropSelfLootTable(MnBlocks.STRIPPED_SHADOWROOT_WOOD);
         registerDropSelfLootTable(MnBlocks.STRIPPED_SHADOWROOT_LOG);
+
         registerDropSelfLootTable(MnBlocks.DARK_WILLOW_WOOD);
         registerDropSelfLootTable(MnBlocks.DARK_WILLOW_LOG);
         registerDropSelfLootTable(MnBlocks.DARK_WILLOW_PLANKS);
         registerDropSelfLootTable(MnBlocks.DARK_WILLOW_SAPLING);
+        registerLootTable(MnBlocks.DARK_WILLOW_LEAVES, block -> droppingWithChancesAndDarkSticks(block, MnBlocks.DARK_WILLOW_SAPLING, DEFAULT_SAPLING_DROP_RATES));
+        registerLootTable(MnBlocks.HANGING_DARK_WILLOW_LEAVES, onlyWithShears(MnBlocks.HANGING_DARK_WILLOW_LEAVES));
+        registerDropSelfLootTable(MnBlocks.STRIPPED_DARK_WILLOW_WOOD);
+        registerDropSelfLootTable(MnBlocks.STRIPPED_DARK_WILLOW_LOG);
+
         registerDropSelfLootTable(MnBlocks.NIGHTSHROOM_STEM);
         registerDropSelfLootTable(MnBlocks.NIGHTSHROOM_PLANKS);
         registerDropSelfLootTable(MnBlocks.NIGHTSHROOM);
@@ -70,17 +87,19 @@ public class MnBlockLootTables extends BlockLootTables {
         registerLootTable(MnBlocks.FLOWERING_NIGHTSHROOM_ROOTS, BlockLootTables::onlyWithShears);
         registerLootTable(MnBlocks.TALL_NIGHTSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
         registerLootTable(MnBlocks.NIGHTSHROOM_CAP, block -> droppingWithChances(block, MnItems.NIGHTSHROOM_POWDER, DEFAULT_POWDER_DROP_RATES));
-        registerLootTable(MnBlocks.DARK_WILLOW_LEAVES, block -> droppingWithChancesAndDarkSticks(block, MnBlocks.DARK_WILLOW_SAPLING, DEFAULT_SAPLING_DROP_RATES));
-        registerLootTable(MnBlocks.HANGING_DARK_WILLOW_LEAVES, onlyWithShears(MnBlocks.HANGING_DARK_WILLOW_LEAVES));
-        registerDropSelfLootTable(MnBlocks.STRIPPED_DARK_WILLOW_WOOD);
-        registerDropSelfLootTable(MnBlocks.STRIPPED_DARK_WILLOW_LOG);
-        registerLootTable(MnBlocks.NIGHT_BEDROCK, block -> droppingNothing());
-        registerLootTable(MnBlocks.NIGHT_GRASS, onlyWithShears(MnBlocks.NIGHT_GRASS));
+
+        registerDropSelfLootTable(MnBlocks.DEWSHROOM_STEM);
+        registerDropSelfLootTable(MnBlocks.DEWSHROOM_PLANKS);
+        registerDropSelfLootTable(MnBlocks.DEWSHROOM);
+        registerDropSelfLootTable(MnBlocks.DEWSHROOM_SHELF);
+        registerLootTable(MnBlocks.DEWSHROOM_FIBRE, MnBlockLootTables::droppingFibre);
+        registerLootTable(MnBlocks.DEWSHROOM_ROOTS, BlockLootTables::onlyWithShears);
+        registerLootTable(MnBlocks.FLOWERING_DEWSHROOM_ROOTS, BlockLootTables::onlyWithShears);
+        registerLootTable(MnBlocks.TALL_DEWSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+        registerLootTable(MnBlocks.DEWSHROOM_CAP, block -> droppingWithChances(block, MnItems.DEWSHROOM_POWDER, DEFAULT_POWDER_DROP_RATES));
+
         registerLootTable(MnBlocks.DARK_PEARL_ORE, block -> droppingItemWithFortune(block, MnItems.GEODE));
         registerDropSelfLootTable(MnBlocks.DARK_PEARL_BLOCK);
-        registerLootTable(MnBlocks.TALL_NIGHT_GRASS, onlyWithShears(MnBlocks.TALL_NIGHT_GRASS));
-        registerLootTable(MnBlocks.NIGHT_GRASS_BLOCK, block -> droppingWithSilkTouch(block, MnBlocks.NIGHT_DIRT));
-        registerLootTable(MnBlocks.DARK_WATER, block -> droppingNothing());
     }
 
     protected static LootTable.Builder droppingNothing() {
