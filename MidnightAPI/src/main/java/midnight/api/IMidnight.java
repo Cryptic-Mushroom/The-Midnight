@@ -1,10 +1,17 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
+ * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 10 - 18
+ */
+
 package midnight.api;
 
+import midnight.api.plugin.MidnightEventSubscriber;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.BusBuilder;
 import net.minecraftforge.eventbus.api.IEventBus;
-
-import midnight.api.plugin.MidnightEventSubscriber;
 
 import javax.annotation.Nonnull;
 import java.lang.reflect.Field;

@@ -1,14 +1,18 @@
 /*
- * Copyright (c) 2020 RedGalaxy & contributors
- * All rights reserved. Do not distribute.
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
+ * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * For a full license, see LICENSE.txt
+ * Last updated: 2020 - 10 - 18
  */
 
 package midnight.core.plugin;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+import midnight.api.plugin.MidnightEventSubscriber;
+import midnight.api.plugin.MidnightPlugin;
+import midnight.api.plugin.Side;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLEnvironment;
@@ -17,10 +21,6 @@ import net.minecraftforge.forgespi.language.ModFileScanData;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.objectweb.asm.Type;
-
-import midnight.api.plugin.MidnightEventSubscriber;
-import midnight.api.plugin.MidnightPlugin;
-import midnight.api.plugin.Side;
 
 import java.lang.annotation.ElementType;
 import java.util.List;

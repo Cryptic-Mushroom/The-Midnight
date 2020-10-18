@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
+ * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 10 - 18
+ */
+
 package midnight.common.world.biome;
 
 import com.mojang.serialization.Codec;
@@ -8,10 +16,11 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryLookupCodec;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;
-import net.shadew.ptg.region.CachingRegionContext;
-import net.shadew.ptg.region.FractalGenerator;
 
 import java.util.stream.Stream;
+
+import net.shadew.ptg.region.CachingRegionContext;
+import net.shadew.ptg.region.FractalGenerator;
 
 public class MnBiomeProvider extends BiomeProvider {
     public static final Codec<MnBiomeProvider> CODEC = RecordCodecBuilder.create(
