@@ -14,7 +14,7 @@ import joptsimple.OptionSpec;
 import midnight.common.block.MnBlocks;
 import midnight.common.block.fluid.MnFluids;
 import midnight.common.item.MnItems;
-import midnight.common.sound.MnSoundEvents;
+import midnight.common.misc.MnSoundEvents;
 import midnight.common.world.biome.MnBiomes;
 import midnight.common.world.levelgen.surface.MnSurfaceBuilders;
 import midnight.core.util.IRegistry;

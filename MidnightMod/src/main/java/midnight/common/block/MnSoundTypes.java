@@ -8,7 +8,7 @@
 
 package midnight.common.block;
 
-import midnight.common.sound.MnSoundEvents;
+import midnight.common.misc.MnSoundEvents;
 import net.minecraft.block.SoundType;
 
 /**

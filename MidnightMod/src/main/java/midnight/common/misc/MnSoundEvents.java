@@ -6,7 +6,7 @@
  * Last updated: 2020 - 10 - 18
  */
 
-package midnight.common.sound;
+package midnight.common.misc;
 
 import midnight.common.Midnight;
 import midnight.core.util.IRegistry;
