@@ -30,9 +30,4 @@ public class HangingVinesBlock extends MnPlantBlock {
         BlockPos abovePos = pos.up();
         return isValidGround(world.getBlockState(abovePos), world, abovePos);
     }
-
-    @Override
-    public OffsetType getOffsetType() {
-        return OffsetType.NONE;
-    }
 }
