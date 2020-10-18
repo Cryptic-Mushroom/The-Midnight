@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 10 - $today.date
+ */
+
 package midnight.gradle;
 
 import groovy.lang.Closure;
@@ -61,38 +68,38 @@ public class ConstantInjectionTask extends Copy {
            .stream()
            .filter(field -> field.isStatic() && field.isFinal() && field.getLiteralInitializer() != null)
            .forEach(
-                   field -> {
-                       Optional<AnnotationSource<JavaClassSource>> annotation
-                               = field.getAnnotations()
-                                      .stream()
-                                      .filter(annot -> annot.getQualifiedName().equals(this.annotation))
-                                      .findFirst();
+               field -> {
+                   Optional<AnnotationSource<JavaClassSource>> annotation
+                       = field.getAnnotations()
+                              .stream()
+                              .filter(annot -> annot.getQualifiedName().equals(this.annotation))
+                              .findFirst();
 
-                       annotation.ifPresent(annot -> {
-                           String value = annot.getStringValue(annotArgument);
-                           Object fv = constants.apply(value);
-                           if (fv instanceof Supplier<?>) {
-                               fv = ((Supplier<?>) fv).get();
+                   annotation.ifPresent(annot -> {
+                       String value = annot.getStringValue(annotArgument);
+                       Object fv = constants.apply(value);
+                       if (fv instanceof Supplier<?>) {
+                           fv = ((Supplier<?>) fv).get();
+                       }
+                       if (fv instanceof Closure<?>) {
+                           Closure<?> cl = (Closure<?>) fv;
+                           fv = cl.call();
+                       }
+                       if (fv instanceof String)
+                           field.setStringInitializer((String) fv);
+                       else {
+                           if (fv instanceof Integer) {
+                               field.setLiteralInitializer(fv + "");
+                           } else if (fv instanceof Long) {
+                               field.setLiteralInitializer(fv + "L");
+                           } else if (fv instanceof Float) {
+                               field.setLiteralInitializer(fv + "F");
+                           } else if (fv instanceof Double) {
+                               field.setLiteralInitializer(fv + "D");
                            }
-                           if (fv instanceof Closure<?>) {
-                               Closure<?> cl = (Closure<?>) fv;
-                               fv = cl.call();
-                           }
-                           if (fv instanceof String)
-                               field.setStringInitializer((String) fv);
-                           else {
-                               if (fv instanceof Integer) {
-                                   field.setLiteralInitializer(fv + "");
-                               } else if (fv instanceof Long) {
-                                   field.setLiteralInitializer(fv + "L");
-                               } else if (fv instanceof Float) {
-                                   field.setLiteralInitializer(fv + "F");
-                               } else if (fv instanceof Double) {
-                                   field.setLiteralInitializer(fv + "D");
-                               }
-                           }
-                       });
-                   }
+                       }
+                   });
+               }
            );
         return src;
     }

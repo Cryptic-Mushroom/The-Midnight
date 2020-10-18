@@ -1,10 +1,16 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 10 - $today.date
+ */
+
 package midnight.gradle;
 
 import groovy.lang.Closure;
 import groovy.lang.GroovyObjectSupport;
-import org.gradle.api.Project;
-
 import midnight.gradle.changelog.ChangelogInfo;
+import org.gradle.api.Project;
 
 import java.io.File;
 import java.io.FileNotFoundException;

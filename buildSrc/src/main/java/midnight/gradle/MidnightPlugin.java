@@ -1,13 +1,19 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 10 - $today.date
+ */
+
 package midnight.gradle;
 
+import midnight.gradle.changelog.MarkdownGenTask;
+import midnight.gradle.changelog.VersionJsonTask;
 import net.minecraftforge.gradle.userdev.tasks.RenameJarInPlace;
 import org.gradle.api.*;
 import org.gradle.api.plugins.JavaPluginConvention;
 import org.gradle.api.tasks.bundling.Jar;
 import org.gradle.api.tasks.compile.JavaCompile;
-
-import midnight.gradle.changelog.MarkdownGenTask;
-import midnight.gradle.changelog.VersionJsonTask;
 
 import java.io.File;
 import java.io.FileInputStream;

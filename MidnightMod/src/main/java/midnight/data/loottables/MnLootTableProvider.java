@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 10 - $today.date
+ */
+
 package midnight.data.loottables;
 
 import com.google.common.collect.ImmutableList;
@@ -18,7 +25,7 @@ import java.util.function.Supplier;
 
 public class MnLootTableProvider extends LootTableProvider {
     private final List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootParameterSet>> tables = ImmutableList.of(
-            Pair.of(MnBlockLootTables::new, LootParameterSets.BLOCK)
+        Pair.of(MnBlockLootTables::new, LootParameterSets.BLOCK)
     );
 
     public MnLootTableProvider(DataGenerator datagen) {

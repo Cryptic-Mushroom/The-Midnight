@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 10 - $today.date
+ */
+
 package midnight.common.world.levelgen.midnight;
 
 import midnight.api.biome.IMidnightBiome;
@@ -9,13 +16,14 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.chunk.IChunk;
+
+import java.util.Random;
+
 import net.shadew.ptg.noise.Noise2D;
 import net.shadew.ptg.noise.Noise3D;
 import net.shadew.ptg.noise.perlin.FractalPerlin2D;
 import net.shadew.ptg.noise.perlin.FractalPerlin3D;
 import net.shadew.ptg.noise.perlin.InverseFractalPerlin3D;
-
-import java.util.Random;
 
 /**
  * Terrain generator of the Midnight dimension. This makes the base terrain shape.

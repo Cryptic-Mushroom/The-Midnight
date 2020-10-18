@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 10 - $today.date
+ */
+
 package midnight.common.world.levelgen.surface;
 
 import com.mojang.serialization.Codec;
@@ -8,10 +15,11 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunk;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
-import net.shadew.ptg.noise.Noise3D;
-import net.shadew.ptg.noise.opensimplex.FractalOpenSimplex3D;
 
 import java.util.Random;
+
+import net.shadew.ptg.noise.Noise3D;
+import net.shadew.ptg.noise.opensimplex.FractalOpenSimplex3D;
 
 public class DeceitfulBogSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig> {
     private static final BlockState COARSE_DIRT = MnBlocks.COARSE_NIGHT_DIRT.getDefaultState();

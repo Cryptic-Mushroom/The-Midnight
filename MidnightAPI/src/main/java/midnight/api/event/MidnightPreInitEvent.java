@@ -1,8 +1,14 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 10 - $today.date
+ */
+
 package midnight.api.event;
 
-import net.minecraftforge.api.distmarker.Dist;
-
 import midnight.api.IMidnight;
+import net.minecraftforge.api.distmarker.Dist;
 
 /**
  * Midnight event triggered at mod construction time, once the Midnight has been loaded. Initialize your plugins with
