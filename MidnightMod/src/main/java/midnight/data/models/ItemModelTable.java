@@ -110,12 +110,18 @@ public final class ItemModelTable {
         register(MnBlocks.TALL_BOGSHROOM, item -> generated(name(item, "block/%s_upper")));
         register(MnItems.BOGSHROOM_POWDER, item -> generated(name(item, "item/%s")));
 
-        register(MnItems.DARK_STICK, item -> generated(name(item, "item/%s")));
-        register(MnItems.DARK_PEARL, item -> generated(name(item, "item/%s")));
-        register(MnItems.GEODE, item -> generated(name(item, "item/%s")));
+        register(MnBlocks.GLOB_FUNGUS_CAP, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.GLOB_FUNGUS_THATCH, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.GLOB_FUNGUS_STEM, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.GLOB_FUNGUS_HYPHAE, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.GLOB_FUNGUS, item -> generated(name(item, "block/%s")));
 
         register(MnBlocks.DARK_PEARL_ORE, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.DARK_PEARL_BLOCK, item -> inherit(name(item, "block/%s")));
+
+        register(MnItems.DARK_STICK, item -> generated(name(item, "item/%s")));
+        register(MnItems.DARK_PEARL, item -> generated(name(item, "item/%s")));
+        register(MnItems.GEODE, item -> generated(name(item, "item/%s")));
     }
 
 

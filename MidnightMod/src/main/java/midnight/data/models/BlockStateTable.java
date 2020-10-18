@@ -118,6 +118,12 @@ public final class BlockStateTable {
         register(MnBlocks.BOGSHROOM_SHELF, block -> shelf(name(block, "block/%s"), name(block, "block/%s"), name(block, "block/%s_fan", "_shelf")));
         register(MnBlocks.TALL_BOGSHROOM, block -> doublePlant(name(block, "block/%s_lower"), cross(name(block, "block/%s_lower")), name(block, "block/%s_upper"), cross(name(block, "block/%s_upper"))));
 
+        register(MnBlocks.GLOB_FUNGUS_CAP, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.GLOB_FUNGUS_HYPHAE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s_stem_side", "_hyphae"))));
+        register(MnBlocks.GLOB_FUNGUS_THATCH, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.GLOB_FUNGUS, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
+        register(MnBlocks.GLOB_FUNGUS_STEM, block -> simple(name(block, "block/%s"), cubeColumn(name(block, "block/%s_end"), name(block, "block/%s_side"))));
+
         register(MnBlocks.DARK_PEARL_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.DARK_PEARL_BLOCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
     }

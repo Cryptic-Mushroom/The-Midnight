@@ -80,6 +80,10 @@ public class MnRecipeProvider extends RecipeProvider {
         shapeless("bogshroom_powder_from_tall_shroom", MnBlocks.TALL_BOGSHROOM, MnItems.BOGSHROOM_POWDER, 2);
         shapeless("bogshroom_powder_from_shelf", MnBlocks.BOGSHROOM_SHELF, MnItems.BOGSHROOM_POWDER, 1);
 
+        shapeless("glob_fungus_thatch_from_stem", MnBlocks.GLOB_FUNGUS_STEM, MnBlocks.GLOB_FUNGUS_THATCH, 1);
+        shapeless("glob_fungus_thatch_from_hyphae", MnBlocks.GLOB_FUNGUS_HYPHAE, MnBlocks.GLOB_FUNGUS_THATCH, 1);
+        generic2x2("glob_fungus_hyphae", MnBlocks.GLOB_FUNGUS_STEM, MnBlocks.GLOB_FUNGUS_HYPHAE, 3);
+
         shapeless("dark_pearl_from_block", MnBlocks.DARK_PEARL_BLOCK, MnItems.DARK_PEARL, 9);
         generic3x3("dark_pearl_block_3x3", MnItems.DARK_PEARL, MnBlocks.DARK_PEARL_BLOCK, 1);
     }

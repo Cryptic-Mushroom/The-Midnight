@@ -121,6 +121,12 @@ public class MnBlockLootTables extends BlockLootTables {
         registerLootTable(MnBlocks.TALL_BOGSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
         registerLootTable(MnBlocks.BOGSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.BOGSHROOM_POWDER, MnBlocks.BOGSHROOM, MnBlocks.TALL_BOGSHROOM, DEFAULT_POWDER_DROP_RATES));
 
+        registerDropSelfLootTable(MnBlocks.GLOB_FUNGUS);
+        registerDropSelfLootTable(MnBlocks.GLOB_FUNGUS_CAP);
+        registerDropSelfLootTable(MnBlocks.GLOB_FUNGUS_STEM);
+        registerDropSelfLootTable(MnBlocks.GLOB_FUNGUS_HYPHAE);
+        registerDropSelfLootTable(MnBlocks.GLOB_FUNGUS_THATCH);
+
         registerLootTable(MnBlocks.DARK_PEARL_ORE, block -> droppingItemWithFortune(block, MnItems.GEODE));
         registerDropSelfLootTable(MnBlocks.DARK_PEARL_BLOCK);
     }

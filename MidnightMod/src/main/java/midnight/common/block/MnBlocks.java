@@ -133,6 +133,12 @@ public final class MnBlocks {
     public static final Block BOGSHROOM_SHELF = inj();
     public static final Block BOGSHROOM_FIBRE = inj();
 
+    public static final Block GLOB_FUNGUS = inj();
+    public static final Block GLOB_FUNGUS_CAP = inj();
+    public static final Block GLOB_FUNGUS_STEM = inj();
+    public static final Block GLOB_FUNGUS_HYPHAE = inj();
+    public static final Block GLOB_FUNGUS_THATCH = inj();
+
     public static final Block DARK_PEARL_ORE = inj();
     public static final Block DARK_PEARL_BLOCK = inj();
 
@@ -222,6 +228,12 @@ public final class MnBlocks {
             shelf("bogshroom_shelf", 0, 0, Material.TALL_PLANTS, MaterialColor.ADOBE),
             fibre("bogshroom_fibre", Material.TALL_PLANTS, MaterialColor.ADOBE),
 
+            smallFungus("glob_fungus", 0, 0, Material.TALL_PLANTS, MaterialColor.MAGENTA).setPlantHitbox(13, 13).setOffsetType(Block.OffsetType.XYZ),
+            bouncyShroomCap("glob_fungus_cap", MaterialColor.MAGENTA),
+            globStem("glob_fungus_stem", MaterialColor.PURPLE),
+            globStem("glob_fungus_hyphae", MaterialColor.PURPLE),
+            globThatch("glob_fungus_thatch", MaterialColor.PURPLE),
+
             stone("dark_pearl_ore", 3, 6, MaterialColor.OBSIDIAN),
             darkPearl("dark_pearl_block", 3, 6, MaterialColor.BLACK)
         );
@@ -273,7 +285,7 @@ public final class MnBlocks {
 
             item(NIGHTSHROOM_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
             item(NIGHTSHROOM_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
-            item(NIGHTSHROOM_PLANKS, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
+            item(NIGHTSHROOM_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
             item(NIGHTSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(TALL_NIGHTSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(NIGHTSHROOM_SHELF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
@@ -283,7 +295,7 @@ public final class MnBlocks {
 
             item(DEWSHROOM_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
             item(DEWSHROOM_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
-            item(DEWSHROOM_PLANKS, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
+            item(DEWSHROOM_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
             item(DEWSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(TALL_DEWSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(DEWSHROOM_SHELF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
@@ -293,7 +305,7 @@ public final class MnBlocks {
 
             item(VIRIDSHROOM_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
             item(VIRIDSHROOM_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
-            item(VIRIDSHROOM_PLANKS, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
+            item(VIRIDSHROOM_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
             item(VIRIDSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(TALL_VIRIDSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(VIRIDSHROOM_SHELF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
@@ -303,11 +315,17 @@ public final class MnBlocks {
 
             item(BOGSHROOM_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
             item(BOGSHROOM_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
-            item(BOGSHROOM_PLANKS, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
+            item(BOGSHROOM_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
             item(BOGSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(TALL_BOGSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(BOGSHROOM_SHELF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(BOGSHROOM_FIBRE, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+
+            item(GLOB_FUNGUS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(GLOB_FUNGUS_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
+            item(GLOB_FUNGUS_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
+            item(GLOB_FUNGUS_HYPHAE, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
+            item(GLOB_FUNGUS_THATCH, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
 
             item(DARK_PEARL_ORE, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
             item(DARK_PEARL_BLOCK, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS)
@@ -359,6 +377,8 @@ public final class MnBlocks {
         RenderTypeLookup.setRenderLayer(TALL_BOGSHROOM, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BOGSHROOM_FIBRE, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BOGSHROOM_SHELF, RenderType.getCutout());
+
+        RenderTypeLookup.setRenderLayer(GLOB_FUNGUS, RenderType.getCutout());
 
 
         BlockColors blockColors = Minecraft.getInstance().getBlockColors();
@@ -542,6 +562,17 @@ public final class MnBlocks {
         ));
     }
 
+    private static MnPlantBlock smallFungus(String id, double hardness, double resistance, Material material, MaterialColor color) {
+        return block(id, new MnPlantBlock(
+            AbstractBlock.Properties.create(material, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.FUNGUS)
+                                    .luminance(state -> 10)
+                                    .emissiveLighting((state, world, pos) -> true)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
+        ));
+    }
+
     private static MnPlantBlock shroomRoots(String id, Material material, MaterialColor color) {
         return block(id, new ShroomRootsBlock(
             AbstractBlock.Properties.create(material, color)
@@ -641,6 +672,24 @@ public final class MnBlocks {
         ));
     }
 
+    private static Block globStem(String id, MaterialColor color) {
+        return block(id, new RotatedPillarBlock(
+            AbstractBlock.Properties.create(Material.ORGANIC, color)
+                                    .sound(SoundType.FUNGUS)
+                                    .harvestTool(ToolType.AXE)
+                                    .hardnessAndResistance(2f)
+        ));
+    }
+
+    private static Block globThatch(String id, MaterialColor color) {
+        return block(id, new Block(
+            AbstractBlock.Properties.create(Material.ORGANIC, color)
+                                    .sound(SoundType.WART_BLOCK)
+                                    .harvestTool(ToolType.HOE)
+                                    .hardnessAndResistance(1.5f)
+        ));
+    }
+
     private static Block wood(String id, MaterialColor color) {
         return block(id, new Block(
             AbstractBlock.Properties.create(Material.WOOD, color)
@@ -667,6 +716,15 @@ public final class MnBlocks {
                                     .hardnessAndResistance(1.7f)
                                     .sound(SoundType.WART_BLOCK),
             sporeColor
+        ));
+    }
+
+    private static Block bouncyShroomCap(String id, MaterialColor color) {
+        return block(id, new BouncyShroomCapBlock(
+            AbstractBlock.Properties.create(Material.ORGANIC, color)
+                                    .harvestTool(ToolType.HOE)
+                                    .hardnessAndResistance(1.1f)
+                                    .sound(SoundType.SLIME)
         ));
     }
 

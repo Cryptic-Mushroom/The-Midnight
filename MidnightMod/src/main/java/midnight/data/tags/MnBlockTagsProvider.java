@@ -59,6 +59,7 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
             MnBlocks.FLOWERING_VIRIDSHROOM_ROOTS,
             MnBlocks.BOGSHROOM,
             MnBlocks.BOGSHROOM_SHELF,
+            MnBlocks.GLOB_FUNGUS,
             MnBlocks.GHOST_PLANT
         );
         getOrCreateTagBuilder(MnBlockTags.DARK_WILLOW_LOGS).replace(false).add(
