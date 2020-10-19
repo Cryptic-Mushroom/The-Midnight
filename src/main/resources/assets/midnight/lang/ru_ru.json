@@ -465,6 +465,7 @@
 
   "_comment": "Config",
 
+  "config.midnight.title": "Конфигурации Midnight",
   "config.midnight.title.client": "Конфигурации Midnight - Клиент",
   "config.midnight.title.general": "Конфигурации Midnight - Основные",
   "config.midnight.title.server_logic": "Конфигурации Midnight - Логика сервера",
@@ -487,7 +488,8 @@
   
   "config.midnight.hide_vignette_effect": "Скрыть эффект виньетки",
   "config.midnight.hide_vignette_effect.tooltip": "Скрывает эффект виньетки в темных областях Миднайта.",
-  
+  "config.midnight.allow_brightness_change": "Разрешить изменение яркости",
+  "config.midnight.allow_brightness_change.tooltip": "Позволяет изменять яркость в Миднайте.",
   "config.midnight.ambient_spore_particles": "Частицы спор",
   "config.midnight.ambient_spore_particles.tooltip": "Определяет, появляются ли частицы спор вокруг.",
   "config.midnight.ambient_volume": "Звук окружения",
@@ -500,9 +502,9 @@
   "config.midnight.rift_dimensions": "Измерения с разломами",
   "config.midnight.rift_dimensions.tooltip": "В каких измерениях могут возникать Разломы.",
   "config.midnight.capturable_entities": "Захваченные существа",
-  "config.midnight.capturable_entities.tooltip": "Мобы, указанные в белом списке могут быть захвачены рифтерами, игроки и животные изначально могут быть захвачены.",
+  "config.midnight.capturable_entities.tooltip": "Мобы, указанные в белом списке могут быть захвачены разломщиками, игроки и животные изначально могут быть захвачены.",
   "config.midnight.not_capturable_animals": "Не захватываемые существа",
-  "config.midnight.not_capturable_animals.tooltip": "Мобы, указанные в чёрном списке не могут быть захвачены рифтерами.",
+  "config.midnight.not_capturable_animals.tooltip": "Мобы, указанные в чёрном списке не могут быть захвачены разломщиками.",
 
   "config.midnight.bladeshroom_damage_chance": "Шанс урона от клинкогриба",
   "config.midnight.bladeshroom_damage_chance.tooltip": "Шанс получения урона от подъёма клинкогриба. Если установлено значение \"0\", то урон не будет наносится",
@@ -518,19 +520,25 @@
   "config.midnight.allow_lightning_damage.tooltip": "Позволят молниям в Миднайте поджигать блоки и наносить урон.",
   "config.midnight.random_lightnings": "Случайные молнии",
   "config.midnight.random_lightnings.tooltip": "Устанавливает, возникают ли случайные молнии в Миднайт.",
+  "config.midnight.natural_rifter_spawn_rarity": "Естественная редкость разломщиков",
+  "config.midnight.natural_rifter_spawn_rarity.tooltip": "Процентная вероятность (от 0 до 100) естественного появления разломщикаа. Когда 0, разломщики не появляются.",
   "config.midnight.rifter_spawn_rarity": "Редкость разломщиков",
-  "config.midnight.rifter_spawn_rarity.tooltip": "Частота появления разломщиков. Чем выше значение, тем чаще появляются разломщики; значение \"0\" означает что разломщики появляться не будут.",
-  "config.midnight.max_rifter_by_rift": "Максимальное количество рифтеров у Разломов",
-  "config.midnight.max_rifter_by_rift.tooltip": "Максимальное количество рифтеров, которые появляются из Разлома.",
-  "config.midnight.allow_rifter_teleport": "Телепортация рифтеров",
-  "config.midnight.allow_rifter_teleport.tooltip": "Позволяет рифтерам телепортироваться к игрокам, когда на них не смотрят игроки.",
+  "config.midnight.rifter_spawn_rarity.tooltip": "Устанавливает редкость появления разломщиков из Разлома. Когда 0, разломщики не появляются.",
+  "config.midnight.max_rifter_by_rift": "Максимальное количество разломщиков у Разломов",
+  "config.midnight.max_rifter_by_rift.tooltip": "Максимальное количество разломщиков, которые появляются из Разлома.",
+  "config.midnight.allow_rifter_teleport": "Телепортация разломщиков",
+  "config.midnight.allow_rifter_teleport.tooltip": "Позволяет разломщикам телепортироваться к игрокам, когда на них не смотрят игроки.",
+  "config.midnight.rifter_ambience_chance": "Шанс звуков разломщика",
+  "config.midnight.rifter_ambience_chance.tooltip": "Процентная вероятность (от 0 до 100) для разломщика издать звук в любое время.",
   "config.midnight.rifter_capture_tamed_animal": "Захват прирученных животных",
-  "config.midnight.rifter_capture_tamed_animal.tooltip": "Позволятет рифтерам захватывать прирученных существ.",
+  "config.midnight.rifter_capture_tamed_animal.tooltip": "Позволятет разломщикам захватывать прирученных существ.",
   "config.midnight.rifter_capture_named_animal": "Захват именных животных",
-  "config.midnight.rifter_capture_named_animal.tooltip": "Позволятет рифтерам захватывать именных существ.",
+  "config.midnight.rifter_capture_named_animal.tooltip": "Позволятет разломщикам захватывать именных существ.",
   
   
   
+  "config.midnight.format.number_basic": "%s",
+  "config.midnight.format.number_percentage": "%s%%",
   "config.midnight.format.always": "Всегда",
   "config.midnight.format.never": "Никогда",
   "config.midnight.format.entries": "%s записей",
