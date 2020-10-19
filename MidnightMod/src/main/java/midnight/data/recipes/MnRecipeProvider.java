@@ -74,6 +74,12 @@ public class MnRecipeProvider extends RecipeProvider {
         shapeless("viridshroom_powder_from_tall_shroom", MnBlocks.TALL_VIRIDSHROOM, MnItems.VIRIDSHROOM_POWDER, 2);
         shapeless("viridshroom_powder_from_shelf", MnBlocks.VIRIDSHROOM_SHELF, MnItems.VIRIDSHROOM_POWDER, 1);
 
+        shapeless("moonshroom_planks_from_stem", MnBlocks.MOONSHROOM_STEM, MnBlocks.MOONSHROOM_PLANKS, 4);
+        shapeless("moonshroom_powder_from_cap", MnBlocks.MOONSHROOM_CAP, MnItems.MOONSHROOM_POWDER, 4);
+        shapeless("moonshroom_powder_from_shroom", MnBlocks.MOONSHROOM, MnItems.MOONSHROOM_POWDER, 1);
+        shapeless("moonshroom_powder_from_tall_shroom", MnBlocks.TALL_MOONSHROOM, MnItems.MOONSHROOM_POWDER, 2);
+        shapeless("moonshroom_powder_from_shelf", MnBlocks.MOONSHROOM_SHELF, MnItems.MOONSHROOM_POWDER, 1);
+
         shapeless("bogshroom_planks_from_stem", MnBlocks.BOGSHROOM_STEM, MnBlocks.BOGSHROOM_PLANKS, 4);
         shapeless("bogshroom_powder_from_cap", MnBlocks.BOGSHROOM_CAP, MnItems.BOGSHROOM_POWDER, 4);
         shapeless("bogshroom_powder_from_shroom", MnBlocks.BOGSHROOM, MnItems.BOGSHROOM_POWDER, 1);

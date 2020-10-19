@@ -54,6 +54,10 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
             MnBlocks.VIRIDSHROOM,
             MnBlocks.VIRIDSHROOM_ROOTS,
             MnBlocks.FLOWERING_VIRIDSHROOM_ROOTS,
+            MnBlocks.MOONSHROOM,
+            MnBlocks.MOONSHROOM_SHELF,
+            MnBlocks.MOONSHROOM_ROOTS,
+            MnBlocks.FLOWERING_MOONSHROOM_ROOTS,
             MnBlocks.BOGSHROOM,
             MnBlocks.MISTSHROOM,
             MnBlocks.GLOB_FUNGUS,
@@ -97,7 +101,8 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
             MnBlocks.NIGHTSHROOM_PLANKS,
             MnBlocks.DEWSHROOM_PLANKS,
             MnBlocks.VIRIDSHROOM_PLANKS,
-            MnBlocks.BOGSHROOM_PLANKS
+            MnBlocks.BOGSHROOM_PLANKS,
+            MnBlocks.MOONSHROOM_PLANKS
         );
     }
 

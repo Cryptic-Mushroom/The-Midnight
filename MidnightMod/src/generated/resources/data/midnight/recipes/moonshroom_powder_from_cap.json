@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "midnight:moonshroom_cap"
+    }
+  ],
+  "result": {
+    "item": "midnight:moonshroom_powder",
+    "count": 4
+  }
+}

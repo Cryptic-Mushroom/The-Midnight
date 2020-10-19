@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:block/cube",
   "textures": {
+    "particle": "midnight:block/glob_fungus_stem_side",
     "north": "midnight:block/infested_glob_fungus_stem",
     "east": "midnight:block/glob_fungus_stem_side",
     "south": "midnight:block/glob_fungus_stem_side",
