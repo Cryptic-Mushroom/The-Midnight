@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 19
  */
 
 package midnight.common.block;
@@ -80,7 +80,7 @@ public class ShroomAirBlock extends AirBlock {
                     double y = pos.getY() + 0.5 + (rng.nextDouble() - rng.nextDouble() + rng.nextDouble() - rng.nextDouble()) / 2;
                     double z = pos.getZ() + 0.5 + (rng.nextDouble() - rng.nextDouble() + rng.nextDouble() - rng.nextDouble()) / 2;
 
-                    world.addParticle(MnParticleTypes.SPORE, x, y, z, r, g, b);
+                    world.addParticle(MnParticleTypes.SHROOM_SPORE, x, y, z, r, g, b);
                 }
             }
         }

@@ -126,6 +126,17 @@ public final class BlockStateTable {
         register(MnBlocks.GLOB_FUNGUS_STEM, block -> rotatedPillar(name(block, "block/%s"), cubeColumn(name(block, "block/%s_end"), name(block, "block/%s_side"))));
         register(MnBlocks.INFESTED_GLOB_FUNGUS_STEM, block -> horizRotatedUVLock(name(block, "block/%s"), cubeFrontSided(name(block, "block/%s"), name(block, "block/glob_fungus_stem_side"), name(block, "block/glob_fungus_stem_end"), name(block, "block/glob_fungus_stem_end"))));
 
+        register(MnBlocks.MISTSHROOM, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
+        register(MnBlocks.TALL_MISTSHROOM, block -> doublePlant(name(block, "block/%s_lower"), cross(name(block, "block/%s_lower")), name(block, "block/%s_upper"), cross(name(block, "block/%s_upper"))));
+        register(MnBlocks.FINGERED_GRASS, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
+        register(MnBlocks.LUMEN_BUD, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
+        register(MnBlocks.TALL_LUMEN_BUD, block -> doublePlant(name(block, "block/%s_lower"), cross(name(block, "block/%s_lower")), name(block, "block/%s_upper"), cross(name(block, "block/%s_upper"))));
+        register(MnBlocks.RUNEBUSH, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
+        register(MnBlocks.BOGWEED, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
+        register(MnBlocks.CRYSTALOTUS, block -> simple(name(block, "block/%s"), crystalotus(name(block, "block/%s_leaf"), name(block, "block/%s_core"))));
+
+        register(MnBlocks.ROCKSHROOM, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+
         register(MnBlocks.DARK_PEARL_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.DARK_PEARL_BLOCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
     }

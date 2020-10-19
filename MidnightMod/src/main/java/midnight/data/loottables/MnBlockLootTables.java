@@ -130,6 +130,17 @@ public class MnBlockLootTables extends BlockLootTables {
         registerLootTable(MnBlocks.GLOB_FUNGUS_HYPHAE, block -> droppingSilkTouchOrRanged(block, MnItems.GLOB_FUNGUS_HAND, 2, 4));
         registerDropSelfLootTable(MnBlocks.GLOB_FUNGUS_THATCH);
 
+        registerDropSelfLootTable(MnBlocks.MISTSHROOM);
+        registerLootTable(MnBlocks.TALL_MISTSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+        registerDropSelfLootTable(MnBlocks.FINGERED_GRASS);
+        registerDropSelfLootTable(MnBlocks.LUMEN_BUD);
+        registerLootTable(MnBlocks.TALL_LUMEN_BUD, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+        registerDropSelfLootTable(MnBlocks.RUNEBUSH);
+        registerDropSelfLootTable(MnBlocks.BOGWEED);
+        registerDropSelfLootTable(MnBlocks.CRYSTALOTUS);
+
+        registerLootTable(MnBlocks.ROCKSHROOM, block -> droppingSilkTouchOrRanged(block, MnItems.ROCKSHROOM_CLUMP, 2, 3));
+
         registerLootTable(MnBlocks.DARK_PEARL_ORE, block -> droppingItemWithFortune(block, MnItems.GEODE));
         registerDropSelfLootTable(MnBlocks.DARK_PEARL_BLOCK);
     }

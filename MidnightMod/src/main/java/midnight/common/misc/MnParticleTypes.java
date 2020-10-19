@@ -3,11 +3,12 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 19
  */
 
 package midnight.common.misc;
 
+import midnight.client.particle.ShroomSporeParticle;
 import midnight.client.particle.SporeParticle;
 import midnight.common.Midnight;
 import midnight.core.util.IRegistry;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 public final class MnParticleTypes {
     private static final ArrayList<ParticleType<?>> REGISTRY = new ArrayList<>();
 
+    public static final BasicParticleType SHROOM_SPORE = type("shroom_spore", new BasicParticleType(false));
     public static final BasicParticleType SPORE = type("spore", new BasicParticleType(false));
 
     private MnParticleTypes() {
@@ -31,6 +33,7 @@ public final class MnParticleTypes {
     @OnlyIn(Dist.CLIENT)
     public static void setupClient() {
         ParticleManager particles = Minecraft.getInstance().particles;
+        particles.registerFactory(SHROOM_SPORE, ShroomSporeParticle.Factory::new);
         particles.registerFactory(SPORE, SporeParticle.Factory::new);
     }
 

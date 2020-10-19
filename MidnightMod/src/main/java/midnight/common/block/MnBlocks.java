@@ -16,6 +16,7 @@ import midnight.common.item.group.MnItemGroup;
 import midnight.common.world.biome.MnBiomeColors;
 import midnight.core.util.ColorUtil;
 import midnight.core.util.IRegistry;
+import midnight.core.util.MnUtil;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -141,6 +142,17 @@ public final class MnBlocks {
     public static final Block GLOB_FUNGUS_HYPHAE = inj();
     public static final Block GLOB_FUNGUS_THATCH = inj();
 
+    public static final Block MISTSHROOM = inj();
+    public static final Block TALL_MISTSHROOM = inj();
+    public static final Block FINGERED_GRASS = inj();
+    public static final Block LUMEN_BUD = inj();
+    public static final Block TALL_LUMEN_BUD = inj();
+    public static final Block RUNEBUSH = inj();
+    public static final Block BOGWEED = inj();
+    public static final Block CRYSTALOTUS = inj();
+
+    public static final Block ROCKSHROOM = inj();
+
     public static final Block DARK_PEARL_ORE = inj();
     public static final Block DARK_PEARL_BLOCK = inj();
 
@@ -238,6 +250,17 @@ public final class MnBlocks {
             globStem("glob_fungus_hyphae", MaterialColor.PURPLE),
             globThatch("glob_fungus_thatch", MaterialColor.PURPLE),
 
+            smallShroom("mistshroom", 0, 0, Material.PLANTS, MaterialColor.CYAN_TERRACOTTA, () -> (MnDoublePlantBlock) TALL_MISTSHROOM).setPlantHitbox(13, 13).setOffsetType(Block.OffsetType.XZ),
+            tallShroom("tall_mistshroom", 0, 0, Material.PLANTS, MaterialColor.CYAN_TERRACOTTA).setPlantHitbox(13, 30).setOffsetType(Block.OffsetType.XZ),
+            fingeredGrass("fingered_grass").setPlantHitbox(12, 12).setOffsetType(Block.OffsetType.XYZ),
+            smallGlowingGrowable("lumen_bud", 0, 0, 10, Material.PLANTS, MaterialColor.CYAN_TERRACOTTA, () -> (MnDoublePlantBlock) TALL_LUMEN_BUD).setPlantHitbox(13, 14).setOffsetType(Block.OffsetType.XZ),
+            tallGlowingPlant("tall_lumen_bud", 0, 0, 10, Material.PLANTS, MaterialColor.CYAN_TERRACOTTA).setPlantHitbox(13, 30).setOffsetType(Block.OffsetType.XZ),
+            glowingBush("runebush", 0, 0, 10, Material.PLANTS, MaterialColor.CYAN).setPlantHitbox(12, 13).setOffsetType(Block.OffsetType.XZ),
+            wetPlant("bogweed", 0, 0, 14, Material.PLANTS, MaterialColor.LIME).setPlantHitbox(12, 12).setOffsetType(Block.OffsetType.XZ),
+            crystalotus("crystalotus"),
+
+            rockshroom("rockshroom"),
+
             stone("dark_pearl_ore", 3, 6, MaterialColor.OBSIDIAN),
             darkPearl("dark_pearl_block", 3, 6, MaterialColor.BLACK)
         );
@@ -326,12 +349,23 @@ public final class MnBlocks {
             item(BOGSHROOM_SHELF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(BOGSHROOM_FIBRE, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
 
+            item(MISTSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(TALL_MISTSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(FINGERED_GRASS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(LUMEN_BUD, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(TALL_LUMEN_BUD, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(RUNEBUSH, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(BOGWEED, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(CRYSTALOTUS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+
             item(GLOB_FUNGUS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(GLOB_FUNGUS_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
             item(GLOB_FUNGUS_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
             item(INFESTED_GLOB_FUNGUS_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
             item(GLOB_FUNGUS_HYPHAE, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
             item(GLOB_FUNGUS_THATCH, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
+
+            item(ROCKSHROOM, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
 
             item(DARK_PEARL_ORE, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
             item(DARK_PEARL_BLOCK, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS)
@@ -386,6 +420,15 @@ public final class MnBlocks {
 
         RenderTypeLookup.setRenderLayer(GLOB_FUNGUS, RenderType.getCutout());
 
+        RenderTypeLookup.setRenderLayer(MISTSHROOM, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(TALL_MISTSHROOM, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(FINGERED_GRASS, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(LUMEN_BUD, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(TALL_LUMEN_BUD, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(RUNEBUSH, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BOGWEED, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(CRYSTALOTUS, RenderType.getCutout());
+
 
         BlockColors blockColors = Minecraft.getInstance().getBlockColors();
         ItemColors itemColors = Minecraft.getInstance().getItemColors();
@@ -393,7 +436,8 @@ public final class MnBlocks {
         blockColors.register(
             (state, world, pos, tint) -> {
                 if (pos == null || world == null) return 0x9A63B8;
-                return MidnightClient.get().getNightGrassColorCache().getColor(pos, MnBiomeColors.NIGHT_GRASS);
+                int color = MidnightClient.get().getNightGrassColorCache().getColor(pos, MnBiomeColors.NIGHT_GRASS);
+                return MnUtil.modifyGrassColor(color, pos);
             },
             NIGHT_GRASS_BLOCK
         );
@@ -406,6 +450,7 @@ public final class MnBlocks {
             (state, world, pos, tint) -> {
                 if (pos == null || world == null) return 0x8C74A1;
                 int color = MidnightClient.get().getNightGrassColorCache().getColor(pos, MnBiomeColors.NIGHT_GRASS);
+                color = MnUtil.modifyGrassColor(color, pos);
                 color = ColorUtil.darker(color, 0.3);
                 return color;
             },
@@ -516,12 +561,59 @@ public final class MnBlocks {
         ));
     }
 
+    private static Block rockshroom(String id) {
+        return block(id, new RockshroomBlock(
+            AbstractBlock.Properties.create(Material.ROCK, MaterialColor.PINK)
+                                    .sound(SoundType.NETHERRACK)
+                                    .hardnessAndResistance(1.2f, 4)
+                                    .harvestTool(ToolType.PICKAXE)
+        ));
+    }
+
     private static MnPlantBlock plant(String id, double hardness, double resistance, Material material, MaterialColor color) {
         return block(id, new MnPlantBlock(
             AbstractBlock.Properties.create(material, color)
                                     .nonOpaque()
                                     .sound(SoundType.PLANT)
                                     .hardnessAndResistance((float) hardness, (float) resistance)
+        ));
+    }
+
+    private static MnPlantBlock bush(String id, double hardness, double resistance, Material material, MaterialColor color) {
+        return block(id, new MnPlantBlock(
+            AbstractBlock.Properties.create(material, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.SWEET_BERRY_BUSH)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
+        ));
+    }
+
+    private static MnPlantBlock glowingBush(String id, double hardness, double resistance, int emission, Material material, MaterialColor color) {
+        return block(id, new MnPlantBlock(
+            AbstractBlock.Properties.create(material, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.SWEET_BERRY_BUSH)
+                                    .luminance(state -> emission)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
+        ));
+    }
+
+    private static MnPlantBlock wetPlant(String id, double hardness, double resistance, int emission, Material material, MaterialColor color) {
+        return block(id, new MnPlantBlock(
+            AbstractBlock.Properties.create(material, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.WET_GRASS)
+                                    .luminance(state -> emission)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
+        ));
+    }
+
+    private static MnPlantBlock fingeredGrass(String id) {
+        return block(id, new FingeredGrassBlock(
+            AbstractBlock.Properties.create(Material.PLANTS, MaterialColor.BLUE)
+                                    .nonOpaque()
+                                    .sound(SoundType.PLANT)
+                                    .hardnessAndResistance(0, 0)
         ));
     }
 
@@ -549,6 +641,27 @@ public final class MnBlocks {
             AbstractBlock.Properties.create(material, color)
                                     .nonOpaque()
                                     .sound(SoundType.PLANT)
+                                    .hardnessAndResistance((float) hardness, (float) resistance),
+            tall
+        ));
+    }
+
+    private static MnDoublePlantBlock tallGlowingPlant(String id, double hardness, double resistance, int emission, Material material, MaterialColor color) {
+        return block(id, new MnDoublePlantBlock(
+            AbstractBlock.Properties.create(material, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.PLANT)
+                                    .luminance(state -> emission)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
+        ));
+    }
+
+    private static MnPlantBlock smallGlowingGrowable(String id, double hardness, double resistance, int emission, Material material, MaterialColor color, Supplier<MnDoublePlantBlock> tall) {
+        return block(id, new SmallGrowablePlantBlock(
+            AbstractBlock.Properties.create(material, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.PLANT)
+                                    .luminance(state -> emission)
                                     .hardnessAndResistance((float) hardness, (float) resistance),
             tall
         ));
@@ -603,6 +716,16 @@ public final class MnBlocks {
                                     .nonOpaque()
                                     .sound(SoundType.FUNGUS)
                                     .hardnessAndResistance((float) hardness, (float) resistance)
+        ));
+    }
+
+    private static CrystalotusBlock crystalotus(String id) {
+        return block(id, new CrystalotusBlock(
+            AbstractBlock.Properties.create(Material.ORGANIC, MaterialColor.LIGHT_BLUE)
+                                    .nonOpaque()
+                                    .sound(SoundType.GLASS)
+                                    .luminance(state -> 13)
+                                    .hardnessAndResistance(0.2f, 0.5f)
         ));
     }
 

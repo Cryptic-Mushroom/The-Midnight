@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "midnight:block/tall_lumen_bud_upper"
+  }
+}

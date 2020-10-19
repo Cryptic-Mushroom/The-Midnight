@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 19
  */
 
 package midnight.data.tags;
@@ -46,20 +46,21 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
             MnBlocks.STRANGE_SAND,
             MnBlocks.COARSE_NIGHT_DIRT,
             MnBlocks.NIGHTSHROOM,
-            MnBlocks.NIGHTSHROOM_SHELF,
             MnBlocks.NIGHTSHROOM_ROOTS,
             MnBlocks.FLOWERING_NIGHTSHROOM_ROOTS,
             MnBlocks.DEWSHROOM,
-            MnBlocks.DEWSHROOM_SHELF,
             MnBlocks.DEWSHROOM_ROOTS,
             MnBlocks.FLOWERING_DEWSHROOM_ROOTS,
             MnBlocks.VIRIDSHROOM,
-            MnBlocks.VIRIDSHROOM_SHELF,
             MnBlocks.VIRIDSHROOM_ROOTS,
             MnBlocks.FLOWERING_VIRIDSHROOM_ROOTS,
             MnBlocks.BOGSHROOM,
-            MnBlocks.BOGSHROOM_SHELF,
+            MnBlocks.MISTSHROOM,
             MnBlocks.GLOB_FUNGUS,
+            MnBlocks.FINGERED_GRASS,
+            MnBlocks.LUMEN_BUD,
+            MnBlocks.RUNEBUSH,
+            MnBlocks.BOGWEED,
             MnBlocks.GHOST_PLANT
         );
         getOrCreateTagBuilder(MnBlockTags.DARK_WILLOW_LOGS).replace(false).add(

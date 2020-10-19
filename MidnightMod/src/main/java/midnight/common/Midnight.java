@@ -16,6 +16,7 @@ import midnight.api.event.MidnightInitEvent;
 import midnight.api.event.MidnightPostInitEvent;
 import midnight.api.event.MidnightPreInitEvent;
 import midnight.client.MidnightClient;
+import midnight.common.net.MnNetwork;
 import midnight.common.world.dimension.MnDimensions;
 import midnight.common.world.levelgen.MnLevelgen;
 import midnight.core.plugin.PluginManager;
@@ -72,6 +73,7 @@ public abstract class Midnight implements IMidnight {
         }
         MnDimensions.init();
         MnLevelgen.init();
+        MnNetwork.init();
     }
 
     /**

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=upper": {
+      "model": "midnight:block/tall_mistshroom_upper"
+    },
+    "half=lower": {
+      "model": "midnight:block/tall_mistshroom_lower"
+    }
+  }
+}

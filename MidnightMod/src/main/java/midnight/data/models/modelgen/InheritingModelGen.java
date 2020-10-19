@@ -387,4 +387,10 @@ public class InheritingModelGen implements IModelGen {
                    .texture("layer2", layer2)
                    .texture("layer3", layer3);
     }
+
+    public static InheritingModelGen crystalotus(String leaf, String core) {
+        return new InheritingModelGen("midnight:block/crystalotus_base")
+                   .texture("leaf", leaf)
+                   .texture("core", core);
+    }
 }
