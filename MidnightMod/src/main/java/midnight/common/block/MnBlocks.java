@@ -48,7 +48,7 @@ import java.util.function.Supplier;
  * @since 0.6.0
  */
 @ObjectHolder("midnight")
-public final class MnBlocks {
+public abstract class MnBlocks {
 
     public static final Block NIGHTSTONE = inj();
     public static final Block NIGHT_BEDROCK = inj();
