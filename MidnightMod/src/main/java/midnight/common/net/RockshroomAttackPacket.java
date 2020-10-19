@@ -16,6 +16,17 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkEvent;
 
+/**
+ * A packet sent when a player mines rockshroom without a Silk Touch enchantment on his or her tool. This packet
+ * notifies clients to play a small particle effect of little spores popping out of the rockshroom block, harming the
+ * player.
+ * <p>
+ * The packet has a 64-bits payload holding the packed coordinates of the rockshroom block being broken.
+ * </p>
+ *
+ * @author Shadew
+ * @since 0.6.0
+ */
 public class RockshroomAttackPacket implements MnPacket {
     private final BlockPos pos;
 
