@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "midnight:moonshroom_stem"
+    }
+  ],
+  "result": {
+    "item": "midnight:moonshroom_planks",
+    "count": 4
+  }
+}

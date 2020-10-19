@@ -36,6 +36,7 @@ public final class MnItems {
     public static final Item DEWSHROOM_POWDER = inj();
     public static final Item VIRIDSHROOM_POWDER = inj();
     public static final Item BOGSHROOM_POWDER = inj();
+    public static final Item MOONSHROOM_POWDER = inj();
 
     public static final Item GLOB_FUNGUS_HAND = inj();
 
@@ -53,6 +54,7 @@ public final class MnItems {
             item("dewshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
             item("viridshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
             item("bogshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
+            item("moonshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
 
             edible("glob_fungus_hand", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC, MnFoods.GLOB_FUNGUS_HAND)
         );

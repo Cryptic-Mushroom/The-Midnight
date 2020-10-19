@@ -102,6 +102,17 @@ public final class ItemModelTable {
         register(MnBlocks.TALL_VIRIDSHROOM, item -> generated(name(item, "block/%s_upper")));
         register(MnItems.VIRIDSHROOM_POWDER, item -> generated(name(item, "item/%s")));
 
+        register(MnBlocks.MOONSHROOM_CAP, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.MOONSHROOM_STEM, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.MOONSHROOM_PLANKS, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.MOONSHROOM, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.MOONSHROOM_FIBRE, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.MOONSHROOM_SHELF, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.MOONSHROOM_ROOTS, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.FLOWERING_MOONSHROOM_ROOTS, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.TALL_MOONSHROOM, item -> generated(name(item, "block/%s_upper")));
+        register(MnItems.MOONSHROOM_POWDER, item -> generated(name(item, "item/%s")));
+
         register(MnBlocks.BOGSHROOM_CAP, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.BOGSHROOM_STEM, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.BOGSHROOM_PLANKS, item -> inherit(name(item, "block/%s")));

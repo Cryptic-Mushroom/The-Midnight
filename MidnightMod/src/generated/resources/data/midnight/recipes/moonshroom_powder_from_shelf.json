@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "midnight:moonshroom_shelf"
+    }
+  ],
+  "result": {
+    "item": "midnight:moonshroom_powder"
+  }
+}

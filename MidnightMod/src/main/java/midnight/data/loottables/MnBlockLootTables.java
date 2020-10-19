@@ -115,6 +115,16 @@ public class MnBlockLootTables extends BlockLootTables {
         registerLootTable(MnBlocks.TALL_VIRIDSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
         registerLootTable(MnBlocks.VIRIDSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.VIRIDSHROOM_POWDER, MnBlocks.VIRIDSHROOM, MnBlocks.TALL_VIRIDSHROOM));
 
+        registerDropSelfLootTable(MnBlocks.MOONSHROOM_STEM);
+        registerDropSelfLootTable(MnBlocks.MOONSHROOM_PLANKS);
+        registerDropSelfLootTable(MnBlocks.MOONSHROOM);
+        registerDropSelfLootTable(MnBlocks.MOONSHROOM_SHELF);
+        registerLootTable(MnBlocks.MOONSHROOM_FIBRE, MnBlockLootTables::droppingFibre);
+        registerLootTable(MnBlocks.MOONSHROOM_ROOTS, BlockLootTables::onlyWithShears);
+        registerLootTable(MnBlocks.FLOWERING_MOONSHROOM_ROOTS, BlockLootTables::onlyWithShears);
+        registerLootTable(MnBlocks.TALL_MOONSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+        registerLootTable(MnBlocks.MOONSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.MOONSHROOM_POWDER, MnBlocks.MOONSHROOM, MnBlocks.TALL_MOONSHROOM));
+
         registerDropSelfLootTable(MnBlocks.BOGSHROOM_STEM);
         registerDropSelfLootTable(MnBlocks.BOGSHROOM_PLANKS);
         registerDropSelfLootTable(MnBlocks.BOGSHROOM);

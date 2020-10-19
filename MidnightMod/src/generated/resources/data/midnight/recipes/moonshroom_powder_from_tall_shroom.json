@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "midnight:tall_moonshroom"
+    }
+  ],
+  "result": {
+    "item": "midnight:moonshroom_powder",
+    "count": 2
+  }
+}

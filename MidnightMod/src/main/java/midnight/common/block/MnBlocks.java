@@ -126,6 +126,16 @@ public final class MnBlocks {
     public static final Block VIRIDSHROOM_ROOTS = inj();
     public static final Block FLOWERING_VIRIDSHROOM_ROOTS = inj();
 
+    public static final Block MOONSHROOM_CAP = inj();
+    public static final Block MOONSHROOM_STEM = inj();
+    public static final Block MOONSHROOM_PLANKS = inj();
+    public static final Block MOONSHROOM = inj();
+    public static final Block TALL_MOONSHROOM = inj();
+    public static final Block MOONSHROOM_SHELF = inj();
+    public static final Block MOONSHROOM_FIBRE = inj();
+    public static final Block MOONSHROOM_ROOTS = inj();
+    public static final Block FLOWERING_MOONSHROOM_ROOTS = inj();
+
     public static final Block BOGSHROOM_CAP = inj();
     public static final Block BOGSHROOM_STEM = inj();
     public static final Block BOGSHROOM_PLANKS = inj();
@@ -196,42 +206,52 @@ public final class MnBlocks {
             shroomCap("nightshroom_cap", MaterialColor.BLUE, 0x7566B0),
             stem("nightshroom_stem", MaterialColor.BLUE),
             wood("nightshroom_planks", MaterialColor.BLUE),
-            smallShroom("nightshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.BLUE, () -> (MnDoublePlantBlock) TALL_NIGHTSHROOM).setPlantHitbox(14, 14).setOffsetType(Block.OffsetType.XZ),
-            tallShroom("tall_nightshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.BLUE).setPlantHitbox(14, 30).setOffsetType(Block.OffsetType.XZ),
-            shelf("nightshroom_shelf", 0, 0, Material.TALL_PLANTS, MaterialColor.BLUE),
+            smallShroom("nightshroom", 0, 0, Material.PLANTS, MaterialColor.BLUE, () -> (MnDoublePlantBlock) TALL_NIGHTSHROOM).setPlantHitbox(14, 14).setOffsetType(Block.OffsetType.XZ),
+            tallShroom("tall_nightshroom", 0, 0, Material.PLANTS, MaterialColor.BLUE).setPlantHitbox(14, 30).setOffsetType(Block.OffsetType.XZ),
+            shelf("nightshroom_shelf", 0, 0, Material.PLANTS, MaterialColor.BLUE),
             fibre("nightshroom_fibre", Material.TALL_PLANTS, MaterialColor.BLUE),
-            shroomRoots("nightshroom_roots", Material.TALL_PLANTS, MaterialColor.BLUE).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
-            shroomRoots("flowering_nightshroom_roots", Material.TALL_PLANTS, MaterialColor.BLUE).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
+            shroomRoots("nightshroom_roots", Material.PLANTS, MaterialColor.BLUE).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
+            shroomRoots("flowering_nightshroom_roots", Material.PLANTS, MaterialColor.BLUE).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
 
             shroomCap("dewshroom_cap", MaterialColor.CYAN, 0x72CFD4),
             stem("dewshroom_stem", MaterialColor.CYAN),
             wood("dewshroom_planks", MaterialColor.CYAN),
-            smallShroom("dewshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.CYAN, () -> (MnDoublePlantBlock) TALL_DEWSHROOM).setPlantHitbox(14, 14).setOffsetType(Block.OffsetType.XZ),
-            tallShroom("tall_dewshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.CYAN).setPlantHitbox(14, 30).setOffsetType(Block.OffsetType.XZ),
-            shelf("dewshroom_shelf", 0, 0, Material.TALL_PLANTS, MaterialColor.CYAN),
+            smallShroom("dewshroom", 0, 0, Material.PLANTS, MaterialColor.CYAN, () -> (MnDoublePlantBlock) TALL_DEWSHROOM).setPlantHitbox(14, 14).setOffsetType(Block.OffsetType.XZ),
+            tallShroom("tall_dewshroom", 0, 0, Material.PLANTS, MaterialColor.CYAN).setPlantHitbox(14, 30).setOffsetType(Block.OffsetType.XZ),
+            shelf("dewshroom_shelf", 0, 0, Material.PLANTS, MaterialColor.CYAN),
             fibre("dewshroom_fibre", Material.TALL_PLANTS, MaterialColor.CYAN),
-            shroomRoots("dewshroom_roots", Material.TALL_PLANTS, MaterialColor.CYAN).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
-            shroomRoots("flowering_dewshroom_roots", Material.TALL_PLANTS, MaterialColor.CYAN).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
+            shroomRoots("dewshroom_roots", Material.PLANTS, MaterialColor.CYAN).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
+            shroomRoots("flowering_dewshroom_roots", Material.PLANTS, MaterialColor.CYAN).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
 
             shroomCap("viridshroom_cap", MaterialColor.LIME, 0x84F54C),
             stem("viridshroom_stem", MaterialColor.LIME),
             wood("viridshroom_planks", MaterialColor.LIME),
-            smallShroom("viridshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.LIME, () -> (MnDoublePlantBlock) TALL_VIRIDSHROOM).setPlantHitbox(14, 14).setOffsetType(Block.OffsetType.XZ),
-            tallShroom("tall_viridshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.LIME).setPlantHitbox(14, 30).setOffsetType(Block.OffsetType.XZ),
-            shelf("viridshroom_shelf", 0, 0, Material.TALL_PLANTS, MaterialColor.LIME),
+            smallShroom("viridshroom", 0, 0, Material.PLANTS, MaterialColor.LIME, () -> (MnDoublePlantBlock) TALL_VIRIDSHROOM).setPlantHitbox(14, 14).setOffsetType(Block.OffsetType.XZ),
+            tallShroom("tall_viridshroom", 0, 0, Material.PLANTS, MaterialColor.LIME).setPlantHitbox(14, 30).setOffsetType(Block.OffsetType.XZ),
+            shelf("viridshroom_shelf", 0, 0, Material.PLANTS, MaterialColor.LIME),
             fibre("viridshroom_fibre", Material.TALL_PLANTS, MaterialColor.LIME),
-            shroomRoots("viridshroom_roots", Material.TALL_PLANTS, MaterialColor.LIME).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
-            shroomRoots("flowering_viridshroom_roots", Material.TALL_PLANTS, MaterialColor.LIME).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
+            shroomRoots("viridshroom_roots", Material.PLANTS, MaterialColor.LIME).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
+            shroomRoots("flowering_viridshroom_roots", Material.PLANTS, MaterialColor.LIME).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
+
+            shroomCap("moonshroom_cap", MaterialColor.LIGHT_GRAY, 0xD7F3F5),
+            stem("moonshroom_stem", MaterialColor.GRAY),
+            wood("moonshroom_planks", MaterialColor.GRAY),
+            smallShroom("moonshroom", 0, 0, Material.PLANTS, MaterialColor.LIGHT_GRAY, () -> (MnDoublePlantBlock) TALL_MOONSHROOM).setPlantHitbox(14, 14).setOffsetType(Block.OffsetType.XZ),
+            tallShroom("tall_moonshroom", 0, 0, Material.PLANTS, MaterialColor.LIGHT_GRAY).setPlantHitbox(14, 30).setOffsetType(Block.OffsetType.XZ),
+            shelf("moonshroom_shelf", 0, 0, Material.PLANTS, MaterialColor.LIGHT_GRAY),
+            fibre("moonshroom_fibre", Material.TALL_PLANTS, MaterialColor.GRAY),
+            shroomRoots("moonshroom_roots", Material.PLANTS, MaterialColor.GRAY).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
+            shroomRoots("flowering_moonshroom_roots", Material.PLANTS, MaterialColor.GRAY).setPlantHitbox(13, 14).setOffsetType(AbstractBlock.OffsetType.XZ),
 
             shroomCap("bogshroom_cap", MaterialColor.ADOBE, 0xF5AF4C),
             stem("bogshroom_stem", MaterialColor.ADOBE),
             wood("bogshroom_planks", MaterialColor.ADOBE),
-            smallShroom("bogshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.ADOBE, () -> (MnDoublePlantBlock) TALL_BOGSHROOM).setPlantHitbox(14, 14).setOffsetType(Block.OffsetType.XZ),
-            tallShroom("tall_bogshroom", 0, 0, Material.TALL_PLANTS, MaterialColor.ADOBE).setPlantHitbox(14, 30).setOffsetType(Block.OffsetType.XZ),
-            shelf("bogshroom_shelf", 0, 0, Material.TALL_PLANTS, MaterialColor.ADOBE),
+            smallShroom("bogshroom", 0, 0, Material.PLANTS, MaterialColor.ADOBE, () -> (MnDoublePlantBlock) TALL_BOGSHROOM).setPlantHitbox(14, 14).setOffsetType(Block.OffsetType.XZ),
+            tallShroom("tall_bogshroom", 0, 0, Material.PLANTS, MaterialColor.ADOBE).setPlantHitbox(14, 30).setOffsetType(Block.OffsetType.XZ),
+            shelf("bogshroom_shelf", 0, 0, Material.PLANTS, MaterialColor.ADOBE),
             fibre("bogshroom_fibre", Material.TALL_PLANTS, MaterialColor.ADOBE),
 
-            smallFungus("glob_fungus", 0, 0, Material.TALL_PLANTS, MaterialColor.MAGENTA).setPlantHitbox(13, 13).setOffsetType(Block.OffsetType.XYZ),
+            smallFungus("glob_fungus", 0, 0, Material.PLANTS, MaterialColor.MAGENTA).setPlantHitbox(13, 13).setOffsetType(Block.OffsetType.XYZ),
             globCap("glob_fungus_cap", MaterialColor.MAGENTA),
             globStem("glob_fungus_stem", MaterialColor.PURPLE),
             infestedGlobStem("infested_glob_fungus_stem", MaterialColor.PURPLE),
@@ -318,6 +338,16 @@ public final class MnBlocks {
             item(VIRIDSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(FLOWERING_VIRIDSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
 
+            item(MOONSHROOM_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
+            item(MOONSHROOM_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
+            item(MOONSHROOM_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
+            item(MOONSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(TALL_MOONSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(MOONSHROOM_SHELF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(MOONSHROOM_FIBRE, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(MOONSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(FLOWERING_MOONSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+
             item(BOGSHROOM_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
             item(BOGSHROOM_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
             item(BOGSHROOM_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
@@ -378,6 +408,13 @@ public final class MnBlocks {
         RenderTypeLookup.setRenderLayer(VIRIDSHROOM_SHELF, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(VIRIDSHROOM_ROOTS, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(FLOWERING_VIRIDSHROOM_ROOTS, RenderType.getCutout());
+
+        RenderTypeLookup.setRenderLayer(MOONSHROOM, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(TALL_MOONSHROOM, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(MOONSHROOM_FIBRE, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(MOONSHROOM_SHELF, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(MOONSHROOM_ROOTS, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(FLOWERING_MOONSHROOM_ROOTS, RenderType.getCutout());
 
         RenderTypeLookup.setRenderLayer(BOGSHROOM, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(TALL_BOGSHROOM, RenderType.getCutout());

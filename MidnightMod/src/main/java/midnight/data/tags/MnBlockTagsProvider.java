@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 19
  */
 
 package midnight.data.tags;
@@ -57,6 +57,10 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
             MnBlocks.VIRIDSHROOM_SHELF,
             MnBlocks.VIRIDSHROOM_ROOTS,
             MnBlocks.FLOWERING_VIRIDSHROOM_ROOTS,
+            MnBlocks.MOONSHROOM,
+            MnBlocks.MOONSHROOM_SHELF,
+            MnBlocks.MOONSHROOM_ROOTS,
+            MnBlocks.FLOWERING_MOONSHROOM_ROOTS,
             MnBlocks.BOGSHROOM,
             MnBlocks.BOGSHROOM_SHELF,
             MnBlocks.GLOB_FUNGUS,
@@ -96,7 +100,8 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
             MnBlocks.NIGHTSHROOM_PLANKS,
             MnBlocks.DEWSHROOM_PLANKS,
             MnBlocks.VIRIDSHROOM_PLANKS,
-            MnBlocks.BOGSHROOM_PLANKS
+            MnBlocks.BOGSHROOM_PLANKS,
+            MnBlocks.MOONSHROOM_PLANKS
         );
     }
 
