@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 19
  */
 
 package midnight.data.models;
@@ -120,10 +120,11 @@ public final class BlockStateTable {
         register(MnBlocks.TALL_BOGSHROOM, block -> doublePlant(name(block, "block/%s_lower"), cross(name(block, "block/%s_lower")), name(block, "block/%s_upper"), cross(name(block, "block/%s_upper"))));
 
         register(MnBlocks.GLOB_FUNGUS_CAP, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
-        register(MnBlocks.GLOB_FUNGUS_HYPHAE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s_stem_side", "_hyphae"))));
+        register(MnBlocks.GLOB_FUNGUS_HYPHAE, block -> rotatedPillar(name(block, "block/%s"), cubeAll(name(block, "block/%s_stem_side", "_hyphae"))));
         register(MnBlocks.GLOB_FUNGUS_THATCH, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.GLOB_FUNGUS, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
-        register(MnBlocks.GLOB_FUNGUS_STEM, block -> simple(name(block, "block/%s"), cubeColumn(name(block, "block/%s_end"), name(block, "block/%s_side"))));
+        register(MnBlocks.GLOB_FUNGUS_STEM, block -> rotatedPillar(name(block, "block/%s"), cubeColumn(name(block, "block/%s_end"), name(block, "block/%s_side"))));
+        register(MnBlocks.INFESTED_GLOB_FUNGUS_STEM, block -> horizRotatedUVLock(name(block, "block/%s"), cubeFrontSided(name(block, "block/%s"), name(block, "block/glob_fungus_stem_side"), name(block, "block/glob_fungus_stem_end"), name(block, "block/glob_fungus_stem_end"))));
 
         register(MnBlocks.DARK_PEARL_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.DARK_PEARL_BLOCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
@@ -186,6 +187,20 @@ public final class BlockStateTable {
         return VariantBlockStateGen.create("axis=y", ModelInfo.create(name, model).rotate(0, 0))
                                    .variant("axis=z", ModelInfo.create(name, model).rotate(90, 0))
                                    .variant("axis=x", ModelInfo.create(name, model).rotate(90, 90));
+    }
+
+    private static IBlockStateGen horizRotated(String name, IModelGen model) {
+        return VariantBlockStateGen.create("facing=north", ModelInfo.create(name, model).rotate(0, 0))
+                                   .variant("facing=east", ModelInfo.create(name, model).rotate(0, 90))
+                                   .variant("facing=south", ModelInfo.create(name, model).rotate(0, 180))
+                                   .variant("facing=west", ModelInfo.create(name, model).rotate(0, 270));
+    }
+
+    private static IBlockStateGen horizRotatedUVLock(String name, IModelGen model) {
+        return VariantBlockStateGen.create("facing=north", ModelInfo.create(name, model).rotate(0, 0).uvlock(true))
+                                   .variant("facing=east", ModelInfo.create(name, model).rotate(0, 90).uvlock(true))
+                                   .variant("facing=south", ModelInfo.create(name, model).rotate(0, 180).uvlock(true))
+                                   .variant("facing=west", ModelInfo.create(name, model).rotate(0, 270).uvlock(true));
     }
 
     private static IBlockStateGen shelf(String name, String shelf, String fan) {

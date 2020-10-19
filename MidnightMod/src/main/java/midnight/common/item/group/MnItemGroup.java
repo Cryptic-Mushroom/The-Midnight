@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 19
  */
 
 package midnight.common.item.group;
@@ -47,6 +47,7 @@ public class MnItemGroup extends ItemGroup {
     );
     public static final MnItemGroup MISC = new MnItemGroup("misc", () -> MnItems.DARK_STICK).categories(
         MnItemCategory.COMMON_ITEMS,
+        MnItemCategory.MINERALS,
         MnItemCategory.UNCATEGORIZED
     );
 

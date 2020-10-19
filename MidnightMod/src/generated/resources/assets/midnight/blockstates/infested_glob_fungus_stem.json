@@ -1,0 +1,23 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "midnight:block/infested_glob_fungus_stem",
+      "y": 90,
+      "uvlock": true
+    },
+    "facing=south": {
+      "model": "midnight:block/infested_glob_fungus_stem",
+      "y": 180,
+      "uvlock": true
+    },
+    "facing=north": {
+      "model": "midnight:block/infested_glob_fungus_stem",
+      "uvlock": true
+    },
+    "facing=west": {
+      "model": "midnight:block/infested_glob_fungus_stem",
+      "y": 270,
+      "uvlock": true
+    }
+  }
+}

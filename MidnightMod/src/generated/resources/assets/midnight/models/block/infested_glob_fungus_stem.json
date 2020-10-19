@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "midnight:block/infested_glob_fungus_stem",
+    "east": "midnight:block/glob_fungus_stem_side",
+    "south": "midnight:block/glob_fungus_stem_side",
+    "west": "midnight:block/glob_fungus_stem_side",
+    "up": "midnight:block/glob_fungus_stem_end",
+    "down": "midnight:block/glob_fungus_stem_end"
+  }
+}

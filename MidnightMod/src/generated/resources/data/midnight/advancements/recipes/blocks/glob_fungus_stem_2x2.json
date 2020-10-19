@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "midnight:glob_fungus_hyphae"
+      "midnight:glob_fungus_stem_2x2"
     ]
   },
   "criteria": {
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "item": "midnight:glob_fungus_stem"
+            "item": "midnight:glob_fungus_hand"
           }
         ]
       }
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "midnight:glob_fungus_hyphae"
+        "recipe": "midnight:glob_fungus_stem_2x2"
       }
     }
   },

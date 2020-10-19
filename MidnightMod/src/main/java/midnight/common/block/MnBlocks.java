@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 19
  */
 
 package midnight.common.block;
@@ -137,6 +137,7 @@ public final class MnBlocks {
     public static final Block GLOB_FUNGUS = inj();
     public static final Block GLOB_FUNGUS_CAP = inj();
     public static final Block GLOB_FUNGUS_STEM = inj();
+    public static final Block INFESTED_GLOB_FUNGUS_STEM = inj();
     public static final Block GLOB_FUNGUS_HYPHAE = inj();
     public static final Block GLOB_FUNGUS_THATCH = inj();
 
@@ -233,6 +234,7 @@ public final class MnBlocks {
             smallFungus("glob_fungus", 0, 0, Material.TALL_PLANTS, MaterialColor.MAGENTA).setPlantHitbox(13, 13).setOffsetType(Block.OffsetType.XYZ),
             globCap("glob_fungus_cap", MaterialColor.MAGENTA),
             globStem("glob_fungus_stem", MaterialColor.PURPLE),
+            infestedGlobStem("infested_glob_fungus_stem", MaterialColor.PURPLE),
             globStem("glob_fungus_hyphae", MaterialColor.PURPLE),
             globThatch("glob_fungus_thatch", MaterialColor.PURPLE),
 
@@ -327,6 +329,7 @@ public final class MnBlocks {
             item(GLOB_FUNGUS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(GLOB_FUNGUS_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
             item(GLOB_FUNGUS_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
+            item(INFESTED_GLOB_FUNGUS_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
             item(GLOB_FUNGUS_HYPHAE, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
             item(GLOB_FUNGUS_THATCH, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
 
@@ -462,7 +465,7 @@ public final class MnBlocks {
     private static Block mycelium(String id, double hardness, double resistance, MaterialColor color) {
         return block(id, new NightMyceliumBlock(
             AbstractBlock.Properties.create(Material.ROCK, color)
-                                    .sound(SoundType.STONE)
+                                    .sound(SoundType.NYLIUM)
                                     .hardnessAndResistance((float) hardness, (float) resistance)
                                     .harvestTool(ToolType.PICKAXE)
         ));
@@ -687,9 +690,18 @@ public final class MnBlocks {
     private static Block globStem(String id, MaterialColor color) {
         return block(id, new RotatedPillarBlock(
             AbstractBlock.Properties.create(Material.ORGANIC, color)
-                                    .sound(SoundType.FUNGUS)
+                                    .sound(SoundType.NETHER_STEM)
                                     .harvestTool(ToolType.AXE)
-                                    .hardnessAndResistance(2f)
+                                    .hardnessAndResistance(1.7f)
+        ));
+    }
+
+    private static Block infestedGlobStem(String id, MaterialColor color) {
+        return block(id, new HorizontalFacingBlock(
+            AbstractBlock.Properties.create(Material.ORGANIC, color)
+                                    .sound(SoundType.NETHER_STEM)
+                                    .harvestTool(ToolType.AXE)
+                                    .hardnessAndResistance(0.4f)
         ));
     }
 

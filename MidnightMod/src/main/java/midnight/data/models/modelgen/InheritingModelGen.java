@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 19
  */
 
 package midnight.data.models.modelgen;
@@ -279,6 +279,7 @@ public class InheritingModelGen implements IModelGen {
      */
     public static InheritingModelGen cubeFrontSided(String front, String side, String top, String bottom) {
         return new InheritingModelGen("block/cube")
+                   .texture("particle", side)
                    .texture("north", front)
                    .texture("east", side)
                    .texture("south", side)
@@ -312,6 +313,7 @@ public class InheritingModelGen implements IModelGen {
      */
     public static InheritingModelGen cubeFrontBackSided(String front, String back, String side, String top, String bottom) {
         return new InheritingModelGen("block/cube")
+                   .texture("particle", side)
                    .texture("north", front)
                    .texture("east", side)
                    .texture("south", back)

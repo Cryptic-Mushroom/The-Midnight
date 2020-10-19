@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 19
  */
 
 package midnight.common.item;
@@ -37,6 +37,8 @@ public final class MnItems {
     public static final Item VIRIDSHROOM_POWDER = inj();
     public static final Item BOGSHROOM_POWDER = inj();
 
+    public static final Item GLOB_FUNGUS_HAND = inj();
+
     private MnItems() {
     }
 
@@ -44,13 +46,15 @@ public final class MnItems {
         registry.registerAll(
             item("dark_stick", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
 
-            item("dark_pearl", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
-            item("geode", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
+            item("dark_pearl", MnItemCategory.MINERALS, MnItemGroup.MISC),
+            item("geode", MnItemCategory.MINERALS, MnItemGroup.MISC),
 
             item("nightshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
             item("dewshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
             item("viridshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
-            item("bogshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC)
+            item("bogshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
+
+            edible("glob_fungus_hand", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC, MnFoods.GLOB_FUNGUS_HAND)
         );
     }
 

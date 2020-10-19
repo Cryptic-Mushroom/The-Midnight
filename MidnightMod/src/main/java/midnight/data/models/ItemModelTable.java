@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 19
  */
 
 package midnight.data.models;
@@ -114,15 +114,17 @@ public final class ItemModelTable {
         register(MnBlocks.GLOB_FUNGUS_CAP, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.GLOB_FUNGUS_THATCH, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.GLOB_FUNGUS_STEM, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.INFESTED_GLOB_FUNGUS_STEM, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.GLOB_FUNGUS_HYPHAE, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.GLOB_FUNGUS, item -> generated(name(item, "block/%s")));
+        register(MnItems.GLOB_FUNGUS_HAND, item -> generated(name(item, "item/%s")));
 
         register(MnBlocks.DARK_PEARL_ORE, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.DARK_PEARL_BLOCK, item -> inherit(name(item, "block/%s")));
-
-        register(MnItems.DARK_STICK, item -> generated(name(item, "item/%s")));
         register(MnItems.DARK_PEARL, item -> generated(name(item, "item/%s")));
         register(MnItems.GEODE, item -> generated(name(item, "item/%s")));
+
+        register(MnItems.DARK_STICK, item -> generated(name(item, "item/%s")));
     }
 
 

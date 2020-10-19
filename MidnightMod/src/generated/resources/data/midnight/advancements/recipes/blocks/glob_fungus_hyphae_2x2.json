@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "midnight:glob_fungus_thatch_from_stem"
+      "midnight:glob_fungus_hyphae_2x2"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "midnight:glob_fungus_thatch_from_stem"
+        "recipe": "midnight:glob_fungus_hyphae_2x2"
       }
     }
   },

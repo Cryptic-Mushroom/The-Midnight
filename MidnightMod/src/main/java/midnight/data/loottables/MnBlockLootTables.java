@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 19
  */
 
 package midnight.data.loottables;
@@ -22,6 +22,7 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Items;
 import net.minecraft.loot.*;
 import net.minecraft.loot.conditions.*;
+import net.minecraft.loot.functions.ApplyBonus;
 import net.minecraft.loot.functions.SetCount;
 import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.util.IItemProvider;
@@ -35,7 +36,7 @@ public class MnBlockLootTables extends BlockLootTables {
     private static final ILootCondition.IBuilder SILK_TOUCH_OR_SHEARS = SHEARS.alternative(SILK_TOUCH);
     private static final ILootCondition.IBuilder NOT_SILK_TOUCH_OR_SHEARS = SILK_TOUCH_OR_SHEARS.inverted();
     private static final float[] DEFAULT_SAPLING_DROP_RATES = {1 / 20F, 1 / 16F, 1 / 12F, 1 / 10F};
-    private static final float[] DEFAULT_POWDER_DROP_RATES = {1 / 5F, 1 / 3F, 2 / 3F, 1};
+    private static final float[] DEFAULT_GLOB_DROP_RATES = {1 / 5F, 1 / 3F, 2 / 3F, 1};
 
     @Override
     protected void addTables() {
@@ -92,7 +93,7 @@ public class MnBlockLootTables extends BlockLootTables {
         registerLootTable(MnBlocks.NIGHTSHROOM_ROOTS, BlockLootTables::onlyWithShears);
         registerLootTable(MnBlocks.FLOWERING_NIGHTSHROOM_ROOTS, BlockLootTables::onlyWithShears);
         registerLootTable(MnBlocks.TALL_NIGHTSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        registerLootTable(MnBlocks.NIGHTSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.NIGHTSHROOM_POWDER, MnBlocks.NIGHTSHROOM, MnBlocks.TALL_NIGHTSHROOM, DEFAULT_POWDER_DROP_RATES));
+        registerLootTable(MnBlocks.NIGHTSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.NIGHTSHROOM_POWDER, MnBlocks.NIGHTSHROOM, MnBlocks.TALL_NIGHTSHROOM));
 
         registerDropSelfLootTable(MnBlocks.DEWSHROOM_STEM);
         registerDropSelfLootTable(MnBlocks.DEWSHROOM_PLANKS);
@@ -102,7 +103,7 @@ public class MnBlockLootTables extends BlockLootTables {
         registerLootTable(MnBlocks.DEWSHROOM_ROOTS, BlockLootTables::onlyWithShears);
         registerLootTable(MnBlocks.FLOWERING_DEWSHROOM_ROOTS, BlockLootTables::onlyWithShears);
         registerLootTable(MnBlocks.TALL_DEWSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        registerLootTable(MnBlocks.DEWSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.DEWSHROOM_POWDER, MnBlocks.DEWSHROOM, MnBlocks.TALL_DEWSHROOM, DEFAULT_POWDER_DROP_RATES));
+        registerLootTable(MnBlocks.DEWSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.DEWSHROOM_POWDER, MnBlocks.DEWSHROOM, MnBlocks.TALL_DEWSHROOM));
 
         registerDropSelfLootTable(MnBlocks.VIRIDSHROOM_STEM);
         registerDropSelfLootTable(MnBlocks.VIRIDSHROOM_PLANKS);
@@ -112,7 +113,7 @@ public class MnBlockLootTables extends BlockLootTables {
         registerLootTable(MnBlocks.VIRIDSHROOM_ROOTS, BlockLootTables::onlyWithShears);
         registerLootTable(MnBlocks.FLOWERING_VIRIDSHROOM_ROOTS, BlockLootTables::onlyWithShears);
         registerLootTable(MnBlocks.TALL_VIRIDSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        registerLootTable(MnBlocks.VIRIDSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.VIRIDSHROOM_POWDER, MnBlocks.VIRIDSHROOM, MnBlocks.TALL_VIRIDSHROOM, DEFAULT_POWDER_DROP_RATES));
+        registerLootTable(MnBlocks.VIRIDSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.VIRIDSHROOM_POWDER, MnBlocks.VIRIDSHROOM, MnBlocks.TALL_VIRIDSHROOM));
 
         registerDropSelfLootTable(MnBlocks.BOGSHROOM_STEM);
         registerDropSelfLootTable(MnBlocks.BOGSHROOM_PLANKS);
@@ -120,12 +121,13 @@ public class MnBlockLootTables extends BlockLootTables {
         registerDropSelfLootTable(MnBlocks.BOGSHROOM_SHELF);
         registerLootTable(MnBlocks.BOGSHROOM_FIBRE, MnBlockLootTables::droppingFibre);
         registerLootTable(MnBlocks.TALL_BOGSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        registerLootTable(MnBlocks.BOGSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.BOGSHROOM_POWDER, MnBlocks.BOGSHROOM, MnBlocks.TALL_BOGSHROOM, DEFAULT_POWDER_DROP_RATES));
+        registerLootTable(MnBlocks.BOGSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.BOGSHROOM_POWDER, MnBlocks.BOGSHROOM, MnBlocks.TALL_BOGSHROOM));
 
         registerDropSelfLootTable(MnBlocks.GLOB_FUNGUS);
-        registerDropSelfLootTable(MnBlocks.GLOB_FUNGUS_CAP);
-        registerDropSelfLootTable(MnBlocks.GLOB_FUNGUS_STEM);
-        registerDropSelfLootTable(MnBlocks.GLOB_FUNGUS_HYPHAE);
+        registerLootTable(MnBlocks.GLOB_FUNGUS_CAP, block -> droppingWithChances(block, MnBlocks.GLOB_FUNGUS, DEFAULT_GLOB_DROP_RATES));
+        registerLootTable(MnBlocks.GLOB_FUNGUS_STEM, block -> droppingSilkTouchOrRanged(block, MnItems.GLOB_FUNGUS_HAND, 2, 4));
+        registerLootTable(MnBlocks.INFESTED_GLOB_FUNGUS_STEM, block -> droppingNothing());
+        registerLootTable(MnBlocks.GLOB_FUNGUS_HYPHAE, block -> droppingSilkTouchOrRanged(block, MnItems.GLOB_FUNGUS_HAND, 2, 4));
         registerDropSelfLootTable(MnBlocks.GLOB_FUNGUS_THATCH);
 
         registerLootTable(MnBlocks.DARK_PEARL_ORE, block -> droppingItemWithFortune(block, MnItems.GEODE));
@@ -134,6 +136,23 @@ public class MnBlockLootTables extends BlockLootTables {
 
     protected static LootTable.Builder droppingNothing() {
         return LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(0)));
+    }
+
+    protected static LootTable.Builder droppingWithChances(Block block, IItemProvider drop, float... saplingBonus) {
+        return droppingWithSilkTouchOrShears(
+            block,
+            withSurvivesExplosion(block, ItemLootEntry.builder(drop))
+                .acceptCondition(TableBonus.builder(Enchantments.FORTUNE, saplingBonus))
+        );
+    }
+
+    protected static LootTable.Builder droppingSilkTouchOrRanged(Block block, IItemProvider item, int min, int max) {
+        return droppingWithSilkTouch(
+            block,
+            withSurvivesExplosion(block, ItemLootEntry.builder(item))
+                .acceptFunction(SetCount.builder(RandomValueRange.of(min, max)))
+                .acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE, 1))
+        );
     }
 
     protected static LootTable.Builder droppingWithChancesAndDarkSticks(Block leaves, Block sapling, float... saplingBonus) {
@@ -157,7 +176,7 @@ public class MnBlockLootTables extends BlockLootTables {
         );
     }
 
-    protected static LootTable.Builder droppingShroomOrPowder(Block block, IItemProvider item, IItemProvider shroom, IItemProvider tall_shroom, float... itemBonus) {
+    protected static LootTable.Builder droppingShroomOrPowder(Block block, IItemProvider item, IItemProvider shroom, IItemProvider tall_shroom) {
         return droppingWithSilkTouch(
             block,
             withSurvivesExplosion(
