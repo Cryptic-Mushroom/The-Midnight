@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 19
  */
 
 package midnight.common.world.levelgen.midnight;
@@ -47,7 +47,7 @@ public class MidnightTerrainGenerator extends MidnightGenerator {
     // The base height, which is the water level divided by 4
     private final double baseHeight;
 
-    public MidnightTerrainGenerator(long seed, BiomeProvider biomeProvider, MidnightChunkGenerator chunkGenerator, int baseHeight) {
+    public MidnightTerrainGenerator(long seed, BiomeProvider biomeProvider, MnChunkGenerator chunkGenerator, int baseHeight) {
         super(seed, biomeProvider, chunkGenerator);
         this.baseHeight = baseHeight / 4D;
 

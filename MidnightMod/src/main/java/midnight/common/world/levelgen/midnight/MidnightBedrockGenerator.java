@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 19
  */
 
 package midnight.common.world.levelgen.midnight;
@@ -15,7 +15,7 @@ import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.chunk.IChunk;
 
 public class MidnightBedrockGenerator extends MidnightGenerator {
-    public MidnightBedrockGenerator(long seed, BiomeProvider biomeProvider, MidnightChunkGenerator chunkGenerator) {
+    public MidnightBedrockGenerator(long seed, BiomeProvider biomeProvider, MnChunkGenerator chunkGenerator) {
         super(seed, biomeProvider, chunkGenerator);
     }
 

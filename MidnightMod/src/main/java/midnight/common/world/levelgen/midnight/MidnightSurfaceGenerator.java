@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 19
  */
 
 package midnight.common.world.levelgen.midnight;
@@ -26,7 +26,7 @@ import net.shadew.ptg.noise.opensimplex.FractalOpenSimplex2D;
 public class MidnightSurfaceGenerator extends MidnightGenerator {
     private final Noise2D surfaceNoise;
 
-    public MidnightSurfaceGenerator(long seed, BiomeProvider biomeProvider, MidnightChunkGenerator chunkGenerator) {
+    public MidnightSurfaceGenerator(long seed, BiomeProvider biomeProvider, MnChunkGenerator chunkGenerator) {
         super(seed, biomeProvider, chunkGenerator);
         Random rng = new Random(seed);
         surfaceNoise = new FractalOpenSimplex2D(rng.nextInt(), 15.6587812, 5);
