@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "midnight:raw_suavis"
+  },
+  "result": "midnight:cooked_suavis",
+  "experience": 0.35,
+  "cookingtime": 100
+}

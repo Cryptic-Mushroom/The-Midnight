@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 19
+ * Last updated: 2020 - 10 - 20
  */
 
 package midnight.data.recipes;
@@ -14,6 +14,7 @@ import midnight.common.item.MnItems;
 import net.minecraft.data.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tags.Tag;
 import net.minecraft.util.IItemProvider;
@@ -92,6 +93,8 @@ public class MnRecipeProvider extends RecipeProvider {
 
         shapeless("dark_pearl_from_block", MnBlocks.DARK_PEARL_BLOCK, MnItems.DARK_PEARL, 9);
         generic3x3("dark_pearl_block_3x3", MnItems.DARK_PEARL, MnBlocks.DARK_PEARL_BLOCK, 1);
+
+        cooking("cooked_suavis_from_raw", MnItems.RAW_SUAVIS, MnItems.COOKED_SUAVIS, 0.35);
     }
 
     private void generic3x3(String id, IItemProvider from, IItemProvider to, int count) {
@@ -196,6 +199,18 @@ public class MnRecipeProvider extends RecipeProvider {
         CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(from), to, (float) xp, 200)
                             .addCriterion("has_ingredient", hasItem(from))
                             .build(consumer, Midnight.resLoc(id));
+    }
+
+    private void cooking(String id, IItemProvider from, IItemProvider to, double xp) {
+        CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(from), to, (float) xp, 200)
+                            .addCriterion("has_ingredient", hasItem(from))
+                            .build(consumer, Midnight.resLoc(id));
+        CookingRecipeBuilder.cookingRecipe(Ingredient.fromItems(from), to, (float) xp, 100, IRecipeSerializer.SMOKING)
+                            .addCriterion("has_ingredient", hasItem(from))
+                            .build(consumer, Midnight.resLoc(id + "_smoking"));
+        CookingRecipeBuilder.cookingRecipe(Ingredient.fromItems(from), to, (float) xp, 600, IRecipeSerializer.CAMPFIRE_COOKING)
+                            .addCriterion("has_ingredient", hasItem(from))
+                            .build(consumer, Midnight.resLoc(id + "_campfire"));
     }
 
     @Override
