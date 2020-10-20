@@ -3,13 +3,14 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 19
+ * Last updated: 2020 - 10 - 20
  */
 
 package midnight.data.loottables;
 
 import midnight.common.block.MnBlockStateProperties;
 import midnight.common.block.MnBlocks;
+import midnight.common.block.SuavisBlock;
 import midnight.common.item.MnItems;
 import net.minecraft.advancements.criterion.EnchantmentPredicate;
 import net.minecraft.advancements.criterion.ItemPredicate;
@@ -148,6 +149,7 @@ public class MnBlockLootTables extends BlockLootTables {
         registerDropSelfLootTable(MnBlocks.RUNEBUSH);
         registerDropSelfLootTable(MnBlocks.BOGWEED);
         registerDropSelfLootTable(MnBlocks.CRYSTALOTUS);
+        registerLootTable(MnBlocks.SUAVIS, MnBlockLootTables::droppingSuavis);
 
         registerLootTable(MnBlocks.ROCKSHROOM, block -> droppingSilkTouchOrRanged(block, MnItems.ROCKSHROOM_CLUMP, 2, 3));
 
@@ -157,6 +159,35 @@ public class MnBlockLootTables extends BlockLootTables {
 
     protected static LootTable.Builder droppingNothing() {
         return LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(0)));
+    }
+
+    protected static LootTable.Builder droppingSuavis(Block block) {
+        StatePropertiesPredicate.Builder suavisStage1 = StatePropertiesPredicate.Builder
+                                                            .create()
+                                                            .exactMatch(SuavisBlock.STAGE, 1);
+        StatePropertiesPredicate.Builder suavisStage2 = StatePropertiesPredicate.Builder
+                                                            .create()
+                                                            .exactMatch(SuavisBlock.STAGE, 2);
+        StatePropertiesPredicate.Builder suavisStage3 = StatePropertiesPredicate.Builder
+                                                            .create()
+                                                            .exactMatch(SuavisBlock.STAGE, 3);
+        return droppingWithSilkTouchOrShears(
+            block,
+            withExplosionDecay(block, ItemLootEntry.builder(MnItems.RAW_SUAVIS))
+                .acceptFunction(
+                    SetCount.builder(ConstantRange.of(2))
+                            .acceptCondition(BlockStateProperty.builder(block).properties(suavisStage1))
+                )
+                .acceptFunction(
+                    SetCount.builder(ConstantRange.of(3))
+                            .acceptCondition(BlockStateProperty.builder(block).properties(suavisStage2))
+                )
+                .acceptFunction(
+                    SetCount.builder(ConstantRange.of(4))
+                            .acceptCondition(BlockStateProperty.builder(block).properties(suavisStage3))
+                )
+                .acceptFunction(ApplyBonus.binomialWithBonusCount(Enchantments.FORTUNE, 0.3f, 3))
+        );
     }
 
     protected static LootTable.Builder droppingWithChances(Block block, IItemProvider drop, float... saplingBonus) {

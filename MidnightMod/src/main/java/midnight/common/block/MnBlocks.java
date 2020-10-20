@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 19
+ * Last updated: 2020 - 10 - 20
  */
 
 package midnight.common.block;
@@ -50,10 +50,16 @@ import java.util.function.Supplier;
 @ObjectHolder("midnight")
 public abstract class MnBlocks {
 
+    ////////////////////////
+    ///// BLOCK FIELDS /////
+    ////////////////////////
+
+    // Basic stones
     public static final Block NIGHTSTONE = inj();
     public static final Block NIGHT_BEDROCK = inj();
     public static final Block TRENCHSTONE = inj();
 
+    // Basic soils
     public static final Block NIGHT_DIRT = inj();
     public static final Block COARSE_NIGHT_DIRT = inj();
     public static final Block NIGHT_GRASS_BLOCK = inj();
@@ -62,15 +68,19 @@ public abstract class MnBlocks {
     public static final Block STRANGE_SAND = inj();
     public static final Block NIGHT_MYCELIUM = inj();
 
+    // Fluids
     public static final Block DARK_WATER = inj();
 
+    // Tall night grass
     public static final Block NIGHT_GRASS = inj();
     public static final Block TALL_NIGHT_GRASS = inj();
 
+    // Ghost plant
     public static final Block GHOST_PLANT_STEM = inj();
     public static final Block GHOST_PLANT_LEAF = inj();
     public static final Block GHOST_PLANT = inj();
 
+    // Dead wood
     public static final Block DEAD_WOOD_LOG = inj();
     public static final Block STRIPPED_DEAD_WOOD_LOG = inj();
     public static final Block DEAD_WOOD = inj();
@@ -78,6 +88,7 @@ public abstract class MnBlocks {
     public static final Block DEAD_WOOD_PLANKS = inj();
     public static final Block DEAD_SAPLING = inj();
 
+    // Shadowroot
     public static final Block SHADOWROOT_LOG = inj();
     public static final Block STRIPPED_SHADOWROOT_LOG = inj();
     public static final Block SHADOWROOT_WOOD = inj();
@@ -86,6 +97,7 @@ public abstract class MnBlocks {
     public static final Block SHADOWROOT_PLANKS = inj();
     public static final Block SHADOWROOT_SAPLING = inj();
 
+    // Dark willow
     public static final Block DARK_WILLOW_LOG = inj();
     public static final Block STRIPPED_DARK_WILLOW_LOG = inj();
     public static final Block DARK_WILLOW_WOOD = inj();
@@ -95,8 +107,10 @@ public abstract class MnBlocks {
     public static final Block DARK_WILLOW_PLANKS = inj();
     public static final Block DARK_WILLOW_SAPLING = inj();
 
+    // Shroom air
     public static final Block SHROOM_AIR = inj();
 
+    // Nightshroom
     public static final Block NIGHTSHROOM_CAP = inj();
     public static final Block NIGHTSHROOM_STEM = inj();
     public static final Block NIGHTSHROOM_PLANKS = inj();
@@ -107,6 +121,7 @@ public abstract class MnBlocks {
     public static final Block NIGHTSHROOM_ROOTS = inj();
     public static final Block FLOWERING_NIGHTSHROOM_ROOTS = inj();
 
+    // Dewshroom
     public static final Block DEWSHROOM_CAP = inj();
     public static final Block DEWSHROOM_STEM = inj();
     public static final Block DEWSHROOM_PLANKS = inj();
@@ -117,6 +132,7 @@ public abstract class MnBlocks {
     public static final Block DEWSHROOM_ROOTS = inj();
     public static final Block FLOWERING_DEWSHROOM_ROOTS = inj();
 
+    // Viridshroom
     public static final Block VIRIDSHROOM_CAP = inj();
     public static final Block VIRIDSHROOM_STEM = inj();
     public static final Block VIRIDSHROOM_PLANKS = inj();
@@ -127,6 +143,7 @@ public abstract class MnBlocks {
     public static final Block VIRIDSHROOM_ROOTS = inj();
     public static final Block FLOWERING_VIRIDSHROOM_ROOTS = inj();
 
+    // Moonshroom
     public static final Block MOONSHROOM_CAP = inj();
     public static final Block MOONSHROOM_STEM = inj();
     public static final Block MOONSHROOM_PLANKS = inj();
@@ -137,6 +154,7 @@ public abstract class MnBlocks {
     public static final Block MOONSHROOM_ROOTS = inj();
     public static final Block FLOWERING_MOONSHROOM_ROOTS = inj();
 
+    // Bogshroom
     public static final Block BOGSHROOM_CAP = inj();
     public static final Block BOGSHROOM_STEM = inj();
     public static final Block BOGSHROOM_PLANKS = inj();
@@ -145,6 +163,7 @@ public abstract class MnBlocks {
     public static final Block BOGSHROOM_SHELF = inj();
     public static final Block BOGSHROOM_FIBRE = inj();
 
+    // Glob fungus
     public static final Block GLOB_FUNGUS = inj();
     public static final Block GLOB_FUNGUS_CAP = inj();
     public static final Block GLOB_FUNGUS_STEM = inj();
@@ -152,6 +171,7 @@ public abstract class MnBlocks {
     public static final Block GLOB_FUNGUS_HYPHAE = inj();
     public static final Block GLOB_FUNGUS_THATCH = inj();
 
+    // Misc plants
     public static final Block MISTSHROOM = inj();
     public static final Block TALL_MISTSHROOM = inj();
     public static final Block FINGERED_GRASS = inj();
@@ -160,11 +180,20 @@ public abstract class MnBlocks {
     public static final Block RUNEBUSH = inj();
     public static final Block BOGWEED = inj();
     public static final Block CRYSTALOTUS = inj();
+    public static final Block SUAVIS = inj();
 
+    // Rockshroom
     public static final Block ROCKSHROOM = inj();
 
+    // Dark pearl
     public static final Block DARK_PEARL_ORE = inj();
     public static final Block DARK_PEARL_BLOCK = inj();
+
+
+
+    //////////////////////////
+    ///// BLOCK REGISTRY /////
+    //////////////////////////
 
     public static void registerBlocks(IRegistry<Block> registry) {
         registry.registerAll(
@@ -278,6 +307,7 @@ public abstract class MnBlocks {
             glowingBush("runebush", 0, 0, 10, Material.PLANTS, MaterialColor.CYAN).setPlantHitbox(12, 13).setOffsetType(Block.OffsetType.XZ),
             wetPlant("bogweed", 0, 0, 14, Material.PLANTS, MaterialColor.LIME).setPlantHitbox(12, 12).setOffsetType(Block.OffsetType.XZ),
             crystalotus("crystalotus"),
+            suavis("suavis"),
 
             rockshroom("rockshroom"),
 
@@ -285,6 +315,12 @@ public abstract class MnBlocks {
             darkPearl("dark_pearl_block", 3, 6, MaterialColor.BLACK)
         );
     }
+
+
+
+    /////////////////////////
+    ///// ITEM REGISTRY /////
+    /////////////////////////
 
     public static void registerItems(IRegistry<Item> registry) {
         registry.registerAll(
@@ -387,6 +423,7 @@ public abstract class MnBlocks {
             item(RUNEBUSH, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(BOGWEED, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(CRYSTALOTUS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(SUAVIS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
 
             item(GLOB_FUNGUS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(GLOB_FUNGUS_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
@@ -397,10 +434,16 @@ public abstract class MnBlocks {
 
             item(ROCKSHROOM, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
 
-            item(DARK_PEARL_ORE, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
-            item(DARK_PEARL_BLOCK, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS)
+            item(DARK_PEARL_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS),
+            item(DARK_PEARL_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS)
         );
     }
+
+
+
+    ///////////////////////////
+    ///// CLIENT REGISTRY /////
+    ///////////////////////////
 
     @OnlyIn(Dist.CLIENT)
     public static void setupRenderers() {
@@ -516,6 +559,10 @@ public abstract class MnBlocks {
 
     private MnBlocks() {
     }
+
+    /////////////////////////////////
+    ///// BLOCK FACTORY METHODS /////
+    /////////////////////////////////
 
     private static BlockItem item(Block block, MnItemCategory cat, Item.Properties props) {
         ResourceLocation id = block.getRegistryName();
@@ -763,6 +810,19 @@ public abstract class MnBlocks {
                                     .sound(SoundType.GLASS)
                                     .luminance(state -> 13)
                                     .hardnessAndResistance(0.2f, 0.5f)
+        ));
+    }
+
+    private static Block suavis(String id) {
+        return block(id, new SuavisBlock(
+            AbstractBlock.Properties.create(Material.GOURD, MaterialColor.LIGHT_BLUE)
+                                    .nonOpaque()
+                                    .sound(SoundType.HONEY)
+                                    .luminance(state -> state.get(SuavisBlock.STAGE) * 3 + 3)
+                                    .tickRandomly()
+                                    .suffocates((state, world, pos) -> state.get(SuavisBlock.STAGE) == 3)
+                                    .emissiveLighting((state, world, pos) -> true)
+                                    .hardnessAndResistance(1f, 0.2f)
         ));
     }
 

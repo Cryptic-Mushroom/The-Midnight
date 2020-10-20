@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 19
+ * Last updated: 2020 - 10 - 20
  */
 
 package midnight.data.models.modelgen;
@@ -392,5 +392,10 @@ public class InheritingModelGen implements IModelGen {
         return new InheritingModelGen("midnight:block/crystalotus_base")
                    .texture("leaf", leaf)
                    .texture("core", core);
+    }
+
+    public static InheritingModelGen flatPlant(String plant) {
+        return new InheritingModelGen("midnight:block/flat_plant")
+                   .texture("plant", plant);
     }
 }

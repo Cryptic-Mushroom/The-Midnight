@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 19
+ * Last updated: 2020 - 10 - 20
  */
 
 package midnight.data.models;
@@ -23,6 +23,7 @@ import net.minecraft.util.ResourceLocation;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
+import static midnight.data.models.modelgen.ExtrudedSquareModelGen.*;
 import static midnight.data.models.modelgen.InheritingModelGen.*;
 
 public final class BlockStateTable {
@@ -144,6 +145,7 @@ public final class BlockStateTable {
         register(MnBlocks.RUNEBUSH, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
         register(MnBlocks.BOGWEED, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
         register(MnBlocks.CRYSTALOTUS, block -> simple(name(block, "block/%s"), crystalotus(name(block, "block/%s_leaf"), name(block, "block/%s_core"))));
+        register(MnBlocks.SUAVIS, block -> suavis(name(block, "block/%s")));
 
         register(MnBlocks.ROCKSHROOM, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
 
@@ -162,6 +164,13 @@ public final class BlockStateTable {
     private static IBlockStateGen hangingPlant(String endName, IModelGen endModel, String rootName, IModelGen rootModel) {
         return VariantBlockStateGen.create("end=true", ModelInfo.create(endName, endModel))
                                    .variant("end=false", ModelInfo.create(rootName, rootModel));
+    }
+
+    private static IBlockStateGen suavis(String name) {
+        return VariantBlockStateGen.create("stage=0", ModelInfo.create(name + "_stage_0", extruded(name + "_side_small", name + "_top").size(16, 4)))
+                                   .variant("stage=1", ModelInfo.create(name + "_stage_1", extruded(name + "_side_small", name + "_top").size(16, 7)))
+                                   .variant("stage=2", ModelInfo.create(name + "_stage_2", extruded(name + "_side_medium", name + "_top").size(16, 13)))
+                                   .variant("stage=3", ModelInfo.create(name + "_stage_3", extruded(name + "_side", name + "_top").size(16, 16)));
     }
 
     private static IBlockStateGen fibre(String model, String lessFibre, String moreFibre) {

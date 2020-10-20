@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 19
+ * Last updated: 2020 - 10 - 20
  */
 
 package midnight.common.item;
@@ -42,6 +42,9 @@ public final class MnItems {
 
     public static final Item ROCKSHROOM_CLUMP = inj();
 
+    public static final Item RAW_SUAVIS = inj();
+    public static final Item COOKED_SUAVIS = inj();
+
     private MnItems() {
     }
 
@@ -58,9 +61,12 @@ public final class MnItems {
             item("bogshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
             item("moonshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
 
-            edible("glob_fungus_hand", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC, MnFoods.GLOB_FUNGUS_HAND),
+            edible("glob_fungus_hand", MnItemCategory.FOOD, MnItemGroup.MISC, MnFoods.GLOB_FUNGUS_HAND),
 
-            item("rockshroom_clump", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC)
+            item("rockshroom_clump", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
+
+            rawSuavis("raw_suavis", MnItemCategory.FOOD, MnItemGroup.MISC),
+            edible("cooked_suavis", MnItemCategory.FOOD, MnItemGroup.MISC, MnFoods.COOKED_SUAVIS)
         );
     }
 
@@ -80,6 +86,10 @@ public final class MnItems {
 
     private static Item edible(String id, MnItemCategory cat, ItemGroup group, Food food) {
         return item(id, cat, new Item.Properties().group(group).food(food));
+    }
+
+    private static Item rawSuavis(String id, MnItemCategory cat, ItemGroup group) {
+        return item(id, cat, new RawSuavisItem(new Item.Properties().group(group).food(MnFoods.RAW_SUAVIS)));
     }
 
     @Nonnull

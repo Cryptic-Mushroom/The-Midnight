@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 19
+ * Last updated: 2020 - 10 - 20
  */
 
 package midnight.common.item.group;
@@ -37,6 +37,8 @@ public class MnItemGroup extends ItemGroup {
         MnItemCategory.SHROOM_STEMS,
         MnItemCategory.SHROOM_CAPS,
         MnItemCategory.PLANKS,
+        MnItemCategory.ORES,
+        MnItemCategory.MINERAL_BLOCKS,
         MnItemCategory.UNCATEGORIZED
     );
     public static final MnItemGroup DECOR = new MnItemGroup("decor", () -> MnBlocks.NIGHT_GRASS).categories(
@@ -47,6 +49,7 @@ public class MnItemGroup extends ItemGroup {
     );
     public static final MnItemGroup MISC = new MnItemGroup("misc", () -> MnItems.DARK_STICK).categories(
         MnItemCategory.COMMON_ITEMS,
+        MnItemCategory.FOOD,
         MnItemCategory.MINERALS,
         MnItemCategory.UNCATEGORIZED
     );
