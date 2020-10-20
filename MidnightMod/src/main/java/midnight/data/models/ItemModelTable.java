@@ -134,6 +134,7 @@ public final class ItemModelTable {
         register(MnItems.RAW_SUAVIS, item -> generated(name(item, "item/%s")));
         register(MnItems.COOKED_SUAVIS, item -> generated(name(item, "item/%s")));
         register(MnBlocks.VIOLEAF, item -> generated(name(item, "item/%s")));
+        register(MnBlocks.TENDRILWEED, item -> generated(name(item, "block/%s")));
 
         register(MnBlocks.GLOB_FUNGUS_CAP, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.GLOB_FUNGUS_THATCH, item -> inherit(name(item, "block/%s")));

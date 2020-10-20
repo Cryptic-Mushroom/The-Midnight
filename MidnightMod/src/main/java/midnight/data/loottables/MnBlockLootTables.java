@@ -151,6 +151,7 @@ public class MnBlockLootTables extends BlockLootTables {
         registerDropSelfLootTable(MnBlocks.CRYSTALOTUS);
         registerLootTable(MnBlocks.SUAVIS, MnBlockLootTables::droppingSuavis);
         registerLootTable(MnBlocks.VIOLEAF, BlockLootTables::onlyWithShears);
+        registerDropSelfLootTable(MnBlocks.TENDRILWEED);
 
         registerLootTable(MnBlocks.ROCKSHROOM, block -> droppingSilkTouchOrRanged(block, MnItems.ROCKSHROOM_CLUMP, 2, 3));
 

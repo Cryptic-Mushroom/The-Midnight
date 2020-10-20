@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 19
+ * Last updated: 2020 - 10 - 20
  */
 
 package midnight.data.tags;
@@ -65,6 +65,7 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
             MnBlocks.LUMEN_BUD,
             MnBlocks.RUNEBUSH,
             MnBlocks.BOGWEED,
+            MnBlocks.TENDRILWEED,
             MnBlocks.GHOST_PLANT
         );
         getOrCreateTagBuilder(MnBlockTags.DARK_WILLOW_LOGS).replace(false).add(

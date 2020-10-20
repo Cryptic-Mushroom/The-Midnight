@@ -3,12 +3,12 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 19
+ * Last updated: 2020 - 10 - 20
  */
 
 package midnight.common.misc;
 
-import midnight.client.particle.ShroomSporeParticle;
+import midnight.client.particle.RisingSporeParticle;
 import midnight.client.particle.SporeParticle;
 import midnight.common.Midnight;
 import midnight.core.util.IRegistry;
@@ -26,6 +26,7 @@ public final class MnParticleTypes {
 
     public static final BasicParticleType SHROOM_SPORE = type("shroom_spore", new BasicParticleType(false));
     public static final BasicParticleType SPORE = type("spore", new BasicParticleType(false));
+    public static final BasicParticleType TENDRIL_POLLEN = type("tendril_pollen", new BasicParticleType(false));
 
     private MnParticleTypes() {
     }
@@ -33,7 +34,8 @@ public final class MnParticleTypes {
     @OnlyIn(Dist.CLIENT)
     public static void setupClient() {
         ParticleManager particles = Minecraft.getInstance().particles;
-        particles.registerFactory(SHROOM_SPORE, ShroomSporeParticle.Factory::new);
+        particles.registerFactory(SHROOM_SPORE, RisingSporeParticle.ShroomFactory::new);
+        particles.registerFactory(TENDRIL_POLLEN, RisingSporeParticle.TendrilweedFactory::new);
         particles.registerFactory(SPORE, SporeParticle.Factory::new);
     }
 

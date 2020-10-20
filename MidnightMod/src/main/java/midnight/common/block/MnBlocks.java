@@ -182,6 +182,7 @@ public abstract class MnBlocks {
     public static final Block CRYSTALOTUS = inj();
     public static final Block SUAVIS = inj();
     public static final Block VIOLEAF = inj();
+    public static final Block TENDRILWEED = inj();
 
     // Rockshroom
     public static final Block ROCKSHROOM = inj();
@@ -310,6 +311,7 @@ public abstract class MnBlocks {
             crystalotus("crystalotus"),
             suavis("suavis"),
             violeaf("violeaf").setPlantHitbox(7, 10).setOffsetType(Block.OffsetType.XYZ),
+            tendrilweed("tendrilweed").setPlantHitbox(9, 14).setOffsetType(Block.OffsetType.XZ),
 
             rockshroom("rockshroom"),
 
@@ -427,6 +429,7 @@ public abstract class MnBlocks {
             item(CRYSTALOTUS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(SUAVIS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(VIOLEAF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(TENDRILWEED, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
 
             item(GLOB_FUNGUS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(GLOB_FUNGUS_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
@@ -512,6 +515,7 @@ public abstract class MnBlocks {
         RenderTypeLookup.setRenderLayer(BOGWEED, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(CRYSTALOTUS, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(VIOLEAF, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(TENDRILWEED, RenderType.getCutout());
 
 
         BlockColors blockColors = Minecraft.getInstance().getBlockColors();
@@ -838,6 +842,16 @@ public abstract class MnBlocks {
                                     .tickRandomly()
                                     .emissiveLighting((state, world, pos) -> true)
                                     .hardnessAndResistance(0)
+        ));
+    }
+
+    private static TendrilweedBlock tendrilweed(String id) {
+        return block(id, new TendrilweedBlock(
+            AbstractBlock.Properties.create(Material.PLANTS, MaterialColor.RED)
+                                    .nonOpaque()
+                                    .sound(SoundType.ROOTS)
+                                    .tickRandomly()
+                                    .hardnessAndResistance(0.1f, 0)
         ));
     }
 

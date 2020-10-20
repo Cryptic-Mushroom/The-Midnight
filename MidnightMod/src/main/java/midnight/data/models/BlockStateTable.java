@@ -147,6 +147,7 @@ public final class BlockStateTable {
         register(MnBlocks.CRYSTALOTUS, block -> simple(name(block, "block/%s"), crystalotus(name(block, "block/%s_leaf"), name(block, "block/%s_core"))));
         register(MnBlocks.SUAVIS, block -> suavis(name(block, "block/%s")));
         register(MnBlocks.VIOLEAF, block -> growableRotY(name(block, "block/%s"), flatPlant(name(block, "block/%s")), name(block, "block/%s_grown"), flatPlant(name(block, "block/%s_grown"))));
+        register(MnBlocks.TENDRILWEED, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
 
         register(MnBlocks.ROCKSHROOM, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
 

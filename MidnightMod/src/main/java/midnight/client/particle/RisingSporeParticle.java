@@ -3,11 +3,12 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 19
+ * Last updated: 2020 - 10 - 20
  */
 
 package midnight.client.particle;
 
+import midnight.core.util.ColorUtil;
 import midnight.core.util.MnMath;
 import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
@@ -17,11 +18,11 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class ShroomSporeParticle extends SpriteTexturedParticle {
+public class RisingSporeParticle extends SpriteTexturedParticle {
     private final IAnimatedSprite sprite;
     private final double verticalAcceleration;
 
-    protected ShroomSporeParticle(ClientWorld world, double x, double y, double z, float xvMul, float yvMul, float zvMul, double xv, double yv, double zv, float scaling, IAnimatedSprite particleSprite, double randomLighting, double r, double g, double b, int averageAge, double vertAcceleration, boolean collideable) {
+    protected RisingSporeParticle(ClientWorld world, double x, double y, double z, float xvMul, float yvMul, float zvMul, double xv, double yv, double zv, float scaling, IAnimatedSprite particleSprite, double randomLighting, double r, double g, double b, int averageAge, double vertAcceleration, boolean collideable) {
         super(world, x, y, z, 0, 0, 0);
         verticalAcceleration = vertAcceleration;
         sprite = particleSprite;
@@ -92,16 +93,35 @@ public class ShroomSporeParticle extends SpriteTexturedParticle {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class Factory implements IParticleFactory<BasicParticleType> {
+    public static class ShroomFactory implements IParticleFactory<BasicParticleType> {
         private final IAnimatedSprite spriteProvider;
 
-        public Factory(IAnimatedSprite sprite) {
+        public ShroomFactory(IAnimatedSprite sprite) {
             spriteProvider = sprite;
         }
 
         @Override
         public Particle makeParticle(BasicParticleType type, ClientWorld world, double x, double y, double z, double r, double g, double b) {
-            return new ShroomSporeParticle(world, x, y, z, 0.5f, 0.5f, 0.5f, 0, 0, 0, 0.4f, spriteProvider, 0.1, r, g, b, 90, -0.01, true);
+            return new RisingSporeParticle(world, x, y, z, 0.5f, 0.5f, 0.5f, 0, 0, 0, 0.4f, spriteProvider, 0.1, r, g, b, 90, -0.01, true);
+        }
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static class TendrilweedFactory implements IParticleFactory<BasicParticleType> {
+        private static final int COLOR = 0xBD4654;
+        private static final double R = ColorUtil.redd(COLOR);
+        private static final double G = ColorUtil.greend(COLOR);
+        private static final double B = ColorUtil.blued(COLOR);
+
+        private final IAnimatedSprite spriteProvider;
+
+        public TendrilweedFactory(IAnimatedSprite sprite) {
+            spriteProvider = sprite;
+        }
+
+        @Override
+        public Particle makeParticle(BasicParticleType type, ClientWorld world, double x, double y, double z, double xv, double yv, double zv) {
+            return new RisingSporeParticle(world, x, y, z, 0.1f, 0.1f, 0.1f, xv, yv, zv, 0.9f, spriteProvider, 0.1, R, G, B, 90, -0.01, true);
         }
     }
 }

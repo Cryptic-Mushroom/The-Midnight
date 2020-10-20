@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 19
+ * Last updated: 2020 - 10 - 20
  */
 
 package midnight.common.block;
@@ -14,6 +14,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 
 public class MnPlantBlock extends BushBlock {
@@ -43,7 +44,8 @@ public class MnPlantBlock extends BushBlock {
     @Override
     @SuppressWarnings("deprecation")
     public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
-        return hitbox;
+        Vector3d off = state.getOffset(world, pos);
+        return hitbox.withOffset(off.x, off.y, off.z);
     }
 
     @Override

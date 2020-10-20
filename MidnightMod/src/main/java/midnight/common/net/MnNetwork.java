@@ -42,6 +42,7 @@ public final class MnNetwork {
     public static void init() {
         register(0, NetworkDirection.PLAY_TO_CLIENT, RockshroomAttackPacket.class, RockshroomAttackPacket::read);
         register(1, NetworkDirection.PLAY_TO_CLIENT, VioleafHealPacket.class, VioleafHealPacket::read);
+        register(2, NetworkDirection.PLAY_TO_CLIENT, TendrilweedGrowPacket.class, TendrilweedGrowPacket::read);
     }
 
     /**
