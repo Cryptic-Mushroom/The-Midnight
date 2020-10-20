@@ -57,8 +57,8 @@ public class MnBlockLootTables extends BlockLootTables {
         registerDropSelfLootTable(MnBlocks.GHOST_PLANT_STEM);
         registerDropSelfLootTable(MnBlocks.GHOST_PLANT);
 
-        registerLootTable(MnBlocks.NIGHT_GRASS, onlyWithShears(MnBlocks.NIGHT_GRASS));
-        registerLootTable(MnBlocks.TALL_NIGHT_GRASS, onlyWithShears(MnBlocks.TALL_NIGHT_GRASS));
+        registerLootTable(MnBlocks.NIGHT_GRASS, BlockLootTables::onlyWithShears);
+        registerLootTable(MnBlocks.TALL_NIGHT_GRASS, BlockLootTables::onlyWithShears);
 
         registerLootTable(MnBlocks.DARK_WATER, block -> droppingNothing());
 
@@ -150,6 +150,7 @@ public class MnBlockLootTables extends BlockLootTables {
         registerDropSelfLootTable(MnBlocks.BOGWEED);
         registerDropSelfLootTable(MnBlocks.CRYSTALOTUS);
         registerLootTable(MnBlocks.SUAVIS, MnBlockLootTables::droppingSuavis);
+        registerLootTable(MnBlocks.VIOLEAF, BlockLootTables::onlyWithShears);
 
         registerLootTable(MnBlocks.ROCKSHROOM, block -> droppingSilkTouchOrRanged(block, MnItems.ROCKSHROOM_CLUMP, 2, 3));
 

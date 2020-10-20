@@ -146,6 +146,7 @@ public final class BlockStateTable {
         register(MnBlocks.BOGWEED, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
         register(MnBlocks.CRYSTALOTUS, block -> simple(name(block, "block/%s"), crystalotus(name(block, "block/%s_leaf"), name(block, "block/%s_core"))));
         register(MnBlocks.SUAVIS, block -> suavis(name(block, "block/%s")));
+        register(MnBlocks.VIOLEAF, block -> growableRotY(name(block, "block/%s"), flatPlant(name(block, "block/%s")), name(block, "block/%s_grown"), flatPlant(name(block, "block/%s_grown"))));
 
         register(MnBlocks.ROCKSHROOM, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
 
@@ -176,6 +177,27 @@ public final class BlockStateTable {
     private static IBlockStateGen fibre(String model, String lessFibre, String moreFibre) {
         return VariantBlockStateGen.create("dense=true", ModelInfo.create(model + "_dense", layeredPlant(moreFibre, lessFibre)))
                                    .variant("dense=false", ModelInfo.create(model, layeredPlant(lessFibre)));
+    }
+
+    private static IBlockStateGen growable(String name, IModelGen model, String grownName, IModelGen grownModel) {
+        return VariantBlockStateGen.create("grown=true", ModelInfo.create(grownName, grownModel))
+                                   .variant("grown=false", ModelInfo.create(name, model));
+    }
+
+    private static IBlockStateGen growableRotY(String name, IModelGen model, String grownName, IModelGen grownModel) {
+        return VariantBlockStateGen.create(
+            "grown=true",
+            ModelInfo.create(grownName, grownModel).rotate(0, 0),
+            ModelInfo.create(grownName, grownModel).rotate(0, 90),
+            ModelInfo.create(grownName, grownModel).rotate(0, 180),
+            ModelInfo.create(grownName, grownModel).rotate(0, 270)
+        ).variant(
+            "grown=false",
+            ModelInfo.create(name, model).rotate(0, 0),
+            ModelInfo.create(name, model).rotate(0, 90),
+            ModelInfo.create(name, model).rotate(0, 180),
+            ModelInfo.create(name, model).rotate(0, 270)
+        );
     }
 
     private static IBlockStateGen rotateY(String name, IModelGen model) {

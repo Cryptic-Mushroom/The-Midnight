@@ -26,7 +26,7 @@ import javax.annotation.Nonnull;
  * @since 0.6.0
  */
 @ObjectHolder("midnight")
-public final class MnItems {
+public abstract class MnItems {
     public static final Item DARK_STICK = inj();
 
     public static final Item DARK_PEARL = inj();

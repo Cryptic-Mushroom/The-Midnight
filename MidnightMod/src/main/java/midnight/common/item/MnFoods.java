@@ -12,7 +12,7 @@ import net.minecraft.item.Food;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 
-public final class MnFoods {
+public abstract class MnFoods {
     public static final Food GLOB_FUNGUS_HAND = simple(1, 0.3);
 
     public static final Food RAW_SUAVIS = new Food.Builder()

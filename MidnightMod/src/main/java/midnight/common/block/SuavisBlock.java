@@ -41,7 +41,7 @@ import java.util.Random;
 
 @SuppressWarnings("deprecation")
 public class SuavisBlock extends Block implements IGrowable {
-    public static final IntegerProperty STAGE = IntegerProperty.create("stage", 0, 3);
+    public static final IntegerProperty STAGE = MnBlockStateProperties.STAGE_0_3;
 
     private static final VoxelShape[] BOUNDS = {
         makeCuboidShape(0, 0, 0, 16, 4, 16),

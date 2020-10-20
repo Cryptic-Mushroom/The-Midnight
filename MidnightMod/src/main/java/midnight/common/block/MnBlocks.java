@@ -181,6 +181,7 @@ public abstract class MnBlocks {
     public static final Block BOGWEED = inj();
     public static final Block CRYSTALOTUS = inj();
     public static final Block SUAVIS = inj();
+    public static final Block VIOLEAF = inj();
 
     // Rockshroom
     public static final Block ROCKSHROOM = inj();
@@ -308,6 +309,7 @@ public abstract class MnBlocks {
             wetPlant("bogweed", 0, 0, 14, Material.PLANTS, MaterialColor.LIME).setPlantHitbox(12, 12).setOffsetType(Block.OffsetType.XZ),
             crystalotus("crystalotus"),
             suavis("suavis"),
+            violeaf("violeaf").setPlantHitbox(7, 10).setOffsetType(Block.OffsetType.XYZ),
 
             rockshroom("rockshroom"),
 
@@ -424,6 +426,7 @@ public abstract class MnBlocks {
             item(BOGWEED, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(CRYSTALOTUS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(SUAVIS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(VIOLEAF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
 
             item(GLOB_FUNGUS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(GLOB_FUNGUS_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
@@ -508,6 +511,7 @@ public abstract class MnBlocks {
         RenderTypeLookup.setRenderLayer(RUNEBUSH, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BOGWEED, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(CRYSTALOTUS, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(VIOLEAF, RenderType.getCutout());
 
 
         BlockColors blockColors = Minecraft.getInstance().getBlockColors();
@@ -823,6 +827,17 @@ public abstract class MnBlocks {
                                     .suffocates((state, world, pos) -> state.get(SuavisBlock.STAGE) == 3)
                                     .emissiveLighting((state, world, pos) -> true)
                                     .hardnessAndResistance(1f, 0.2f)
+        ));
+    }
+
+    private static VioleafBlock violeaf(String id) {
+        return block(id, new VioleafBlock(
+            AbstractBlock.Properties.create(Material.PLANTS, MaterialColor.PURPLE)
+                                    .nonOpaque()
+                                    .sound(SoundType.WET_GRASS)
+                                    .tickRandomly()
+                                    .emissiveLighting((state, world, pos) -> true)
+                                    .hardnessAndResistance(0)
         ));
     }
 

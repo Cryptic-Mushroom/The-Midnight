@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 19
+ * Last updated: 2020 - 10 - 20
  */
 
 package midnight.common.net;
@@ -41,6 +41,7 @@ public final class MnNetwork {
      */
     public static void init() {
         register(0, NetworkDirection.PLAY_TO_CLIENT, RockshroomAttackPacket.class, RockshroomAttackPacket::read);
+        register(1, NetworkDirection.PLAY_TO_CLIENT, VioleafHealPacket.class, VioleafHealPacket::read);
     }
 
     /**
