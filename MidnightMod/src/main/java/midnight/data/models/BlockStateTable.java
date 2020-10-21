@@ -18,6 +18,7 @@ import midnight.data.models.stategen.VariantBlockStateGen;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.state.StateContainer;
+import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.function.BiConsumer;
@@ -149,6 +150,8 @@ public final class BlockStateTable {
         register(MnBlocks.VIOLEAF, block -> growableRotY(name(block, "block/%s"), flatPlant(name(block, "block/%s")), name(block, "block/%s_grown"), flatPlant(name(block, "block/%s_grown"))));
         register(MnBlocks.TENDRILWEED, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
         register(MnBlocks.NIGHT_REED, block -> nightReed(name(block, "block/%s")));
+        register(MnBlocks.DECEITFUL_MOSS, block -> facingOrient(name(block, "block/%s"), moss(name(block, "block/%s")), true));
+        register(MnBlocks.DECEITFUL_ALGAE, block -> simple(name(block, "block/%s"), layeredPlant(name(block, "block/%s"))));
 
         register(MnBlocks.ROCKSHROOM, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
 
@@ -174,6 +177,24 @@ public final class BlockStateTable {
                                    .variant("stage=1", ModelInfo.create(name + "_stage_1", extruded(name + "_side_small", name + "_top").size(16, 7)))
                                    .variant("stage=2", ModelInfo.create(name + "_stage_2", extruded(name + "_side_medium", name + "_top").size(16, 13)))
                                    .variant("stage=3", ModelInfo.create(name + "_stage_3", extruded(name + "_side", name + "_top").size(16, 16)));
+    }
+
+    private static IBlockStateGen facingOrient(String name, IModelGen model, boolean uvlock) {
+        VariantBlockStateGen gen = new VariantBlockStateGen();
+        for (Direction direction : Direction.values()) {
+            String variant = "facing=" + direction.getString();
+            int x = 0, y = 0;
+
+            if (direction == Direction.DOWN) {
+                x = 180;
+            } else if (direction != Direction.UP) {
+                x = 90;
+                y = direction.getOpposite().getHorizontalIndex() * 90;
+            }
+
+            gen.variant(variant, ModelInfo.create(name, model).rotate(x, y).uvlock(uvlock));
+        }
+        return gen;
     }
 
     private static IBlockStateGen nightReed(String name) {

@@ -185,6 +185,8 @@ public abstract class MnBlocks {
     public static final Block VIOLEAF = inj();
     public static final Block TENDRILWEED = inj();
     public static final Block NIGHT_REED = inj();
+    public static final Block DECEITFUL_MOSS = inj();
+    public static final Block DECEITFUL_ALGAE = inj();
 
     // Rockshroom
     public static final Block ROCKSHROOM = inj();
@@ -315,6 +317,8 @@ public abstract class MnBlocks {
             violeaf("violeaf").hitbox(7, 10).offset(Block.OffsetType.XYZ),
             tendrilweed("tendrilweed").hitbox(9, 14).offset(Block.OffsetType.XZ),
             nightReed("night_reed").hitbox(13, 11),
+            directionalPlant("deceitful_moss", 0.3, 0, Material.PLANTS, MaterialColor.BLUE_TERRACOTTA).hitbox(16, 2),
+            floatingAlgae("deceitful_algae", 0, 0, Material.OCEAN_PLANT, MaterialColor.BLUE_TERRACOTTA).hitbox(16, 1),
 
             rockshroom("rockshroom"),
 
@@ -434,6 +438,8 @@ public abstract class MnBlocks {
             item(VIOLEAF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(TENDRILWEED, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(NIGHT_REED, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(DECEITFUL_MOSS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(DECEITFUL_ALGAE, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
 
             item(GLOB_FUNGUS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(GLOB_FUNGUS_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
@@ -521,6 +527,8 @@ public abstract class MnBlocks {
         RenderTypeLookup.setRenderLayer(VIOLEAF, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(TENDRILWEED, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(NIGHT_REED, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(DECEITFUL_MOSS, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(DECEITFUL_ALGAE, RenderType.getCutout());
 
 
         BlockColors blockColors = Minecraft.getInstance().getBlockColors();
@@ -580,7 +588,12 @@ public abstract class MnBlocks {
     private static BlockItem item(Block block, MnItemCategory cat, Item.Properties props) {
         ResourceLocation id = block.getRegistryName();
         assert id != null;
-        BlockItem item = new BlockItem(block, props);
+        BlockItem item;
+        if (block instanceof ICustomBlockItem) {
+            item = ((ICustomBlockItem) block).newBlockItem(props);
+        } else {
+            item = new BlockItem(block, props);
+        }
         item.setRegistryName(id);
         cat.add(item);
         return item;
@@ -691,6 +704,25 @@ public abstract class MnBlocks {
                                     .nonOpaque()
                                     .sound(SoundType.SWEET_BERRY_BUSH)
                                     .hardnessAndResistance((float) hardness, (float) resistance)
+        ));
+    }
+
+    private static DirectionalPlantBlock directionalPlant(String id, double hardness, double resistance, Material material, MaterialColor color) {
+        return block(id, new DirectionalPlantBlock(
+            AbstractBlock.Properties.create(material, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.CROP)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
+        ));
+    }
+
+    private static FloatingPlantBlock floatingAlgae(String id, double hardness, double resistance, Material material, MaterialColor color) {
+        return block(id, new FloatingPlantBlock(
+            AbstractBlock.Properties.create(material, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.WET_GRASS)
+                                    .hardnessAndResistance((float) hardness, (float) resistance),
+            fluid -> fluid == MnFluids.DARK_WATER
         ));
     }
 
