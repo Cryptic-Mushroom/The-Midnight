@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 21
  */
 
 package midnight.common.block;
@@ -105,8 +105,17 @@ public class ShroomShelfBlock extends MnPlantBlock {
      */
     @Override
     @Deprecated
-    public MnPlantBlock setPlantHitbox(double size, double height) {
-        throw new UnsupportedOperationException("setPlantHitbox disabled because of dynamic hitbox");
+    public MnPlantBlock hitbox(VoxelShape shape) {
+        throw new UnsupportedOperationException("hitbox disabled because of dynamic hitbox");
+    }
+
+    /**
+     * @deprecated Not effective as hitbox is chosen per state and currently not changeable
+     */
+    @Override
+    @Deprecated
+    public MnPlantBlock hitbox(double size, double height) {
+        throw new UnsupportedOperationException("hitbox disabled because of dynamic hitbox");
     }
 
     /**
@@ -114,8 +123,8 @@ public class ShroomShelfBlock extends MnPlantBlock {
      */
     @Override
     @Deprecated
-    public MnPlantBlock setOffsetType(OffsetType offsetType) {
-        throw new UnsupportedOperationException("setOffsetType disabled because shelves shouldn't offset");
+    public MnPlantBlock offset(OffsetType offsetType) {
+        throw new UnsupportedOperationException("offset disabled because shelves shouldn't offset");
     }
 
     @Override

@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 20
+ * Last updated: 2020 - 10 - 21
  */
 
 package midnight.common.block;
@@ -17,32 +17,44 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
+import net.minecraftforge.common.PlantType;
 
 public class MnDoublePlantBlock extends DoublePlantBlock {
     private VoxelShape hitboxLo = VoxelShapes.fullCube();
     private VoxelShape hitboxHi = VoxelShapes.fullCube();
     private OffsetType offsetType = OffsetType.NONE;
+    private PlantType plantType = PlantType.PLAINS;
 
     public MnDoublePlantBlock(Properties props) {
         super(props);
     }
 
-    public MnDoublePlantBlock setHitbox(VoxelShape lo, VoxelShape hi) {
+    public MnDoublePlantBlock hitbox(VoxelShape lo, VoxelShape hi) {
         this.hitboxLo = lo;
         this.hitboxHi = hi;
         return this;
     }
 
-    public MnDoublePlantBlock setPlantHitbox(double size, double height) {
+    public MnDoublePlantBlock hitbox(double size, double height) {
         double radius = size / 2;
-        if(height < 16) {
-            setHitbox(makeCuboidShape(8 - radius, 0, 8 - radius, 8 + radius, height, 8 + radius), VoxelShapes.empty());
+        if (height < 16) {
+            hitbox(makeCuboidShape(8 - radius, 0, 8 - radius, 8 + radius, height, 8 + radius), VoxelShapes.empty());
         } else {
-            setHitbox(
+            hitbox(
                 makeCuboidShape(8 - radius, 0, 8 - radius, 8 + radius, 16, 8 + radius),
                 makeCuboidShape(8 - radius, 0, 8 - radius, 8 + radius, height - 16, 8 + radius)
             );
         }
+        return this;
+    }
+
+    public MnDoublePlantBlock offset(OffsetType offsetType) {
+        this.offsetType = offsetType;
+        return this;
+    }
+
+    public MnDoublePlantBlock plantType(PlantType type) {
+        this.plantType = type;
         return this;
     }
 
@@ -64,13 +76,13 @@ public class MnDoublePlantBlock extends DoublePlantBlock {
         return VoxelShapes.empty();
     }
 
-    public MnDoublePlantBlock setOffsetType(OffsetType offsetType) {
-        this.offsetType = offsetType;
-        return this;
-    }
-
     @Override
     public OffsetType getOffsetType() {
         return offsetType;
+    }
+
+    @Override
+    public PlantType getPlantType(IBlockReader world, BlockPos pos) {
+        return plantType;
     }
 }

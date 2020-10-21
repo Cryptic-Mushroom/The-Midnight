@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 20
+ * Last updated: 2020 - 10 - 21
  */
 
 package midnight.common.block;
@@ -16,28 +16,35 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
+import net.minecraftforge.common.PlantType;
 
 public class MnPlantBlock extends BushBlock {
     private VoxelShape hitbox = VoxelShapes.fullCube();
     private OffsetType offsetType = OffsetType.NONE;
+    private PlantType plantType = MnPlantTypes.MIDNIGHT;
 
     protected MnPlantBlock(Properties props) {
         super(props);
     }
 
-    public MnPlantBlock setHitbox(VoxelShape hitbox) {
+    public MnPlantBlock hitbox(VoxelShape hitbox) {
         this.hitbox = hitbox;
         return this;
     }
 
-    public MnPlantBlock setPlantHitbox(double size, double height) {
+    public MnPlantBlock hitbox(double size, double height) {
         double radius = size / 2;
-        setHitbox(makeCuboidShape(8 - radius, 0, 8 - radius, 8 + radius, height, 8 + radius));
+        hitbox(makeCuboidShape(8 - radius, 0, 8 - radius, 8 + radius, height, 8 + radius));
         return this;
     }
 
-    public MnPlantBlock setOffsetType(OffsetType offsetType) {
+    public MnPlantBlock offset(OffsetType offsetType) {
         this.offsetType = offsetType;
+        return this;
+    }
+
+    public MnPlantBlock plantType(PlantType type) {
+        this.plantType = type;
         return this;
     }
 
@@ -62,5 +69,10 @@ public class MnPlantBlock extends BushBlock {
     @Override
     public OffsetType getOffsetType() {
         return offsetType;
+    }
+
+    @Override
+    public PlantType getPlantType(IBlockReader world, BlockPos pos) {
+        return plantType;
     }
 }

@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 21
  */
 
 package midnight.client;
@@ -14,8 +14,6 @@ import midnight.common.Midnight;
 import midnight.common.block.MnBlocks;
 import midnight.common.block.fluid.MnFluids;
 import midnight.common.misc.MnParticleTypes;
-import midnight.core.util.MnUtil;
-import midnight.data.MidnightData;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -69,13 +67,5 @@ public class MidnightClient extends Midnight {
      */
     public static MidnightClient get() {
         return (MidnightClient) Midnight.get();
-    }
-
-    /**
-     * Creates the proper instance of {@link MidnightClient} by using {@link MidnightData}
-     * when on data generation mode, and returns it
-     */
-    public static MidnightClient dataOrClient() {
-        return MnUtil.callForDatagen(() -> MidnightData::new, () -> MidnightClient::new);
     }
 }

@@ -3,12 +3,13 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 21
  */
 
 package midnight.data.tags;
 
 import midnight.common.block.fluid.MnFluids;
+import midnight.common.misc.tags.MnFluidTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.TagsProvider;
 import net.minecraft.fluid.Fluid;
@@ -26,7 +27,11 @@ public class MnFluidTagsProvider extends TagsProvider<Fluid> {
 
     @Override
     protected void registerTags() {
-        getOrCreateTagBuilder(FluidTags.WATER).replace(false).add(MnFluids.DARK_WATER, MnFluids.FLOWING_DARK_WATER);
+        getOrCreateTagBuilder(FluidTags.WATER)
+            .addTag(MnFluidTags.DARK_WATER);
+
+        getOrCreateTagBuilder(MnFluidTags.DARK_WATER)
+            .add(MnFluids.DARK_WATER, MnFluids.FLOWING_DARK_WATER);
     }
 
     @Override

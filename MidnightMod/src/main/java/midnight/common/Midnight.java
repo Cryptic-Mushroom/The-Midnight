@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 19
+ * Last updated: 2020 - 10 - 21
  */
 
 package midnight.common;
@@ -20,7 +20,6 @@ import midnight.common.net.MnNetwork;
 import midnight.common.world.dimension.MnDimensions;
 import midnight.common.world.levelgen.MnLevelgen;
 import midnight.core.plugin.PluginManager;
-import midnight.data.MidnightData;
 import midnight.server.MidnightServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -39,11 +38,6 @@ import org.apache.logging.log4j.Logger;
  * <li>
  * {@link MidnightServer} is the server-side proxy of this class. It does not very much other than existing and
  * delegating everything to the {@link Midnight} class itself.
- * </li>
- * <li>
- * {@link MidnightData} is the data-generator-only proxy of this class. This is a subclass of {@link MidnightClient}
- * that is only used when generating data. It prevents the unnecessary initialization of certain client-only things,
- * such as rendering and the loading of plugins.
  * </li>
  * </ul>
  *

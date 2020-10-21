@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 21
  */
 
 package midnight.data;
@@ -23,6 +23,7 @@ import midnight.data.models.MnStateModelProvider;
 import midnight.data.recipes.MnRecipeProvider;
 import midnight.data.recipes.MnStonecuttingRecipeProvider;
 import midnight.data.tags.MnBlockTagsProvider;
+import midnight.data.tags.MnEntityTypeTagsProvider;
 import midnight.data.tags.MnFluidTagsProvider;
 import midnight.data.tags.MnItemTagsProvider;
 import net.minecraft.block.Block;
@@ -125,6 +126,7 @@ public final class DataGen {
             gen.addProvider(blockTags);
             gen.addProvider(new MnItemTagsProvider(gen, blockTags));
             gen.addProvider(new MnFluidTagsProvider(gen));
+            gen.addProvider(new MnEntityTypeTagsProvider(gen));
 
             gen.addProvider(new MnRecipeProvider(gen));
             gen.addProvider(new MnStonecuttingRecipeProvider(gen));

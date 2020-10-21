@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 21
  */
 
 package midnight.common.block;
@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
 import java.util.Random;
 import java.util.function.Supplier;
 
-public class HangingLeavesBlock extends HangingVinesBlock implements IGrowable {
+public class HangingLeavesBlock extends HangingPlantBlock implements IGrowable {
     public static final BooleanProperty END = BooleanProperty.create("end");
     public static final BooleanProperty ROOT = BooleanProperty.create("root");
 

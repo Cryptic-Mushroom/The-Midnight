@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 21
  */
 
 package midnight.common.block;
@@ -15,13 +15,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 
-public class HangingVinesBlock extends MnPlantBlock {
-    protected HangingVinesBlock(Properties props) {
+public class HangingPlantBlock extends MnPlantBlock {
+    protected HangingPlantBlock(Properties props) {
         super(props);
     }
 
     @Override
-    public boolean isValidGround(BlockState state, IBlockReader world, BlockPos pos) {
+    protected boolean isValidGround(BlockState state, IBlockReader world, BlockPos pos) {
         return Block.doesSideFillSquare(state.getCollisionShape(world, pos), Direction.DOWN);
     }
 

@@ -3,11 +3,12 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 19
+ * Last updated: 2020 - 10 - 21
  */
 
 package midnight.common.block;
 
+import midnight.common.misc.tags.MnBlockTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -20,6 +21,7 @@ public class CrystalotusBlock extends MnPlantBlock {
 
     protected CrystalotusBlock(Properties props) {
         super(props);
+        plantType(MnPlantTypes.CRYSTALOTUS);
     }
 
     @Override
@@ -37,8 +39,8 @@ public class CrystalotusBlock extends MnPlantBlock {
      */
     @Override
     @Deprecated
-    public MnPlantBlock setHitbox(VoxelShape hitbox) {
-        throw new UnsupportedOperationException("setHitbox has no effect");
+    public MnPlantBlock hitbox(VoxelShape hitbox) {
+        throw new UnsupportedOperationException("hitbox has no effect");
     }
 
     /**
@@ -46,7 +48,12 @@ public class CrystalotusBlock extends MnPlantBlock {
      */
     @Override
     @Deprecated
-    public MnPlantBlock setPlantHitbox(double size, double height) {
-        throw new UnsupportedOperationException("setPlantHitbox has no effect");
+    public MnPlantBlock hitbox(double size, double height) {
+        throw new UnsupportedOperationException("hitbox has no effect");
+    }
+
+    @Override
+    protected boolean isValidGround(BlockState state, IBlockReader world, BlockPos pos) {
+        return state.isIn(MnBlockTags.CRYSTALOTUS_GROWABLE);
     }
 }
