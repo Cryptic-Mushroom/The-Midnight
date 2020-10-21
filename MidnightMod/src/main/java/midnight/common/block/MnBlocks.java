@@ -184,6 +184,7 @@ public abstract class MnBlocks {
     public static final Block SUAVIS = inj();
     public static final Block VIOLEAF = inj();
     public static final Block TENDRILWEED = inj();
+    public static final Block NIGHT_REED = inj();
 
     // Rockshroom
     public static final Block ROCKSHROOM = inj();
@@ -313,6 +314,7 @@ public abstract class MnBlocks {
             suavis("suavis"),
             violeaf("violeaf").hitbox(7, 10).offset(Block.OffsetType.XYZ),
             tendrilweed("tendrilweed").hitbox(9, 14).offset(Block.OffsetType.XZ),
+            nightReed("night_reed").hitbox(13, 11),
 
             rockshroom("rockshroom"),
 
@@ -431,6 +433,7 @@ public abstract class MnBlocks {
             item(SUAVIS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(VIOLEAF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(TENDRILWEED, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+            item(NIGHT_REED, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
 
             item(GLOB_FUNGUS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(GLOB_FUNGUS_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
@@ -517,6 +520,7 @@ public abstract class MnBlocks {
         RenderTypeLookup.setRenderLayer(CRYSTALOTUS, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(VIOLEAF, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(TENDRILWEED, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(NIGHT_REED, RenderType.getCutout());
 
 
         BlockColors blockColors = Minecraft.getInstance().getBlockColors();
@@ -872,6 +876,18 @@ public abstract class MnBlocks {
                                     .sound(SoundType.ROOTS)
                                     .tickRandomly()
                                     .hardnessAndResistance(0.1f, 0)
+        ));
+    }
+
+    private static NightReedBlock nightReed(String id) {
+        return block(id, new NightReedBlock(
+            AbstractBlock.Properties.create(Material.PLANTS, MaterialColor.ADOBE)
+                                    .nonOpaque()
+                                    .sound(SoundType.WET_GRASS)
+                                    .tickRandomly()
+                                    .hardnessAndResistance(0)
+                                    .emissiveLighting((state, world, pos) -> !state.get(NightReedBlock.WATERLOGGED))
+                                    .luminance(state -> state.get(NightReedBlock.WATERLOGGED) ? 0 : 10)
         ));
     }
 

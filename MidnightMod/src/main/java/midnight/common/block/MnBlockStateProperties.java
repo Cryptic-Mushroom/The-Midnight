@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 20
+ * Last updated: 2020 - 10 - 21
  */
 
 package midnight.common.block;
@@ -13,6 +13,12 @@ import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.util.Direction;
 
+/**
+ * Holds all block state properties created and (possibly) in use by the Midnight.
+ *
+ * @author Shadew
+ * @since 0.6.0
+ */
 public abstract class MnBlockStateProperties {
     /** {@code dense} - {@link BooleanProperty boolean} - {@code false true} */
     public static final BooleanProperty DENSE = BooleanProperty.create("dense");
@@ -25,6 +31,12 @@ public abstract class MnBlockStateProperties {
 
     /** {@code grown} - {@link BooleanProperty boolean} - {@code false true} */
     public static final BooleanProperty GROWN = BooleanProperty.create("grown");
+
+    /** {@code end} - {@link BooleanProperty boolean} - {@code false true} */
+    public static final BooleanProperty END = BooleanProperty.create("end");
+
+    /** {@code root} - {@link BooleanProperty boolean} - {@code false true} */
+    public static final BooleanProperty ROOT = BooleanProperty.create("root");
 
     private MnBlockStateProperties() {
     }

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "waterlogged=true,end=false": {
+      "model": "midnight:block/night_reed_flooded"
+    },
+    "waterlogged=true,end=true": {
+      "model": "midnight:block/night_reed_flooded_end"
+    },
+    "waterlogged=false,end=false": {
+      "model": "midnight:block/night_reed"
+    },
+    "waterlogged=false,end=true": {
+      "model": "midnight:block/night_reed_end"
+    }
+  }
+}

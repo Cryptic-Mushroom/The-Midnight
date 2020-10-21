@@ -27,8 +27,8 @@ import java.util.Random;
 import java.util.function.Supplier;
 
 public class HangingLeavesBlock extends HangingPlantBlock implements IGrowable {
-    public static final BooleanProperty END = BooleanProperty.create("end");
-    public static final BooleanProperty ROOT = BooleanProperty.create("root");
+    public static final BooleanProperty END = MnBlockStateProperties.END;
+    public static final BooleanProperty ROOT = MnBlockStateProperties.ROOT;
 
     private final Supplier<Block> leavesBlock;
     private final ITag.INamedTag<Block> logBlockTag;

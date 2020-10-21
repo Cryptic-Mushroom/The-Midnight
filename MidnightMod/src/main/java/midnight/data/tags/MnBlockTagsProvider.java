@@ -89,6 +89,10 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
             .addTag(MnBlockTags.ORES)
             .addTag(MnBlockTags.SOILS);
 
+        getOrCreateTagBuilder(MnBlockTags.NIGHT_REED_GROWABLE)
+            .add(MnBlocks.STRANGE_SAND)
+            .addTag(MnBlockTags.SOILS);
+
         getOrCreateTagBuilder(MnBlockTags.DARK_WILLOW_LOGS)
             .add(MnBlocks.DARK_WILLOW_LOG)
             .add(MnBlocks.DARK_WILLOW_WOOD)

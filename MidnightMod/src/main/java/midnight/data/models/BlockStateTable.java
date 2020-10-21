@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 20
+ * Last updated: 2020 - 10 - 21
  */
 
 package midnight.data.models;
@@ -148,6 +148,7 @@ public final class BlockStateTable {
         register(MnBlocks.SUAVIS, block -> suavis(name(block, "block/%s")));
         register(MnBlocks.VIOLEAF, block -> growableRotY(name(block, "block/%s"), flatPlant(name(block, "block/%s")), name(block, "block/%s_grown"), flatPlant(name(block, "block/%s_grown"))));
         register(MnBlocks.TENDRILWEED, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
+        register(MnBlocks.NIGHT_REED, block -> nightReed(name(block, "block/%s")));
 
         register(MnBlocks.ROCKSHROOM, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
 
@@ -173,6 +174,13 @@ public final class BlockStateTable {
                                    .variant("stage=1", ModelInfo.create(name + "_stage_1", extruded(name + "_side_small", name + "_top").size(16, 7)))
                                    .variant("stage=2", ModelInfo.create(name + "_stage_2", extruded(name + "_side_medium", name + "_top").size(16, 13)))
                                    .variant("stage=3", ModelInfo.create(name + "_stage_3", extruded(name + "_side", name + "_top").size(16, 16)));
+    }
+
+    private static IBlockStateGen nightReed(String name) {
+        return VariantBlockStateGen.create("waterlogged=false,end=false", ModelInfo.create(name, cross(name)))
+                                   .variant("waterlogged=true,end=false", ModelInfo.create(name + "_flooded", cross(name + "_flooded")))
+                                   .variant("waterlogged=false,end=true", ModelInfo.create(name + "_end", cross(name + "_end")))
+                                   .variant("waterlogged=true,end=true", ModelInfo.create(name + "_flooded_end", cross(name + "_flooded_end")));
     }
 
     private static IBlockStateGen fibre(String model, String lessFibre, String moreFibre) {

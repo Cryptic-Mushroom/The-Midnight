@@ -33,6 +33,7 @@ public final class MnBlockTags {
     public static final ITag.INamedTag<Block> SMALL_PLANTS = BlockTags.makeWrapperTag("midnight:small_plants");
     public static final ITag.INamedTag<Block> TALL_PLANTS = BlockTags.makeWrapperTag("midnight:tall_plants");
     public static final ITag.INamedTag<Block> PLANTS = BlockTags.makeWrapperTag("midnight:plants");
+    public static final ITag.INamedTag<Block> NIGHT_REED_GROWABLE = BlockTags.makeWrapperTag("midnight:night_reed_growable");
 
     private MnBlockTags() {
     }

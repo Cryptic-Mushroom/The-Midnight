@@ -4,10 +4,6 @@
     "midnight:dead_wood_planks",
     "midnight:shadowroot_planks",
     "midnight:dark_willow_planks",
-    "midnight:nightshroom_planks",
-    "midnight:dewshroom_planks",
-    "midnight:viridshroom_planks",
-    "midnight:bogshroom_planks",
-    "midnight:moonshroom_planks"
+    "#midnight:shroom_planks"
   ]
 }

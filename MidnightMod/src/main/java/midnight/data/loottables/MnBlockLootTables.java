@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 20
+ * Last updated: 2020 - 10 - 21
  */
 
 package midnight.data.loottables;
@@ -152,6 +152,7 @@ public class MnBlockLootTables extends BlockLootTables {
         registerLootTable(MnBlocks.SUAVIS, MnBlockLootTables::droppingSuavis);
         registerLootTable(MnBlocks.VIOLEAF, BlockLootTables::onlyWithShears);
         registerDropSelfLootTable(MnBlocks.TENDRILWEED);
+        registerDropSelfLootTable(MnBlocks.NIGHT_REED);
 
         registerLootTable(MnBlocks.ROCKSHROOM, block -> droppingSilkTouchOrRanged(block, MnItems.ROCKSHROOM_CLUMP, 2, 3));
 

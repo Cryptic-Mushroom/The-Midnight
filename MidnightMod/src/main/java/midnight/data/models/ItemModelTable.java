@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 20
+ * Last updated: 2020 - 10 - 21
  */
 
 package midnight.data.models;
@@ -135,6 +135,7 @@ public final class ItemModelTable {
         register(MnItems.COOKED_SUAVIS, item -> generated(name(item, "item/%s")));
         register(MnBlocks.VIOLEAF, item -> generated(name(item, "item/%s")));
         register(MnBlocks.TENDRILWEED, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.NIGHT_REED, item -> generated(name(item, "item/%s")));
 
         register(MnBlocks.GLOB_FUNGUS_CAP, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.GLOB_FUNGUS_THATCH, item -> inherit(name(item, "block/%s")));
