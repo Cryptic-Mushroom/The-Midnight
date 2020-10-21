@@ -25,7 +25,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class ShroomShelfBlock extends MnPlantBlock {
+public class ShroomShelfBlock extends PlantBlock {
     public static final DirectionProperty FACING = MnBlockStateProperties.FACING_EXCEPT_DOWN;
     private static final VoxelShape[] SHAPES = { // Order as specified in net.minecraft.util.Direction:
         null,                                    // DOWN
@@ -105,7 +105,7 @@ public class ShroomShelfBlock extends MnPlantBlock {
      */
     @Override
     @Deprecated
-    public MnPlantBlock hitbox(VoxelShape shape) {
+    public PlantBlock hitbox(VoxelShape shape) {
         throw new UnsupportedOperationException("hitbox disabled because of dynamic hitbox");
     }
 
@@ -114,7 +114,7 @@ public class ShroomShelfBlock extends MnPlantBlock {
      */
     @Override
     @Deprecated
-    public MnPlantBlock hitbox(double size, double height) {
+    public PlantBlock hitbox(double size, double height) {
         throw new UnsupportedOperationException("hitbox disabled because of dynamic hitbox");
     }
 
@@ -123,7 +123,7 @@ public class ShroomShelfBlock extends MnPlantBlock {
      */
     @Override
     @Deprecated
-    public MnPlantBlock offset(OffsetType offsetType) {
+    public PlantBlock offset(OffsetType offsetType) {
         throw new UnsupportedOperationException("offset disabled because shelves shouldn't offset");
     }
 

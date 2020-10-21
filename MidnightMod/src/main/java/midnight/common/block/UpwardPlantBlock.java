@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
 import java.util.Random;
 
 @SuppressWarnings("deprecation")
-public class UpwardPlantBlock extends MnPlantBlock {
+public class UpwardPlantBlock extends PlantBlock {
     public static final BooleanProperty ROOT = MnBlockStateProperties.ROOT;
     public static final BooleanProperty END = MnBlockStateProperties.END;
 
@@ -40,7 +40,7 @@ public class UpwardPlantBlock extends MnPlantBlock {
     }
 
     @Override
-    public MnPlantBlock hitbox(double size, double height) {
+    public PlantBlock hitbox(double size, double height) {
         double r = size / 2;
         highShape = makeCuboidShape(8 - r, 0, 8 - r, 8 + r, 16, 8 + r);
         return super.hitbox(size, height);

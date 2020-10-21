@@ -15,7 +15,7 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 
-public class CrystalotusBlock extends MnPlantBlock {
+public class CrystalotusBlock extends PlantBlock {
     private static final VoxelShape SELECTION_HITBOX = makeCuboidShape(2, 0, 2, 14, 2, 14);
     private static final VoxelShape COLLISION_HITBOX = makeCuboidShape(6.5, 0, 6.5, 9.5, 2, 9.5);
 
@@ -39,7 +39,7 @@ public class CrystalotusBlock extends MnPlantBlock {
      */
     @Override
     @Deprecated
-    public MnPlantBlock hitbox(VoxelShape hitbox) {
+    public PlantBlock hitbox(VoxelShape hitbox) {
         throw new UnsupportedOperationException("hitbox has no effect");
     }
 
@@ -48,7 +48,7 @@ public class CrystalotusBlock extends MnPlantBlock {
      */
     @Override
     @Deprecated
-    public MnPlantBlock hitbox(double size, double height) {
+    public PlantBlock hitbox(double size, double height) {
         throw new UnsupportedOperationException("hitbox has no effect");
     }
 

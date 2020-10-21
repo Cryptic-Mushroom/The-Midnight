@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 21
  */
 
 package midnight.common.block;
@@ -18,10 +18,10 @@ import net.minecraft.world.server.ServerWorld;
 import java.util.Random;
 import java.util.function.Supplier;
 
-public class SmallGrowablePlantBlock extends MnPlantBlock implements IGrowable {
-    private final Supplier<MnDoublePlantBlock> largePlant;
+public class SmallGrowablePlantBlock extends PlantBlock implements IGrowable {
+    private final Supplier<TallPlantBlock> largePlant;
 
-    public SmallGrowablePlantBlock(Properties props, Supplier<MnDoublePlantBlock> largePlant) {
+    public SmallGrowablePlantBlock(Properties props, Supplier<TallPlantBlock> largePlant) {
         super(props);
         this.largePlant = largePlant;
     }
@@ -38,13 +38,13 @@ public class SmallGrowablePlantBlock extends MnPlantBlock implements IGrowable {
 
     @Override
     public void grow(ServerWorld world, Random rand, BlockPos pos, BlockState state) {
-        MnDoublePlantBlock large = getDoubleBlock(world, rand, pos, state);
+        TallPlantBlock large = getDoubleBlock(world, rand, pos, state);
         if(large.getDefaultState().isValidPosition(world, pos) && world.isAirBlock(pos.up())) {
             large.placeAt(world, pos, 2);
         }
     }
 
-    protected MnDoublePlantBlock getDoubleBlock(ServerWorld world, Random rand, BlockPos pos, BlockState state) {
+    protected TallPlantBlock getDoubleBlock(ServerWorld world, Random rand, BlockPos pos, BlockState state) {
         return largePlant.get();
     }
 }

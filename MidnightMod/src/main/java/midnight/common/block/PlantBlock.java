@@ -9,8 +9,7 @@
 package midnight.common.block;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.block.DoublePlantBlock;
-import net.minecraft.state.properties.DoubleBlockHalf;
+import net.minecraft.block.BushBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -19,61 +18,52 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.PlantType;
 
-public class MnDoublePlantBlock extends DoublePlantBlock {
-    private VoxelShape hitboxLo = VoxelShapes.fullCube();
-    private VoxelShape hitboxHi = VoxelShapes.fullCube();
+public class PlantBlock extends BushBlock {
+    private VoxelShape hitbox = VoxelShapes.fullCube();
     private OffsetType offsetType = OffsetType.NONE;
-    private PlantType plantType = PlantType.PLAINS;
+    private PlantType plantType = MnPlantTypes.MIDNIGHT;
 
-    public MnDoublePlantBlock(Properties props) {
+    protected PlantBlock(Properties props) {
         super(props);
     }
 
-    public MnDoublePlantBlock hitbox(VoxelShape lo, VoxelShape hi) {
-        this.hitboxLo = lo;
-        this.hitboxHi = hi;
+    public PlantBlock hitbox(VoxelShape hitbox) {
+        this.hitbox = hitbox;
         return this;
     }
 
-    public MnDoublePlantBlock hitbox(double size, double height) {
+    public PlantBlock hitbox(double size, double height) {
         double radius = size / 2;
-        if (height < 16) {
-            hitbox(makeCuboidShape(8 - radius, 0, 8 - radius, 8 + radius, height, 8 + radius), VoxelShapes.empty());
-        } else {
-            hitbox(
-                makeCuboidShape(8 - radius, 0, 8 - radius, 8 + radius, 16, 8 + radius),
-                makeCuboidShape(8 - radius, 0, 8 - radius, 8 + radius, height - 16, 8 + radius)
-            );
-        }
+        hitbox(makeCuboidShape(8 - radius, 0, 8 - radius, 8 + radius, height, 8 + radius));
         return this;
     }
 
-    public MnDoublePlantBlock offset(OffsetType offsetType) {
+    public PlantBlock offset(OffsetType offsetType) {
         this.offsetType = offsetType;
         return this;
     }
 
-    public MnDoublePlantBlock plantType(PlantType type) {
+    public PlantBlock plantType(PlantType type) {
         this.plantType = type;
         return this;
-    }
-
-    @Override
-    protected boolean isValidGround(BlockState state, IBlockReader world, BlockPos pos) {
-        return state.getBlock() instanceof NightDirtBlock || super.isValidGround(state, world, pos);
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
         Vector3d off = state.getOffset(world, pos);
-        return (state.get(HALF) == DoubleBlockHalf.LOWER ? hitboxLo : hitboxHi).withOffset(off.x, off.y, off.z);
+        return hitbox.withOffset(off.x, off.y, off.z);
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public VoxelShape getCollisionShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
         return VoxelShapes.empty();
+    }
+
+    @Override
+    protected boolean isValidGround(BlockState state, IBlockReader world, BlockPos pos) {
+        return state.getBlock() instanceof NightDirtBlock || state.isIn(MnBlocks.NIGHT_MYCELIUM) || super.isValidGround(state, world, pos);
     }
 
     @Override

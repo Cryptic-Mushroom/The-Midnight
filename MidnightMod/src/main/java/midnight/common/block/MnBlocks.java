@@ -215,7 +215,7 @@ public abstract class MnBlocks {
 
             water("dark_water", () -> MnFluids.DARK_WATER),
 
-            smallGrowable("night_grass", 0, 0, Material.TALL_PLANTS, MaterialColor.PURPLE_TERRACOTTA, () -> (MnDoublePlantBlock) TALL_NIGHT_GRASS).hitbox(12, 13).offset(Block.OffsetType.XYZ),
+            smallGrowable("night_grass", 0, 0, Material.TALL_PLANTS, MaterialColor.PURPLE_TERRACOTTA, () -> (TallPlantBlock) TALL_NIGHT_GRASS).hitbox(12, 13).offset(Block.OffsetType.XYZ),
             tallPlant("tall_night_grass", 0, 0, Material.TALL_PLANTS, MaterialColor.PURPLE_TERRACOTTA).hitbox(14, 30).offset(Block.OffsetType.XYZ),
 
             giantGhostPlant("ghost_plant_stem", GhostPlantStemBlock::new),
@@ -251,7 +251,7 @@ public abstract class MnBlocks {
             shroomCap("nightshroom_cap", MaterialColor.BLUE, 0x7566B0),
             stem("nightshroom_stem", MaterialColor.BLUE),
             wood("nightshroom_planks", MaterialColor.BLUE),
-            smallShroom("nightshroom", 0, 0, Material.PLANTS, MaterialColor.BLUE, () -> (MnDoublePlantBlock) TALL_NIGHTSHROOM).hitbox(14, 14).offset(Block.OffsetType.XZ),
+            smallShroom("nightshroom", 0, 0, Material.PLANTS, MaterialColor.BLUE, () -> (TallPlantBlock) TALL_NIGHTSHROOM).hitbox(14, 14).offset(Block.OffsetType.XZ),
             tallShroom("tall_nightshroom", 0, 0, Material.PLANTS, MaterialColor.BLUE).hitbox(14, 30).offset(Block.OffsetType.XZ),
             shelf("nightshroom_shelf", 0, 0, Material.PLANTS, MaterialColor.BLUE),
             fibre("nightshroom_fibre", Material.TALL_PLANTS, MaterialColor.BLUE),
@@ -261,7 +261,7 @@ public abstract class MnBlocks {
             shroomCap("dewshroom_cap", MaterialColor.CYAN, 0x72CFD4),
             stem("dewshroom_stem", MaterialColor.CYAN),
             wood("dewshroom_planks", MaterialColor.CYAN),
-            smallShroom("dewshroom", 0, 0, Material.PLANTS, MaterialColor.CYAN, () -> (MnDoublePlantBlock) TALL_DEWSHROOM).hitbox(14, 14).offset(Block.OffsetType.XZ),
+            smallShroom("dewshroom", 0, 0, Material.PLANTS, MaterialColor.CYAN, () -> (TallPlantBlock) TALL_DEWSHROOM).hitbox(14, 14).offset(Block.OffsetType.XZ),
             tallShroom("tall_dewshroom", 0, 0, Material.PLANTS, MaterialColor.CYAN).hitbox(14, 30).offset(Block.OffsetType.XZ),
             shelf("dewshroom_shelf", 0, 0, Material.PLANTS, MaterialColor.CYAN),
             fibre("dewshroom_fibre", Material.TALL_PLANTS, MaterialColor.CYAN),
@@ -271,7 +271,7 @@ public abstract class MnBlocks {
             shroomCap("viridshroom_cap", MaterialColor.LIME, 0x84F54C),
             stem("viridshroom_stem", MaterialColor.LIME),
             wood("viridshroom_planks", MaterialColor.LIME),
-            smallShroom("viridshroom", 0, 0, Material.PLANTS, MaterialColor.LIME, () -> (MnDoublePlantBlock) TALL_VIRIDSHROOM).hitbox(14, 14).offset(Block.OffsetType.XZ),
+            smallShroom("viridshroom", 0, 0, Material.PLANTS, MaterialColor.LIME, () -> (TallPlantBlock) TALL_VIRIDSHROOM).hitbox(14, 14).offset(Block.OffsetType.XZ),
             tallShroom("tall_viridshroom", 0, 0, Material.PLANTS, MaterialColor.LIME).hitbox(14, 30).offset(Block.OffsetType.XZ),
             shelf("viridshroom_shelf", 0, 0, Material.PLANTS, MaterialColor.LIME),
             fibre("viridshroom_fibre", Material.TALL_PLANTS, MaterialColor.LIME),
@@ -281,7 +281,7 @@ public abstract class MnBlocks {
             shroomCap("moonshroom_cap", MaterialColor.LIGHT_GRAY, 0xD7F3F5),
             stem("moonshroom_stem", MaterialColor.GRAY),
             wood("moonshroom_planks", MaterialColor.GRAY),
-            smallShroom("moonshroom", 0, 0, Material.PLANTS, MaterialColor.LIGHT_GRAY, () -> (MnDoublePlantBlock) TALL_MOONSHROOM).hitbox(14, 14).offset(Block.OffsetType.XZ),
+            smallShroom("moonshroom", 0, 0, Material.PLANTS, MaterialColor.LIGHT_GRAY, () -> (TallPlantBlock) TALL_MOONSHROOM).hitbox(14, 14).offset(Block.OffsetType.XZ),
             tallShroom("tall_moonshroom", 0, 0, Material.PLANTS, MaterialColor.LIGHT_GRAY).hitbox(14, 30).offset(Block.OffsetType.XZ),
             shelf("moonshroom_shelf", 0, 0, Material.PLANTS, MaterialColor.LIGHT_GRAY),
             fibre("moonshroom_fibre", Material.TALL_PLANTS, MaterialColor.GRAY),
@@ -291,7 +291,7 @@ public abstract class MnBlocks {
             shroomCap("bogshroom_cap", MaterialColor.ADOBE, 0xF5AF4C),
             stem("bogshroom_stem", MaterialColor.ADOBE),
             wood("bogshroom_planks", MaterialColor.ADOBE),
-            smallShroom("bogshroom", 0, 0, Material.PLANTS, MaterialColor.ADOBE, () -> (MnDoublePlantBlock) TALL_BOGSHROOM).hitbox(14, 14).offset(Block.OffsetType.XZ),
+            smallShroom("bogshroom", 0, 0, Material.PLANTS, MaterialColor.ADOBE, () -> (TallPlantBlock) TALL_BOGSHROOM).hitbox(14, 14).offset(Block.OffsetType.XZ),
             tallShroom("tall_bogshroom", 0, 0, Material.PLANTS, MaterialColor.ADOBE).hitbox(14, 30).offset(Block.OffsetType.XZ),
             shelf("bogshroom_shelf", 0, 0, Material.PLANTS, MaterialColor.ADOBE),
             fibre("bogshroom_fibre", Material.TALL_PLANTS, MaterialColor.ADOBE),
@@ -303,10 +303,10 @@ public abstract class MnBlocks {
             globStem("glob_fungus_hyphae", MaterialColor.PURPLE),
             globThatch("glob_fungus_thatch", MaterialColor.PURPLE),
 
-            smallShroom("mistshroom", 0, 0, Material.PLANTS, MaterialColor.CYAN_TERRACOTTA, () -> (MnDoublePlantBlock) TALL_MISTSHROOM).hitbox(13, 13).offset(Block.OffsetType.XZ),
+            smallShroom("mistshroom", 0, 0, Material.PLANTS, MaterialColor.CYAN_TERRACOTTA, () -> (TallPlantBlock) TALL_MISTSHROOM).hitbox(13, 13).offset(Block.OffsetType.XZ),
             tallShroom("tall_mistshroom", 0, 0, Material.PLANTS, MaterialColor.CYAN_TERRACOTTA).hitbox(13, 30).offset(Block.OffsetType.XZ),
             fingeredGrass("fingered_grass").hitbox(12, 12).offset(Block.OffsetType.XYZ),
-            smallGlowingGrowable("lumen_bud", 0, 0, 10, Material.PLANTS, MaterialColor.CYAN_TERRACOTTA, () -> (MnDoublePlantBlock) TALL_LUMEN_BUD).hitbox(13, 14).offset(Block.OffsetType.XZ),
+            smallGlowingGrowable("lumen_bud", 0, 0, 10, Material.PLANTS, MaterialColor.CYAN_TERRACOTTA, () -> (TallPlantBlock) TALL_LUMEN_BUD).hitbox(13, 14).offset(Block.OffsetType.XZ),
             tallGlowingPlant("tall_lumen_bud", 0, 0, 10, Material.PLANTS, MaterialColor.CYAN_TERRACOTTA).hitbox(13, 30).offset(Block.OffsetType.XZ),
             glowingBush("runebush", 0, 0, 10, Material.PLANTS, MaterialColor.CYAN).hitbox(12, 13).offset(Block.OffsetType.XZ),
             wetPlant("bogweed", 0, 0, 14, Material.PLANTS, MaterialColor.LIME).hitbox(12, 12).offset(Block.OffsetType.XZ),
@@ -676,8 +676,8 @@ public abstract class MnBlocks {
         ));
     }
 
-    private static MnPlantBlock plant(String id, double hardness, double resistance, Material material, MaterialColor color) {
-        return block(id, new MnPlantBlock(
+    private static PlantBlock plant(String id, double hardness, double resistance, Material material, MaterialColor color) {
+        return block(id, new PlantBlock(
             AbstractBlock.Properties.create(material, color)
                                     .nonOpaque()
                                     .sound(SoundType.PLANT)
@@ -685,8 +685,8 @@ public abstract class MnBlocks {
         ));
     }
 
-    private static MnPlantBlock bush(String id, double hardness, double resistance, Material material, MaterialColor color) {
-        return block(id, new MnPlantBlock(
+    private static PlantBlock bush(String id, double hardness, double resistance, Material material, MaterialColor color) {
+        return block(id, new PlantBlock(
             AbstractBlock.Properties.create(material, color)
                                     .nonOpaque()
                                     .sound(SoundType.SWEET_BERRY_BUSH)
@@ -694,8 +694,8 @@ public abstract class MnBlocks {
         ));
     }
 
-    private static MnPlantBlock glowingBush(String id, double hardness, double resistance, int emission, Material material, MaterialColor color) {
-        return block(id, new MnPlantBlock(
+    private static PlantBlock glowingBush(String id, double hardness, double resistance, int emission, Material material, MaterialColor color) {
+        return block(id, new PlantBlock(
             AbstractBlock.Properties.create(material, color)
                                     .nonOpaque()
                                     .sound(SoundType.SWEET_BERRY_BUSH)
@@ -704,8 +704,8 @@ public abstract class MnBlocks {
         ));
     }
 
-    private static MnPlantBlock wetPlant(String id, double hardness, double resistance, int emission, Material material, MaterialColor color) {
-        return block(id, new MnPlantBlock(
+    private static PlantBlock wetPlant(String id, double hardness, double resistance, int emission, Material material, MaterialColor color) {
+        return block(id, new PlantBlock(
             AbstractBlock.Properties.create(material, color)
                                     .nonOpaque()
                                     .sound(SoundType.WET_GRASS)
@@ -714,7 +714,7 @@ public abstract class MnBlocks {
         ));
     }
 
-    private static MnPlantBlock fingeredGrass(String id) {
+    private static PlantBlock fingeredGrass(String id) {
         return block(id, new FingeredGrassBlock(
             AbstractBlock.Properties.create(Material.PLANTS, MaterialColor.BLUE)
                                     .nonOpaque()
@@ -723,8 +723,8 @@ public abstract class MnBlocks {
         ));
     }
 
-    private static MnPlantBlock emissivePlant(String id, double hardness, double resistance, int emission, Material material, MaterialColor color) {
-        return block(id, new MnPlantBlock(
+    private static PlantBlock emissivePlant(String id, double hardness, double resistance, int emission, Material material, MaterialColor color) {
+        return block(id, new PlantBlock(
             AbstractBlock.Properties.create(material, color)
                                     .nonOpaque()
                                     .sound(SoundType.PLANT)
@@ -733,8 +733,8 @@ public abstract class MnBlocks {
         ));
     }
 
-    private static MnPlantBlock ghostPlant(String id, double hardness, double resistance, int emission, Material material, MaterialColor color) {
-        return block(id, new MnPlantBlock(
+    private static PlantBlock ghostPlant(String id, double hardness, double resistance, int emission, Material material, MaterialColor color) {
+        return block(id, new PlantBlock(
             AbstractBlock.Properties.create(material, color)
                                     .nonOpaque()
                                     .sound(SoundType.ROOTS)
@@ -743,8 +743,8 @@ public abstract class MnBlocks {
         ));
     }
 
-    private static MnDoublePlantBlock tallPlant(String id, double hardness, double resistance, Material material, MaterialColor color) {
-        return block(id, new MnDoublePlantBlock(
+    private static TallPlantBlock tallPlant(String id, double hardness, double resistance, Material material, MaterialColor color) {
+        return block(id, new TallPlantBlock(
             AbstractBlock.Properties.create(material, color)
                                     .nonOpaque()
                                     .sound(SoundType.PLANT)
@@ -752,7 +752,7 @@ public abstract class MnBlocks {
         ));
     }
 
-    private static MnPlantBlock smallGrowable(String id, double hardness, double resistance, Material material, MaterialColor color, Supplier<MnDoublePlantBlock> tall) {
+    private static PlantBlock smallGrowable(String id, double hardness, double resistance, Material material, MaterialColor color, Supplier<TallPlantBlock> tall) {
         return block(id, new SmallGrowablePlantBlock(
             AbstractBlock.Properties.create(material, color)
                                     .nonOpaque()
@@ -762,8 +762,8 @@ public abstract class MnBlocks {
         ));
     }
 
-    private static MnDoublePlantBlock tallGlowingPlant(String id, double hardness, double resistance, int emission, Material material, MaterialColor color) {
-        return block(id, new MnDoublePlantBlock(
+    private static TallPlantBlock tallGlowingPlant(String id, double hardness, double resistance, int emission, Material material, MaterialColor color) {
+        return block(id, new TallPlantBlock(
             AbstractBlock.Properties.create(material, color)
                                     .nonOpaque()
                                     .sound(SoundType.PLANT)
@@ -772,7 +772,7 @@ public abstract class MnBlocks {
         ));
     }
 
-    private static MnPlantBlock smallGlowingGrowable(String id, double hardness, double resistance, int emission, Material material, MaterialColor color, Supplier<MnDoublePlantBlock> tall) {
+    private static PlantBlock smallGlowingGrowable(String id, double hardness, double resistance, int emission, Material material, MaterialColor color, Supplier<TallPlantBlock> tall) {
         return block(id, new SmallGrowablePlantBlock(
             AbstractBlock.Properties.create(material, color)
                                     .nonOpaque()
@@ -783,8 +783,8 @@ public abstract class MnBlocks {
         ));
     }
 
-    private static MnDoublePlantBlock tallShroom(String id, double hardness, double resistance, Material material, MaterialColor color) {
-        return block(id, new MnDoublePlantBlock(
+    private static TallPlantBlock tallShroom(String id, double hardness, double resistance, Material material, MaterialColor color) {
+        return block(id, new TallPlantBlock(
             AbstractBlock.Properties.create(material, color)
                                     .nonOpaque()
                                     .sound(SoundType.FUNGUS)
@@ -794,7 +794,7 @@ public abstract class MnBlocks {
         ));
     }
 
-    private static MnPlantBlock smallShroom(String id, double hardness, double resistance, Material material, MaterialColor color, Supplier<MnDoublePlantBlock> tall) {
+    private static PlantBlock smallShroom(String id, double hardness, double resistance, Material material, MaterialColor color, Supplier<TallPlantBlock> tall) {
         return block(id, new SmallGrowablePlantBlock(
             AbstractBlock.Properties.create(material, color)
                                     .nonOpaque()
@@ -806,8 +806,8 @@ public abstract class MnBlocks {
         ));
     }
 
-    private static MnPlantBlock smallFungus(String id, double hardness, double resistance, Material material, MaterialColor color) {
-        return block(id, new MnPlantBlock(
+    private static PlantBlock smallFungus(String id, double hardness, double resistance, Material material, MaterialColor color) {
+        return block(id, new PlantBlock(
             AbstractBlock.Properties.create(material, color)
                                     .nonOpaque()
                                     .sound(SoundType.FUNGUS)
@@ -817,7 +817,7 @@ public abstract class MnBlocks {
         ));
     }
 
-    private static MnPlantBlock shroomRoots(String id, Material material, MaterialColor color) {
+    private static PlantBlock shroomRoots(String id, Material material, MaterialColor color) {
         return block(id, new ShroomRootsBlock(
             AbstractBlock.Properties.create(material, color)
                                     .nonOpaque()
@@ -891,7 +891,7 @@ public abstract class MnBlocks {
         ));
     }
 
-    private static MnPlantBlock fibre(String id, Material material, MaterialColor color) {
+    private static PlantBlock fibre(String id, Material material, MaterialColor color) {
         return block(id, new FibreBlock(
             AbstractBlock.Properties.create(material, color)
                                     .nonOpaque()

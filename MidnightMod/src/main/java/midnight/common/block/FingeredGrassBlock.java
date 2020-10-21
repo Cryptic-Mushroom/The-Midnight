@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 19
+ * Last updated: 2020 - 10 - 21
  */
 
 package midnight.common.block;
@@ -13,7 +13,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 
-public class FingeredGrassBlock extends MnPlantBlock implements INightGrassColorModifying {
+public class FingeredGrassBlock extends PlantBlock implements INightGrassColorModifying {
     protected FingeredGrassBlock(Properties props) {
         super(props);
     }

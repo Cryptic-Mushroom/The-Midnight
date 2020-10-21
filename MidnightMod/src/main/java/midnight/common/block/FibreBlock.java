@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 
 @SuppressWarnings("deprecation")
-public class FibreBlock extends MnPlantBlock {
+public class FibreBlock extends PlantBlock {
     public static final BooleanProperty DENSE = MnBlockStateProperties.DENSE;
 
     public FibreBlock(Properties props) {
