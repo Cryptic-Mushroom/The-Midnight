@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 21
  */
 
 package midnight.common.misc;
@@ -28,6 +28,21 @@ public final class MnSoundEvents {
 
     public static final SoundEvent BLOCK_MUD_BREAK = make("block.mud.break");
     public static final SoundEvent BLOCK_MUD_STEP = make("block.mud.step");
+    public static final SoundEvent BLOCK_MUD_PLACE = make("block.mud.place");
+    public static final SoundEvent BLOCK_MUD_HIT = make("block.mud.hit");
+    public static final SoundEvent BLOCK_MUD_FALL = make("block.mud.fall");
+
+    public static final SoundEvent BLOCK_PEAT_BREAK = make("block.peat.break");
+    public static final SoundEvent BLOCK_PEAT_STEP = make("block.peat.step");
+    public static final SoundEvent BLOCK_PEAT_PLACE = make("block.peat.place");
+    public static final SoundEvent BLOCK_PEAT_HIT = make("block.peat.hit");
+    public static final SoundEvent BLOCK_PEAT_FALL = make("block.peat.fall");
+
+    public static final SoundEvent BLOCK_CRYSTAL_BREAK = make("block.crystal.break");
+    public static final SoundEvent BLOCK_CRYSTAL_STEP = make("block.crystal.step");
+    public static final SoundEvent BLOCK_CRYSTAL_PLACE = make("block.crystal.place");
+    public static final SoundEvent BLOCK_CRYSTAL_HIT = make("block.crystal.hit");
+    public static final SoundEvent BLOCK_CRYSTAL_FALL = make("block.crystal.fall");
 
     public static void registerSoundEvents(IRegistry<SoundEvent> registry) {
         SOUNDS.forEach(registry::register);

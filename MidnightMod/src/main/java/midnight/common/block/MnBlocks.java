@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 20
+ * Last updated: 2020 - 10 - 21
  */
 
 package midnight.common.block;
@@ -206,7 +206,7 @@ public abstract class MnBlocks {
             dirt("night_dirt", MaterialColor.BLACK),
             dirt("coarse_night_dirt", MaterialColor.BLACK),
             grassBlock("night_grass_block"),
-            dirt("deceitful_peat", MaterialColor.PURPLE_TERRACOTTA),
+            peat("deceitful_peat", MaterialColor.PURPLE_TERRACOTTA),
             mud("deceitful_mud"),
             sand("strange_sand"),
             mycelium("night_mycelium", 2, 6, MaterialColor.MAGENTA),
@@ -218,7 +218,7 @@ public abstract class MnBlocks {
 
             giantGhostPlant("ghost_plant_stem", GhostPlantStemBlock::new),
             giantGhostPlant("ghost_plant_leaf", GhostPlantBlock::new),
-            emissivePlant("ghost_plant", 0, 0, 9, Material.PLANTS, MaterialColor.SNOW).setPlantHitbox(13, 14).setOffsetType(Block.OffsetType.XZ),
+            ghostPlant("ghost_plant", 0, 0, 9, Material.PLANTS, MaterialColor.SNOW).setPlantHitbox(13, 14).setOffsetType(Block.OffsetType.XZ),
 
             log("dead_wood_log", MaterialColor.FOLIAGE, () -> STRIPPED_DEAD_WOOD_LOG),
             log("stripped_dead_wood_log", MaterialColor.FOLIAGE),
@@ -617,6 +617,15 @@ public abstract class MnBlocks {
         ));
     }
 
+    private static Block peat(String id, MaterialColor color) {
+        return block(id, new NightDirtBlock(
+            AbstractBlock.Properties.create(Material.EARTH, color)
+                                    .sound(MnSoundTypes.PEAT)
+                                    .hardnessAndResistance(0.5f)
+                                    .harvestTool(ToolType.SHOVEL)
+        ));
+    }
+
     private static Block grassBlock(String id) {
         return block(id, new NightGrassBlock(
             AbstractBlock.Properties.create(Material.EARTH, MaterialColor.PURPLE_TERRACOTTA)
@@ -719,6 +728,16 @@ public abstract class MnBlocks {
         ));
     }
 
+    private static MnPlantBlock ghostPlant(String id, double hardness, double resistance, int emission, Material material, MaterialColor color) {
+        return block(id, new MnPlantBlock(
+            AbstractBlock.Properties.create(material, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.ROOTS)
+                                    .luminance(state -> emission)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
+        ));
+    }
+
     private static MnDoublePlantBlock tallPlant(String id, double hardness, double resistance, Material material, MaterialColor color) {
         return block(id, new MnDoublePlantBlock(
             AbstractBlock.Properties.create(material, color)
@@ -815,7 +834,7 @@ public abstract class MnBlocks {
         return block(id, new CrystalotusBlock(
             AbstractBlock.Properties.create(Material.ORGANIC, MaterialColor.LIGHT_BLUE)
                                     .nonOpaque()
-                                    .sound(SoundType.GLASS)
+                                    .sound(MnSoundTypes.CRYSTAL)
                                     .luminance(state -> 13)
                                     .hardnessAndResistance(0.2f, 0.5f)
         ));
@@ -868,7 +887,7 @@ public abstract class MnBlocks {
         return block(id, factory.apply(
             AbstractBlock.Properties.create(Material.WOOD, MaterialColor.SNOW)
                                     .nonOpaque()
-                                    .sound(SoundType.NETHER_STEM)
+                                    .sound(SoundType.SHROOMLIGHT)
                                     .hardnessAndResistance(0.3f)
                                     .luminance(state -> 15)
         ));

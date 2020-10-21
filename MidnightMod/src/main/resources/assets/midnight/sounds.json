@@ -3,20 +3,156 @@
     "category": "block",
     "subtitle": "subtitles.block.generic.hit",
     "sounds": [
-      "midnight:blocks/dig/mud_1",
-      "midnight:blocks/dig/mud_2",
-      "midnight:blocks/dig/mud_3",
-      "midnight:blocks/dig/mud_4"
+      "midnight:block/mud/break1",
+      "midnight:block/mud/break2",
+      "midnight:block/mud/break3",
+      "midnight:block/mud/break4"
     ]
   },
   "block.mud.step": {
     "category": "block",
     "subtitle": "subtitles.block.generic.footsteps",
     "sounds": [
-      "midnight:blocks/step/mud_1",
-      "midnight:blocks/step/mud_2",
-      "midnight:blocks/step/mud_3",
-      "midnight:blocks/step/mud_4"
+      "midnight:block/mud/step1",
+      "midnight:block/mud/step2",
+      "midnight:block/mud/step3",
+      "midnight:block/mud/step4"
+    ]
+  },
+  "block.mud.hit": {
+    "category": "block",
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "midnight:block/mud/step1",
+      "midnight:block/mud/step2",
+      "midnight:block/mud/step3",
+      "midnight:block/mud/step4"
+    ]
+  },
+  "block.mud.place": {
+    "category": "block",
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "midnight:block/mud/break1",
+      "midnight:block/mud/break2",
+      "midnight:block/mud/break3",
+      "midnight:block/mud/break4"
+    ]
+  },
+  "block.mud.fall": {
+    "category": "block",
+    "sounds": [
+      "midnight:block/mud/step1",
+      "midnight:block/mud/step2",
+      "midnight:block/mud/step3",
+      "midnight:block/mud/step4"
+    ]
+  },
+
+  "block.peat.break": {
+    "category": "block",
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "midnight:block/peat/break1",
+      "midnight:block/peat/break2",
+      "midnight:block/peat/break3",
+      "midnight:block/peat/break4",
+      "midnight:block/peat/break5"
+    ]
+  },
+  "block.peat.step": {
+    "category": "block",
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "midnight:block/peat/step1",
+      "midnight:block/peat/step2",
+      "midnight:block/peat/step3",
+      "midnight:block/peat/step4"
+    ]
+  },
+  "block.peat.hit": {
+    "category": "block",
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "midnight:block/peat/step1",
+      "midnight:block/peat/step2",
+      "midnight:block/peat/step3",
+      "midnight:block/peat/step4"
+    ]
+  },
+  "block.peat.place": {
+    "category": "block",
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "midnight:block/peat/break1",
+      "midnight:block/peat/break2",
+      "midnight:block/peat/break3",
+      "midnight:block/peat/break4",
+      "midnight:block/peat/break5"
+    ]
+  },
+  "block.peat.fall": {
+    "category": "block",
+    "sounds": [
+      "midnight:block/peat/step1",
+      "midnight:block/peat/step2",
+      "midnight:block/peat/step3",
+      "midnight:block/peat/step4"
+    ]
+  },
+
+  "block.crystal.break": {
+    "category": "block",
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "midnight:block/crystal/break1",
+      "midnight:block/crystal/break2",
+      "midnight:block/crystal/break3",
+      "midnight:block/crystal/break4",
+      "midnight:block/crystal/break5"
+    ]
+  },
+  "block.crystal.step": {
+    "category": "block",
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "midnight:block/crystal/step1",
+      "midnight:block/crystal/step2",
+      "midnight:block/crystal/step3",
+      "midnight:block/crystal/step4",
+      "midnight:block/crystal/step5"
+    ]
+  },
+  "block.crystal.hit": {
+    "category": "block",
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "midnight:block/crystal/crack1",
+      "midnight:block/crystal/crack2",
+      "midnight:block/crystal/crack3",
+      "midnight:block/crystal/crack4",
+      "midnight:block/crystal/crack5"
+    ]
+  },
+  "block.crystal.place": {
+    "category": "block",
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "midnight:block/crystal/place1",
+      "midnight:block/crystal/place2",
+      "midnight:block/crystal/place3",
+      "midnight:block/crystal/place4",
+      "midnight:block/crystal/place5"
+    ]
+  },
+  "block.crystal.fall": {
+    "category": "block",
+    "sounds": [
+      "midnight:block/crystal/crack1",
+      "midnight:block/crystal/crack2",
+      "midnight:block/crystal/crack3",
+      "midnight:block/crystal/crack4",
+      "midnight:block/crystal/crack5"
     ]
   }
 }

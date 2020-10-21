@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 19
+ * Last updated: 2020 - 10 - 21
  */
 
 package midnight.common.block;
@@ -35,9 +35,27 @@ public abstract class MnSoundTypes {
         1.0F, 1.0F,
         MnSoundEvents.BLOCK_MUD_BREAK,
         MnSoundEvents.BLOCK_MUD_STEP,
-        MnSoundEvents.BLOCK_MUD_BREAK,
-        MnSoundEvents.BLOCK_MUD_STEP,
-        MnSoundEvents.BLOCK_MUD_STEP
+        MnSoundEvents.BLOCK_MUD_PLACE,
+        MnSoundEvents.BLOCK_MUD_HIT,
+        MnSoundEvents.BLOCK_MUD_FALL
+    );
+
+    public static final SoundType PEAT = new SoundType(
+        1.0F, 1.0F,
+        MnSoundEvents.BLOCK_PEAT_BREAK,
+        MnSoundEvents.BLOCK_PEAT_STEP,
+        MnSoundEvents.BLOCK_PEAT_PLACE,
+        MnSoundEvents.BLOCK_PEAT_HIT,
+        MnSoundEvents.BLOCK_PEAT_FALL
+    );
+
+    public static final SoundType CRYSTAL = new SoundType(
+        1.0F, 1.0F,
+        MnSoundEvents.BLOCK_CRYSTAL_BREAK,
+        MnSoundEvents.BLOCK_CRYSTAL_STEP,
+        MnSoundEvents.BLOCK_CRYSTAL_PLACE,
+        MnSoundEvents.BLOCK_CRYSTAL_HIT,
+        MnSoundEvents.BLOCK_CRYSTAL_FALL
     );
 
     private MnSoundTypes() {
