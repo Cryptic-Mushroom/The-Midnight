@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "midnight:nightshroom_shelf",
+    "midnight:dewshroom_shelf",
+    "midnight:viridshroom_shelf",
+    "midnight:bogshroom_shelf",
+    "midnight:moonshroom_shelf"
+  ]
+}

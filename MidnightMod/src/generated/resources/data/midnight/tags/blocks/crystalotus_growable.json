@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "midnight:nightstone",
+    "midnight:trenchstone",
+    "midnight:night_mycelium",
+    "#midnight:ores",
+    "#midnight:soils"
+  ]
+}

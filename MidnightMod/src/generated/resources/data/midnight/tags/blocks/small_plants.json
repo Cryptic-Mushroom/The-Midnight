@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "midnight:bogweed",
+    "midnight:violeaf",
+    "midnight:fingered_grass",
+    "midnight:lumen_bud",
+    "midnight:runebush",
+    "midnight:ghost_plant",
+    "midnight:tendrilweed",
+    "midnight:glob_fungus",
+    "#midnight:small_shrooms"
+  ]
+}
