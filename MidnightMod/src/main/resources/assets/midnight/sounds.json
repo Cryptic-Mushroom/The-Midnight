@@ -1,7 +1,7 @@
 {
   "block.mud.break": {
     "category": "block",
-    "subtitle": "subtitles.block.generic.hit",
+    "subtitle": "subtitles.block.generic.break",
     "sounds": [
       "midnight:block/mud/break1",
       "midnight:block/mud/break2",
@@ -51,7 +51,7 @@
 
   "block.peat.break": {
     "category": "block",
-    "subtitle": "subtitles.block.generic.hit",
+    "subtitle": "subtitles.block.generic.break",
     "sounds": [
       "midnight:block/peat/break1",
       "midnight:block/peat/break2",
@@ -103,7 +103,7 @@
 
   "block.crystal.break": {
     "category": "block",
-    "subtitle": "subtitles.block.generic.hit",
+    "subtitle": "subtitles.block.generic.break",
     "sounds": [
       "midnight:block/crystal/break1",
       "midnight:block/crystal/break2",

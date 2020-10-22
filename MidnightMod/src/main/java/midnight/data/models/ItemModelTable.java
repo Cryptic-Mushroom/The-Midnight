@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 21
+ * Last updated: 2020 - 10 - 22
  */
 
 package midnight.data.models;
@@ -154,6 +154,12 @@ public final class ItemModelTable {
 
         register(MnBlocks.ROCKSHROOM, item -> inherit(name(item, "block/%s")));
         register(MnItems.ROCKSHROOM_CLUMP, item -> generated(name(item, "item/%s")));
+
+        register(MnBlocks.ROUXE_ROCK, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.BLOOMCRYSTAL_ROCK, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.ROUXE, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.BLOOMCRYSTAL, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.CRYSTAL_FLOWER, item -> generated(name(item, "block/%s")));
 
         register(MnItems.DARK_STICK, item -> generated(name(item, "item/%s")));
     }

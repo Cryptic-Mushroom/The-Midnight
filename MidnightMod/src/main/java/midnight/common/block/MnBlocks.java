@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 21
+ * Last updated: 2020 - 10 - 22
  */
 
 package midnight.common.block;
@@ -191,6 +191,13 @@ public abstract class MnBlocks {
     // Rockshroom
     public static final Block ROCKSHROOM = inj();
 
+    // Crystals
+    public static final Block ROUXE_ROCK = inj();
+    public static final Block BLOOMCRYSTAL_ROCK = inj();
+    public static final Block ROUXE = inj();
+    public static final Block BLOOMCRYSTAL = inj();
+    public static final Block CRYSTAL_FLOWER = inj();
+
     // Dark pearl
     public static final Block DARK_PEARL_ORE = inj();
     public static final Block DARK_PEARL_BLOCK = inj();
@@ -322,6 +329,12 @@ public abstract class MnBlocks {
 
             rockshroom("rockshroom"),
 
+            crystalRock("rouxe_rock", 4, 4, 2, MaterialColor.RED),
+            crystalRock("bloomcrystal_rock", 4, 4, 14, MaterialColor.PINK),
+            crystal("rouxe", 4, 4, 3, MaterialColor.RED).hitbox(13, 12).offset(AbstractBlock.OffsetType.XZ),
+            crystal("bloomcrystal", 4, 4, 15, MaterialColor.PINK).hitbox(13, 12).offset(AbstractBlock.OffsetType.XZ),
+            crystalFlower("crystal_flower", 0, 0, Material.PLANTS, MaterialColor.PINK).hitbox(13, 13).offset(AbstractBlock.OffsetType.XZ),
+
             stone("dark_pearl_ore", 3, 6, MaterialColor.OBSIDIAN),
             darkPearl("dark_pearl_block", 3, 6, MaterialColor.BLACK)
         );
@@ -450,6 +463,12 @@ public abstract class MnBlocks {
 
             item(ROCKSHROOM, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
 
+            item(ROUXE_ROCK, MnItemCategory.CRYSTALS, MnItemGroup.BLOCKS),
+            item(BLOOMCRYSTAL_ROCK, MnItemCategory.CRYSTALS, MnItemGroup.BLOCKS),
+            item(ROUXE, MnItemCategory.CRYSTALS, MnItemGroup.DECOR),
+            item(BLOOMCRYSTAL, MnItemCategory.CRYSTALS, MnItemGroup.DECOR),
+            item(CRYSTAL_FLOWER, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+
             item(DARK_PEARL_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS),
             item(DARK_PEARL_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS)
         );
@@ -529,6 +548,10 @@ public abstract class MnBlocks {
         RenderTypeLookup.setRenderLayer(NIGHT_REED, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(DECEITFUL_MOSS, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(DECEITFUL_ALGAE, RenderType.getCutout());
+
+        RenderTypeLookup.setRenderLayer(ROUXE, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(BLOOMCRYSTAL, RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(CRYSTAL_FLOWER, RenderType.getCutout());
 
 
         BlockColors blockColors = Minecraft.getInstance().getBlockColors();
@@ -614,6 +637,7 @@ public abstract class MnBlocks {
                                     .sound(SoundType.STONE)
                                     .hardnessAndResistance((float) hardness, (float) resistance)
                                     .harvestTool(ToolType.PICKAXE)
+                                    .requiresTool()
         ));
     }
 
@@ -680,6 +704,31 @@ public abstract class MnBlocks {
         ));
     }
 
+    private static Block crystalRock(String id, double hardness, double resistance, int luminance, MaterialColor color) {
+        return block(id, new Block(
+            AbstractBlock.Properties.create(MnMaterials.CRYSTAL_ROCK, color)
+                                    .sound(MnSoundTypes.CRYSTAL)
+                                    .luminance(state -> luminance)
+                                    .emissiveLighting((state, world, pos) -> true)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
+                                    .harvestTool(ToolType.PICKAXE)
+                                    .requiresTool()
+        ));
+    }
+
+    private static CrystalBlock crystal(String id, double hardness, double resistance, int luminance, MaterialColor color) {
+        return block(id, new CrystalBlock(
+            AbstractBlock.Properties.create(MnMaterials.CRYSTAL, color)
+                                    .sound(MnSoundTypes.CRYSTAL)
+                                    .luminance(state -> luminance)
+                                    .emissiveLighting((state, world, pos) -> true)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
+                                    .harvestTool(ToolType.PICKAXE)
+                                    .nonOpaque()
+                                    .requiresTool()
+        ));
+    }
+
     private static Block rockshroom(String id) {
         return block(id, new RockshroomBlock(
             AbstractBlock.Properties.create(Material.ROCK, MaterialColor.PINK)
@@ -694,6 +743,16 @@ public abstract class MnBlocks {
             AbstractBlock.Properties.create(material, color)
                                     .nonOpaque()
                                     .sound(SoundType.PLANT)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
+        ));
+    }
+
+    private static PlantBlock crystalFlower(String id, double hardness, double resistance, Material material, MaterialColor color) {
+        return block(id, new PlantBlock(
+            AbstractBlock.Properties.create(material, color)
+                                    .nonOpaque()
+                                    .sound(SoundType.PLANT)
+                                    .emissiveLighting((state, world, pos) -> true)
                                     .hardnessAndResistance((float) hardness, (float) resistance)
         ));
     }

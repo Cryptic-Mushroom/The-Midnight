@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 21
+ * Last updated: 2020 - 10 - 22
  */
 
 package midnight.data.models;
@@ -154,6 +154,12 @@ public final class BlockStateTable {
         register(MnBlocks.DECEITFUL_ALGAE, block -> simple(name(block, "block/%s"), layeredPlant(name(block, "block/%s"))));
 
         register(MnBlocks.ROCKSHROOM, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+
+        register(MnBlocks.ROUXE_ROCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.BLOOMCRYSTAL_ROCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.ROUXE, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
+        register(MnBlocks.BLOOMCRYSTAL, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
+        register(MnBlocks.CRYSTAL_FLOWER, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
 
         register(MnBlocks.DARK_PEARL_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.DARK_PEARL_BLOCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));

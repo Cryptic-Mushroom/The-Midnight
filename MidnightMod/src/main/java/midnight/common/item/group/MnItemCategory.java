@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 20
+ * Last updated: 2020 - 10 - 22
  */
 
 package midnight.common.item.group;
@@ -30,6 +30,7 @@ public class MnItemCategory {
     public static final MnItemCategory FOOD = new MnItemCategory();
     public static final MnItemCategory MINERALS = new MnItemCategory();
     public static final MnItemCategory MINERAL_BLOCKS = new MnItemCategory();
+    public static final MnItemCategory CRYSTALS = new MnItemCategory();
     public static final MnItemCategory ORES = new MnItemCategory();
 
     // These appear at the bottom of the item group

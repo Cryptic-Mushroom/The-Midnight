@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 21
+ * Last updated: 2020 - 10 - 22
  */
 
 package midnight.data.loottables;
@@ -157,6 +157,12 @@ public class MnBlockLootTables extends BlockLootTables {
         registerLootTable(MnBlocks.DECEITFUL_ALGAE, BlockLootTables::onlyWithShears);
 
         registerLootTable(MnBlocks.ROCKSHROOM, block -> droppingSilkTouchOrRanged(block, MnItems.ROCKSHROOM_CLUMP, 2, 3));
+
+        registerDropSelfLootTable(MnBlocks.ROUXE_ROCK);
+        registerDropSelfLootTable(MnBlocks.BLOOMCRYSTAL_ROCK);
+        registerDropSelfLootTable(MnBlocks.ROUXE);
+        registerDropSelfLootTable(MnBlocks.BLOOMCRYSTAL);
+        registerDropSelfLootTable(MnBlocks.CRYSTAL_FLOWER);
 
         registerLootTable(MnBlocks.DARK_PEARL_ORE, block -> droppingItemWithFortune(block, MnItems.GEODE));
         registerDropSelfLootTable(MnBlocks.DARK_PEARL_BLOCK);
