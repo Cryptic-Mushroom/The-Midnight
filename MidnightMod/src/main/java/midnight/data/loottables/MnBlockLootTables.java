@@ -141,6 +141,9 @@ public class MnBlockLootTables extends BlockLootTables {
         registerLootTable(MnBlocks.GLOB_FUNGUS_HYPHAE, block -> droppingSilkTouchOrRanged(block, MnItems.GLOB_FUNGUS_HAND, 2, 4));
         registerDropSelfLootTable(MnBlocks.GLOB_FUNGUS_THATCH);
 
+        registerDropSelfLootTable(MnBlocks.REED_THATCH);
+        registerDropSelfLootTable(MnBlocks.CUT_REED_THATCH);
+
         registerDropSelfLootTable(MnBlocks.MISTSHROOM);
         registerLootTable(MnBlocks.TALL_MISTSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
         registerDropSelfLootTable(MnBlocks.FINGERED_GRASS);

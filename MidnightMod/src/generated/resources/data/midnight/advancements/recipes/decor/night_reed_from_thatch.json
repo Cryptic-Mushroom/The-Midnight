@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "midnight:glob_fungus_thatch_3x1"
+      "midnight:night_reed_from_thatch"
     ]
   },
   "criteria": {
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "item": "midnight:glob_fungus_hand"
+            "item": "midnight:reed_thatch"
           }
         ]
       }
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "midnight:glob_fungus_thatch_3x1"
+        "recipe": "midnight:night_reed_from_thatch"
       }
     }
   },

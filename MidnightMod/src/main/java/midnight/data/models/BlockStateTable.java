@@ -153,6 +153,9 @@ public final class BlockStateTable {
         register(MnBlocks.DECEITFUL_MOSS, block -> facingOrient(name(block, "block/%s"), moss(name(block, "block/%s")), true));
         register(MnBlocks.DECEITFUL_ALGAE, block -> simple(name(block, "block/%s"), layeredPlant(name(block, "block/%s"))));
 
+        register(MnBlocks.REED_THATCH, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.CUT_REED_THATCH, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+
         register(MnBlocks.ROCKSHROOM, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
 
         register(MnBlocks.ROUXE_ROCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));

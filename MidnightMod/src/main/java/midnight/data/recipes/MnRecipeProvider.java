@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 20
+ * Last updated: 2020 - 10 - 22
  */
 
 package midnight.data.recipes;
@@ -87,9 +87,14 @@ public class MnRecipeProvider extends RecipeProvider {
         shapeless("bogshroom_powder_from_tall_shroom", MnBlocks.TALL_BOGSHROOM, MnItems.BOGSHROOM_POWDER, 2);
         shapeless("bogshroom_powder_from_shelf", MnBlocks.BOGSHROOM_SHELF, MnItems.BOGSHROOM_POWDER, 1);
 
-        generic3x1("glob_fungus_thatch_3x1", MnItems.GLOB_FUNGUS_HAND, MnBlocks.GLOB_FUNGUS_THATCH, 1);
+        generic3x3("glob_fungus_thatch_3x3", MnItems.GLOB_FUNGUS_HAND, MnBlocks.GLOB_FUNGUS_THATCH, 1);
+        shapeless("glob_fungus_hand_from_thatch", MnBlocks.GLOB_FUNGUS_THATCH, MnItems.GLOB_FUNGUS_HAND, 9);
         generic2x2("glob_fungus_hyphae_2x2", MnBlocks.GLOB_FUNGUS_STEM, MnBlocks.GLOB_FUNGUS_HYPHAE, 3);
         generic2x2("glob_fungus_stem_2x2", MnItems.GLOB_FUNGUS_HAND, MnBlocks.GLOB_FUNGUS_STEM, 1);
+
+        generic3x3("reed_thatch_3x3", MnBlocks.NIGHT_REED, MnBlocks.REED_THATCH, 1);
+        shapeless("night_reed_from_thatch", MnBlocks.REED_THATCH, MnBlocks.NIGHT_REED, 9);
+        generic2x2("cut_reed_thatch_2x2", MnBlocks.REED_THATCH, MnBlocks.CUT_REED_THATCH, 4);
 
         shapeless("dark_pearl_from_block", MnBlocks.DARK_PEARL_BLOCK, MnItems.DARK_PEARL, 9);
         generic3x3("dark_pearl_block_3x3", MnItems.DARK_PEARL, MnBlocks.DARK_PEARL_BLOCK, 1);

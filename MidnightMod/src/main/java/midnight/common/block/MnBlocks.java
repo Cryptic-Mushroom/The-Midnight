@@ -188,6 +188,9 @@ public abstract class MnBlocks {
     public static final Block DECEITFUL_MOSS = inj();
     public static final Block DECEITFUL_ALGAE = inj();
 
+    public static final Block REED_THATCH = inj();
+    public static final Block CUT_REED_THATCH = inj();
+
     // Rockshroom
     public static final Block ROCKSHROOM = inj();
 
@@ -310,7 +313,7 @@ public abstract class MnBlocks {
             globStem("glob_fungus_stem", MaterialColor.PURPLE),
             infestedGlobStem("infested_glob_fungus_stem", MaterialColor.PURPLE),
             globStem("glob_fungus_hyphae", MaterialColor.PURPLE),
-            globThatch("glob_fungus_thatch", MaterialColor.PURPLE),
+            thatch("glob_fungus_thatch", MaterialColor.PURPLE),
 
             smallShroom("mistshroom", 0, 0, Material.PLANTS, MaterialColor.CYAN_TERRACOTTA, () -> (TallPlantBlock) TALL_MISTSHROOM).hitbox(13, 13).offset(Block.OffsetType.XZ),
             tallShroom("tall_mistshroom", 0, 0, Material.PLANTS, MaterialColor.CYAN_TERRACOTTA).hitbox(13, 30).offset(Block.OffsetType.XZ),
@@ -326,6 +329,9 @@ public abstract class MnBlocks {
             nightReed("night_reed").hitbox(13, 11),
             directionalPlant("deceitful_moss", 0.3, 0, Material.PLANTS, MaterialColor.BLUE_TERRACOTTA).hitbox(16, 2),
             floatingAlgae("deceitful_algae", 0, 0, Material.OCEAN_PLANT, MaterialColor.BLUE_TERRACOTTA).hitbox(16, 1),
+
+            reedThatch("reed_thatch", MaterialColor.PURPLE, () -> CUT_REED_THATCH),
+            thatch("cut_reed_thatch", MaterialColor.PURPLE),
 
             rockshroom("rockshroom"),
 
@@ -453,6 +459,9 @@ public abstract class MnBlocks {
             item(NIGHT_REED, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(DECEITFUL_MOSS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(DECEITFUL_ALGAE, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
+
+            item(REED_THATCH, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
+            item(CUT_REED_THATCH, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
 
             item(GLOB_FUNGUS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(GLOB_FUNGUS_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
@@ -1081,12 +1090,24 @@ public abstract class MnBlocks {
         ));
     }
 
-    private static Block globThatch(String id, MaterialColor color) {
+    private static Block thatch(String id, MaterialColor color) {
         return block(id, new Block(
             AbstractBlock.Properties.create(Material.ORGANIC, color)
                                     .sound(SoundType.WART_BLOCK)
                                     .harvestTool(ToolType.HOE)
-                                    .hardnessAndResistance(1.5f)
+                                    .hardnessAndResistance(0.8f)
+        ));
+    }
+
+    private static Block reedThatch(String id, MaterialColor color, Supplier<Block> tilled) {
+        return block(id, new ShearableBlock(
+            AbstractBlock.Properties.create(Material.ORGANIC, color)
+                                    .sound(SoundType.WART_BLOCK)
+                                    .harvestTool(ToolType.HOE)
+                                    .luminance(state -> 8)
+                                    .emissiveLighting((state, world, pos) -> true)
+                                    .hardnessAndResistance(0.8f),
+            tilled
         ));
     }
 

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "midnight:glob_fungus_thatch"
+    }
+  ],
+  "result": {
+    "item": "midnight:glob_fungus_hand",
+    "count": 9
+  }
+}

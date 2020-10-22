@@ -147,6 +147,9 @@ public final class ItemModelTable {
         register(MnBlocks.GLOB_FUNGUS, item -> generated(name(item, "block/%s")));
         register(MnItems.GLOB_FUNGUS_HAND, item -> generated(name(item, "item/%s")));
 
+        register(MnBlocks.REED_THATCH, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.CUT_REED_THATCH, item -> inherit(name(item, "block/%s")));
+
         register(MnBlocks.DARK_PEARL_ORE, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.DARK_PEARL_BLOCK, item -> inherit(name(item, "block/%s")));
         register(MnItems.DARK_PEARL, item -> generated(name(item, "item/%s")));
