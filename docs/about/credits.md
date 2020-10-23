@@ -7,23 +7,24 @@ If you are a contributor on this list and want your name to link to a different 
 
 [Cipher Zero X](https://github.com/cipherzerox) - Project Lead, Mastermind, Modeler  
 [RedGalaxySW](https://shadew.net/) - Lead Programmer  
-[Jonathing](https://colmenares.codes/) - Lead QA, Community Manager, Programmer, Musician
+[Jonathing](https://colmenares.codes/) - Lead QA, Community Manager, Programmer, Musician  
+[Lachney](https://xjon.me) - Lead Sound Designer, Lead Musician  
+[123wdog](https://www.curseforge.com/members/123wdog/) - Lead Modeler
 
-## Active Collaborators
+### Active Collaborators
 
-[Lachney](https://xjon.me) - Lead Sound Designer, Lead Musician
+[bagu_chan](https://github.com/pentantan) - Programmer, Texturer
 
 ## Former and Inactive Developers
 
-[bagu_chan](https://github.com/pentantan) - Programmer  
-[gegy1000](https://github.com/gegy1000) - Programmer  
-[Martacus](https://github.com/Martacus) - Programmer  
-[arthurbambous](https://github.com/arthurbambou) - Programmer  
-[Corail31](https://github.com/Corail31) - Programmer  
-[Endergized](https://github.com/Endergy) - Texturer  
-[Five (Paradiscal)](https://github.com/fivelol) - Texturer  
-[MCVinnyq](https://github.com/MCVinnyq) - Texturer, Modeler
-
-## Additional Thanks
-
-Contributors (pre-rewrite): [ZombieEnderman5](https://github.com/ZombieEnderman5), [veesus mikhel heir](https://minecraft.curseforge.com/members/veesusmikelheir), 123wdog, [Terenx](https://github.com/Terenx), [KingPhygieBoo](https://gitlab.com/KingPhygieBoo)
+[gegy1000](https://github.com/gegy1000) - Former Programmer  
+[Martacus](https://github.com/Martacus) - Former Programmer  
+[arthurbambous](https://github.com/arthurbambou) - Former Programmer  
+[Corail31](https://github.com/Corail31) - Former Programmer  
+[Endergized](https://github.com/Endergy) - Former Texturer  
+[Five (Paradiscal)](https://github.com/fivelol) - Former Texturer  
+[MCVinnyq](https://github.com/MCVinnyq) - Former Texturer, Former Modeler  
+[ZombieEnderman5](https://github.com/ZombieEnderman5) - Contributor  
+[veesus mikhel heir](https://minecraft.curseforge.com/members/veesusmikelheir) - Contributor  
+[Terenx](https://github.com/Terenx) - Contributor  
+[KingPhygieBoo](https://gitlab.com/KingPhygieBoo) - Contributor
