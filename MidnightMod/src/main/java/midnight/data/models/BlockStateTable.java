@@ -179,6 +179,33 @@ public final class BlockStateTable {
         return VariantBlockStateGen.create(ModelInfo.create(name, model));
     }
 
+    private static IBlockStateGen altering(String name, IModelGen... models) {
+        ModelInfo[] info = new ModelInfo[models.length];
+        for (int i = 0, l = models.length; i < l; i++) {
+            String suffix = i == 0 ? "" : "_alt_" + i;
+            info[i] = ModelInfo.create(name + suffix, models[i]);
+        }
+        return VariantBlockStateGen.create(info);
+    }
+
+    private static IBlockStateGen altering(String name, Function<String, IModelGen> gen, String... names) {
+        ModelInfo[] info = new ModelInfo[names.length];
+        for (int i = 0, l = names.length; i < l; i++) {
+            String suffix = i == 0 ? "" : "_alt_" + i;
+            info[i] = ModelInfo.create(name + suffix, gen.apply(names[i]));
+        }
+        return VariantBlockStateGen.create(info);
+    }
+
+    private static IBlockStateGen altering(String name, Function<String, IModelGen> gen, int count) {
+        ModelInfo[] info = new ModelInfo[count];
+        for (int i = 0; i < count; i++) {
+            String suffix = i == 0 ? "" : "_alt_" + i;
+            info[i] = ModelInfo.create(name + suffix, gen.apply(name + suffix));
+        }
+        return VariantBlockStateGen.create(info);
+    }
+
     private static IBlockStateGen hangingPlant(String endName, IModelGen endModel, String rootName, IModelGen rootModel) {
         return VariantBlockStateGen.create("end=true", ModelInfo.create(endName, endModel))
                                    .variant("end=false", ModelInfo.create(rootName, rootModel));
