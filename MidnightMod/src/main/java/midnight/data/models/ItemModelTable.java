@@ -160,6 +160,19 @@ public final class ItemModelTable {
         register(MnItems.TENEBRUM_INGOT, item -> generated(name(item, "item/%s")));
         register(MnItems.TENEBRUM_NUGGET, item -> generated(name(item, "item/%s")));
 
+        register(MnBlocks.NAGRILITE_ORE, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.NAGRILITE_BLOCK, item -> inherit(name(item, "block/%s")));
+        register(MnItems.NAGRILITE_INGOT, item -> generated(name(item, "item/%s")));
+        register(MnItems.NAGRILITE_NUGGET, item -> generated(name(item, "item/%s")));
+
+        register(MnBlocks.EBONITE_ORE, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.EBONITE_BLOCK, item -> inherit(name(item, "block/%s")));
+        register(MnItems.EBONITE, item -> generated(name(item, "item/%s")));
+
+        register(MnBlocks.VIRILUX_ORE, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.VIRILUX_BLOCK, item -> inherit(name(item, "block/%s")));
+        register(MnItems.VIRILUX, item -> generated(name(item, "item/%s")));
+
         register(MnBlocks.ROCKSHROOM, item -> inherit(name(item, "block/%s")));
         register(MnItems.ROCKSHROOM_CLUMP, item -> generated(name(item, "item/%s")));
 

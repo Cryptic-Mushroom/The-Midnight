@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 21
+ * Last updated: 2020 - 10 - 24
  */
 
 package midnight.common.misc;
@@ -43,6 +43,12 @@ public final class MnSoundEvents {
     public static final SoundEvent BLOCK_CRYSTAL_PLACE = make("block.crystal.place");
     public static final SoundEvent BLOCK_CRYSTAL_HIT = make("block.crystal.hit");
     public static final SoundEvent BLOCK_CRYSTAL_FALL = make("block.crystal.fall");
+
+    public static final SoundEvent BLOCK_JEWEL_BREAK = make("block.jewel.break");
+    public static final SoundEvent BLOCK_JEWEL_STEP = make("block.jewel.step");
+    public static final SoundEvent BLOCK_JEWEL_PLACE = make("block.jewel.place");
+    public static final SoundEvent BLOCK_JEWEL_HIT = make("block.jewel.hit");
+    public static final SoundEvent BLOCK_JEWEL_FALL = make("block.jewel.fall");
 
     public static void registerSoundEvents(IRegistry<SoundEvent> registry) {
         SOUNDS.forEach(registry::register);

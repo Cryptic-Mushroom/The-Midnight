@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "midnight:tenebrum_from_block"
+      "midnight:nagrilite_block_3x3"
     ]
   },
   "criteria": {
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "item": "midnight:tenebrum_block"
+            "item": "midnight:nagrilite_ingot"
           }
         ]
       }
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "midnight:tenebrum_from_block"
+        "recipe": "midnight:nagrilite_block_3x3"
       }
     }
   },

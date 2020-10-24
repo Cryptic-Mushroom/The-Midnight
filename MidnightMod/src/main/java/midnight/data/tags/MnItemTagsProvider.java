@@ -69,7 +69,11 @@ public class MnItemTagsProvider extends TagsProvider<Item> {
         getOrCreateTagBuilder(MnItemTags.MINERALS)
             .add(MnItems.DARK_PEARL)
             .add(MnItems.TENEBRUM_INGOT)
-            .add(MnItems.TENEBRUM_NUGGET);
+            .add(MnItems.TENEBRUM_NUGGET)
+            .add(MnItems.NAGRILITE_INGOT)
+            .add(MnItems.NAGRILITE_NUGGET)
+            .add(MnItems.EBONITE)
+            .add(MnItems.VIRILUX);
     }
 
     @Override

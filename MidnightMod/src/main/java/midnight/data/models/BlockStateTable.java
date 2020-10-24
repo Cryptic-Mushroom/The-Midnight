@@ -169,6 +169,15 @@ public final class BlockStateTable {
 
         register(MnBlocks.TENEBRUM_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.TENEBRUM_BLOCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+
+        register(MnBlocks.NAGRILITE_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.NAGRILITE_BLOCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+
+        register(MnBlocks.EBONITE_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.EBONITE_BLOCK, block -> simple(name(block, "block/%s"), cubeColumn(name(block, "block/%s_end"), name(block, "block/%s_side"))));
+
+        register(MnBlocks.VIRILUX_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.VIRILUX_BLOCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
     }
 
     private static IBlockStateGen none() {

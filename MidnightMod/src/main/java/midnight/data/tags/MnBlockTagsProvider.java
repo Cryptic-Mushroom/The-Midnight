@@ -68,11 +68,17 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
 
         getOrCreateTagBuilder(MnBlockTags.ORES)
             .add(MnBlocks.DARK_PEARL_ORE)
-            .add(MnBlocks.TENEBRUM_ORE);
+            .add(MnBlocks.TENEBRUM_ORE)
+            .add(MnBlocks.NAGRILITE_ORE)
+            .add(MnBlocks.EBONITE_ORE)
+            .add(MnBlocks.VIRILUX_ORE);
 
         getOrCreateTagBuilder(MnBlockTags.MINERAL_BLOCKS)
             .add(MnBlocks.DARK_PEARL_BLOCK)
-            .add(MnBlocks.TENEBRUM_BLOCK);
+            .add(MnBlocks.TENEBRUM_BLOCK)
+            .add(MnBlocks.NAGRILITE_BLOCK)
+            .add(MnBlocks.EBONITE_BLOCK)
+            .add(MnBlocks.VIRILUX_BLOCK);
 
         getOrCreateTagBuilder(MnBlockTags.SOILS)
             .add(MnBlocks.NIGHT_DIRT)

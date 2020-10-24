@@ -209,6 +209,18 @@ public abstract class MnBlocks {
     public static final Block TENEBRUM_ORE = inj();
     public static final Block TENEBRUM_BLOCK = inj();
 
+    // Nagrilite
+    public static final Block NAGRILITE_ORE = inj();
+    public static final Block NAGRILITE_BLOCK = inj();
+
+    // Ebonite
+    public static final Block EBONITE_ORE = inj();
+    public static final Block EBONITE_BLOCK = inj();
+
+    // Virilux
+    public static final Block VIRILUX_ORE = inj();
+    public static final Block VIRILUX_BLOCK = inj();
+
 
 
     //////////////////////////
@@ -348,8 +360,17 @@ public abstract class MnBlocks {
             stone("dark_pearl_ore", 3, 3, MaterialColor.OBSIDIAN),
             darkPearl("dark_pearl_block", 4, 6, MaterialColor.BLACK),
 
-            ore("tenebrum_ore", 3, 3, MaterialColor.OBSIDIAN, 1),
-            metal("tenebrum_block", 5, 6, MaterialColor.GREEN_TERRACOTTA, 1)
+            ore("tenebrum_ore", 3, 3, MaterialColor.OBSIDIAN, 3),
+            rareMetal("tenebrum_block", 6.7, 8, MaterialColor.BLACK, 3),
+
+            ore("nagrilite_ore", 3, 3, MaterialColor.OBSIDIAN, 2),
+            metal("nagrilite_block", 5, 6, MaterialColor.BLACK, 2),
+
+            xpOre("ebonite_ore", 3, 3, MaterialColor.OBSIDIAN, 1, 0, 2),
+            brittleMetal("ebonite_block", 3, 5, MaterialColor.BLACK, 1),
+
+            viriluxOre("virilux_ore"),
+            virilux("virilux_block")
         );
     }
 
@@ -489,7 +510,16 @@ public abstract class MnBlocks {
             item(DARK_PEARL_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS),
 
             item(TENEBRUM_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS),
-            item(TENEBRUM_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS)
+            item(TENEBRUM_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS),
+
+            item(NAGRILITE_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS),
+            item(NAGRILITE_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS),
+
+            item(EBONITE_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS),
+            item(EBONITE_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS),
+
+            item(VIRILUX_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS),
+            item(VIRILUX_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS)
         );
     }
 
@@ -671,7 +701,7 @@ public abstract class MnBlocks {
         ));
     }
 
-    private static Block xpore(String id, double hardness, double resistance, MaterialColor color, int toolLevel, int minxp, int maxxp) {
+    private static Block xpOre(String id, double hardness, double resistance, MaterialColor color, int toolLevel, int minxp, int maxxp) {
         return block(id, new XPDroppingBlock(
             AbstractBlock.Properties.create(Material.ROCK, color)
                                     .sound(SoundType.STONE)
@@ -1204,6 +1234,17 @@ public abstract class MnBlocks {
         ));
     }
 
+    private static Block brittleMetal(String id, double hardness, double resistance, MaterialColor color, int harvestLevel) {
+        return block(id, new Block(
+            AbstractBlock.Properties.create(Material.IRON, color)
+                                    .sound(MnSoundTypes.BRITTLE_METAL)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
+                                    .harvestTool(ToolType.PICKAXE)
+                                    .harvestLevel(harvestLevel)
+                                    .requiresTool()
+        ));
+    }
+
     private static Block rareMetal(String id, double hardness, double resistance, MaterialColor color, int harvestLevel) {
         return block(id, new Block(
             AbstractBlock.Properties.create(Material.IRON, color)
@@ -1212,6 +1253,33 @@ public abstract class MnBlocks {
                                     .harvestTool(ToolType.PICKAXE)
                                     .harvestLevel(harvestLevel)
                                     .requiresTool()
+        ));
+    }
+
+    private static Block virilux(String id) {
+        return block(id, new Block(
+            AbstractBlock.Properties.create(MnMaterials.VIRILUX, MaterialColor.LIME)
+                                    .sound(MnSoundTypes.JEWEL)
+                                    .hardnessAndResistance(6.5F, 8)
+                                    .harvestTool(ToolType.PICKAXE)
+                                    .harvestLevel(3)
+                                    .luminance(state -> 15)
+                                    .emissiveLighting((state, world, pos) -> true)
+                                    .requiresTool()
+        ));
+    }
+
+    private static Block viriluxOre(String id) {
+        return block(id, new XPDroppingBlock(
+            AbstractBlock.Properties.create(Material.ROCK, MaterialColor.OBSIDIAN)
+                                    .sound(SoundType.STONE)
+                                    .hardnessAndResistance(5, 5)
+                                    .harvestTool(ToolType.PICKAXE)
+                                    .harvestLevel(3)
+                                    .luminance(state -> 4)
+                                    .emissiveLighting((state, world, pos) -> true)
+                                    .requiresTool(),
+            3, 6
         ));
     }
 

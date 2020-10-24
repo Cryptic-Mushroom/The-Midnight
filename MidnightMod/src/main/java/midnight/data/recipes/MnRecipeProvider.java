@@ -100,11 +100,25 @@ public class MnRecipeProvider extends RecipeProvider {
         generic3x3("dark_pearl_block_3x3", MnItems.DARK_PEARL, MnBlocks.DARK_PEARL_BLOCK, 1);
         blasting("dark_pearl_from_ore", MnBlocks.DARK_PEARL_ORE, MnItems.DARK_PEARL, 0.7);
 
-        shapeless("tenebrum_from_block", MnBlocks.TENEBRUM_BLOCK, MnItems.TENEBRUM_INGOT, 9);
+        shapeless("tenebrum_ingot_from_block", MnBlocks.TENEBRUM_BLOCK, MnItems.TENEBRUM_INGOT, 9);
         generic3x3("tenebrum_block_3x3", MnItems.TENEBRUM_INGOT, MnBlocks.TENEBRUM_BLOCK, 1);
         shapeless("tenebrum_nugget_from_ingot", MnItems.TENEBRUM_INGOT, MnItems.TENEBRUM_NUGGET, 9);
         generic3x3("tenebrum_ingot_3x3", MnItems.TENEBRUM_NUGGET, MnItems.TENEBRUM_INGOT, 1);
-        blasting("tenebrum_ingot_from_ore", MnBlocks.TENEBRUM_ORE, MnItems.TENEBRUM_INGOT, 0.7);
+        blasting("tenebrum_ingot_from_ore", MnBlocks.TENEBRUM_ORE, MnItems.TENEBRUM_INGOT, 0.9);
+
+        shapeless("nagrilite_ingot_from_block", MnBlocks.NAGRILITE_BLOCK, MnItems.NAGRILITE_INGOT, 9);
+        generic3x3("nagrilite_block_3x3", MnItems.NAGRILITE_INGOT, MnBlocks.NAGRILITE_BLOCK, 1);
+        shapeless("nagrilite_nugget_from_ingot", MnItems.NAGRILITE_INGOT, MnItems.NAGRILITE_NUGGET, 9);
+        generic3x3("nagrilite_ingot_3x3", MnItems.NAGRILITE_NUGGET, MnItems.NAGRILITE_INGOT, 1);
+        blasting("nagrilite_ingot_from_ore", MnBlocks.NAGRILITE_ORE, MnItems.NAGRILITE_INGOT, 0.7);
+
+        shapeless("ebonite_from_block", MnBlocks.EBONITE_BLOCK, MnItems.EBONITE, 9);
+        generic3x3("ebonite_block_3x3", MnItems.EBONITE, MnBlocks.EBONITE_BLOCK, 1);
+        blasting("ebonite_from_ore", MnBlocks.EBONITE_ORE, MnItems.EBONITE, 0.7);
+
+        shapeless("virilux_from_block", MnBlocks.VIRILUX_BLOCK, MnItems.VIRILUX, 9);
+        generic3x3("virilux_block_3x3", MnItems.VIRILUX, MnBlocks.VIRILUX_BLOCK, 1);
+        blasting("virilux_from_ore", MnBlocks.VIRILUX_ORE, MnItems.VIRILUX, 0.7);
 
         cooking("cooked_suavis_from_raw", MnItems.RAW_SUAVIS, MnItems.COOKED_SUAVIS, 0.35);
     }

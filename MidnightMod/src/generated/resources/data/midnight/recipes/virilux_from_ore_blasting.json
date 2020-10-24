@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "midnight:virilux_ore"
+  },
+  "result": "midnight:virilux",
+  "experience": 0.7,
+  "cookingtime": 100
+}

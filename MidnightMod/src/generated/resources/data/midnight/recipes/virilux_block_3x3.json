@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "midnight:virilux"
+    }
+  },
+  "result": {
+    "item": "midnight:virilux_block"
+  }
+}
