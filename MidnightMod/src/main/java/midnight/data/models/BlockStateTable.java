@@ -12,9 +12,7 @@ import midnight.common.block.MnBlocks;
 import midnight.common.block.ShroomCapBlock;
 import midnight.data.models.modelgen.IModelGen;
 import midnight.data.models.modelgen.InheritingModelGen;
-import midnight.data.models.stategen.IBlockStateGen;
-import midnight.data.models.stategen.ModelInfo;
-import midnight.data.models.stategen.VariantBlockStateGen;
+import midnight.data.models.stategen.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.state.StateContainer;
@@ -170,8 +168,7 @@ public final class BlockStateTable {
         register(MnBlocks.ARCHAIC_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.ARCHAIC_GLASS, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
 
-        //TODO need to make multipart things code
-        //register(MnBlocks.ARCHAIC_GLASS_PANE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.ARCHAIC_GLASS_PANE, block -> glassPane(name(block, "block/%s"), name(block, "block/%s", "_pane"), name(block, "block/%s_edge")));
 
         register(MnBlocks.TENEBRUM_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.TENEBRUM_BLOCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
@@ -192,6 +189,30 @@ public final class BlockStateTable {
 
     private static IBlockStateGen simple(String name, IModelGen model) {
         return VariantBlockStateGen.create(ModelInfo.create(name, model));
+    }
+
+    private static IBlockStateGen pane(String name, IModelGen post, IModelGen side, IModelGen noside, IModelGen sideAlt, IModelGen nosideAlt) {
+        return MultipartBlockStateGen.multipart()
+                                     .part(ModelInfo.create(name + "_post", post))
+                                     .part(Selector.and("north", "true"), ModelInfo.create(name + "_side", side))
+                                     .part(Selector.and("east", "true"), ModelInfo.create(name + "_side", side).rotate(0, 90))
+                                     .part(Selector.and("south", "true"), ModelInfo.create(name + "_side_alt", sideAlt))
+                                     .part(Selector.and("west", "true"), ModelInfo.create(name + "_side_alt", sideAlt).rotate(0, 90))
+                                     .part(Selector.and("north", "false"), ModelInfo.create(name + "_noside", noside))
+                                     .part(Selector.and("east", "false"), ModelInfo.create(name + "_noside_alt", nosideAlt))
+                                     .part(Selector.and("south", "false"), ModelInfo.create(name + "_noside_alt", nosideAlt).rotate(0, 90))
+                                     .part(Selector.and("west", "false"), ModelInfo.create(name + "_noside", noside).rotate(0, 270));
+    }
+
+    private static IBlockStateGen glassPane(String name, String paneTex, String edgeTex) {
+        return pane(
+            name,
+            panePost(paneTex, edgeTex),
+            paneSide(paneTex, edgeTex),
+            paneNoside(paneTex),
+            paneSideAlt(paneTex, edgeTex),
+            paneNosideAlt(paneTex)
+        );
     }
 
     private static IBlockStateGen altering(String name, IModelGen... models) {

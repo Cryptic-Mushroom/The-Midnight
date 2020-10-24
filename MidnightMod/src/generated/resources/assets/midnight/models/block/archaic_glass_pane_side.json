@@ -1,0 +1,8 @@
+{
+  "parent": "midnight:block/pane_side",
+  "textures": {
+    "particle": "midnight:block/archaic_glass",
+    "edge": "midnight:block/archaic_glass_pane_edge",
+    "pane": "midnight:block/archaic_glass"
+  }
+}

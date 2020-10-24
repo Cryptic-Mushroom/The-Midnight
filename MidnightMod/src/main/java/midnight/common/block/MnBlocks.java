@@ -365,10 +365,10 @@ public abstract class MnBlocks {
 
             stone("dark_pearl_ore", 3, 6, MaterialColor.OBSIDIAN),
             darkPearl("dark_pearl_block", 3, 6, MaterialColor.BLACK),
-            
+
             stone("archaic_ore", 3, 6, MaterialColor.OBSIDIAN),
             glass("archaic_glass"),
-            glassPanel("archaic_glass_pane"),
+            glassPane("archaic_glass_pane"),
 
             ore("tenebrum_ore", 3, 3, MaterialColor.OBSIDIAN, 3),
             rareMetal("tenebrum_block", 6.7, 8, MaterialColor.BLACK, 3),
@@ -521,7 +521,7 @@ public abstract class MnBlocks {
 
             item(ARCHAIC_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS),
             item(ARCHAIC_GLASS, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
-            item(ARCHAIC_GLASS_PANE, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS)
+            item(ARCHAIC_GLASS_PANE, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
 
             item(TENEBRUM_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS),
             item(TENEBRUM_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS),
@@ -1280,16 +1280,17 @@ public abstract class MnBlocks {
                                     .nonOpaque()
                                     .sound(SoundType.GLASS)
                                     .hardnessAndResistance(0.3F)
-                                    .harvestTool(ToolType.PICKAXE)
         ));
     }
 
-    private static Block glassPanel(String id) {
+    private static Block glassPane(String id) {
         return block(id, new PaneBlock(
             AbstractBlock.Properties.create(Material.GLASS, MaterialColor.PINK)
+                                    .nonOpaque()
                                     .sound(SoundType.GLASS)
                                     .hardnessAndResistance(0.3F)
-                                    .harvestTool(ToolType.PICKAXE)
+        ));
+    }
 
     private static Block virilux(String id) {
         return block(id, new Block(

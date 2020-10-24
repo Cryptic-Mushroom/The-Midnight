@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 21
+ * Last updated: 2020 - 10 - 24
  */
 
 package midnight.data.models.modelgen;
@@ -402,5 +402,37 @@ public class InheritingModelGen implements IModelGen {
     public static InheritingModelGen moss(String texture) {
         return new InheritingModelGen("midnight:block/moss")
                    .texture("texture", texture);
+    }
+
+    public static InheritingModelGen paneNoside(String pane) {
+        return new InheritingModelGen("midnight:block/pane_noside")
+                   .texture("particle", pane)
+                   .texture("pane", pane);
+    }
+
+    public static InheritingModelGen paneNosideAlt(String pane) {
+        return new InheritingModelGen("midnight:block/pane_noside_alt")
+                   .texture("particle", pane)
+                   .texture("pane", pane);
+    }
+
+    public static InheritingModelGen paneSide(String pane, String edge) {
+        return new InheritingModelGen("midnight:block/pane_side")
+                   .texture("particle", pane)
+                   .texture("edge", edge)
+                   .texture("pane", pane);
+    }
+
+    public static InheritingModelGen paneSideAlt(String pane, String edge) {
+        return new InheritingModelGen("midnight:block/pane_side_alt")
+                   .texture("particle", pane)
+                   .texture("edge", edge)
+                   .texture("pane", pane);
+    }
+
+    public static InheritingModelGen panePost(String pane, String edge) {
+        return new InheritingModelGen("midnight:block/pane_post")
+                   .texture("particle", pane)
+                   .texture("edge", edge);
     }
 }
