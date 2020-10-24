@@ -26,6 +26,19 @@ import java.util.List;
 public final class MnSoundEvents {
     private static final List<SoundEvent> SOUNDS = new ArrayList<>();
 
+    // Ambient sounds
+    public static final SoundEvent AMBIENT_CAVES_LONG = make("ambient.caves.long");
+    public static final SoundEvent AMBIENT_MIDNIGHT_SHORT = make("ambient.midnight.short");
+    public static final SoundEvent AMBIENT_MIDNIGHT_LONG = make("ambient.midnight.long");
+
+    // Ambient-like music
+    public static final SoundEvent MUSIC_AMBIENT_STEGANO = make("ambient.music.stegano");
+    public static final SoundEvent MUSIC_AMBIENT_ULTRAVIOLET = make("ambient.music.ultraviolet");
+
+    // True music
+    public static final SoundEvent MUSIC_CRYSTALS = make("music.crystals");
+    public static final SoundEvent MUSIC_DARKWILLOW = make("music.dark_willow");
+
     public static final SoundEvent BLOCK_MUD_BREAK = make("block.mud.break");
     public static final SoundEvent BLOCK_MUD_STEP = make("block.mud.step");
     public static final SoundEvent BLOCK_MUD_PLACE = make("block.mud.place");
