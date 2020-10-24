@@ -169,6 +169,10 @@ public class MnBlockLootTables extends BlockLootTables {
 
         registerLootTable(MnBlocks.DARK_PEARL_ORE, block -> droppingItemWithFortune(block, MnItems.GEODE));
         registerDropSelfLootTable(MnBlocks.DARK_PEARL_BLOCK);
+
+        registerLootTable(MnBlocks.ARCHAIC_ORE, block -> droppingItemWithFortune(block, MnItems.ARCHAIC_SHARD));
+        registerSilkTouch(MnBlocks.ARCHAIC_GLASS);
+        registerSilkTouch(MnBlocks.ARCHAIC_GLASS_PANE);
     }
 
     protected static LootTable.Builder droppingNothing() {

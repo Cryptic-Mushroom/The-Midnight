@@ -166,6 +166,12 @@ public final class BlockStateTable {
 
         register(MnBlocks.DARK_PEARL_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.DARK_PEARL_BLOCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+
+        register(MnBlocks.ARCHAIC_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.ARCHAIC_GLASS, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+
+        //TODO need to make multipart things code
+        //register(MnBlocks.ARCHAIC_GLASS_PANE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
     }
 
     private static IBlockStateGen none() {

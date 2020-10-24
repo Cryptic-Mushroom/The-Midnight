@@ -204,6 +204,10 @@ public abstract class MnBlocks {
     // Dark pearl
     public static final Block DARK_PEARL_ORE = inj();
     public static final Block DARK_PEARL_BLOCK = inj();
+    // Archaic
+    public static final Block ARCHAIC_ORE = inj();
+    public static final Block ARCHAIC_GLASS = inj();
+    public static final Block ARCHAIC_GLASS_PANE = inj();
 
 
 
@@ -342,7 +346,10 @@ public abstract class MnBlocks {
             crystalFlower("crystal_flower", 0, 0, Material.PLANTS, MaterialColor.PINK).hitbox(13, 13).offset(AbstractBlock.OffsetType.XZ),
 
             stone("dark_pearl_ore", 3, 6, MaterialColor.OBSIDIAN),
-            darkPearl("dark_pearl_block", 3, 6, MaterialColor.BLACK)
+            darkPearl("dark_pearl_block", 3, 6, MaterialColor.BLACK),
+            stone("archaic_ore", 3, 6, MaterialColor.OBSIDIAN),
+            glass("archaic_glass"),
+            glassPanel("archaic_glass_pane")
         );
     }
 
@@ -479,7 +486,10 @@ public abstract class MnBlocks {
             item(CRYSTAL_FLOWER, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
 
             item(DARK_PEARL_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS),
-            item(DARK_PEARL_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS)
+            item(DARK_PEARL_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS),
+            item(ARCHAIC_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS),
+            item(ARCHAIC_GLASS, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
+            item(ARCHAIC_GLASS_PANE, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS)
         );
     }
 
@@ -561,6 +571,9 @@ public abstract class MnBlocks {
         RenderTypeLookup.setRenderLayer(ROUXE, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BLOOMCRYSTAL, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(CRYSTAL_FLOWER, RenderType.getCutout());
+
+        RenderTypeLookup.setRenderLayer(ARCHAIC_GLASS, RenderType.getTranslucent());
+        RenderTypeLookup.setRenderLayer(ARCHAIC_GLASS_PANE, RenderType.getTranslucent());
 
 
         BlockColors blockColors = Minecraft.getInstance().getBlockColors();
@@ -1153,8 +1166,28 @@ public abstract class MnBlocks {
     private static Block darkPearl(String id, double hardness, double resistance, MaterialColor color) {
         return block(id, new Block(
             AbstractBlock.Properties.create(Material.IRON, color)
+                                    .nonOpaque()
                                     .sound(SoundType.BONE)
                                     .hardnessAndResistance((float) hardness, (float) resistance)
+                                    .harvestTool(ToolType.PICKAXE)
+        ));
+    }
+
+    private static Block glass(String id) {
+        return block(id, new GlassBlock(
+            AbstractBlock.Properties.create(Material.GLASS, MaterialColor.PINK)
+                                    .nonOpaque()
+                                    .sound(SoundType.GLASS)
+                                    .hardnessAndResistance(0.3F)
+                                    .harvestTool(ToolType.PICKAXE)
+        ));
+    }
+
+    private static Block glassPanel(String id) {
+        return block(id, new PaneBlock(
+            AbstractBlock.Properties.create(Material.GLASS, MaterialColor.PINK)
+                                    .sound(SoundType.GLASS)
+                                    .hardnessAndResistance(0.3F)
                                     .harvestTool(ToolType.PICKAXE)
         ));
     }

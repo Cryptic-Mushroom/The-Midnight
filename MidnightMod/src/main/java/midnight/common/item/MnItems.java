@@ -45,6 +45,8 @@ public abstract class MnItems {
     public static final Item RAW_SUAVIS = inj();
     public static final Item COOKED_SUAVIS = inj();
 
+    public static final Item ARCHAIC_SHARD = inj();
+
     private MnItems() {
     }
 
@@ -66,7 +68,8 @@ public abstract class MnItems {
             item("rockshroom_clump", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
 
             rawSuavis("raw_suavis", MnItemCategory.FOOD, MnItemGroup.MISC),
-            edible("cooked_suavis", MnItemCategory.FOOD, MnItemGroup.MISC, MnFoods.COOKED_SUAVIS)
+            edible("cooked_suavis", MnItemCategory.FOOD, MnItemGroup.MISC, MnFoods.COOKED_SUAVIS),
+            item("archaic_shard", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC)
         );
     }
 
