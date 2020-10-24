@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 22
+ * Last updated: 2020 - 10 - 24
  */
 
 package midnight.common.block;
@@ -21,6 +21,8 @@ public abstract class MnMaterials {
                                                .notOpaque()
                                                .allowMovement()
                                                .pushDestroys()
+                                               .build();
+    public static final Material VIRILUX = new Builder(MaterialColor.LIME)
                                                .build();
 
     public static class Builder {

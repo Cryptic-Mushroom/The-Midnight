@@ -175,6 +175,15 @@ public final class BlockStateTable {
 
         register(MnBlocks.TENEBRUM_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.TENEBRUM_BLOCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+
+        register(MnBlocks.NAGRILITE_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.NAGRILITE_BLOCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+
+        register(MnBlocks.EBONITE_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.EBONITE_BLOCK, block -> simple(name(block, "block/%s"), cubeColumn(name(block, "block/%s_end"), name(block, "block/%s_side"))));
+
+        register(MnBlocks.VIRILUX_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.VIRILUX_BLOCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
     }
 
     private static IBlockStateGen none() {
@@ -183,6 +192,33 @@ public final class BlockStateTable {
 
     private static IBlockStateGen simple(String name, IModelGen model) {
         return VariantBlockStateGen.create(ModelInfo.create(name, model));
+    }
+
+    private static IBlockStateGen altering(String name, IModelGen... models) {
+        ModelInfo[] info = new ModelInfo[models.length];
+        for (int i = 0, l = models.length; i < l; i++) {
+            String suffix = i == 0 ? "" : "_alt_" + i;
+            info[i] = ModelInfo.create(name + suffix, models[i]);
+        }
+        return VariantBlockStateGen.create(info);
+    }
+
+    private static IBlockStateGen altering(String name, Function<String, IModelGen> gen, String... names) {
+        ModelInfo[] info = new ModelInfo[names.length];
+        for (int i = 0, l = names.length; i < l; i++) {
+            String suffix = i == 0 ? "" : "_alt_" + i;
+            info[i] = ModelInfo.create(name + suffix, gen.apply(names[i]));
+        }
+        return VariantBlockStateGen.create(info);
+    }
+
+    private static IBlockStateGen altering(String name, Function<String, IModelGen> gen, int count) {
+        ModelInfo[] info = new ModelInfo[count];
+        for (int i = 0; i < count; i++) {
+            String suffix = i == 0 ? "" : "_alt_" + i;
+            info[i] = ModelInfo.create(name + suffix, gen.apply(name + suffix));
+        }
+        return VariantBlockStateGen.create(info);
     }
 
     private static IBlockStateGen hangingPlant(String endName, IModelGen endModel, String rootName, IModelGen rootModel) {

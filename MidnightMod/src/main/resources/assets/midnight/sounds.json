@@ -154,5 +154,55 @@
       "midnight:block/crystal/crack4",
       "midnight:block/crystal/crack5"
     ]
+  },
+
+  "block.jewel.break": {
+    "category": "block",
+    "subtitle": "subtitles.block.generic.break",
+    "sounds": [
+      "midnight:block/jewel/break1",
+      "midnight:block/jewel/break2",
+      "midnight:block/jewel/break3",
+      "midnight:block/jewel/break4"
+    ]
+  },
+  "block.jewel.step": {
+    "category": "block",
+    "subtitle": "subtitles.block.generic.footsteps",
+    "sounds": [
+      "midnight:block/jewel/step1",
+      "midnight:block/jewel/step2",
+      "midnight:block/jewel/step3",
+      "midnight:block/jewel/step4"
+    ]
+  },
+  "block.jewel.hit": {
+    "category": "block",
+    "subtitle": "subtitles.block.generic.hit",
+    "sounds": [
+      "midnight:block/jewel/step1",
+      "midnight:block/jewel/step2",
+      "midnight:block/jewel/step3",
+      "midnight:block/jewel/step4"
+    ]
+  },
+  "block.jewel.place": {
+    "category": "block",
+    "subtitle": "subtitles.block.generic.place",
+    "sounds": [
+      "midnight:block/jewel/break1",
+      "midnight:block/jewel/break2",
+      "midnight:block/jewel/break3",
+      "midnight:block/jewel/break4"
+    ]
+  },
+  "block.jewel.fall": {
+    "category": "block",
+    "sounds": [
+      "midnight:block/jewel/step1",
+      "midnight:block/jewel/step2",
+      "midnight:block/jewel/step3",
+      "midnight:block/jewel/step4"
+    ]
   }
 }

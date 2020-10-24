@@ -35,6 +35,13 @@ public abstract class MnItems {
     public static final Item TENEBRUM_INGOT = inj();
     public static final Item TENEBRUM_NUGGET = inj();
 
+    public static final Item NAGRILITE_INGOT = inj();
+    public static final Item NAGRILITE_NUGGET = inj();
+
+    public static final Item EBONITE = inj();
+
+    public static final Item VIRILUX = inj();
+
     public static final Item NIGHTSHROOM_POWDER = inj();
     public static final Item DEWSHROOM_POWDER = inj();
     public static final Item VIRIDSHROOM_POWDER = inj();
@@ -62,6 +69,13 @@ public abstract class MnItems {
 
             item("tenebrum_ingot", MnItemCategory.MINERALS, MnItemGroup.MISC),
             item("tenebrum_nugget", MnItemCategory.MINERALS, MnItemGroup.MISC),
+
+            item("nagrilite_ingot", MnItemCategory.MINERALS, MnItemGroup.MISC),
+            item("nagrilite_nugget", MnItemCategory.MINERALS, MnItemGroup.MISC),
+
+            item("ebonite", MnItemCategory.MINERALS, MnItemGroup.MISC),
+
+            item("virilux", MnItemCategory.MINERALS, MnItemGroup.MISC),
 
             item("nightshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
             item("dewshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),

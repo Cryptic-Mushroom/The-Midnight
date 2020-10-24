@@ -2,6 +2,9 @@
   "replace": false,
   "values": [
     "midnight:dark_pearl_block",
-    "midnight:tenebrum_block"
+    "midnight:tenebrum_block",
+    "midnight:nagrilite_block",
+    "midnight:ebonite_block",
+    "midnight:virilux_block"
   ]
 }

@@ -3,13 +3,14 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 21
+ * Last updated: 2020 - 10 - 24
  */
 
 package midnight.common.block;
 
 import midnight.common.misc.MnSoundEvents;
 import net.minecraft.block.SoundType;
+import net.minecraft.util.SoundEvents;
 
 /**
  * This class holds all the different sound types for various blocks, entities, the dimension, etc.
@@ -56,6 +57,24 @@ public abstract class MnSoundTypes {
         MnSoundEvents.BLOCK_CRYSTAL_PLACE,
         MnSoundEvents.BLOCK_CRYSTAL_HIT,
         MnSoundEvents.BLOCK_CRYSTAL_FALL
+    );
+
+    public static final SoundType BRITTLE_METAL = new SoundType(
+        1.0F, 1.5F,
+        SoundEvents.BLOCK_ANCIENT_DEBRIS_BREAK,
+        SoundEvents.BLOCK_ANCIENT_DEBRIS_STEP,
+        SoundEvents.BLOCK_ANCIENT_DEBRIS_PLACE,
+        SoundEvents.BLOCK_ANCIENT_DEBRIS_HIT,
+        SoundEvents.BLOCK_ANCIENT_DEBRIS_FALL
+    );
+
+    public static final SoundType JEWEL = new SoundType(
+        1.0F, 1.0F,
+        MnSoundEvents.BLOCK_JEWEL_BREAK,
+        MnSoundEvents.BLOCK_JEWEL_STEP,
+        MnSoundEvents.BLOCK_JEWEL_PLACE,
+        MnSoundEvents.BLOCK_JEWEL_HIT,
+        MnSoundEvents.BLOCK_JEWEL_FALL
     );
 
     private MnSoundTypes() {

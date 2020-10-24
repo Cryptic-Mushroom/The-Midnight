@@ -176,6 +176,15 @@ public class MnBlockLootTables extends BlockLootTables {
 
         registerDropSelfLootTable(MnBlocks.TENEBRUM_ORE);
         registerDropSelfLootTable(MnBlocks.TENEBRUM_BLOCK);
+
+        registerDropSelfLootTable(MnBlocks.NAGRILITE_ORE);
+        registerDropSelfLootTable(MnBlocks.NAGRILITE_BLOCK);
+
+        registerLootTable(MnBlocks.EBONITE_ORE, block -> droppingItemWithFortune(block, MnItems.EBONITE));
+        registerDropSelfLootTable(MnBlocks.EBONITE_BLOCK);
+
+        registerLootTable(MnBlocks.VIRILUX_ORE, block -> droppingItemWithFortune(block, MnItems.EBONITE));
+        registerDropSelfLootTable(MnBlocks.VIRILUX_BLOCK);
     }
 
     protected static LootTable.Builder droppingNothing() {

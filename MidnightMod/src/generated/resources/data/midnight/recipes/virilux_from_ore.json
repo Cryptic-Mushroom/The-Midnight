@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "midnight:virilux_ore"
+  },
+  "result": "midnight:virilux",
+  "experience": 0.7,
+  "cookingtime": 200
+}
