@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "midnight:tenebrum_ingot"
+    }
+  ],
+  "result": {
+    "item": "midnight:tenebrum_nugget",
+    "count": 9
+  }
+}

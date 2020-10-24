@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 22
+ * Last updated: 2020 - 10 - 24
  */
 
 package midnight.data.loottables;
@@ -169,6 +169,9 @@ public class MnBlockLootTables extends BlockLootTables {
 
         registerLootTable(MnBlocks.DARK_PEARL_ORE, block -> droppingItemWithFortune(block, MnItems.GEODE));
         registerDropSelfLootTable(MnBlocks.DARK_PEARL_BLOCK);
+
+        registerDropSelfLootTable(MnBlocks.TENEBRUM_ORE);
+        registerDropSelfLootTable(MnBlocks.TENEBRUM_BLOCK);
     }
 
     protected static LootTable.Builder droppingNothing() {

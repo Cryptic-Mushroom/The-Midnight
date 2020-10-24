@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 22
+ * Last updated: 2020 - 10 - 24
  */
 
 package midnight.data.models;
@@ -166,6 +166,9 @@ public final class BlockStateTable {
 
         register(MnBlocks.DARK_PEARL_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.DARK_PEARL_BLOCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+
+        register(MnBlocks.TENEBRUM_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.TENEBRUM_BLOCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
     }
 
     private static IBlockStateGen none() {

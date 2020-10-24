@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 22
+ * Last updated: 2020 - 10 - 24
  */
 
 package midnight.data.recipes;
@@ -98,6 +98,13 @@ public class MnRecipeProvider extends RecipeProvider {
 
         shapeless("dark_pearl_from_block", MnBlocks.DARK_PEARL_BLOCK, MnItems.DARK_PEARL, 9);
         generic3x3("dark_pearl_block_3x3", MnItems.DARK_PEARL, MnBlocks.DARK_PEARL_BLOCK, 1);
+        blasting("dark_pearl_from_ore", MnBlocks.DARK_PEARL_ORE, MnItems.DARK_PEARL, 0.7);
+
+        shapeless("tenebrum_from_block", MnBlocks.TENEBRUM_BLOCK, MnItems.TENEBRUM_INGOT, 9);
+        generic3x3("tenebrum_block_3x3", MnItems.TENEBRUM_INGOT, MnBlocks.TENEBRUM_BLOCK, 1);
+        shapeless("tenebrum_nugget_from_ingot", MnItems.TENEBRUM_INGOT, MnItems.TENEBRUM_NUGGET, 9);
+        generic3x3("tenebrum_ingot_3x3", MnItems.TENEBRUM_NUGGET, MnItems.TENEBRUM_INGOT, 1);
+        blasting("tenebrum_ingot_from_ore", MnBlocks.TENEBRUM_ORE, MnItems.TENEBRUM_INGOT, 0.7);
 
         cooking("cooked_suavis_from_raw", MnItems.RAW_SUAVIS, MnItems.COOKED_SUAVIS, 0.35);
     }
@@ -216,6 +223,15 @@ public class MnRecipeProvider extends RecipeProvider {
         CookingRecipeBuilder.cookingRecipe(Ingredient.fromItems(from), to, (float) xp, 600, IRecipeSerializer.CAMPFIRE_COOKING)
                             .addCriterion("has_ingredient", hasItem(from))
                             .build(consumer, Midnight.resLoc(id + "_campfire"));
+    }
+
+    private void blasting(String id, IItemProvider from, IItemProvider to, double xp) {
+        CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(from), to, (float) xp, 200)
+                            .addCriterion("has_ingredient", hasItem(from))
+                            .build(consumer, Midnight.resLoc(id));
+        CookingRecipeBuilder.cookingRecipe(Ingredient.fromItems(from), to, (float) xp, 100, IRecipeSerializer.BLASTING)
+                            .addCriterion("has_ingredient", hasItem(from))
+                            .build(consumer, Midnight.resLoc(id + "_blasting"));
     }
 
     @Override

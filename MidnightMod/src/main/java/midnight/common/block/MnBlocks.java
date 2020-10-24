@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 22
+ * Last updated: 2020 - 10 - 24
  */
 
 package midnight.common.block;
@@ -205,6 +205,10 @@ public abstract class MnBlocks {
     public static final Block DARK_PEARL_ORE = inj();
     public static final Block DARK_PEARL_BLOCK = inj();
 
+    // Tenebrum
+    public static final Block TENEBRUM_ORE = inj();
+    public static final Block TENEBRUM_BLOCK = inj();
+
 
 
     //////////////////////////
@@ -341,8 +345,11 @@ public abstract class MnBlocks {
             crystal("bloomcrystal", 4, 4, 15, MaterialColor.PINK).hitbox(13, 12).offset(AbstractBlock.OffsetType.XZ),
             crystalFlower("crystal_flower", 0, 0, Material.PLANTS, MaterialColor.PINK).hitbox(13, 13).offset(AbstractBlock.OffsetType.XZ),
 
-            stone("dark_pearl_ore", 3, 6, MaterialColor.OBSIDIAN),
-            darkPearl("dark_pearl_block", 3, 6, MaterialColor.BLACK)
+            stone("dark_pearl_ore", 3, 3, MaterialColor.OBSIDIAN),
+            darkPearl("dark_pearl_block", 4, 6, MaterialColor.BLACK),
+
+            ore("tenebrum_ore", 3, 3, MaterialColor.OBSIDIAN, 1),
+            metal("tenebrum_block", 5, 6, MaterialColor.GREEN_TERRACOTTA, 1)
         );
     }
 
@@ -479,7 +486,10 @@ public abstract class MnBlocks {
             item(CRYSTAL_FLOWER, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
 
             item(DARK_PEARL_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS),
-            item(DARK_PEARL_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS)
+            item(DARK_PEARL_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS),
+
+            item(TENEBRUM_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS),
+            item(TENEBRUM_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS)
         );
     }
 
@@ -647,6 +657,29 @@ public abstract class MnBlocks {
                                     .hardnessAndResistance((float) hardness, (float) resistance)
                                     .harvestTool(ToolType.PICKAXE)
                                     .requiresTool()
+        ));
+    }
+
+    private static Block ore(String id, double hardness, double resistance, MaterialColor color, int toolLevel) {
+        return block(id, new Block(
+            AbstractBlock.Properties.create(Material.ROCK, color)
+                                    .sound(SoundType.STONE)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
+                                    .harvestTool(ToolType.PICKAXE)
+                                    .harvestLevel(toolLevel)
+                                    .requiresTool()
+        ));
+    }
+
+    private static Block xpore(String id, double hardness, double resistance, MaterialColor color, int toolLevel, int minxp, int maxxp) {
+        return block(id, new XPDroppingBlock(
+            AbstractBlock.Properties.create(Material.ROCK, color)
+                                    .sound(SoundType.STONE)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
+                                    .harvestTool(ToolType.PICKAXE)
+                                    .harvestLevel(toolLevel)
+                                    .requiresTool(),
+            minxp, maxxp
         ));
     }
 
@@ -1099,7 +1132,7 @@ public abstract class MnBlocks {
         ));
     }
 
-    private static Block reedThatch(String id, MaterialColor color, Supplier<Block> tilled) {
+    private static Block reedThatch(String id, MaterialColor color, Supplier<Block> cut) {
         return block(id, new ShearableBlock(
             AbstractBlock.Properties.create(Material.ORGANIC, color)
                                     .sound(SoundType.WART_BLOCK)
@@ -1107,7 +1140,7 @@ public abstract class MnBlocks {
                                     .luminance(state -> 8)
                                     .emissiveLighting((state, world, pos) -> true)
                                     .hardnessAndResistance(0.8f),
-            tilled
+            cut
         ));
     }
 
@@ -1156,6 +1189,29 @@ public abstract class MnBlocks {
                                     .sound(SoundType.BONE)
                                     .hardnessAndResistance((float) hardness, (float) resistance)
                                     .harvestTool(ToolType.PICKAXE)
+                                    .requiresTool()
+        ));
+    }
+
+    private static Block metal(String id, double hardness, double resistance, MaterialColor color, int harvestLevel) {
+        return block(id, new Block(
+            AbstractBlock.Properties.create(Material.IRON, color)
+                                    .sound(SoundType.METAL)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
+                                    .harvestTool(ToolType.PICKAXE)
+                                    .harvestLevel(harvestLevel)
+                                    .requiresTool()
+        ));
+    }
+
+    private static Block rareMetal(String id, double hardness, double resistance, MaterialColor color, int harvestLevel) {
+        return block(id, new Block(
+            AbstractBlock.Properties.create(Material.IRON, color)
+                                    .sound(SoundType.NETHERITE)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
+                                    .harvestTool(ToolType.PICKAXE)
+                                    .harvestLevel(harvestLevel)
+                                    .requiresTool()
         ));
     }
 

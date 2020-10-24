@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "midnight:dark_pearl_ore"
+    "midnight:dark_pearl_ore",
+    "midnight:tenebrum_ore"
   ]
 }

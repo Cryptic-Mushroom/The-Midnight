@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 22
+ * Last updated: 2020 - 10 - 24
  */
 
 package midnight.data.tags;
@@ -67,10 +67,12 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
 
 
         getOrCreateTagBuilder(MnBlockTags.ORES)
-            .add(MnBlocks.DARK_PEARL_ORE);
+            .add(MnBlocks.DARK_PEARL_ORE)
+            .add(MnBlocks.TENEBRUM_ORE);
 
         getOrCreateTagBuilder(MnBlockTags.MINERAL_BLOCKS)
-            .add(MnBlocks.DARK_PEARL_BLOCK);
+            .add(MnBlocks.DARK_PEARL_BLOCK)
+            .add(MnBlocks.TENEBRUM_BLOCK);
 
         getOrCreateTagBuilder(MnBlockTags.SOILS)
             .add(MnBlocks.NIGHT_DIRT)

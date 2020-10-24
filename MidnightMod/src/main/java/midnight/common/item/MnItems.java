@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 20
+ * Last updated: 2020 - 10 - 24
  */
 
 package midnight.common.item;
@@ -32,6 +32,9 @@ public abstract class MnItems {
     public static final Item DARK_PEARL = inj();
     public static final Item GEODE = inj();
 
+    public static final Item TENEBRUM_INGOT = inj();
+    public static final Item TENEBRUM_NUGGET = inj();
+
     public static final Item NIGHTSHROOM_POWDER = inj();
     public static final Item DEWSHROOM_POWDER = inj();
     public static final Item VIRIDSHROOM_POWDER = inj();
@@ -54,6 +57,9 @@ public abstract class MnItems {
 
             item("dark_pearl", MnItemCategory.MINERALS, MnItemGroup.MISC),
             item("geode", MnItemCategory.MINERALS, MnItemGroup.MISC),
+
+            item("tenebrum_ingot", MnItemCategory.MINERALS, MnItemGroup.MISC),
+            item("tenebrum_nugget", MnItemCategory.MINERALS, MnItemGroup.MISC),
 
             item("nightshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
             item("dewshroom_powder", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),

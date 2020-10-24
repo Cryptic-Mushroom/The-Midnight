@@ -1,5 +1,6 @@
 <component name="ProjectCodeStyleConfiguration">
   <code_scheme name="Project" version="173">
+    <option name="LINE_SEPARATOR" value="&#13;&#10;" />
     <option name="FORMATTER_TAGS_ENABLED" value="true" />
     <option name="SOFT_MARGINS" value="60,80,120" />
     <GroovyCodeStyleSettings>
