@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 22
+ * Last updated: 2020 - 10 - 24
  */
 
 package midnight.data.models;
@@ -154,6 +154,11 @@ public final class ItemModelTable {
         register(MnBlocks.DARK_PEARL_BLOCK, item -> inherit(name(item, "block/%s")));
         register(MnItems.DARK_PEARL, item -> generated(name(item, "item/%s")));
         register(MnItems.GEODE, item -> generated(name(item, "item/%s")));
+
+        register(MnBlocks.TENEBRUM_ORE, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.TENEBRUM_BLOCK, item -> inherit(name(item, "block/%s")));
+        register(MnItems.TENEBRUM_INGOT, item -> generated(name(item, "item/%s")));
+        register(MnItems.TENEBRUM_NUGGET, item -> generated(name(item, "item/%s")));
 
         register(MnBlocks.ROCKSHROOM, item -> inherit(name(item, "block/%s")));
         register(MnItems.ROCKSHROOM_CLUMP, item -> generated(name(item, "item/%s")));
