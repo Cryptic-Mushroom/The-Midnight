@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 21
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.common;
@@ -16,6 +16,7 @@ import midnight.api.event.MidnightInitEvent;
 import midnight.api.event.MidnightPostInitEvent;
 import midnight.api.event.MidnightPreInitEvent;
 import midnight.client.MidnightClient;
+import midnight.common.block.MnBlocks;
 import midnight.common.net.MnNetwork;
 import midnight.common.world.dimension.MnDimensions;
 import midnight.common.world.levelgen.MnLevelgen;
@@ -75,6 +76,7 @@ public abstract class Midnight implements IMidnight {
      */
     public void init() {
         EVENT_BUS.post(new MidnightInitEvent(this, getRuntimeDist()));
+        MnBlocks.setup();
     }
 
     /**

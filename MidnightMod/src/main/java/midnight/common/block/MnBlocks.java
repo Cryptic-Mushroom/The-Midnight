@@ -3,11 +3,12 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 24
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.common.block;
 
+import midnight.api.util.GeodeHardMaterials;
 import midnight.client.MidnightClient;
 import midnight.common.Midnight;
 import midnight.common.block.fluid.MnFluids;
@@ -537,6 +538,18 @@ public abstract class MnBlocks {
         );
     }
 
+
+    ///////////////////////////
+    ///// COMMON REGISTRY /////
+    ///////////////////////////
+
+    public static void setup() {
+        GeodeHardMaterials.register(Material.ROCK);
+        GeodeHardMaterials.register(Material.IRON);
+        GeodeHardMaterials.register(Material.SHULKER);
+        GeodeHardMaterials.register(MnMaterials.CRYSTAL_ROCK);
+        GeodeHardMaterials.register(MnMaterials.VIRILUX);
+    }
 
 
     ///////////////////////////

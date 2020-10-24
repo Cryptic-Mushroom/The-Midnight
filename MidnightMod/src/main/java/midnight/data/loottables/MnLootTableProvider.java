@@ -3,13 +3,14 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.data.loottables;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
+import midnight.common.misc.MnLootParameterSets;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.LootTableProvider;
 import net.minecraft.loot.LootParameterSet;
@@ -26,7 +27,8 @@ import java.util.function.Supplier;
 
 public class MnLootTableProvider extends LootTableProvider {
     private final List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootParameterSet>> tables = ImmutableList.of(
-        Pair.of(MnBlockLootTables::new, LootParameterSets.BLOCK)
+        Pair.of(MnBlockLootTables::new, LootParameterSets.BLOCK),
+        Pair.of(MnGeodeLootTables::new, MnLootParameterSets.GEODE)
     );
 
     public MnLootTableProvider(DataGenerator datagen) {
