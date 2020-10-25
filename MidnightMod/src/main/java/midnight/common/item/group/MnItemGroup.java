@@ -37,6 +37,7 @@ public class MnItemGroup extends ItemGroup {
         MnItemCategory.LOGS,
         MnItemCategory.SHROOM_STEMS,
         MnItemCategory.SHROOM_CAPS,
+        MnItemCategory.BRICKS,
         MnItemCategory.PLANKS,
         MnItemCategory.ORES,
         MnItemCategory.CRYSTALS,

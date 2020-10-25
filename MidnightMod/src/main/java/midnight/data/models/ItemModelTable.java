@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 24
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.data.models;
@@ -37,6 +37,10 @@ public final class ItemModelTable {
         register(MnBlocks.DECEITFUL_MUD, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.DECEITFUL_PEAT, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.STRANGE_SAND, item -> inherit(name(item, "block/%s")));
+
+        register(MnBlocks.NIGHTSTONE_BRICKS, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.TRENCHSTONE_BRICKS, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.SHROOMBRICKS, item -> inherit(name(item, "block/%s")));
 
         register(MnBlocks.NIGHT_GRASS, item -> generated(name(item, "block/%s")));
         register(MnBlocks.TALL_NIGHT_GRASS, item -> generated(name(item, "block/%s_upper")));

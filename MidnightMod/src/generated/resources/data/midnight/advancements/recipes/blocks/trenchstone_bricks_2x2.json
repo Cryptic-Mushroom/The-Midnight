@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "midnight:archaic_glass"
+      "midnight:trenchstone_bricks_2x2"
     ]
   },
   "criteria": {
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "item": "midnight:archaic_shard"
+            "item": "midnight:trenchstone"
           }
         ]
       }
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "midnight:archaic_glass"
+        "recipe": "midnight:trenchstone_bricks_2x2"
       }
     }
   },

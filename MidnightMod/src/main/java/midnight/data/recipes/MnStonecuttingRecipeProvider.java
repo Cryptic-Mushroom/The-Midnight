@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.data.recipes;
@@ -13,6 +13,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.mojang.datafixers.util.Pair;
 import midnight.common.Midnight;
+import midnight.common.block.MnBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.data.RecipeProvider;
@@ -51,6 +52,8 @@ public class MnStonecuttingRecipeProvider extends RecipeProvider {
         this.consumer = consumer;
 
         // Add stonecutting recipes here
+        register(MnBlocks.NIGHTSTONE, MnBlocks.NIGHTSTONE_BRICKS);
+        register(MnBlocks.TRENCHSTONE, MnBlocks.TRENCHSTONE_BRICKS);
 
         compile();
         flush();

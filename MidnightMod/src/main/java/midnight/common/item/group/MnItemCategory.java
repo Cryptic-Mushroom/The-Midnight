@@ -27,6 +27,7 @@ public class MnItemCategory implements IItemCategory {
     public static final MnItemCategory SHROOM_STEMS = new MnItemCategory("shroom_stems");
     public static final MnItemCategory SAPLINGS = new MnItemCategory("saplings");
     public static final MnItemCategory PLANKS = new MnItemCategory("planks");
+    public static final MnItemCategory BRICKS = new MnItemCategory("bricks");
     public static final MnItemCategory COMMON_PLANTS = new MnItemCategory("common_plants");
     public static final MnItemCategory COMMON_ITEMS = new MnItemCategory("common_items");
     public static final MnItemCategory FOOD = new MnItemCategory("food");

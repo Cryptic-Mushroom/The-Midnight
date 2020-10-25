@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 24
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.data.models;
@@ -44,6 +44,10 @@ public final class BlockStateTable {
         register(MnBlocks.DECEITFUL_PEAT, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.STRANGE_SAND, block -> rotateXY(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.NIGHT_MYCELIUM, block -> rotateY(name(block, "block/%s"), cubeBottomTop(name(block, "block/nightstone"), name(block, "block/%s_top"), name(block, "block/%s_side"))));
+
+        register(MnBlocks.NIGHTSTONE_BRICKS, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.TRENCHSTONE_BRICKS, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.SHROOMBRICKS, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
 
         register(MnBlocks.NIGHT_GRASS, block -> simple(name(block, "block/%s"), tintedCross(name(block, "block/%s"))));
         register(MnBlocks.TALL_NIGHT_GRASS, block -> doublePlant(name(block, "block/%s_lower"), tintedCross(name(block, "block/%s_lower")), name(block, "block/%s_upper"), tintedCross(name(block, "block/%s_upper"))));
