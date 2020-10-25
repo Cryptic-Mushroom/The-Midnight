@@ -8,6 +8,8 @@
 
 package midnight.common.misc;
 
+import midnight.common.Midnight;
+import midnight.core.util.MnObjects;
 import net.minecraft.loot.LootParameterSet;
 import net.minecraft.loot.LootParameterSets;
 import net.minecraft.loot.LootParameters;
@@ -26,8 +28,9 @@ public final class MnLootParameterSets {
     private MnLootParameterSets() {
     }
 
-    // Reflects register in LootParameterSets
     private static LootParameterSet register(String id, Consumer<LootParameterSet.Builder> builderConsumer) {
-        return LootParameterSets.register(id, builderConsumer);
+        LootParameterSet set = LootParameterSets.register(Midnight.resStr(id), builderConsumer);
+        MnObjects.addLootParameterSet(id, set);
+        return set;
     }
 }

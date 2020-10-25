@@ -20,8 +20,10 @@ import java.util.Set;
  * pearl. One can register materials and blocks at any time, and does not necessarily need to happen from a plugin even
  * though that is highly recommended.
  * <p>
- * One can register hard blocks via {@link #register(Block)}, and materials via {@link #register(Material)}. To test if
- * a block is hard enough for breaking open a geode, {@link #isHard(BlockState)} can be used.
+ * One can register hard blocks via {@link #addBlock(Block)}, and materials via {@link #addMaterial(Material)}.
+ * Additionally, one can exclude certain blocks (even though they have a hard material) using {@link
+ * #excludeBlock(Block)}. To test if a block is hard enough for breaking open a geode, {@link #isHard(BlockState)} can
+ * be used.
  * </p>
  *
  * @author Shadew
@@ -31,6 +33,7 @@ public final class GeodeHardMaterials {
     // Using a concurrent hash set since modloading is multithreaded and it does not allow null values by default
     private static final Set<Material> HARD_MATERIALS = Sets.newConcurrentHashSet();
     private static final Set<Block> HARD_BLOCKS = Sets.newConcurrentHashSet();
+    private static final Set<Block> NON_HARD_BLOCKS = Sets.newConcurrentHashSet();
 
     private GeodeHardMaterials() {
     }
@@ -41,7 +44,7 @@ public final class GeodeHardMaterials {
      *
      * @param material The material to register
      */
-    public static void register(Material material) {
+    public static void addMaterial(Material material) {
         HARD_MATERIALS.add(material);
     }
 
@@ -50,8 +53,19 @@ public final class GeodeHardMaterials {
      *
      * @param block The block to be registered
      */
-    public static void register(Block block) {
+    public static void addBlock(Block block) {
         HARD_BLOCKS.add(block);
+        NON_HARD_BLOCKS.remove(block);
+    }
+
+    /**
+     * Registers a single {@link Block} to be hard enough for a geode to break open.
+     *
+     * @param block The block to be registered
+     */
+    public static void excludeBlock(Block block) {
+        HARD_BLOCKS.remove(block);
+        NON_HARD_BLOCKS.add(block);
     }
 
     /**
@@ -62,7 +76,8 @@ public final class GeodeHardMaterials {
      * @return True if this block is hard enough to open a geode, false otherwise
      */
     public static boolean isHard(BlockState state) {
-        return HARD_MATERIALS.contains(state.getMaterial())
-                   || HARD_BLOCKS.contains(state.getBlock());
+        return (HARD_MATERIALS.contains(state.getMaterial())
+                    || HARD_BLOCKS.contains(state.getBlock()))
+                   && !NON_HARD_BLOCKS.contains(state.getBlock());
     }
 }

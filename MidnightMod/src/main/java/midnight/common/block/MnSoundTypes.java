@@ -3,13 +3,15 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 24
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.common.block;
 
 import midnight.common.misc.MnSoundEvents;
+import midnight.core.util.MnObjects;
 import net.minecraft.block.SoundType;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 
 /**
@@ -23,8 +25,8 @@ import net.minecraft.util.SoundEvents;
 public abstract class MnSoundTypes {
     /*
      * Here are the parameters for adding new SoundTypes.
-     * 1. Volume (default: 1.0F)
-     * 2. Pitch (default: 1.0F)
+     * 1. Volume (default: 1.0)
+     * 2. Pitch (default: 1.0)
      * 3. Break Sound
      * 4. Step Sound
      * 5. Place Sound
@@ -32,8 +34,9 @@ public abstract class MnSoundTypes {
      * 7. Fall Sound
      */
 
-    public static final SoundType MUD = new SoundType(
-        1.0F, 1.0F,
+    public static final SoundType MUD = sound(
+        "mud",
+        1.0, 1.0,
         MnSoundEvents.BLOCK_MUD_BREAK,
         MnSoundEvents.BLOCK_MUD_STEP,
         MnSoundEvents.BLOCK_MUD_PLACE,
@@ -41,8 +44,9 @@ public abstract class MnSoundTypes {
         MnSoundEvents.BLOCK_MUD_FALL
     );
 
-    public static final SoundType PEAT = new SoundType(
-        1.0F, 1.0F,
+    public static final SoundType PEAT = sound(
+        "peat",
+        1.0, 1.0,
         MnSoundEvents.BLOCK_PEAT_BREAK,
         MnSoundEvents.BLOCK_PEAT_STEP,
         MnSoundEvents.BLOCK_PEAT_PLACE,
@@ -50,8 +54,9 @@ public abstract class MnSoundTypes {
         MnSoundEvents.BLOCK_PEAT_FALL
     );
 
-    public static final SoundType CRYSTAL = new SoundType(
-        1.0F, 1.0F,
+    public static final SoundType CRYSTAL = sound(
+        "crystal",
+        1.0, 1.0,
         MnSoundEvents.BLOCK_CRYSTAL_BREAK,
         MnSoundEvents.BLOCK_CRYSTAL_STEP,
         MnSoundEvents.BLOCK_CRYSTAL_PLACE,
@@ -59,8 +64,9 @@ public abstract class MnSoundTypes {
         MnSoundEvents.BLOCK_CRYSTAL_FALL
     );
 
-    public static final SoundType BRITTLE_METAL = new SoundType(
-        1.0F, 1.5F,
+    public static final SoundType BRITTLE_METAL = sound(
+        "brittle_metal",
+        1.0, 1.5,
         SoundEvents.BLOCK_ANCIENT_DEBRIS_BREAK,
         SoundEvents.BLOCK_ANCIENT_DEBRIS_STEP,
         SoundEvents.BLOCK_ANCIENT_DEBRIS_PLACE,
@@ -68,14 +74,28 @@ public abstract class MnSoundTypes {
         SoundEvents.BLOCK_ANCIENT_DEBRIS_FALL
     );
 
-    public static final SoundType JEWEL = new SoundType(
-        1.0F, 1.0F,
+    public static final SoundType JEWEL = sound(
+        "jewel",
+        1.0, 1.0,
         MnSoundEvents.BLOCK_JEWEL_BREAK,
         MnSoundEvents.BLOCK_JEWEL_STEP,
         MnSoundEvents.BLOCK_JEWEL_PLACE,
         MnSoundEvents.BLOCK_JEWEL_HIT,
         MnSoundEvents.BLOCK_JEWEL_FALL
     );
+
+    private static SoundType sound(String id, double volume, double pitch, SoundEvent destroy, SoundEvent step, SoundEvent place, SoundEvent hit, SoundEvent fall) {
+        SoundType type = new SoundType(
+            (float) volume, (float) pitch,
+            destroy,
+            step,
+            place,
+            hit,
+            fall
+        );
+        MnObjects.addSoundType(id, type);
+        return type;
+    }
 
     private MnSoundTypes() {
     }

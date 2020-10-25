@@ -3,27 +3,28 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 24
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.common.block;
 
 
+import midnight.core.util.MnObjects;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.block.material.PushReaction;
 
 public abstract class MnMaterials {
     public static final Material CRYSTAL_ROCK = new Builder(MaterialColor.PINK)
-                                                    .build();
+                                                    .build("crystal_rock");
     public static final Material CRYSTAL = new Builder(MaterialColor.PINK)
                                                .notSolid()
                                                .notOpaque()
                                                .allowMovement()
                                                .pushDestroys()
-                                               .build();
+                                               .build("crystal");
     public static final Material VIRILUX = new Builder(MaterialColor.LIME)
-                                               .build();
+                                               .build("virilux");
 
     public static class Builder {
         private final MaterialColor color;
@@ -79,8 +80,10 @@ public abstract class MnMaterials {
             return this;
         }
 
-        public Material build() {
-            return new Material(color, liquid, solid, blocksMovement, opaque, flammable, replaceable, pushReaction);
+        public Material build(String id) {
+            Material mat = new Material(color, liquid, solid, blocksMovement, opaque, flammable, replaceable, pushReaction);
+            MnObjects.addMaterial(id, mat);
+            return mat;
         }
     }
 }

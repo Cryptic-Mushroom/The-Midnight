@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:geode",
+  "type": "midnight:geode",
   "pools": [
     {
       "rolls": 1,

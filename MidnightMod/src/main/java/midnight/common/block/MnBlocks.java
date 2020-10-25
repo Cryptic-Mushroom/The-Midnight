@@ -544,12 +544,12 @@ public abstract class MnBlocks {
     ///////////////////////////
 
     public static void setup() {
-        GeodeHardMaterials.register(Material.ROCK);
-        GeodeHardMaterials.register(Material.IRON);
-        GeodeHardMaterials.register(Material.SHULKER);
-        GeodeHardMaterials.register(Material.ANVIL);
-        GeodeHardMaterials.register(MnMaterials.CRYSTAL_ROCK);
-        GeodeHardMaterials.register(MnMaterials.VIRILUX);
+        GeodeHardMaterials.addMaterial(Material.ROCK);
+        GeodeHardMaterials.addMaterial(Material.IRON);
+        GeodeHardMaterials.addMaterial(Material.SHULKER);
+        GeodeHardMaterials.addMaterial(Material.ANVIL);
+        GeodeHardMaterials.addMaterial(MnMaterials.CRYSTAL_ROCK);
+        GeodeHardMaterials.addMaterial(MnMaterials.VIRILUX);
     }
 
 

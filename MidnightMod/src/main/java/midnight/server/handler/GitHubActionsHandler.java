@@ -3,12 +3,12 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.server.handler;
 
-import midnight.MidnightInfo;
+import midnight.MnInfo;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -28,7 +28,7 @@ import java.io.IOException;
  * @version 0.6.0
  * @since 0.6.0
  */
-@Mod.EventBusSubscriber(value = Dist.DEDICATED_SERVER, modid = MidnightInfo.MODID)
+@Mod.EventBusSubscriber(value = Dist.DEDICATED_SERVER, modid = MnInfo.MODID)
 public final class GitHubActionsHandler {
     private static final Logger LOGGER = LogManager.getLogger("Midnight/GitHubActionsHandler");
 
@@ -41,7 +41,7 @@ public final class GitHubActionsHandler {
         boolean isTestServer = testServerProof.exists();
 
         // Only fire if ./TESTSERVER.txt exists and the server is running via runTestServer.
-        if (MidnightInfo.TESTSERVER) {
+        if (MnInfo.TESTSERVER) {
             if (isTestServer) {
                 // Delete the old file and create a new one saying "TEST SUCCESS".
                 testServerProof.delete();
