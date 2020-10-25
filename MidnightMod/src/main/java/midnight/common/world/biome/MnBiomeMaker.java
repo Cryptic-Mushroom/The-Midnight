@@ -8,14 +8,12 @@
 
 package midnight.common.world.biome;
 
-import midnight.client.audio.MnMusicTicker;
+import midnight.client.audio.music.MnMusicTicker;
 import midnight.common.Midnight;
-import midnight.common.misc.MnSoundEvents;
 import midnight.common.world.levelgen.surface.MnConfiguredSurfaceBuilders;
 import midnight.core.biome.BiomeColoring;
 import midnight.core.biome.MnBiomeBuilder;
 import midnight.core.biome.TerrainFactors;
-import net.minecraft.client.audio.BackgroundMusicSelector;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.BiomeGenerationSettings;

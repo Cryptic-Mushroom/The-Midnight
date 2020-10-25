@@ -8,6 +8,7 @@
 
 package midnight.client;
 
+import midnight.client.audio.music.MnMusicTicker;
 import midnight.client.environment.MnEnvironmentRenderer;
 import midnight.client.util.BiomeColorCache;
 import midnight.common.Midnight;
@@ -32,6 +33,7 @@ public class MidnightClient extends Midnight {
     private final BiomeColorCache darkWaterColorCache = new BiomeColorCache();
     private final BiomeColorCache nightGrassColorCache = new BiomeColorCache();
     private final BiomeColorCache shadowrootColorCache = new BiomeColorCache();
+    private final MnMusicTicker mnMusicTicker = new MnMusicTicker(Minecraft.getInstance());
 
 
     @Override
@@ -70,6 +72,10 @@ public class MidnightClient extends Midnight {
     public DynamicRegistries getDynamicRegistries() {
         assert Minecraft.getInstance().world != null;
         return Minecraft.getInstance().world.getRegistryManager();
+    }
+
+    public MnMusicTicker getMusicTicker() {
+        return mnMusicTicker;
     }
 
     /**

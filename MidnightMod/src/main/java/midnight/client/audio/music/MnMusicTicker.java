@@ -3,11 +3,12 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 24
+ * Last updated: 2020 - 10 - 25
  */
 
-package midnight.client.audio;
+package midnight.client.audio.music;
 
+import midnight.client.handler.MnMusicHandler;
 import midnight.common.misc.MnSoundEvents;
 import midnight.common.world.biome.MnBiomes;
 import midnight.common.world.dimension.MnDimensions;

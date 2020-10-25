@@ -6,7 +6,7 @@
  * Last updated: 2020 - 10 - 25
  */
 
-package midnight.client.audio;
+package midnight.client.audio.music;
 
 import net.minecraft.client.audio.TickableSound;
 import net.minecraft.util.SoundCategory;

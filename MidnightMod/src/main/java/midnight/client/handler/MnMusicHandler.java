@@ -3,12 +3,14 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 24
+ * Last updated: 2020 - 10 - 25
  */
 
-package midnight.client.audio;
+package midnight.client.handler;
 
 import midnight.MnInfo;
+import midnight.client.MidnightClient;
+import midnight.client.audio.music.MnMusicTicker;
 import midnight.common.world.dimension.MnDimensions;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
@@ -35,9 +37,9 @@ public class MnMusicHandler {
      */
     private static Minecraft mc = Minecraft.getInstance();
     /**
-     * The {@link MnMusicTicker} with the given {@link Minecraft} instance.
+     * The {@link MnMusicTicker} from the current {@link MidnightClient} instance.
      */
-    private static MnMusicTicker musicTicker = new MnMusicTicker(mc);
+    private static MnMusicTicker musicTicker = MidnightClient.get().getMusicTicker();
 
     /**
      * This method runs on every client tick. It essentially makes sure that the music ticker runs on tick except for
