@@ -10,7 +10,6 @@ package midnight.common;
 
 import midnight.MidnightMod;
 import midnight.MnInfo;
-import midnight.api.IMidnight;
 import midnight.api.IMidnightInfo;
 import midnight.api.event.MidnightInitEvent;
 import midnight.api.event.MidnightPostInitEvent;
@@ -21,6 +20,7 @@ import midnight.common.block.MnBlocks;
 import midnight.common.net.MnNetwork;
 import midnight.common.world.dimension.MnDimensions;
 import midnight.common.world.levelgen.MnLevelgen;
+import midnight.core.MidnightCore;
 import midnight.core.plugin.PluginManager;
 import midnight.core.util.MnObjects;
 import midnight.server.MidnightServer;
@@ -48,7 +48,7 @@ import org.apache.logging.log4j.Logger;
  * @version 0.6.0
  * @since 0.6.0
  */
-public abstract class Midnight implements IMidnight {
+public abstract class Midnight extends MidnightCore {
     public static final Logger LOGGER = LogManager.getLogger("Midnight");
 
     private final PluginManager pluginManager = new PluginManager();

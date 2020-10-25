@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 21
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.common.block;
@@ -36,7 +36,7 @@ public class DeceitfulMudBlock extends NightDirtBlock {
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (!entity.isInWater() && MnEntityTypeTags.IGNORE_MUD.contains(entity.getType()))
+        if (!entity.isInWater() && !MnEntityTypeTags.IGNORE_MUD.contains(entity.getType()))
             entity.setMotion(entity.getMotion().mul(0.5, 1, 0.5));
     }
 

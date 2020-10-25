@@ -15,6 +15,8 @@ import midnight.common.block.MnBlocks;
 import midnight.common.block.fluid.MnFluids;
 import midnight.common.entity.MnEntityTypes;
 import midnight.common.misc.MnParticleTypes;
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.registry.DynamicRegistries;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -62,6 +64,12 @@ public class MidnightClient extends Midnight {
 
     public BiomeColorCache getShadowrootColorCache() {
         return shadowrootColorCache;
+    }
+
+    @Override
+    public DynamicRegistries getDynamicRegistries() {
+        assert Minecraft.getInstance().world != null;
+        return Minecraft.getInstance().world.getRegistryManager();
     }
 
     /**
