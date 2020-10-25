@@ -20,12 +20,8 @@ import java.util.Set;
  * pearl. One can register materials and blocks at any time, and does not necessarily need to happen from a plugin even
  * though that is highly recommended.
  * <p>
- * One can register hard blocks via {@link #register(Block)}, and materials via {@link #register(Material)}. By default
- * {@link Material#ROCK}, {@link Material#IRON} and {@link Material#SHULKER} are registered, along with two
- * Midnight-specific materials {@code CRYSTAL_ROCK} and {@code VIRILUX}.
- * </p>
- * <p>
- * To test if a block is hard enough for breaking open a geode, {@link #isHard(BlockState)} can be used.
+ * One can register hard blocks via {@link #register(Block)}, and materials via {@link #register(Material)}. To test if
+ * a block is hard enough for breaking open a geode, {@link #isHard(BlockState)} can be used.
  * </p>
  *
  * @author Shadew

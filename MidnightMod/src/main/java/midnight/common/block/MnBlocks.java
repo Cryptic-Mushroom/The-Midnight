@@ -547,6 +547,7 @@ public abstract class MnBlocks {
         GeodeHardMaterials.register(Material.ROCK);
         GeodeHardMaterials.register(Material.IRON);
         GeodeHardMaterials.register(Material.SHULKER);
+        GeodeHardMaterials.register(Material.ANVIL);
         GeodeHardMaterials.register(MnMaterials.CRYSTAL_ROCK);
         GeodeHardMaterials.register(MnMaterials.VIRILUX);
     }

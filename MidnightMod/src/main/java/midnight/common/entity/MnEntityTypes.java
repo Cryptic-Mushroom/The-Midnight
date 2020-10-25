@@ -43,6 +43,9 @@ public final class MnEntityTypes {
     private MnEntityTypes() {
     }
 
+    // Suppress unused 'cls' parameter, and a bug in IntelliJ that thinks that the 'unused' suppression is unused
+    // Thanks IntelliJ
+    @SuppressWarnings({"unused", "RedundantSuppression"})
     private static <T extends Entity> EntityType<T> type(String id, EntityType.Builder<T> builder, Class<T> cls) {
         EntityType<T> type = builder.build(Midnight.resStr(id));
         type.setRegistryName(Midnight.resLoc(id));
