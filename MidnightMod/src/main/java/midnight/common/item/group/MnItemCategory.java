@@ -3,11 +3,13 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 22
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.common.item.group;
 
+import midnight.api.util.IItemCategory;
+import midnight.core.util.MnObjects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -17,26 +19,31 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class MnItemCategory {
-    public static final MnItemCategory SEDIMENTAL = new MnItemCategory();
-    public static final MnItemCategory LOGS = new MnItemCategory();
-    public static final MnItemCategory LEAVES = new MnItemCategory();
-    public static final MnItemCategory SHROOM_CAPS = new MnItemCategory();
-    public static final MnItemCategory SHROOM_STEMS = new MnItemCategory();
-    public static final MnItemCategory SAPLINGS = new MnItemCategory();
-    public static final MnItemCategory PLANKS = new MnItemCategory();
-    public static final MnItemCategory COMMON_PLANTS = new MnItemCategory();
-    public static final MnItemCategory COMMON_ITEMS = new MnItemCategory();
-    public static final MnItemCategory FOOD = new MnItemCategory();
-    public static final MnItemCategory MINERALS = new MnItemCategory();
-    public static final MnItemCategory MINERAL_BLOCKS = new MnItemCategory();
-    public static final MnItemCategory CRYSTALS = new MnItemCategory();
-    public static final MnItemCategory ORES = new MnItemCategory();
+public class MnItemCategory implements IItemCategory {
+    public static final MnItemCategory SEDIMENTAL = new MnItemCategory("sedimental");
+    public static final MnItemCategory LOGS = new MnItemCategory("logs");
+    public static final MnItemCategory LEAVES = new MnItemCategory("leaves");
+    public static final MnItemCategory SHROOM_CAPS = new MnItemCategory("shroom_caps");
+    public static final MnItemCategory SHROOM_STEMS = new MnItemCategory("shroom_stems");
+    public static final MnItemCategory SAPLINGS = new MnItemCategory("saplings");
+    public static final MnItemCategory PLANKS = new MnItemCategory("planks");
+    public static final MnItemCategory BRICKS = new MnItemCategory("bricks");
+    public static final MnItemCategory COMMON_PLANTS = new MnItemCategory("common_plants");
+    public static final MnItemCategory COMMON_ITEMS = new MnItemCategory("common_items");
+    public static final MnItemCategory FOOD = new MnItemCategory("food");
+    public static final MnItemCategory MINERALS = new MnItemCategory("minerals");
+    public static final MnItemCategory MINERAL_BLOCKS = new MnItemCategory("mineral_blocks");
+    public static final MnItemCategory CRYSTALS = new MnItemCategory("crystals");
+    public static final MnItemCategory ORES = new MnItemCategory("ores");
 
     // These appear at the bottom of the item group
-    public static final MnItemCategory UNCATEGORIZED = new MnItemCategory();
+    public static final MnItemCategory UNCATEGORIZED = new MnItemCategory("uncategorized");
 
     private final List<Item> items = new ArrayList<>();
+
+    public MnItemCategory(String id) {
+        MnObjects.addItemCategory(id, this);
+    }
 
     public void fill(ItemGroup group, NonNullList<ItemStack> list, Set<Item> doneItems) {
         for (Item item : items) {
@@ -45,6 +52,7 @@ public class MnItemCategory {
         }
     }
 
+    @Override
     public MnItemCategory add(Item item) {
         items.add(item);
         return this;

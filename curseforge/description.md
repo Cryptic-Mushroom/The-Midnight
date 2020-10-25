@@ -18,7 +18,7 @@ Please note that if your issue is a duplicate of anyone else's, an active develo
 
 ## Where can you find us?
 
-If you want to discuss the mod, come visit us in the Cryptic Mushroom Official [Discord server](https://discord.gg/Rdc86yA)!  
+If you want to discuss the mod, come visit us in the Cryptic Mushroom Official [Discord server](https://discord.gg/h7u4Tc7)!  
 We have other mods we like to work on, too! You can view them by visiting our [GitHub organization page](https://github.com/Cryptic-Mushroom) and [Cipher Zero X's CurseForge page](https://www.curseforge.com/members/cipher_zero_x/projects).  
 If you would like to support our work, consider donating to our [Patreon](https://www.patreon.com/crypticmushroom).  
 [Follow us on Twitter](https://twitter.com/CrypticMushroom) for significant updates on development!
@@ -67,4 +67,4 @@ If you are a contributor on this list and want your name to link to a different 
 
 We disabled them! Come join our Discord server instead for any questions you might have.
 
-[![Discord Icon](https://discord.com/assets/fc0b01fe10a0b8c602fb0106d8189d9b.png)](https://discord.gg/Rdc86yA)
+[![Discord Icon](https://discord.com/assets/fc0b01fe10a0b8c602fb0106d8189d9b.png)](https://discord.gg/h7u4Tc7)

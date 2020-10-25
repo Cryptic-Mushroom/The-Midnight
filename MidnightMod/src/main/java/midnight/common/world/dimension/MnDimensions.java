@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 19
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.common.world.dimension;
@@ -12,6 +12,7 @@ import midnight.common.Midnight;
 import midnight.common.world.biome.MnBiomeProvider;
 import midnight.common.world.levelgen.midnight.MnChunkGenerator;
 import midnight.core.dimension.DimensionUtil;
+import midnight.core.util.MnObjects;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.biome.FuzzedBiomeMagnifier;
@@ -47,6 +48,10 @@ public final class MnDimensions {
         Midnight.resLoc("midnight"),
         0
     );
+
+    static {
+        MnObjects.addDimension("the_midnight", MIDNIGHT);
+    }
 
     private MnDimensions() {
     }

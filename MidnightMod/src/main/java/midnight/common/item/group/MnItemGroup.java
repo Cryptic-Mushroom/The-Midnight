@@ -3,13 +3,14 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 22
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.common.item.group;
 
 import midnight.common.block.MnBlocks;
 import midnight.common.item.MnItems;
+import midnight.core.util.MnObjects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -36,6 +37,7 @@ public class MnItemGroup extends ItemGroup {
         MnItemCategory.LOGS,
         MnItemCategory.SHROOM_STEMS,
         MnItemCategory.SHROOM_CAPS,
+        MnItemCategory.BRICKS,
         MnItemCategory.PLANKS,
         MnItemCategory.ORES,
         MnItemCategory.CRYSTALS,
@@ -64,8 +66,9 @@ public class MnItemGroup extends ItemGroup {
 
     public MnItemGroup(String label, Supplier<IItemProvider> icon) {
         super(label);
-        translationKey = new TranslationTextComponent("itemGroup.midnight." + label);
+        this.translationKey = new TranslationTextComponent("itemGroup.midnight." + label);
         this.icon = icon;
+        MnObjects.addItemGroup(label, this);
     }
 
     @Override

@@ -267,5 +267,20 @@
       "midnight:block/jewel/step3",
       "midnight:block/jewel/step4"
     ]
+  },
+
+  "entity.geode.break": {
+    "category": "player",
+    "subtitle": "subtitles.midnight.entity.geode.crack",
+    "sounds": [
+      "midnight:random/crack"
+    ]
+  },
+  "entity.geode.throw": {
+    "category": "player",
+    "subtitle": "subtitles.midnight.entity.geode.throw",
+    "sounds": [
+      "random/bow"
+    ]
   }
 }

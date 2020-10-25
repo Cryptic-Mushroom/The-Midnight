@@ -3,13 +3,14 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.common.handler;
 
 import midnight.common.block.MnBlocks;
 import midnight.common.block.fluid.MnFluids;
+import midnight.common.entity.MnEntityTypes;
 import midnight.common.item.MnItems;
 import midnight.common.misc.MnParticleTypes;
 import midnight.common.misc.MnSoundEvents;
@@ -17,6 +18,7 @@ import midnight.common.world.biome.MnBiomes;
 import midnight.common.world.levelgen.surface.MnSurfaceBuilders;
 import midnight.core.util.IRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityType;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
 import net.minecraft.particles.ParticleType;
@@ -53,6 +55,11 @@ public final class RegistryHandler {
     @SubscribeEvent
     public static void registerFluids(RegistryEvent.Register<Fluid> event) {
         MnFluids.registerFluids(IRegistry.forge(event.getRegistry()));
+    }
+
+    @SubscribeEvent
+    public static void registerEntityTypes(RegistryEvent.Register<EntityType<?>> event) {
+        MnEntityTypes.registerEntityTypes(IRegistry.forge(event.getRegistry()));
     }
 
     @SubscribeEvent

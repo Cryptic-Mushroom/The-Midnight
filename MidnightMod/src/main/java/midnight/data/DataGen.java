@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 21
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.data;
@@ -13,6 +13,7 @@ import joptsimple.OptionSet;
 import joptsimple.OptionSpec;
 import midnight.common.block.MnBlocks;
 import midnight.common.block.fluid.MnFluids;
+import midnight.common.entity.MnEntityTypes;
 import midnight.common.item.MnItems;
 import midnight.common.misc.MnSoundEvents;
 import midnight.common.world.biome.MnBiomes;
@@ -28,6 +29,7 @@ import midnight.data.tags.MnFluidTagsProvider;
 import midnight.data.tags.MnItemTagsProvider;
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.entity.EntityType;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.Item;
 import net.minecraft.util.registry.Bootstrap;
@@ -108,6 +110,9 @@ public final class DataGen {
 
         MnFluids.registerFluids(IRegistry.vanilla(Registry.FLUID));
         ObjectHolderHacks.hackObjectHolder(MnFluids.class, Registry.FLUID, Fluid.class);
+
+        MnEntityTypes.registerEntityTypes(IRegistry.vanilla(Registry.ENTITY_TYPE));
+        ObjectHolderHacks.hackObjectHolder(MnEntityTypes.class, Registry.ENTITY_TYPE, EntityType.class);
 
         MnSoundEvents.registerSoundEvents(IRegistry.vanilla(Registry.SOUND_EVENT));
         MnBiomes.registerBiomes(IRegistry.vanilla(WorldGenRegistries.BIOME));

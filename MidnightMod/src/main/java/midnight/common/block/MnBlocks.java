@@ -3,11 +3,12 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 24
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.common.block;
 
+import midnight.api.util.GeodeHardMaterials;
 import midnight.client.MidnightClient;
 import midnight.common.Midnight;
 import midnight.common.block.fluid.MnFluids;
@@ -68,6 +69,11 @@ public abstract class MnBlocks {
     public static final Block DECEITFUL_MUD = inj();
     public static final Block STRANGE_SAND = inj();
     public static final Block NIGHT_MYCELIUM = inj();
+
+    // Bricks
+    public static final Block NIGHTSTONE_BRICKS = inj();
+    public static final Block TRENCHSTONE_BRICKS = inj();
+    public static final Block SHROOMBRICKS = inj();
 
     // Fluids
     public static final Block DARK_WATER = inj();
@@ -246,6 +252,10 @@ public abstract class MnBlocks {
             sand("strange_sand"),
             mycelium("night_mycelium", 2, 6, MaterialColor.MAGENTA),
 
+            bricks("nightstone_bricks", 1.5, 6, MaterialColor.OBSIDIAN),
+            bricks("trenchstone_bricks", 1.5, 6, MaterialColor.BLACK),
+            shroombricks("shroombricks"),
+
             water("dark_water", () -> MnFluids.DARK_WATER),
 
             smallGrowable("night_grass", 0, 0, Material.TALL_PLANTS, MaterialColor.PURPLE_TERRACOTTA, () -> (TallPlantBlock) TALL_NIGHT_GRASS).hitbox(12, 13).offset(Block.OffsetType.XYZ),
@@ -404,6 +414,10 @@ public abstract class MnBlocks {
             item(STRANGE_SAND, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
             item(NIGHT_MYCELIUM, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
 
+            item(NIGHTSTONE_BRICKS, MnItemCategory.BRICKS, MnItemGroup.BLOCKS),
+            item(TRENCHSTONE_BRICKS, MnItemCategory.BRICKS, MnItemGroup.BLOCKS),
+            item(SHROOMBRICKS, MnItemCategory.BRICKS, MnItemGroup.BLOCKS),
+
             item(NIGHT_GRASS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
             item(TALL_NIGHT_GRASS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
 
@@ -537,6 +551,19 @@ public abstract class MnBlocks {
         );
     }
 
+
+    ///////////////////////////
+    ///// COMMON REGISTRY /////
+    ///////////////////////////
+
+    public static void setup() {
+        GeodeHardMaterials.addMaterial(Material.ROCK);
+        GeodeHardMaterials.addMaterial(Material.IRON);
+        GeodeHardMaterials.addMaterial(Material.SHULKER);
+        GeodeHardMaterials.addMaterial(Material.ANVIL);
+        GeodeHardMaterials.addMaterial(MnMaterials.CRYSTAL_ROCK);
+        GeodeHardMaterials.addMaterial(MnMaterials.VIRILUX);
+    }
 
 
     ///////////////////////////
@@ -707,6 +734,16 @@ public abstract class MnBlocks {
         ));
     }
 
+    private static Block bricks(String id, double hardness, double resistance, MaterialColor color) {
+        return block(id, new Block(
+            AbstractBlock.Properties.create(Material.ROCK, color)
+                                    .sound(SoundType.NETHER_BRICKS)
+                                    .hardnessAndResistance((float) hardness, (float) resistance)
+                                    .harvestTool(ToolType.PICKAXE)
+                                    .requiresTool()
+        ));
+    }
+
     private static Block ore(String id, double hardness, double resistance, MaterialColor color, int toolLevel) {
         return block(id, new Block(
             AbstractBlock.Properties.create(Material.ROCK, color)
@@ -822,6 +859,15 @@ public abstract class MnBlocks {
         return block(id, new RockshroomBlock(
             AbstractBlock.Properties.create(Material.ROCK, MaterialColor.PINK)
                                     .sound(SoundType.NETHERRACK)
+                                    .hardnessAndResistance(1.2f, 4)
+                                    .harvestTool(ToolType.PICKAXE)
+        ));
+    }
+
+    private static Block shroombricks(String id) {
+        return block(id, new Block(
+            AbstractBlock.Properties.create(Material.ROCK, MaterialColor.PINK)
+                                    .sound(SoundType.BASALT)
                                     .hardnessAndResistance(1.2f, 4)
                                     .harvestTool(ToolType.PICKAXE)
         ));

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "midnight:nightstone_to_nightstone_bricks_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_nightstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "midnight:nightstone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "midnight:nightstone_to_nightstone_bricks_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_nightstone",
+      "has_the_recipe"
+    ]
+  ]
+}

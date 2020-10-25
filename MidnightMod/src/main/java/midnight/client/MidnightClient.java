@@ -3,17 +3,20 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 21
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.client;
 
-import midnight.client.environment.MidnightEnvironmentRenderer;
+import midnight.client.environment.MnEnvironmentRenderer;
 import midnight.client.util.BiomeColorCache;
 import midnight.common.Midnight;
 import midnight.common.block.MnBlocks;
 import midnight.common.block.fluid.MnFluids;
+import midnight.common.entity.MnEntityTypes;
 import midnight.common.misc.MnParticleTypes;
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.registry.DynamicRegistries;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -33,10 +36,12 @@ public class MidnightClient extends Midnight {
 
     @Override
     public void init() {
+        super.init();
         MnBlocks.setupRenderers();
         MnFluids.setupRenderers();
+        MnEntityTypes.setupRenderers();
 
-        MidnightEnvironmentRenderer.init();
+        MnEnvironmentRenderer.init();
     }
 
     @Override
@@ -59,6 +64,12 @@ public class MidnightClient extends Midnight {
 
     public BiomeColorCache getShadowrootColorCache() {
         return shadowrootColorCache;
+    }
+
+    @Override
+    public DynamicRegistries getDynamicRegistries() {
+        assert Minecraft.getInstance().world != null;
+        return Minecraft.getInstance().world.getRegistryManager();
     }
 
     /**

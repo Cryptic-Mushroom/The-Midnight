@@ -3,12 +3,12 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 19
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.core.util;
 
-import midnight.MidnightInfo;
+import midnight.MnInfo;
 import midnight.api.util.INightGrassColorModifying;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -48,7 +48,7 @@ public final class MnUtil {
      */
     public static <T> T callForDatagen(Supplier<Callable<T>> datagen, Supplier<Callable<T>> production) {
         try {
-            if (MidnightInfo.DATAGEN) {
+            if (MnInfo.DATAGEN) {
                 return datagen.get().call();
             } else {
                 return production.get().call();

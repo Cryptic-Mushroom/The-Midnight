@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 24
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.data.loottables;
@@ -52,6 +52,10 @@ public class MnBlockLootTables extends BlockLootTables {
         registerDropSelfLootTable(MnBlocks.STRANGE_SAND);
         registerDropSelfLootTable(MnBlocks.COARSE_NIGHT_DIRT);
         registerLootTable(MnBlocks.NIGHT_MYCELIUM, block -> droppingWithSilkTouch(block, MnBlocks.NIGHTSTONE));
+
+        registerDropSelfLootTable(MnBlocks.NIGHTSTONE_BRICKS);
+        registerDropSelfLootTable(MnBlocks.TRENCHSTONE_BRICKS);
+        registerDropSelfLootTable(MnBlocks.SHROOMBRICKS);
 
         registerDropSelfLootTable(MnBlocks.GHOST_PLANT_LEAF);
         registerDropSelfLootTable(MnBlocks.GHOST_PLANT_STEM);

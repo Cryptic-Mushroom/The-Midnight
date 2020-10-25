@@ -3,23 +3,26 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 21
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.common;
 
-import midnight.MidnightInfo;
 import midnight.MidnightMod;
-import midnight.api.IMidnight;
+import midnight.MnInfo;
 import midnight.api.IMidnightInfo;
 import midnight.api.event.MidnightInitEvent;
 import midnight.api.event.MidnightPostInitEvent;
 import midnight.api.event.MidnightPreInitEvent;
+import midnight.api.util.IMidnightObjects;
 import midnight.client.MidnightClient;
+import midnight.common.block.MnBlocks;
 import midnight.common.net.MnNetwork;
 import midnight.common.world.dimension.MnDimensions;
 import midnight.common.world.levelgen.MnLevelgen;
+import midnight.core.MidnightCore;
 import midnight.core.plugin.PluginManager;
+import midnight.core.util.MnObjects;
 import midnight.server.MidnightServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -45,7 +48,7 @@ import org.apache.logging.log4j.Logger;
  * @version 0.6.0
  * @since 0.6.0
  */
-public abstract class Midnight implements IMidnight {
+public abstract class Midnight extends MidnightCore {
     public static final Logger LOGGER = LogManager.getLogger("Midnight");
 
     private final PluginManager pluginManager = new PluginManager();
@@ -60,7 +63,7 @@ public abstract class Midnight implements IMidnight {
      * Called on pre-initialization, in the constructor of the {@link MidnightMod} class.
      */
     public void preInit() {
-        if (!MidnightInfo.DATAGEN) {
+        if (!MnInfo.DATAGEN) {
             EVENT_BUS.start(); // Start the event bus manually when we're available
             pluginManager.loadPlugins();
             EVENT_BUS.post(new MidnightPreInitEvent(this, getRuntimeDist()));
@@ -75,6 +78,7 @@ public abstract class Midnight implements IMidnight {
      */
     public void init() {
         EVENT_BUS.post(new MidnightInitEvent(this, getRuntimeDist()));
+        MnBlocks.setup();
     }
 
     /**
@@ -105,7 +109,12 @@ public abstract class Midnight implements IMidnight {
 
     @Override
     public final IMidnightInfo getInfo() {
-        return MidnightInfo.INSTANCE;
+        return MnInfo.INSTANCE;
+    }
+
+    @Override
+    public IMidnightObjects getObjects() {
+        return MnObjects.INSTANCE;
     }
 
     /**
@@ -117,7 +126,7 @@ public abstract class Midnight implements IMidnight {
     }
 
     /**
-     * Create a {@link ResourceLocation} with {@link MidnightInfo#MODID midnight} as default namespace.
+     * Create a {@link ResourceLocation} with {@link MnInfo#MODID midnight} as default namespace.
      * <ul>
      * <li>{@code "minecraft:path"} will yield {@code minecraft:path}</li>
      * <li>{@code "midnight:path"} will yield {@code midnight:path}</li>
@@ -132,12 +141,12 @@ public abstract class Midnight implements IMidnight {
         if (colon >= 0) {
             return new ResourceLocation(path.substring(0, colon), path.substring(colon + 1));
         }
-        return new ResourceLocation(MidnightInfo.MODID, path);
+        return new ResourceLocation(MnInfo.MODID, path);
     }
 
     /**
-     * Create a stringified {@link ResourceLocation} with {@link MidnightInfo#MODID midnight} as default namespace. See
-     * {@link #resLoc}.
+     * Create a stringified {@link ResourceLocation} with {@link MnInfo#MODID midnight} as default namespace. See {@link
+     * #resLoc}.
      *
      * @param path The resource path.
      * @return The created resource id.
@@ -146,6 +155,6 @@ public abstract class Midnight implements IMidnight {
         if (path.indexOf(':') >= 0) {
             return path;
         }
-        return MidnightInfo.MODID + ":" + path;
+        return MnInfo.MODID + ":" + path;
     }
 }

@@ -3,36 +3,45 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 21
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.common.misc.tags;
 
+import midnight.common.Midnight;
+import midnight.core.util.MnObjects;
 import net.minecraft.item.Item;
 import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
 
 public final class MnItemTags {
-    public static final ITag.INamedTag<Item> DEAD_WOOD_LOGS = ItemTags.makeWrapperTag("midnight:dead_wood_logs");
-    public static final ITag.INamedTag<Item> SHADOWROOT_LOGS = ItemTags.makeWrapperTag("midnight:shadowroot_logs");
-    public static final ITag.INamedTag<Item> DARK_WILLOW_LOGS = ItemTags.makeWrapperTag("midnight:dark_willow_logs");
-    public static final ITag.INamedTag<Item> SHROOM_STEMS = ItemTags.makeWrapperTag("midnight:shroom_stems");
-    public static final ITag.INamedTag<Item> SHROOM_CAPS = ItemTags.makeWrapperTag("midnight:shroom_caps");
-    public static final ITag.INamedTag<Item> SHROOM_SHELVES = ItemTags.makeWrapperTag("midnight:shroom_shelves");
-    public static final ITag.INamedTag<Item> SHROOM_PLANKS = ItemTags.makeWrapperTag("midnight:shroom_planks");
-    public static final ITag.INamedTag<Item> SHROOM_ROOTS = ItemTags.makeWrapperTag("midnight:shroom_planks");
-    public static final ITag.INamedTag<Item> SHROOMS = ItemTags.makeWrapperTag("midnight:shrooms");
-    public static final ITag.INamedTag<Item> SMALL_SHROOMS = ItemTags.makeWrapperTag("midnight:small_shrooms");
-    public static final ITag.INamedTag<Item> TALL_SHROOMS = ItemTags.makeWrapperTag("midnight:tall_shrooms");
-    public static final ITag.INamedTag<Item> GLOB_STEMS = ItemTags.makeWrapperTag("midnight:glob_stems");
-    public static final ITag.INamedTag<Item> ORES = ItemTags.makeWrapperTag("midnight:ores");
-    public static final ITag.INamedTag<Item> MINERAL_BLOCKS = ItemTags.makeWrapperTag("midnight:mineral_blocks");
-    public static final ITag.INamedTag<Item> MINERALS = ItemTags.makeWrapperTag("midnight:minerals");
-    public static final ITag.INamedTag<Item> SOILS = ItemTags.makeWrapperTag("midnight:soils");
-    public static final ITag.INamedTag<Item> WET_SOILS = ItemTags.makeWrapperTag("midnight:wet_soils");
-    public static final ITag.INamedTag<Item> SMALL_PLANTS = ItemTags.makeWrapperTag("midnight:small_plants");
-    public static final ITag.INamedTag<Item> TALL_PLANTS = ItemTags.makeWrapperTag("midnight:tall_plants");
-    public static final ITag.INamedTag<Item> PLANTS = ItemTags.makeWrapperTag("midnight:plants");
+    public static final ITag.INamedTag<Item> DEAD_WOOD_LOGS = tag("dead_wood_logs");
+    public static final ITag.INamedTag<Item> SHADOWROOT_LOGS = tag("shadowroot_logs");
+    public static final ITag.INamedTag<Item> DARK_WILLOW_LOGS = tag("dark_willow_logs");
+    public static final ITag.INamedTag<Item> SHROOM_STEMS = tag("shroom_stems");
+    public static final ITag.INamedTag<Item> SHROOM_CAPS = tag("shroom_caps");
+    public static final ITag.INamedTag<Item> SHROOM_SHELVES = tag("shroom_shelves");
+    public static final ITag.INamedTag<Item> SHROOM_PLANKS = tag("shroom_planks");
+    public static final ITag.INamedTag<Item> SHROOM_ROOTS = tag("shroom_planks");
+    public static final ITag.INamedTag<Item> SHROOMS = tag("shrooms");
+    public static final ITag.INamedTag<Item> SMALL_SHROOMS = tag("small_shrooms");
+    public static final ITag.INamedTag<Item> TALL_SHROOMS = tag("tall_shrooms");
+    public static final ITag.INamedTag<Item> GLOB_STEMS = tag("glob_stems");
+    public static final ITag.INamedTag<Item> ORES = tag("ores");
+    public static final ITag.INamedTag<Item> MINERAL_BLOCKS = tag("mineral_blocks");
+    public static final ITag.INamedTag<Item> MINERALS = tag("minerals");
+    public static final ITag.INamedTag<Item> SOILS = tag("soils");
+    public static final ITag.INamedTag<Item> WET_SOILS = tag("wet_soils");
+    public static final ITag.INamedTag<Item> SMALL_PLANTS = tag("small_plants");
+    public static final ITag.INamedTag<Item> TALL_PLANTS = tag("tall_plants");
+    public static final ITag.INamedTag<Item> PLANTS = tag("plants");
+
+    private static ITag.INamedTag<Item> tag(String id) {
+        id = Midnight.resStr(id);
+        ITag.INamedTag<Item> tag = ItemTags.makeWrapperTag(id);
+        MnObjects.addItemTag(id, tag);
+        return tag;
+    }
 
     private MnItemTags() {
     }

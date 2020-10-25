@@ -3,13 +3,13 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.common.handler;
 
-import midnight.MidnightInfo;
 import midnight.MnConstants;
+import midnight.MnInfo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.util.text.TextFormatting;
@@ -31,7 +31,7 @@ import org.apache.logging.log4j.Logger;
  * @version 0.6.0
  * @since 0.6.0
  */
-@Mod.EventBusSubscriber(modid = MidnightInfo.MODID)
+@Mod.EventBusSubscriber(modid = MnInfo.MODID)
 public final class WarningMessageHandler {
     private static final Logger LOGGER = LogManager.getLogger("Midnight/WarningMessageHandler");
 

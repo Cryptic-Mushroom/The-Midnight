@@ -3,14 +3,16 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 24
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight.common.item;
 
 import midnight.common.Midnight;
+import midnight.common.entity.ThrownGeodeEntity;
 import midnight.common.item.group.MnItemCategory;
 import midnight.common.item.group.MnItemGroup;
+import midnight.common.misc.MnSoundEvents;
 import midnight.core.util.IRegistry;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
@@ -64,8 +66,8 @@ public abstract class MnItems {
         registry.registerAll(
             item("dark_stick", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC),
 
-            item("dark_pearl", MnItemCategory.MINERALS, MnItemGroup.MISC),
-            item("geode", MnItemCategory.MINERALS, MnItemGroup.MISC),
+            item("dark_pearl", MnItemCategory.MINERALS, MnItemGroup.MISC, 16),
+            geode("geode", MnItemCategory.MINERALS, MnItemGroup.MISC),
 
             item("tenebrum_ingot", MnItemCategory.MINERALS, MnItemGroup.MISC),
             item("tenebrum_nugget", MnItemCategory.MINERALS, MnItemGroup.MISC),
@@ -107,12 +109,24 @@ public abstract class MnItems {
         return item(id, cat, new Item.Properties().group(group));
     }
 
+    private static Item item(String id, MnItemCategory cat, ItemGroup group, int stackability) {
+        return item(id, cat, new Item.Properties().group(group).maxStackSize(stackability));
+    }
+
     private static Item edible(String id, MnItemCategory cat, ItemGroup group, Food food) {
         return item(id, cat, new Item.Properties().group(group).food(food));
     }
 
     private static Item rawSuavis(String id, MnItemCategory cat, ItemGroup group) {
         return item(id, cat, new RawSuavisItem(new Item.Properties().group(group).food(MnFoods.RAW_SUAVIS)));
+    }
+
+    private static Item geode(String id, MnItemCategory cat, ItemGroup group) {
+        return item(id, cat, new ThrowableItem(
+            new Item.Properties().group(group).maxStackSize(16),
+            () -> MnSoundEvents.ENTITY_GEODE_THROW,
+            ThrownGeodeEntity::new
+        ));
     }
 
     @Nonnull

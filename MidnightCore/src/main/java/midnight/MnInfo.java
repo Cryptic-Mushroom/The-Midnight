@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight;
@@ -18,8 +18,8 @@ import midnight.api.IMidnightInfo;
  * @version 0.6.0
  * @since 0.6.0
  */
-public final class MidnightInfo implements IMidnightInfo {
-    public static final MidnightInfo INSTANCE = new MidnightInfo();
+public final class MnInfo implements IMidnightInfo {
+    public static final MnInfo INSTANCE = new MnInfo();
 
     /**
      * The Mod ID of the Midnight, which is fixed to {@code midnight}.
@@ -77,7 +77,7 @@ public final class MidnightInfo implements IMidnightInfo {
     @DynamicConstant("build_time")
     public static final String BUILD_DATE = "2038-01-19T03:14:08Z";
 
-    private MidnightInfo() {
+    private MnInfo() {
     }
 
     private static boolean isRunningFromIDE() {

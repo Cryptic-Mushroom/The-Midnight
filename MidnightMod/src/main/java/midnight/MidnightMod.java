@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 21
+ * Last updated: 2020 - 10 - 25
  */
 
 package midnight;
@@ -30,7 +30,7 @@ import org.apache.logging.log4j.Logger;
  * @version 0.6.0
  * @since 0.6.0
  */
-@Mod(MidnightInfo.MODID)
+@Mod(MnInfo.MODID)
 public class MidnightMod {
     private static final Logger LOGGER = LogManager.getLogger("Midnight Mod");
 
@@ -54,17 +54,17 @@ public class MidnightMod {
 
     private void printVersion() {
         LOGGER.info("Initializing The Midnight");
-        LOGGER.info(" - Version: " + MidnightInfo.VERSION);
-        LOGGER.info(" - Build Date: " + MidnightInfo.BUILD_DATE);
+        LOGGER.info(" - Version: " + MnInfo.VERSION);
+        LOGGER.info(" - Build Date: " + MnInfo.BUILD_DATE);
         LOGGER.info(" - Dist: " + FMLEnvironment.dist);
 
-        if(MidnightInfo.IDE && !MidnightInfo.TESTSERVER) {
+        if (MnInfo.IDE && !MnInfo.TESTSERVER) {
             LOGGER.info(" - Running in an IDE or via Gradle");
-        } else if(MidnightInfo.TESTSERVER) {
+        } else if (MnInfo.TESTSERVER) {
             LOGGER.info(" - Running a GitHub Actions test server");
         }
 
-        if(MidnightInfo.DATAGEN) {
+        if (MnInfo.DATAGEN) {
             LOGGER.info(" - Running data generator");
         }
     }
