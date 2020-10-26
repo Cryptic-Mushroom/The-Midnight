@@ -10,6 +10,7 @@ package midnight.client.handler;
 
 import midnight.MnInfo;
 import midnight.client.MidnightClient;
+import midnight.client.audio.MnAmbientTicker;
 import midnight.client.audio.MnMusicTicker;
 import midnight.common.world.dimension.MnDimensions;
 import net.minecraft.client.Minecraft;
@@ -42,6 +43,7 @@ public class MnMusicHandler {
      * unpleasent problems.
      */
     private static MnMusicTicker musicTicker = MidnightClient.get().getMusicTicker();
+    private static MnAmbientTicker ambientTicker = MidnightClient.get().getAmbientTicker();
 
     /**
      * This method runs on every client tick. It essentially makes sure that the music ticker runs on tick except for
@@ -51,15 +53,16 @@ public class MnMusicHandler {
      */
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event) {
-        if (MnInfo.MUSIC_DISABLED) return;
-
         TickEvent.Phase phase = event.phase;
         TickEvent.Type type = event.type;
 
         if (phase == TickEvent.Phase.END) {
             if (type == TickEvent.Type.CLIENT) {
                 if (!mc.isGamePaused()) {
-                    musicTicker.tick();
+                    if (!MnInfo.MUSIC_DISABLED) {
+                        musicTicker.tick();
+                    }
+                    ambientTicker.tick(musicTicker);
                 }
             }
         }

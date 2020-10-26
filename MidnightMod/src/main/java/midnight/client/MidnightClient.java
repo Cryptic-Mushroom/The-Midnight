@@ -8,6 +8,7 @@
 
 package midnight.client;
 
+import midnight.client.audio.MnAmbientTicker;
 import midnight.client.audio.MnMusicTicker;
 import midnight.client.environment.MnEnvironmentRenderer;
 import midnight.client.util.BiomeColorCache;
@@ -34,6 +35,7 @@ public class MidnightClient extends Midnight {
     private final BiomeColorCache nightGrassColorCache = new BiomeColorCache();
     private final BiomeColorCache shadowrootColorCache = new BiomeColorCache();
     private final MnMusicTicker mnMusicTicker = new MnMusicTicker(Minecraft.getInstance());
+    private final MnAmbientTicker mnAmbientTicker = new MnAmbientTicker(Minecraft.getInstance());
 
 
     @Override
@@ -76,6 +78,10 @@ public class MidnightClient extends Midnight {
 
     public MnMusicTicker getMusicTicker() {
         return mnMusicTicker;
+    }
+
+    public MnAmbientTicker getAmbientTicker() {
+        return mnAmbientTicker;
     }
 
     /**

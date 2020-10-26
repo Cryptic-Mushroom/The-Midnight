@@ -45,7 +45,7 @@ public class MnMusicTicker {
      * what the music system is doing. When the ticker is near completion, I will make all output go to the debug log
      * instead of the info log.
      */
-    private static final Logger LOGGER = LogManager.getLogger("Midnight Music System");
+    private static final Logger LOGGER = LogManager.getLogger();
     /**
      * A {@link Random} instance just in case we might need it later.
      */
@@ -58,7 +58,10 @@ public class MnMusicTicker {
      * {@link ISound} variables that are used to feed into {@link Minecraft}'s {@code getSoundHandler().play()} method.
      */
     public ISound ambientMusic, trueMusic, playingRecord;
-    private int timeUntilNextMusic = 0;
+    /**
+     * When loading into a world, the initial time it will take before music starts to play is 30-75 seconds.
+     */
+    private int timeUntilNextMusic = rand.nextInt(901) + 600;
 
     /**
      * This constructor is used to feed the current instance of {@link Minecraft} into the {@link MnMusicTicker}
@@ -254,7 +257,7 @@ public class MnMusicTicker {
      */
     public void stopTrueMusic() {
         if (this.trueMusic != null) {
-            this.timeUntilNextMusic = 60;
+            this.timeUntilNextMusic = rand.nextInt(901) + 600;
         }
     }
 
@@ -263,7 +266,7 @@ public class MnMusicTicker {
      */
     public void stopAmbientMusic() {
         if (this.ambientMusic != null) {
-            this.timeUntilNextMusic = 60;
+            this.timeUntilNextMusic = rand.nextInt(901) + 600;
         }
     }
 
