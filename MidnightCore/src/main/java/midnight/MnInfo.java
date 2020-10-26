@@ -50,6 +50,11 @@ public final class MnInfo implements IMidnightInfo {
     public static final boolean TESTSERVER = isRunningTestServer();
 
     /**
+     * This constant is true when the system property {@code midnight.disablemusic} is {@code "true"}.
+     */
+    public static final boolean MUSIC_DISABLED = forceDisableMidnightMusic();
+
+    /**
      * The version of the Midnight (ex. {@code 0.6.0}), which is dynamically injected on build. Defaults to {@code
      * NOT.A.VERSION}.
      */
@@ -95,6 +100,11 @@ public final class MnInfo implements IMidnightInfo {
         return Boolean.parseBoolean(p);
     }
 
+    private static boolean forceDisableMidnightMusic() {
+        String p = System.getProperty("midnight.disablemusic");
+        return Boolean.parseBoolean(p);
+    }
+
     @Override
     public String modid() {
         return MODID;
@@ -133,5 +143,10 @@ public final class MnInfo implements IMidnightInfo {
     @Override
     public boolean testServer() {
         return TESTSERVER;
+    }
+
+    @Override
+    public boolean musicDisabled() {
+        return MUSIC_DISABLED;
     }
 }

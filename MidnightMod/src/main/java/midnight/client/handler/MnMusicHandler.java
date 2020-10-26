@@ -51,6 +51,8 @@ public class MnMusicHandler {
      */
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event) {
+        if (MnInfo.MUSIC_DISABLED) return;
+
         TickEvent.Phase phase = event.phase;
         TickEvent.Type type = event.type;
 
@@ -71,6 +73,8 @@ public class MnMusicHandler {
      */
     @SubscribeEvent
     public static void onMusicControl(PlaySoundEvent event) {
+        if (MnInfo.MUSIC_DISABLED) return;
+
         ISound sound = event.getSound();
         SoundCategory category = sound.getCategory();
 

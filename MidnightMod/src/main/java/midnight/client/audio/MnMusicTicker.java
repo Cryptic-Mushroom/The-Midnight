@@ -97,7 +97,7 @@ public class MnMusicTicker {
                         LOGGER.info("Setting this.ambientMusic to null since it's not playing or has finished...");
                         if (musicTrackType != null && this.trueMusic == null) {
                             this.timeUntilNextMusic = Math.min(MathHelper.nextInt(this.rand, musicTrackType.getMinDelay(), musicTrackType.getMaxDelay()), this.timeUntilNextMusic);
-                            System.out.println("this.timeUntilNextMusic = " + this.timeUntilNextMusic);
+                            LOGGER.info(String.format("Approximate time until next track is played: %d seconds.", this.timeUntilNextMusic / 20));
                         }
                     }
                 }
