@@ -18,17 +18,17 @@ import net.minecraft.util.ResourceLocation;
  * Generates an extruded square as model, with a side, bottom and top texture. The generated model has one element in
  * the bottom center of the cube space, which has a square base and extrudes upwards.
  * <pre>
- * * - - - - - - - - - - *
- * ^                     |
- * y      CUBE SPACE
- * |                     |
- *     *-------------*
- * |   |             |   |
- *     |             |
- * |   |     CUBE    |   |
- *     |             |
- * |   |             |   |
- * * - *-------------* x>*
+ * {@code * - - - - - - - - - - *}
+ * {@code ^                     |}
+ * {@code y      CUBE SPACE      }
+ * {@code |                     |}
+ * {@code     *-------------*    }
+ * {@code |   |             |   |}
+ * {@code     |             |    }
+ * {@code |   |     CUBE    |   |}
+ * {@code     |             |    }
+ * {@code |   |             |   |}
+ * {@code * - *-------------* x>*}
  * </pre>
  */
 public class ExtrudedSquareModelGen implements IModelGen {

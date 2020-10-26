@@ -33,7 +33,7 @@ import java.util.Random;
  * A block resembling Night Reed. This block grows higher over a certain time, up to 12 blocks if fully waterlogged. As
  * such, this block is waterloggable. Night reed can be placed on blocks in the {@link MnBlockTags#NIGHT_REED_GROWABLE
  * midnight:night_reed_growable} tag, and they require water nearby or inside the reed in order to be grown or placed.
- * <p>
+ *
  * Night reed has the following properties:
  * <ul>
  * <li>{@code root} (inherited from {@link UpwardPlantBlock}) - whether this is the block that is directly in contact
@@ -43,6 +43,7 @@ import java.util.Random;
  * <li>{@code age} - the grow age of this reed, goes from 0 to 15, after which it resets to 0 and tries to grow a reed
  * on top of itself</li>
  * </ul>
+ * <p>
  * Note that even though the reed might not be able to grow, when it's age is 15 and it's ticked, it will reset its age
  * to 0 regardless of whether it grew or not.
  * </p>
