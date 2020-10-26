@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 10 - 26
  */
 
 package midnight.core.util;
@@ -804,5 +804,33 @@ public final class ColorUtil {
 
     public static float distHSCie1931y(int a, int b) {
         return dist(huef(a) - huef(b), saturationf(a) - saturationf(b), cie1931yf(a) - cie1931yf(b));
+    }
+
+    public static Integer parseHexString(String string) {
+        if (string.charAt(0) != '#') {
+            return null;
+        }
+        if (string.length() != 7 && string.length() != 4) {
+            return null;
+        }
+        String hex = string.substring(1);
+
+        if (hex.length() == 6) {
+            try {
+                return Integer.parseInt(hex, 16);
+            } catch (NumberFormatException exc) {
+                return null;
+            }
+        } else {
+            try {
+                int r = Integer.parseInt(hex.charAt(0) + "", 16);
+                int g = Integer.parseInt(hex.charAt(1) + "", 16);
+                int b = Integer.parseInt(hex.charAt(2) + "", 16);
+
+                return r << 20 | r << 16 | g << 12 | g << 8 | b << 4 | b;
+            } catch (NumberFormatException exc) {
+                return null;
+            }
+        }
     }
 }

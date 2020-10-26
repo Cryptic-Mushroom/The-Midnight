@@ -1,0 +1,18 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
+ * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 10 - 26
+ */
+
+package midnight.core.biome.colors.expression;
+
+public interface Expression {
+    double evaluate();
+    double getVariable(int index);
+    double getVariable(String name);
+    void setVariable(int index, double value);
+    void setVariable(String name, double value);
+    int indexOfVariable(String name);
+}
