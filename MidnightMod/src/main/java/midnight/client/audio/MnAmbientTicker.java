@@ -8,7 +8,6 @@
 
 package midnight.client.audio;
 
-import midnight.client.MidnightClient;
 import midnight.common.misc.MnSoundEvents;
 import midnight.common.world.dimension.MnDimensions;
 import net.minecraft.client.Minecraft;
@@ -21,6 +20,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Random;
 
+/**
+ * This class is the ambiance ticker for The Midnight
+ */
 @OnlyIn(Dist.CLIENT)
 public class MnAmbientTicker {
     /**
@@ -37,7 +39,7 @@ public class MnAmbientTicker {
      * The current {@link Minecraft} instance given by the constructor.
      */
     private final Minecraft mc;
-    private int delay = 0;
+    private int delay = 140;
 
     /**
      * This constructor is used to feed the current instance of {@link Minecraft} into the {@link MnAmbientTicker}
@@ -53,11 +55,11 @@ public class MnAmbientTicker {
         if (this.mc.player != null) {
             DimensionType playerDimension = this.mc.player.world.getDimension();
 
-            if (playerDimension.equals(MnDimensions.MIDNIGHT) && this.mc.player.isAlive()) {
+            if (playerDimension.equals(MnDimensions.MIDNIGHT) && this.mc.player.isAlive() && this.delay <= 0) {
                 float ambientRandom = this.mc.player.world.rand.nextFloat();
 
                 if (ambientRandom < (musicTicker.isPlayingTrueMusic() ? 0.001F : 0.01F)) {
-                    this.delay = 0;
+                    this.delay = 140;
                     float volume = musicTicker.isPlayingTrueMusic() ? 0.55F : 0.85F;
                     float pitch = (this.mc.player.world.rand.nextFloat()  - this.mc.player.world.rand.nextFloat()) * 0.2F + 1.0F;
                     LOGGER.info("Playing a short ambient sound with a pitch of " + pitch + " and a volume of " + volume + ".");

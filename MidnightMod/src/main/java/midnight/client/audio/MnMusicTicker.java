@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
 import java.util.Random;
 
 /**
- * This class is the music ticker for. I have based my code off of Bailey's music ticker and from Blue Skies, but have
- * given it more of my sense of code style and what I think the music should do.
+ * This class is the music ticker for The Midnight. I have based my code off of Bailey's music ticker and from Blue
+ * Skies, but have given it more of my sense of code style and what I think the music should do.
  *
  * @author Jonathing
  * @author KingPhygieBoo
