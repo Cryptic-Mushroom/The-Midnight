@@ -54,13 +54,14 @@ public class MnAmbientTicker {
             DimensionType playerDimension = this.mc.player.world.getDimension();
 
             if (playerDimension.equals(MnDimensions.MIDNIGHT) && this.mc.player.isAlive()) {
-                float ambientChance = this.mc.player.world.rand.nextFloat();
+                float ambientRandom = this.mc.player.world.rand.nextFloat();
 
-                if (ambientChance < 0.001F) {
+                if (ambientRandom < (musicTicker.isPlayingTrueMusic() ? 0.001F : 0.01F)) {
                     this.delay = 0;
+                    float volume = musicTicker.isPlayingTrueMusic() ? 0.55F : 0.85F;
                     float pitch = (this.mc.player.world.rand.nextFloat()  - this.mc.player.world.rand.nextFloat()) * 0.2F + 1.0F;
-                    LOGGER.info("Pitch is " + pitch);
-                    this.playAmbience(MnSoundEvents.AMBIENT_MIDNIGHT_SHORT, 0.7F, pitch);
+                    LOGGER.info("Playing a short ambient sound with a pitch of " + pitch + " and a volume of " + volume + ".");
+                    this.playAmbience(MnSoundEvents.AMBIENT_MIDNIGHT_SHORT, volume, pitch);
                 }
             } else {
                 this.delay--;
