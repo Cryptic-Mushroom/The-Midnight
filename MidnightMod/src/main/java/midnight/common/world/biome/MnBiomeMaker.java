@@ -8,7 +8,7 @@
 
 package midnight.common.world.biome;
 
-import midnight.client.audio.music.MnMusicTicker;
+import midnight.client.audio.MnMusicTicker;
 import midnight.common.Midnight;
 import midnight.common.world.levelgen.surface.MnConfiguredSurfaceBuilders;
 import midnight.core.biome.BiomeColoring;

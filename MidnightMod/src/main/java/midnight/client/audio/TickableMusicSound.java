@@ -3,10 +3,10 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 25
+ * Last updated: 2020 - 10 - 26
  */
 
-package midnight.client.audio.music;
+package midnight.client.audio;
 
 import net.minecraft.client.audio.TickableSound;
 import net.minecraft.util.SoundCategory;
@@ -21,6 +21,8 @@ import net.minecraft.util.SoundEvent;
  * @since 0.6.0
  */
 public class TickableMusicSound extends TickableSound {
+    private SoundEvent soundEvent;
+
     /**
      * This constructor registers the {@link TickableSound} and whethor or not we want it to repeat or not.
      *
@@ -30,6 +32,7 @@ public class TickableMusicSound extends TickableSound {
      */
     public TickableMusicSound(SoundEvent soundEvent, SoundCategory soundCategory, boolean repeat) {
         super(soundEvent, soundCategory);
+        this.soundEvent = soundEvent;
         this.repeat = repeat;
     }
 
@@ -68,5 +71,15 @@ public class TickableMusicSound extends TickableSound {
      */
     public void setVolume(float volume) {
         this.volume = volume;
+    }
+
+    /**
+     * Public method for getting the sound event. We might use this to determine what ambience effects to play, when to
+     * play them, or for checking for a specific sound.
+     *
+     * @return The sound event used in the {@link TickableMusicSound} instance.
+     */
+    public SoundEvent getSoundEvent() {
+        return soundEvent;
     }
 }

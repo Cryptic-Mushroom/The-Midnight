@@ -10,7 +10,7 @@ package midnight.client.handler;
 
 import midnight.MnInfo;
 import midnight.client.MidnightClient;
-import midnight.client.audio.music.MnMusicTicker;
+import midnight.client.audio.MnMusicTicker;
 import midnight.common.world.dimension.MnDimensions;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
@@ -76,7 +76,7 @@ public class MnMusicHandler {
 
         if (category == SoundCategory.MUSIC) {
             if (mc.player != null && mc.player.world.getDimension() == MnDimensions.MIDNIGHT) {
-                if (!sound.getSoundLocation().toString().contains(MnInfo.MODID) && (musicTicker.playingMusic() || !musicTicker.playingMusic())) {
+                if (!sound.getSoundLocation().toString().contains(MnInfo.MODID) && (musicTicker.isPlayingTrueMusic() || !musicTicker.isPlayingTrueMusic())) {
                     event.setResultSound(null);
                 }
             }

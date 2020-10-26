@@ -8,7 +8,7 @@
 
 package midnight.client;
 
-import midnight.client.audio.music.MnMusicTicker;
+import midnight.client.audio.MnMusicTicker;
 import midnight.client.environment.MnEnvironmentRenderer;
 import midnight.client.util.BiomeColorCache;
 import midnight.common.Midnight;
