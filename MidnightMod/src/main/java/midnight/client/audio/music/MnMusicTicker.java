@@ -23,6 +23,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -37,6 +39,12 @@ import java.util.Random;
  */
 @OnlyIn(Dist.CLIENT)
 public class MnMusicTicker {
+    /**
+     * A {@link Logger} specifically for the {@link MnMusicTicker}. I think this is necessary so we can keep track of what the
+     * music system is doing. When the ticker is near completion, I will make all output go to the debug log instead of
+     * the info log.
+     */
+    private static final Logger LOGGER = LogManager.getLogger("Midnight Music System");
     /**
      * A {@link Random} instance just in case we might need it later.
      */
@@ -69,7 +77,7 @@ public class MnMusicTicker {
             DimensionType playerDimension = this.mc.player.world.getDimension();
 
             if (playerDimension.equals(MnDimensions.MIDNIGHT)) {
-                System.out.println("IN THE MIDNIGHT!");
+                LOGGER.info("IN THE MIDNIGHT!");
                 // TODO actually program the music ticker. All I've done so far is set up the base.
             }
         }

@@ -37,7 +37,9 @@ public class MnMusicHandler {
      */
     private static Minecraft mc = Minecraft.getInstance();
     /**
-     * The {@link MnMusicTicker} from the current {@link MidnightClient} instance.
+     * The {@link MnMusicTicker} from the current {@link MidnightClient} instance. This ensures that we don't
+     * accidentally create more than one instance of the {@link MnMusicTicker} which could lead to all sorts of
+     * unpleasent problems.
      */
     private static MnMusicTicker musicTicker = MidnightClient.get().getMusicTicker();
 
