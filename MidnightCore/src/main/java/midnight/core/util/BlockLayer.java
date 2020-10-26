@@ -18,7 +18,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
  * render layer and delegate that to the {@link RenderTypeLookup} when available.
  *
  * @author Shadew
- * @version 0.6.0
  * @since 0.6.0
  */
 public enum BlockLayer {

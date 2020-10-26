@@ -20,7 +20,6 @@ import java.lang.annotation.Target;
  * </code>
  *
  * @author Shadew
- * @version 0.6.0
  * @since 0.6.0
  */
 @Target(ElementType.FIELD)

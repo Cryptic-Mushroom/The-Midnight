@@ -19,7 +19,6 @@ import net.minecraft.util.SoundEvents;
  *
  * @author Shadew
  * @author Jonathing
- * @version 0.6.0
  * @since 0.6.0
  */
 public abstract class MnSoundTypes {

@@ -25,7 +25,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
  * The client-only main class of the Midnight, to handle certain client-only initialization and processing.
  *
  * @author Shadew
- * @version 0.6.0
  * @since 0.6.0
  */
 public class MidnightClient extends Midnight {

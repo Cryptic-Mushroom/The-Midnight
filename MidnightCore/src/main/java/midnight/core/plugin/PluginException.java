@@ -12,7 +12,6 @@ package midnight.core.plugin;
  * Checked exception that is thrown for any failures in plugin loading.
  *
  * @author Shadew
- * @version 0.6.0
  * @since 0.6.0
  */
 public class PluginException extends Exception {

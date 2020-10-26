@@ -19,7 +19,6 @@ import net.minecraft.world.biome.Biome;
  * This class registers and stores the list of Midnight biomes.
  *
  * @author Shadew
- * @version 0.6.0
  * @since 0.6.0
  */
 public final class MnBiomes {

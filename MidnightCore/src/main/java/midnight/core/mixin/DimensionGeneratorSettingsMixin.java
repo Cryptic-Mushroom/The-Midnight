@@ -20,7 +20,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * whoever cares!
  *
  * @author Shadew
- * @version 0.6.0
  * @since 0.6.0
  */
 @Mixin(DimensionGeneratorSettings.class)

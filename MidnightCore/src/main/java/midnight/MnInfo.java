@@ -15,7 +15,6 @@ import midnight.api.IMidnightInfo;
  *
  * @author Shadew
  * @author Jonathing
- * @version 0.6.0
  * @since 0.6.0
  */
 public final class MnInfo implements IMidnightInfo {

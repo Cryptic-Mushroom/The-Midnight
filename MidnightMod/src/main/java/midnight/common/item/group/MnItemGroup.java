@@ -28,7 +28,6 @@ import java.util.function.Supplier;
  * data generation.
  *
  * @author Shadew
- * @version 0.6.0
  * @since 0.6.0
  */
 public class MnItemGroup extends ItemGroup {

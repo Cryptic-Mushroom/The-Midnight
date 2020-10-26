@@ -25,7 +25,6 @@ import java.io.IOException;
  * of keeping the server open.
  *
  * @author Jonathing
- * @version 0.6.0
  * @since 0.6.0
  */
 @Mod.EventBusSubscriber(value = Dist.DEDICATED_SERVER, modid = MnInfo.MODID)

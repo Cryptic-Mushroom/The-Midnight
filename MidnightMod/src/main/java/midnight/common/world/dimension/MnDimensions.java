@@ -25,7 +25,6 @@ import java.util.OptionalLong;
  * This class registers and stores the list of Midnight dimensions. Go figure.
  *
  * @author Shadew
- * @version 0.6.0
  * @since 0.6.0
  */
 @Mod.EventBusSubscriber(modid = "midnight")

@@ -34,7 +34,6 @@ import java.util.Map;
  * into Biomes O' Plenty's dimension registry.
  *
  * @author Shadew
- * @version 0.6.0
  * @since 0.6.0
  */
 @Mixin(value = BOPDimensionType.class, remap = false)

@@ -24,7 +24,6 @@ import javax.annotation.Nonnull;
 /**
  * This class registers and stores all items of the Midnight.
  *
- * @version 0.6.0
  * @since 0.6.0
  */
 @ObjectHolder("midnight")

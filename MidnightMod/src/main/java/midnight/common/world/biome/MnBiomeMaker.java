@@ -24,7 +24,6 @@ import net.minecraft.world.biome.MobSpawnInfo;
  * @see midnight.common.world.biome.MnBiomes
  *
  * @author Shadew
- * @version 0.6.0
  * @since 0.6.0
  */
 public final class MnBiomeMaker {

@@ -45,7 +45,6 @@ import org.apache.logging.log4j.Logger;
  * </ul>
  *
  * @author Shadew
- * @version 0.6.0
  * @since 0.6.0
  */
 public abstract class Midnight extends MidnightCore {
