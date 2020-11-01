@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 11 - 1
+ * Last updated: 2020 - 11 - 2
  */
 
 import net.minecraftforge.gradle.userdev.tasks.RenameJarInPlace
@@ -22,7 +22,7 @@ buildscript {
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
         classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
-        classpath group: 'net.shadew', name: 'modutil', version: '1.0-beta.4'
+        classpath group: 'net.shadew', name: 'modutil', version: '1.0-beta.9'
     }
 }
 
@@ -97,8 +97,10 @@ allprojects {
         constant('version_name', changelogInfo.versionName)
         constant('group', project.group)
         constant('build_time', project.ext.timeOfExecution)
-        constant('sha1') {
-            !project.canJarBeSigned() ? "NO:FI:NG:ER:PR:IN:TA:VA:IL:AB:LE" : project.getProjectFingerprint()
+        constants {
+            if (it == 'sha1')
+                return !project.canJarBeSigned() ? "NO:FI:NG:ER:PR:IN:TA:VA:IL:AB:LE" : project.getProjectFingerprint()
+            return null
         }
 
         constantAnnotation 'midnight.DynamicConstant'
