@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 11 - 1
  */
 
 package midnight;
@@ -23,7 +23,7 @@ import java.lang.annotation.Target;
  * @since 0.6.0
  */
 @Target(ElementType.FIELD)
-@Retention(RetentionPolicy.CLASS)
+@Retention(RetentionPolicy.SOURCE)
 public @interface DynamicConstant {
     /**
      * The constant name to inject, set in the Gradle buildscript.

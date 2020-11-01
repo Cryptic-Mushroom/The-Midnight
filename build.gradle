@@ -13,14 +13,16 @@ import net.minecraftforge.gradle.userdev.tasks.RenameJarInPlace
 
 buildscript {
     repositories {
-        maven { url = 'https://files.minecraftforge.net/maven' }
-        maven { url = 'https://dist.creeper.host/Sponge/maven' }
+        maven { url 'https://files.minecraftforge.net/maven' }
+        maven { url 'https://dist.creeper.host/Sponge/maven' }
+        maven { url 'https://maven.shadew.net/' }
         jcenter()
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
         classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
+        classpath group: 'net.shadew', name: 'modutil', version: '1.0-beta.4'
     }
 }
 
@@ -37,7 +39,7 @@ allprojects {
 
     apply plugin: 'net.minecraftforge.gradle'
     apply plugin: 'org.spongepowered.mixin'
-    apply plugin: 'midnight.gradle' // See 'buildSrc'
+    apply plugin: 'net.shadew.modutil'
     apply plugin: 'idea'
     apply plugin: 'maven-publish'
     apply plugin: 'signing'
@@ -48,9 +50,6 @@ allprojects {
     repositories {
         mavenLocal()
         mavenCentral()
-        //        flatDir {
-        //            dirs "$rootDir/dependencies"
-        //        }
         maven {
             name = "Shadew's Maven Repository"
             url = "https://maven.shadew.net/"
@@ -81,13 +80,13 @@ allprojects {
         accessTransformer = file("$rootDir/MidnightCore/src/main/resources/META-INF/accesstransformer.cfg")
     }
 
-    // mixin setup
+    // Mixin setup
     mixin {
         add sourceSets.main, "midnight.refmap.json"
     }
 
-    midnight {
-        shade('net.rgsw.ptg', 'midnight.internal.net.rgsw.ptg')
+    // ModUtil setup
+    modutil {
 
         changelogJson file("$rootDir/changelog.json")
 
@@ -100,6 +99,8 @@ allprojects {
         constant('sha1') {
             !project.canJarBeSigned() ? "NO:FI:NG:ER:PR:IN:TA:VA:IL:AB:LE" : project.getProjectFingerprint()
         }
+
+        constantAnnotation 'midnight.DynamicConstant'
     }
 
     configurations {
@@ -268,7 +269,7 @@ minecraft {
     }
 }
 
-midnight {
+modutil {
     updateJson file('versioninfo/update.json')
     markdownChangelog file('versioninfo/latest_changelog.md')
     markdownChangelog file("versioninfo/${changelogInfo.versionNumber}_changelog.md")
@@ -529,10 +530,4 @@ jar {
 
 injectConstants {
     enabled false
-}
-
-// Make version info task, just combines updateVersionJson and genChangelogMarkdown
-task makeVersionInfo() {
-    dependsOn updateVersionJson
-    dependsOn genChangelogMarkdown
 }
