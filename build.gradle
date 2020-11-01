@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 28
+ * Last updated: 2020 - 11 - 1
  */
 
 import net.minecraftforge.gradle.userdev.tasks.RenameJarInPlace
@@ -53,7 +53,7 @@ allprojects {
         //        }
         maven {
             name = "Shadew's Maven Repository"
-            url = "http://maven.shadew.net/"
+            url = "https://maven.shadew.net/"
         }
         maven {
             name = "tterrag's maven"
