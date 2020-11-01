@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 11 - 1
  */
 
 task serverJar(type: Jar) {
@@ -30,7 +30,7 @@ task serverJar(type: Jar) {
 }
 
 
-task signServerJar( dependsOn: 'reobfServerJar' ) {
+task signServerJar( dependsOn: 'shadeServerJar' ) {
     doLast {
         project.ext.sign( serverJar.archivePath )
     }

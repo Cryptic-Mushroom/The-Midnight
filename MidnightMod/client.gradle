@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 11 - 1
  */
 
 task clientJar(type: Jar) {
@@ -28,7 +28,7 @@ task clientJar(type: Jar) {
     exclude( "midnight/server/**" )
 }
 
-task signClientJar( dependsOn: 'reobfClientJar' ) {
+task signClientJar( dependsOn: 'shadeClientJar' ) {
     doLast {
         project.ext.sign( clientJar.archivePath )
     }
