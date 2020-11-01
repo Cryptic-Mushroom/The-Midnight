@@ -87,6 +87,7 @@ allprojects {
 
     // ModUtil setup
     modutil {
+        shade('net.shadew.ptg', 'midnight.internal.net.shadew.ptg')
 
         changelogJson file("$rootDir/changelog.json")
 
