@@ -97,11 +97,7 @@ allprojects {
         constant('version_name', changelogInfo.versionName)
         constant('group', project.group)
         constant('build_time', project.ext.timeOfExecution)
-        constants {
-            if (it == 'sha1')
-                return !project.canJarBeSigned() ? "NO:FI:NG:ER:PR:IN:TA:VA:IL:AB:LE" : project.getProjectFingerprint()
-            return null
-        }
+        constant('expected_sha256', project.getProjectFingerprint())
 
         constantAnnotation 'midnight.DynamicConstant'
     }

@@ -53,6 +53,7 @@ jobs:
         echo "mnKeyStoreAlias=${{ secrets.JKS_ALIAS }}" >> gradle.properties
         echo "mnKeyStorePass=${{ secrets.JKS_PASS }}" >> gradle.properties
         echo "mnKeyStoreKeyPass=${{ secrets.JKS_PASS }}" >> gradle.properties
+        echo "mnKeyStoreSHA256=${{ secrets.JKS_SHA256 }}" >> gradle.properties
         cp ${{ secrets.PRIVATE_REPO_NAME }}/${{ secrets.JKS_NAME }} MidnightAPI/${{ secrets.JKS_NAME }}
         cp ${{ secrets.PRIVATE_REPO_NAME }}/${{ secrets.JKS_NAME }} MidnightCore/${{ secrets.JKS_NAME }}
         cp ${{ secrets.PRIVATE_REPO_NAME }}/${{ secrets.JKS_NAME }} MidnightMod/${{ secrets.JKS_NAME }}

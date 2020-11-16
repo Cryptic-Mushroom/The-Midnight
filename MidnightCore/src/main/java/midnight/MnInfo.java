@@ -43,8 +43,8 @@ public final class MnInfo implements IMidnightInfo {
     public static final boolean DATAGEN = isRunningDatagen();
 
     /**
-     * This constant is true when the system property {@code midnight.istestserver} is {@code "true"}. This property is set
-     * in the {@code testserver} run configration (for the {@code runTestServer} task).
+     * This constant is true when the system property {@code midnight.istestserver} is {@code "true"}. This property is
+     * set in the {@code testserver} run configration (for the {@code runTestServer} task).
      */
     public static final boolean TESTSERVER = isRunningTestServer();
 
@@ -63,11 +63,11 @@ public final class MnInfo implements IMidnightInfo {
     public static final String VERSION_NAME = "Not A Version";
 
     /**
-     * The SHA1 fingerprint of the Midnight, for verification of the signature. This is dynamically injected on build.
-     * Defaults to {@code SHA1}.
+     * The expected SHA256 fingerprint of the Midnight, for verification of the signature. This is dynamically injected
+     * on build. Defaults to an empty string.
      */
-    @DynamicConstant("sha1")
-    public static final String SHA1 = "SHA1";
+    @DynamicConstant("expected_sha256")
+    public static final String EXPECTED_SHA256 = "";
 
     /**
      * The build time of the Midnight, which is dynamically injected on build. Defaults to {@code 2038-01-19T03:14:08Z},
@@ -112,6 +112,11 @@ public final class MnInfo implements IMidnightInfo {
     @Override
     public String versionName() {
         return VERSION_NAME;
+    }
+
+    @Override
+    public String expectedSHA256() {
+        return EXPECTED_SHA256;
     }
 
     @Override

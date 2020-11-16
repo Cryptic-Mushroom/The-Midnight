@@ -70,26 +70,6 @@ public class MidnightMod {
 
     private void setup(FMLCommonSetupEvent event) {
         MIDNIGHT.init();
-
-        /*
-         * TODO This is basically the mechanism we will use to inform players that the build of The Midnight
-         *  is not signed. Since I don't know how to get the SHA1 or any certificate fingerprint despite my
-         *  best efforts, this will be commented out until we get that ability.
-         *
-         * Essentially, what this does is
-         * - If on client, a GUI will show on startup saying that some mods had warnings whens starting up.
-         *   The text (which is currently WARNING MESSAGE HERE) will be shown on that screen.
-         * - If on server, the server will show in the log that a mod has had warnings when starting up. However,
-         *   since the warning is flooded by a bunch of other useless nonsense, we will probably have a warning/error
-         *   message on the FMLServerStartingEvent anyway.
-         *
-         * - Jonathing
-         */
-//        if(!MidnightInfo.IDE && ModList.get().getModContainerById("midnight").isPresent())
-//        {
-//            ModLoader.get().addWarning(new ModLoadingWarning(ModList.get().getModContainerById("midnight").get().getModInfo(), ModLoadingStage.ERROR, "WARNING MESSAGE HERE", (Object) null));
-//        }
-
         LOGGER.debug("Midnight initialized");
     }
 
