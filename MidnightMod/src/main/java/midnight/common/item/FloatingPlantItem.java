@@ -35,7 +35,7 @@ public class FloatingPlantItem extends BlockItem {
    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
       // Raytrace with fluid blocks
       BlockRayTraceResult rtr = rayTrace(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
-      rtr = rtr.method_29328(rtr.getPos().up()); // withPos - it returns a new RayTraceResult with a different position
+      rtr = rtr.withBlockPos(rtr.getPos().up()); // withPos - it returns a new RayTraceResult with a different position
 
       ActionResultType result = super.onItemUse(new ItemUseContext(player, hand, rtr));
       return new ActionResult<>(result, player.getHeldItem(hand));

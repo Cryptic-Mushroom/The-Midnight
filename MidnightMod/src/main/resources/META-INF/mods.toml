@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[34,)"
+loaderVersion="[35,)"
 issueTrackerURL = "https://github.com/Cryptic-Mushroom/The-Midnight/issues"
 license = "Custom License, see GitHub"
 
@@ -11,8 +11,7 @@ updateJSONURL="https://raw.githubusercontent.com/Cryptic-Mushroom/The-Midnight/r
 displayURL="https://www.curseforge.com/minecraft/mc-mods/the-midnight"
 logoFile="logo.png"
 authors="Cryptic Mushroom's The Midnight Development Team"
-description= '''
-The Midnight has been rewritten from the ground up and is currently in an unstable alpha. Expect more content soon!
+description= '''The Midnight has been rewritten from the ground up and is currently in an unstable alpha. Expect more content soon!
 
 This mod is a huge collaborative effort with tons of different ideas, coding, and textures pitched in by varying individuals who came together to build something great. We wouldn't be where we are today without the help of those here today and those who worked on this mod in the past.
 
@@ -20,12 +19,13 @@ The Midnight Development Team Active Developers
 Cipher Zerø X - Project Lead, Mastermind, Modeler
 Shadew - Lead Programmer
 Jonathing - Lead QA, Community Manager, Programmer, Musician
+Lachney - Lead Sound Designer, Lead Musician
+123wdog - Lead Modeler
 
 Active Collaborators
-Lachney - Lead Sound Designer, Lead Musician
+bagu_chan - Programmer, Texturer
 
 Former and Inactive Developers
-bagu_chan - Programmer
 gegy1000 - Programmer
 Martacus - Programmer
 arthurbambous - Programmer
@@ -34,19 +34,18 @@ Endergized - Texturer
 Five (Paradiscal) - Texturer
 MCVinnyq - Texturer, Modeler
 
-The Midnight is still in active development and we'd love to hear your feedback! Click the link near the top of this page to view information on our Discord server, active developers, and plans for the future of this mod.
-'''
+The Midnight is still in active development and we'd love to hear your feedback! Click the link near the top of this page to view information on our Discord server, active developers, and plans for the future of this mod.'''
 
 [[dependencies.midnight]]
     modId="forge"
     mandatory=true
-    versionRange="[34.1.0,)"
+    versionRange="[35.0.18,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.midnight]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.3]"
+    versionRange="[1.16.4]"
     ordering="NONE"
     side="BOTH"

@@ -3,6 +3,10 @@
     "0.6.0": "0.6.0 - The Midnight: Rewritten: The Midnight, rewritten from the ground up for better stability, performance, and enjoyability. For more information, check out the changelog on CurseForge or GitHub Releases!"
   },
   "promos": {
-    "1.16.3-latest": "0.6.0"
+    "1.16.3-latest": "0.6.0",
+    "1.16.4-latest": "0.6.0"
+  },
+  "1.16.4": {
+    "0.6.0": "0.6.0 - The Midnight: Rewritten: The Midnight, rewritten from the ground up for better stability, performance, and enjoyability."
   }
 }

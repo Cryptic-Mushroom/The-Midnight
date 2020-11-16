@@ -74,7 +74,7 @@ allprojects {
 
     // ForgeGradle setup
     minecraft {
-        mappings channel: 'snapshot', version: '20201003-mixed-1.16.3'
+        mappings channel: 'snapshot', version: '20201012-mixed-1.16.3'
 
         // Access transformer
         accessTransformer = file("$rootDir/MidnightCore/src/main/resources/META-INF/accesstransformer.cfg")
@@ -115,7 +115,7 @@ allprojects {
     }
 
     dependencies {
-        minecraft 'net.minecraftforge:forge:1.16.3-34.1.0'
+        minecraft 'net.minecraftforge:forge:1.16.4-35.0.18'
 
         embed("net.shadew:ptg:1.2.2") {
             // The only transitive dependency is it.unimi.dsi:fastutil:8.2.1 - this is included with forge and we don't
@@ -123,13 +123,13 @@ allprojects {
             transitive false
         }
 
-        compileOnly fg.deobf("mezz.jei:jei-1.16.3:7.3.2.36:api")
-        runtimeOnly fg.deobf("mezz.jei:jei-1.16.3:7.3.2.36")
+        compileOnly fg.deobf("mezz.jei:jei-1.16.4:7.6.0.58:api")
+        runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:7.6.0.58")
 
         // implementation fg.deobf("local:TerraForged:1.15.2-0.1.2")
 
-        compileOnly fg.deobf("com.github.glitchfiend:biomesoplenty:1.16.3-12.0.0.404:api-obf")
-        compile fg.deobf("com.github.glitchfiend:biomesoplenty:1.16.3-12.0.0.404:universal-obf")
+        compileOnly fg.deobf("com.github.glitchfiend:biomesoplenty:1.16.4-13.0.0.420:api-obf")
+        compile fg.deobf("com.github.glitchfiend:biomesoplenty:1.16.4-13.0.0.420:universal-obf")
     }
 
     jar {
