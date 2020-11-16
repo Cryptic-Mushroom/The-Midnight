@@ -49,7 +49,7 @@ jobs:
         uses: eskatos/gradle-command-action@v1
         with:
           gradle-version: 4.10.3
-          arguments: build --no-daemon
+          arguments: build -x genData --no-daemon --warning-mode none
 
       - name: Prepare to upload the build outputs
         env:
@@ -128,7 +128,7 @@ jobs:
         uses: eskatos/gradle-command-action@v1
         with:
           gradle-version: 4.10.3
-          arguments: javadoc --no-daemon
+          arguments: javadoc -x genData --no-daemon --warning-mode none
 
       - name: Prepare to upload the build outputs
         env:
