@@ -35,6 +35,9 @@ import net.minecraft.item.Item;
 import net.minecraft.util.registry.Bootstrap;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 
 import java.io.File;
 import java.io.IOException;
@@ -50,10 +53,17 @@ import java.util.stream.Collectors;
  * @author Shadew
  * @since 0.6.0
  */
+@Mod.EventBusSubscriber(modid = "midnight", bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class DataGen {
     private DataGen() {
     }
 
+    /**
+     * This method is no longer used for data generation.
+     *
+     * @deprecated
+     * @see #gatherData(GatherDataEvent)
+     */
     public static void main(String[] args) throws IOException {
         OptionParser parser = new OptionParser();
 
@@ -77,7 +87,7 @@ public final class DataGen {
                                              .required();
         OptionSet opts = parser.parse(args);
 
-        if(!opts.has(helpSpec) && opts.hasOptions() && !(opts.specs().size() == 1 && opts.has(gameDirSpec))) {
+        if (!opts.has(helpSpec) && opts.hasOptions() && !(opts.specs().size() == 1 && opts.has(gameDirSpec))) {
             Path output = Paths.get(outputSpec.value(opts));
             boolean all = opts.has(allSpec);
             boolean client = all || opts.has(clientSpec);
@@ -93,6 +103,12 @@ public final class DataGen {
         }
     }
 
+    /**
+     * This method is no longer used for data generation.
+     *
+     * @deprecated
+     * @see #gatherData(GatherDataEvent)
+     */
     @SuppressWarnings("deprecation")
     private static void bootstrap() {
         Bootstrap.register();
@@ -119,14 +135,20 @@ public final class DataGen {
         MnSurfaceBuilders.registerSurfaceBuilders(IRegistry.vanilla(Registry.SURFACE_BUILDER));
     }
 
+    /**
+     * This method is no longer used for data generation.
+     *
+     * @deprecated
+     * @see #gatherData(GatherDataEvent)
+     */
     public static DataGenerator makeGenerator(Path out, Collection<Path> ins, boolean client, boolean server, boolean dev, boolean reports, boolean validate) {
         DataGenerator gen = new DataGenerator(out, ins);
 
-        if(client) {
+        if (client) {
             gen.addProvider(new MnStateModelProvider(gen));
         }
 
-        if(server) {
+        if (server) {
             MnBlockTagsProvider blockTags = new MnBlockTagsProvider(gen);
             gen.addProvider(blockTags);
             gen.addProvider(new MnItemTagsProvider(gen, blockTags));
@@ -139,5 +161,26 @@ public final class DataGen {
         }
 
         return gen;
+    }
+
+    @SubscribeEvent
+    public static void gatherData(GatherDataEvent event) {
+        DataGenerator gen = event.getGenerator();
+
+        if (event.includeClient()) {
+            gen.addProvider(new MnStateModelProvider(gen));
+        }
+
+        if (event.includeServer()) {
+            MnBlockTagsProvider blockTags = new MnBlockTagsProvider(gen);
+            gen.addProvider(blockTags);
+            gen.addProvider(new MnItemTagsProvider(gen, blockTags));
+            gen.addProvider(new MnFluidTagsProvider(gen));
+            gen.addProvider(new MnEntityTypeTagsProvider(gen));
+
+            gen.addProvider(new MnRecipeProvider(gen));
+            gen.addProvider(new MnStonecuttingRecipeProvider(gen));
+            gen.addProvider(new MnLootTableProvider(gen));
+        }
     }
 }

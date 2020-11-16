@@ -37,26 +37,49 @@ sourceSets {
     }
 }
 
+task copyBaseResources(type: Copy) {
+    into "$buildDir/resources/main"
+    from "$projectDir/src/main/resources"
+}
+
 task genData(type: JavaExec) {
     dependsOn ':MidnightAPI:compileJava'
     dependsOn ':MidnightCore:compileJava'
     dependsOn 'compileJava'
+    dependsOn 'copyBaseResources'
 
     // We must give the classpath as a raw path, otherwise gradle adds :classes as a dependency to this task. Since we
     // are a dependency of :classes itself this causes a circular dependency and therefore we must not have :classes as
     // dependency. Make sure not to use 'sourceSets.main.runtimeClasspath' or something relevant here
-    classpath files("$rootDir/MidnightAPI/build/classes/java/main")         \
-                   + files("$rootDir/MidnightCore/build/classes/java/main") \
-                   + files("$rootDir/MidnightMod/build/classes/java/main")  \
-                   + configurations.runtime
+    classpath configurations.runtime
 
-    main "midnight.data.DataGen"
+    main "net.minecraftforge.userdev.LaunchTesting"
     args(
         "--all",
         "--output", "$projectDir/src/generated/resources",
-        "--gameDir", "."
+        "--mod", "midnight"
     )
-    workingDir file("$rootDir/run")
+    jvmArgs(
+        "-Dforge.logging.console.level=info",
+        "-Dmidnight.ide=true",
+        "-Dmidnight.datagen=true",
+        "-Dforge.logging.markers=SCAN,REGISTRIES,REGISTRYDUMP"
+    )
+    environment(
+        MOD_CLASSES: "midnight%%${project(":MidnightMod").projectDir}/build/resources/main;" +
+            "midnight%%${project(":MidnightMod").projectDir}/build/classes/java/main;" +
+            "midnight%%${project(":MidnightCore").projectDir}/build/resources/main;" +
+            "midnight%%${project(":MidnightCore").projectDir}/build/classes/java/main;" +
+            "midnight%%${project(":MidnightAPI").projectDir}/build/resources/main;" +
+            "midnight%%${project(":MidnightAPI").projectDir}/build/classes/java/main",
+        MCP_MAPPINGS: "snapshot_20201012-mixed-1.16.3", // Check mappings version!!
+        MCP_VERSION: "20201102.104115",
+        FORGE_VERSION: "35.0.18",
+        FORGE_GROUP: "net.minecraftforge",
+        target: "fmluserdevdata",
+        MC_VERSION: "1.16.4"
+    )
+    workingDir file("$rootDir/run/data")
 }
 
 processResources {
