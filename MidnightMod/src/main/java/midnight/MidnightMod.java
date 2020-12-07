@@ -66,6 +66,10 @@ public class MidnightMod {
         if (MnInfo.DATAGEN) {
             LOGGER.info(" - Running data generator");
         }
+
+        if (MnInfo.MUSIC_DISABLED) {
+            LOGGER.info(" - Music system disabled");
+        }
     }
 
     private void setup(FMLCommonSetupEvent event) {

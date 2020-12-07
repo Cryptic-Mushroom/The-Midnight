@@ -62,4 +62,9 @@ public interface IMidnightInfo {
      * Returns whether the Midnight is running from GitHub Actions.
      */
     boolean testServer();
+
+    /**
+     * Returns whether the Midnight should disable its music system.
+     */
+    boolean musicDisabled();
 }

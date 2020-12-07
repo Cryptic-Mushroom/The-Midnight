@@ -8,6 +8,7 @@
 
 package midnight.common.world.biome;
 
+import midnight.client.audio.MnMusicTicker;
 import midnight.common.Midnight;
 import midnight.common.world.levelgen.surface.MnConfiguredSurfaceBuilders;
 import midnight.core.biome.BiomeColoring;
@@ -19,7 +20,8 @@ import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
 
 /**
- * This class is used to generate the biomes and their settings when they are registered in the biome registry.
+ * This class is used to generate the biomes and their settings when they are registered in the biome registry. DO NOT
+ * GIVE A MUSIC EFFECT IN THE BUILDER! ALL MIDNIGHT MUSICS (for now) ARE HANDLED BY the {@link MnMusicTicker}.
  *
  * @see midnight.common.world.biome.MnBiomes
  *

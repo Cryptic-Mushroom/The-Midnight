@@ -1,4 +1,67 @@
 {
+  "ambient.caves.long": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "midnight:ambient/caves_long",
+        "stream": false
+      }
+    ]
+  },
+  "ambient.midnight.long": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "midnight:ambient/midnight_long",
+        "stream": false
+      }
+    ]
+  },
+  "ambient.midnight.short": {
+    "category": "ambient",
+    "subtitle": "subtitles.ambient.cave",
+    "sounds": [
+      "midnight:ambient/midnight_short_1",
+      "midnight:ambient/midnight_short_2",
+      "midnight:ambient/midnight_short_3"
+    ]
+  },
+  "ambient.music.stegano": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "midnight:ambient/music/stegano",
+        "stream": true
+      }
+    ]
+  },
+  "ambient.music.ultraviolet": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "midnight:ambient/music/ultraviolet",
+        "stream": true
+      }
+    ]
+  },
+  "music.crystals": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "midnight:music/crystals",
+        "stream": true
+      }
+    ]
+  },
+  "music.dark_willow": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "midnight:music/dark_willow",
+        "stream": true
+      }
+    ]
+  },
   "block.mud.break": {
     "category": "block",
     "subtitle": "subtitles.block.generic.break",
