@@ -63,6 +63,7 @@ public final class ItemModelTable {
         register(MnBlocks.SHADOWROOT_LEAVES, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.SHADOWROOT_PLANKS, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.SHADOWROOT_SAPLING, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.SHADOWROOT_BOOKSHELF, item -> inherit(name(item, "block/%s")));
 
         register(MnBlocks.DARK_WILLOW_LOG, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.DARK_WILLOW_WOOD, item -> inherit(name(item, "block/%s")));
@@ -72,6 +73,7 @@ public final class ItemModelTable {
         register(MnBlocks.HANGING_DARK_WILLOW_LEAVES, item -> generated(name(item, "block/%s_item")));
         register(MnBlocks.DARK_WILLOW_PLANKS, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.DARK_WILLOW_SAPLING, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.DARK_WILLOW_BOOKSHELF, item -> inherit(name(item, "block/%s")));
 
         register(MnBlocks.NIGHTSHROOM_CAP, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.NIGHTSHROOM_STEM, item -> inherit(name(item, "block/%s")));

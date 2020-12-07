@@ -8,22 +8,45 @@
 
 package midnight.data.models;
 
+import static midnight.data.models.modelgen.ExtrudedSquareModelGen.extruded;
+import static midnight.data.models.modelgen.InheritingModelGen.cross;
+import static midnight.data.models.modelgen.InheritingModelGen.crystalotus;
+import static midnight.data.models.modelgen.InheritingModelGen.cube;
+import static midnight.data.models.modelgen.InheritingModelGen.cubeAll;
+import static midnight.data.models.modelgen.InheritingModelGen.cubeBottomTop;
+import static midnight.data.models.modelgen.InheritingModelGen.cubeColumn;
+import static midnight.data.models.modelgen.InheritingModelGen.cubeFrontSided;
+import static midnight.data.models.modelgen.InheritingModelGen.flatPlant;
+import static midnight.data.models.modelgen.InheritingModelGen.grassBlock;
+import static midnight.data.models.modelgen.InheritingModelGen.hangingLeavesEnd;
+import static midnight.data.models.modelgen.InheritingModelGen.hangingLeavesRoot;
+import static midnight.data.models.modelgen.InheritingModelGen.layeredPlant;
+import static midnight.data.models.modelgen.InheritingModelGen.leaves;
+import static midnight.data.models.modelgen.InheritingModelGen.moss;
+import static midnight.data.models.modelgen.InheritingModelGen.paneNoside;
+import static midnight.data.models.modelgen.InheritingModelGen.paneNosideAlt;
+import static midnight.data.models.modelgen.InheritingModelGen.panePost;
+import static midnight.data.models.modelgen.InheritingModelGen.paneSide;
+import static midnight.data.models.modelgen.InheritingModelGen.paneSideAlt;
+import static midnight.data.models.modelgen.InheritingModelGen.tintedCross;
+
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+
 import midnight.common.block.MnBlocks;
 import midnight.common.block.ShroomCapBlock;
 import midnight.data.models.modelgen.IModelGen;
 import midnight.data.models.modelgen.InheritingModelGen;
-import midnight.data.models.stategen.*;
+import midnight.data.models.stategen.IBlockStateGen;
+import midnight.data.models.stategen.ModelInfo;
+import midnight.data.models.stategen.MultipartBlockStateGen;
+import midnight.data.models.stategen.Selector;
+import midnight.data.models.stategen.VariantBlockStateGen;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
-
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-
-import static midnight.data.models.modelgen.ExtrudedSquareModelGen.*;
-import static midnight.data.models.modelgen.InheritingModelGen.*;
 
 public final class BlockStateTable {
     private static BiConsumer<Block, IBlockStateGen> consumer;
@@ -72,6 +95,7 @@ public final class BlockStateTable {
         register(MnBlocks.SHADOWROOT_LEAVES, block -> simple(name(block, "block/%s"), leaves(name(block, "block/%s"))));
         register(MnBlocks.SHADOWROOT_PLANKS, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.SHADOWROOT_SAPLING, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
+        register(MnBlocks.SHADOWROOT_BOOKSHELF, block -> simple(name(block, "block/%s"), cubeColumn(name(block, "block/%s_end"), name(block, "block/%s_side"))));
 
 
         register(MnBlocks.DARK_WILLOW_LOG, block -> rotatedPillar(name(block, "block/%s"), cubeColumn(name(block, "block/%s_end"), name(block, "block/%s_side"))));
@@ -82,6 +106,7 @@ public final class BlockStateTable {
         register(MnBlocks.HANGING_DARK_WILLOW_LEAVES, block -> hangingPlant(name(block, "block/%s_end"), hangingLeavesEnd(name(block, "block/%s_inner"), name(block, "block/%s_end")), name(block, "block/%s"), hangingLeavesRoot(name(block, "block/%s_inner"), name(block, "block/%s_outer"))));
         register(MnBlocks.DARK_WILLOW_PLANKS, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.DARK_WILLOW_SAPLING, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
+        register(MnBlocks.DARK_WILLOW_BOOKSHELF, block -> simple(name(block, "block/%s"), cubeColumn(name(block, "block/%s_end"), name(block, "block/%s_side"))));
 
         register(MnBlocks.SHROOM_AIR, block -> none());
 

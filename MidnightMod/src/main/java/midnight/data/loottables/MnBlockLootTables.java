@@ -80,6 +80,7 @@ public class MnBlockLootTables extends BlockLootTables {
         registerLootTable(MnBlocks.SHADOWROOT_LEAVES, block -> droppingWithChancesAndDarkSticks(block, MnBlocks.SHADOWROOT_SAPLING, DEFAULT_SAPLING_DROP_RATES));
         registerDropSelfLootTable(MnBlocks.STRIPPED_SHADOWROOT_WOOD);
         registerDropSelfLootTable(MnBlocks.STRIPPED_SHADOWROOT_LOG);
+        registerDropSelfLootTable(MnBlocks.SHADOWROOT_BOOKSHELF);
 
         registerDropSelfLootTable(MnBlocks.DARK_WILLOW_WOOD);
         registerDropSelfLootTable(MnBlocks.DARK_WILLOW_LOG);
@@ -89,6 +90,7 @@ public class MnBlockLootTables extends BlockLootTables {
         registerLootTable(MnBlocks.HANGING_DARK_WILLOW_LEAVES, onlyWithShears(MnBlocks.HANGING_DARK_WILLOW_LEAVES));
         registerDropSelfLootTable(MnBlocks.STRIPPED_DARK_WILLOW_WOOD);
         registerDropSelfLootTable(MnBlocks.STRIPPED_DARK_WILLOW_LOG);
+        registerDropSelfLootTable(MnBlocks.DARK_WILLOW_BOOKSHELF);
 
         registerDropSelfLootTable(MnBlocks.NIGHTSHROOM_STEM);
         registerDropSelfLootTable(MnBlocks.NIGHTSHROOM_PLANKS);
@@ -293,7 +295,6 @@ public class MnBlockLootTables extends BlockLootTables {
             )
         );
     }
-
 
     @Override
     @SuppressWarnings("deprecation")

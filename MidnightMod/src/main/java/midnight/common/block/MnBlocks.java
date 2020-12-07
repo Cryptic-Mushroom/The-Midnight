@@ -8,6 +8,11 @@
 
 package midnight.common.block;
 
+import java.util.function.Function;
+import java.util.function.Supplier;
+
+import javax.annotation.Nonnull;
+
 import midnight.api.util.GeodeHardMaterials;
 import midnight.client.MidnightClient;
 import midnight.common.Midnight;
@@ -19,7 +24,14 @@ import midnight.common.world.biome.MnBiomeColors;
 import midnight.core.util.ColorUtil;
 import midnight.core.util.IRegistry;
 import midnight.core.util.MnUtil;
-import net.minecraft.block.*;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.FlowingFluidBlock;
+import net.minecraft.block.GlassBlock;
+import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.PaneBlock;
+import net.minecraft.block.RotatedPillarBlock;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.Minecraft;
@@ -37,10 +49,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.registries.ObjectHolder;
-
-import javax.annotation.Nonnull;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
 /**
  * This class registers and stores the list of Midnight blocks and their respective block items.
@@ -102,6 +110,7 @@ public abstract class MnBlocks {
     public static final Block SHADOWROOT_LEAVES = inj();
     public static final Block SHADOWROOT_PLANKS = inj();
     public static final Block SHADOWROOT_SAPLING = inj();
+    public static final Block SHADOWROOT_BOOKSHELF = inj();
 
     // Dark willow
     public static final Block DARK_WILLOW_LOG = inj();
@@ -112,6 +121,7 @@ public abstract class MnBlocks {
     public static final Block HANGING_DARK_WILLOW_LEAVES = inj();
     public static final Block DARK_WILLOW_PLANKS = inj();
     public static final Block DARK_WILLOW_SAPLING = inj();
+    public static final Block DARK_WILLOW_BOOKSHELF = inj();
 
     // Shroom air
     public static final Block SHROOM_AIR = inj();
@@ -278,6 +288,7 @@ public abstract class MnBlocks {
             leaves("shadowroot_leaves", MaterialColor.PURPLE),
             wood("shadowroot_planks", MaterialColor.PURPLE),
             plant("shadowroot_sapling", 0, 0, Material.PLANTS, MaterialColor.PURPLE).hitbox(11, 15),
+            bookshelf("shadowroot_bookshelf", MaterialColor.PURPLE),
 
             log("dark_willow_log", MaterialColor.BLUE, () -> STRIPPED_DARK_WILLOW_LOG),
             log("stripped_dark_willow_log", MaterialColor.BLUE),
@@ -287,6 +298,7 @@ public abstract class MnBlocks {
             hangingLeaves("hanging_dark_willow_leaves", MaterialColor.BLUE_TERRACOTTA, () -> DARK_WILLOW_LEAVES, MnBlockTags.DARK_WILLOW_LOGS).hitbox(14, 16),
             wood("dark_willow_planks", MaterialColor.BLUE_TERRACOTTA),
             plant("dark_willow_sapling", 0, 0, Material.PLANTS, MaterialColor.BLUE_TERRACOTTA).hitbox(12, 14),
+            bookshelf("dark_willow_bookshelf", MaterialColor.BLUE),
 
             shroomAir("shroom_air"),
 
@@ -438,6 +450,7 @@ public abstract class MnBlocks {
             item(SHADOWROOT_LEAVES, MnItemCategory.LEAVES, MnItemGroup.DECOR),
             item(SHADOWROOT_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
             item(SHADOWROOT_SAPLING, MnItemCategory.SAPLINGS, MnItemGroup.DECOR),
+            item(SHADOWROOT_BOOKSHELF, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
 
             item(DARK_WILLOW_LOG, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
             item(STRIPPED_DARK_WILLOW_LOG, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
@@ -447,6 +460,7 @@ public abstract class MnBlocks {
             item(HANGING_DARK_WILLOW_LEAVES, MnItemCategory.LEAVES, MnItemGroup.DECOR),
             item(DARK_WILLOW_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
             item(DARK_WILLOW_SAPLING, MnItemCategory.SAPLINGS, MnItemGroup.DECOR),
+            item(DARK_WILLOW_BOOKSHELF, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
 
             item(NIGHTSHROOM_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
             item(NIGHTSHROOM_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
@@ -1243,6 +1257,14 @@ public abstract class MnBlocks {
                                     .harvestTool(ToolType.AXE)
                                     .hardnessAndResistance(2f)
         ));
+    }
+    
+    private static Block bookshelf(String id, MaterialColor color) {
+    	return block(id, new Block(
+    		AbstractBlock.Properties.create(Material.WOOD, color)
+    								.sound(SoundType.WOOD)
+    								.hardnessAndResistance(1.5f)
+    	));
     }
 
     private static Block shroomAir(String id) {
