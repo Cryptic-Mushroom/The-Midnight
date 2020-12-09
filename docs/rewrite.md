@@ -5,7 +5,7 @@ As many of you know, Cryptic Mushroom's The Midnight Development Team is plannin
 ## Current Development Status
 
 - Adding basic blocks, fluids, and items along with their particles, properties, and possible effects.
-- Remodeling, retexturing, and (possibly) reconceptualizing a handful of existing mods that are in the mod.
+- Remodeling, retexturing, and (possibly) reconceptualizing a handful of existing mobs that are in the mod.
 
 ## What's planned for the rewrite?
 
