@@ -9,6 +9,7 @@ markdown_extensions:
 
 nav:
     - Home: index.md
+    - Frequently Asked Questions: faq.md
     - Rewrite Information: rewrite.md
     - About:
         - What is The Midnight?: about.md
