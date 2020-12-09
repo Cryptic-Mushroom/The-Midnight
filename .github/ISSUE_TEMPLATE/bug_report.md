@@ -7,6 +7,8 @@ assignees: ''
 
 ---
 
+<!-- Note: This is for BUG REPORTS ONLY! If you want to suggest a feature, make a thread in the Discussions tab. -->
+
 <!-- Note: These are comments and will not show up in your final bug report. -->
 
 <!-- 

@@ -1,4 +1,4 @@
-![The Midnight](/curseforge/front-page-poster.jpg?raw=true)
+![The Midnight](https://crypticmushroom.com/assets/front-page-poster.jpg)
 
 # The Midnight
 
@@ -6,15 +6,11 @@
 
 *The Midnight* is a mod being developed by Cryptic Mushroom that adds a new, mysterious and scary dimension to explore. It is a dimension of darkness; the only light comes from crystals and the various life of the dimension. You may travel willingly to this dimension, though you may unwillingly encounter a rifter and be dragged into this strange and hostile world...
 
-## Where can you find us?
-
-If you want to discuss the mod, we have a [Discord server](https://discord.gg/h7u4Tc7)!  
-We have other mods we like to work on, too! You can view them by visiting our [GitHub page](https://github.com/Cryptic-Mushroom) and [Cipher_Zero_X's CurseForge page](https://www.curseforge.com/members/cipher_zero_x/projects).  
-If you would like to support our work, consider donating to our [Patreon](https://www.patreon.com/crypticmushroom).
-
 ## Contributions
 
 We are currently not accepting public contributions as we continue to form the basis of the rewrite. If you really want to help contribute to the rewrite of the mod, contact Cipher Zero X, Shadew, or Jonathing.
+
+On the other hand, if you just want to pitch suggestions and ideas our way, feel free to start your own idea thread on our new [GitHub Discussions tab](https://github.com/Cryptic-Mushroom/The-Midnight/discussions)!
 
 ## Gradle
 
@@ -51,3 +47,11 @@ If you are a contributor on this list and want your name to link to a different 
 [veesus mikhel heir](https://minecraft.curseforge.com/members/veesusmikelheir) - Contributor  
 [Terenx](https://github.com/Terenx) - Contributor  
 [KingPhygieBoo](https://gitlab.com/KingPhygieBoo) - Contributor
+
+## Where can you find us?
+
+If you want to discuss the mod, come visit us in the Cryptic Mushroom Official Discord server!  
+[![Discord Server Banner](https://discordapp.com/api/guilds/382958565125521412/widget.png?style=banner3)](https://discord.gg/h7u4Tc7)
+
+If you would like to support our work, consider donating to our [Patreon](https://www.patreon.com/crypticmushroom).  
+[Follow us on Twitter](https://twitter.com/CrypticMushroom) for significant updates on development!

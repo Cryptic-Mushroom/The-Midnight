@@ -16,20 +16,9 @@ If you have found any issues with our mod, you can click the "Issues" tab at the
 Although you may report issues on the latest version of The Midnight, do note that our focus has shifted onto the rewrite, so the bugs may not be fixed in the 1.15.2 version of The Midnight, and instead accounted for in the rewrite.  
 Please note that if your issue is a duplicate of anyone else's, an active developer may remove your issue in order to remove excess clutter.
 
-## Where can you find us?
+## FAQ
 
-If you want to discuss the mod, come visit us in the Cryptic Mushroom Official [Discord server](https://discord.gg/h7u4Tc7)!  
-We have other mods we like to work on, too! You can view them by visiting our [GitHub organization page](https://github.com/Cryptic-Mushroom) and [Cipher Zero X's CurseForge page](https://www.curseforge.com/members/cipher_zero_x/projects).  
-If you would like to support our work, consider donating to our [Patreon](https://www.patreon.com/crypticmushroom).  
-[Follow us on Twitter](https://twitter.com/CrypticMushroom) for significant updates on development!
-
-## FAQ (Will be updated soon)
-
-Q: How do I get out of the dimension?  
-A: Find another rift in the dimension, it will lead you back to the Overworld. However, they only spawn at night in the Overworld so if that condition isn't met then you won't find a rift for a while. An alternative option is to use this command (only works on The Midnight 0.4.6 and lower): /summon midnight:rift
-
-Q: Can I use The Midnight in my modpack?  
-If you want to incorperate The Midnight into your modpack, feel free, but do know that *The Midnight is extremely buggy when it comes to compatibility with other mods.* This has been address and will be worked on soon.
+Our Frequently Asked Questions can be found either on [the FAQ page on the Midnight Wiki](https://the-midnight.readthedocs.io/en/latest/faq/) or on the #faq channel on our Discord server!
 
 ## Credits
 
@@ -63,8 +52,10 @@ If you are a contributor on this list and want your name to link to a different 
 [Terenx](https://github.com/Terenx) - Contributor  
 [KingPhygieBoo](https://gitlab.com/KingPhygieBoo) - Contributor
 
-## Where'd the comments go?
+## Where can you find us?
 
-We disabled them! Come join our Discord server instead for any questions you might have.
+If you want to discuss the mod, come visit us in the Cryptic Mushroom Official Discord server!  
+[![Discord Server Banner](https://discordapp.com/api/guilds/382958565125521412/widget.png?style=banner3)](https://discord.gg/h7u4Tc7)
 
-[![Discord Icon](https://discord.com/assets/fc0b01fe10a0b8c602fb0106d8189d9b.png)](https://discord.gg/h7u4Tc7)
+If you would like to support our work, consider donating to our [Patreon](https://www.patreon.com/crypticmushroom).  
+[Follow us on Twitter](https://twitter.com/CrypticMushroom) for significant updates on development!
