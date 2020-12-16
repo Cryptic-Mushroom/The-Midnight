@@ -33,7 +33,7 @@ public class MnEnvironmentRenderer extends DimensionRenderInfo {
     }
 
     @Override
-    public Vector3d adjustSkyColor(Vector3d color, float partialTicks) {
+    public Vector3d adjustFogColor(Vector3d color, float partialTicks) {
         return color;
     }
 
