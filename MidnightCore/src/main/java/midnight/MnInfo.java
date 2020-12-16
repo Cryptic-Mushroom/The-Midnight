@@ -95,7 +95,7 @@ public final class MnInfo implements IMidnightInfo {
     }
 
     private static boolean isRunningTestServer() {
-        String p = System.getProperty("midnight.istestserver");
+        String p = System.getProperty("minecraftdev.ci.istestserver");
         return Boolean.parseBoolean(p);
     }
 

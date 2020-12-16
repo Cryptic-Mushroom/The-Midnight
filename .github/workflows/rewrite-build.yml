@@ -8,7 +8,7 @@ on:
     branches:
       - rewrite
     paths-ignore:
-      - '.github/**'
+      - '.github/ISSUE_TEMPLATE/**'
       - 'curseforge/**'
       - 'versioninfo/**'
       - 'README.md'
@@ -201,7 +201,7 @@ jobs:
           java-package: jdk
           architecture: x64
 
-      - name: Prepare to test a Minecraft Server with The Midnight
+      - name: Prepare to test a Minecraft Server
         shell: pwsh
         run: |
           Write-Host "Generating the Minecraft Server's runtime environment..."
@@ -257,7 +257,7 @@ jobs:
           java-package: jdk
           architecture: x64
 
-      - name: Prepare to test a Minecraft Server with The Midnight
+      - name: Prepare to test a Minecraft Server
         run: |
           echo "Generating the Minecraft Server's runtime environment..."
           mkdir run/server
@@ -311,7 +311,7 @@ jobs:
           java-package: jdk
           architecture: x64
 
-      - name: Prepare to test a Minecraft Server with The Midnight
+      - name: Prepare to test a Minecraft Server
         run: |
           echo "Generating the Minecraft Server's runtime environment..."
           mkdir run/server

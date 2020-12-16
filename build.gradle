@@ -55,6 +55,10 @@ allprojects {
             url = "https://maven.shadew.net/"
         }
         maven {
+            name = "Modding Legacy Maven"
+            url = "https://maven.moddinglegacy.com/artifactory/modding-legacy/"
+        }
+        maven {
             name = "tterrag's maven"
             url = "https://maven.tterrag.com/"
         }
@@ -74,7 +78,7 @@ allprojects {
 
     // ForgeGradle setup
     minecraft {
-        mappings channel: 'snapshot', version: '20201012-mixed-1.16.3'
+        mappings channel: 'snapshot', version: '20201214-mixed-1.16.4'
 
         // Access transformer
         accessTransformer = file("$rootDir/MidnightCore/src/main/resources/META-INF/accesstransformer.cfg")
@@ -111,13 +115,15 @@ allprojects {
     }
 
     dependencies {
-        minecraft 'net.minecraftforge:forge:1.16.4-35.0.18'
+        minecraft 'net.minecraftforge:forge:1.16.4-35.1.0'
 
         embed("net.shadew:ptg:1.2.2") {
             // The only transitive dependency is it.unimi.dsi:fastutil:8.2.1 - this is included with forge and we don't
             // need to embed it
             transitive false
         }
+
+        compile fg.deobf("me.jonathing.minecraft:ci_testserver:1.16.4-1.0.1")
 
         compileOnly fg.deobf("mezz.jei:jei-1.16.4:7.6.0.58:api")
         runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:7.6.0.58")
@@ -236,12 +242,9 @@ minecraft {
         }
 
         testServer {
-            workingDirectory project.file('run/server')
-            arg "-mixin.config=midnight.mixins.json"
-
             parent minecraft.runs.server
 
-            property 'midnight.istestserver', 'true'
+            property 'minecraftdev.ci.istestserver', 'true'
         }
 
         data {
