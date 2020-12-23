@@ -3,13 +3,17 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 25
+ * Last updated: 2020 - 12 - 23
  */
 
 package midnight.common.world.biome;
 
-import midnight.MidnightMod;
 import midnight.common.Midnight;
+import midnight.common.world.biome.factory.BiomeFactory;
+import midnight.common.world.biome.factory.DeceitfulBogFactory;
+import midnight.common.world.biome.factory.NightPlainsFactory;
+import midnight.common.world.biome.factory.VigilantForestFactory;
+import midnight.core.biome.MnBiomeBuilder;
 import midnight.core.util.IRegistry;
 import midnight.core.util.MnObjects;
 import net.minecraft.util.RegistryKey;
@@ -38,20 +42,25 @@ public final class MnBiomes {
 
     public static void registerBiomes(IRegistry<Biome> registry) {
         registry.registerAll(
-            MnBiomeMaker.makeNightPlains("night_plains"),
-            MnBiomeMaker.makeVigilantForest("vigilant_forest"),
-            MnBiomeMaker.makeDeceitfulBog("deceitful_bog")
+            make("night_plains", new NightPlainsFactory()),
+            make("vigilant_forest", new VigilantForestFactory()),
+            make("deceitful_bog", new DeceitfulBogFactory())
         );
     }
 
-    public static RegistryKey<Biome> getKeyFromBiome(World world, Biome biomeIn)
-    {
-        Optional<RegistryKey<Biome>> biome = world.getRegistryManager().get(Registry.BIOME_KEY).getKeyOptional(biomeIn);
+    private static Biome make(String id, BiomeFactory factory) {
+        return factory.makeBiome(new MnBiomeBuilder(Midnight.resLoc(id)));
+    }
 
-        if (biome.isPresent())
-            return biome.get();
+    public static RegistryKey<Biome> getKeyFromBiome(World world, Biome biome) {
+        Optional<RegistryKey<Biome>> biomeKey = world.getRegistryManager()
+                                                     .get(Registry.BIOME_KEY)
+                                                     .getKeyOptional(biome);
 
-        Midnight.LOGGER.error("Failed to get the registry key from " + biomeIn + ". This is not good!");
+        if (biomeKey.isPresent())
+            return biomeKey.get();
+
+        Midnight.LOGGER.error("Failed to get the registry key from " + biome + ". This is not good!");
         return null;
     }
 

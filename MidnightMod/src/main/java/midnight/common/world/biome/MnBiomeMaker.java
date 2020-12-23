@@ -3,13 +3,14 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 12 - 23
  */
 
 package midnight.common.world.biome;
 
 import midnight.client.audio.MnMusicTicker;
 import midnight.common.Midnight;
+import midnight.common.world.biome.factory.BiomeFactory;
 import midnight.common.world.levelgen.surface.MnConfiguredSurfaceBuilders;
 import midnight.core.biome.BiomeColoring;
 import midnight.core.biome.MnBiomeBuilder;
@@ -23,11 +24,12 @@ import net.minecraft.world.biome.MobSpawnInfo;
  * This class is used to generate the biomes and their settings when they are registered in the biome registry. DO NOT
  * GIVE A MUSIC EFFECT IN THE BUILDER! ALL MIDNIGHT MUSICS (for now) ARE HANDLED BY the {@link MnMusicTicker}.
  *
- * @see midnight.common.world.biome.MnBiomes
- *
  * @author Shadew
+ * @see midnight.common.world.biome.MnBiomes
  * @since 0.6.0
+ * @deprecated This is being replaced with {@link BiomeFactory} now so we don't have one junk of biome factory methods.
  */
+@Deprecated
 public final class MnBiomeMaker {
     private MnBiomeMaker() {
     }

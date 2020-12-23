@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 25
+ * Last updated: 2020 - 12 - 23
  */
 
 package midnight.client;
@@ -18,10 +18,13 @@ import midnight.common.block.fluid.MnFluids;
 import midnight.common.entity.MnEntityTypes;
 import midnight.common.misc.MnParticleTypes;
 import net.minecraft.client.Minecraft;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.registry.DynamicRegistries;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.LogicalSide;
+import net.minecraftforge.fml.LogicalSidedProvider;
 
 /**
  * The client-only main class of the Midnight, to handle certain client-only initialization and processing.
@@ -71,8 +74,7 @@ public class MidnightClient extends Midnight {
 
     @Override
     public DynamicRegistries getDynamicRegistries() {
-        assert Minecraft.getInstance().world != null;
-        return Minecraft.getInstance().world.getRegistryManager();
+        return ((MinecraftServer) LogicalSidedProvider.INSTANCE.get(LogicalSide.SERVER)).getRegistryManager();
     }
 
     public MnMusicTicker getMusicTicker() {
