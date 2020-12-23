@@ -56,7 +56,7 @@ public class DeadLogFeature extends Feature<DeadLogFeatureConfig> {
      * @param branchLenMax Max branch length
      * @param len          Length of the generated log
      * @param state        The material of the log
-     * @param oppositeAxis The material of the log in the opposite axis (X <-> Z), for branches
+     * @param oppositeAxis The material of the log in the opposite axis (X-Z), for branches
      * @param dir          The direction to generate in
      * @return True when something has been generated
      */
