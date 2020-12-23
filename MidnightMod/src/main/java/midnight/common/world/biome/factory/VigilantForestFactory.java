@@ -9,7 +9,6 @@
 package midnight.common.world.biome.factory;
 
 import midnight.common.block.MnBlocks;
-import midnight.common.world.levelgen.feature.MnCfgFeatures;
 import midnight.common.world.levelgen.feature.MnFeatureFactory;
 import midnight.common.world.levelgen.surface.MnConfiguredSurfaceBuilders;
 import midnight.core.biome.BiomeColoring;
@@ -32,8 +31,8 @@ public class VigilantForestFactory extends BiomeFactory {
 
     private static final ConfiguredFeature<?, ?> TALL_GRASS =
         MnFeatureFactory.doublePlantPatch(MnBlocks.TALL_NIGHT_GRASS.getDefaultState(), 32)
-                        .decorate(MnCfgFeatures.Placements.SPREAD_32_ABOVE)
-                        .decorate(MnCfgFeatures.Placements.SQUARE_HEIGHTMAP);
+                        .decorate(Features.Placements.SPREAD_32_ABOVE)
+                        .decorate(Features.Placements.SQUARE_HEIGHTMAP);
 
     @Override
     public Biome makeBiome(MnBiomeBuilder builder) {

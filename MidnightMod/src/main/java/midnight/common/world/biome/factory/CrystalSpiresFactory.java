@@ -22,7 +22,7 @@ import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Features;
 
-public class DeceitfulBogFactory extends BiomeFactory {
+public class CrystalSpiresFactory extends BiomeFactory {
 
     private static final ConfiguredFeature<?, ?> GRASS =
         MnFeatureFactory.simplePatch(MnBlocks.NIGHT_GRASS.getDefaultState(), 32)
@@ -30,29 +30,22 @@ public class DeceitfulBogFactory extends BiomeFactory {
                         .repeat(2);
 
     private static final ConfiguredFeature<?, ?> TALL_GRASS =
-        MnFeatureFactory.doublePlantPatch(MnBlocks.TALL_NIGHT_GRASS.getDefaultState(), 64)
+        MnFeatureFactory.doublePlantPatch(MnBlocks.TALL_NIGHT_GRASS.getDefaultState(), 32)
                         .decorate(Features.Placements.SPREAD_32_ABOVE)
-                        .decorate(Features.Placements.SQUARE_HEIGHTMAP)
-                        .repeat(7);
+                        .decorate(Features.Placements.SQUARE_HEIGHTMAP);
 
-    private static final ConfiguredFeature<?, ?> BOGSHROOM =
-        MnFeatureFactory.simplePatch(MnBlocks.BOGSHROOM.getDefaultState(), 32)
+    private static final ConfiguredFeature<?, ?> CRYSTAL_FLOWERS =
+        MnFeatureFactory.simplePatch(MnBlocks.CRYSTAL_FLOWER.getDefaultState(), 48)
                         .decorate(Features.Placements.SQUARE_HEIGHTMAP_SPREAD_DOUBLE)
-                        .applyChance(3);
-
-    private static final ConfiguredFeature<?, ?> TALL_BOGSHROOM =
-        MnFeatureFactory.doublePlantPatch(MnBlocks.TALL_BOGSHROOM.getDefaultState(), 32)
-                        .decorate(Features.Placements.SPREAD_32_ABOVE)
-                        .decorate(Features.Placements.SQUARE_HEIGHTMAP)
-                        .applyChance(13);
+                        .repeat(2);
 
     @Override
     public Biome makeBiome(MnBiomeBuilder builder) {
         return builder
                    .depth(0.1f).scale(0.1f)
                    .temperature(1).downfall(0).precipitation(Biome.RainType.NONE)
-                   .category(Biome.Category.FOREST)
                    .temperatureModifier(Biome.TemperatureModifier.NONE)
+                   .category(Biome.Category.FOREST)
                    .effects(
                        new BiomeAmbience.Builder()
                            .fogColor(0) // TODO Look up from old version
@@ -63,11 +56,10 @@ public class DeceitfulBogFactory extends BiomeFactory {
                    )
                    .generationSettings(
                        new BiomeGenerationSettings.Builder()
-                           .surfaceBuilder(MnConfiguredSurfaceBuilders.DECEITFUL_BOG)
+                           .surfaceBuilder(MnConfiguredSurfaceBuilders.DEFAULT_NIGHT_GRASS)
                            .feature(GenerationStage.Decoration.VEGETAL_DECORATION, GRASS)
                            .feature(GenerationStage.Decoration.VEGETAL_DECORATION, TALL_GRASS)
-                           .feature(GenerationStage.Decoration.VEGETAL_DECORATION, BOGSHROOM)
-                           .feature(GenerationStage.Decoration.VEGETAL_DECORATION, TALL_BOGSHROOM)
+                           .feature(GenerationStage.Decoration.VEGETAL_DECORATION, CRYSTAL_FLOWERS)
                            .build()
                    )
                    .spawnSettings(
@@ -75,16 +67,16 @@ public class DeceitfulBogFactory extends BiomeFactory {
                    )
                    .coloring(
                        new BiomeColoring.Builder()
-                           .grassColor(0x765E8A)
-                           .waterColor(0x422D54)
+                           .grassColor(0xB855CF)
+                           .waterColor(0x2C0266)
                            .build()
                    )
                    .terrainFactors(
                        new TerrainFactors.Builder()
-                           .height(0.2)
-                           .difference(1)
-                           .hilliness(0.5)
-                           .granularity(0.8)
+                           .height(0.75)
+                           .difference(2)
+                           .hilliness(2)
+                           .granularity(0.7)
                            .build()
                    )
                    .build();

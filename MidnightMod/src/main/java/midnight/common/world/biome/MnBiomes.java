@@ -9,10 +9,7 @@
 package midnight.common.world.biome;
 
 import midnight.common.Midnight;
-import midnight.common.world.biome.factory.BiomeFactory;
-import midnight.common.world.biome.factory.DeceitfulBogFactory;
-import midnight.common.world.biome.factory.NightPlainsFactory;
-import midnight.common.world.biome.factory.VigilantForestFactory;
+import midnight.common.world.biome.factory.*;
 import midnight.core.biome.MnBiomeBuilder;
 import midnight.core.util.IRegistry;
 import midnight.core.util.MnObjects;
@@ -33,6 +30,7 @@ public final class MnBiomes {
     public static final RegistryKey<Biome> NIGHT_PLAINS = key("night_plains");
     public static final RegistryKey<Biome> VIGILANT_FOREST = key("vigilant_forest");
     public static final RegistryKey<Biome> DECEITFUL_BOG = key("deceitful_bog");
+    public static final RegistryKey<Biome> CRYSTAL_SPIRES = key("crystal_spires");
 
     private static RegistryKey<Biome> key(String key) {
         RegistryKey<Biome> rk = RegistryKey.of(Registry.BIOME_KEY, Midnight.resLoc(key));
@@ -44,7 +42,8 @@ public final class MnBiomes {
         registry.registerAll(
             make("night_plains", new NightPlainsFactory()),
             make("vigilant_forest", new VigilantForestFactory()),
-            make("deceitful_bog", new DeceitfulBogFactory())
+            make("deceitful_bog", new DeceitfulBogFactory()),
+            make("crystal_spires", new CrystalSpiresFactory())
         );
     }
 

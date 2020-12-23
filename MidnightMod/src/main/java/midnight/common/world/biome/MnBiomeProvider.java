@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 12 - 23
  */
 
 package midnight.common.world.biome;
@@ -42,7 +42,8 @@ public class MnBiomeProvider extends BiomeProvider {
         super(Stream.of(
             () -> biomeRegistry.getOrThrow(MnBiomes.NIGHT_PLAINS),
             () -> biomeRegistry.getOrThrow(MnBiomes.VIGILANT_FOREST),
-            () -> biomeRegistry.getOrThrow(MnBiomes.DECEITFUL_BOG)
+            () -> biomeRegistry.getOrThrow(MnBiomes.DECEITFUL_BOG),
+            () -> biomeRegistry.getOrThrow(MnBiomes.CRYSTAL_SPIRES)
         ));
         this.seed = seed;
         this.biomeRegistry = biomeRegistry;
@@ -51,10 +52,11 @@ public class MnBiomeProvider extends BiomeProvider {
             new int[] {
                 biomeRegistry.getId(biomeRegistry.getOrThrow(MnBiomes.NIGHT_PLAINS)),
                 biomeRegistry.getId(biomeRegistry.getOrThrow(MnBiomes.VIGILANT_FOREST)),
-                biomeRegistry.getId(biomeRegistry.getOrThrow(MnBiomes.DECEITFUL_BOG))
+                biomeRegistry.getId(biomeRegistry.getOrThrow(MnBiomes.DECEITFUL_BOG)),
+                biomeRegistry.getId(biomeRegistry.getOrThrow(MnBiomes.CRYSTAL_SPIRES))
             },
             new int[] {
-                100, 87, 87
+                100, 87, 87, 35
             }
         );
 
