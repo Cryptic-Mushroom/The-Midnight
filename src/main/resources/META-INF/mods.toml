@@ -39,7 +39,7 @@ The Midnight is still in active development and we'd love to hear your feedback!
 [[dependencies.midnight]]
 modId = "forge"
 mandatory = true
-versionRange = "[35.0.18,)"
+versionRange = "[35.1.4,)"
 ordering = "NONE"
 side = "BOTH"
 

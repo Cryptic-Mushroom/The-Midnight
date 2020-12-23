@@ -72,9 +72,9 @@ task genData(type: JavaExec) {
             "midnight%%${projectDir}/build/classes/java/main;" +
             "midnight%%${project(":api").projectDir}/build/resources/main;" +
             "midnight%%${project(":api").projectDir}/build/classes/java/main",
-        MCP_MAPPINGS: "snapshot_20201012-mixed-1.16.3", // Check mappings version!!
+        MCP_MAPPINGS: "snapshot_20201214-mixed-1.16.4", // Check mappings version!!
         MCP_VERSION: "20201102.104115", // TODO INJECT GRADLE PROPERTIES!!!!!
-        FORGE_VERSION: "35.0.18",
+        FORGE_VERSION: "35.1.4",
         FORGE_GROUP: "net.minecraftforge",
         target: "fmluserdevdata",
         MC_VERSION: "1.16.4"
