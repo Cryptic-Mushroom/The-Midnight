@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "midnight:dead_wood_log"
+    }
+  ],
+  "result": {
+    "item": "midnight:dead_wood_planks",
+    "count": 4
+  }
+}

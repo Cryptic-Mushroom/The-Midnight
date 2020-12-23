@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "midnight:block/dark_willow_leaves"
+  }
+}

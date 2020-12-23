@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "midnight:block/flowering_nightshroom_roots"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "midnight:geode"
+    },
+    "title": {
+      "translate": "advancement.thrown_geode.title"
+    },
+    "description": {
+      "translate": "advancement.thrown_geode.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "midnight:midnight/root",
+  "criteria": {
+    "thrown_geode": {
+      "trigger": "midnight:thrown_geode"
+    }
+  }
+}

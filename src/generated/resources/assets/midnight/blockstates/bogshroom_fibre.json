@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "dense=false": {
+      "model": "midnight:block/bogshroom_fibre"
+    },
+    "dense=true": {
+      "model": "midnight:block/bogshroom_fibre_dense"
+    }
+  }
+}

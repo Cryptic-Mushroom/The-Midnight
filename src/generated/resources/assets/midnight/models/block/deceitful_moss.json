@@ -1,0 +1,6 @@
+{
+  "parent": "midnight:block/moss",
+  "textures": {
+    "texture": "midnight:block/deceitful_moss"
+  }
+}

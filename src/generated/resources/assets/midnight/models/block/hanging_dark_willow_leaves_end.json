@@ -1,0 +1,7 @@
+{
+  "parent": "midnight:block/hanging_leaves_end",
+  "textures": {
+    "inner": "midnight:block/hanging_dark_willow_leaves_inner",
+    "end": "midnight:block/hanging_dark_willow_leaves_end"
+  }
+}

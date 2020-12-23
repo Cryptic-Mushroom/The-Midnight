@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "midnight:block/coarse_night_dirt"
+      },
+      {
+        "model": "midnight:block/coarse_night_dirt",
+        "y": 90
+      },
+      {
+        "model": "midnight:block/coarse_night_dirt",
+        "y": 180
+      },
+      {
+        "model": "midnight:block/coarse_night_dirt",
+        "y": 270
+      }
+    ]
+  }
+}

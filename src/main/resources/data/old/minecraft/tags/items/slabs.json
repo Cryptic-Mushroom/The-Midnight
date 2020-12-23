@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "midnight:shadowroot_slab",
+    "midnight:dead_wood_slab",
+    "midnight:dark_willow_slab",
+    "midnight:nightstone_slab",
+    "midnight:nightstone_brick_slab",
+    "midnight:trenchstone_slab",
+    "midnight:trenchstone_brick_slab",
+    "midnight:dewshroom_slab",
+    "midnight:viridshroom_slab",
+    "midnight:nightshroom_slab",
+    "midnight:rockshroom_brick_slab"
+  ]
+}

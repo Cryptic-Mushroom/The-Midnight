@@ -1,0 +1,9 @@
+{
+  "parent": "midnight:block/grass_block",
+  "textures": {
+    "top": "midnight:block/night_grass_block_top",
+    "bottom": "midnight:block/night_dirt",
+    "side": "midnight:block/night_grass_block_side",
+    "overlay": "midnight:block/night_grass_block_overlay"
+  }
+}

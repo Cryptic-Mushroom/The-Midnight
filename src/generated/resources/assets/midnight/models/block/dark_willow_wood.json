@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "midnight:block/dark_willow_log_side"
+  }
+}

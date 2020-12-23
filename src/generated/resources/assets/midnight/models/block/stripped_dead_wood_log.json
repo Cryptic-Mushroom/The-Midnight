@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "midnight:block/stripped_dead_wood_log_end",
+    "side": "midnight:block/stripped_dead_wood_log_side"
+  }
+}

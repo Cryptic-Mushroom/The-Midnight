@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "midnight:glob_fungus_stem",
+    "midnight:glob_fungus_hyphae",
+    "midnight:infested_glob_fungus_stem"
+  ]
+}

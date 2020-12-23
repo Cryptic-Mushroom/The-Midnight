@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "midnight:bladeshroom_cap"
+    },
+    "title": {
+      "translate": "advancement.shroomikens.title"
+    },
+    "description": {
+      "translate": "advancement.shroomikens.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "midnight:midnight/root",
+  "criteria": {
+    "thrown_cap": {
+      "trigger": "midnight:thrown_bladeshroom"
+    }
+  }
+}

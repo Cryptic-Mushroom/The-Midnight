@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "midnight:nightstone_stairs",
+    "midnight:nightstone_brick_stairs",
+    "midnight:trenchstone_stairs",
+    "midnight:trenchstone_brick_stairs",
+    "midnight:rockshroom_brick_stairs"
+  ]
+}

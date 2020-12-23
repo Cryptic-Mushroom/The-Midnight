@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "midnight:shadowroot_trapdoor",
+    "midnight:dark_willow_trapdoor",
+    "midnight:dead_wood_trapdoor",
+    "midnight:tenebrum_trapdoor",
+    "midnight:nightshroom_trapdoor",
+    "midnight:dewshroom_trapdoor",
+    "midnight:viridshroom_trapdoor"
+  ]
+}

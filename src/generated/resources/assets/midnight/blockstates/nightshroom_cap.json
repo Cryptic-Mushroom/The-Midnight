@@ -1,0 +1,196 @@
+{
+  "variants": {
+    "down=false,east=true,north=true,south=true,up=true,west=true": {
+      "model": "midnight:block/nightshroom_cap_d"
+    },
+    "down=false,east=false,north=false,south=true,up=true,west=false": {
+      "model": "midnight:block/nightshroom_cap_dnew"
+    },
+    "down=true,east=true,north=true,south=true,up=true,west=true": {
+      "model": "midnight:block/nightshroom_cap"
+    },
+    "down=false,east=false,north=true,south=false,up=false,west=false": {
+      "model": "midnight:block/nightshroom_cap_udesw"
+    },
+    "down=false,east=true,north=true,south=false,up=true,west=true": {
+      "model": "midnight:block/nightshroom_cap_ds"
+    },
+    "down=false,east=true,north=false,south=true,up=true,west=true": {
+      "model": "midnight:block/nightshroom_cap_dn"
+    },
+    "down=true,east=false,north=false,south=false,up=false,west=false": {
+      "model": "midnight:block/nightshroom_cap_unesw"
+    },
+    "down=true,east=false,north=false,south=true,up=false,west=false": {
+      "model": "midnight:block/nightshroom_cap_unew"
+    },
+    "down=true,east=true,north=true,south=false,up=true,west=false": {
+      "model": "midnight:block/nightshroom_cap_sw"
+    },
+    "down=false,east=true,north=true,south=true,up=false,west=true": {
+      "model": "midnight:block/nightshroom_cap_ud"
+    },
+    "down=false,east=true,north=false,south=true,up=true,west=false": {
+      "model": "midnight:block/nightshroom_cap_dnw"
+    },
+    "down=true,east=true,north=false,south=true,up=true,west=true": {
+      "model": "midnight:block/nightshroom_cap_n"
+    },
+    "down=true,east=true,north=false,south=true,up=true,west=false": {
+      "model": "midnight:block/nightshroom_cap_nw"
+    },
+    "down=true,east=true,north=false,south=false,up=true,west=false": {
+      "model": "midnight:block/nightshroom_cap_nsw"
+    },
+    "down=true,east=true,north=false,south=false,up=false,west=false": {
+      "model": "midnight:block/nightshroom_cap_unsw"
+    },
+    "down=false,east=false,north=true,south=true,up=true,west=false": {
+      "model": "midnight:block/nightshroom_cap_dew"
+    },
+    "down=true,east=false,north=true,south=true,up=true,west=false": {
+      "model": "midnight:block/nightshroom_cap_ew"
+    },
+    "down=false,east=true,north=true,south=false,up=true,west=false": {
+      "model": "midnight:block/nightshroom_cap_dsw"
+    },
+    "down=true,east=false,north=false,south=false,up=false,west=true": {
+      "model": "midnight:block/nightshroom_cap_unes"
+    },
+    "down=true,east=true,north=true,south=false,up=true,west=true": {
+      "model": "midnight:block/nightshroom_cap_s"
+    },
+    "down=false,east=false,north=false,south=false,up=true,west=false": {
+      "model": "midnight:block/nightshroom_cap_dnesw"
+    },
+    "down=false,east=false,north=true,south=true,up=false,west=false": {
+      "model": "midnight:block/nightshroom_cap_udew"
+    },
+    "down=true,east=true,north=true,south=false,up=false,west=false": {
+      "model": "midnight:block/nightshroom_cap_usw"
+    },
+    "down=false,east=true,north=false,south=true,up=false,west=true": {
+      "model": "midnight:block/nightshroom_cap_udn"
+    },
+    "down=false,east=false,north=true,south=true,up=true,west=true": {
+      "model": "midnight:block/nightshroom_cap_de"
+    },
+    "down=true,east=true,north=false,south=true,up=false,west=true": {
+      "model": "midnight:block/nightshroom_cap_un"
+    },
+    "down=true,east=true,north=false,south=false,up=false,west=true": {
+      "model": "midnight:block/nightshroom_cap_uns"
+    },
+    "down=true,east=false,north=true,south=false,up=false,west=true": {
+      "model": "midnight:block/nightshroom_cap_ues"
+    },
+    "down=true,east=false,north=true,south=false,up=false,west=false": {
+      "model": "midnight:block/nightshroom_cap_uesw"
+    },
+    "down=false,east=false,north=false,south=false,up=true,west=true": {
+      "model": "midnight:block/nightshroom_cap_dnes"
+    },
+    "down=false,east=true,north=false,south=true,up=false,west=false": {
+      "model": "midnight:block/nightshroom_cap_udnw"
+    },
+    "down=false,east=false,north=true,south=true,up=false,west=true": {
+      "model": "midnight:block/nightshroom_cap_ude"
+    },
+    "down=true,east=false,north=true,south=true,up=false,west=true": {
+      "model": "midnight:block/nightshroom_cap_ue"
+    },
+    "down=false,east=true,north=true,south=true,up=false,west=false": {
+      "model": "midnight:block/nightshroom_cap_udw"
+    },
+    "down=true,east=false,north=true,south=false,up=true,west=false": {
+      "model": "midnight:block/nightshroom_cap_esw"
+    },
+    "down=false,east=true,north=true,south=false,up=false,west=true": {
+      "model": "midnight:block/nightshroom_cap_uds"
+    },
+    "down=false,east=false,north=false,south=true,up=false,west=false": {
+      "model": "midnight:block/nightshroom_cap_udnew"
+    },
+    "down=true,east=true,north=true,south=true,up=true,west=false": {
+      "model": "midnight:block/nightshroom_cap_w"
+    },
+    "down=true,east=false,north=false,south=true,up=false,west=true": {
+      "model": "midnight:block/nightshroom_cap_une"
+    },
+    "down=true,east=false,north=false,south=false,up=true,west=false": {
+      "model": "midnight:block/nightshroom_cap_nesw"
+    },
+    "down=true,east=true,north=true,south=false,up=false,west=true": {
+      "model": "midnight:block/nightshroom_cap_us"
+    },
+    "down=false,east=false,north=false,south=false,up=false,west=false": {
+      "model": "midnight:block/nightshroom_cap_udnesw"
+    },
+    "down=false,east=false,north=true,south=false,up=false,west=true": {
+      "model": "midnight:block/nightshroom_cap_udes"
+    },
+    "down=true,east=false,north=false,south=false,up=true,west=true": {
+      "model": "midnight:block/nightshroom_cap_nes"
+    },
+    "down=true,east=true,north=false,south=true,up=false,west=false": {
+      "model": "midnight:block/nightshroom_cap_unw"
+    },
+    "down=false,east=false,north=false,south=false,up=false,west=true": {
+      "model": "midnight:block/nightshroom_cap_udnes"
+    },
+    "down=true,east=true,north=true,south=true,up=false,west=false": {
+      "model": "midnight:block/nightshroom_cap_uw"
+    },
+    "down=true,east=false,north=true,south=true,up=true,west=true": {
+      "model": "midnight:block/nightshroom_cap_e"
+    },
+    "down=false,east=true,north=true,south=false,up=false,west=false": {
+      "model": "midnight:block/nightshroom_cap_udsw"
+    },
+    "down=true,east=false,north=true,south=false,up=true,west=true": {
+      "model": "midnight:block/nightshroom_cap_es"
+    },
+    "down=true,east=true,north=false,south=false,up=true,west=true": {
+      "model": "midnight:block/nightshroom_cap_ns"
+    },
+    "down=false,east=false,north=false,south=true,up=false,west=true": {
+      "model": "midnight:block/nightshroom_cap_udne"
+    },
+    "down=false,east=false,north=true,south=false,up=true,west=true": {
+      "model": "midnight:block/nightshroom_cap_des"
+    },
+    "down=false,east=true,north=false,south=false,up=false,west=false": {
+      "model": "midnight:block/nightshroom_cap_udnsw"
+    },
+    "down=true,east=false,north=true,south=true,up=false,west=false": {
+      "model": "midnight:block/nightshroom_cap_uew"
+    },
+    "down=false,east=false,north=false,south=true,up=true,west=true": {
+      "model": "midnight:block/nightshroom_cap_dne"
+    },
+    "down=false,east=true,north=false,south=false,up=false,west=true": {
+      "model": "midnight:block/nightshroom_cap_udns"
+    },
+    "down=true,east=true,north=true,south=true,up=false,west=true": {
+      "model": "midnight:block/nightshroom_cap_u"
+    },
+    "down=false,east=true,north=false,south=false,up=true,west=true": {
+      "model": "midnight:block/nightshroom_cap_dns"
+    },
+    "down=false,east=true,north=false,south=false,up=true,west=false": {
+      "model": "midnight:block/nightshroom_cap_dnsw"
+    },
+    "down=true,east=false,north=false,south=true,up=true,west=true": {
+      "model": "midnight:block/nightshroom_cap_ne"
+    },
+    "down=true,east=false,north=false,south=true,up=true,west=false": {
+      "model": "midnight:block/nightshroom_cap_new"
+    },
+    "down=false,east=false,north=true,south=false,up=true,west=false": {
+      "model": "midnight:block/nightshroom_cap_desw"
+    },
+    "down=false,east=true,north=true,south=true,up=true,west=false": {
+      "model": "midnight:block/nightshroom_cap_dw"
+    }
+  }
+}

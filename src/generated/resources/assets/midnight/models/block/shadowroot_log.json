@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "midnight:block/shadowroot_log_end",
+    "side": "midnight:block/shadowroot_log_side"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "midnight:bogshroom_stem"
+    }
+  ],
+  "result": {
+    "item": "midnight:bogshroom_planks",
+    "count": 4
+  }
+}

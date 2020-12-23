@@ -1,0 +1,50 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "name": "midnight_treasure",
+      "entries": [
+        {
+          "type": "item",
+          "name": "midnight:crystalotus",
+          "weight": 1
+        },
+        {
+          "type": "item",
+          "name": "midnight:stinger_egg",
+          "weight": 1
+        },
+        {
+          "type": "item",
+          "name": "midnight:violeaf",
+          "weight": 1
+        },
+        {
+          "type": "item",
+          "name": "midnight:ebonite",
+          "weight": 1
+        },
+        {
+          "type": "item",
+          "name": "midnight:nagrilite_nugget",
+          "weight": 1
+        },
+        {
+          "type": "item",
+          "name": "midnight:nagrilite_ingot",
+          "weight": 1
+        },
+        {
+          "type": "item",
+          "name": "midnight:tenebrum_nugget",
+          "weight": 1
+        },
+        {
+          "type": "item",
+          "name": "midnight:tenebrum_ingot",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

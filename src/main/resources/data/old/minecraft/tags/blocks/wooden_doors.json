@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "midnight:shadowroot_door",
+    "midnight:dark_willow_door",
+    "midnight:dead_wood_door",
+    "midnight:nightshroom_door",
+    "midnight:dewshroom_door",
+    "midnight:viridshroom_door"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "midnight:block/ghost_plant_stem_end",
+    "side": "midnight:block/ghost_plant_stem_side"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "midnight:night_reed"
+    }
+  },
+  "result": {
+    "item": "midnight:reed_thatch"
+  }
+}

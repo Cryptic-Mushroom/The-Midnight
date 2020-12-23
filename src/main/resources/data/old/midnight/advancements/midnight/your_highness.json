@@ -1,0 +1,46 @@
+{
+  "display": {
+    "icon": {
+      "item": "midnight:advancement_highness"
+    },
+    "title": {
+      "translate": "advancement.your_highness.title"
+    },
+    "description": {
+      "translate": "advancement.your_highness.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "midnight:midnight/root",
+  "criteria": {
+    "nightstag_bow0": {
+      "trigger": "midnight:nightstag_bow0"
+    },
+    "nightstag_bow1": {
+      "trigger": "midnight:nightstag_bow1"
+    },
+    "nightstag_bow2": {
+      "trigger": "midnight:nightstag_bow2"
+    },
+    "nightstag_bow3": {
+      "trigger": "midnight:nightstag_bow3"
+    },
+    "nightstag_bow4": {
+      "trigger": "midnight:nightstag_bow4"
+    },
+    "nightstag_bow5": {
+      "trigger": "midnight:nightstag_bow5"
+    },
+    "nightstag_bow6": {
+      "trigger": "midnight:nightstag_bow6"
+    },
+    "nightstag_bow7": {
+      "trigger": "midnight:nightstag_bow7"
+    },
+    "nightstag_bow8": {
+      "trigger": "midnight:nightstag_bow8"
+    }
+  }
+}

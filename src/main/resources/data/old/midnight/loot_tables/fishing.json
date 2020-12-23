@@ -1,0 +1,28 @@
+{
+  "pools": [
+    {
+      "name": "midnight_fishing",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "loot_table",
+          "name": "midnight:fishing/midnight_junk",
+          "weight": 10,
+          "quality": -2
+        },
+        {
+          "type": "loot_table",
+          "name": "midnight:fishing/midnight_treasure",
+          "weight": 5,
+          "quality": 2
+        },
+        {
+          "type": "loot_table",
+          "name": "midnight:fishing/midnight_fish",
+          "weight": 85,
+          "quality": -1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "midnight:block/stripped_shadowroot_log_side"
+  }
+}

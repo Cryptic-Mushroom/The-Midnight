@@ -1,0 +1,97 @@
+{
+  "display": {
+    "icon": {
+      "item": "midnight:grass"
+    },
+    "title": {
+      "translate": "advancement.surface_biomes.title"
+    },
+    "description": {
+      "translate": "advancement.surface_biomes.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "midnight:midnight/root",
+  "criteria": {
+    "biome0": {
+      "trigger": "location",
+      "conditions": {
+        "biome": "midnight:vigilant_forest"
+      }
+    },
+    "biome1": {
+      "trigger": "location",
+      "conditions": {
+        "biome": "midnight:black_ridge"
+      }
+    },
+    "biome2": {
+      "trigger": "location",
+      "conditions": {
+        "biome": "midnight:deceitful_bog"
+      }
+    },
+    "biome3": {
+      "trigger": "location",
+      "conditions": {
+        "biome": "midnight:fungi_forest"
+      }
+    },
+    "biome4": {
+      "trigger": "location",
+      "conditions": {
+        "biome": "midnight:obscured_peaks"
+      }
+    },
+    "biome5": {
+      "trigger": "location",
+      "conditions": {
+        "biome": "midnight:warped_fields"
+      }
+    },
+    "biome6": {
+      "trigger": "location",
+      "conditions": {
+        "biome": "midnight:crystal_spires"
+      }
+    },
+    "biome7": {
+      "trigger": "location",
+      "conditions": {
+        "biome": "midnight:night_plains"
+      }
+    },
+    "biome8": {
+      "trigger": "location",
+      "conditions": {
+        "biome": "midnight:obscured_plateau"
+      }
+    },
+    "biome9": {
+      "trigger": "location",
+      "conditions": {
+        "biome": "midnight:phantasmal_valley"
+      }
+    },
+    "biome10": {
+      "trigger": "location",
+      "conditions": {
+        "biome": "midnight:runebush_grove"
+      }
+    },
+    "biome11": {
+      "trigger": "location",
+      "conditions": {
+        "biome": "midnight:hilly_vigilant_forest"
+      }
+    },
+    "biome12": {
+      "trigger": "location",
+      "conditions": {
+        "biome": "midnight:hilly_fungi_forest"
+      }
+    }
+  }
+}

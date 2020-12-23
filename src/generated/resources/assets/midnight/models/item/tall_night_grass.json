@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "midnight:block/tall_night_grass_upper"
+  }
+}

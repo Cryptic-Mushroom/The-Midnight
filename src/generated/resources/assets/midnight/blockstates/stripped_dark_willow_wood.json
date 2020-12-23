@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "midnight:block/stripped_dark_willow_wood",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "midnight:block/stripped_dark_willow_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "midnight:block/stripped_dark_willow_wood"
+    }
+  }
+}

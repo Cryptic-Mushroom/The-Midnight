@@ -1,0 +1,37 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "name": "midnight_fish",
+      "entries": [
+        {
+          "type": "item",
+          "name": "midnight:deceitful_algae",
+          "conditions": [
+            {
+              "condition": "midnight:in_block",
+              "block": "midnight:dark_water"
+            }
+          ],
+          "weight": 60
+        },
+        {
+          "type": "item",
+          "name": "midnight:deceitful_snapper",
+          "conditions": [
+            {
+              "condition": "midnight:in_biome",
+              "biome": "midnight:deceitful_bog"
+            }
+          ],
+          "weight": 40
+        },
+        {
+          "type": "item",
+          "name": "midnight:deceitful_moss",
+          "weight": 40
+        }
+      ]
+    }
+  ]
+}

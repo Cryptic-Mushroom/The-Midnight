@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "midnight:block/nightshroom_cap_inner",
+    "east": "midnight:block/nightshroom_cap_inner",
+    "south": "midnight:block/nightshroom_cap_inner",
+    "west": "midnight:block/nightshroom_cap_inner",
+    "up": "midnight:block/nightshroom_cap",
+    "down": "midnight:block/nightshroom_cap_inner",
+    "particle": "midnight:block/nightshroom_cap_inner"
+  }
+}

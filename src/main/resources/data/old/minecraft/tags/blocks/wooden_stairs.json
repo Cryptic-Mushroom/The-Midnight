@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "midnight:shadowroot_stairs",
+    "midnight:dead_wood_stairs",
+    "midnight:dark_willow_stairs",
+    "midnight:dewshroom_stairs",
+    "midnight:viridshroom_stairs",
+    "midnight:nightshroom_stairs"
+  ]
+}

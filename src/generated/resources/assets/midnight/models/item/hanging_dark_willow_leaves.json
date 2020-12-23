@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "midnight:block/hanging_dark_willow_leaves_item"
+  }
+}

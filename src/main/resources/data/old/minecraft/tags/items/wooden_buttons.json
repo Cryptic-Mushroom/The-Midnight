@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "midnight:shadowroot_button",
+    "midnight:dead_wood_button",
+    "midnight:dark_willow_button",
+    "midnight:dewshroom_button",
+    "midnight:viridshroom_button",
+    "midnight:nightshroom_button"
+  ]
+}

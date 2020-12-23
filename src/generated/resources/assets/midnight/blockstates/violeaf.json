@@ -1,0 +1,38 @@
+{
+  "variants": {
+    "grown=false": [
+      {
+        "model": "midnight:block/violeaf"
+      },
+      {
+        "model": "midnight:block/violeaf",
+        "y": 90
+      },
+      {
+        "model": "midnight:block/violeaf",
+        "y": 180
+      },
+      {
+        "model": "midnight:block/violeaf",
+        "y": 270
+      }
+    ],
+    "grown=true": [
+      {
+        "model": "midnight:block/violeaf_grown"
+      },
+      {
+        "model": "midnight:block/violeaf_grown",
+        "y": 90
+      },
+      {
+        "model": "midnight:block/violeaf_grown",
+        "y": 180
+      },
+      {
+        "model": "midnight:block/violeaf_grown",
+        "y": 270
+      }
+    ]
+  }
+}

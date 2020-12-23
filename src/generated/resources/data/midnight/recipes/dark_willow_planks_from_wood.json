@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "midnight:dark_willow_wood"
+    }
+  ],
+  "result": {
+    "item": "midnight:dark_willow_planks",
+    "count": 4
+  }
+}

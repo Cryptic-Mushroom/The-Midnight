@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "dense=false": {
+      "model": "midnight:block/viridshroom_fibre"
+    },
+    "dense=true": {
+      "model": "midnight:block/viridshroom_fibre_dense"
+    }
+  }
+}

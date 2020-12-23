@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "midnight:nightstone",
+    "midnight:night_mycelium",
+    "midnight:strange_sand",
+    "#midnight:soils",
+    "#midnight:small_plants",
+    "#midnight:shroom_planks"
+  ]
+}

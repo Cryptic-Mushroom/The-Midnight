@@ -1,0 +1,6 @@
+{
+  "parent": "midnight:block/flat_plant",
+  "textures": {
+    "plant": "midnight:block/violeaf"
+  }
+}

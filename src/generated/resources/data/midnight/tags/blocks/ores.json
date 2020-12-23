@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "midnight:dark_pearl_ore",
+    "midnight:tenebrum_ore",
+    "midnight:nagrilite_ore",
+    "midnight:ebonite_ore",
+    "midnight:virilux_ore"
+  ]
+}

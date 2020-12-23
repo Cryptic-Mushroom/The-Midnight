@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "end=false": {
+      "model": "midnight:block/hanging_dark_willow_leaves"
+    },
+    "end=true": {
+      "model": "midnight:block/hanging_dark_willow_leaves_end"
+    }
+  }
+}

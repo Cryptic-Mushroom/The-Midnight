@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "midnight:stripped_dark_willow_log"
+    }
+  },
+  "result": {
+    "item": "midnight:stripped_dark_willow_wood",
+    "count": 3
+  }
+}
