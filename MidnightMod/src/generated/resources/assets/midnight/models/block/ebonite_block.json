@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "midnight:block/ebonite_block_end",
-    "side": "midnight:block/ebonite_block_side"
-  }
-}

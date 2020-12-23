@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "midnight:night_dirt",
-    "midnight:coarse_night_dirt",
-    "midnight:night_grass_block",
-    "#midnight:wet_soils"
-  ]
-}

@@ -3,11 +3,8 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 11 - 2
+ * Last updated: 2020 - 12 - 23
  */
-
-import net.minecraftforge.gradle.userdev.tasks.RenameJarInPlace
-
 // To all contributors
 // PLEASE REFRAIN FROM EDITING THIS build.gradle FILE UNLESS ABSOLUTELY NEEDED!!!
 
@@ -47,51 +44,32 @@ allprojects {
     // Initialize basic environment properties
     apply from: "$rootDir/environment.gradle"
 
-    repositories {
-        mavenLocal()
-        mavenCentral()
-        maven {
-            name = "Shadew's Maven Repository"
-            url = "https://maven.shadew.net/"
-        }
-        maven {
-            name = "Modding Legacy Maven"
-            url = "https://maven.moddinglegacy.com/artifactory/modding-legacy/"
-        }
-        maven {
-            name = "tterrag's maven"
-            url = "https://maven.tterrag.com/"
-        }
-        maven {
-            name = "Progwml6 maven"
-            url = "https://dvs1.progwml6.com/files/maven/"
-        }
-        //        maven {
-        //            name = "ModMaven"
-        //            url = "https://modmaven.k-4u.nl/"
-        //        }
-        //        maven {
-        //            name = "TerraForged Maven Repository"
-        //            url = "https://io.terraforged.com/repository/maven/"
-        //        }
+    configurations {
+        embed // External deps embedded into the JAR file
+        compile.extendsFrom(embed)
+
+        internal // Internal deps (subprojects) embedded into the JAR file
+        compile.extendsFrom(internal) // TODO Do we actually use this?
     }
+
+    apply from: "$rootDir/dependencies.gradle"
 
     // ForgeGradle setup
     minecraft {
-        mappings channel: 'snapshot', version: '20201214-mixed-1.16.4'
+        mappings channel: "${project.ext.getVariable("env.mappings.channel")}",
+                 version: "${project.ext.getVariable("env.mappings.version")}"
 
-        // Access transformer
-        accessTransformer = file("$rootDir/MidnightCore/src/main/resources/META-INF/accesstransformer.cfg")
+        accessTransformer = file("$rootDir/src/main/resources/META-INF/accesstransformer.cfg")
     }
 
     // Mixin setup
     mixin {
-        add sourceSets.main, "midnight.refmap.json"
+        add sourceSets.main, project.ext.mixinRefmap
     }
 
     // ModUtil setup
     modutil {
-        shade('net.shadew.ptg', 'midnight.internal.net.shadew.ptg')
+        shade('net.shadew.ptg', "${project.ext.shadePackage}.net.shadew.ptg")
 
         changelogJson file("$rootDir/changelog.json")
 
@@ -103,93 +81,79 @@ allprojects {
         constant('build_time', project.ext.timeOfExecution)
         constant('expected_sha256', project.getProjectFingerprint())
 
-        constantAnnotation 'midnight.DynamicConstant'
-    }
-
-    configurations {
-        embed // External deps embedded into the JAR file
-        compile.extendsFrom(embed)
-
-        internal // Internal deps (subprojects) embedded into the JAR file
-        compile.extendsFrom(internal)
-    }
-
-    dependencies {
-        minecraft 'net.minecraftforge:forge:1.16.4-35.1.0'
-
-        embed("net.shadew:ptg:1.2.2") {
-            // The only transitive dependency is it.unimi.dsi:fastutil:8.2.1 - this is included with forge and we don't
-            // need to embed it
-            transitive false
-        }
-
-        compile fg.deobf("me.jonathing.minecraft:ci_testserver:1.16.4-1.0.1")
-
-        compileOnly fg.deobf("mezz.jei:jei-1.16.4:7.6.0.58:api")
-        runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:7.6.0.58")
-
-        // implementation fg.deobf("local:TerraForged:1.15.2-0.1.2")
-
-        compileOnly fg.deobf("com.github.glitchfiend:biomesoplenty:1.16.4-13.0.0.420:api-obf")
-        compile fg.deobf("com.github.glitchfiend:biomesoplenty:1.16.4-13.0.0.420:universal-obf")
+        constantAnnotation "$project.ext.constAnnotation"
     }
 
     jar {
+        // Include necessary dependencies into the jar file
         doFirst {
-            // Include necessary dependencies
-            if (!project.name.endsWith("MidnightAPI")) {
-                from configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }
-            }
-            else {
-                println "Skipping dependency embedding for MidnightAPI build - they come with Maven"
-            }
-
+            from configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }
             from configurations.internal.collect { it.isDirectory() ? it : zipTree(it) }
         }
 
+        // Manifest properties
         manifest {
             attributes(
                 [
-                    "Specification-Title"     : "The Midnight",
-                    "Specification-Vendor"    : "Cryptic Mushroom",
-                    "Specification-Version"   : "${version}",
-                    "Implementation-Title"    : project.ext.implName,
-                    "Implementation-Version"  : "${version}",
-                    "Implementation-Vendor"   : "Cryptic Mushroom",
-                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                    "MixinConnector"          : "midnight.core.MixinConnector"
+                    "Specification-Title"     : "${project.ext.implName}",
+                    "Specification-Vendor"    : "${project.ext.implAuthor}",
+                    "Specification-Version"   : "${project.ext.version}",
+                    "Implementation-Title"    : "${project.ext.implName}",
+                    "Implementation-Vendor"   : "${project.ext.implAuthor}",
+                    "Implementation-Version"  : "${project.ext.version}",
+                    "Implementation-Timestamp": "${project.ext.timeOfExecution}",
+                    "MixinConnector"          : "${project.ext.mixinConnector}"
                 ]
             )
         }
     }
 
     injectConstants {
-        doFirst {
-            delete "$buildDir/sources"
-        }
+        doFirst { delete "$buildDir/sources" }
     }
 
-    // Make sure we use core's mixin-generated TSRG maps when reobfing mod, since mixin does not do this automatically
-    afterEvaluate {
-        tasks.each { mytask ->
-            if (mytask instanceof RenameJarInPlace) {
-                mytask.doFirst {
-                    project(":MidnightCore").tasks.each { task ->
-                        if (task instanceof JavaCompile) {
-                            def file = file("${task.temporaryDir}/${task.name}-mappings.tsrg")
-                            if (file.exists()) {
-                                mytask.extraMapping file
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+    //    // Make sure we use core's mixin-generated TSRG maps when reobfing mod, since mixin does not do this automatically
+    //    afterEvaluate {
+    //        tasks.each { mytask ->
+    //            if (mytask instanceof RenameJarInPlace) {
+    //                mytask.doFirst {
+    //                    project(":MidnightCore").tasks.each { task ->
+    //                        if (task instanceof JavaCompile) {
+    //                            def file = file("${task.temporaryDir}/${task.name}-mappings.tsrg")
+    //                            if (file.exists()) {
+    //                                mytask.extraMapping file
+    //                            }
+    //                        }
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
 
     project.shade.create("jar")
 
-    apply from: "$rootDir/gensources.gradle"
+    processResources {
+        doFirst {
+            delete "$buildDir/resources" // Delete resources to fully clean up unused items
+        }
+        // Import png and ogg apart from other files as we don't want lines to be
+        // replaced in such files...
+        from( 'src/main/resources' ) {
+            exclude '**/*.png'
+            exclude '**/*.ogg'
+            filter { line ->
+                line.replaceAll( '\\$\\{version\\}', "$project.version" )
+                    .replaceAll( '\\$\\{verName\\}', "$project.versionName" )
+            }
+        }
+        from( 'src/main/resources' ) {
+            include '**/*.png'
+            include '**/*.ogg'
+        }
+
+        exclude '**/unused/**'
+        exclude 'src/main/resources/templates/**'
+    }
 }
 
 
@@ -197,13 +161,10 @@ allprojects {
 // ROOT PROJECT SETUP
 // ==================
 
-// We should not build anything in the root project so we remove all building tasks and only build the necessary
-// subprojects. We only use the root project for running.
-build {
-    dependsOn.clear()
+apply from: "$rootDir/root.gradle"
 
-    dependsOn ':MidnightAPI:build'
-    dependsOn ':MidnightMod:build'
+build {
+    dependsOn ':api:build'
 }
 
 // Configure run configurations only for root project
@@ -211,7 +172,6 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run/client')
-            arg "-mixin.config=midnight.mixins.json"
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'info'
@@ -226,7 +186,6 @@ minecraft {
 
         server {
             workingDirectory project.file('run/server')
-            arg "-mixin.config=midnight.mixins.json"
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'info'
@@ -255,12 +214,9 @@ minecraft {
             property 'midnight.iside', 'true'
             property 'midnight.datagen', 'true'
 
-            // Workaround for https://github.com/MinecraftForge/ForgeGradle/issues/690
-            if (project.ext.isOsx()) {
-                jvmArg("-XstartOnFirstThread")
-            }
-
-            args '--mod', 'midnight', '--all', '--output', file("MidnightMod/src/generated/resources/")
+            args '--mod', 'midnight',
+                 '--all',
+                 '--output', file("src/generated/resources/")
 
             mods {
                 midnight {
@@ -271,46 +227,21 @@ minecraft {
     }
 }
 
-modutil {
-    updateJson file('versioninfo/update.json')
-    markdownChangelog file('versioninfo/latest_changelog.md')
-    markdownChangelog file("versioninfo/${changelogInfo.versionNumber}_changelog.md")
-}
-
-
-// Depend on all subprojects
-dependencies {
-    internal(project(':MidnightAPI')) {
-        transitive false
-    }
-    internal(project(':MidnightCore')) {
-        transitive false
-    }
-    internal(project(':MidnightMod')) {
-        transitive false
-    }
-}
 
 // Collect classes and resources from other projects so that running includes all classes
 
 def remake(String path) {
-    delete path
     file(path).mkdirs()
 }
 
 task collectClassPath {
-    dependsOn ':MidnightAPI:classes'
-    dependsOn ':MidnightCore:classes'
-    dependsOn ':MidnightMod:classes'
+    dependsOn ':api:classes'
     dependsOn ':compileJava'
     dependsOn ':processResources'
 
     doFirst {
         remake "$buildDir/resources/main"
         remake "$buildDir/classes/java/main"
-
-        remake "out/production/resources"
-        remake "out/production/classes"
     }
     doLast {
         configurations.collectMany {
@@ -328,30 +259,17 @@ task collectClassPath {
                 into("$buildDir/classes/java/main")
             }
         }
-        copy {
-            from("$buildDir/resources/main")
-            into("out/production/resources")
-        }
-        copy {
-            from("$buildDir/classes/java/main")
-            into("out/production/classes")
-        }
     }
 }
 
 task collectTestClassPath {
-    dependsOn ':MidnightAPI:testClasses'
-    dependsOn ':MidnightCore:testClasses'
-    dependsOn ':MidnightMod:testClasses'
+    dependsOn ':api:testClasses'
     dependsOn ':compileTestJava'
     dependsOn ':processTestResources'
 
     doFirst {
         remake "$buildDir/resources/test"
         remake "$buildDir/classes/java/test"
-
-        remake "out/test/resources"
-        remake "out/test/classes"
     }
     doLast {
         configurations.collectMany {
@@ -369,14 +287,6 @@ task collectTestClassPath {
                 into("$buildDir/classes/java/test")
             }
         }
-        copy {
-            from("$buildDir/resources/test")
-            into("out/test/resources")
-        }
-        copy {
-            from("$buildDir/classes/java/test")
-            into("out/test/classes")
-        }
     }
 }
 
@@ -386,150 +296,4 @@ classes {
 
 testClasses {
     dependsOn 'collectTestClassPath'
-}
-
-//task remakeClassesDir {
-//    doFirst {
-//        delete "$buildDir/classes/main"
-//        file("$buildDir/classes/main").mkdirs()
-//    }
-//
-//    outputs.upToDateWhen { t -> false }
-//}
-//
-//task collectClasses(type: Copy) {
-//    dependsOn ':MidnightAPI:classes'
-//    dependsOn ':MidnightCore:classes'
-//    dependsOn ':MidnightMod:classes'
-//    dependsOn ':remakeClassesDir'
-//
-//    outputs.upToDateWhen { t -> false }
-//
-//    doFirst {
-//        delete "$buildDir/classes/java/main"
-//        file("$buildDir/classes/java/main").mkdirs()
-//    }
-//
-//    configurations.collectMany {
-//        it.allDependencies
-//    }.findAll {
-//        it instanceof ProjectDependency
-//    }.each {
-//        ProjectDependency dep = (ProjectDependency) it
-//        from("$dep.dependencyProject.buildDir/classes/java/main")
-//    }
-//
-//    into("$buildDir/classes/java/main")
-//}
-//
-//task remakeTestClassesDir {
-//    doFirst {
-//        delete "$buildDir/classes/test"
-//        file("$buildDir/classes/test").mkdirs()
-//    }
-//
-//    outputs.upToDateWhen { t -> false }
-//}
-//
-//task collectTestClasses(type: Copy) {
-//    dependsOn ':MidnightAPI:testClasses'
-//    dependsOn ':MidnightCore:testClasses'
-//    dependsOn ':MidnightMod:testClasses'
-//    dependsOn ':remakeTestClassesDir'
-//
-//    outputs.upToDateWhen { t -> false }
-//
-//    configurations.collectMany {
-//        it.allDependencies
-//    }.findAll {
-//        it instanceof ProjectDependency
-//    }.each {
-//        ProjectDependency dep = (ProjectDependency) it
-//        from("$dep.dependencyProject.buildDir/classes/java/test")
-//    }
-//
-//    into("$buildDir/classes/java/test")
-//}
-//
-//compileJava {
-//    dependsOn 'collectClasses'
-//}
-//
-//compileTestJava {
-//    dependsOn 'collectTestClasses'
-//}
-//
-//task remakeResourcesDir {
-//    doFirst {
-//        delete "$buildDir/resources/main"
-//        file("$buildDir/resources/main").mkdirs()
-//    }
-//
-//    outputs.upToDateWhen { t -> false }
-//}
-//
-//task collectResources(type: Copy) {
-//    dependsOn ':MidnightAPI:classes'
-//    dependsOn ':MidnightCore:classes'
-//    dependsOn ':MidnightMod:classes'
-//    dependsOn ':remakeResourcesDir'
-//
-//    outputs.upToDateWhen { t -> false }
-//
-//    configurations.collectMany {
-//        it.allDependencies
-//    }.findAll {
-//        it instanceof ProjectDependency
-//    }.each {
-//        ProjectDependency dep = (ProjectDependency) it
-//        from("$dep.dependencyProject.buildDir/resources/main") {
-//            into("$buildDir/resources/main")
-//        }
-//    }
-//}
-//
-//task remakeTestResourcesDir {
-//    doFirst {
-//        delete "$buildDir/resources/test"
-//        file("$buildDir/resources/test").mkdirs()
-//    }
-//
-//    outputs.upToDateWhen { t -> false }
-//}
-//
-//task collectTestResources(type: Copy) {
-//    dependsOn ':MidnightAPI:testClasses'
-//    dependsOn ':MidnightCore:testClasses'
-//    dependsOn ':MidnightMod:testClasses'
-//    dependsOn ':remakeTestResourcesDir'
-//
-//    outputs.upToDateWhen { t -> false }
-//
-//    configurations.collectMany {
-//        it.allDependencies
-//    }.findAll {
-//        it instanceof ProjectDependency
-//    }.each {
-//        ProjectDependency dep = (ProjectDependency) it
-//        from("$dep.dependencyProject.buildDir/resources/test")
-//    }
-//
-//    into("$buildDir/resources/test")
-//}
-
-//processResources {
-//    dependsOn 'collectResources'
-//}
-//
-//processTestResources {
-//    dependsOn 'collectTestResources'
-//}
-
-// These tasks are unnecessary for the root project...
-jar {
-    enabled false
-}
-
-injectConstants {
-    enabled false
 }

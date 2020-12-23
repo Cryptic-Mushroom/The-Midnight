@@ -1,6 +1,0 @@
-{
-  "parent": "midnight:block/fan",
-  "textures": {
-    "fan": "midnight:block/bogshroom_shelf"
-  }
-}

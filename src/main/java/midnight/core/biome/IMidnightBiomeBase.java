@@ -6,6 +6,11 @@
  * Last updated: 2020 - 12 - 23
  */
 
-rootProject.name = 'The-Midnight'
+package midnight.core.biome;
 
-include 'api'
+import midnight.api.biome.IMidnightBiome;
+
+public interface IMidnightBiomeBase extends IMidnightBiome {
+    void setColoring(BiomeColoring coloring);
+    void setTerrainFactors(TerrainFactors factors);
+}

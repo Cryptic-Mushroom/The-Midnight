@@ -1,0 +1,193 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
+ * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 12 - 23
+ */
+
+dependencies {
+    internal(project(':api')) {
+        transitive false
+    }
+}
+
+build {
+    dependsOn 'signJar'
+    dependsOn 'signClientJar'
+    dependsOn 'signServerJar'
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDirs += "src/generated/resources"
+            srcDirs -= "src/assets/old"
+            srcDirs -= "src/data/old"
+        }
+    }
+}
+
+modutil {
+    updateJson file('versioninfo/update.json')
+    markdownChangelog file('versioninfo/latest_changelog.md')
+    markdownChangelog file("versioninfo/${changelogInfo.versionNumber}_changelog.md")
+}
+
+
+
+// ====================
+// DATA GENERATION
+// ====================
+
+task copyBaseResources(type: Copy) {
+    into "$buildDir/resources/main"
+    from "$projectDir/src/main/resources"
+}
+
+task genData(type: JavaExec) {
+    dependsOn ':api:compileJava'
+    dependsOn 'compileJava'
+    dependsOn 'copyBaseResources'
+
+    // We must give the classpath as a raw path, otherwise gradle adds :classes as a dependency to this task. Since we
+    // are a dependency of :classes itself this causes a circular dependency and therefore we must not have :classes as
+    // dependency. Make sure not to use 'sourceSets.main.runtimeClasspath' or something relevant here
+    classpath configurations.runtime
+
+    main "net.minecraftforge.userdev.LaunchTesting"
+    args(
+        "--all",
+        "--output", "$projectDir/src/generated/resources",
+        "--mod", "midnight"
+    )
+    jvmArgs(
+        "-Dforge.logging.console.level=info",
+        "-Dmidnight.ide=true",
+        "-Dmidnight.datagen=true",
+        "-Dforge.logging.markers=SCAN,REGISTRIES,REGISTRYDUMP"
+    )
+    environment(
+        MOD_CLASSES: "midnight%%${projectDir}/build/resources/main;" +
+            "midnight%%${projectDir}/build/classes/java/main;" +
+            "midnight%%${project(":api").projectDir}/build/resources/main;" +
+            "midnight%%${project(":api").projectDir}/build/classes/java/main",
+        MCP_MAPPINGS: "snapshot_20201012-mixed-1.16.3", // Check mappings version!!
+        MCP_VERSION: "20201102.104115", // TODO INJECT GRADLE PROPERTIES!!!!!
+        FORGE_VERSION: "35.0.18",
+        FORGE_GROUP: "net.minecraftforge",
+        target: "fmluserdevdata",
+        MC_VERSION: "1.16.4"
+    )
+    workingDir file("$rootDir/run/data")
+}
+
+processResources {
+    if (!System.getenv().containsKey("SKIP_DATAGEN"))
+        dependsOn 'genData'
+}
+
+
+
+// ====================
+// UNIVERSAL JAR
+// ====================
+
+jar {
+    appendix = "universal"
+}
+
+task signJar( dependsOn: 'shadeJar' ) {
+    doLast {
+        project.ext.sign( jar.archivePath )
+    }
+}
+
+
+
+// ====================
+// CLIENT JAR
+// ====================
+
+task clientJar(type: Jar) {
+    from "${project.buildDir}/classes/java/main"
+    from "${project.buildDir}/resources/main"
+    from configurations.embed.collect { it.isDirectory() ? it : zipTree( it ) }
+
+    manifest {
+        attributes(
+            [
+                "Specification-Title"     : "${project.ext.implName}",
+                "Specification-Vendor"    : "${project.ext.implAuthor}",
+                "Specification-Version"   : "${project.ext.version}",
+                "Implementation-Title"    : "${project.ext.implName}",
+                "Implementation-Vendor"   : "${project.ext.implAuthor}",
+                "Implementation-Version"  : "${project.ext.version}",
+                "Implementation-Timestamp": "${project.ext.timeOfExecution}",
+                "MixinConnector"          : "${project.ext.mixinConnector}"
+            ]
+        )
+    }
+
+    appendix = "client"
+
+    exclude( "midnight/server/**" )
+}
+
+task signClientJar( dependsOn: 'shadeClientJar' ) {
+    doLast {
+        project.ext.sign( clientJar.archivePath )
+    }
+}
+
+def reobfClientJar = project.reobf.create('clientJar')
+reobfClientJar.dependsOn('createMcpToSrg')
+reobfClientJar.setMappings(tasks.createMcpToSrg.getOutput())
+
+project.shade.create("clientJar")
+
+
+
+// ====================
+// SERVER JAR
+// ====================
+
+task serverJar(type: Jar) {
+    from "${project.buildDir}/classes/java/main"
+    from "${project.buildDir}/resources/main"
+    from configurations.embed.collect { it.isDirectory() ? it : zipTree( it ) }
+
+    manifest {
+        attributes(
+            [
+                "Specification-Title"     : "${project.ext.implName}",
+                "Specification-Vendor"    : "${project.ext.implAuthor}",
+                "Specification-Version"   : "${project.ext.version}",
+                "Implementation-Title"    : "${project.ext.implName}",
+                "Implementation-Vendor"   : "${project.ext.implAuthor}",
+                "Implementation-Version"  : "${project.ext.version}",
+                "Implementation-Timestamp": "${project.ext.timeOfExecution}",
+                "MixinConnector"          : "${project.ext.mixinConnector}"
+            ]
+        )
+    }
+
+    appendix = "server"
+
+    exclude( "midnight/client/**" )
+    exclude( "assets/**" )
+}
+
+
+task signServerJar( dependsOn: 'shadeServerJar' ) {
+    doLast {
+        project.ext.sign( serverJar.archivePath )
+    }
+}
+
+def reobfServerJar = project.reobf.create('serverJar')
+reobfServerJar.dependsOn('createMcpToSrg')
+reobfServerJar.setMappings(tasks.createMcpToSrg.getOutput())
+
+project.shade.create("serverJar")
+

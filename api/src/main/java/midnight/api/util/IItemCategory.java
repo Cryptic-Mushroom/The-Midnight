@@ -6,6 +6,11 @@
  * Last updated: 2020 - 12 - 23
  */
 
-rootProject.name = 'The-Midnight'
+package midnight.api.util;
 
-include 'api'
+import net.minecraft.item.Item;
+
+@FunctionalInterface
+public interface IItemCategory {
+    IItemCategory add(Item item);
+}

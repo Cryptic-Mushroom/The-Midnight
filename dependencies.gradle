@@ -1,0 +1,56 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
+ * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 12 - 23
+ */
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        name = "Shadew's Maven Repository"
+        url = "https://maven.shadew.net/"
+    }
+    maven {
+        name = "Modding Legacy Maven"
+        url = "https://maven.moddinglegacy.com/artifactory/modding-legacy/"
+    }
+    maven {
+        name = "tterrag's maven"
+        url = "https://maven.tterrag.com/"
+    }
+    maven {
+        name = "Progwml6 maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    // maven {
+    //     name = "ModMaven"
+    //     url = "https://modmaven.k-4u.nl/"
+    // }
+    // maven {
+    //     name = "TerraForged Maven Repository"
+    //     url = "https://io.terraforged.com/repository/maven/"
+    // }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.16.4-35.1.0'
+
+    embed("net.shadew:ptg:1.2.2") {
+        // The only transitive dependency is it.unimi.dsi:fastutil:8.2.1 - this is included with forge and we don't
+        // need to embed it
+        transitive false
+    }
+
+    compile fg.deobf("me.jonathing.minecraft:ci_testserver:1.16.4-1.0.1")
+
+    compileOnly fg.deobf("mezz.jei:jei-1.16.4:7.6.0.58:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:7.6.0.58")
+
+    // implementation fg.deobf("local:TerraForged:1.15.2-0.1.2")
+
+    compileOnly fg.deobf("com.github.glitchfiend:biomesoplenty:1.16.4-13.0.0.420:api-obf")
+    compile fg.deobf("com.github.glitchfiend:biomesoplenty:1.16.4-13.0.0.420:universal-obf")
+}

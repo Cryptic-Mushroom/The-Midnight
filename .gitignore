@@ -26,7 +26,6 @@ build
 # other
 eclipse
 /run
-/src
 .cache
 local.properties
 
@@ -34,7 +33,7 @@ local.properties
 # Files from Forge MDK
 forge*changelog.txt
 
-# Java Keystores
+# Java Keystores (if anyone dumb would ever put them in the project folder)
 Midnight*/*.jks
 *.jks
 

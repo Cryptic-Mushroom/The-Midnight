@@ -3,15 +3,15 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 10 - 18
+ * Last updated: 2020 - 12 - 23
  */
 
 // @formatter:off
-version = getVariable("midnight.version")
-group = getVariable("midnight.group")
-archivesBaseName = getVariable("midnight.modname")
+version = getVariable("mod.version")
+group = getVariable("mod.group")
+archivesBaseName = getVariable("mod.modname")
 
-sourceCompatibility                          \
+sourceCompatibility                           \
      = targetCompatibility                    \
      = tasks.compileJava.sourceCompatibility  \
      = tasks.compileJava.targetCompatibility  \
@@ -19,8 +19,22 @@ sourceCompatibility                          \
 
 ext {
     SYSENV = System.getenv()
-    modid = getVariable("midnight.modname")
-    versionName = getVariable("midnight.version.name")
+
+    implName = getVariable("mod.impl.name")
+    implNameApi = getVariable("mod.impl.api")
+    implAuthor = getVariable("mod.author")
+
+    modid = getVariable("mod.modname")
+    apiName = getVariable("mod.apiname")
+    version = getVariable("mod.version")
+    group = getVariable("mod.group")
+    versionName = getVariable("mod.version.name")
+
+    constAnnotation = getVariable("mod.dynconst")
+    shadePackage = getVariable("mod.shadepkg")
+    mixinConnector = getVariable("mod.mixin.connector")
+    mixinRefmap = getVariable("mod.mixin.refmap")
+
     timeOfExecution = rootProject.ext.timeOfExecution
 }
 

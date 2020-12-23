@@ -1,7 +1,0 @@
-{
-  "parent": "midnight:block/pane_noside",
-  "textures": {
-    "particle": "midnight:block/archaic_glass",
-    "pane": "midnight:block/archaic_glass"
-  }
-}
