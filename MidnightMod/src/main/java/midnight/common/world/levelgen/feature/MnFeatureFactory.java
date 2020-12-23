@@ -8,7 +8,10 @@
 
 package midnight.common.world.levelgen.feature;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.RotatedPillarBlock;
+import net.minecraft.util.Direction;
 import net.minecraft.world.gen.blockplacer.DoublePlantBlockPlacer;
 import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
@@ -16,7 +19,7 @@ import net.minecraft.world.gen.feature.BlockClusterFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 
-public final class MnFeatureFactory {
+public abstract class MnFeatureFactory {
     public static ConfiguredFeature<?, ?> patch(BlockClusterFeatureConfig.Builder config) {
         return Feature.RANDOM_PATCH.configure(config.build());
     }
@@ -41,5 +44,14 @@ public final class MnFeatureFactory {
             new SimpleBlockStateProvider(state),
             DoublePlantBlockPlacer.INSTANCE
         );
+    }
+
+
+
+    public static ConfiguredFeature<?, ?> deadLog(Block log) {
+        return MnFeatures.DEAD_LOG.configure(new DeadLogFeatureConfig(
+            new SimpleBlockStateProvider(log.getDefaultState().with(RotatedPillarBlock.AXIS, Direction.Axis.X)),
+            new SimpleBlockStateProvider(log.getDefaultState().with(RotatedPillarBlock.AXIS, Direction.Axis.Z))
+        ));
     }
 }

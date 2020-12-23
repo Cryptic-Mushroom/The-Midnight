@@ -34,6 +34,11 @@ public class VigilantForestFactory extends BiomeFactory {
                         .decorate(Features.Placements.SPREAD_32_ABOVE)
                         .decorate(Features.Placements.SQUARE_HEIGHTMAP);
 
+    private static final ConfiguredFeature<?, ?> DEAD_LOG
+        = MnFeatureFactory.deadLog(MnBlocks.DEAD_WOOD_LOG)
+                          .decorate(Features.Placements.SQUARE_HEIGHTMAP)
+                          .applyChance(2);
+
     @Override
     public Biome makeBiome(MnBiomeBuilder builder) {
         return builder
@@ -52,6 +57,7 @@ public class VigilantForestFactory extends BiomeFactory {
                    .generationSettings(
                        new BiomeGenerationSettings.Builder()
                            .surfaceBuilder(MnConfiguredSurfaceBuilders.DEFAULT_NIGHT_GRASS)
+                           .feature(GenerationStage.Decoration.VEGETAL_DECORATION, DEAD_LOG)
                            .feature(GenerationStage.Decoration.VEGETAL_DECORATION, GRASS)
                            .feature(GenerationStage.Decoration.VEGETAL_DECORATION, TALL_GRASS)
                            .build()

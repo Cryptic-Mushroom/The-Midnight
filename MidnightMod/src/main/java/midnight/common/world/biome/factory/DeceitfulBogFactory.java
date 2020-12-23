@@ -46,6 +46,11 @@ public class DeceitfulBogFactory extends BiomeFactory {
                         .decorate(Features.Placements.SQUARE_HEIGHTMAP)
                         .applyChance(13);
 
+    private static final ConfiguredFeature<?, ?> DEAD_LOG
+        = MnFeatureFactory.deadLog(MnBlocks.DEAD_WOOD_LOG)
+                          .decorate(Features.Placements.SQUARE_HEIGHTMAP)
+                          .applyChance(3);
+
     @Override
     public Biome makeBiome(MnBiomeBuilder builder) {
         return builder
@@ -64,6 +69,7 @@ public class DeceitfulBogFactory extends BiomeFactory {
                    .generationSettings(
                        new BiomeGenerationSettings.Builder()
                            .surfaceBuilder(MnConfiguredSurfaceBuilders.DECEITFUL_BOG)
+                           .feature(GenerationStage.Decoration.VEGETAL_DECORATION, DEAD_LOG)
                            .feature(GenerationStage.Decoration.VEGETAL_DECORATION, GRASS)
                            .feature(GenerationStage.Decoration.VEGETAL_DECORATION, TALL_GRASS)
                            .feature(GenerationStage.Decoration.VEGETAL_DECORATION, BOGSHROOM)
