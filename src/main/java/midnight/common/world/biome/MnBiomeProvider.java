@@ -19,8 +19,8 @@ import net.minecraft.world.biome.provider.BiomeProvider;
 
 import java.util.stream.Stream;
 
-import net.shadew.ptg.region.CachingRegionContext;
 import net.shadew.ptg.region.FractalGenerator;
+import net.shadew.ptg.region.LazyRegionContext;
 
 public class MnBiomeProvider extends BiomeProvider {
     public static final Codec<MnBiomeProvider> CODEC = RecordCodecBuilder.create(
@@ -60,7 +60,7 @@ public class MnBiomeProvider extends BiomeProvider {
             }
         );
 
-        CachingRegionContext ctx = new CachingRegionContext(25, seed);
+        LazyRegionContext ctx = new LazyRegionContext(25, seed);
         generator = ctx.generate(biomeLayer, 8812L)
                        .zoomFuzzy()
                        .zoom(5)
