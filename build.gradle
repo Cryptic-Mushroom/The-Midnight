@@ -161,8 +161,6 @@ allprojects {
 // ROOT PROJECT SETUP
 // ==================
 
-apply from: "$rootDir/root.gradle"
-
 build {
     dependsOn ':api:build'
 }
@@ -226,6 +224,8 @@ minecraft {
         }
     }
 }
+
+apply from: "$rootDir/root.gradle"
 
 
 // Collect classes and resources from other projects so that running includes all classes

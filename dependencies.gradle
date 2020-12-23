@@ -36,21 +36,27 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.4-35.1.4'
+    def mcVer = project.ext.getVariable("env.minecraft.version")
+    def fgVer = project.ext.getVariable("env.forge.version")
+    def ptgVer = project.ext.getVariable("env.ptg.version")
+    def ciVer = project.ext.getVariable("env.ci-server.version")
+    def jeiVer = project.ext.getVariable("env.jei.version")
+    def bopVer = project.ext.getVariable("env.bop.version")
 
-    embed("net.shadew:ptg:1.2.2") {
-        // The only transitive dependency is it.unimi.dsi:fastutil:8.2.1 - this is included with forge and we don't
-        // need to embed it
-        transitive false
-    }
+    // Minecraft/Forge
+    minecraft "net.minecraftforge:forge:$mcVer-$fgVer"
 
-    compile fg.deobf("me.jonathing.minecraft:ci_testserver:1.16.4-1.0.1")
+    // PTG
+    embed "net.shadew:ptg:$ptgVer"
 
-    compileOnly fg.deobf("mezz.jei:jei-1.16.4:7.6.0.58:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-1.16.4:7.6.0.58")
+    // CI Test Server
+    compile fg.deobf("me.jonathing.minecraft:ci_testserver:$mcVer-$ciVer")
 
-    // implementation fg.deobf("local:TerraForged:1.15.2-0.1.2")
+    // Just Enough Items
+    compileOnly fg.deobf("mezz.jei:jei-$mcVer:$jeiVer:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-$mcVer:$jeiVer")
 
-    compileOnly fg.deobf("com.github.glitchfiend:biomesoplenty:1.16.4-13.0.0.420:api-obf")
-    compile fg.deobf("com.github.glitchfiend:biomesoplenty:1.16.4-13.0.0.420:universal-obf")
+    // Biomes O' Plenty
+    compileOnly fg.deobf("com.github.glitchfiend:biomesoplenty:$mcVer-$bopVer:api-obf")
+    compile fg.deobf("com.github.glitchfiend:biomesoplenty:$mcVer-$bopVer:universal-obf")
 }

@@ -40,12 +40,25 @@ modutil {
 // DATA GENERATION
 // ====================
 
+/*
+ * I want an easier way to run the data generator from Gradle, sadly runData doesn't work, but this solution below is
+ * the most bare solution I could ever think of when I wrote this.
+ *
+ * - Shadew
+ */
+
 task copyBaseResources(type: Copy) {
     into "$buildDir/resources/main"
     from "$projectDir/src/main/resources"
 }
 
 task genData(type: JavaExec) {
+    def mcpCh = project.ext.getVariable("env.mappings.channel")
+    def mcpVer = project.ext.getVariable("env.mappings.version")
+    def mcVer = project.ext.getVariable("env.minecraft.version")
+    def fgVer = project.ext.getVariable("env.forge.version")
+    def id = project.ext.modid
+
     dependsOn ':api:compileJava'
     dependsOn 'compileJava'
     dependsOn 'copyBaseResources'
@@ -68,16 +81,16 @@ task genData(type: JavaExec) {
         "-Dforge.logging.markers=SCAN,REGISTRIES,REGISTRYDUMP"
     )
     environment(
-        MOD_CLASSES: "midnight%%${projectDir}/build/resources/main;" +
-            "midnight%%${projectDir}/build/classes/java/main;" +
-            "midnight%%${project(":api").projectDir}/build/resources/main;" +
-            "midnight%%${project(":api").projectDir}/build/classes/java/main",
-        MCP_MAPPINGS: "snapshot_20201214-mixed-1.16.4", // Check mappings version!!
-        MCP_VERSION: "20201102.104115", // TODO INJECT GRADLE PROPERTIES!!!!!
-        FORGE_VERSION: "35.1.4",
+        MOD_CLASSES: "$id%%${projectDir}/build/resources/main;" +
+            "$id%%${projectDir}/build/classes/java/main;" +
+            "$id%%${project(":api").projectDir}/build/resources/main;" +
+            "$id%%${project(":api").projectDir}/build/classes/java/main",
+        MCP_MAPPINGS: "${mcpCh}_${mcpVer}",
+        MCP_VERSION: "20201102.104115", // TODO Get this value dynamically?
+        FORGE_VERSION: "$fgVer",
         FORGE_GROUP: "net.minecraftforge",
         target: "fmluserdevdata",
-        MC_VERSION: "1.16.4"
+        MC_VERSION: "$mcVer"
     )
     workingDir file("$rootDir/run/data")
 }
