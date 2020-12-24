@@ -46,6 +46,26 @@ jobs:
           java-package: jdk
           architecture: x64
 
+      - name: Prepare to build The Midnight
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          echo ""
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
+          git clone git@github.com:${{ secrets.PRIVATE_REPO }}
+          echo "" >> gradle.properties
+          echo "mnKeyStore=${{ secrets.JKS_NAME }}" >> gradle.properties
+          echo "mnKeyStoreAlias=${{ secrets.JKS_ALIAS }}" >> gradle.properties
+          echo "mnKeyStorePass=${{ secrets.JKS_PASS }}" >> gradle.properties
+          echo "mnKeyStoreKeyPass=${{ secrets.JKS_PASS }}" >> gradle.properties
+          echo "mnKeyStoreSHA256=${{ secrets.JKS_SHA256 }}" >> gradle.properties
+          cp ${{ secrets.PRIVATE_REPO_NAME }}/${{ secrets.JKS_NAME }} ./${{ secrets.JKS_NAME }}
+          rm -rf ${{ secrets.PRIVATE_REPO_NAME }}
+          echo "Ready to build and sign The Midnight."
+
       - name: Retrieve any cached dependencies
         uses: actions/cache@v2
         with:
