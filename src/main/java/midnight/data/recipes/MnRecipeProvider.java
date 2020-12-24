@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
+ * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 12 - 24
+ */
+
 package midnight.data.recipes;
 
 import midnight.common.Midnight;
@@ -12,6 +20,10 @@ import net.minecraft.recipe.Ingredient;
 
 import java.util.function.Consumer;
 
+/**
+ * Generator for ALL recipes, except stonecutting recipes. Stonecutting recipes go into {@link
+ * MnStonecuttingRecipeProvider}.
+ */
 public class MnRecipeProvider extends RecipeProvider {
     private Consumer<RecipeJsonProvider> consumer;
 

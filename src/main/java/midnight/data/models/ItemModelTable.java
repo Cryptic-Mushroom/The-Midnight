@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
+ * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 12 - 24
+ */
+
 package midnight.data.models;
 
 import midnight.data.models.modelgen.ModelGen;
@@ -9,8 +17,9 @@ import net.minecraft.util.registry.Registry;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
-import static midnight.data.models.modelgen.InheritingModelGen.*;
-
+/**
+ * Collects and generates models of items (including block items).
+ */
 public final class ItemModelTable {
     private static BiConsumer<Item, ModelGen> consumer;
 

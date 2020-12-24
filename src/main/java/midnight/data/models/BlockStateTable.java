@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
+ * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 12 - 24
+ */
+
 package midnight.data.models;
 
 import midnight.data.models.modelgen.ModelGen;
@@ -13,6 +21,9 @@ import java.util.function.Function;
 
 import static midnight.data.models.modelgen.InheritingModelGen.*;
 
+/**
+ * Collects and generates block state definitions and models of blocks (but not block items).
+ */
 public final class BlockStateTable {
     private static BiConsumer<Block, StateGen> consumer;
 
@@ -187,70 +198,6 @@ public final class BlockStateTable {
         return gen;
     }
 
-    private static StateGen stepRandomized(String name, int... weights) {
-        ModelInfo[] innerL = new ModelInfo[weights.length];
-        ModelInfo[] outerL = new ModelInfo[weights.length];
-        ModelInfo[] innerR = new ModelInfo[weights.length];
-        ModelInfo[] outerR = new ModelInfo[weights.length];
-        ModelInfo[] stairs = new ModelInfo[weights.length];
-        boolean[] innerM = new boolean[weights.length];
-        boolean[] outerM = new boolean[weights.length];
-        boolean[] stairsM = new boolean[weights.length];
-
-        VariantsBlockStateGen gen = VariantsBlockStateGen.variants();
-        int y = 270;
-        for (Direction dir : Direction.Type.HORIZONTAL) {
-            for (BlockHalf half : BlockHalf.values()) {
-                int x = half == BlockHalf.TOP ? 180 : 0;
-                String state = String.format("facing=%s,half=%s", dir.asString(), half.asString());
-
-                for (int i = 0; i < innerL.length; i++) {
-                    String in = name + (i == 0 ? "_step_inner" : "_step_inner_alt_" + i);
-                    String on = name + (i == 0 ? "_step_outer" : "_step_outer_alt_" + i);
-                    String sn = name + (i == 0 ? "_step" : "_step_alt_" + i);
-                    String tn = name + (i == 0 ? "" : "_alt_" + i);
-
-                    int yp = y == 0 ? 270 : y - 90;
-                    int yn = y == 270 ? 0 : y + 90;
-
-                    innerL[i] = ModelInfo.create(in, innerM[i] ? null : stepInner(tn))
-                                         .rotate(x, x == 180 ? y : yp)
-                                         .uvlock(true)
-                                         .weight(weights[i]);
-                    outerL[i] = ModelInfo.create(on, outerM[i] ? null : stepOuter(tn))
-                                         .rotate(x, x == 180 ? y : yp)
-                                         .uvlock(true)
-                                         .weight(weights[i]);
-                    innerR[i] = ModelInfo.create(in)
-                                         .rotate(x, x == 180 ? yn : y)
-                                         .uvlock(true)
-                                         .weight(weights[i]);
-                    outerR[i] = ModelInfo.create(on)
-                                         .rotate(x, x == 180 ? yn : y)
-                                         .uvlock(true)
-                                         .weight(weights[i]);
-                    stairs[i] = ModelInfo.create(sn, stairsM[i] ? null : step(tn))
-                                         .rotate(x, y)
-                                         .uvlock(true)
-                                         .weight(weights[i]);
-
-                    innerM[i] = true;
-                    outerM[i] = true;
-                    stairsM[i] = true;
-                }
-
-                gen.variant(state + ",shape=straight", stairs);
-                gen.variant(state + ",shape=inner_left", innerL);
-                gen.variant(state + ",shape=inner_right", innerR);
-                gen.variant(state + ",shape=outer_left", outerL);
-                gen.variant(state + ",shape=outer_right", outerR);
-            }
-            if (y == 270) y = 0;
-            else y += 90;
-        }
-        return gen;
-    }
-
     private static StateGen woodenSlab(String modelName, String name, int... weights) {
         ModelInfo[] lo = new ModelInfo[weights.length];
         ModelInfo[] hi = new ModelInfo[weights.length];
@@ -311,70 +258,6 @@ public final class BlockStateTable {
                                          .uvlock(true)
                                          .weight(weights[i]);
                     stairs[i] = ModelInfo.create(sn, stairsM[i] ? null : stairs(tn))
-                                         .rotate(x, y)
-                                         .uvlock(true)
-                                         .weight(weights[i]);
-
-                    innerM[i] = true;
-                    outerM[i] = true;
-                    stairsM[i] = true;
-                }
-
-                gen.variant(state + ",shape=straight", stairs);
-                gen.variant(state + ",shape=inner_left", innerL);
-                gen.variant(state + ",shape=inner_right", innerR);
-                gen.variant(state + ",shape=outer_left", outerL);
-                gen.variant(state + ",shape=outer_right", outerR);
-            }
-            if (y == 270) y = 0;
-            else y += 90;
-        }
-        return gen;
-    }
-
-    private static StateGen woodenStep(String modelName, String name, int... weights) {
-        ModelInfo[] innerL = new ModelInfo[weights.length];
-        ModelInfo[] outerL = new ModelInfo[weights.length];
-        ModelInfo[] innerR = new ModelInfo[weights.length];
-        ModelInfo[] outerR = new ModelInfo[weights.length];
-        ModelInfo[] stairs = new ModelInfo[weights.length];
-        boolean[] innerM = new boolean[weights.length];
-        boolean[] outerM = new boolean[weights.length];
-        boolean[] stairsM = new boolean[weights.length];
-
-        VariantsBlockStateGen gen = VariantsBlockStateGen.variants();
-        int y = 270;
-        for (Direction dir : Direction.Type.HORIZONTAL) {
-            for (BlockHalf half : BlockHalf.values()) {
-                int x = half == BlockHalf.TOP ? 180 : 0;
-                String state = String.format("facing=%s,half=%s", dir.asString(), half.asString());
-
-                for (int i = 0; i < innerL.length; i++) {
-                    String in = modelName + (i == 0 ? "_step_inner" : "_step_inner_alt_" + i);
-                    String on = modelName + (i == 0 ? "_step_outer" : "_step_outer_alt_" + i);
-                    String sn = modelName + (i == 0 ? "_step" : "_step_alt_" + i);
-                    String tn = name + (i == 0 ? "" : "_alt_" + i);
-
-                    int yp = y == 0 ? 270 : y - 90;
-                    int yn = y == 270 ? 0 : y + 90;
-
-                    innerL[i] = ModelInfo.create(in, innerM[i] ? null : stepInner(tn))
-                                         .rotate(x, x == 180 ? y : yp)
-                                         .uvlock(true)
-                                         .weight(weights[i]);
-                    outerL[i] = ModelInfo.create(on, outerM[i] ? null : stepOuter(tn))
-                                         .rotate(x, x == 180 ? y : yp)
-                                         .uvlock(true)
-                                         .weight(weights[i]);
-                    innerR[i] = ModelInfo.create(in)
-                                         .rotate(x, x == 180 ? yn : y)
-                                         .uvlock(true)
-                                         .weight(weights[i]);
-                    outerR[i] = ModelInfo.create(on)
-                                         .rotate(x, x == 180 ? yn : y)
-                                         .uvlock(true)
-                                         .weight(weights[i]);
-                    stairs[i] = ModelInfo.create(sn, stairsM[i] ? null : step(tn))
                                          .rotate(x, y)
                                          .uvlock(true)
                                          .weight(weights[i]);

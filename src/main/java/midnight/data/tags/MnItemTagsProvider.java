@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
+ * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 12 - 24
+ */
+
 package midnight.data.tags;
 
 import net.minecraft.block.Block;
@@ -13,6 +21,9 @@ import net.minecraft.util.registry.Registry;
 import java.nio.file.Path;
 import java.util.function.Function;
 
+/**
+ * Generator for item tag JSONs. This can copy entries from block tags.
+ */
 public class MnItemTagsProvider extends AbstractTagProvider<Item> {
     private final Function<Tag.Identified<Block>, Tag.Builder> builderGetter;
 

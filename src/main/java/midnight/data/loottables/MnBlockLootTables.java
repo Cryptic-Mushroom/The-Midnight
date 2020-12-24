@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
+ * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 12 - 24
+ */
+
 package midnight.data.loottables;
 
 import com.google.common.collect.ImmutableSet;
@@ -35,7 +43,62 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
+/**
+ * A loot table provider for block drops. This automatically generates all loot table JSONs.
+ */
 public class MnBlockLootTables implements Consumer<BiConsumer<Identifier, LootTable.Builder>> {
+
+
+    @Override
+    public void accept(BiConsumer<Identifier, LootTable.Builder> biConsumer) {
+        //
+        //
+        //  REGISTER LOOT TABLES HERE
+        //
+        //
+
+
+
+        // ------------------------------------------------
+        //  Flush all registered loot tables
+        // ------------------------------------------------
+
+        Set<Identifier> set = Sets.newHashSet();
+        Iterable<Block> blocks = Registry.BLOCK
+                                     .stream()
+                                     .filter(block -> Registry.BLOCK.getId(block)
+                                                                    .getNamespace()
+                                                                    .equals("ndebris"))
+                                     ::iterator;
+
+        for (Block block : blocks) {
+            Identifier id = block.getLootTableId();
+            if (id != LootTables.EMPTY && set.add(id)) {
+                LootTable.Builder builder = lootTables.remove(id);
+                if (builder == null) {
+                    throw new IllegalStateException(
+                        String.format(
+                            "Missing loottable '%s' for '%s'", id,
+                            Registry.BLOCK.getId(block)
+                        )
+                    );
+                }
+
+                biConsumer.accept(id, builder);
+            }
+        }
+
+        if (!lootTables.isEmpty()) {
+            throw new IllegalStateException("Created block loot tables for non-blocks: " + lootTables.keySet());
+        }
+    }
+
+
+
+    // ====================================================
+    //  GENERATION TOOLS
+    // ====================================================
+
     protected static final LootCondition.Builder WITH_SILK_TOUCH = MatchToolLootCondition.builder(
         ItemPredicate.Builder.create().enchantment(
             new EnchantmentPredicate(Enchantments.SILK_TOUCH, NumberRange.IntRange.atLeast(1))
@@ -81,45 +144,6 @@ public class MnBlockLootTables implements Consumer<BiConsumer<Identifier, LootTa
     private static final float[] RARE_SAPLING_DROP_CHANCES = {1 / 40f, 1 / 36f, 1 / 32f, 1 / 24f, 1 / 10f};
 
     private final Map<Identifier, LootTable.Builder> lootTables = Maps.newHashMap();
-
-
-    @Override
-    public void accept(BiConsumer<Identifier, LootTable.Builder> biConsumer) {
-        //
-        //
-        //  REGISTER LOOT TABLES HERE
-        //
-        //
-
-        Set<Identifier> set = Sets.newHashSet();
-        Iterable<Block> blocks = Registry.BLOCK
-                                     .stream()
-                                     .filter(block -> Registry.BLOCK.getId(block)
-                                                                    .getNamespace()
-                                                                    .equals("ndebris"))
-                                     ::iterator;
-
-        for (Block block : blocks) {
-            Identifier id = block.getLootTableId();
-            if (id != LootTables.EMPTY && set.add(id)) {
-                LootTable.Builder builder = lootTables.remove(id);
-                if (builder == null) {
-                    throw new IllegalStateException(
-                        String.format(
-                            "Missing loottable '%s' for '%s'", id,
-                            Registry.BLOCK.getId(block)
-                        )
-                    );
-                }
-
-                biConsumer.accept(id, builder);
-            }
-        }
-
-        if (!lootTables.isEmpty()) {
-            throw new IllegalStateException("Created block loot tables for non-blocks: " + lootTables.keySet());
-        }
-    }
 
 
     private static <T> T explosionFunc(ItemConvertible drop, LootFunctionConsumingBuilder<T> builder) {

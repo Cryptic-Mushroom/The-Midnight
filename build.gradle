@@ -14,6 +14,22 @@ apply from: "environment.gradle"
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
+
+
+
+
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
+ * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 12 - 24
+ */
+
+// ========================================================
+//  DEPENDENCIES
+// ========================================================
+
 repositories {
     maven { url 'https://jitpack.io/' }
     maven { url 'https://maven.shadew.net/' }
@@ -36,6 +52,14 @@ dependencies {
     }
 }
 
+
+
+
+
+// ========================================================
+//  CONFIGURATION
+// ========================================================
+
 processResources {
     inputs.property "version", project.version
 
@@ -56,6 +80,14 @@ tasks.withType(JavaCompile).configureEach {
         it.options.release.set(targetVersion)
     }
 }
+
+
+
+
+
+// ========================================================
+//  JAR SHADOWING AND SIGNING
+// ========================================================
 
 java {
     withSourcesJar()
@@ -119,6 +151,14 @@ build {
     dependsOn "signSourcesJar"
 }
 
+
+
+
+
+// ========================================================
+//  PUBLISHING
+// ========================================================
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -135,6 +175,13 @@ publishing {
     }
 }
 
+
+
+
+
+// ========================================================
+//  DATA GENERATION
+// ========================================================
 
 import net.fabricmc.loom.task.AbstractRunTask
 import net.fabricmc.loom.util.RunConfig
@@ -173,4 +220,14 @@ task genData {
 
 processResources {
     dependsOn "genData"
+}
+
+
+// Include generated resources in project
+sourceSets {
+    main {
+        resources {
+            srcDirs += "src/generated/resources"
+        }
+    }
 }

@@ -1,8 +1,17 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
+ * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 12 - 24
+ */
+
 package midnight.data;
 
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 import joptsimple.OptionSpec;
+import midnight.core.mixin.DataGenMixin;
 import midnight.data.loottables.MnLootTablesProvider;
 import midnight.data.models.MnStateModelProvider;
 import midnight.data.recipes.MnRecipeProvider;
@@ -17,6 +26,10 @@ import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+/**
+ * Main class for running the data generator. Even though it has a main method, you should not manually run this
+ * application. This application is invoked from {@link DataGenMixin}
+ */
 public class DataMain {
     public static void main(String[] strings) throws IOException {
         OptionParser opts = new OptionParser();

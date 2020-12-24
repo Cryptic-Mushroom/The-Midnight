@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
+ * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 12 - 24
+ */
+
 package midnight.data.models.stategen;
 
 import com.google.gson.JsonElement;
@@ -10,6 +18,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
 
+/**
+ * A generator for variants based block state definitions.
+ */
 public class VariantsBlockStateGen implements StateGen {
     private final Map<String, ModelInfo[]> variants = new HashMap<>();
 
@@ -35,19 +46,41 @@ public class VariantsBlockStateGen implements StateGen {
         }
     }
 
+    /**
+     * Adds a variant to this generator
+     *
+     * @param variant The variant selector, properties with values, separated by {@code ,} ({@code
+     *                property1=value1,property2=value2,...}
+     * @param models  A list of randomly chosen models
+     */
     public VariantsBlockStateGen variant(String variant, ModelInfo... models) {
         variants.put(variant, models.clone());
         return this;
     }
 
+    /**
+     * Creates a variant state generator and adds one variant to it
+     *
+     * @param variant The variant selector, properties with values, separated by {@code ,} ({@code
+     *                property1=value1,property2=value2,...}
+     * @param models  A list of randomly chosen models
+     */
     public static VariantsBlockStateGen variants(String variant, ModelInfo... models) {
         return new VariantsBlockStateGen().variant(variant, models);
     }
 
+    /**
+     * Creates a variant state generator and adds one variant to it that matches all states
+     *
+     * @param models A list of randomly chosen models
+     */
     public static VariantsBlockStateGen variants(ModelInfo... models) {
         return new VariantsBlockStateGen().variant("", models);
     }
 
+    /**
+     * Creates a variant state generator without variants
+     */
     public static VariantsBlockStateGen variants() {
         return new VariantsBlockStateGen();
     }
