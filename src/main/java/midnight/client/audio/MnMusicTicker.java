@@ -62,6 +62,7 @@ public class MnMusicTicker {
      * When loading into a world, the initial time it will take before music starts to play is 30-75 seconds.
      */
     private int timeUntilNextMusic = rand.nextInt(901) + 600;
+    private boolean hasPlayedTrueMusic = false;
 
     /**
      * This constructor is used to feed the current instance of {@link Minecraft} into the {@link MnMusicTicker}
@@ -83,12 +84,12 @@ public class MnMusicTicker {
             if (playerDimension.equals(MnDimensions.MIDNIGHT)) {
                 if (this.trueMusic != null && this.trueMusic.getVolume() <= 0) {
                     this.trueMusic = null;
-                    LOGGER.info("Setting this.trueMusic to null since its volume is below 0...");
+                    LOGGER.debug("Setting this.trueMusic to null since its volume is below 0...");
                 }
 
                 if (this.ambientMusic != null && this.ambientMusic.getVolume() <= 0) {
                     this.ambientMusic = null;
-                    LOGGER.info("Setting this.ambientMusic to null since its volume is below 0...");
+                    LOGGER.debug("Setting this.ambientMusic to null since its volume is below 0...");
                 }
 
                 TrackType musicTrackType = this.getMusicTrack();
@@ -97,10 +98,10 @@ public class MnMusicTicker {
                 if (this.ambientMusic != null) {
                     if (!this.mc.getSoundHandler().isPlaying(this.ambientMusic)) {
                         this.ambientMusic = null;
-                        LOGGER.info("Setting this.ambientMusic to null since it's not playing or has finished...");
+                        LOGGER.debug("Setting this.ambientMusic to null since it's not playing or has finished...");
                         if (musicTrackType != null && this.trueMusic == null) {
                             this.timeUntilNextMusic = Math.min(MathHelper.nextInt(this.rand, musicTrackType.getMinDelay(), musicTrackType.getMaxDelay()), this.timeUntilNextMusic);
-                            LOGGER.info(String.format("Approximate time until next track is played: %d seconds.", this.timeUntilNextMusic / 20));
+                            LOGGER.debug(String.format("Approximate time until next track is played: %d seconds.", this.timeUntilNextMusic / 20));
                         }
                     }
                 }
@@ -108,10 +109,10 @@ public class MnMusicTicker {
                 if (this.trueMusic != null) {
                     if (!this.mc.getSoundHandler().isPlaying(this.trueMusic)) {
                         this.trueMusic = null;
-                        LOGGER.info("Set this.trueMusic to null since it's not playing or has finished...");
+                        LOGGER.debug("Set this.trueMusic to null since it's not playing or has finished...");
                         if (this.ambientMusic == null) {
                             this.timeUntilNextMusic = Math.min(MathHelper.nextInt(this.rand, ambientTrackType.getMinDelay(), ambientTrackType.getMaxDelay()), this.timeUntilNextMusic);
-                            LOGGER.info(String.format("Approximate time until next track is played: %d seconds.", this.timeUntilNextMusic / 20));
+                            LOGGER.debug(String.format("Approximate time until next track is played: %d seconds.", this.timeUntilNextMusic / 20));
                         }
                     }
                 }
@@ -127,15 +128,17 @@ public class MnMusicTicker {
 //                    System.out.println("this.timeUntilNextMusic = " + this.timeUntilNextMusic);
 //                }
 
-                if (musicTrackType != null) {
+                if (musicTrackType != null && !hasPlayedTrueMusic) {
                     if (this.trueMusic == null && this.ambientMusic == null && this.timeUntilNextMusic-- <= 0) {
                         this.playMusic(musicTrackType);
-                        LOGGER.info(String.format("Now playing music track: %s", musicTrackType.toString()));
+                        LOGGER.debug(String.format("Now playing music track: %s", musicTrackType.toString()));
+                        hasPlayedTrueMusic = true;
                     }
                 } else {
                     if (this.trueMusic == null && this.ambientMusic == null && this.timeUntilNextMusic-- <= 0) {
                         this.playAmbientMusic(ambientTrackType);
-                        LOGGER.info(String.format("Now playing ambient-like music track: %s", ambientTrackType.toString()));
+                        LOGGER.debug(String.format("Now playing ambient-like music track: %s", ambientTrackType.toString()));
+                        hasPlayedTrueMusic = false;
                     }
                 }
             }
@@ -204,7 +207,7 @@ public class MnMusicTicker {
         RegistryKey<Biome> biome = MnBiomes.getKeyFromBiome(world, world.getBiome(this.mc.player.getBlockPos()));
         if (biome == null) return null;
         else if (biome == MnBiomes.VIGILANT_FOREST) return TrackType.DARK_WILLOW;
-        else if (biome == MnBiomes.DECEITFUL_BOG) return TrackType.CRYSTALS;
+        else if (biome == MnBiomes.CRYSTAL_SPIRES) return TrackType.CRYSTALS;
         else return null;
     }
 
