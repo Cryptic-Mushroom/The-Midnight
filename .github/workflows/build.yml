@@ -10,7 +10,7 @@ name: The Midnight (Fabric)
 on:
   push:
     branches:
-      - rewrite
+      - fabric/rewrite
     paths-ignore:
       - '.github/ISSUE_TEMPLATE/**'
       - 'curseforge/**'
