@@ -12,13 +12,7 @@ jobs:
   build:
     strategy:
       matrix:
-        # Use these Java versions
-        java: [
-          1.8,  # Minimum supported by Minecraft
-          11,   # Current Java LTS
-          15    # Latest version
-        ]
-        # and run on both Linux and Windows
+        java: [1.8]
         os: [ubuntu-20.04, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
@@ -35,9 +29,11 @@ jobs:
         run: chmod +x ./gradlew
       - name: build
         run: ./gradlew build
-      - name: capture build artifacts
-        if: ${{ runner.os == 'Linux' && matrix.java == '11' }} # Only upload artifacts built from LTS java on one OS
-        uses: actions/upload-artifact@v2
-        with:
-          name: Artifacts
-          path: build/libs/
+
+        # Disabled this because signing doesn't work yet
+#      - name: capture build artifacts
+#        if: ${{ runner.os == 'Linux' && matrix.java == '11' }} # Only upload artifacts built from LTS java on one OS
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: Artifacts
+#          path: build/libs/
