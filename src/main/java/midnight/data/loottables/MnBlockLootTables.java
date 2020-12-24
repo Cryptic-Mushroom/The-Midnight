@@ -189,7 +189,7 @@ public class MnBlockLootTables extends BlockLootTables {
         registerLootTable(MnBlocks.EBONITE_ORE, block -> droppingItemWithFortune(block, MnItems.EBONITE));
         registerDropSelfLootTable(MnBlocks.EBONITE_BLOCK);
 
-        registerLootTable(MnBlocks.VIRILUX_ORE, block -> droppingItemWithFortune(block, MnItems.EBONITE));
+        registerLootTable(MnBlocks.VIRILUX_ORE, block -> droppingItemWithFortune(block, MnItems.VIRILUX));
         registerDropSelfLootTable(MnBlocks.VIRILUX_BLOCK);
     }
 
