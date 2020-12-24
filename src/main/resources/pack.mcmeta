@@ -1,6 +1,6 @@
 {
   "pack": {
-    "description": "The Midnight Resources",
+    "description": "The Midnight's resources and data",
     "pack_format": 5,
     "_comment": "A pack_format of 5 requires json lang files and some texture changes from 1.15. Note: we require v5 pack meta for all mods."
   }
