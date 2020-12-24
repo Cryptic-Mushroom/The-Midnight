@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2020 - 12 - 24
  */
 
 // @formatter:off
@@ -22,7 +22,7 @@ ext {
 
     implName = getVariable("mod.impl.name")
     implNameApi = getVariable("mod.impl.api")
-    implAuthor = getVariable("mod.author")
+    implAuthor = getVariable("mod.impl.author")
 
     modid = getVariable("mod.modname")
     apiName = getVariable("mod.apiname")
