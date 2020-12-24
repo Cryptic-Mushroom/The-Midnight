@@ -9,16 +9,17 @@ version = "${version}"
 displayName = "The Midnight"
 updateJSONURL = "https://raw.githubusercontent.com/Cryptic-Mushroom/The-Midnight/rewrite/versioninfo/update.json"
 displayURL = "https://www.curseforge.com/minecraft/mc-mods/the-midnight"
-logoFile = "logo.png"
-authors = "Cryptic Mushroom's The Midnight Development Team"
+logoFile = "logo.png" # TODO: WE NEED A NEW LOGO!!!
+credits = "Cipher Zero X, Shadew, Jonathing, Lachney, 123wdog, bagu_chan"
+authors = "Cryptic Mushroom"
 description = '''The Midnight has been rewritten from the ground up and is currently in an unstable alpha. Expect more content soon!
 
 This mod is a huge collaborative effort with tons of different ideas, coding, and textures pitched in by varying individuals who came together to build something great. We wouldn't be where we are today without the help of those here today and those who worked on this mod in the past.
 
 The Midnight Development Team Active Developers
-Cipher Zerø X - Project Lead, Mastermind, Modeler
-Shadew - Lead Programmer
-Jonathing - Lead QA, Community Manager, Programmer, Musician
+Cipher Zero X - Project Lead, Lead Designer, Modeler
+Shadew - Lead Programmer, Designer
+Jonathing - Project Lead, Community Manager, Lead QA, Programmer, Musician
 Lachney - Lead Sound Designer, Lead Musician
 123wdog - Lead Modeler
 

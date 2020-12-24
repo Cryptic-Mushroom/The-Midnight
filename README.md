@@ -24,9 +24,9 @@ If you are a contributor on this list and want your name to link to a different 
 
 ### The Midnight Development Team
 
-[Cipher Zero X](https://github.com/cipherzerox) - Project Lead, Mastermind, Modeler  
-[Shadew](https://shadew.net/) - Lead Programmer  
-[Jonathing](https://github.com/Jonathing) - Lead QA, Community Manager, Programmer, Musician  
+[Cipher Zero X](https://github.com/cipherzerox) - Project Lead, Lead Designer, Modeler  
+[Shadew](https://shadew.net/) - Project Lead, Lead Programmer, Designer  
+[Jonathing](https://github.com/Jonathing) - Project Lead, Community Manager, Programmer, Musician  
 [Lachney](https://xjon.me) - Lead Sound Designer, Lead Musician  
 [123wdog](https://www.curseforge.com/members/123wdog/) - Lead Modeler
 
@@ -50,7 +50,8 @@ If you are a contributor on this list and want your name to link to a different 
 
 ## Where can you find us?
 
-If you want to discuss the mod, come visit us in the Cryptic Mushroom Official Discord server!  
+If you want to discuss the mod, come visit us in the Cryptic Mushroom Official Discord server!
+
 [![Discord Server Banner](https://discordapp.com/api/guilds/382958565125521412/widget.png?style=banner3)](https://discord.gg/h7u4Tc7)
 
 If you would like to support our work, consider donating to our [Patreon](https://www.patreon.com/crypticmushroom).  

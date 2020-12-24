@@ -8,10 +8,8 @@ So far, we've only tested this new gradle project structure in IntelliJ IDEA, so
 
 The Midnight is divided into four projects:
 
-- **`:` - the root project.** This project does not contain any useful code. It's not being built and only combines the three subprojects listed below to make the system run in the IDE.
-- **`:MidnightAPI` - the API code.** This project contains the API classes which are publicly exposed for compatibility support.
-- **`:MidnightCore` - the core code.** This project contains the systems and hooks of the Midnight that are required in order for the Midnight to work properly. This project contains the API classes.
-- **`:MidnightMod` - the implementation code.** This project contains the implementation of the API and the core classes and makes them 'the Midnight'.
+- **`:api` - the API code.** This project contains the API classes which are publicly exposed for compatibility support.
+- **`:` - the root project.** This project contains the core code along with the implementation of the API and the core classes and makes them 'the Midnight' The majority of the code is located here.
 
 ## Building
 
@@ -19,7 +17,10 @@ To build the Midnight, simply run `./gradlew build`. It will build `buildSrc` an
 
 ## Testing The Midnight
 
-To test The Midnight, simply generate the run files of whatever IDE you're using (`./gradlew genIntellijRuns` or `./gradlew genEclipseRuns`) and run the client/server as normal. If The Midnight does not initialize with Minecraft, simply generate the run files again. Please note that because of the complex Gradle structure, your IDE might take a little bit of time before it loads the game.  
+To test The Midnight, simply generate the run files of whatever IDE you're using (`./gradlew genIntellijRuns` or `./gradlew genEclipseRuns`) and run the client/server as normal. If The Midnight does not initialize with Minecraft, simply generate the run files again. Please note that because of the complex Gradle structure, your IDE might take a little bit of time before it loads the game.
+
+- If for some reason your game crashes or does not load on startup, try regernating the run configurations again. Chances are, we updated some dependencies and your run configs are outdated.
+
 You may have noticed that there's a `runTestServer` run configuration. **Do not run it!** It is meant for our GitHub Actions CI and you will just crash on world load if you run it, since that is what it's meant to do.
 
 ## Generating Data

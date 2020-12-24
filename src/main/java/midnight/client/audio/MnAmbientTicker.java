@@ -62,7 +62,7 @@ public class MnAmbientTicker {
                     this.delay = 140;
                     float volume = musicTicker.isPlayingTrueMusic() ? 0.55F : 0.85F;
                     float pitch = (this.mc.player.world.rand.nextFloat() - this.mc.player.world.rand.nextFloat()) * 0.2F + 1.0F;
-                    LOGGER.info("Playing a short ambient sound with a pitch of " + pitch + " and a volume of " + volume + ".");
+                    LOGGER.debug("Playing a short ambient sound with a pitch of " + pitch + " and a volume of " + volume + ".");
                     this.playAmbience(MnSoundEvents.AMBIENT_MIDNIGHT_SHORT, volume, pitch);
                 }
             } else {
