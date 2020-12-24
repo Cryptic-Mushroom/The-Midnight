@@ -1,0 +1,176 @@
+plugins {
+    id 'fabric-loom' version '0.5-SNAPSHOT'
+    id 'maven-publish'
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+}
+
+ext {
+    timeOfExecution = new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+}
+
+apply from: "environment.gradle"
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    maven { url 'https://jitpack.io/' }
+    maven { url 'https://maven.shadew.net/' }
+}
+
+configurations {
+    embed
+    compile.extendsFrom(embed)
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.ext.getVariable("env.minecraft.version")}"
+    mappings "net.fabricmc:yarn:${project.ext.getVariable("env.mappings.version")}:v2"
+
+    modImplementation "net.fabricmc:fabric-loader:${project.ext.getVariable("env.fabric.loader")}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.ext.getVariable("env.fabric.version")}"
+
+    embed("net.shadew:ptg:${project.ext.getVariable("env.ptg.version")}") {
+        transitive false
+    }
+}
+
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    // If Javadoc is generated, this must be specified in that task too.
+    it.options.encoding = "UTF-8"
+
+    // The Minecraft launcher currently installs Java 8 for users, so we want to target Java 8 too
+    // JDK 9 introduced a new way of specifying this that will make sure no newer classes or methods are used.
+    // We'll use that if it's available, but otherwise we'll use the older option.
+    def targetVersion = 8
+    if (JavaVersion.current().isJava9Compatible()) {
+        it.options.release.set(targetVersion)
+    }
+}
+
+java {
+    withSourcesJar()
+}
+
+jar {
+    manifest {
+        attributes(
+            [
+                "Specification-Title"     : "${project.ext.implName}",
+                "Specification-Vendor"    : "${project.ext.implAuthor}",
+                "Specification-Version"   : "${project.ext.version}",
+                "Implementation-Title"    : "${project.ext.implName}",
+                "Implementation-Vendor"   : "${project.ext.implAuthor}",
+                "Implementation-Version"  : "${project.ext.version}",
+                "Implementation-Timestamp": "${project.ext.timeOfExecution}"
+            ]
+        )
+    }
+
+    archiveClassifier.set "raw"
+
+    exclude "**/.cache/**"
+}
+
+shadowJar {
+    dependsOn "jar"
+    archiveClassifier.set "dev"
+    configurations = [project.configurations.embed]
+    relocate 'net.shadew', "${project.ext.shadePackage}.net.shadew"
+
+    exclude "**/.cache/**"
+}
+
+remapJar {
+    dependsOn "shadowJar"
+}
+
+task signJar {
+    dependsOn "remapJar"
+    doLast {
+        def path = remapJar.archiveFile.get().asFile.toString()
+
+        project.ext.sign(file(path))
+        project.ext.sign(file(path.replaceAll(/\.jar$/, "-dev.jar")))
+    }
+}
+
+task signSourcesJar {
+    dependsOn "remapSourcesJar"
+    doLast {
+        def path = remapSourcesJar.output.toString()
+
+        project.ext.sign(file(path))
+        project.ext.sign(file(path.replaceAll(/\.jar$/, "-dev.jar")))
+    }
+}
+
+build {
+    dependsOn "signJar"
+    dependsOn "signSourcesJar"
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact(remapJar) {
+                builtBy remapJar
+            }
+            artifact(sourcesJar) {
+                builtBy remapSourcesJar
+            }
+        }
+    }
+
+    repositories {
+    }
+}
+
+
+import net.fabricmc.loom.task.AbstractRunTask
+import net.fabricmc.loom.util.RunConfig
+
+class RunDataTask extends AbstractRunTask {
+    RunDataTask() {
+        super({ Project proj -> dataRunConfig(proj) })
+    }
+
+    static RunConfig dataRunConfig(Project project) {
+        RunConfig run = RunConfig.clientRunConfig(project)
+        run.configName = "Minecraft Data"
+        run.vmArgs += " -Dmidnight.datagen=true"
+        run.vmArgs += " -Dmidnight.datagen.path=${project.file("src/generated/resources")}"
+
+        return run
+    }
+}
+
+task processBaseResources(type: Copy) {
+    from "$projectDir/src/main/resources"
+    into "$buildDir/resources/main"
+}
+
+task runData(type: RunDataTask) {
+    group "fabric"
+}
+
+task genData {
+    dependsOn "compileJava"
+    dependsOn "processBaseResources"
+    doLast {
+        runData.exec()
+    }
+}
+
+processResources {
+    dependsOn "genData"
+}

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "midnight",
+  "version": "${version}",
+
+  "name": "The Midnight",
+  "description": "The Midnight official Fabric port.",
+  "authors": [
+    "Cipher Zerø X - Project Lead, Mastermind, Modeler",
+    "Shadew - Lead Programmer, Sound Designer",
+    "Jonathing - Lead QA, Community Manager, Programmer, Musician",
+    "Lachney - Lead Sound Designer, Lead Musician",
+    "123wdog - Lead Modeler",
+
+    "Contributor: bagu_chan - Programmer, Texturer",
+
+    "Former: gegy1000 - Programmer",
+    "Former: Martacus - Programmer",
+    "Former: arthurbambous - Programmer",
+    "Former: Corail31 - Programmer",
+    "Former: Endergized - Texturer",
+    "Former: Five (Paradiscal) - Texturer",
+    "Former: MCVinnyq - Texturer, Modeler"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/the-midnight",
+    "sources": "https://github.com/Cryptic-Mushroom/The-Midnight",
+    "issues": "https://github.com/Cryptic-Mushroom/The-Midnight/issues"
+  },
+
+  "license": "Custom ARR License",
+  "icon": "logo.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "midnight.MidnightModClient"
+    ],
+    "server": [
+      "midnight.MidnightModServer"
+    ]
+  },
+  "mixins": [
+    "midnight.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "betterend": "*"
+  }
+}

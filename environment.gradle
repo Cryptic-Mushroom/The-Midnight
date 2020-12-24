@@ -1,0 +1,75 @@
+// @formatter:off
+version = getVariable("mod.version")
+group = getVariable("mod.group")
+archivesBaseName = getVariable("mod.modname")
+
+sourceCompatibility                           \
+     = targetCompatibility                    \
+     = tasks.compileJava.sourceCompatibility  \
+     = tasks.compileJava.targetCompatibility  \
+     = '1.8'
+
+ext {
+    SYSENV = System.getenv()
+
+    implName = getVariable("mod.impl.name")
+    implNameApi = getVariable("mod.impl.api")
+    implAuthor = getVariable("mod.impl.author")
+
+    modid = getVariable("mod.modname")
+    apiName = getVariable("mod.apiname")
+    version = getVariable("mod.version")
+    group = getVariable("mod.group")
+    versionName = getVariable("mod.version.name")
+
+    shadePackage = getVariable("mod.shadepkg")
+
+    timeOfExecution = rootProject.ext.timeOfExecution
+}
+
+def canJarBeSigned() {
+    return getVariable(getVariable("keystore.address")) != null
+}
+
+def getProjectFingerprint() {
+    if (canJarBeSigned()) {
+        def sha256 = getVariable(getVariable("keystore.sha256"))
+        return sha256 != null ? sha256 : ''
+    }
+}
+
+// Attempts to get a project variable and if none is found it tries to read from a system environment variable
+String getVariable(String key) {
+    return rootProject.hasProperty(key) ? rootProject.property(key) : System.getenv().containsKey(key) ? System.getenv()[key] : System.getProperty(key)
+}
+
+// Signs a jar file
+def sign(File jar) {
+    if (canJarBeSigned()) {
+        ant.signjar(
+            destDir: "${jar.parentFile}",
+            jar: "${jar}",
+            alias: getVariable(getVariable("keystore.alias")),
+            storetype: "jks",
+            keystore: getVariable(getVariable("keystore.address")),
+            storepass: getVariable(getVariable("keystore.storepass")),
+            keypass: getVariable(getVariable("keystore.keypass")),
+            verbose: true,
+            preservelastmodified: "true"
+        )
+        println "Jar signed: ${jar}"
+    } else {
+        println "No keystore property found, jar will not be signed"
+    }
+}
+
+static def isOsx() {
+    def osProp = System.properties['os.name'].toLowerCase()
+    return osProp.contains('darwin') || osProp.contains('osx') || osProp.contains('mac')
+}
+
+project.ext.getVariable = { String key -> return getVariable(key) }
+project.ext.canJarBeSigned = { return canJarBeSigned() }
+project.ext.getProjectFingerprint = { return getProjectFingerprint() }
+project.ext.sign = { File jar -> return sign(jar) }
+project.ext.isOsx = { return isOsx() }

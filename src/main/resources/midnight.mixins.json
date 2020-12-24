@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "midnight.core.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "DataGenMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
