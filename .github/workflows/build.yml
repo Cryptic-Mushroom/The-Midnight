@@ -77,3 +77,18 @@ jobs:
         with:
           gradle-version: 6.7
           arguments: build -x genData --no-daemon
+          
+      - name: Prepare to upload the build outputs
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+          echo "Ready to upload the build output to GitHub."
+          
+      - name: Upload The Midnight to GitHub
+        uses: actions/upload-artifact@v2
+        with:
+          # Artifact name
+          name: midnight-universal-${{ env.SHORT_SHA }}
+          # A file, directory or wildcard pattern that describes what to upload
+          path: build/libs/***+fabric.jar
