@@ -1,0 +1,27 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
+ * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 12 - 26
+ */
+
+archivesBaseName = "${project.ext.apiName}"
+
+jar {
+    manifest {
+        attributes(
+            [
+                "Specification-Title"     : "${project.ext.implNameApi}",
+                "Specification-Vendor"    : "${project.ext.implAuthor}",
+                "Specification-Version"   : "${project.ext.version}",
+                "Implementation-Title"    : "${project.ext.implNameApi}",
+                "Implementation-Vendor"   : "${project.ext.implAuthor}",
+                "Implementation-Version"  : "${project.ext.version}",
+                "Implementation-Timestamp": "${project.ext.timeOfExecution}"
+            ]
+        )
+    }
+
+    exclude "**/.cache/**"
+}

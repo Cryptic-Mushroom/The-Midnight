@@ -3,11 +3,15 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 24
+ * Last updated: 2020 - 12 - 26
  */
 
 package midnight.common;
 
+import midnight.MnInfo;
+import midnight.api.MidnightAPI;
+import midnight.api.MidnightInfo;
+import midnight.api.plugin.MidnightPlugin;
 import midnight.client.MidnightClient;
 import midnight.server.MidnightServer;
 import net.minecraft.util.Identifier;
@@ -19,7 +23,7 @@ import net.minecraft.util.Identifier;
  *
  * @author Shadew
  */
-public abstract class Midnight {
+public abstract class Midnight implements MidnightAPI {
 
 
     // ====================================================
@@ -34,6 +38,16 @@ public abstract class Midnight {
 
     }
 
+    @Override
+    public void initPlugin(MidnightPlugin plugin) {
+        plugin.init(this);
+    }
+
+    @Override
+    public MidnightInfo info() {
+        return MnInfo.INSTANCE;
+    }
+
 
 
     // ====================================================
@@ -44,16 +58,12 @@ public abstract class Midnight {
      * Get the current {@link Midnight instance}.
      */
     public static Midnight get() {
-        return instance;
+        return (Midnight) MidnightAPI.get();
     }
 
-    private static Midnight instance;
-
+    @SuppressWarnings("deprecation") // we may call internal api methods
     public Midnight() {
-        if (instance != null) {
-            throw new IllegalStateException("Midnight initialized twice");
-        }
-        instance = this;
+        MidnightAPI.set(this);
     }
 
 
@@ -61,8 +71,6 @@ public abstract class Midnight {
     // ====================================================
     //  UTILS
     // ====================================================
-
-    // TODO Port MnInfo
 
 
     /**
@@ -82,7 +90,7 @@ public abstract class Midnight {
         if (colon >= 0) {
             return new Identifier(path.substring(0, colon), path.substring(colon + 1));
         }
-        return new Identifier("midnight", path);
+        return new Identifier(MnInfo.MODID, path);
     }
 
     /**
@@ -95,6 +103,6 @@ public abstract class Midnight {
         if (path.indexOf(':') >= 0) {
             return path;
         }
-        return "midnight:" + path;
+        return MnInfo.MODID + ":" + path;
     }
 }

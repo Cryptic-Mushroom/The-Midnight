@@ -3,11 +3,12 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 24
+ * Last updated: 2020 - 12 - 26
  */
 
 package midnight;
 
+import midnight.api.MidnightAPI;
 import midnight.client.MidnightClient;
 import net.fabricmc.api.ClientModInitializer;
 
@@ -16,8 +17,10 @@ import net.fabricmc.api.ClientModInitializer;
  */
 public class MidnightModClient implements ClientModInitializer {
     @Override
+    @SuppressWarnings("deprecation") // we may call internal api methods
     public void onInitializeClient() {
         MidnightClient client = new MidnightClient();
         client.initialize();
+        MidnightAPI.ready();
     }
 }

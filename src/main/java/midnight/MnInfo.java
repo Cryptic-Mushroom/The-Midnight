@@ -3,12 +3,14 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 24
+ * Last updated: 2020 - 12 - 26
  */
 
 package midnight;
 
 // TODO CONSTANT INJECTION! THESE GET NOT INJECTED RIGHT NOW!
+
+import midnight.api.MidnightInfo;
 
 /**
  * Contains various important pieces of information about the instance of The Midnight.
@@ -17,7 +19,9 @@ package midnight;
  * @author Jonathing
  * @since 0.6.0
  */
-public final class MnInfo {
+public final class MnInfo implements MidnightInfo {
+    public static final MnInfo INSTANCE = new MnInfo();
+
     /**
      * The Mod ID of the Midnight, which is fixed to {@code midnight}.
      */
@@ -83,7 +87,7 @@ public final class MnInfo {
     }
 
     private static boolean isRunningFromIDE() {
-        String p = System.getProperty("midnight.iside");
+        String p = System.getProperty("fabric.development"); // Fabric provides this property for us
         return Boolean.parseBoolean(p);
     }
 
@@ -92,13 +96,40 @@ public final class MnInfo {
         return Boolean.parseBoolean(p);
     }
 
+    // TODO This is not working yet
     private static boolean isRunningTestServer() {
         String p = System.getProperty("minecraftdev.ci.istestserver");
         return Boolean.parseBoolean(p);
     }
 
+    // TODO This is not working yet
     private static boolean forceDisableMidnightMusic() {
         String p = System.getProperty("midnight.disablemusic");
         return Boolean.parseBoolean(p);
+    }
+
+    @Override
+    public String modid() {
+        return MODID;
+    }
+
+    @Override
+    public String name() {
+        return NAME;
+    }
+
+    @Override
+    public String version() {
+        return VERSION;
+    }
+
+    @Override
+    public String versionName() {
+        return VERSION_NAME;
+    }
+
+    @Override
+    public String buildDate() {
+        return BUILD_DATE;
     }
 }

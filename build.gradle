@@ -1,7 +1,13 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
+ * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2020 - 12 - 26
+ */
+
 plugins {
-    id 'fabric-loom' version '0.5-SNAPSHOT'
-    id 'maven-publish'
-    id 'java'
+    id 'fabric-loom' version '0.5-SNAPSHOT' apply false
     id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
 
@@ -9,45 +15,48 @@ ext {
     timeOfExecution = new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
 }
 
-apply from: "environment.gradle"
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+    apply plugin: 'fabric-loom'
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+    apply from: "$rootDir/environment.gradle"
+}
 
 
 
 
-
-/*
- * Copyright (c) 2020 Cryptic Mushroom and contributors
- * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
- * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
- *
- * Last updated: 2020 - 12 - 24
- */
 
 // ========================================================
 //  DEPENDENCIES
 // ========================================================
 
-repositories {
-    maven { url 'https://jitpack.io/' }
-    maven { url 'https://maven.shadew.net/' }
-}
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io/' }
+        maven { url 'https://maven.shadew.net/' }
+    }
 
-configurations {
-    embed
-    compile.extendsFrom(embed)
+    configurations {
+        embed
+        compile.extendsFrom(embed)
+    }
+
+    dependencies {
+        minecraft "com.mojang:minecraft:${project.ext.getVariable("env.minecraft.version")}"
+        mappings "net.fabricmc:yarn:${project.ext.getVariable("env.mappings.version")}:v2"
+
+        modImplementation "net.fabricmc:fabric-loader:${project.ext.getVariable("env.fabric.loader")}"
+        modImplementation "net.fabricmc.fabric-api:fabric-api:${project.ext.getVariable("env.fabric.version")}"
+    }
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:${project.ext.getVariable("env.minecraft.version")}"
-    mappings "net.fabricmc:yarn:${project.ext.getVariable("env.mappings.version")}:v2"
-
-    modImplementation "net.fabricmc:fabric-loader:${project.ext.getVariable("env.fabric.loader")}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.ext.getVariable("env.fabric.version")}"
-
     embed("net.shadew:ptg:${project.ext.getVariable("env.ptg.version")}") {
+        transitive false
+    }
+
+    embed(project(":api")) {
         transitive false
     }
 }
@@ -60,24 +69,26 @@ dependencies {
 //  CONFIGURATION
 // ========================================================
 
-processResources {
-    inputs.property "version", project.version
+allprojects {
+    processResources {
+        inputs.property "version", project.version
 
-    filesMatching("fabric.mod.json") {
-        expand "version": project.version
+        filesMatching("fabric.mod.json") {
+            expand "version": project.version
+        }
     }
-}
 
-tasks.withType(JavaCompile).configureEach {
-    // If Javadoc is generated, this must be specified in that task too.
-    it.options.encoding = "UTF-8"
+    tasks.withType(JavaCompile).configureEach {
+        // If Javadoc is generated, this must be specified in that task too.
+        it.options.encoding = "UTF-8"
 
-    // The Minecraft launcher currently installs Java 8 for users, so we want to target Java 8 too
-    // JDK 9 introduced a new way of specifying this that will make sure no newer classes or methods are used.
-    // We'll use that if it's available, but otherwise we'll use the older option.
-    def targetVersion = 8
-    if (JavaVersion.current().isJava9Compatible()) {
-        it.options.release.set(targetVersion)
+        // The Minecraft launcher currently installs Java 8 for users, so we want to target Java 8 too
+        // JDK 9 introduced a new way of specifying this that will make sure no newer classes or methods are used.
+        // We'll use that if it's available, but otherwise we'll use the older option.
+        def targetVersion = 8
+        if (JavaVersion.current().isJava9Compatible()) {
+            it.options.release.set(targetVersion)
+        }
     }
 }
 
@@ -89,8 +100,10 @@ tasks.withType(JavaCompile).configureEach {
 //  JAR SHADOWING AND SIGNING
 // ========================================================
 
-java {
-    withSourcesJar()
+allprojects {
+    java {
+        withSourcesJar()
+    }
 }
 
 jar {
@@ -147,6 +160,7 @@ task signSourcesJar {
 }
 
 build {
+    dependsOn ":api:build"
     dependsOn "signJar"
     dependsOn "signSourcesJar"
 }
@@ -201,13 +215,13 @@ class RunDataTask extends AbstractRunTask {
     }
 }
 
+task runData(type: RunDataTask) {
+    group "fabric"
+}
+
 task processBaseResources(type: Copy) {
     from "$projectDir/src/main/resources"
     into "$buildDir/resources/main"
-}
-
-task runData(type: RunDataTask) {
-    group "fabric"
 }
 
 task genData {
