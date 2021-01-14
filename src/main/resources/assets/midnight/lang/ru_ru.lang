@@ -307,20 +307,20 @@ item.midnight.nagrilite_hoe.name=Нагрилитовая мотыга
 item.midnight.ebonys_hoe.name=Мотыга из эбониса
 item.midnight.nightstone_hoe.name=Ночнокаменная мотыга
 
-item.midnight.shadowroot_sword.name=Мечь из темнекорня
+item.midnight.shadowroot_sword.name=Меч из темнекорня
 item.midnight.tenebrum_sword.name=Тенебриевый меч
 item.midnight.nagrilite_sword.name=Нагрилитовый меч
 item.midnight.ebonys_sword.name=Меч из эбониса
 item.midnight.nightstone_sword.name=Ночнокаменный меч
 
 item.midnight.rockshroom_helmet.name=Шлем из камнегриба
-item.midnight.rockshroom_chestplate.name=Кираса из камнегриба
+item.midnight.rockshroom_chestplate.name=Нагрудник из камнегриба
 item.midnight.rockshroom_leggings.name=Поножи из камнегриба
 item.midnight.rockshroom_boots.name=Ботинки из камнегриба
 item.midnight.rockshroom_shield.name=Щит из камнегриба
 
 item.midnight.tenebrum_helmet.name=Тенебриевый шлем
-item.midnight.tenebrum_chestplate.name=Тенебриевая кираса
+item.midnight.tenebrum_chestplate.name=Тенебриевый нагрудник
 item.midnight.tenebrum_leggings.name=Тенебриевые поножи
 item.midnight.tenebrum_boots.name=Тенебриевые ботинки
 
@@ -463,9 +463,9 @@ advancement.violeaf.desc=Излечитесь от эффекта тошноты
 
 # Internationalization Compatible Item Tooltip Translations
 
-tooltip.midnight.pressure_plate.weightless=Not weighted
-tooltip.midnight.pressure_plate.heavy_weighted=Heavy weighted
-tooltip.midnight.pressure_plate.light_weighted=Light weighted
+tooltip.midnight.pressure_plate.weightless=Нет утяжеления
+tooltip.midnight.pressure_plate.heavy_weighted=Тяжёлое утяжеление
+tooltip.midnight.pressure_plate.light_weighted=Лёгкое утяжеление
 
 # Subtitles
 subtitles.ambient.midight=Жуткий вой
