@@ -342,7 +342,7 @@ entity.midnight.penumbrian.name=Полутень
 entity.midnight.tree_hopper.name=Горбатка
 entity.midnight.nightstag.name=Ночнолень
 entity.midnight.deceitful_snapper.name=Ложный окунь
-entity.midnight.skulk.name=Крадущийся
+entity.midnight.skulk.name=Скрытень
 entity.midnight.thrown_geode.name=Геод
 
 # Config
@@ -361,8 +361,8 @@ config.midnight.rift_shaders.tooltip=Если true, Разломы будут о
 config.midnight.bladeshroom_damage_chance=Шанс урона от клинкогриба
 config.midnight.bladeshroom_damage_chance.tooltip=Шанс получения урона от подъёма клинкогриба. Если установлено значение "0", то урон не будет наносится
 
-config.midnight.can_respawn_in_midnight=Респаун игроков в Миднайте
-config.midnight.can_respawn_in_midnight.tooltip=Если установлено значение "true", игроки будут респавниться в Миднайте, если умрут в измерении.
+config.midnight.can_respawn_in_midnight=Возрождение игроков в Миднайте
+config.midnight.can_respawn_in_midnight.tooltip=Если установлено значение "true", игроки будут возрождаться в Миднайте, если умрут в измерении.
 
 config.midnight.hide_vignette_effect=Скрыть эффект виньетки
 config.midnight.hide_vignette_effect.tooltip=Скрывает эффект виньетки в темных областях Миднайта.
@@ -402,24 +402,24 @@ status.midnight.snapped=Рыба набросилась на тебя
 
 # Biomes
 
-biome.midnight.vigilant_forest.name=Vigilant Forest
-biome.midnight.black_ridge.name=Black Ridge
-biome.midnight.deceitful_bog.name=Deceitful Bog
-biome.midnight.fungi_forest.name=Fungi Forest
-biome.midnight.obscured_peaks.name=Obscured Peaks
-biome.midnight.warped_fields.name=Warped Fields
-biome.midnight.crystal_spires.name=Crystal Spires
-biome.midnight.night_plains.name=Night Plains
-biome.midnight.obscured_plateau.name=Obscured Plateau
-biome.midnight.phantasmal_valley.name=Phantasmal Valley
-biome.midnight.runebush_grove.name=Runebush Grove
-biome.midnight.hilly_vigilant_forest.name=Hilly Vigilant Forest
-biome.midnight.hilly_fungi_forest.name=Hilly Fungi Forest
+biome.midnight.vigilant_forest.name=Бдительный лес
+biome.midnight.black_ridge.name=Чёрный хребет
+biome.midnight.deceitful_bog.name=Лживое болото
+biome.midnight.fungi_forest.name=Грибковый лес
+biome.midnight.obscured_peaks.name=Скрытые горы
+biome.midnight.warped_fields.name=Поля искажения
+biome.midnight.crystal_spires.name=Кристаллические шпили
+biome.midnight.night_plains.name=Ночные равнины
+biome.midnight.obscured_plateau.name=Скрытое плато
+biome.midnight.phantasmal_valley.name=Призрачная долина
+biome.midnight.runebush_grove.name=Роща рункустов
+biome.midnight.hilly_vigilant_forest.name=Холмистый бдительный лес
+biome.midnight.hilly_fungi_forest.name=Холмистый грибковый лес
 
 # Potions
 
-potion.midnight.stunned.name=Оглушенный
-potion.midnight.pollinated.name=Опыленный
+potion.midnight.stunned.name=Оглушение
+potion.midnight.pollinated.name=Опыление
 potion.midnight.dragon_guard.name=Стража дракона
 potion.midnight.darkness.name=Темнота
 potion.midnight.tormented.name=Измученный
@@ -449,16 +449,16 @@ advancement.fungi_forest.desc=Найдите грибной лес в Мидна
 advancement.snapped_by_snapper.title=Кэшбэк
 advancement.snapped_by_snapper.desc=Попытайтесь съесть ложного окуня, а затем удивитесь агрессивности своей еды
 
-advancement.your_highness.title=Ваше Святейшество
+advancement.your_highness.title=Ваша светлость
 advancement.your_highness.desc=Пусть каждый цвет ночноленя преклонится перед вами
 
-advancement.thrown_geode.title=Сломанный
+advancement.thrown_geode.title=Психанул
 advancement.thrown_geode.desc=Откройте геод, бросив его во что-т твёрдое
 
 advancement.surface_biomes.title=Ночной странник
 advancement.surface_biomes.desc=Пересеките каждый биом и суб-биом в Миднайте
 
-advancement.violeaf.title=Народная медецина
+advancement.violeaf.title=Народная медицина
 advancement.violeaf.desc=Излечитесь от эффекта тошноты, пройдя через фиалку 
 
 # Internationalization Compatible Item Tooltip Translations
@@ -466,3 +466,34 @@ advancement.violeaf.desc=Излечитесь от эффекта тошноты
 tooltip.midnight.pressure_plate.weightless=Not weighted
 tooltip.midnight.pressure_plate.heavy_weighted=Heavy weighted
 tooltip.midnight.pressure_plate.light_weighted=Light weighted
+
+# Subtitles
+subtitles.ambient.midight=Жуткий вой
+subtitles.entity.rift.idle=Разлом гудит
+subtitles.entity.rift.unstable=Разлом перемещается
+subtitles.entity.rifter.ambient=Разломщик рычит
+subtitles.entity.rifter.hurt=Разломщик ранен
+subtitles.entity.rifter.death=Разломщик погибает
+subtitles.entity.bladeshroom_cap.shoot=Шапка клинкогриба выстрелила
+subtitles.entity.bladeshroom_cap.hit=Попадание шапки клинкогриба
+subtitles.entity.nightstag.ambient=Ночнолень рычит
+subtitles.entity.nightstag.hurt=Ночнолень ранен
+subtitles.entity.nightstag.death=Ночнолень погибает
+subtitles.entity.nightstag.step=Ночнолень несётся
+subtitles.block.stinger_egg.crack=Яйцо раскалывается
+subtitles.entity.crystal_bug.flying=Кристальный жук хлопает крыльями
+subtitles.entity.crystal_bug.hurt=Кристальный жук ранен
+subtitles.entity.crystal_bug.death=Кристальный жук погибает
+subtitles.entity.nova.idle=Нова трещит
+subtitles.entity.nova.hurt=Нова ранена
+subtitles.entity.nova.death=Нова погибает
+subtitles.entity.stinger.ambient=Стингерон шипит
+subtitles.entity.stinger.hurt=Стингерон ранен
+subtitles.entity.stinger.death=Стингерон погибает
+subtitles.entity.skulk.hurt=Скрытень ранен
+subtitles.entity.skulk.death=Скрытень погибает
+subtitles.entity.snapper.hurt=Ложный окунь ранен
+subtitles.entity.snapper.death=Ложный окунь погибает
+subtitles.entity.hunter.hurt=Охотник ранен
+subtitles.entity.hunter.death=Охотник погибает
+subtitles.entity.hunter.flying=Охотник хлопает крыльями
