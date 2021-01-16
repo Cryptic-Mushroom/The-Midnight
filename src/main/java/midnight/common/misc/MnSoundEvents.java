@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.common.misc;
@@ -38,6 +38,7 @@ public final class MnSoundEvents {
     public static final SoundEvent MUSIC_CRYSTALS = make("music.crystals");
     public static final SoundEvent MUSIC_DARKWILLOW = make("music.dark_willow");
 
+    // Block sounds
     public static final SoundEvent BLOCK_MUD_BREAK = make("block.mud.break");
     public static final SoundEvent BLOCK_MUD_STEP = make("block.mud.step");
     public static final SoundEvent BLOCK_MUD_PLACE = make("block.mud.place");
@@ -62,6 +63,7 @@ public final class MnSoundEvents {
     public static final SoundEvent BLOCK_JEWEL_HIT = make("block.jewel.hit");
     public static final SoundEvent BLOCK_JEWEL_FALL = make("block.jewel.fall");
 
+    // Entity sounds
     public static final SoundEvent ENTITY_GEODE_BREAK = make("entity.geode.break");
     public static final SoundEvent ENTITY_GEODE_THROW = make("entity.geode.throw");
 

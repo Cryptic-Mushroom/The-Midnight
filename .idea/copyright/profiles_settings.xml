@@ -1,3 +1,7 @@
 <component name="CopyrightManager">
-  <settings default="Midnight" />
+  <settings default="Midnight">
+    <module2copyright>
+      <element module="All" copyright="Midnight" />
+    </module2copyright>
+  </settings>
 </component>
