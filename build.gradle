@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 26
+ * Last updated: 2021 - 1 - 16
  */
 
 plugins {
@@ -211,6 +211,8 @@ class RunDataTask extends AbstractRunTask {
         run.vmArgs += " -Dmidnight.datagen=true"
         run.vmArgs += " -Dmidnight.datagen.path=${project.file("src/generated/resources")}"
 
+        System.out.println(run.vmArgs)
+
         return run
     }
 }
@@ -219,21 +221,14 @@ task runData(type: RunDataTask) {
     group "fabric"
 }
 
-task processBaseResources(type: Copy) {
-    from "$projectDir/src/main/resources"
-    into "$buildDir/resources/main"
-}
-
-task genData {
-    dependsOn "compileJava"
-    dependsOn "processBaseResources"
+processResources {
     doLast {
         runData.exec()
+        copy {
+            from "$projectDir/src/generated/resources"
+            into "$buildDir/resources/main"
+        }
     }
-}
-
-processResources {
-    dependsOn "genData"
 }
 
 

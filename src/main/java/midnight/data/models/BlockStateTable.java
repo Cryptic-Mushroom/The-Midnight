@@ -3,11 +3,12 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 24
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.data.models;
 
+import midnight.common.block.MnBlocks;
 import midnight.data.models.modelgen.ModelGen;
 import midnight.data.models.stategen.*;
 import net.minecraft.block.Block;
@@ -30,12 +31,9 @@ public final class BlockStateTable {
     public static void registerBlockStates(BiConsumer<Block, StateGen> c) {
         consumer = c;
 
-
-        //
-        //
-        //  REGISTER BLOCK STATES HERE
-        //
-        //
+        register(MnBlocks.NIGHTSTONE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.NIGHT_BEDROCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.TRENCHSTONE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
     }
 
     private static StateGen simple(String name, ModelGen model) {

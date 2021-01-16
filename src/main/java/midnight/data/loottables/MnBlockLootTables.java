@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 24
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.data.loottables;
@@ -11,6 +11,7 @@ package midnight.data.loottables;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import midnight.common.block.MnBlocks;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.block.enums.SlabType;
@@ -51,11 +52,10 @@ public class MnBlockLootTables implements Consumer<BiConsumer<Identifier, LootTa
 
     @Override
     public void accept(BiConsumer<Identifier, LootTable.Builder> biConsumer) {
-        //
-        //
-        //  REGISTER LOOT TABLES HERE
-        //
-        //
+
+        addDrop(MnBlocks.NIGHTSTONE);
+        addDrop(MnBlocks.TRENCHSTONE);
+        addDrop(MnBlocks.NIGHT_BEDROCK, block -> dropsNothing());
 
 
 
@@ -68,7 +68,7 @@ public class MnBlockLootTables implements Consumer<BiConsumer<Identifier, LootTa
                                      .stream()
                                      .filter(block -> Registry.BLOCK.getId(block)
                                                                     .getNamespace()
-                                                                    .equals("ndebris"))
+                                                                    .equals("midnight"))
                                      ::iterator;
 
         for (Block block : blocks) {
@@ -206,6 +206,7 @@ public class MnBlockLootTables implements Consumer<BiConsumer<Identifier, LootTa
     private static RandomChanceLootCondition.Builder chance(float chance) {
         return RandomChanceLootCondition.builder(chance);
     }
+
 
 
 

@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 24
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.data;
@@ -11,6 +11,7 @@ package midnight.data;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 import joptsimple.OptionSpec;
+import midnight.MidnightModClient;
 import midnight.core.mixin.DataGenMixin;
 import midnight.data.loottables.MnLootTablesProvider;
 import midnight.data.models.MnStateModelProvider;
@@ -18,6 +19,7 @@ import midnight.data.recipes.MnRecipeProvider;
 import midnight.data.tags.MnBlockTagsProvider;
 import midnight.data.tags.MnFluidTagsProvider;
 import midnight.data.tags.MnItemTagsProvider;
+import net.minecraft.Bootstrap;
 import net.minecraft.data.DataGenerator;
 
 import java.io.IOException;
@@ -54,6 +56,9 @@ public class DataMain {
             boolean genDev = genAll || optionSet.has(dev);
             boolean genReports = genAll || optionSet.has(reports);
             boolean genValidate = genAll || optionSet.has(validate);
+
+            Bootstrap.initialize();
+            new MidnightModClient().onInitializeClient();
             DataGenerator gen = create(
                 path,
                 optionSet.valuesOf(input)

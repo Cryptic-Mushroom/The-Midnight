@@ -3,11 +3,12 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 24
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.data.models;
 
+import midnight.common.block.MnBlocks;
 import midnight.data.models.modelgen.ModelGen;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
@@ -16,6 +17,8 @@ import net.minecraft.util.registry.Registry;
 
 import java.util.function.BiConsumer;
 import java.util.function.Function;
+
+import static midnight.data.models.modelgen.InheritingModelGen.*;
 
 /**
  * Collects and generates models of items (including block items).
@@ -26,12 +29,9 @@ public final class ItemModelTable {
     public static void registerItemModels(BiConsumer<Item, ModelGen> c) {
         consumer = c;
 
-
-        //
-        //
-        //  REGISTER ITEM HERE
-        //
-        //
+        register(MnBlocks.NIGHTSTONE, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.NIGHT_BEDROCK, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.TRENCHSTONE, item -> inherit(name(item, "block/%s")));
     }
 
 

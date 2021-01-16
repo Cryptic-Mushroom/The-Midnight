@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 26
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.common;
@@ -13,8 +13,12 @@ import midnight.api.MidnightAPI;
 import midnight.api.MidnightInfo;
 import midnight.api.plugin.MidnightPlugin;
 import midnight.client.MidnightClient;
+import midnight.common.block.MnBlocks;
+import midnight.common.item.MnItems;
+import midnight.core.util.WrappingRegistry;
 import midnight.server.MidnightServer;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 /**
  * The main instance of the Midnight mod. This should initialize and hold references to all manager, instances, tickers,
@@ -35,7 +39,8 @@ public abstract class Midnight implements MidnightAPI {
      * or {@link MidnightServer}
      */
     public void initialize() {
-
+        MnBlocks.registerBlocks(WrappingRegistry.vanilla(Registry.BLOCK));
+        MnItems.registerItems(WrappingRegistry.vanilla(Registry.ITEM));
     }
 
     @Override

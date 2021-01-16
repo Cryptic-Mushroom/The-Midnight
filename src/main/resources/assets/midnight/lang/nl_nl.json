@@ -1,0 +1,47 @@
+{
+  "block.midnight.nightstone": "Nachtsteen",
+  "block.midnight.night_bedrock": "Nacht-Bodemsteen",
+  "block.midnight.trenchstone": "Greppelsteen",
+  "block.midnight.night_dirt": "Nachtaarde",
+  "block.midnight.night_grass_block": "Nachtgrasblok",
+  "block.midnight.deceitful_peat": "Bedriegelijk Turf",
+  "block.midnight.deceitful_mud": "Bedriegelijke Modder",
+  "block.midnight.strange_sand": "Onwennig Zand",
+  "block.midnight.dark_water": "Donker Water",
+  "block.midnight.coarse_night_dirt": "Grove Nachtaarde",
+  "block.midnight.ghost_plant_stem": "Spookplantstam",
+  "block.midnight.ghost_plant_leaf": "Spookplantblad",
+
+  "itemGroup.midnight.blocks": "Midnight Blokken",
+  "itemGroup.midnight.decor": "Midnight Decoraties",
+
+  "block.midnight.night_grass": "Nachtgras",
+  "block.midnight.tall_night_grass": "Hoog Nachtgras",
+  "block.midnight.ghost_plant": "Spookplant",
+
+  "block.midnight.dead_wood_log": "Rotte Stam",
+  "block.midnight.stripped_dead_wood_log": "Gestripte Rotte Stam",
+  "block.midnight.dead_wood": "Rot Hout",
+  "block.midnight.stripped_dead_wood": "Gestript Rot Hout",
+  "block.midnight.dead_wood_planks": "Rotte Planken",
+  "block.midnight.dead_sapling": "Dode Kiemplant",
+
+  "block.midnight.shadowroot_log": "Schaduwwortelstam",
+  "block.midnight.stripped_shadowroot_log": "Gestripte Schaduwwortelstam",
+  "block.midnight.shadowroot_wood": "Schaduwwortelhout",
+  "block.midnight.stripped_shadowroot_wood": "Gestript Schaduwwortelhout",
+  "block.midnight.shadowroot_planks": "Schaduwhouten Planken",
+  "block.midnight.shadowroot_sapling": "Schaduwwortel Kiemplant",
+  "block.midnight.shadowroot_leaves": "Schaduwwortelbladeren",
+
+  "block.midnight.dark_willow_log": "Duisterwilgen Stam",
+  "block.midnight.stripped_dark_willow_log": "Gestripte Duisterwilgen Stam",
+  "block.midnight.dark_willow_wood": "Duisterwilgen Hout",
+  "block.midnight.stripped_dark_willow_wood": "Gestript Duisterwilgen Hout",
+  "block.midnight.dark_willow_planks": "Duisterwilgen Planken",
+  "block.midnight.dark_willow_sapling": "Duisterwilgen Kiemplant",
+  "block.midnight.dark_willow_leaves": "Duisterwilgen Bladeren",
+  "block.midnight.hanging_dark_willow_leaves": "Hangende Duisterwilgen Bladeren",
+
+  "biome.midnight.night_plains": "Nachtvelden"
+}
