@@ -9,18 +9,15 @@
 package midnight.common.misc.tags;
 
 import midnight.common.Midnight;
-import midnight.core.util.MnObjects;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ITag;
 
 public final class MnFluidTags {
-    public static final ITag.INamedTag<Fluid> DARK_WATER = tag("dark_water");
 
     private static ITag.INamedTag<Fluid> tag(String id) {
         id = Midnight.idStr(id);
         ITag.INamedTag<Fluid> tag = FluidTags.makeWrapperTag(id);
-        MnObjects.addFluidTag(id, tag);
         return tag;
     }
 

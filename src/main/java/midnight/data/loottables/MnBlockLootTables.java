@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.data.loottables;
@@ -63,8 +63,6 @@ public class MnBlockLootTables extends BlockLootTables {
 
         registerLootTable(MnBlocks.NIGHT_GRASS, BlockLootTables::onlyWithShears);
         registerLootTable(MnBlocks.TALL_NIGHT_GRASS, BlockLootTables::onlyWithShears);
-
-        registerLootTable(MnBlocks.DARK_WATER, block -> droppingNothing());
 
         registerDropSelfLootTable(MnBlocks.DEAD_WOOD);
         registerDropSelfLootTable(MnBlocks.DEAD_WOOD_LOG);

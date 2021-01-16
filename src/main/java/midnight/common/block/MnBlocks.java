@@ -11,7 +11,6 @@ package midnight.common.block;
 import midnight.api.util.GeodeHardMaterials;
 import midnight.client.MidnightClient;
 import midnight.common.Midnight;
-import midnight.common.block.fluid.MnFluids;
 import midnight.common.misc.tags.MnBlockTags;
 import midnight.common.world.biome.MnBiomeColors;
 import midnight.core.util.ColorUtil;
@@ -26,6 +25,7 @@ import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.fluid.FlowingFluid;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.tags.ITag;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -71,9 +71,6 @@ public abstract class MnBlocks {
     public static final Block NIGHTSTONE_BRICKS = bricks("nightstone_bricks", 1.5, 6, MaterialColor.OBSIDIAN);
     public static final Block TRENCHSTONE_BRICKS = bricks("trenchstone_bricks", 1.5, 6, MaterialColor.BLACK);
     public static final Block SHROOMBRICKS = shroombricks("shroombricks");
-
-    // Fluids
-    public static final Block DARK_WATER = water("dark_water", () -> MnFluids.DARK_WATER);
 
     // Tall night grass
     public static final Block NIGHT_GRASS = smallGrowable("night_grass", 0, 0, Material.TALL_PLANTS, MaterialColor.PURPLE_TERRACOTTA, getBlock("tall_night_grass")).hitbox(12, 13).offset(Block.OffsetType.XYZ);
@@ -589,7 +586,7 @@ public abstract class MnBlocks {
                                     .nonOpaque()
                                     .sound(SoundType.WET_GRASS)
                                     .hardnessAndResistance((float) hardness, (float) resistance),
-            fluid -> fluid == MnFluids.DARK_WATER
+            fluid -> fluid == Fluids.WATER
         ));
     }
 

@@ -3,13 +3,14 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.common.world.levelgen.midnight;
 
 import midnight.common.block.MnBlocks;
 import midnight.core.util.MnMath;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
@@ -56,7 +57,7 @@ public class MidnightSurfaceGenerator extends MidnightGenerator {
                      .buildSurface(
                          rng, chunk, gx, gz, hgt, snoise,
                          MnBlocks.NIGHTSTONE.getDefaultState(), //chunkGenerator.getSettings().getDefaultBlock(),
-                         MnBlocks.DARK_WATER.getDefaultState(),
+                         Blocks.WATER.getDefaultState(),
                          chunkGenerator.getSeaLevel(),
                          world.getSeed()
                      );

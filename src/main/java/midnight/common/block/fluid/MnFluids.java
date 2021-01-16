@@ -10,9 +10,6 @@ package midnight.common.block.fluid;
 
 import midnight.common.Midnight;
 import midnight.core.util.IRegistry;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -32,9 +29,6 @@ import java.util.Map;
 public final class MnFluids {
     private static final Map<ResourceLocation, Fluid> FLUIDS = new HashMap<>();
 
-    public static final FlowingFluid DARK_WATER = fluid("dark_water", new DarkWaterFluid.Source());
-    public static final FlowingFluid FLOWING_DARK_WATER = fluid("flowing_dark_water", new DarkWaterFluid.Flowing());
-
 
     public static void registerFluids(IRegistry<Fluid> registry) {
         registry.registerAll(FLUIDS);
@@ -42,8 +36,6 @@ public final class MnFluids {
 
     @OnlyIn(Dist.CLIENT)
     public static void setupRenderers() {
-        RenderTypeLookup.setRenderLayer(DARK_WATER, RenderType.getTranslucent());
-        RenderTypeLookup.setRenderLayer(FLOWING_DARK_WATER, RenderType.getTranslucent());
     }
 
     private MnFluids() {

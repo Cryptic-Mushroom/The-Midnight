@@ -3,22 +3,22 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.common.block;
 
-import midnight.common.block.fluid.MnFluids;
 import midnight.common.misc.tags.MnBlockTags;
-import midnight.common.misc.tags.MnFluidTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
@@ -52,7 +52,7 @@ import java.util.Random;
  * @since 0.6.0
  */
 @SuppressWarnings("deprecation")
-public class NightReedBlock extends UpwardPlantBlock implements IDarkWaterLoggable {
+public class NightReedBlock extends UpwardPlantBlock implements IMnWaterLoggable {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_0_15;
 
@@ -159,7 +159,7 @@ public class NightReedBlock extends UpwardPlantBlock implements IDarkWaterLoggab
     private void growUp(World world, BlockPos pos, BlockState state) {
         BlockPos up = pos.up();
         BlockState stateUp = world.getBlockState(up);
-        if (stateUp.isAir(world, up) || stateUp.getFluidState().isTagged(MnFluidTags.DARK_WATER)) {
+        if (stateUp.isAir(world, up) || stateUp.getFluidState().isTagged(FluidTags.WATER)) {
             if (canGrowHigher(world, pos)) { // Check height cost
                 world.setBlockState(up, waterlog(getDefaultState().with(END, true), world, up));
                 world.setBlockState(pos, state.with(END, false));
@@ -174,13 +174,13 @@ public class NightReedBlock extends UpwardPlantBlock implements IDarkWaterLoggab
             return false;
 
         // Need water inside or ...
-        if (world.getFluidState(pos.up()).getFluid() == MnFluids.DARK_WATER) {
+        if (world.getFluidState(pos.up()).getFluid() == Fluids.WATER) {
             return true;
         }
 
         // ... need water nearby
         for (Direction dir : Direction.Plane.HORIZONTAL) {
-            if (world.getFluidState(pos.offset(dir)).getFluid() == MnFluids.DARK_WATER) {
+            if (world.getFluidState(pos.offset(dir)).getFluid() == Fluids.WATER) {
                 return true;
             }
         }
