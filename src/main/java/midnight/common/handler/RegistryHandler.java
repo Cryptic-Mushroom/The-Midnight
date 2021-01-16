@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.common.handler;
@@ -49,7 +49,6 @@ public final class RegistryHandler {
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-        MnBlocks.registerItems(IRegistry.forge(event.getRegistry()));
         MnItems.registerItems(IRegistry.forge(event.getRegistry()));
     }
 

@@ -12,8 +12,6 @@ import midnight.api.util.GeodeHardMaterials;
 import midnight.client.MidnightClient;
 import midnight.common.Midnight;
 import midnight.common.block.fluid.MnFluids;
-import midnight.common.item.group.MnItemCategory;
-import midnight.common.item.group.MnItemGroup;
 import midnight.common.misc.tags.MnBlockTags;
 import midnight.common.world.biome.MnBiomeColors;
 import midnight.core.util.ColorUtil;
@@ -28,11 +26,7 @@ import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.fluid.FlowingFluid;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.tags.ITag;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ToolType;
@@ -398,165 +392,6 @@ public abstract class MnBlocks {
     }
 
 
-
-    /////////////////////////
-    ///// ITEM REGISTRY /////
-    /////////////////////////
-
-    public static void registerItems(IRegistry<Item> registry) {
-        registry.registerAll(
-            item(NIGHTSTONE, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
-            item(NIGHT_BEDROCK, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
-            item(TRENCHSTONE, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
-
-            item(NIGHT_DIRT, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
-            item(COARSE_NIGHT_DIRT, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
-            item(NIGHT_GRASS_BLOCK, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
-            item(DECEITFUL_PEAT, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
-            item(DECEITFUL_MUD, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
-            item(STRANGE_SAND, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
-            item(NIGHT_MYCELIUM, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS),
-
-            item(NIGHTSTONE_BRICKS, MnItemCategory.BRICKS, MnItemGroup.BLOCKS),
-            item(TRENCHSTONE_BRICKS, MnItemCategory.BRICKS, MnItemGroup.BLOCKS),
-            item(SHROOMBRICKS, MnItemCategory.BRICKS, MnItemGroup.BLOCKS),
-
-            item(NIGHT_GRASS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(TALL_NIGHT_GRASS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-
-            item(GHOST_PLANT_STEM, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
-            item(GHOST_PLANT_LEAF, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
-            item(GHOST_PLANT, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-
-            item(DEAD_WOOD_LOG, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
-            item(STRIPPED_DEAD_WOOD_LOG, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
-            item(DEAD_WOOD, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
-            item(STRIPPED_DEAD_WOOD, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
-            item(DEAD_WOOD_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
-            item(DEAD_SAPLING, MnItemCategory.SAPLINGS, MnItemGroup.DECOR),
-
-            item(SHADOWROOT_LOG, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
-            item(STRIPPED_SHADOWROOT_LOG, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
-            item(SHADOWROOT_WOOD, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
-            item(STRIPPED_SHADOWROOT_WOOD, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
-            item(SHADOWROOT_LEAVES, MnItemCategory.LEAVES, MnItemGroup.DECOR),
-            item(SHADOWROOT_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
-            item(SHADOWROOT_SAPLING, MnItemCategory.SAPLINGS, MnItemGroup.DECOR),
-            item(SHADOWROOT_BOOKSHELF, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
-
-            item(DARK_WILLOW_LOG, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
-            item(STRIPPED_DARK_WILLOW_LOG, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
-            item(DARK_WILLOW_WOOD, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
-            item(STRIPPED_DARK_WILLOW_WOOD, MnItemCategory.LOGS, MnItemGroup.BLOCKS),
-            item(DARK_WILLOW_LEAVES, MnItemCategory.LEAVES, MnItemGroup.DECOR),
-            item(HANGING_DARK_WILLOW_LEAVES, MnItemCategory.LEAVES, MnItemGroup.DECOR),
-            item(DARK_WILLOW_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
-            item(DARK_WILLOW_SAPLING, MnItemCategory.SAPLINGS, MnItemGroup.DECOR),
-            item(DARK_WILLOW_BOOKSHELF, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
-
-            item(NIGHTSHROOM_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
-            item(NIGHTSHROOM_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
-            item(NIGHTSHROOM_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
-            item(NIGHTSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(TALL_NIGHTSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(NIGHTSHROOM_SHELF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(NIGHTSHROOM_FIBRE, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(NIGHTSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(FLOWERING_NIGHTSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-
-            item(DEWSHROOM_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
-            item(DEWSHROOM_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
-            item(DEWSHROOM_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
-            item(DEWSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(TALL_DEWSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(DEWSHROOM_SHELF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(DEWSHROOM_FIBRE, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(DEWSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(FLOWERING_DEWSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-
-            item(VIRIDSHROOM_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
-            item(VIRIDSHROOM_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
-            item(VIRIDSHROOM_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
-            item(VIRIDSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(TALL_VIRIDSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(VIRIDSHROOM_SHELF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(VIRIDSHROOM_FIBRE, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(VIRIDSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(FLOWERING_VIRIDSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-
-            item(MOONSHROOM_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
-            item(MOONSHROOM_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
-            item(MOONSHROOM_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
-            item(MOONSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(TALL_MOONSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(MOONSHROOM_SHELF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(MOONSHROOM_FIBRE, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(MOONSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(FLOWERING_MOONSHROOM_ROOTS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-
-            item(BOGSHROOM_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
-            item(BOGSHROOM_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
-            item(BOGSHROOM_PLANKS, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
-            item(BOGSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(TALL_BOGSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(BOGSHROOM_SHELF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(BOGSHROOM_FIBRE, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-
-            item(MISTSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(TALL_MISTSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(FINGERED_GRASS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(LUMEN_BUD, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(TALL_LUMEN_BUD, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(RUNEBUSH, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(BOGWEED, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(CRYSTALOTUS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(SUAVIS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(VIOLEAF, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(TENDRILWEED, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(NIGHT_REED, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(DECEITFUL_MOSS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(DECEITFUL_ALGAE, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-
-            item(REED_THATCH, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
-            item(CUT_REED_THATCH, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
-
-            item(GLOB_FUNGUS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-            item(GLOB_FUNGUS_CAP, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
-            item(GLOB_FUNGUS_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
-            item(INFESTED_GLOB_FUNGUS_STEM, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
-            item(GLOB_FUNGUS_HYPHAE, MnItemCategory.SHROOM_STEMS, MnItemGroup.BLOCKS),
-            item(GLOB_FUNGUS_THATCH, MnItemCategory.PLANKS, MnItemGroup.BLOCKS),
-
-            item(ROCKSHROOM, MnItemCategory.SHROOM_CAPS, MnItemGroup.BLOCKS),
-
-            item(ROUXE_ROCK, MnItemCategory.CRYSTALS, MnItemGroup.BLOCKS),
-            item(BLOOMCRYSTAL_ROCK, MnItemCategory.CRYSTALS, MnItemGroup.BLOCKS),
-            item(ROUXE, MnItemCategory.CRYSTALS, MnItemGroup.DECOR),
-            item(BLOOMCRYSTAL, MnItemCategory.CRYSTALS, MnItemGroup.DECOR),
-            item(CRYSTAL_FLOWER, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR),
-
-            item(DARK_PEARL_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS),
-            item(DARK_PEARL_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS),
-
-            item(ARCHAIC_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS),
-            item(ARCHAIC_GLASS, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
-            item(ARCHAIC_GLASS_PANE, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS),
-
-            item(TENEBRUM_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS),
-            item(TENEBRUM_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS),
-
-            item(NAGRILITE_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS),
-            item(NAGRILITE_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS),
-
-            item(EBONITE_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS),
-            item(EBONITE_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS),
-
-            item(VIRILUX_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS),
-            item(VIRILUX_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS)
-        );
-    }
-
-
     ///////////////////////////
     ///// COMMON REGISTRY /////
     ///////////////////////////
@@ -705,24 +540,6 @@ public abstract class MnBlocks {
     /////////////////////////////////
     ///// BLOCK FACTORY METHODS /////
     /////////////////////////////////
-
-    private static BlockItem item(Block block, MnItemCategory cat, Item.Properties props) {
-        ResourceLocation id = block.getRegistryName();
-        assert id != null;
-        BlockItem item;
-        if (block instanceof ICustomBlockItem) {
-            item = ((ICustomBlockItem) block).newBlockItem(props);
-        } else {
-            item = new BlockItem(block, props);
-        }
-        item.setRegistryName(id);
-        cat.add(item);
-        return item;
-    }
-
-    private static BlockItem item(Block block, MnItemCategory cat, ItemGroup group) {
-        return item(block, cat, new Item.Properties().group(group));
-    }
 
     private static <B extends Block> B block(String id, B block) {
         block.setRegistryName(Midnight.id(id));
