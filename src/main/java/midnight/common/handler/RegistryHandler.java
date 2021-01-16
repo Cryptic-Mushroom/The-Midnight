@@ -69,7 +69,7 @@ public final class RegistryHandler {
 
     @SubscribeEvent
     public static void registerBiomes(RegistryEvent.Register<Biome> event) {
-        MnBiomes.registerBiomes(IRegistry.forge(event.getRegistry()));
+        MnBiomes.registerBiomes(event.getRegistry());
     }
 
     @SubscribeEvent

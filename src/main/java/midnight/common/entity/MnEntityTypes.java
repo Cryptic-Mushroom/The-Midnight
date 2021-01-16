@@ -16,21 +16,28 @@ import net.minecraft.client.renderer.entity.SpriteRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.registries.ObjectHolder;
 
 import javax.annotation.Nonnull;
+import java.util.HashMap;
+import java.util.Map;
 
 @ObjectHolder("midnight")
 public final class MnEntityTypes {
-    public static final EntityType<ThrownGeodeEntity> THROWN_GEODE = inj();
+    private static final Map<ResourceLocation, EntityType<?>> TYPES = new HashMap<>();
+
+    public static final EntityType<ThrownGeodeEntity> THROWN_GEODE = type(
+        "thrown_geode",
+        EntityType.Builder.create(ThrownGeodeEntity::new, EntityClassification.MISC),
+        ThrownGeodeEntity.class
+    );
 
     public static void registerEntityTypes(IRegistry<EntityType<?>> registry) {
-        registry.registerAll(
-            type("thrown_geode", EntityType.Builder.create(ThrownGeodeEntity::new, EntityClassification.MISC), ThrownGeodeEntity.class)
-        );
+        registry.registerAll(TYPES);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -49,6 +56,7 @@ public final class MnEntityTypes {
     private static <T extends Entity> EntityType<T> type(String id, EntityType.Builder<T> builder, Class<T> cls) {
         EntityType<T> type = builder.build(Midnight.idStr(id));
         type.setRegistryName(Midnight.id(id));
+        TYPES.put(Midnight.id(id), type);
         return type;
     }
 

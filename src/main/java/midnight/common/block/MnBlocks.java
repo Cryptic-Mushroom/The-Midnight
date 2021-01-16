@@ -27,12 +27,14 @@ import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.tags.ITag;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.registries.ObjectHolder;
 
-import javax.annotation.Nonnull;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -44,188 +46,190 @@ import java.util.function.Supplier;
  */
 @ObjectHolder("midnight")
 public abstract class MnBlocks {
+    private static final Map<ResourceLocation, Block> BLOCKS = new HashMap<>();
+
 
     ////////////////////////
     ///// BLOCK FIELDS /////
     ////////////////////////
 
     // Basic stones
-    public static final Block NIGHTSTONE = inj();
-    public static final Block NIGHT_BEDROCK = inj();
-    public static final Block TRENCHSTONE = inj();
+    public static final Block NIGHTSTONE = stone("nightstone", 1.5, 6, MaterialColor.OBSIDIAN);
+    public static final Block NIGHT_BEDROCK = stone("night_bedrock", 1.5, 6, MaterialColor.LIGHT_GRAY_TERRACOTTA);
+    public static final Block TRENCHSTONE = stone("trenchstone", 1.5, 6, MaterialColor.BLACK);
 
     // Basic soils
-    public static final Block NIGHT_DIRT = inj();
-    public static final Block COARSE_NIGHT_DIRT = inj();
-    public static final Block NIGHT_GRASS_BLOCK = inj();
-    public static final Block DECEITFUL_PEAT = inj();
-    public static final Block DECEITFUL_MUD = inj();
-    public static final Block STRANGE_SAND = inj();
-    public static final Block NIGHT_MYCELIUM = inj();
+    public static final Block NIGHT_DIRT = dirt("night_dirt", MaterialColor.BLACK);
+    public static final Block COARSE_NIGHT_DIRT = dirt("coarse_night_dirt", MaterialColor.BLACK);
+    public static final Block NIGHT_GRASS_BLOCK = grassBlock("night_grass_block");
+    public static final Block DECEITFUL_PEAT = peat("deceitful_peat", MaterialColor.PURPLE_TERRACOTTA);
+    public static final Block DECEITFUL_MUD = mud("deceitful_mud");
+    public static final Block STRANGE_SAND = sand("strange_sand");
+    public static final Block NIGHT_MYCELIUM = mycelium("night_mycelium", 2, 6, MaterialColor.MAGENTA);
 
     // Bricks
-    public static final Block NIGHTSTONE_BRICKS = inj();
-    public static final Block TRENCHSTONE_BRICKS = inj();
-    public static final Block SHROOMBRICKS = inj();
+    public static final Block NIGHTSTONE_BRICKS = bricks("nightstone_bricks", 1.5, 6, MaterialColor.OBSIDIAN);
+    public static final Block TRENCHSTONE_BRICKS = bricks("trenchstone_bricks", 1.5, 6, MaterialColor.BLACK);
+    public static final Block SHROOMBRICKS = shroombricks("shroombricks");
 
     // Fluids
-    public static final Block DARK_WATER = inj();
+    public static final Block DARK_WATER = water("dark_water", () -> MnFluids.DARK_WATER);
 
     // Tall night grass
-    public static final Block NIGHT_GRASS = inj();
-    public static final Block TALL_NIGHT_GRASS = inj();
+    public static final Block NIGHT_GRASS = smallGrowable("night_grass", 0, 0, Material.TALL_PLANTS, MaterialColor.PURPLE_TERRACOTTA, getBlock("tall_night_grass")).hitbox(12, 13).offset(Block.OffsetType.XYZ);
+    public static final Block TALL_NIGHT_GRASS = tallPlant("tall_night_grass", 0, 0, Material.TALL_PLANTS, MaterialColor.PURPLE_TERRACOTTA).hitbox(14, 30).offset(Block.OffsetType.XYZ);
 
     // Ghost plant
-    public static final Block GHOST_PLANT_STEM = inj();
-    public static final Block GHOST_PLANT_LEAF = inj();
-    public static final Block GHOST_PLANT = inj();
+    public static final Block GHOST_PLANT_STEM = giantGhostPlant("ghost_plant_stem", GhostPlantStemBlock::new);
+    public static final Block GHOST_PLANT_LEAF = giantGhostPlant("ghost_plant_leaf", GhostPlantBlock::new);
+    public static final Block GHOST_PLANT = ghostPlant("ghost_plant", 0, 0, 9, Material.PLANTS, MaterialColor.SNOW).hitbox(13, 14).offset(Block.OffsetType.XZ);
 
     // Dead wood
-    public static final Block DEAD_WOOD_LOG = inj();
-    public static final Block STRIPPED_DEAD_WOOD_LOG = inj();
-    public static final Block DEAD_WOOD = inj();
-    public static final Block STRIPPED_DEAD_WOOD = inj();
-    public static final Block DEAD_WOOD_PLANKS = inj();
-    public static final Block DEAD_SAPLING = inj();
+    public static final Block DEAD_WOOD_LOG = log("dead_wood_log", MaterialColor.FOLIAGE, getBlock("stripped_dead_wood_log"));
+    public static final Block STRIPPED_DEAD_WOOD_LOG = log("stripped_dead_wood_log", MaterialColor.FOLIAGE);
+    public static final Block DEAD_WOOD = log("dead_wood", MaterialColor.FOLIAGE, getBlock("stripped_dead_wood"));
+    public static final Block STRIPPED_DEAD_WOOD = log("stripped_dead_wood", MaterialColor.FOLIAGE);
+    public static final Block DEAD_WOOD_PLANKS = wood("dead_wood_planks", MaterialColor.FOLIAGE);
+    public static final Block DEAD_SAPLING = plant("dead_sapling", 0, 0, Material.PLANTS, MaterialColor.FOLIAGE).hitbox(12, 13);
 
     // Shadowroot
-    public static final Block SHADOWROOT_LOG = inj();
-    public static final Block STRIPPED_SHADOWROOT_LOG = inj();
-    public static final Block SHADOWROOT_WOOD = inj();
-    public static final Block STRIPPED_SHADOWROOT_WOOD = inj();
-    public static final Block SHADOWROOT_LEAVES = inj();
-    public static final Block SHADOWROOT_PLANKS = inj();
-    public static final Block SHADOWROOT_SAPLING = inj();
-    public static final Block SHADOWROOT_BOOKSHELF = inj();
+    public static final Block SHADOWROOT_LOG = log("shadowroot_log", MaterialColor.PURPLE, getBlock("stripped_shadowroot_log"));
+    public static final Block STRIPPED_SHADOWROOT_LOG = log("stripped_shadowroot_log", MaterialColor.PURPLE);
+    public static final Block SHADOWROOT_WOOD = log("shadowroot_wood", MaterialColor.PURPLE, getBlock("stripped_shadowroot_wood"));
+    public static final Block STRIPPED_SHADOWROOT_WOOD = log("stripped_shadowroot_wood", MaterialColor.PURPLE);
+    public static final Block SHADOWROOT_LEAVES = leaves("shadowroot_leaves", MaterialColor.PURPLE);
+    public static final Block SHADOWROOT_PLANKS = wood("shadowroot_planks", MaterialColor.PURPLE);
+    public static final Block SHADOWROOT_SAPLING = plant("shadowroot_sapling", 0, 0, Material.PLANTS, MaterialColor.PURPLE).hitbox(11, 15);
+    public static final Block SHADOWROOT_BOOKSHELF = bookshelf("shadowroot_bookshelf", MaterialColor.PURPLE);
 
     // Dark willow
-    public static final Block DARK_WILLOW_LOG = inj();
-    public static final Block STRIPPED_DARK_WILLOW_LOG = inj();
-    public static final Block DARK_WILLOW_WOOD = inj();
-    public static final Block STRIPPED_DARK_WILLOW_WOOD = inj();
-    public static final Block DARK_WILLOW_LEAVES = inj();
-    public static final Block HANGING_DARK_WILLOW_LEAVES = inj();
-    public static final Block DARK_WILLOW_PLANKS = inj();
-    public static final Block DARK_WILLOW_SAPLING = inj();
-    public static final Block DARK_WILLOW_BOOKSHELF = inj();
+    public static final Block DARK_WILLOW_LOG = log("dark_willow_log", MaterialColor.BLUE, getBlock("stripped_dark_willow_log"));
+    public static final Block STRIPPED_DARK_WILLOW_LOG = log("stripped_dark_willow_log", MaterialColor.BLUE);
+    public static final Block DARK_WILLOW_WOOD = log("dark_willow_wood", MaterialColor.BLUE, getBlock("stripped_dark_willow_wood"));
+    public static final Block STRIPPED_DARK_WILLOW_WOOD = log("stripped_dark_willow_wood", MaterialColor.BLUE);
+    public static final Block DARK_WILLOW_LEAVES = growsHangingLeaves("dark_willow_leaves", MaterialColor.BLUE_TERRACOTTA, getBlock("hanging_dark_willow_leaves"));
+    public static final Block HANGING_DARK_WILLOW_LEAVES = hangingLeaves("hanging_dark_willow_leaves", MaterialColor.BLUE_TERRACOTTA, getBlock("dark_willow_leaves"), MnBlockTags.DARK_WILLOW_LOGS).hitbox(14, 16);
+    public static final Block DARK_WILLOW_PLANKS = wood("dark_willow_planks", MaterialColor.BLUE_TERRACOTTA);
+    public static final Block DARK_WILLOW_SAPLING = plant("dark_willow_sapling", 0, 0, Material.PLANTS, MaterialColor.BLUE_TERRACOTTA).hitbox(12, 14);
+    public static final Block DARK_WILLOW_BOOKSHELF = bookshelf("dark_willow_bookshelf", MaterialColor.BLUE);
 
     // Shroom air
-    public static final Block SHROOM_AIR = inj();
+    public static final Block SHROOM_AIR = shroomAir("shroom_air");
 
     // Nightshroom
-    public static final Block NIGHTSHROOM_CAP = inj();
-    public static final Block NIGHTSHROOM_STEM = inj();
-    public static final Block NIGHTSHROOM_PLANKS = inj();
-    public static final Block NIGHTSHROOM = inj();
-    public static final Block TALL_NIGHTSHROOM = inj();
-    public static final Block NIGHTSHROOM_SHELF = inj();
-    public static final Block NIGHTSHROOM_FIBRE = inj();
-    public static final Block NIGHTSHROOM_ROOTS = inj();
-    public static final Block FLOWERING_NIGHTSHROOM_ROOTS = inj();
+    public static final Block NIGHTSHROOM_CAP = shroomCap("nightshroom_cap", MaterialColor.BLUE, 0x7566B0);
+    public static final Block NIGHTSHROOM_STEM = stem("nightshroom_stem", MaterialColor.BLUE);
+    public static final Block NIGHTSHROOM_PLANKS = wood("nightshroom_planks", MaterialColor.BLUE);
+    public static final Block NIGHTSHROOM = smallShroom("nightshroom", 0, 0, Material.PLANTS, MaterialColor.BLUE, getBlock("tall_nightshroom")).hitbox(14, 14).offset(Block.OffsetType.XZ);
+    public static final Block TALL_NIGHTSHROOM = tallShroom("tall_nightshroom", 0, 0, Material.PLANTS, MaterialColor.BLUE).hitbox(14, 30).offset(Block.OffsetType.XZ);
+    public static final Block NIGHTSHROOM_SHELF = shelf("nightshroom_shelf", 0, 0, Material.PLANTS, MaterialColor.BLUE);
+    public static final Block NIGHTSHROOM_FIBRE = fibre("nightshroom_fibre", Material.TALL_PLANTS, MaterialColor.BLUE);
+    public static final Block NIGHTSHROOM_ROOTS = shroomRoots("nightshroom_roots", Material.PLANTS, MaterialColor.BLUE).hitbox(13, 14).offset(AbstractBlock.OffsetType.XZ);
+    public static final Block FLOWERING_NIGHTSHROOM_ROOTS = shroomRoots("flowering_nightshroom_roots", Material.PLANTS, MaterialColor.BLUE).hitbox(13, 14).offset(AbstractBlock.OffsetType.XZ);
 
     // Dewshroom
-    public static final Block DEWSHROOM_CAP = inj();
-    public static final Block DEWSHROOM_STEM = inj();
-    public static final Block DEWSHROOM_PLANKS = inj();
-    public static final Block DEWSHROOM = inj();
-    public static final Block TALL_DEWSHROOM = inj();
-    public static final Block DEWSHROOM_SHELF = inj();
-    public static final Block DEWSHROOM_FIBRE = inj();
-    public static final Block DEWSHROOM_ROOTS = inj();
-    public static final Block FLOWERING_DEWSHROOM_ROOTS = inj();
+    public static final Block DEWSHROOM_CAP = shroomCap("dewshroom_cap", MaterialColor.CYAN, 0x72CFD4);
+    public static final Block DEWSHROOM_STEM = stem("dewshroom_stem", MaterialColor.CYAN);
+    public static final Block DEWSHROOM_PLANKS = wood("dewshroom_planks", MaterialColor.CYAN);
+    public static final Block DEWSHROOM = smallShroom("dewshroom", 0, 0, Material.PLANTS, MaterialColor.CYAN, getBlock("tall_dewshroom")).hitbox(14, 14).offset(Block.OffsetType.XZ);
+    public static final Block TALL_DEWSHROOM = tallShroom("tall_dewshroom", 0, 0, Material.PLANTS, MaterialColor.CYAN).hitbox(14, 30).offset(Block.OffsetType.XZ);
+    public static final Block DEWSHROOM_SHELF = shelf("dewshroom_shelf", 0, 0, Material.PLANTS, MaterialColor.CYAN);
+    public static final Block DEWSHROOM_FIBRE = fibre("dewshroom_fibre", Material.TALL_PLANTS, MaterialColor.CYAN);
+    public static final Block DEWSHROOM_ROOTS = shroomRoots("dewshroom_roots", Material.PLANTS, MaterialColor.CYAN).hitbox(13, 14).offset(AbstractBlock.OffsetType.XZ);
+    public static final Block FLOWERING_DEWSHROOM_ROOTS = shroomRoots("flowering_dewshroom_roots", Material.PLANTS, MaterialColor.CYAN).hitbox(13, 14).offset(AbstractBlock.OffsetType.XZ);
 
     // Viridshroom
-    public static final Block VIRIDSHROOM_CAP = inj();
-    public static final Block VIRIDSHROOM_STEM = inj();
-    public static final Block VIRIDSHROOM_PLANKS = inj();
-    public static final Block VIRIDSHROOM = inj();
-    public static final Block TALL_VIRIDSHROOM = inj();
-    public static final Block VIRIDSHROOM_SHELF = inj();
-    public static final Block VIRIDSHROOM_FIBRE = inj();
-    public static final Block VIRIDSHROOM_ROOTS = inj();
-    public static final Block FLOWERING_VIRIDSHROOM_ROOTS = inj();
+    public static final Block VIRIDSHROOM_CAP = shroomCap("viridshroom_cap", MaterialColor.LIME, 0x84F54C);
+    public static final Block VIRIDSHROOM_STEM = stem("viridshroom_stem", MaterialColor.LIME);
+    public static final Block VIRIDSHROOM_PLANKS = wood("viridshroom_planks", MaterialColor.LIME);
+    public static final Block VIRIDSHROOM = smallShroom("viridshroom", 0, 0, Material.PLANTS, MaterialColor.LIME, getBlock("tall_viridshroom")).hitbox(14, 14).offset(Block.OffsetType.XZ);
+    public static final Block TALL_VIRIDSHROOM = tallShroom("tall_viridshroom", 0, 0, Material.PLANTS, MaterialColor.LIME).hitbox(14, 30).offset(Block.OffsetType.XZ);
+    public static final Block VIRIDSHROOM_SHELF = shelf("viridshroom_shelf", 0, 0, Material.PLANTS, MaterialColor.LIME);
+    public static final Block VIRIDSHROOM_FIBRE = fibre("viridshroom_fibre", Material.TALL_PLANTS, MaterialColor.LIME);
+    public static final Block VIRIDSHROOM_ROOTS = shroomRoots("viridshroom_roots", Material.PLANTS, MaterialColor.LIME).hitbox(13, 14).offset(AbstractBlock.OffsetType.XZ);
+    public static final Block FLOWERING_VIRIDSHROOM_ROOTS = shroomRoots("flowering_viridshroom_roots", Material.PLANTS, MaterialColor.LIME).hitbox(13, 14).offset(AbstractBlock.OffsetType.XZ);
 
     // Moonshroom
-    public static final Block MOONSHROOM_CAP = inj();
-    public static final Block MOONSHROOM_STEM = inj();
-    public static final Block MOONSHROOM_PLANKS = inj();
-    public static final Block MOONSHROOM = inj();
-    public static final Block TALL_MOONSHROOM = inj();
-    public static final Block MOONSHROOM_SHELF = inj();
-    public static final Block MOONSHROOM_FIBRE = inj();
-    public static final Block MOONSHROOM_ROOTS = inj();
-    public static final Block FLOWERING_MOONSHROOM_ROOTS = inj();
+    public static final Block MOONSHROOM_CAP = shroomCap("moonshroom_cap", MaterialColor.LIGHT_GRAY, 0xD7F3F5);
+    public static final Block MOONSHROOM_STEM = stem("moonshroom_stem", MaterialColor.GRAY);
+    public static final Block MOONSHROOM_PLANKS = wood("moonshroom_planks", MaterialColor.GRAY);
+    public static final Block MOONSHROOM = smallShroom("moonshroom", 0, 0, Material.PLANTS, MaterialColor.LIGHT_GRAY, getBlock("tall_moonshroom")).hitbox(14, 14).offset(Block.OffsetType.XZ);
+    public static final Block TALL_MOONSHROOM = tallShroom("tall_moonshroom", 0, 0, Material.PLANTS, MaterialColor.LIGHT_GRAY).hitbox(14, 30).offset(Block.OffsetType.XZ);
+    public static final Block MOONSHROOM_SHELF = shelf("moonshroom_shelf", 0, 0, Material.PLANTS, MaterialColor.LIGHT_GRAY);
+    public static final Block MOONSHROOM_FIBRE = fibre("moonshroom_fibre", Material.TALL_PLANTS, MaterialColor.GRAY);
+    public static final Block MOONSHROOM_ROOTS = shroomRoots("moonshroom_roots", Material.PLANTS, MaterialColor.GRAY).hitbox(13, 14).offset(AbstractBlock.OffsetType.XZ);
+    public static final Block FLOWERING_MOONSHROOM_ROOTS = shroomRoots("flowering_moonshroom_roots", Material.PLANTS, MaterialColor.GRAY).hitbox(13, 14).offset(AbstractBlock.OffsetType.XZ);
 
     // Bogshroom
-    public static final Block BOGSHROOM_CAP = inj();
-    public static final Block BOGSHROOM_STEM = inj();
-    public static final Block BOGSHROOM_PLANKS = inj();
-    public static final Block BOGSHROOM = inj();
-    public static final Block TALL_BOGSHROOM = inj();
-    public static final Block BOGSHROOM_SHELF = inj();
-    public static final Block BOGSHROOM_FIBRE = inj();
+    public static final Block BOGSHROOM_CAP = shroomCap("bogshroom_cap", MaterialColor.ADOBE, 0xF5AF4C);
+    public static final Block BOGSHROOM_STEM = stem("bogshroom_stem", MaterialColor.ADOBE);
+    public static final Block BOGSHROOM_PLANKS = wood("bogshroom_planks", MaterialColor.ADOBE);
+    public static final Block BOGSHROOM = smallShroom("bogshroom", 0, 0, Material.PLANTS, MaterialColor.ADOBE, getBlock("tall_bogshroom")).hitbox(14, 14).offset(Block.OffsetType.XZ);
+    public static final Block TALL_BOGSHROOM = tallShroom("tall_bogshroom", 0, 0, Material.PLANTS, MaterialColor.ADOBE).hitbox(14, 30).offset(Block.OffsetType.XZ);
+    public static final Block BOGSHROOM_SHELF = shelf("bogshroom_shelf", 0, 0, Material.PLANTS, MaterialColor.ADOBE);
+    public static final Block BOGSHROOM_FIBRE = fibre("bogshroom_fibre", Material.TALL_PLANTS, MaterialColor.ADOBE);
 
     // Glob fungus
-    public static final Block GLOB_FUNGUS = inj();
-    public static final Block GLOB_FUNGUS_CAP = inj();
-    public static final Block GLOB_FUNGUS_STEM = inj();
-    public static final Block INFESTED_GLOB_FUNGUS_STEM = inj();
-    public static final Block GLOB_FUNGUS_HYPHAE = inj();
-    public static final Block GLOB_FUNGUS_THATCH = inj();
+    public static final Block GLOB_FUNGUS = smallFungus("glob_fungus", 0, 0, Material.PLANTS, MaterialColor.MAGENTA).hitbox(13, 13).offset(Block.OffsetType.XYZ);
+    public static final Block GLOB_FUNGUS_CAP = globCap("glob_fungus_cap", MaterialColor.MAGENTA);
+    public static final Block GLOB_FUNGUS_STEM = globStem("glob_fungus_stem", MaterialColor.PURPLE);
+    public static final Block INFESTED_GLOB_FUNGUS_STEM = infestedGlobStem("infested_glob_fungus_stem", MaterialColor.PURPLE);
+    public static final Block GLOB_FUNGUS_HYPHAE = globStem("glob_fungus_hyphae", MaterialColor.PURPLE);
+    public static final Block GLOB_FUNGUS_THATCH = thatch("glob_fungus_thatch", MaterialColor.PURPLE);
 
     // Misc plants
-    public static final Block MISTSHROOM = inj();
-    public static final Block TALL_MISTSHROOM = inj();
-    public static final Block FINGERED_GRASS = inj();
-    public static final Block LUMEN_BUD = inj();
-    public static final Block TALL_LUMEN_BUD = inj();
-    public static final Block RUNEBUSH = inj();
-    public static final Block BOGWEED = inj();
-    public static final Block CRYSTALOTUS = inj();
-    public static final Block SUAVIS = inj();
-    public static final Block VIOLEAF = inj();
-    public static final Block TENDRILWEED = inj();
-    public static final Block NIGHT_REED = inj();
-    public static final Block DECEITFUL_MOSS = inj();
-    public static final Block DECEITFUL_ALGAE = inj();
+    public static final Block MISTSHROOM = smallShroom("mistshroom", 0, 0, Material.PLANTS, MaterialColor.CYAN_TERRACOTTA, getBlock("tall_mistshroom")).hitbox(13, 13).offset(Block.OffsetType.XZ);
+    public static final Block TALL_MISTSHROOM = tallShroom("tall_mistshroom", 0, 0, Material.PLANTS, MaterialColor.CYAN_TERRACOTTA).hitbox(13, 30).offset(Block.OffsetType.XZ);
+    public static final Block FINGERED_GRASS = fingeredGrass("fingered_grass").hitbox(12, 12).offset(Block.OffsetType.XYZ);
+    public static final Block LUMEN_BUD = smallGlowingGrowable("lumen_bud", 0, 0, 10, Material.PLANTS, MaterialColor.CYAN_TERRACOTTA, getBlock("tall_lumen_bud")).hitbox(13, 14).offset(Block.OffsetType.XZ);
+    public static final Block TALL_LUMEN_BUD = tallGlowingPlant("tall_lumen_bud", 0, 0, 10, Material.PLANTS, MaterialColor.CYAN_TERRACOTTA).hitbox(13, 30).offset(Block.OffsetType.XZ);
+    public static final Block RUNEBUSH = glowingBush("runebush", 0, 0, 10, Material.PLANTS, MaterialColor.CYAN).hitbox(12, 13).offset(Block.OffsetType.XZ);
+    public static final Block BOGWEED = wetPlant("bogweed", 0, 0, 14, Material.PLANTS, MaterialColor.LIME).hitbox(12, 12).offset(Block.OffsetType.XZ);
+    public static final Block CRYSTALOTUS = crystalotus("crystalotus");
+    public static final Block SUAVIS = suavis("suavis");
+    public static final Block VIOLEAF = violeaf("violeaf").hitbox(7, 10).offset(Block.OffsetType.XYZ);
+    public static final Block TENDRILWEED = tendrilweed("tendrilweed").hitbox(9, 14).offset(Block.OffsetType.XZ);
+    public static final Block NIGHT_REED = nightReed("night_reed").hitbox(13, 11);
+    public static final Block DECEITFUL_MOSS = directionalPlant("deceitful_moss", 0.3, 0, Material.PLANTS, MaterialColor.BLUE_TERRACOTTA).hitbox(16, 2);
+    public static final Block DECEITFUL_ALGAE = floatingAlgae("deceitful_algae", 0, 0, Material.OCEAN_PLANT, MaterialColor.BLUE_TERRACOTTA).hitbox(16, 1);
 
-    public static final Block REED_THATCH = inj();
-    public static final Block CUT_REED_THATCH = inj();
+    public static final Block REED_THATCH = reedThatch("reed_thatch", MaterialColor.PURPLE, getBlock("cut_reed_thatch"));
+    public static final Block CUT_REED_THATCH = thatch("cut_reed_thatch", MaterialColor.PURPLE);
 
     // Rockshroom
-    public static final Block ROCKSHROOM = inj();
+    public static final Block ROCKSHROOM = rockshroom("rockshroom");
 
     // Crystals
-    public static final Block ROUXE_ROCK = inj();
-    public static final Block BLOOMCRYSTAL_ROCK = inj();
-    public static final Block ROUXE = inj();
-    public static final Block BLOOMCRYSTAL = inj();
-    public static final Block CRYSTAL_FLOWER = inj();
+    public static final Block ROUXE_ROCK = crystalRock("rouxe_rock", 4, 4, 2, MaterialColor.RED);
+    public static final Block BLOOMCRYSTAL_ROCK = crystalRock("bloomcrystal_rock", 4, 4, 14, MaterialColor.PINK);
+    public static final Block ROUXE = crystal("rouxe", 4, 4, 3, MaterialColor.RED).hitbox(13, 12).offset(AbstractBlock.OffsetType.XZ);
+    public static final Block BLOOMCRYSTAL = crystal("bloomcrystal", 4, 4, 15, MaterialColor.PINK).hitbox(13, 12).offset(AbstractBlock.OffsetType.XZ);
+    public static final Block CRYSTAL_FLOWER = crystalFlower("crystal_flower", 0, 0, Material.PLANTS, MaterialColor.PINK).hitbox(13, 13).offset(AbstractBlock.OffsetType.XZ);
 
     // Dark pearl
-    public static final Block DARK_PEARL_ORE = inj();
-    public static final Block DARK_PEARL_BLOCK = inj();
+    public static final Block DARK_PEARL_ORE = stone("dark_pearl_ore", 3, 6, MaterialColor.OBSIDIAN);
+    public static final Block DARK_PEARL_BLOCK = darkPearl("dark_pearl_block", 3, 6, MaterialColor.BLACK);
 
     // Archaic
-    public static final Block ARCHAIC_ORE = inj();
-    public static final Block ARCHAIC_GLASS = inj();
-    public static final Block ARCHAIC_GLASS_PANE = inj();
+    public static final Block ARCHAIC_ORE = stone("archaic_ore", 3, 6, MaterialColor.OBSIDIAN);
+    public static final Block ARCHAIC_GLASS = glass("archaic_glass");
+    public static final Block ARCHAIC_GLASS_PANE = glassPane("archaic_glass_pane");
 
     // Tenebrum
-    public static final Block TENEBRUM_ORE = inj();
-    public static final Block TENEBRUM_BLOCK = inj();
+    public static final Block TENEBRUM_ORE = ore("tenebrum_ore", 3, 3, MaterialColor.OBSIDIAN, 3);
+    public static final Block TENEBRUM_BLOCK = rareMetal("tenebrum_block", 6.7, 8, MaterialColor.BLACK, 3);
 
     // Nagrilite
-    public static final Block NAGRILITE_ORE = inj();
-    public static final Block NAGRILITE_BLOCK = inj();
+    public static final Block NAGRILITE_ORE = ore("nagrilite_ore", 3, 3, MaterialColor.OBSIDIAN, 2);
+    public static final Block NAGRILITE_BLOCK = metal("nagrilite_block", 5, 6, MaterialColor.BLACK, 2);
 
     // Ebonite
-    public static final Block EBONITE_ORE = inj();
-    public static final Block EBONITE_BLOCK = inj();
+    public static final Block EBONITE_ORE = xpOre("ebonite_ore", 3, 3, MaterialColor.OBSIDIAN, 1, 0, 2);
+    public static final Block EBONITE_BLOCK = brittleMetal("ebonite_block", 3, 5, MaterialColor.BLACK, 1);
 
     // Virilux
-    public static final Block VIRILUX_ORE = inj();
-    public static final Block VIRILUX_BLOCK = inj();
+    public static final Block VIRILUX_ORE = viriluxOre("virilux_ore");
+    public static final Block VIRILUX_BLOCK = virilux("virilux_block");
 
 
 
@@ -234,161 +238,7 @@ public abstract class MnBlocks {
     //////////////////////////
 
     public static void registerBlocks(IRegistry<Block> registry) {
-        registry.registerAll(
-            stone("nightstone", 1.5, 6, MaterialColor.OBSIDIAN),
-            stone("night_bedrock", 1.5, 6, MaterialColor.LIGHT_GRAY_TERRACOTTA),
-            stone("trenchstone", 1.5, 6, MaterialColor.BLACK),
-
-            dirt("night_dirt", MaterialColor.BLACK),
-            dirt("coarse_night_dirt", MaterialColor.BLACK),
-            grassBlock("night_grass_block"),
-            peat("deceitful_peat", MaterialColor.PURPLE_TERRACOTTA),
-            mud("deceitful_mud"),
-            sand("strange_sand"),
-            mycelium("night_mycelium", 2, 6, MaterialColor.MAGENTA),
-
-            bricks("nightstone_bricks", 1.5, 6, MaterialColor.OBSIDIAN),
-            bricks("trenchstone_bricks", 1.5, 6, MaterialColor.BLACK),
-            shroombricks("shroombricks"),
-
-            water("dark_water", () -> MnFluids.DARK_WATER),
-
-            smallGrowable("night_grass", 0, 0, Material.TALL_PLANTS, MaterialColor.PURPLE_TERRACOTTA, () -> (TallPlantBlock) TALL_NIGHT_GRASS).hitbox(12, 13).offset(Block.OffsetType.XYZ),
-            tallPlant("tall_night_grass", 0, 0, Material.TALL_PLANTS, MaterialColor.PURPLE_TERRACOTTA).hitbox(14, 30).offset(Block.OffsetType.XYZ),
-
-            giantGhostPlant("ghost_plant_stem", GhostPlantStemBlock::new),
-            giantGhostPlant("ghost_plant_leaf", GhostPlantBlock::new),
-            ghostPlant("ghost_plant", 0, 0, 9, Material.PLANTS, MaterialColor.SNOW).hitbox(13, 14).offset(Block.OffsetType.XZ),
-
-            log("dead_wood_log", MaterialColor.FOLIAGE, () -> STRIPPED_DEAD_WOOD_LOG),
-            log("stripped_dead_wood_log", MaterialColor.FOLIAGE),
-            log("dead_wood", MaterialColor.FOLIAGE, () -> STRIPPED_DEAD_WOOD),
-            log("stripped_dead_wood", MaterialColor.FOLIAGE),
-            wood("dead_wood_planks", MaterialColor.FOLIAGE),
-            plant("dead_sapling", 0, 0, Material.PLANTS, MaterialColor.FOLIAGE).hitbox(12, 13),
-
-            log("shadowroot_log", MaterialColor.PURPLE, () -> STRIPPED_SHADOWROOT_LOG),
-            log("stripped_shadowroot_log", MaterialColor.PURPLE),
-            log("shadowroot_wood", MaterialColor.PURPLE, () -> STRIPPED_SHADOWROOT_WOOD),
-            log("stripped_shadowroot_wood", MaterialColor.PURPLE),
-            leaves("shadowroot_leaves", MaterialColor.PURPLE),
-            wood("shadowroot_planks", MaterialColor.PURPLE),
-            plant("shadowroot_sapling", 0, 0, Material.PLANTS, MaterialColor.PURPLE).hitbox(11, 15),
-            bookshelf("shadowroot_bookshelf", MaterialColor.PURPLE),
-
-            log("dark_willow_log", MaterialColor.BLUE, () -> STRIPPED_DARK_WILLOW_LOG),
-            log("stripped_dark_willow_log", MaterialColor.BLUE),
-            log("dark_willow_wood", MaterialColor.BLUE, () -> STRIPPED_DARK_WILLOW_WOOD),
-            log("stripped_dark_willow_wood", MaterialColor.BLUE),
-            growsHangingLeaves("dark_willow_leaves", MaterialColor.BLUE_TERRACOTTA, () -> HANGING_DARK_WILLOW_LEAVES),
-            hangingLeaves("hanging_dark_willow_leaves", MaterialColor.BLUE_TERRACOTTA, () -> DARK_WILLOW_LEAVES, MnBlockTags.DARK_WILLOW_LOGS).hitbox(14, 16),
-            wood("dark_willow_planks", MaterialColor.BLUE_TERRACOTTA),
-            plant("dark_willow_sapling", 0, 0, Material.PLANTS, MaterialColor.BLUE_TERRACOTTA).hitbox(12, 14),
-            bookshelf("dark_willow_bookshelf", MaterialColor.BLUE),
-
-            shroomAir("shroom_air"),
-
-            shroomCap("nightshroom_cap", MaterialColor.BLUE, 0x7566B0),
-            stem("nightshroom_stem", MaterialColor.BLUE),
-            wood("nightshroom_planks", MaterialColor.BLUE),
-            smallShroom("nightshroom", 0, 0, Material.PLANTS, MaterialColor.BLUE, () -> (TallPlantBlock) TALL_NIGHTSHROOM).hitbox(14, 14).offset(Block.OffsetType.XZ),
-            tallShroom("tall_nightshroom", 0, 0, Material.PLANTS, MaterialColor.BLUE).hitbox(14, 30).offset(Block.OffsetType.XZ),
-            shelf("nightshroom_shelf", 0, 0, Material.PLANTS, MaterialColor.BLUE),
-            fibre("nightshroom_fibre", Material.TALL_PLANTS, MaterialColor.BLUE),
-            shroomRoots("nightshroom_roots", Material.PLANTS, MaterialColor.BLUE).hitbox(13, 14).offset(AbstractBlock.OffsetType.XZ),
-            shroomRoots("flowering_nightshroom_roots", Material.PLANTS, MaterialColor.BLUE).hitbox(13, 14).offset(AbstractBlock.OffsetType.XZ),
-
-            shroomCap("dewshroom_cap", MaterialColor.CYAN, 0x72CFD4),
-            stem("dewshroom_stem", MaterialColor.CYAN),
-            wood("dewshroom_planks", MaterialColor.CYAN),
-            smallShroom("dewshroom", 0, 0, Material.PLANTS, MaterialColor.CYAN, () -> (TallPlantBlock) TALL_DEWSHROOM).hitbox(14, 14).offset(Block.OffsetType.XZ),
-            tallShroom("tall_dewshroom", 0, 0, Material.PLANTS, MaterialColor.CYAN).hitbox(14, 30).offset(Block.OffsetType.XZ),
-            shelf("dewshroom_shelf", 0, 0, Material.PLANTS, MaterialColor.CYAN),
-            fibre("dewshroom_fibre", Material.TALL_PLANTS, MaterialColor.CYAN),
-            shroomRoots("dewshroom_roots", Material.PLANTS, MaterialColor.CYAN).hitbox(13, 14).offset(AbstractBlock.OffsetType.XZ),
-            shroomRoots("flowering_dewshroom_roots", Material.PLANTS, MaterialColor.CYAN).hitbox(13, 14).offset(AbstractBlock.OffsetType.XZ),
-
-            shroomCap("viridshroom_cap", MaterialColor.LIME, 0x84F54C),
-            stem("viridshroom_stem", MaterialColor.LIME),
-            wood("viridshroom_planks", MaterialColor.LIME),
-            smallShroom("viridshroom", 0, 0, Material.PLANTS, MaterialColor.LIME, () -> (TallPlantBlock) TALL_VIRIDSHROOM).hitbox(14, 14).offset(Block.OffsetType.XZ),
-            tallShroom("tall_viridshroom", 0, 0, Material.PLANTS, MaterialColor.LIME).hitbox(14, 30).offset(Block.OffsetType.XZ),
-            shelf("viridshroom_shelf", 0, 0, Material.PLANTS, MaterialColor.LIME),
-            fibre("viridshroom_fibre", Material.TALL_PLANTS, MaterialColor.LIME),
-            shroomRoots("viridshroom_roots", Material.PLANTS, MaterialColor.LIME).hitbox(13, 14).offset(AbstractBlock.OffsetType.XZ),
-            shroomRoots("flowering_viridshroom_roots", Material.PLANTS, MaterialColor.LIME).hitbox(13, 14).offset(AbstractBlock.OffsetType.XZ),
-
-            shroomCap("moonshroom_cap", MaterialColor.LIGHT_GRAY, 0xD7F3F5),
-            stem("moonshroom_stem", MaterialColor.GRAY),
-            wood("moonshroom_planks", MaterialColor.GRAY),
-            smallShroom("moonshroom", 0, 0, Material.PLANTS, MaterialColor.LIGHT_GRAY, () -> (TallPlantBlock) TALL_MOONSHROOM).hitbox(14, 14).offset(Block.OffsetType.XZ),
-            tallShroom("tall_moonshroom", 0, 0, Material.PLANTS, MaterialColor.LIGHT_GRAY).hitbox(14, 30).offset(Block.OffsetType.XZ),
-            shelf("moonshroom_shelf", 0, 0, Material.PLANTS, MaterialColor.LIGHT_GRAY),
-            fibre("moonshroom_fibre", Material.TALL_PLANTS, MaterialColor.GRAY),
-            shroomRoots("moonshroom_roots", Material.PLANTS, MaterialColor.GRAY).hitbox(13, 14).offset(AbstractBlock.OffsetType.XZ),
-            shroomRoots("flowering_moonshroom_roots", Material.PLANTS, MaterialColor.GRAY).hitbox(13, 14).offset(AbstractBlock.OffsetType.XZ),
-
-            shroomCap("bogshroom_cap", MaterialColor.ADOBE, 0xF5AF4C),
-            stem("bogshroom_stem", MaterialColor.ADOBE),
-            wood("bogshroom_planks", MaterialColor.ADOBE),
-            smallShroom("bogshroom", 0, 0, Material.PLANTS, MaterialColor.ADOBE, () -> (TallPlantBlock) TALL_BOGSHROOM).hitbox(14, 14).offset(Block.OffsetType.XZ),
-            tallShroom("tall_bogshroom", 0, 0, Material.PLANTS, MaterialColor.ADOBE).hitbox(14, 30).offset(Block.OffsetType.XZ),
-            shelf("bogshroom_shelf", 0, 0, Material.PLANTS, MaterialColor.ADOBE),
-            fibre("bogshroom_fibre", Material.TALL_PLANTS, MaterialColor.ADOBE),
-
-            smallFungus("glob_fungus", 0, 0, Material.PLANTS, MaterialColor.MAGENTA).hitbox(13, 13).offset(Block.OffsetType.XYZ),
-            globCap("glob_fungus_cap", MaterialColor.MAGENTA),
-            globStem("glob_fungus_stem", MaterialColor.PURPLE),
-            infestedGlobStem("infested_glob_fungus_stem", MaterialColor.PURPLE),
-            globStem("glob_fungus_hyphae", MaterialColor.PURPLE),
-            thatch("glob_fungus_thatch", MaterialColor.PURPLE),
-
-            smallShroom("mistshroom", 0, 0, Material.PLANTS, MaterialColor.CYAN_TERRACOTTA, () -> (TallPlantBlock) TALL_MISTSHROOM).hitbox(13, 13).offset(Block.OffsetType.XZ),
-            tallShroom("tall_mistshroom", 0, 0, Material.PLANTS, MaterialColor.CYAN_TERRACOTTA).hitbox(13, 30).offset(Block.OffsetType.XZ),
-            fingeredGrass("fingered_grass").hitbox(12, 12).offset(Block.OffsetType.XYZ),
-            smallGlowingGrowable("lumen_bud", 0, 0, 10, Material.PLANTS, MaterialColor.CYAN_TERRACOTTA, () -> (TallPlantBlock) TALL_LUMEN_BUD).hitbox(13, 14).offset(Block.OffsetType.XZ),
-            tallGlowingPlant("tall_lumen_bud", 0, 0, 10, Material.PLANTS, MaterialColor.CYAN_TERRACOTTA).hitbox(13, 30).offset(Block.OffsetType.XZ),
-            glowingBush("runebush", 0, 0, 10, Material.PLANTS, MaterialColor.CYAN).hitbox(12, 13).offset(Block.OffsetType.XZ),
-            wetPlant("bogweed", 0, 0, 14, Material.PLANTS, MaterialColor.LIME).hitbox(12, 12).offset(Block.OffsetType.XZ),
-            crystalotus("crystalotus"),
-            suavis("suavis"),
-            violeaf("violeaf").hitbox(7, 10).offset(Block.OffsetType.XYZ),
-            tendrilweed("tendrilweed").hitbox(9, 14).offset(Block.OffsetType.XZ),
-            nightReed("night_reed").hitbox(13, 11),
-            directionalPlant("deceitful_moss", 0.3, 0, Material.PLANTS, MaterialColor.BLUE_TERRACOTTA).hitbox(16, 2),
-            floatingAlgae("deceitful_algae", 0, 0, Material.OCEAN_PLANT, MaterialColor.BLUE_TERRACOTTA).hitbox(16, 1),
-
-            reedThatch("reed_thatch", MaterialColor.PURPLE, () -> CUT_REED_THATCH),
-            thatch("cut_reed_thatch", MaterialColor.PURPLE),
-
-            rockshroom("rockshroom"),
-
-            crystalRock("rouxe_rock", 4, 4, 2, MaterialColor.RED),
-            crystalRock("bloomcrystal_rock", 4, 4, 14, MaterialColor.PINK),
-            crystal("rouxe", 4, 4, 3, MaterialColor.RED).hitbox(13, 12).offset(AbstractBlock.OffsetType.XZ),
-            crystal("bloomcrystal", 4, 4, 15, MaterialColor.PINK).hitbox(13, 12).offset(AbstractBlock.OffsetType.XZ),
-            crystalFlower("crystal_flower", 0, 0, Material.PLANTS, MaterialColor.PINK).hitbox(13, 13).offset(AbstractBlock.OffsetType.XZ),
-
-
-            stone("dark_pearl_ore", 3, 6, MaterialColor.OBSIDIAN),
-            darkPearl("dark_pearl_block", 3, 6, MaterialColor.BLACK),
-
-            stone("archaic_ore", 3, 6, MaterialColor.OBSIDIAN),
-            glass("archaic_glass"),
-            glassPane("archaic_glass_pane"),
-
-            ore("tenebrum_ore", 3, 3, MaterialColor.OBSIDIAN, 3),
-            rareMetal("tenebrum_block", 6.7, 8, MaterialColor.BLACK, 3),
-
-            ore("nagrilite_ore", 3, 3, MaterialColor.OBSIDIAN, 2),
-            metal("nagrilite_block", 5, 6, MaterialColor.BLACK, 2),
-
-            xpOre("ebonite_ore", 3, 3, MaterialColor.OBSIDIAN, 1, 0, 2),
-            brittleMetal("ebonite_block", 3, 5, MaterialColor.BLACK, 1),
-
-            viriluxOre("virilux_ore"),
-            virilux("virilux_block")
-        );
+        registry.registerAll(BLOCKS);
     }
 
 
@@ -542,6 +392,7 @@ public abstract class MnBlocks {
     /////////////////////////////////
 
     private static <B extends Block> B block(String id, B block) {
+        BLOCKS.put(Midnight.id(id), block);
         block.setRegistryName(Midnight.id(id));
         return block;
     }
@@ -1195,9 +1046,16 @@ public abstract class MnBlocks {
         ));
     }
 
-    @Nonnull
-    @SuppressWarnings("ConstantConditions")
-    private static Block inj() {
-        return null;
+    @SuppressWarnings("unchecked")
+    private static <T extends Block> Supplier<T> getBlock(String id) {
+        return () -> (T) BLOCKS.get(Midnight.id(id));
+    }
+
+    private static Supplier<BlockState> getState(String id) {
+        return () -> BLOCKS.get(Midnight.id(id)).getDefaultState();
+    }
+
+    private static Supplier<BlockState> getState(String id, Function<BlockState, BlockState> props) {
+        return () -> props.apply(BLOCKS.get(Midnight.id(id)).getDefaultState());
     }
 }

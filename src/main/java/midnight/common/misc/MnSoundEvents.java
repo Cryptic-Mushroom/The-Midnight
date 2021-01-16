@@ -13,8 +13,8 @@ import midnight.core.util.IRegistry;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Registers and stores the list of Midnight sound events.
@@ -23,7 +23,7 @@ import java.util.List;
  * @since 0.6.0
  */
 public final class MnSoundEvents {
-    private static final List<SoundEvent> SOUNDS = new ArrayList<>();
+    private static final Map<ResourceLocation, SoundEvent> SOUNDS = new HashMap<>();
 
     // Ambient sounds
     public static final SoundEvent AMBIENT_CAVES_LONG = make("ambient.caves.long");
@@ -68,7 +68,7 @@ public final class MnSoundEvents {
     public static final SoundEvent ENTITY_GEODE_THROW = make("entity.geode.throw");
 
     public static void registerSoundEvents(IRegistry<SoundEvent> registry) {
-        SOUNDS.forEach(registry::register);
+        registry.registerAll(SOUNDS);
     }
 
     private MnSoundEvents() {
@@ -83,7 +83,7 @@ public final class MnSoundEvents {
     private static SoundEvent make(String type) {
         ResourceLocation id = Midnight.id(type);
         SoundEvent event = new SoundEvent(id).setRegistryName(id);
-        SOUNDS.add(event);
+        SOUNDS.put(id, event);
         return event;
     }
 }

@@ -11,12 +11,12 @@ package midnight.common.world.biome;
 import midnight.common.Midnight;
 import midnight.common.world.biome.factory.*;
 import midnight.core.biome.MnBiomeBuilder;
-import midnight.core.util.IRegistry;
 import midnight.core.util.MnObjects;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.Optional;
 
@@ -38,7 +38,7 @@ public final class MnBiomes {
         return rk;
     }
 
-    public static void registerBiomes(IRegistry<Biome> registry) {
+    public static void registerBiomes(IForgeRegistry<Biome> registry) {
         registry.registerAll(
             make("night_plains", new NightPlainsFactory()),
             make("vigilant_forest", new VigilantForestFactory()),

@@ -16,13 +16,15 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.ParticleManager;
 import net.minecraft.particles.BasicParticleType;
 import net.minecraft.particles.ParticleType;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class MnParticleTypes {
-    private static final ArrayList<ParticleType<?>> REGISTRY = new ArrayList<>();
+    private static final Map<ResourceLocation, ParticleType<?>> REGISTRY = new HashMap<>();
 
     public static final BasicParticleType SHROOM_SPORE = type("shroom_spore", new BasicParticleType(false));
     public static final BasicParticleType SPORE = type("spore", new BasicParticleType(false));
@@ -40,12 +42,12 @@ public final class MnParticleTypes {
     }
 
     public static void registerParticleTypes(IRegistry<ParticleType<?>> registry) {
-        REGISTRY.forEach(registry::register);
+        registry.registerAll(REGISTRY);
     }
 
     private static <T extends ParticleType<?>> T type(String id, T type) {
         type.setRegistryName(Midnight.id(id));
-        REGISTRY.add(type);
+        REGISTRY.put(Midnight.id(id), type);
         return type;
     }
 }

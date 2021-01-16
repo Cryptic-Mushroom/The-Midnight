@@ -14,11 +14,13 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.ObjectHolder;
 
-import javax.annotation.Nonnull;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This class registers and stores the list of Midnight fluids and their respective blocks.
@@ -28,15 +30,14 @@ import javax.annotation.Nonnull;
  */
 @ObjectHolder("midnight")
 public final class MnFluids {
-    public static final FlowingFluid DARK_WATER = inj();
-    public static final FlowingFluid FLOWING_DARK_WATER = inj();
+    private static final Map<ResourceLocation, Fluid> FLUIDS = new HashMap<>();
+
+    public static final FlowingFluid DARK_WATER = fluid("dark_water", new DarkWaterFluid.Source());
+    public static final FlowingFluid FLOWING_DARK_WATER = fluid("flowing_dark_water", new DarkWaterFluid.Flowing());
 
 
     public static void registerFluids(IRegistry<Fluid> registry) {
-        registry.registerAll(
-            fluid("dark_water", new DarkWaterFluid.Source()),
-            fluid("flowing_dark_water", new DarkWaterFluid.Flowing())
-        );
+        registry.registerAll(FLUIDS);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -50,12 +51,7 @@ public final class MnFluids {
 
     private static <F extends Fluid> F fluid(String id, F fluid) {
         fluid.setRegistryName(Midnight.id(id));
+        FLUIDS.put(Midnight.id(id), fluid);
         return fluid;
-    }
-
-    @Nonnull
-    @SuppressWarnings("ConstantConditions")
-    private static <F extends Fluid> F inj() {
-        return null;
     }
 }
