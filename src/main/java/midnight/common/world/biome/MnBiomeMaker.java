@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.common.world.biome;
@@ -41,7 +41,7 @@ public final class MnBiomeMaker {
      * @return The biome with its settings to be registered into the game.
      */
     public static Biome makeNightPlains(String id) {
-        return new MnBiomeBuilder(Midnight.resLoc(id))
+        return new MnBiomeBuilder(Midnight.id(id))
                    .depth(0.1f).scale(0.1f)
                    .temperature(1).downfall(0).precipitation(Biome.RainType.NONE)
                    .category(Biome.Category.MUSHROOM)
@@ -86,7 +86,7 @@ public final class MnBiomeMaker {
      * @return The biome with its settings to be registered into the game.
      */
     public static Biome makeVigilantForest(String id) {
-        return new MnBiomeBuilder(Midnight.resLoc(id))
+        return new MnBiomeBuilder(Midnight.id(id))
                    .depth(0.1f).scale(0.1f)
                    .temperature(1).downfall(0).precipitation(Biome.RainType.NONE)
                    .category(Biome.Category.FOREST)
@@ -131,7 +131,7 @@ public final class MnBiomeMaker {
      * @return The biome with its settings to be registered into the game.
      */
     public static Biome makeDeceitfulBog(String id) {
-        return new MnBiomeBuilder(Midnight.resLoc(id))
+        return new MnBiomeBuilder(Midnight.id(id))
                    .depth(0.1f).scale(0.1f)
                    .temperature(1).downfall(0).precipitation(Biome.RainType.NONE)
                    .category(Biome.Category.FOREST)

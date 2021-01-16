@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.common.entity;
@@ -47,8 +47,8 @@ public final class MnEntityTypes {
     // Thanks IntelliJ
     @SuppressWarnings({"unused", "RedundantSuppression"})
     private static <T extends Entity> EntityType<T> type(String id, EntityType.Builder<T> builder, Class<T> cls) {
-        EntityType<T> type = builder.build(Midnight.resStr(id));
-        type.setRegistryName(Midnight.resLoc(id));
+        EntityType<T> type = builder.build(Midnight.idStr(id));
+        type.setRegistryName(Midnight.id(id));
         return type;
     }
 

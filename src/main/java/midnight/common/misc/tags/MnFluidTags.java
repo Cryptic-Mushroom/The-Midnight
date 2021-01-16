@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.common.misc.tags;
@@ -18,7 +18,7 @@ public final class MnFluidTags {
     public static final ITag.INamedTag<Fluid> DARK_WATER = tag("dark_water");
 
     private static ITag.INamedTag<Fluid> tag(String id) {
-        id = Midnight.resStr(id);
+        id = Midnight.idStr(id);
         ITag.INamedTag<Fluid> tag = FluidTags.makeWrapperTag(id);
         MnObjects.addFluidTag(id, tag);
         return tag;

@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.common.world.levelgen.surface;
@@ -40,6 +40,6 @@ public final class MnConfiguredSurfaceBuilders {
     }
 
     private static <SC extends ISurfaceBuilderConfig> ConfiguredSurfaceBuilder<SC> register(String id, ConfiguredSurfaceBuilder<SC> builder) {
-        return WorldGenRegistries.add(WorldGenRegistries.CONFIGURED_SURFACE_BUILDER, Midnight.resStr(id), builder);
+        return WorldGenRegistries.add(WorldGenRegistries.CONFIGURED_SURFACE_BUILDER, Midnight.idStr(id), builder);
     }
 }

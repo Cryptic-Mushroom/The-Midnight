@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.common.misc;
@@ -44,7 +44,7 @@ public final class MnParticleTypes {
     }
 
     private static <T extends ParticleType<?>> T type(String id, T type) {
-        type.setRegistryName(Midnight.resLoc(id));
+        type.setRegistryName(Midnight.id(id));
         REGISTRY.add(type);
         return type;
     }

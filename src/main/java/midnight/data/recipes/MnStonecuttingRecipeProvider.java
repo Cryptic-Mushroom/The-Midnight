@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.data.recipes;
@@ -111,7 +111,7 @@ public class MnStonecuttingRecipeProvider extends RecipeProvider {
                 if (!flushed.contains(name)) {
                     SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(from), to, count)
                                            .addCriterion(criterionName(from), hasItem(from))
-                                           .build(consumer, Midnight.resLoc(name));
+                                           .build(consumer, Midnight.id(name));
                     flushed.add(name);
                 }
             }

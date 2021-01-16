@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.client.environment;
@@ -16,7 +16,7 @@ public class MnEnvironmentRenderer extends DimensionRenderInfo {
     public static final MnEnvironmentRenderer INSTANCE = new MnEnvironmentRenderer(Float.NaN, true, FogType.NONE, false, true);
 
     public static void init() {
-        BY_IDENTIFIER.put(Midnight.resLoc("midnight"), INSTANCE);
+        BY_IDENTIFIER.put(Midnight.id("midnight"), INSTANCE);
     }
 
     public MnEnvironmentRenderer(float cloudHeight, boolean alternateSkyColor, FogType type, boolean shouldRender, boolean darkened) {

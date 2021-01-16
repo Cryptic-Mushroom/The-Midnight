@@ -81,7 +81,7 @@ public final class MnSoundEvents {
      * @return The SoundEvent to be used in game.
      */
     private static SoundEvent make(String type) {
-        ResourceLocation id = Midnight.resLoc(type);
+        ResourceLocation id = Midnight.id(type);
         SoundEvent event = new SoundEvent(id).setRegistryName(id);
         SOUNDS.add(event);
         return event;

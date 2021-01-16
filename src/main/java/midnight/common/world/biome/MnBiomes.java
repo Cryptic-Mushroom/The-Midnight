@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.common.world.biome;
@@ -33,7 +33,7 @@ public final class MnBiomes {
     public static final RegistryKey<Biome> CRYSTAL_SPIRES = key("crystal_spires");
 
     private static RegistryKey<Biome> key(String key) {
-        RegistryKey<Biome> rk = RegistryKey.of(Registry.BIOME_KEY, Midnight.resLoc(key));
+        RegistryKey<Biome> rk = RegistryKey.of(Registry.BIOME_KEY, Midnight.id(key));
         MnObjects.addBiome(key, rk);
         return rk;
     }
@@ -48,7 +48,7 @@ public final class MnBiomes {
     }
 
     private static Biome make(String id, BiomeFactory factory) {
-        return factory.makeBiome(new MnBiomeBuilder(Midnight.resLoc(id)));
+        return factory.makeBiome(new MnBiomeBuilder(Midnight.id(id)));
     }
 
     public static RegistryKey<Biome> getKeyFromBiome(World world, Biome biome) {

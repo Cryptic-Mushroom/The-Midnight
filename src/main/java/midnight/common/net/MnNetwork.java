@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.common.net;
@@ -30,7 +30,7 @@ import java.util.function.Supplier;
 public final class MnNetwork {
     public static final String NET_PROTOCOL = "3"; // 2 and 1 were pre-rewrite, let's go for 3
     public static final SimpleChannel CHANNEL = NetworkRegistry.ChannelBuilder
-                                                    .named(Midnight.resLoc("net"))
+                                                    .named(Midnight.id("net"))
                                                     .networkProtocolVersion(() -> NET_PROTOCOL)
                                                     .clientAcceptedVersions(NET_PROTOCOL::equals)
                                                     .serverAcceptedVersions(NET_PROTOCOL::equals)

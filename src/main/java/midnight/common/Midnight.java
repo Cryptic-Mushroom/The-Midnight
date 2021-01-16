@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.common;
@@ -144,7 +144,7 @@ public abstract class Midnight extends MidnightCore {
      * @param path The resource path.
      * @return The created {@link ResourceLocation} instance.
      */
-    public static ResourceLocation resLoc(String path) {
+    public static ResourceLocation id(String path) {
         int colon = path.indexOf(':');
         if (colon >= 0) {
             return new ResourceLocation(path.substring(0, colon), path.substring(colon + 1));
@@ -154,12 +154,12 @@ public abstract class Midnight extends MidnightCore {
 
     /**
      * Create a stringified {@link ResourceLocation} with {@link MnInfo#MODID midnight} as default namespace. See {@link
-     * #resLoc}.
+     * #id}.
      *
      * @param path The resource path.
      * @return The created resource id.
      */
-    public static String resStr(String path) {
+    public static String idStr(String path) {
         if (path.indexOf(':') >= 0) {
             return path;
         }

@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.common.item;
@@ -95,7 +95,7 @@ public abstract class MnItems {
     }
 
     private static Item item(String id, MnItemCategory cat, Item item) {
-        item.setRegistryName(Midnight.resLoc(id));
+        item.setRegistryName(Midnight.id(id));
         cat.add(item);
         return item;
     }

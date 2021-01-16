@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.common.world.levelgen.feature;
@@ -27,7 +27,7 @@ public abstract class MnFeatures {
     }
 
     private static <FC extends IFeatureConfig, F extends Feature<FC>> F feature(String id, F feature) {
-        feature.setRegistryName(Midnight.resLoc(id));
+        feature.setRegistryName(Midnight.id(id));
         REGISTRY.add(feature);
         return feature;
     }

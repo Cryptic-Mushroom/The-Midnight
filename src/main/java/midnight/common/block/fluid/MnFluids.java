@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.common.block.fluid;
@@ -49,7 +49,7 @@ public final class MnFluids {
     }
 
     private static <F extends Fluid> F fluid(String id, F fluid) {
-        fluid.setRegistryName(Midnight.resLoc(id));
+        fluid.setRegistryName(Midnight.id(id));
         return fluid;
     }
 

@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.common.misc.tags;
@@ -38,7 +38,7 @@ public final class MnBlockTags {
     public static final ITag.INamedTag<Block> NIGHT_REED_GROWABLE = tag("night_reed_growable");
 
     private static ITag.INamedTag<Block> tag(String id) {
-        id = Midnight.resStr(id);
+        id = Midnight.idStr(id);
         ITag.INamedTag<Block> tag = BlockTags.makeWrapperTag(id);
         MnObjects.addBlockTag(id, tag);
         return tag;

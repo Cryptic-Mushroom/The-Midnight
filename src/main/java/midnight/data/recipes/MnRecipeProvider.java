@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.data.recipes;
@@ -136,7 +136,7 @@ public class MnRecipeProvider extends RecipeProvider {
                            .patternLine("###")
                            .patternLine("###")
                            .addCriterion("has_ingredient", hasItem(from))
-                           .build(consumer, Midnight.resLoc(id));
+                           .build(consumer, Midnight.id(id));
     }
 
     private void generic2x2(String id, IItemProvider from, IItemProvider to, int count) {
@@ -145,21 +145,21 @@ public class MnRecipeProvider extends RecipeProvider {
                            .patternLine("##")
                            .patternLine("##")
                            .addCriterion("has_ingredient", hasItem(from))
-                           .build(consumer, Midnight.resLoc(id));
+                           .build(consumer, Midnight.id(id));
     }
 
     private void shapeless(String id, IItemProvider from, IItemProvider to, int count) {
         ShapelessRecipeBuilder.shapelessRecipe(to, count)
                               .addIngredient(from)
                               .addCriterion("has_ingredient", hasItem(from))
-                              .build(consumer, Midnight.resLoc(id));
+                              .build(consumer, Midnight.id(id));
     }
 
     private void shapeless(String id, Tag<Item> tag, IItemProvider to, int count) {
         ShapelessRecipeBuilder.shapelessRecipe(to, count)
                               .addIngredient(tag)
                               .addCriterion("has_ingredient", hasItem(tag))
-                              .build(consumer, Midnight.resLoc(id));
+                              .build(consumer, Midnight.id(id));
     }
 
     private void fence(String id, IItemProvider from, IItemProvider to, int count) {
@@ -169,7 +169,7 @@ public class MnRecipeProvider extends RecipeProvider {
                            .patternLine("#/#")
                            .patternLine("#/#")
                            .addCriterion("has_ingredient", hasItem(from))
-                           .build(consumer, Midnight.resLoc(id));
+                           .build(consumer, Midnight.id(id));
     }
 
     private void generic1x2(String id, IItemProvider from, IItemProvider to, int count) {
@@ -178,7 +178,7 @@ public class MnRecipeProvider extends RecipeProvider {
                            .patternLine("#")
                            .patternLine("#")
                            .addCriterion("has_ingredient", hasItem(from))
-                           .build(consumer, Midnight.resLoc(id));
+                           .build(consumer, Midnight.id(id));
     }
 
     private void generic1x3(String id, IItemProvider from, IItemProvider to, int count) {
@@ -188,7 +188,7 @@ public class MnRecipeProvider extends RecipeProvider {
                            .patternLine("#")
                            .patternLine("#")
                            .addCriterion("has_ingredient", hasItem(from))
-                           .build(consumer, Midnight.resLoc(id));
+                           .build(consumer, Midnight.id(id));
     }
 
     private void generic3x1(String id, IItemProvider from, IItemProvider to, int count) {
@@ -196,7 +196,7 @@ public class MnRecipeProvider extends RecipeProvider {
                            .key('#', from)
                            .patternLine("###")
                            .addCriterion("has_ingredient", hasItem(from))
-                           .build(consumer, Midnight.resLoc(id));
+                           .build(consumer, Midnight.id(id));
     }
 
     private void generic3x2(String id, IItemProvider from, IItemProvider to, int count) {
@@ -205,7 +205,7 @@ public class MnRecipeProvider extends RecipeProvider {
                            .patternLine("###")
                            .patternLine("###")
                            .addCriterion("has_ingredient", hasItem(from))
-                           .build(consumer, Midnight.resLoc(id));
+                           .build(consumer, Midnight.id(id));
     }
 
     private void stairs(String id, IItemProvider from, IItemProvider to, int count) {
@@ -215,7 +215,7 @@ public class MnRecipeProvider extends RecipeProvider {
                            .patternLine("## ")
                            .patternLine("###")
                            .addCriterion("has_ingredient", hasItem(from))
-                           .build(consumer, Midnight.resLoc(id));
+                           .build(consumer, Midnight.id(id));
     }
 
     private void step(String id, IItemProvider from, IItemProvider to, int count) {
@@ -224,34 +224,34 @@ public class MnRecipeProvider extends RecipeProvider {
                            .patternLine("#  ")
                            .patternLine("## ")
                            .addCriterion("has_ingredient", hasItem(from))
-                           .build(consumer, Midnight.resLoc(id));
+                           .build(consumer, Midnight.id(id));
     }
 
     private void smelting(String id, IItemProvider from, IItemProvider to, double xp) {
         CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(from), to, (float) xp, 200)
                             .addCriterion("has_ingredient", hasItem(from))
-                            .build(consumer, Midnight.resLoc(id));
+                            .build(consumer, Midnight.id(id));
     }
 
     private void cooking(String id, IItemProvider from, IItemProvider to, double xp) {
         CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(from), to, (float) xp, 200)
                             .addCriterion("has_ingredient", hasItem(from))
-                            .build(consumer, Midnight.resLoc(id));
+                            .build(consumer, Midnight.id(id));
         CookingRecipeBuilder.cookingRecipe(Ingredient.fromItems(from), to, (float) xp, 100, IRecipeSerializer.SMOKING)
                             .addCriterion("has_ingredient", hasItem(from))
-                            .build(consumer, Midnight.resLoc(id + "_smoking"));
+                            .build(consumer, Midnight.id(id + "_smoking"));
         CookingRecipeBuilder.cookingRecipe(Ingredient.fromItems(from), to, (float) xp, 600, IRecipeSerializer.CAMPFIRE_COOKING)
                             .addCriterion("has_ingredient", hasItem(from))
-                            .build(consumer, Midnight.resLoc(id + "_campfire"));
+                            .build(consumer, Midnight.id(id + "_campfire"));
     }
 
     private void blasting(String id, IItemProvider from, IItemProvider to, double xp) {
         CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(from), to, (float) xp, 200)
                             .addCriterion("has_ingredient", hasItem(from))
-                            .build(consumer, Midnight.resLoc(id));
+                            .build(consumer, Midnight.id(id));
         CookingRecipeBuilder.cookingRecipe(Ingredient.fromItems(from), to, (float) xp, 100, IRecipeSerializer.BLASTING)
                             .addCriterion("has_ingredient", hasItem(from))
-                            .build(consumer, Midnight.resLoc(id + "_blasting"));
+                            .build(consumer, Midnight.id(id + "_blasting"));
     }
 
     @Override

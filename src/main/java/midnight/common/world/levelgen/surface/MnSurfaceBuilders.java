@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.common.world.levelgen.surface;
@@ -29,7 +29,7 @@ public final class MnSurfaceBuilders {
     }
 
     private static <T extends SurfaceBuilder<?>> T register(String id, T obj) {
-        REGISTRY.add(obj.setRegistryName(Midnight.resLoc(id)));
+        REGISTRY.add(obj.setRegistryName(Midnight.id(id)));
         return obj;
     }
 }

@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 16
  */
 
 package midnight.common.misc;
@@ -29,7 +29,7 @@ public final class MnLootParameterSets {
     }
 
     private static LootParameterSet register(String id, Consumer<LootParameterSet.Builder> builderConsumer) {
-        LootParameterSet set = LootParameterSets.register(Midnight.resStr(id), builderConsumer);
+        LootParameterSet set = LootParameterSets.register(Midnight.idStr(id), builderConsumer);
         MnObjects.addLootParameterSet(id, set);
         return set;
     }
