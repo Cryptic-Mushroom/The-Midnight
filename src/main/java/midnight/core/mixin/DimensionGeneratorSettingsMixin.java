@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 18
  */
 
 package midnight.core.mixin;
@@ -36,13 +36,4 @@ public abstract class DimensionGeneratorSettingsMixin {
         // doesn't show up by returning true here.
         info.setReturnValue(true);
     }
-    //SimpleRegistry<Dimension> p_241520_0_, Supplier<DimensionType> p_241520_1_, ChunkGenerator p_241520_2_
-
-//    @Inject(method = "method_29962", at = @At("RETURN"))
-//    private static void onRegisterDefaults(SimpleRegistry<Dimension> dimens, Supplier<DimensionType> owtype, ChunkGenerator owgen, CallbackInfoReturnable<SimpleRegistry<Dimension>> info) {
-//        System.out.println("----------" + System.identityHashCode(dimens));
-//        for(Map.Entry<RegistryKey<Dimension>, Dimension> entry : dimens.getEntries()) {
-//            System.out.println(entry.getKey().getValue() + " " + entry.getValue().getDimensionType().getSkyProperties());
-//        }
-//    }
 }

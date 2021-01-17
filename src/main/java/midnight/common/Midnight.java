@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 1 - 16
+ * Last updated: 2021 - 1 - 18
  */
 
 package midnight.common;
@@ -18,14 +18,16 @@ import midnight.api.util.IMidnightObjects;
 import midnight.client.MidnightClient;
 import midnight.common.block.MnBlocks;
 import midnight.common.net.MnNetwork;
-import midnight.common.world.dimension.MnDimensions;
 import midnight.common.world.levelgen.MnLevelgen;
 import midnight.core.MidnightCore;
 import midnight.core.plugin.PluginManager;
 import midnight.core.security.VerificationUtil;
 import midnight.core.util.MnObjects;
 import midnight.server.MidnightServer;
+import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import org.apache.logging.log4j.LogManager;
@@ -54,6 +56,7 @@ public abstract class Midnight extends MidnightCore {
     private final PluginManager pluginManager = new PluginManager();
 
 
+    public static final RegistryKey<World> MIDNIGHT = RegistryKey.of(Registry.DIMENSION, id("midnight"));
 
     /*
      * INITIALIZATION HANDLERS
@@ -68,7 +71,6 @@ public abstract class Midnight extends MidnightCore {
             pluginManager.loadPlugins();
             EVENT_BUS.post(new MidnightPreInitEvent(this, getRuntimeDist()));
         }
-        MnDimensions.init();
         MnLevelgen.init();
         MnNetwork.init();
     }

@@ -3,15 +3,16 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 18
  */
 
 package midnight.client;
 
 import midnight.client.audio.MnAmbientTicker;
 import midnight.client.audio.MnMusicTicker;
-import midnight.client.environment.MnEnvironmentRenderer;
+import midnight.client.environment.TheMidnightRenderInfo;
 import midnight.client.util.BiomeColorCache;
+import midnight.client.util.BiomeColorCacheManager;
 import midnight.common.Midnight;
 import midnight.common.block.MnBlocks;
 import midnight.common.block.fluid.MnFluids;
@@ -33,9 +34,11 @@ import net.minecraftforge.fml.LogicalSidedProvider;
  * @since 0.6.0
  */
 public class MidnightClient extends Midnight {
-    private final BiomeColorCache darkWaterColorCache = new BiomeColorCache();
-    private final BiomeColorCache nightGrassColorCache = new BiomeColorCache();
-    private final BiomeColorCache shadowrootColorCache = new BiomeColorCache();
+    private final BiomeColorCacheManager colorCacheManager = new BiomeColorCacheManager();
+    private final BiomeColorCache darkWaterColorCache = colorCacheManager.newCache();
+    private final BiomeColorCache nightGrassColorCache = colorCacheManager.newCache();
+    private final BiomeColorCache shadowrootColorCache = colorCacheManager.newCache();
+
     private final MnMusicTicker mnMusicTicker = new MnMusicTicker(Minecraft.getInstance());
     private final MnAmbientTicker mnAmbientTicker = new MnAmbientTicker(Minecraft.getInstance());
 
@@ -47,7 +50,7 @@ public class MidnightClient extends Midnight {
         MnFluids.setupRenderers();
         MnEntityTypes.setupRenderers();
 
-        MnEnvironmentRenderer.init();
+        TheMidnightRenderInfo.init();
     }
 
     @Override
@@ -58,6 +61,10 @@ public class MidnightClient extends Midnight {
     @SubscribeEvent
     public void onRegisterParticles(ParticleFactoryRegisterEvent event) {
         MnParticleTypes.setupClient();
+    }
+
+    public BiomeColorCacheManager getColorCacheManager() {
+        return colorCacheManager;
     }
 
     public BiomeColorCache getDarkWaterColorCache() {

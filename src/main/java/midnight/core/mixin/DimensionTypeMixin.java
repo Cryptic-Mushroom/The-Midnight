@@ -3,18 +3,18 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 18
  */
 
 package midnight.core.mixin;
 
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Lifecycle;
+import midnight.common.world.dimension.MnDimensions;
 import midnight.core.dimension.DimensionUtil;
 import midnight.core.dimension.IChunkGenFactory;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.registry.DynamicRegistries;
-import net.minecraft.util.registry.MutableRegistry;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.SimpleRegistry;
 import net.minecraft.world.Dimension;
@@ -32,14 +32,8 @@ import java.util.Map;
 @Mixin(DimensionType.class)
 public abstract class DimensionTypeMixin {
     @Inject(method = "addRegistryDefaults", at = @At("RETURN"))
-    private static void onAddRegistryDefaults(DynamicRegistries.Impl dynareg, CallbackInfoReturnable<DynamicRegistries.Impl> info) {
-        MutableRegistry<DimensionType> reg = dynareg.get(Registry.DIMENSION_TYPE_KEY);
-        for(Map.Entry<RegistryKey<DimensionType>, DimensionType> entry : DimensionUtil.DIMENSION_TYPES.entrySet()) {
-            RegistryKey<DimensionType> key = entry.getKey();
-            DimensionType value = entry.getValue();
-            System.out.println("Midnight registering");
-            reg.register(key, value, Lifecycle.stable());
-        }
+    private static void onAddRegistryDefaults(DynamicRegistries.Impl dynaRegs, CallbackInfoReturnable<DynamicRegistries.Impl> info) {
+        MnDimensions.addRegistryDefaults(dynaRegs);
     }
 
     @Inject(method = "createDefaultDimensionOptions", at = @At("RETURN"))

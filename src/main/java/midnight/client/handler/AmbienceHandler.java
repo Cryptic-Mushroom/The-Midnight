@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 18
  */
 
 package midnight.client.handler;
@@ -32,7 +32,7 @@ import net.minecraftforge.fml.common.Mod;
  * @since 0.6.0
  */
 @Mod.EventBusSubscriber(modid = "midnight", value = Dist.CLIENT)
-public class MnMusicHandler {
+public final class AmbienceHandler {
     /**
      * The current {@link Minecraft} instance.
      */
@@ -82,7 +82,7 @@ public class MnMusicHandler {
         SoundCategory category = sound.getCategory();
 
         if (category == SoundCategory.MUSIC) {
-            if (mc.player != null && mc.player.world.getDimension() == MnDimensions.MIDNIGHT) {
+            if (mc.player != null && MnDimensions.isTheMidnight(mc.player.world)) {
                 if (!sound.getSoundLocation().toString().contains(MnInfo.MODID) && (musicTicker.isPlayingTrueMusic() || !musicTicker.isPlayingTrueMusic())) {
                     event.setResultSound(null);
                 }

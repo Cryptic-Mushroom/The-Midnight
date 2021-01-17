@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 1 - 16
+ * Last updated: 2021 - 1 - 18
  */
 
 package midnight.common.world.biome;
@@ -22,12 +22,12 @@ import java.util.stream.Stream;
 import net.shadew.ptg.region.FractalGenerator;
 import net.shadew.ptg.region.LazyRegionContext;
 
-public class MnBiomeProvider extends BiomeProvider {
-    public static final Codec<MnBiomeProvider> CODEC = RecordCodecBuilder.create(
+public class TheMidnightBiomeProvider extends BiomeProvider {
+    public static final Codec<TheMidnightBiomeProvider> CODEC = RecordCodecBuilder.create(
         instance -> instance.group(
             Codec.LONG.fieldOf("seed").stable().forGetter(p -> p.seed),
             RegistryLookupCodec.of(Registry.BIOME_KEY).forGetter(p -> p.biomeRegistry)
-        ).apply(instance, instance.stable(MnBiomeProvider::new))
+        ).apply(instance, instance.stable(TheMidnightBiomeProvider::new))
     );
 
     static {
@@ -38,7 +38,7 @@ public class MnBiomeProvider extends BiomeProvider {
     private final Registry<Biome> biomeRegistry;
     private final long seed;
 
-    public MnBiomeProvider(long seed, Registry<Biome> biomeRegistry) {
+    public TheMidnightBiomeProvider(long seed, Registry<Biome> biomeRegistry) {
         super(Stream.of(
             () -> biomeRegistry.getOrThrow(MnBiomes.NIGHT_PLAINS),
             () -> biomeRegistry.getOrThrow(MnBiomes.VIGILANT_FOREST),
@@ -90,6 +90,6 @@ public class MnBiomeProvider extends BiomeProvider {
 
     @Override
     public BiomeProvider withSeed(long seed) {
-        return new MnBiomeProvider(seed, biomeRegistry);
+        return new TheMidnightBiomeProvider(seed, biomeRegistry);
     }
 }

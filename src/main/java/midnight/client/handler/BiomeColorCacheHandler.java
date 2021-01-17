@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 18
  */
 
 package midnight.client.handler;
@@ -24,16 +24,14 @@ public final class BiomeColorCacheHandler {
     @SubscribeEvent
     public static void onWorldLoad(WorldEvent.Load load) {
         if (load.getWorld() instanceof ClientWorld) {
-            MidnightClient.get().getDarkWaterColorCache().reset();
-            MidnightClient.get().getNightGrassColorCache().reset();
+            MidnightClient.get().getColorCacheManager().reset();
         }
     }
 
     @SubscribeEvent
     public static void onChunkLoad(ChunkEvent.Load load) {
         if (load.getWorld() instanceof ClientWorld) {
-            MidnightClient.get().getDarkWaterColorCache().chunkLoad(load.getChunk().getPos());
-            MidnightClient.get().getNightGrassColorCache().chunkLoad(load.getChunk().getPos());
+            MidnightClient.get().getColorCacheManager().chunkLoad(load.getChunk().getPos());
         }
     }
 }

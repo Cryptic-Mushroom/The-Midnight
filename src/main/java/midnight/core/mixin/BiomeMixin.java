@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 18
  */
 
 package midnight.core.mixin;
@@ -15,8 +15,7 @@ import midnight.core.biome.TerrainFactors;
 import net.minecraft.world.biome.Biome;
 import org.spongepowered.asm.mixin.Mixin;
 
-// TODO This is a mixin class, but there's no injections in it. What is this used for??
-@Mixin(Biome.class)
+@Mixin(Biome.class) // TODO Revisit this
 public class BiomeMixin implements IMidnightBiome {
     private BiomeColoring coloring;
     private TerrainFactors terrainFactors;

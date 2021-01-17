@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 1 - 16
+ * Last updated: 2021 - 1 - 18
  */
 
 package midnight.common.world.levelgen.midnight;
@@ -22,15 +22,15 @@ import net.minecraft.world.gen.WorldGenRegion;
 import net.minecraft.world.gen.feature.structure.StructureManager;
 import net.minecraft.world.gen.settings.DimensionStructuresSettings;
 
-public class MnChunkGenerator extends ChunkGenerator {
-    public static final Codec<MnChunkGenerator> CODEC = RecordCodecBuilder.create(
+public class TheMidnightChunkGenerator extends ChunkGenerator {
+    public static final Codec<TheMidnightChunkGenerator> CODEC = RecordCodecBuilder.create(
         instance -> instance.group(
             Codec.LONG.fieldOf("seed")
                       .stable()
                       .forGetter(gen -> gen.seed),
             BiomeProvider.CODEC.fieldOf("biome_source")
                                .forGetter(gen -> gen.biomeProvider)
-        ).apply(instance, instance.stable(MnChunkGenerator::new))
+        ).apply(instance, instance.stable(TheMidnightChunkGenerator::new))
     );
 
     private final long seed;
@@ -38,7 +38,7 @@ public class MnChunkGenerator extends ChunkGenerator {
     private final MidnightSurfaceGenerator surfaceGen;
     private final MidnightBedrockGenerator bedrockGen;
 
-    public MnChunkGenerator(long seed, BiomeProvider biomes) {
+    public TheMidnightChunkGenerator(long seed, BiomeProvider biomes) {
         super(biomes, new DimensionStructuresSettings(false));
         this.seed = seed;
 
@@ -54,7 +54,7 @@ public class MnChunkGenerator extends ChunkGenerator {
 
     @Override
     public ChunkGenerator withSeed(long seed) {
-        return new MnChunkGenerator(seed, biomeProvider);
+        return new TheMidnightChunkGenerator(seed, biomeProvider);
     }
 
     @Override

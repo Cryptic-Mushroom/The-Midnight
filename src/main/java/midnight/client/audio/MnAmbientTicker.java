@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 18
  */
 
 package midnight.client.audio;
@@ -12,7 +12,6 @@ import midnight.common.misc.MnSoundEvents;
 import midnight.common.world.dimension.MnDimensions;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.world.DimensionType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.apache.logging.log4j.LogManager;
@@ -53,9 +52,7 @@ public class MnAmbientTicker {
 
     public void tick(MnMusicTicker musicTicker) {
         if (this.mc.player != null) {
-            DimensionType playerDimension = this.mc.player.world.getDimension();
-
-            if (playerDimension.equals(MnDimensions.MIDNIGHT) && this.mc.player.isAlive() && this.delay <= 0) {
+            if (MnDimensions.isTheMidnight(this.mc.player.world) && this.mc.player.isAlive() && this.delay <= 0) {
                 float ambientRandom = this.mc.player.world.rand.nextFloat();
 
                 if (ambientRandom < (musicTicker.isPlayingTrueMusic() ? 0.001F : 0.01F)) {

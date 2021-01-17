@@ -3,12 +3,12 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 18
  */
 
 package midnight.client.audio;
 
-import midnight.client.handler.MnMusicHandler;
+import midnight.client.handler.AmbienceHandler;
 import midnight.common.misc.MnSoundEvents;
 import midnight.common.world.biome.MnBiomes;
 import midnight.common.world.dimension.MnDimensions;
@@ -19,7 +19,6 @@ import net.minecraft.util.RegistryKey;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.api.distmarker.Dist;
@@ -75,13 +74,11 @@ public class MnMusicTicker {
     }
 
     /**
-     * This method is called on every client tick by the {@link MnMusicHandler} event handler.
+     * This method is called on every client tick by the {@link AmbienceHandler} event handler.
      */
     public void tick() {
         if (this.mc.player != null && !this.mc.getSoundHandler().isPlaying(this.playingRecord)) {
-            DimensionType playerDimension = this.mc.player.world.getDimension();
-
-            if (playerDimension.equals(MnDimensions.MIDNIGHT)) {
+            if (MnDimensions.isTheMidnight(this.mc.player.world)) {
                 if (this.trueMusic != null && this.trueMusic.getVolume() <= 0) {
                     this.trueMusic = null;
                     LOGGER.debug("Setting this.trueMusic to null since its volume is below 0...");

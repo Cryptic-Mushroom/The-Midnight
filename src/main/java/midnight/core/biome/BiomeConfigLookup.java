@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 18
  */
 
 package midnight.core.biome;
@@ -16,7 +16,7 @@ import net.minecraft.world.biome.Biome;
 import java.util.HashMap;
 import java.util.Map;
 
-// TODO Since this is in Midnight Core, we might want to document this.
+// TODO Revisit, this works but is not logical and should probably move to data packs
 public final class BiomeConfigLookup {
     private static final Map<ResourceLocation, BiomeColoring> COLORING_MAP = new HashMap<>();
     private static final Map<ResourceLocation, TerrainFactors> TERRAIN_FACTORS_MAP = new HashMap<>();
@@ -25,7 +25,6 @@ public final class BiomeConfigLookup {
     }
 
     public static void putColoring(ResourceLocation id, BiomeColoring colors) {
-        System.out.println(id);
         COLORING_MAP.put(id, colors);
     }
 

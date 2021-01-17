@@ -3,23 +3,22 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 1 - 16
+ * Last updated: 2021 - 1 - 18
  */
 
 package midnight.common.world.dimension;
 
-import midnight.common.Midnight;
-import midnight.common.world.biome.MnBiomeProvider;
-import midnight.common.world.levelgen.midnight.MnChunkGenerator;
-import midnight.core.dimension.DimensionUtil;
-import midnight.core.util.MnObjects;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.DimensionType;
-import net.minecraft.world.biome.FuzzedBiomeMagnifier;
-import net.minecraft.world.biome.IBiomeMagnifier;
+import net.minecraft.util.registry.DynamicRegistries;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.SimpleRegistry;
+import net.minecraft.world.Dimension;
+import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.DimensionSettings;
 import net.minecraftforge.fml.common.Mod;
-
-import java.util.OptionalLong;
 
 /**
  * This class registers and stores the list of Midnight dimensions. Go figure.
@@ -29,68 +28,25 @@ import java.util.OptionalLong;
  */
 @Mod.EventBusSubscriber(modid = "midnight")
 public final class MnDimensions {
-    public static final DimensionType MIDNIGHT = new MidnightType(
-        OptionalLong.of(18000),
-        false,
-        false,
-        false,
-        false,
-        1,
-        false,
-        false,
-        false,
-        false,
-        false,
-        256,
-        FuzzedBiomeMagnifier.INSTANCE,
-        new ResourceLocation("infiniburn_overworld"),
-        Midnight.id("midnight"),
-        0
-    );
-
-    static {
-        MnObjects.addDimension("the_midnight", MIDNIGHT);
-    }
+    public static final ResourceLocation THE_MIDNIGHT_ID = TheMidnightDimension.ID;
+    public static final RegistryKey<World> THE_MIDNIGHT = TheMidnightDimension.KEY;
 
     private MnDimensions() {
     }
 
-    public static void init() {
-        DimensionUtil.addDimension(
-            Midnight.id("the_midnight"),
-            MIDNIGHT,
-            (biomes, configs, seed) -> new MnChunkGenerator(
-                seed,
-                new MnBiomeProvider(seed, biomes)
-            )
-        );
+    public static void addRegistryDefaults(DynamicRegistries.Impl dynaRegs) {
+        TheMidnightDimension.addRegistryDefaults(dynaRegs);
     }
-//    public static final ResourceLocation MIDNIGHT_ID = new ResourceLocation("midnight:midnight");
-//    public static final ModDimension MIDNIGHT_DIMENSION = ModDimension.withFactory(MidnightDimension::new);
-//    private static DimensionType midnight;
-//
-//    public static void registerDimensions(IForgeRegistry<ModDimension> registry) {
-//        registry.registerAll(
-//            MIDNIGHT_DIMENSION.setRegistryName(MIDNIGHT_ID)
-//        );
-//    }
-//
-//    private MnDimensions() {
-//    }
-//
-//    @SubscribeEvent
-//    public static void onRegisterDimensions(RegisterDimensionsEvent event) {
-//        midnight = DimensionManager.registerOrGetDimension(MIDNIGHT_ID, MIDNIGHT_DIMENSION, null, false);
-//    }
-//
-//    public static DimensionType midnight() {
-//        return midnight;
-//    }
 
-    public static class MidnightType extends DimensionType {
+    public static void createDefaultDimensionOptions(SimpleRegistry<Dimension> registry, Registry<Biome> biomeReg, Registry<DimensionSettings> settingsReg, long seed) {
+        TheMidnightDimension.createDefaultDimensionOptions(registry, biomeReg, settingsReg, seed);
+    }
 
-        protected MidnightType(OptionalLong fixedTime, boolean skylight, boolean ceiling, boolean ultrawarm, boolean natural, double coordsScale, boolean dragon, boolean piglins, boolean bed, boolean anchor, boolean raid, int height, IBiomeMagnifier magnifier, ResourceLocation infiniburn, ResourceLocation sky, float lighting) {
-            super(fixedTime, skylight, ceiling, ultrawarm, natural, coordsScale, dragon, piglins, bed, anchor, raid, height, magnifier, infiniburn, sky, lighting);
-        }
+    public static boolean isTheMidnight(World world) {
+        return world.getRegistryKey().equals(THE_MIDNIGHT);
+    }
+
+    public static World getTheMidnight(MinecraftServer server) {
+        return server.getWorld(THE_MIDNIGHT);
     }
 }
