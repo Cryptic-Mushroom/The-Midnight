@@ -6,6 +6,7 @@
   "mixins": [
     "BiomeMixin",
     "BOPDimensionTypeMixin",
+    "CrashReportMixin",
     "DimensionGeneratorSettingsMixin",
     "DimensionMixin",
     "DimensionTypeMixin"
