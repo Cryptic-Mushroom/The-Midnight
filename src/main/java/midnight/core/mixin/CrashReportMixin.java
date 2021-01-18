@@ -25,14 +25,32 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  */
 @Mixin(CrashReport.class)
 public class CrashReportMixin {
+    @Shadow
+    @Final
+    private String description;
+    private static boolean funnyMidnightCrashReport = false;
+
+    /*
+     * This basically just dictates that we should only fuck with the crash report if the stacktrace contains
+     * "midnight." or if it's a manually triggered debug crash.
+     */
+    @Inject(method = "getCompleteReport()Ljava/lang/String;", at = @At("HEAD"))
+    private void getCompleteReport(CallbackInfoReturnable<String> info) {
+        if (((CrashReport) (Object) this).getCauseStackTraceOrString().contains("midnight.") || this.description.contains("Manually triggered debug crash")) {
+            funnyMidnightCrashReport = true;
+        }
+    }
+
     /**
      * Funny witty comment replacement for the Midnight because we need funny references. Will probably delete/disable
      * this on release.
      *
-     * @param info Mixin's way of returning a result.
+     * @param wittyComments Our witty comments to be used in the crash report
      */
     @ModifyVariable(method = "getWittyComment()Ljava/lang/String;", at = @At("STORE"), index = 0)
     private static String[] getWittyComment(String[] wittyComments) {
+        if (!funnyMidnightCrashReport) return wittyComments;
+
         return new String[] {
             ":whythefuckisthisabug:",
             ":missingno:",
@@ -47,7 +65,25 @@ public class CrashReportMixin {
             "Voodoo magic ritual failed.",
             "Somebody asked for a 1.12.2 update again. Oh no.",
             "Manually triggered debug crash",
-            "Pro-tip: If you throw a geode at a rock, you'll get a NullPointerException!"
+            "If this is the CI then I'm not sorry",
+            "Pro-tip: If you throw a geode at a rock, you'll get a NullPointerException!",
+            "Brought to you (in part) by our favorite mod, Crashes O' Plenty!",
+            "You should check out our sister mod, Midday!",
+            "I'm the Midnight and I'm a crashaholic",
+            "Lord Majesty Crash Report",
+            "Shaders are your enemy",
+            "Missing bedrock edition",
+            "The red lightning has struck again!",
+            "Shadew pls fix"
         };
+    }
+
+    @ModifyVariable(method = "getCompleteReport()Ljava/lang/String;", at = @At(value = "LOAD", ordinal = 1), index = 1)
+    private StringBuilder modifyCrashHeader(StringBuilder stringbuilder) {
+        if (!funnyMidnightCrashReport) return stringbuilder;
+
+        stringbuilder = new StringBuilder();
+        stringbuilder.append("---- Midnight Crash Report ----\n");
+        return stringbuilder;
     }
 }
