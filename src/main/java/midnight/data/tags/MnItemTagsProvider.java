@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 1 - 18
  */
 
 package midnight.data.tags;
@@ -21,6 +21,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.nio.file.Path;
 import java.util.function.Function;
@@ -29,8 +30,8 @@ public class MnItemTagsProvider extends TagsProvider<Item> {
     private final Function<ITag.INamedTag<Block>, ITag.Builder> builderGetter;
 
     @SuppressWarnings("deprecation") // We need Registry.ITEM. Sorry Forge...
-    public MnItemTagsProvider(DataGenerator gen, MnBlockTagsProvider blockTags) {
-        super(gen, Registry.ITEM);
+    public MnItemTagsProvider(DataGenerator gen, MnBlockTagsProvider blockTags, ExistingFileHelper helper) {
+        super(gen, Registry.ITEM, "midnight", helper);
         this.builderGetter = blockTags::getBuilder;
     }
 

@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 1 - 16
+ * Last updated: 2021 - 1 - 18
  */
 
 package midnight.data;
@@ -17,6 +17,7 @@ import midnight.data.tags.MnEntityTypeTagsProvider;
 import midnight.data.tags.MnFluidTagsProvider;
 import midnight.data.tags.MnItemTagsProvider;
 import net.minecraft.data.DataGenerator;
+import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
@@ -36,17 +37,18 @@ public final class MidnightData {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
         DataGenerator gen = event.getGenerator();
+        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
         if (event.includeClient()) {
             gen.addProvider(new MnStateModelProvider(gen));
         }
 
         if (event.includeServer()) {
-            MnBlockTagsProvider blockTags = new MnBlockTagsProvider(gen);
+            MnBlockTagsProvider blockTags = new MnBlockTagsProvider(gen, existingFileHelper);
             gen.addProvider(blockTags);
-            gen.addProvider(new MnItemTagsProvider(gen, blockTags));
-            gen.addProvider(new MnFluidTagsProvider(gen));
-            gen.addProvider(new MnEntityTypeTagsProvider(gen));
+            gen.addProvider(new MnItemTagsProvider(gen, blockTags, existingFileHelper));
+            gen.addProvider(new MnFluidTagsProvider(gen, existingFileHelper));
+            gen.addProvider(new MnEntityTypeTagsProvider(gen, existingFileHelper));
 
             gen.addProvider(new MnRecipeProvider(gen));
             gen.addProvider(new MnStonecuttingRecipeProvider(gen));
