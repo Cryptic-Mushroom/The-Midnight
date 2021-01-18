@@ -173,6 +173,7 @@ minecraft {
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'info'
+            property 'mixin.env.disableRefMap', 'true'
             property 'midnight.iside', 'true'
 
             mods {
@@ -187,6 +188,7 @@ minecraft {
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'info'
+            property 'mixin.env.disableRefMap', 'true'
             property 'midnight.iside', 'true'
 
             args 'nogui'
@@ -209,6 +211,7 @@ minecraft {
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'info'
+            property 'mixin.env.disableRefMap', 'true'
             property 'midnight.iside', 'true'
             property 'midnight.datagen', 'true'
 
