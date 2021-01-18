@@ -15,6 +15,7 @@ import midnight.api.plugin.MidnightPlugin;
 import midnight.api.plugin.Side;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.StartupMessageManager;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.fml.loading.moddiscovery.ModAnnotation;
 import net.minecraftforge.forgespi.language.ModFileScanData;
@@ -100,6 +101,7 @@ public final class PluginManager {
 
         // Log debug info
         LOGGER.info("Loaded {} plugins", plugins.size());
+        StartupMessageManager.addModMessage(String.format("The Midnight loaded %d plugins", plugins.size()));
         LOGGER.debug("Loaded plugins:");
         for (PluginHolder holder : plugins) {
             LOGGER.debug(" - " + holder.getInstance());
