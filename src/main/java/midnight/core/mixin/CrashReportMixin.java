@@ -3,15 +3,12 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 1 - 18
+ * Last updated: 2021 - 1 - 19
  */
 
 package midnight.core.mixin;
 
-import midnight.MidnightMod;
 import net.minecraft.crash.CrashReport;
-import net.minecraft.util.Util;
-import org.apache.logging.log4j.Logger;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -74,7 +71,12 @@ public class CrashReportMixin {
             "Shaders are your enemy",
             "Missing bedrock edition",
             "The red lightning has struck again!",
-            "Shadew pls fix"
+            "Shadew pls fix",
+            "When rifters fly!",
+            "Also try the shitnight",
+            "404 rift not found",
+            "Cresh raport",
+            "Who invoked /time set noon in the Midnight?"
         };
     }
 
