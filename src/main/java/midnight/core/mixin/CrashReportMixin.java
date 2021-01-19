@@ -66,7 +66,7 @@ public class CrashReportMixin {
             "Pro-tip: If you throw a geode at a rock, you'll get a NullPointerException!",
             "Brought to you (in part) by our favorite mod, Crashes O' Plenty!",
             "You should check out our sister mod, Midday!",
-            "I'm the Midnight and I'm a crashaholic",
+            "Hi. I'm the Midnight, and I'm a crashaholic.",
             "Lord Majesty Crash Report",
             "Shaders are your enemy",
             "Missing bedrock edition",
@@ -76,7 +76,8 @@ public class CrashReportMixin {
             "Also try the shitnight",
             "404 rift not found",
             "Cresh raport",
-            "Who invoked /time set noon in the Midnight?"
+            "Who invoked /time set noon in the Midnight?",
+            "There are no lights!"
         };
     }
 
