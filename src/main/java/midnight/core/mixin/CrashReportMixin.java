@@ -77,7 +77,8 @@ public class CrashReportMixin {
             "404 rift not found",
             "Cresh raport",
             "Who invoked /time set noon in the Midnight?",
-            "There are no lights!"
+            "There are no lights!",
+            "Missing refmap confirmed again"
         };
     }
 
