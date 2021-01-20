@@ -70,6 +70,7 @@ allprojects {
     // ModUtil setup
     modutil {
         shade('net.shadew.ptg', "${project.ext.shadePackage}.net.shadew.ptg")
+        shade('me.jonathing.minecraft.verificationutil', "midnight.core.security")
 
         changelogJson file("$rootDir/changelog.json")
 

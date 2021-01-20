@@ -8,6 +8,7 @@
 
 package midnight.common;
 
+import me.jonathing.minecraft.verificationutil.VerificationUtil;
 import midnight.MidnightMod;
 import midnight.MnInfo;
 import midnight.api.IMidnightInfo;
@@ -21,7 +22,6 @@ import midnight.common.net.MnNetwork;
 import midnight.common.world.levelgen.MnLevelgen;
 import midnight.core.MidnightCore;
 import midnight.core.plugin.PluginManager;
-import midnight.core.security.VerificationUtil;
 import midnight.core.util.MnObjects;
 import midnight.server.MidnightServer;
 import net.minecraft.util.RegistryKey;
@@ -81,12 +81,7 @@ public abstract class Midnight extends MidnightCore {
     public void init() {
         EVENT_BUS.post(new MidnightInitEvent(this, getRuntimeDist()));
 
-        if (!MnInfo.IDE) {
-            VerificationUtil.validateMod(MnInfo.MODID, MnInfo.EXPECTED_SHA256, b -> {
-                LOGGER.fatal("DynamicConstant did not inject an expected SHA256 fingerprint into this build. Will assume as unsigned.");
-                return VerificationUtil.assumeUnsigned(MnInfo.MODID);
-            });
-        }
+        VerificationUtil.validateMod(MnInfo.MODID, MnInfo.EXPECTED_SHA256);
 
         MnBlocks.setup();
     }
