@@ -81,7 +81,8 @@ public abstract class Midnight extends MidnightCore {
     public void init() {
         EVENT_BUS.post(new MidnightInitEvent(this, getRuntimeDist()));
 
-        VerificationUtil.validateMod(MnInfo.MODID, MnInfo.EXPECTED_SHA256);
+        if (!MnInfo.IDE)
+            VerificationUtil.validateMod(MnInfo.MODID, MnInfo.EXPECTED_SHA256);
 
         MnBlocks.setup();
     }
