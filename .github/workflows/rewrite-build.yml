@@ -151,7 +151,7 @@ jobs:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
           echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
-          echo "Ready to upload the build output to GitHub."
+          echo "Ready to upload the javadocs output to GitHub."
 
       - name: Upload The Midnight API Javadoc Documentation to GitHub
         uses: actions/upload-artifact@v2
