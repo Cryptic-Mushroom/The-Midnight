@@ -191,6 +191,10 @@ public abstract class MnItems {
     public static final Item DARK_PEARL_ORE = item(MnBlocks.DARK_PEARL_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS);
     public static final Item DARK_PEARL_BLOCK = item(MnBlocks.DARK_PEARL_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS);
 
+    //Strange Glass
+    public static final Item STRANGE_GLASS = item(MnBlocks.STRANGE_GLASS, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS);
+    public static final Item STRANGE_GLASS_PANE = item(MnBlocks.STRANGE_GLASS_PANE, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS);
+
     // Archaic
     public static final Item ARCHAIC_ORE = item(MnBlocks.ARCHAIC_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS);
     public static final Item ARCHAIC_GLASS = item(MnBlocks.ARCHAIC_GLASS, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS);
