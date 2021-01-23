@@ -193,6 +193,10 @@ public abstract class MnBlocks {
     public static final Block REED_THATCH = reedThatch("reed_thatch", MaterialColor.PURPLE, getBlock("cut_reed_thatch"));
     public static final Block CUT_REED_THATCH = thatch("cut_reed_thatch", MaterialColor.PURPLE);
 
+    //Strange Glass
+    public static final Block STRANGE_GLASS = glass("strange_glass");
+    public static final Block STRANGE_GLASS_PANE = glassPane("strange_glass_pane");
+
     // Rockshroom
     public static final Block ROCKSHROOM = rockshroom("rockshroom");
 
@@ -329,6 +333,9 @@ public abstract class MnBlocks {
         RenderTypeLookup.setRenderLayer(ROUXE, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(BLOOMCRYSTAL, RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(CRYSTAL_FLOWER, RenderType.getCutout());
+
+        RenderTypeLookup.setRenderLayer(STRANGE_GLASS, RenderType.getTranslucent());
+        RenderTypeLookup.setRenderLayer(STRANGE_GLASS_PANE, RenderType.getTranslucent());
 
         RenderTypeLookup.setRenderLayer(ARCHAIC_GLASS, RenderType.getTranslucent());
         RenderTypeLookup.setRenderLayer(ARCHAIC_GLASS_PANE, RenderType.getTranslucent());

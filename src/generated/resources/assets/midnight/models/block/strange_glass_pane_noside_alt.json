@@ -1,0 +1,7 @@
+{
+  "parent": "midnight:block/pane_noside_alt",
+  "textures": {
+    "particle": "midnight:block/strange_glass",
+    "pane": "midnight:block/strange_glass"
+  }
+}

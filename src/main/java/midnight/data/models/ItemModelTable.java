@@ -190,6 +190,9 @@ public final class ItemModelTable {
 
         register(MnItems.DARK_STICK, item -> generated(name(item, "item/%s")));
 
+        register(MnBlocks.STRANGE_GLASS, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.STRANGE_GLASS_PANE, item -> generated(name(item, "block/strange_glass")));
+
         register(MnItems.ARCHAIC_SHARD, item -> generated(name(item, "item/%s")));
         register(MnBlocks.ARCHAIC_ORE, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.ARCHAIC_GLASS, item -> inherit(name(item, "block/%s")));

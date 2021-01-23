@@ -169,6 +169,9 @@ public final class BlockStateTable {
         register(MnBlocks.DARK_PEARL_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.DARK_PEARL_BLOCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
 
+        register(MnBlocks.STRANGE_GLASS, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.STRANGE_GLASS_PANE, block -> glassPane(name(block, "block/%s"), name(block, "block/%s", "_pane"), name(block, "block/%s_side")));
+
         register(MnBlocks.ARCHAIC_ORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.ARCHAIC_GLASS, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
 
