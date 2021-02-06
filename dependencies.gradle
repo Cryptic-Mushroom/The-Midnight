@@ -39,6 +39,7 @@ dependencies {
     def mcVer = project.ext.getVariable("env.minecraft.version")
     def fgVer = project.ext.getVariable("env.forge.version")
     def ptgVer = project.ext.getVariable("env.ptg.version")
+    def vutilVer = project.ext.getVariable("env.vutil.version")
     def ciVer = project.ext.getVariable("env.ci-server.version")
     def jeiVer = project.ext.getVariable("env.jei.version")
     def bopVer = project.ext.getVariable("env.bop.version")
@@ -52,7 +53,10 @@ dependencies {
         // Prevent fastutil from embedding
     }
 
-    // CI Test Server
+    // VerificationUtil
+    embed "me.jonathing.minecraft:verification-util:$vutilVer"
+
+    // CI Test Server Plugin
     compile fg.deobf("me.jonathing.minecraft:ci_testserver:$mcVer-$ciVer")
 
     // Just Enough Items
