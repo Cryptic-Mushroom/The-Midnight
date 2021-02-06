@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 2 - 6
  */
 
 repositories {
@@ -47,7 +47,10 @@ dependencies {
     minecraft "net.minecraftforge:forge:$mcVer-$fgVer"
 
     // PTG
-    embed "net.shadew:ptg:$ptgVer"
+    embed ("net.shadew:ptg:$ptgVer") {
+        transitive false // FastUtil is the only transitive, and is included in minecraft
+        // Prevent fastutil from embedding
+    }
 
     // CI Test Server
     compile fg.deobf("me.jonathing.minecraft:ci_testserver:$mcVer-$ciVer")

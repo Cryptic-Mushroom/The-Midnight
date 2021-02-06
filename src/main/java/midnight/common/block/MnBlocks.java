@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 1 - 16
+ * Last updated: 2021 - 2 - 6
  */
 
 package midnight.common.block;
@@ -54,7 +54,7 @@ public abstract class MnBlocks {
     ////////////////////////
 
     // Basic stones
-    public static final Block NIGHTSTONE = stone("nightstone", 1.5, 6, MaterialColor.OBSIDIAN);
+    public static final Block NIGHTSTONE = stone("nightstone", 1.5, 6, MaterialColor.BLACK);
     public static final Block NIGHT_BEDROCK = stone("night_bedrock", 1.5, 6, MaterialColor.LIGHT_GRAY_TERRACOTTA);
     public static final Block TRENCHSTONE = stone("trenchstone", 1.5, 6, MaterialColor.BLACK);
 
@@ -68,7 +68,7 @@ public abstract class MnBlocks {
     public static final Block NIGHT_MYCELIUM = mycelium("night_mycelium", 2, 6, MaterialColor.MAGENTA);
 
     // Bricks
-    public static final Block NIGHTSTONE_BRICKS = bricks("nightstone_bricks", 1.5, 6, MaterialColor.OBSIDIAN);
+    public static final Block NIGHTSTONE_BRICKS = bricks("nightstone_bricks", 1.5, 6, MaterialColor.BLACK);
     public static final Block TRENCHSTONE_BRICKS = bricks("trenchstone_bricks", 1.5, 6, MaterialColor.BLACK);
     public static final Block SHROOMBRICKS = shroombricks("shroombricks");
 
@@ -204,24 +204,24 @@ public abstract class MnBlocks {
     public static final Block CRYSTAL_FLOWER = crystalFlower("crystal_flower", 0, 0, Material.PLANTS, MaterialColor.PINK).hitbox(13, 13).offset(AbstractBlock.OffsetType.XZ);
 
     // Dark pearl
-    public static final Block DARK_PEARL_ORE = stone("dark_pearl_ore", 3, 6, MaterialColor.OBSIDIAN);
+    public static final Block DARK_PEARL_ORE = stone("dark_pearl_ore", 3, 6, MaterialColor.BLACK);
     public static final Block DARK_PEARL_BLOCK = darkPearl("dark_pearl_block", 3, 6, MaterialColor.BLACK);
 
     // Archaic
-    public static final Block ARCHAIC_ORE = stone("archaic_ore", 3, 6, MaterialColor.OBSIDIAN);
+    public static final Block ARCHAIC_ORE = stone("archaic_ore", 3, 6, MaterialColor.BLACK);
     public static final Block ARCHAIC_GLASS = glass("archaic_glass");
     public static final Block ARCHAIC_GLASS_PANE = glassPane("archaic_glass_pane");
 
     // Tenebrum
-    public static final Block TENEBRUM_ORE = ore("tenebrum_ore", 3, 3, MaterialColor.OBSIDIAN, 3);
+    public static final Block TENEBRUM_ORE = ore("tenebrum_ore", 3, 3, MaterialColor.BLACK, 3);
     public static final Block TENEBRUM_BLOCK = rareMetal("tenebrum_block", 6.7, 8, MaterialColor.BLACK, 3);
 
     // Nagrilite
-    public static final Block NAGRILITE_ORE = ore("nagrilite_ore", 3, 3, MaterialColor.OBSIDIAN, 2);
+    public static final Block NAGRILITE_ORE = ore("nagrilite_ore", 3, 3, MaterialColor.BLACK, 2);
     public static final Block NAGRILITE_BLOCK = metal("nagrilite_block", 5, 6, MaterialColor.BLACK, 2);
 
     // Ebonite
-    public static final Block EBONITE_ORE = xpOre("ebonite_ore", 3, 3, MaterialColor.OBSIDIAN, 1, 0, 2);
+    public static final Block EBONITE_ORE = xpOre("ebonite_ore", 3, 3, MaterialColor.BLACK, 1, 0, 2);
     public static final Block EBONITE_BLOCK = brittleMetal("ebonite_block", 3, 5, MaterialColor.BLACK, 1);
 
     // Virilux
@@ -1031,7 +1031,7 @@ public abstract class MnBlocks {
 
     private static Block viriluxOre(String id) {
         return block(id, new XPDroppingBlock(
-            AbstractBlock.Properties.create(Material.ROCK, MaterialColor.OBSIDIAN)
+            AbstractBlock.Properties.create(Material.ROCK, MaterialColor.BLACK)
                                     .sound(SoundType.STONE)
                                     .hardnessAndResistance(5, 5)
                                     .harvestTool(ToolType.PICKAXE)
