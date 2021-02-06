@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 26
+ * Last updated: 2021 - 2 - 6
  */
 
 package midnight.client;
@@ -11,6 +11,7 @@ package midnight.client;
 import midnight.api.MidnightClientAPI;
 import midnight.api.plugin.MidnightPlugin;
 import midnight.common.Midnight;
+import midnight.common.block.MnBlocks;
 
 /**
  * The dedicated server proxy of the Midnight mod. This inherits from {@link Midnight} and must in addition initialize
@@ -24,6 +25,8 @@ public class MidnightClient extends Midnight implements MidnightClientAPI {
     @Override
     public void initialize() {
         super.initialize(); // Call super to initialize common stuff
+
+        MnBlocks.setupRenderers();
     }
 
     @Override

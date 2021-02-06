@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 1 - 16
+ * Last updated: 2021 - 2 - 6
  */
 
 package midnight.data.loottables;
@@ -57,6 +57,17 @@ public class MnBlockLootTables implements Consumer<BiConsumer<Identifier, LootTa
         addDrop(MnBlocks.TRENCHSTONE);
         addDrop(MnBlocks.NIGHT_BEDROCK, block -> dropsNothing());
 
+        addDrop(MnBlocks.NIGHT_DIRT);
+        addDrop(MnBlocks.NIGHT_GRASS_BLOCK, block -> dropsWithSilkTouch(block, MnBlocks.NIGHT_DIRT));
+        addDrop(MnBlocks.DECEITFUL_PEAT);
+        addDrop(MnBlocks.DECEITFUL_MUD);
+        addDrop(MnBlocks.STRANGE_SAND);
+        addDrop(MnBlocks.COARSE_NIGHT_DIRT);
+        addDrop(MnBlocks.NIGHT_MYCELIUM, block -> dropsWithSilkTouch(block, MnBlocks.NIGHTSTONE));
+
+        addDrop(MnBlocks.NIGHTSTONE_BRICKS);
+        addDrop(MnBlocks.TRENCHSTONE_BRICKS);
+        addDrop(MnBlocks.SHROOMBRICKS);
 
 
         // ------------------------------------------------

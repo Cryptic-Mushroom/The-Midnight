@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 1 - 16
+ * Last updated: 2021 - 2 - 6
  */
 
 package midnight.common.item;
@@ -36,6 +36,19 @@ public abstract class MnItems {
     public static final Item NIGHTSTONE = item(MnBlocks.NIGHTSTONE, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS);
     public static final Item NIGHT_BEDROCK = item(MnBlocks.NIGHT_BEDROCK, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS);
     public static final Item TRENCHSTONE = item(MnBlocks.TRENCHSTONE, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS);
+
+    // Basic soils
+    public static final Item NIGHT_DIRT = item(MnBlocks.NIGHT_DIRT, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS);
+    public static final Item COARSE_NIGHT_DIRT = item(MnBlocks.COARSE_NIGHT_DIRT, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS);
+    public static final Item NIGHT_GRASS_BLOCK = item(MnBlocks.NIGHT_GRASS_BLOCK, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS);
+    public static final Item DECEITFUL_PEAT = item(MnBlocks.DECEITFUL_PEAT, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS);
+    public static final Item DECEITFUL_MUD = item(MnBlocks.DECEITFUL_MUD, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS);
+    public static final Item STRANGE_SAND = item(MnBlocks.STRANGE_SAND, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS);
+    public static final Item NIGHT_MYCELIUM = item(MnBlocks.NIGHT_MYCELIUM, MnItemCategory.SEDIMENTAL, MnItemGroup.BLOCKS);
+
+    public static final Item NIGHTSTONE_BRICKS = item(MnBlocks.NIGHTSTONE_BRICKS, MnItemCategory.BRICKS, MnItemGroup.BLOCKS);
+    public static final Item TRENCHSTONE_BRICKS = item(MnBlocks.TRENCHSTONE_BRICKS, MnItemCategory.BRICKS, MnItemGroup.BLOCKS);
+    public static final Item SHROOMBRICKS = item(MnBlocks.SHROOMBRICKS, MnItemCategory.BRICKS, MnItemGroup.BLOCKS);
 
     private MnItems() {
     }

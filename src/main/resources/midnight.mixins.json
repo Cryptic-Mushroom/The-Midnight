@@ -4,7 +4,8 @@
   "package": "midnight.core.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "DataGenMixin"
+    "DataGenMixin",
+    "LandPathNodeMakerMixin"
   ],
   "client": [
   ],

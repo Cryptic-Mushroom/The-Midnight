@@ -3,12 +3,13 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 24
+ * Last updated: 2021 - 2 - 6
  */
 
 package midnight.data.recipes;
 
 import midnight.common.Midnight;
+import midnight.common.block.MnBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.server.recipe.CookingRecipeJsonFactory;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
@@ -29,18 +30,14 @@ public class MnRecipeProvider extends RecipeProvider {
 
     public MnRecipeProvider(DataGenerator gen) {
         super(gen);
-
-
-        //
-        //
-        //  REGISTER CRAFTING/SMELTING RECIPES HERE
-        //
-        //
     }
 
     @Override
     protected void generate(Consumer<RecipeJsonProvider> consumer) {
         this.consumer = consumer;
+        generic2x2("nightstone_bricks_2x2", MnBlocks.NIGHTSTONE, MnBlocks.NIGHTSTONE_BRICKS, 4);
+        generic2x2("trenchstone_bricks_2x2", MnBlocks.TRENCHSTONE, MnBlocks.TRENCHSTONE_BRICKS, 4);
+        // generic2x2("shroombricks_2x2", MnItems.ROCKSHROOM_CLUMP, MnBlocks.SHROOMBRICKS, 1);
     }
 
     private void generic2x2(String id, ItemConvertible from, ItemConvertible to, int count) {

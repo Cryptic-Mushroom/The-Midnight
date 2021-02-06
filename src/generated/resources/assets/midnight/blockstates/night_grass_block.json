@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "midnight:block/night_grass_block"
+      },
+      {
+        "model": "midnight:block/night_grass_block",
+        "y": 90
+      },
+      {
+        "model": "midnight:block/night_grass_block",
+        "y": 180
+      },
+      {
+        "model": "midnight:block/night_grass_block",
+        "y": 270
+      }
+    ]
+  }
+}

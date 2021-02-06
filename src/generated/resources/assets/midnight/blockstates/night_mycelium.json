@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "midnight:block/night_mycelium"
+      },
+      {
+        "model": "midnight:block/night_mycelium",
+        "y": 90
+      },
+      {
+        "model": "midnight:block/night_mycelium",
+        "y": 180
+      },
+      {
+        "model": "midnight:block/night_mycelium",
+        "y": 270
+      }
+    ]
+  }
+}

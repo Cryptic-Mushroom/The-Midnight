@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "midnight:nightstone"
+    "midnight:nightstone",
+    "midnight:night_mycelium",
+    "midnight:strange_sand"
   ]
 }

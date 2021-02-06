@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 1 - 16
+ * Last updated: 2021 - 2 - 6
  */
 
 package midnight.common;
@@ -15,6 +15,7 @@ import midnight.api.plugin.MidnightPlugin;
 import midnight.client.MidnightClient;
 import midnight.common.block.MnBlocks;
 import midnight.common.item.MnItems;
+import midnight.common.misc.MnSoundEvents;
 import midnight.core.util.WrappingRegistry;
 import midnight.server.MidnightServer;
 import net.minecraft.util.Identifier;
@@ -41,6 +42,7 @@ public abstract class Midnight implements MidnightAPI {
     public void initialize() {
         MnBlocks.registerBlocks(WrappingRegistry.vanilla(Registry.BLOCK));
         MnItems.registerItems(WrappingRegistry.vanilla(Registry.ITEM));
+        MnSoundEvents.registerSoundEvents(WrappingRegistry.vanilla(Registry.SOUND_EVENT));
     }
 
     @Override

@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 1 - 16
+ * Last updated: 2021 - 2 - 6
  */
 
 package midnight.data.models;
@@ -32,6 +32,18 @@ public final class ItemModelTable {
         register(MnBlocks.NIGHTSTONE, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.NIGHT_BEDROCK, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.TRENCHSTONE, item -> inherit(name(item, "block/%s")));
+
+        register(MnBlocks.NIGHT_DIRT, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.NIGHT_MYCELIUM, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.NIGHT_GRASS_BLOCK, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.COARSE_NIGHT_DIRT, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.DECEITFUL_MUD, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.DECEITFUL_PEAT, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.STRANGE_SAND, item -> inherit(name(item, "block/%s")));
+
+        register(MnBlocks.NIGHTSTONE_BRICKS, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.TRENCHSTONE_BRICKS, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.SHROOMBRICKS, item -> inherit(name(item, "block/%s")));
     }
 
 

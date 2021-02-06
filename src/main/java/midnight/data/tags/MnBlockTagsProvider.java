@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 1 - 16
+ * Last updated: 2021 - 2 - 6
  */
 
 package midnight.data.tags;
@@ -30,9 +30,9 @@ public class MnBlockTagsProvider extends AbstractTagProvider<Block> {
     @Override
     protected void configure() {
         getOrCreateTagBuilder(BlockTags.ENDERMAN_HOLDABLE)
-            .add(MnBlocks.NIGHTSTONE);
-        // .add(MnBlocks.NIGHT_MYCELIUM)
-        // .add(MnBlocks.STRANGE_SAND)
+            .add(MnBlocks.NIGHTSTONE)
+            .add(MnBlocks.NIGHT_MYCELIUM)
+            .add(MnBlocks.STRANGE_SAND);
         // .addTag(MnBlockTags.SOILS)
         // .addTag(MnBlockTags.SMALL_PLANTS)
         // .addTag(MnBlockTags.SHROOM_ROOTS);

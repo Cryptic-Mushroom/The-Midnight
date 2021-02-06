@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 1 - 16
+ * Last updated: 2021 - 2 - 6
  */
 
 plugins {
@@ -206,7 +206,7 @@ class RunDataTask extends AbstractRunTask {
     }
 
     static RunConfig dataRunConfig(Project project) {
-        RunConfig run = RunConfig.clientRunConfig(project)
+        RunConfig run = RunConfig.serverRunConfig(project)
         run.configName = "Minecraft Data"
         run.vmArgs += " -Dmidnight.datagen=true"
         run.vmArgs += " -Dmidnight.datagen.path=${project.file("src/generated/resources")}"
@@ -222,13 +222,14 @@ task runData(type: RunDataTask) {
 }
 
 processResources {
-    doLast {
-        runData.exec()
-        copy {
-            from "$projectDir/src/generated/resources"
-            into "$buildDir/resources/main"
-        }
-    }
+    // outputs.upToDateWhen { false }
+    // doLast {
+    //     runData.exec()
+    //     copy {
+    //         from "$projectDir/src/generated/resources"
+    //         into "$buildDir/resources/main"
+    //     }
+    // }
 }
 
 

@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2020 Cryptic Mushroom and contributors
+ * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
+ * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
+ *
+ * Last updated: 2021 - 2 - 6
+ */
+
 package midnight.data.recipes;
 
 import com.google.common.collect.Lists;
@@ -5,6 +13,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.mojang.datafixers.util.Pair;
 import midnight.common.Midnight;
+import midnight.common.block.MnBlocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.SingleItemRecipeJsonFactory;
@@ -36,12 +45,8 @@ public class MnStonecuttingRecipeProvider extends RecipeProvider {
     public MnStonecuttingRecipeProvider(DataGenerator gen) {
         super(gen);
 
-
-        //
-        //
-        //  REGISTER STONECUTTING RECIPES HERE
-        //
-        //
+        register(MnBlocks.NIGHTSTONE, MnBlocks.NIGHTSTONE_BRICKS);
+        register(MnBlocks.TRENCHSTONE, MnBlocks.TRENCHSTONE_BRICKS);
     }
 
 
