@@ -8,6 +8,7 @@
 
 package midnight.client.audio;
 
+import com.google.common.collect.ImmutableList;
 import midnight.client.handler.AmbienceHandler;
 import midnight.common.misc.MnSoundEvents;
 import midnight.common.world.biome.MnBiomes;
@@ -18,6 +19,7 @@ import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.Util;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -27,7 +29,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nullable;
-import java.util.Random;
+import java.util.*;
 
 /**
  * This class is the music ticker for The Midnight. I have based my code off of Bailey's music ticker and from Blue
@@ -62,6 +64,7 @@ public class MnMusicTicker {
      */
     private int timeUntilNextMusic = rand.nextInt(901) + 600;
     private boolean hasPlayedTrueMusic = false;
+    private TrackType lastMusicPlayed;
 
     /**
      * This constructor is used to feed the current instance of {@link Minecraft} into the {@link MnMusicTicker}
@@ -202,10 +205,12 @@ public class MnMusicTicker {
         if (this.mc.player == null) return null; // null check in case something goes horrible wrong.
         World world = this.mc.player.world;
         RegistryKey<Biome> biome = MnBiomes.getKeyFromBiome(world, world.getBiome(this.mc.player.getBlockPos()));
-        if (biome == null) return null;
-        else if (biome == MnBiomes.VIGILANT_FOREST) return TrackType.DARK_WILLOW;
-        else if (biome == MnBiomes.CRYSTAL_SPIRES) return TrackType.CRYSTALS;
-        else return null;
+
+        TrackType result = null;
+        if (biome == MnBiomes.VIGILANT_FOREST) result = TrackType.DARK_WILLOW;
+        else if (biome == MnBiomes.CRYSTAL_SPIRES) result = TrackType.CRYSTALS;
+
+        return lastMusicPlayed != result ? result : null;
     }
 
     /**
@@ -214,16 +219,12 @@ public class MnMusicTicker {
      * @return The {@link TrackType} of the random ambient music track.
      */
     protected MnMusicTicker.TrackType getAmbientMusicTrack() {
-        int num = this.rand.nextInt(2);
+        List<TrackType> ambientTracks = new ArrayList<>();
+        ambientTracks.add(TrackType.STEGANO);
+        ambientTracks.add(TrackType.ULTRAVIOLET);
+        ambientTracks.remove(lastMusicPlayed);
 
-        // Don't replace this switch statement with an if statement.
-        // This is here for when we add more ambient music tracks.
-        switch (num) {
-            case 0:
-                return TrackType.STEGANO;
-            default:
-                return TrackType.ULTRAVIOLET;
-        }
+        return ambientTracks.get((int)(Util.nanoTime() % (long) ambientTracks.size()));
     }
 
     /**

@@ -43,6 +43,7 @@ public class CrashReportMixin {
      * this on release.
      *
      * @param wittyComments Our witty comments to be used in the crash report
+     * @see CrashReport#getWittyComment()
      */
     @ModifyVariable(method = "getWittyComment()Ljava/lang/String;", at = @At("STORE"), index = 0)
     private static String[] getWittyComment(String[] wittyComments) {
