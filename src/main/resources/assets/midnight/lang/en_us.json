@@ -43,5 +43,14 @@
   "block.midnight.dark_willow_leaves": "Dark Willow Leaves",
   "block.midnight.hanging_dark_willow_leaves": "Hanging Dark Willow Leaves",
 
+  "block.midnight.core": "Midnight Reactor Core",
+  "block.midnight.active_core": "Active Reactor Core",
+  "block.midnight.dead_core": "Exhausted Reactor Core",
+  "block.midnight.active_nightstone": "Active Nightstone",
+  "block.midnight.core.status_not_valid": "Not the correct pattern!",
+  "block.midnight.core.status_wrong_dimension": "The Midnight reactor needs to be built in the Overworld.",
+  "block.midnight.core.status_out_of_range": "The Midnight reactor needs to be built lower down or higher up.",
+  "block.midnight.core.status_missing_players": "All players need to be close to the reactor.",
+
   "biome.midnight.night_plains": "Night Plains"
 }

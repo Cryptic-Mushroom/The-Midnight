@@ -58,7 +58,7 @@ public class CoreBlock extends Block {
         }
         int status = state.get(STATUS);
         if (status < 22) {
-            world.setTimeOfDay(13000);
+            world.setTimeOfDay(18000);
         }
 
         if (status == 0) {
@@ -72,6 +72,7 @@ public class CoreBlock extends Block {
                     }
                 }
             }
+            CoreUtil.detoriateSpire(world, pos);
             return;
         }
         boolean forceNextStatus = false;
@@ -84,6 +85,9 @@ public class CoreBlock extends Block {
         } else {
             if (rng.nextInt(10) == 0) {
                 CoreUtil.summonItem(world, pos);
+            }
+            if (rng.nextInt(67) == 0) {
+                CoreUtil.spawnEnderman(world, pos);
             }
         }
         if (forceNextStatus || rng.nextInt(27) == 0) {

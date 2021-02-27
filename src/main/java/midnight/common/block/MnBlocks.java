@@ -238,6 +238,7 @@ public abstract class MnBlocks {
     public static final Block ACTIVE_CORE = core("active_core", CoreBlock.Type.ACTIVE);
     public static final Block DEAD_CORE = core("dead_core", CoreBlock.Type.DEAD);
     public static final Block ACTIVE_NIGHTSTONE = stone("active_nightstone", 3, 8, MaterialColor.BLACK);
+    public static final Block DETORIATED_TRENCHSTONE = detoriatedTrenchstone("detoriated_trenchstone");
 
 
 
@@ -1064,9 +1065,20 @@ public abstract class MnBlocks {
                                     .hardnessAndResistance(50, 1200)
                                     .harvestTool(ToolType.PICKAXE)
                                     .harvestLevel(3)
-                                    .emissiveLighting((state, world, pos) -> true)
                                     .requiresTool(),
             type
+        ));
+    }
+
+    private static Block detoriatedTrenchstone(String id) {
+        return block(id, new CoreDetoriatedTrenchstoneBlock(
+            AbstractBlock.Properties.create(Material.ROCK, MaterialColor.BLACK)
+                                    .sound(SoundType.STONE)
+                                    .hardnessAndResistance(2, 6)
+                                    .harvestTool(ToolType.PICKAXE)
+                                    .harvestLevel(0)
+                                    .requiresTool()
+                                    .tickRandomly()
         ));
     }
 

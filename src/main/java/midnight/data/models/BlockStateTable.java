@@ -193,6 +193,7 @@ public final class BlockStateTable {
         register(MnBlocks.ACTIVE_CORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.DEAD_CORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.ACTIVE_NIGHTSTONE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.DETORIATED_TRENCHSTONE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/trenchstone"))));
     }
 
     private static IBlockStateGen none() {

@@ -197,6 +197,7 @@ public class MnBlockLootTables extends BlockLootTables {
         registerLootTable(MnBlocks.ACTIVE_CORE, block -> dropping(MnBlocks.DEAD_CORE));
         registerDropSelfLootTable(MnBlocks.DEAD_CORE);
         registerDropSelfLootTable(MnBlocks.ACTIVE_NIGHTSTONE);
+        registerLootTable(MnBlocks.DETORIATED_TRENCHSTONE, block -> dropping(MnBlocks.TRENCHSTONE));
     }
 
     protected static LootTable.Builder droppingNothing() {

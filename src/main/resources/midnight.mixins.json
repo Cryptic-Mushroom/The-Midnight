@@ -5,8 +5,10 @@
   "refmap": "midnight.refmap.json",
   "mixins": [
     "BiomeMixin",
+    "CrashReportMixin"
+  ],
+  "excluded": [
     "BOPDimensionTypeMixin",
-    "CrashReportMixin",
     "DimensionGeneratorSettingsMixin",
     "DimensionMixin",
     "DimensionTypeMixin"

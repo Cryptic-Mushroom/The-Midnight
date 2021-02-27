@@ -12,7 +12,9 @@ import midnight.common.item.MnItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.entity.monster.EndermanEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -114,13 +116,14 @@ public abstract class CoreUtil {
             for (int z = -8; z <= 8; z++) {
                 int r = Math.max(Math.abs(x), Math.abs(z));
 
+                int hoff = (int) (x / 2d + z / 2d);
                 int h;
                 if (r <= 3) {
-                    h = 28 + x / 2 + z / 2;
+                    h = 30 + hoff;
                 } else if (r <= 5) {
-                    h = 21 - x / 2 - z / 2;
+                    h = 23 - hoff;
                 } else {
-                    h = 15 + x / 2 + z / 2;
+                    h = 15 + hoff;
                 }
                 for (int y = -2; y <= h; y++) {
                     int r3 = Math.max(r, Math.abs(y));
@@ -128,7 +131,7 @@ public abstract class CoreUtil {
                         continue;
                     }
 
-                    BlockState state = MnBlocks.NIGHTSTONE.getDefaultState();
+                    BlockState state = MnBlocks.TRENCHSTONE.getDefaultState();
 
                     if (r <= 7 && y >= -1 && y <= 2) {
                         state = Blocks.AIR.getDefaultState();
@@ -136,6 +139,47 @@ public abstract class CoreUtil {
 
                     mpos.setPos(pos).move(x, y, z);
                     world.setBlockState(mpos, state);
+                }
+            }
+        }
+
+        for (ServerPlayerEntity player : world.getPlayers()) {
+            int x = 0, z = 0;
+            while (Math.max(Math.abs(x), Math.abs(z)) <= 1) {
+                x = world.rand.nextInt(7) * (world.rand.nextBoolean() ? -1 : 1);
+                z = world.rand.nextInt(7) * (world.rand.nextBoolean() ? -1 : 1);
+            }
+
+            player.setPositionAndUpdate(pos.getX() + x + 0.5, pos.getY() - 1, pos.getZ() + z + 0.5);
+        }
+    }
+
+    public static void detoriateSpire(ServerWorld world, BlockPos pos) {
+        BlockPos.Mutable mpos = new BlockPos.Mutable();
+
+        for (int x = -8; x <= 8; x++) {
+            for (int z = -8; z <= 8; z++) {
+                int r = Math.max(Math.abs(x), Math.abs(z));
+                int hoff = (int) (x / 2d + z / 2d);
+                int h;
+                if (r <= 3) {
+                    h = 30 + hoff;
+                } else if (r <= 5) {
+                    h = 23 - hoff;
+                } else {
+                    h = 15 + hoff;
+                }
+                for (int y = -2; y <= h; y++) {
+                    mpos.setPos(pos).move(x, y, z);
+                    if (world.getBlockState(mpos).isIn(MnBlocks.TRENCHSTONE)) {
+                        if (world.rand.nextInt(3) == 0) {
+                            world.setBlockState(mpos, Blocks.AIR.getDefaultState());
+                        } else {
+                            if (world.rand.nextInt(3) != 0) {
+                                world.setBlockState(mpos, MnBlocks.DETORIATED_TRENCHSTONE.getDefaultState());
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -183,6 +227,20 @@ public abstract class CoreUtil {
         Item item = ITEMS[world.rand.nextInt(ITEMS.length)];
 
         ItemEntity e = new ItemEntity(world, ox, pos.getY() - world.rand.nextDouble() + 0.5, oz, new ItemStack(item));
+        world.addEntity(e);
+    }
+
+    public static void spawnEnderman(ServerWorld world, BlockPos pos) {
+        double x = 0, z = 0;
+        while (Math.max(Math.abs(x), Math.abs(z)) <= 1.5) {
+            x = world.rand.nextInt(6) + 0.5 * (world.rand.nextBoolean() ? -1 : 1);
+            z = world.rand.nextInt(6) + 0.5 * (world.rand.nextBoolean() ? -1 : 1);
+        }
+        double ox = world.rand.nextDouble() + x + pos.getX();
+        double oz = world.rand.nextDouble() + z + pos.getZ();
+
+        EndermanEntity e = new EndermanEntity(EntityType.ENDERMAN, world);
+        e.setPositionAndUpdate(ox, pos.getY() - 1, oz);
         world.addEntity(e);
     }
 

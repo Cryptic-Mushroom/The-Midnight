@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 2 - 27
  */
 
 package midnight.common.handler;
@@ -17,7 +17,6 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import org.apache.logging.log4j.LogManager;
@@ -44,7 +43,7 @@ public final class WarningMessageHandler {
      * This method is fired whenever LoggedInEvent is called. It is currently used to display the warning message to the
      * player when logging into a world. The message is also sent to the console at WARN level.
      */
-    @SubscribeEvent
+    //@SubscribeEvent
     @OnlyIn(Dist.CLIENT)
     public static void loggedInEvent(ClientPlayerNetworkEvent.LoggedInEvent event) {
         ClientPlayerEntity player = event.getPlayer();
@@ -62,7 +61,7 @@ public final class WarningMessageHandler {
      * This method is fired whenever FMLServerStartedEvent is called. It is currently used to display the warning
      * message to the server owner when the world has loaded. The message is sent at WARN level.
      */
-    @SubscribeEvent
+    //@SubscribeEvent
     @OnlyIn(Dist.DEDICATED_SERVER)
     public static void serverStarting(FMLServerStartingEvent event) {
         if (!warningShown) {
