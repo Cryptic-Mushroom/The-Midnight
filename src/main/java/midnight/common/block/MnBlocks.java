@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 2 - 6
+ * Last updated: 2021 - 2 - 27
  */
 
 package midnight.common.block;
@@ -231,6 +231,13 @@ public abstract class MnBlocks {
     // Virilux
     public static final Block VIRILUX_ORE = viriluxOre("virilux_ore");
     public static final Block VIRILUX_BLOCK = virilux("virilux_block");
+
+
+    // Core
+    public static final Block CORE = core("core", CoreBlock.Type.INACTIVE);
+    public static final Block ACTIVE_CORE = core("active_core", CoreBlock.Type.ACTIVE);
+    public static final Block DEAD_CORE = core("dead_core", CoreBlock.Type.DEAD);
+    public static final Block ACTIVE_NIGHTSTONE = stone("active_nightstone", 3, 8, MaterialColor.BLACK);
 
 
 
@@ -1047,6 +1054,19 @@ public abstract class MnBlocks {
                                     .emissiveLighting((state, world, pos) -> true)
                                     .requiresTool(),
             3, 6
+        ));
+    }
+
+    private static Block core(String id, CoreBlock.Type type) {
+        return block(id, CoreBlock.create(
+            AbstractBlock.Properties.create(Material.ROCK, MaterialColor.BLACK)
+                                    .sound(SoundType.STONE)
+                                    .hardnessAndResistance(50, 1200)
+                                    .harvestTool(ToolType.PICKAXE)
+                                    .harvestLevel(3)
+                                    .emissiveLighting((state, world, pos) -> true)
+                                    .requiresTool(),
+            type
         ));
     }
 

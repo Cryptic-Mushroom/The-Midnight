@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 1 - 16
+ * Last updated: 2021 - 2 - 27
  */
 
 package midnight.data.loottables;
@@ -192,6 +192,11 @@ public class MnBlockLootTables extends BlockLootTables {
 
         registerLootTable(MnBlocks.VIRILUX_ORE, block -> droppingItemWithFortune(block, MnItems.VIRILUX));
         registerDropSelfLootTable(MnBlocks.VIRILUX_BLOCK);
+
+        registerDropSelfLootTable(MnBlocks.CORE);
+        registerLootTable(MnBlocks.ACTIVE_CORE, block -> dropping(MnBlocks.DEAD_CORE));
+        registerDropSelfLootTable(MnBlocks.DEAD_CORE);
+        registerDropSelfLootTable(MnBlocks.ACTIVE_NIGHTSTONE);
     }
 
     protected static LootTable.Builder droppingNothing() {

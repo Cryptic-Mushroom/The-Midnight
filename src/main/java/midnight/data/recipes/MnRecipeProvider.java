@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 1 - 16
+ * Last updated: 2021 - 2 - 27
  */
 
 package midnight.data.recipes;
@@ -126,6 +126,8 @@ public class MnRecipeProvider extends RecipeProvider {
         generic3x3("virilux_block_3x3", MnItems.VIRILUX, MnBlocks.VIRILUX_BLOCK, 1);
         blasting("virilux_from_ore", MnBlocks.VIRILUX_ORE, MnItems.VIRILUX, 0.7);
 
+        core("core", MnItems.CORE, 1);
+
         cooking("cooked_suavis_from_raw", MnItems.RAW_SUAVIS, MnItems.COOKED_SUAVIS, 0.35);
     }
 
@@ -224,6 +226,18 @@ public class MnRecipeProvider extends RecipeProvider {
                            .patternLine("#  ")
                            .patternLine("## ")
                            .addCriterion("has_ingredient", hasItem(from))
+                           .build(consumer, Midnight.id(id));
+    }
+
+    private void core(String id, IItemProvider to, int count) {
+        ShapedRecipeBuilder.shapedRecipe(to, count)
+                           .key('#', Items.STONE)
+                           .key('-', Items.GLASS_PANE)
+                           .key('*', Items.CRYING_OBSIDIAN)
+                           .patternLine("#-#")
+                           .patternLine("-*-")
+                           .patternLine("#-#")
+                           .addCriterion("has_ingredient", hasItem(Items.CRYING_OBSIDIAN))
                            .build(consumer, Midnight.id(id));
     }
 

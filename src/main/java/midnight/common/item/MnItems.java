@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 1 - 16
+ * Last updated: 2021 - 2 - 27
  */
 
 package midnight.common.item;
@@ -215,6 +215,11 @@ public abstract class MnItems {
     // Virilux
     public static final Item VIRILUX_ORE = item(MnBlocks.VIRILUX_ORE, MnItemCategory.ORES, MnItemGroup.BLOCKS);
     public static final Item VIRILUX_BLOCK = item(MnBlocks.VIRILUX_BLOCK, MnItemCategory.MINERAL_BLOCKS, MnItemGroup.BLOCKS);
+
+    // Core
+    public static final Item CORE = item(MnBlocks.CORE, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS);
+    public static final Item DEAD_CORE = item(MnBlocks.DEAD_CORE, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS);
+    public static final Item ACTIVE_NIGHTSTONE = item(MnBlocks.ACTIVE_NIGHTSTONE, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS);
 
 
 

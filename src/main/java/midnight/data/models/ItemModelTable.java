@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 2 - 27
  */
 
 package midnight.data.models;
@@ -178,6 +178,10 @@ public final class ItemModelTable {
         register(MnBlocks.VIRILUX_ORE, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.VIRILUX_BLOCK, item -> inherit(name(item, "block/%s")));
         register(MnItems.VIRILUX, item -> generated(name(item, "item/%s")));
+
+        register(MnBlocks.CORE, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.DEAD_CORE, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.ACTIVE_NIGHTSTONE, item -> inherit(name(item, "block/%s")));
 
         register(MnBlocks.ROCKSHROOM, item -> inherit(name(item, "block/%s")));
         register(MnItems.ROCKSHROOM_CLUMP, item -> generated(name(item, "item/%s")));

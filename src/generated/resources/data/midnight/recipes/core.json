@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#-#",
+    "-*-",
+    "#-#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stone"
+    },
+    "-": {
+      "item": "minecraft:glass_pane"
+    },
+    "*": {
+      "item": "minecraft:crying_obsidian"
+    }
+  },
+  "result": {
+    "item": "midnight:core"
+  }
+}
