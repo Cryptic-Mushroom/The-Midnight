@@ -11,13 +11,13 @@
 buildscript {
     repositories {
         maven { url 'https://files.minecraftforge.net/maven' }
-        maven { url 'https://dist.creeper.host/Sponge/maven' }
+        maven { url 'https://repo.spongepowered.org/maven' }
         maven { url 'https://maven.shadew.net/' }
         jcenter()
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
         classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
         classpath group: 'net.shadew', name: 'modutil', version: '1.0-beta.10'
     }
@@ -46,10 +46,10 @@ allprojects {
 
     configurations {
         embed // External deps embedded into the JAR file
-        compile.extendsFrom(embed)
+        implementation.extendsFrom(embed)
 
         internal // Internal deps (subprojects) embedded into the JAR file
-        compile.extendsFrom(internal) // TODO Do we actually use this?
+        implementation.extendsFrom(internal) // TODO Do we actually use this?
     }
 
     apply from: "$rootDir/dependencies.gradle"
