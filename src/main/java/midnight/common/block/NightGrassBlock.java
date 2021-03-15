@@ -23,6 +23,8 @@ import net.minecraft.world.server.ServerWorld;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class NightGrassBlock extends NightDirtBlock implements IGrowable {
     public NightGrassBlock(Properties props) {
         super(props);
@@ -33,13 +35,13 @@ public class NightGrassBlock extends NightDirtBlock implements IGrowable {
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random rand) {
         int myStatus = getGrowStatusAt(world, pos);
         if (myStatus == -1) {
-            world.setBlockState(pos, MnBlocks.NIGHT_DIRT.getDefaultState());
+            world.setBlockAndUpdate(pos, MnBlocks.NIGHT_DIRT.defaultBlockState());
         } else {
             for (int i = 0; i < 4; i++) {
-                BlockPos randomNearby = pos.add(rand.nextInt(3) - 1, rand.nextInt(5) - 3, rand.nextInt(3) - 1);
+                BlockPos randomNearby = pos.offset(rand.nextInt(3) - 1, rand.nextInt(5) - 3, rand.nextInt(3) - 1);
                 BlockState nearState = world.getBlockState(randomNearby);
                 if (nearState.getBlock() == MnBlocks.NIGHT_DIRT && getGrowStatusAt(world, randomNearby) == 1) {
-                    world.setBlockState(randomNearby, getDefaultState());
+                    world.setBlockAndUpdate(randomNearby, defaultBlockState());
                 }
             }
         }
@@ -47,11 +49,11 @@ public class NightGrassBlock extends NightDirtBlock implements IGrowable {
 
     private static int getGrowStatusAt(ServerWorld world, BlockPos pos) {
         if (true) { // TODO world.getDimension().getType() == MnDimensions.midnight()
-            BlockPos up = pos.up();
+            BlockPos up = pos.above();
             BlockState upstate = world.getBlockState(up);
             if (!doesLightGoThroughBlockAbove(world.getBlockState(pos), world, pos, upstate, up)) {
                 return -1;
-            } else if (upstate.getFluidState().isTagged(FluidTags.WATER)) {
+            } else if (upstate.getFluidState().is(FluidTags.WATER)) {
                 return 0;
             } else {
                 return 1;
@@ -61,30 +63,30 @@ public class NightGrassBlock extends NightDirtBlock implements IGrowable {
     }
 
     private static boolean doesLightGoThroughBlockAbove(BlockState state, IWorldReader world, BlockPos pos, BlockState upstate, BlockPos up) {
-        if (upstate.getBlock() == Blocks.SNOW && upstate.get(SnowBlock.LAYERS) == 1) {
+        if (upstate.getBlock() == Blocks.SNOW && upstate.getValue(SnowBlock.LAYERS) == 1) {
             return true;
         } else {
-            int opac = LightEngine.func_215613_a(world, state, pos, upstate, up, Direction.UP, upstate.getOpacity(world, up));
+            int opac = LightEngine.getLightBlockInto(world, state, pos, upstate, up, Direction.UP, upstate.getLightBlock(world, up));
             return opac < world.getMaxLightLevel();
         }
     }
 
     @Override
-    public boolean canGrow(IBlockReader world, BlockPos pos, BlockState state, boolean isClient) {
-        BlockPos up = pos.up();
+    public boolean isValidBonemealTarget(IBlockReader world, BlockPos pos, BlockState state, boolean isClient) {
+        BlockPos up = pos.above();
         BlockState upState = world.getBlockState(up);
         return upState.isAir(world, up);
     }
 
     @Override
-    public boolean canUseBonemeal(World world, Random rand, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(World world, Random rand, BlockPos pos, BlockState state) {
         return true;
     }
 
     @Override
-    public void grow(ServerWorld world, Random rand, BlockPos pos, BlockState state) {
-        BlockPos up = pos.up();
-        BlockState plant = MnBlocks.NIGHT_GRASS.getDefaultState();
+    public void performBonemeal(ServerWorld world, Random rand, BlockPos pos, BlockState state) {
+        BlockPos up = pos.above();
+        BlockState plant = MnBlocks.NIGHT_GRASS.defaultBlockState();
 
         for (int i = 0; i < 128; ++i) {
             BlockPos placePos = up;
@@ -94,7 +96,7 @@ public class NightGrassBlock extends NightDirtBlock implements IGrowable {
                 if (j >= i / 16) {
                     BlockState currState = world.getBlockState(placePos);
                     if (currState.getBlock() == plant.getBlock() && rand.nextInt(10) == 0) {
-                        ((IGrowable) plant.getBlock()).grow(world, rand, placePos, currState);
+                        ((IGrowable) plant.getBlock()).performBonemeal(world, rand, placePos, currState);
                     }
 
                     if (!currState.isAir(world, placePos)) {
@@ -104,14 +106,14 @@ public class NightGrassBlock extends NightDirtBlock implements IGrowable {
                     BlockState newState = plant;
                     // TODO: Generate biome-specific plants here
 
-                    if (newState.isValidPosition(world, placePos)) {
-                        world.setBlockState(placePos, newState, 3);
+                    if (newState.canSurvive(world, placePos)) {
+                        world.setBlock(placePos, newState, 3);
                     }
                     break;
                 }
 
-                placePos = placePos.add(rand.nextInt(3) - 1, (rand.nextInt(3) - 1) * rand.nextInt(3) / 2, rand.nextInt(3) - 1);
-                if (world.getBlockState(placePos.down()).getBlock() != this || world.getBlockState(placePos).isOpaqueCube(world, placePos)) {
+                placePos = placePos.offset(rand.nextInt(3) - 1, (rand.nextInt(3) - 1) * rand.nextInt(3) / 2, rand.nextInt(3) - 1);
+                if (world.getBlockState(placePos.below()).getBlock() != this || world.getBlockState(placePos).isSolidRender(world, placePos)) {
                     break;
                 }
 

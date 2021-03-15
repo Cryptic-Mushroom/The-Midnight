@@ -21,10 +21,10 @@ public class DeadLogFeatureConfig implements IFeatureConfig {
 
     public static final Codec<DeadLogFeatureConfig> CODEC = RecordCodecBuilder.create(
         instance -> instance.group(
-            BlockStateProvider.TYPE_CODEC
+            BlockStateProvider.CODEC
                 .fieldOf("x_axis_log")
                 .forGetter(cfg -> cfg.xAxisLog),
-            BlockStateProvider.TYPE_CODEC
+            BlockStateProvider.CODEC
                 .fieldOf("z_axis_log")
                 .forGetter(cfg -> cfg.zAxisLog),
             Codec.INT

@@ -80,8 +80,8 @@ public class MnMusicTicker {
      * This method is called on every client tick by the {@link AmbienceHandler} event handler.
      */
     public void tick() {
-        if (this.mc.player != null && !this.mc.getSoundHandler().isPlaying(this.playingRecord)) {
-            if (MnDimensions.isTheMidnight(this.mc.player.world)) {
+        if (this.mc.player != null && !this.mc.getSoundManager().isActive(this.playingRecord)) {
+            if (MnDimensions.isTheMidnight(this.mc.player.level)) {
                 if (this.trueMusic != null && this.trueMusic.getVolume() <= 0) {
                     this.trueMusic = null;
                     LOGGER.debug("Setting this.trueMusic to null since its volume is below 0...");
@@ -96,7 +96,7 @@ public class MnMusicTicker {
                 TrackType ambientTrackType = this.getAmbientMusicTrack();
 
                 if (this.ambientMusic != null) {
-                    if (!this.mc.getSoundHandler().isPlaying(this.ambientMusic)) {
+                    if (!this.mc.getSoundManager().isActive(this.ambientMusic)) {
                         this.ambientMusic = null;
                         LOGGER.debug("Setting this.ambientMusic to null since it's not playing or has finished...");
                         if (musicTrackType != null && this.trueMusic == null) {
@@ -107,7 +107,7 @@ public class MnMusicTicker {
                 }
 
                 if (this.trueMusic != null) {
-                    if (!this.mc.getSoundHandler().isPlaying(this.trueMusic)) {
+                    if (!this.mc.getSoundManager().isActive(this.trueMusic)) {
                         this.trueMusic = null;
                         LOGGER.debug("Set this.trueMusic to null since it's not playing or has finished...");
                         if (this.ambientMusic == null) {
@@ -203,8 +203,8 @@ public class MnMusicTicker {
     @Nullable
     protected MnMusicTicker.TrackType getMusicTrack() {
         if (this.mc.player == null) return null; // null check in case something goes horrible wrong.
-        World world = this.mc.player.world;
-        RegistryKey<Biome> biome = MnBiomes.getKeyFromBiome(world, world.getBiome(this.mc.player.getBlockPos()));
+        World world = this.mc.player.level;
+        RegistryKey<Biome> biome = MnBiomes.getKeyFromBiome(world, world.getBiome(this.mc.player.blockPosition()));
 
         TrackType result = null;
         if (biome == MnBiomes.VIGILANT_FOREST) result = TrackType.DARK_WILLOW;
@@ -224,7 +224,7 @@ public class MnMusicTicker {
         ambientTracks.add(TrackType.ULTRAVIOLET);
         ambientTracks.remove(lastMusicPlayed);
 
-        return ambientTracks.get((int)(Util.nanoTime() % (long) ambientTracks.size()));
+        return ambientTracks.get((int)(Util.getNanos() % (long) ambientTracks.size()));
     }
 
     /**
@@ -236,7 +236,7 @@ public class MnMusicTicker {
     public void playMusic(TrackType requestedTrackType) {
         this.trueMusic = new TickableMusicSound(requestedTrackType.getMusicLocation(), SoundCategory.MUSIC, false);
 
-        this.mc.getSoundHandler().play(this.trueMusic);
+        this.mc.getSoundManager().play(this.trueMusic);
         this.timeUntilNextMusic = Integer.MAX_VALUE;
     }
 
@@ -249,7 +249,7 @@ public class MnMusicTicker {
     public void playAmbientMusic(TrackType requestedTrackType) {
         this.ambientMusic = new TickableMusicSound(requestedTrackType.getMusicLocation(), SoundCategory.MUSIC, false);
 
-        this.mc.getSoundHandler().play(this.ambientMusic);
+        this.mc.getSoundManager().play(this.ambientMusic);
         this.timeUntilNextMusic = Integer.MAX_VALUE;
     }
 
@@ -307,7 +307,7 @@ public class MnMusicTicker {
 
         @Override
         public String toString() {
-            return musicLocation.getName().toString();
+            return musicLocation.getLocation().toString();
         }
     }
 }

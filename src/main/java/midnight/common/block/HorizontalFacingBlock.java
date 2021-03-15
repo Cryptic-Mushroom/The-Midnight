@@ -18,6 +18,8 @@ import net.minecraft.util.Direction;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 /**
  * A block to be oriented horizontally by the player.
  *
@@ -25,22 +27,22 @@ import javax.annotation.Nullable;
  * @since 0.6.0
  */
 public class HorizontalFacingBlock extends HorizontalBlock {
-    public static final DirectionProperty FACING = HORIZONTAL_FACING; // For smaller code, map to FACING
+    public static final DirectionProperty FACING = FACING; // For smaller code, map to FACING
 
     protected HorizontalFacingBlock(Properties props) {
         super(props);
 
-        setDefaultState(getStateContainer().getBaseState().with(FACING, Direction.NORTH));
+        registerDefaultState(getStateDefinition().any().setValue(FACING, Direction.NORTH));
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(FACING);
     }
 
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext ctx) {
-        return getDefaultState().with(FACING, ctx.getPlacementHorizontalFacing().getOpposite());
+        return defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
     }
 }

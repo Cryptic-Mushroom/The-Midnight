@@ -14,6 +14,8 @@ import net.minecraft.util.Direction;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class GhostPlantStemBlock extends RotatedPillarBlock {
     public GhostPlantStemBlock(Properties properties) {
         super(properties);
@@ -22,7 +24,7 @@ public class GhostPlantStemBlock extends RotatedPillarBlock {
     @Override
     @OnlyIn(Dist.CLIENT)
     @SuppressWarnings("deprecation")
-    public boolean isSideInvisible(BlockState state, BlockState neighbor, Direction side) {
-        return neighbor.getBlock() == this || super.isSideInvisible(state, neighbor, side);
+    public boolean skipRendering(BlockState state, BlockState neighbor, Direction side) {
+        return neighbor.getBlock() == this || super.skipRendering(state, neighbor, side);
     }
 }

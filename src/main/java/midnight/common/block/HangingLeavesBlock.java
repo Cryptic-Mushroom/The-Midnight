@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
 import java.util.Random;
 import java.util.function.Supplier;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class HangingLeavesBlock extends HangingPlantBlock implements IGrowable {
     public static final BooleanProperty END = MnBlockStateProperties.END;
     public static final BooleanProperty ROOT = MnBlockStateProperties.ROOT;
@@ -37,62 +39,62 @@ public class HangingLeavesBlock extends HangingPlantBlock implements IGrowable {
         super(properties);
         this.leavesBlock = leavesBlock;
         this.logBlockTag = logBlockTag;
-        setDefaultState(
-            getStateContainer().getBaseState()
-                               .with(ROOT, true)
-                               .with(END, false)
+        registerDefaultState(
+            getStateDefinition().any()
+                               .setValue(ROOT, true)
+                               .setValue(END, false)
         );
     }
 
     @Override
-    public BlockState updatePostPlacement(BlockState state, Direction dir, BlockState adjState, IWorld world, BlockPos pos, BlockPos adjPos) {
+    public BlockState updateShape(BlockState state, Direction dir, BlockState adjState, IWorld world, BlockPos pos, BlockPos adjPos) {
         if (dir.getAxis() == Direction.Axis.Y)
             state = getAppropriateState(world, pos);
-        return super.updatePostPlacement(state, dir, adjState, world, pos, adjPos);
+        return super.updateShape(state, dir, adjState, world, pos, adjPos);
     }
 
     @Override
     @Nullable
     public BlockState getStateForPlacement(BlockItemUseContext ctx) {
-        return getAppropriateState(ctx.getWorld(), ctx.getPos());
+        return getAppropriateState(ctx.getLevel(), ctx.getClickedPos());
     }
 
     private BlockState getAppropriateState(IWorld world, BlockPos pos) {
-        BlockState aboveState = world.getBlockState(pos.up());
-        BlockState belowState = world.getBlockState(pos.down());
-        return getDefaultState()
-                   .with(END, belowState.getBlock() != this)
-                   .with(ROOT, aboveState.getBlock() != this);
+        BlockState aboveState = world.getBlockState(pos.above());
+        BlockState belowState = world.getBlockState(pos.below());
+        return defaultBlockState()
+                   .setValue(END, belowState.getBlock() != this)
+                   .setValue(ROOT, aboveState.getBlock() != this);
     }
 
     @Override
-    public boolean isValidGround(BlockState state, IBlockReader world, BlockPos pos) {
+    public boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
         if (state.getBlock() == this) {
-            return state.get(ROOT);
+            return state.getValue(ROOT);
         }
-        return state.isIn(leavesBlock.get()) || state.isIn(logBlockTag);
+        return state.is(leavesBlock.get()) || state.is(logBlockTag);
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(END, ROOT);
     }
 
     @Override
-    public boolean canGrow(IBlockReader world, BlockPos pos, BlockState state, boolean client) {
-        if (!state.get(ROOT) || !state.get(END)) return false;
-        BlockPos down = pos.down();
+    public boolean isValidBonemealTarget(IBlockReader world, BlockPos pos, BlockState state, boolean client) {
+        if (!state.getValue(ROOT) || !state.getValue(END)) return false;
+        BlockPos down = pos.below();
         BlockState below = world.getBlockState(down);
         return below.isAir(world, down);
     }
 
     @Override
-    public boolean canUseBonemeal(World world, Random rng, BlockPos pos, BlockState state) {
-        return state.get(ROOT) && state.get(END);
+    public boolean isBonemealSuccess(World world, Random rng, BlockPos pos, BlockState state) {
+        return state.getValue(ROOT) && state.getValue(END);
     }
 
     @Override
-    public void grow(ServerWorld world, Random rng, BlockPos pos, BlockState state) {
-        world.setBlockState(pos.down(), state.with(ROOT, false).with(END, true));
+    public void performBonemeal(ServerWorld world, Random rng, BlockPos pos, BlockState state) {
+        world.setBlockAndUpdate(pos.below(), state.setValue(ROOT, false).setValue(END, true));
     }
 }

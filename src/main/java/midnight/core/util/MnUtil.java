@@ -68,7 +68,7 @@ public final class MnUtil {
      */
     @OnlyIn(Dist.CLIENT)
     public static int modifyGrassColor(int base, BlockPos pos) {
-        World world = Minecraft.getInstance().world;
+        World world = Minecraft.getInstance().level;
         if (world == null)
             return base;
 
@@ -81,7 +81,7 @@ public final class MnUtil {
             for (int dy = -2; dy < 2; dy++) {
                 for (int dz = -2; dz < 2; dz++) {
 
-                    mpos.setPos(pos).move(dx, dy, dz);
+                    mpos.set(pos).move(dx, dy, dz);
 
                     if (mpos.equals(pos))
                         continue;
@@ -98,7 +98,7 @@ public final class MnUtil {
                             minDistSq = distSq;
 
                             INightGrassColorModifying mod = (INightGrassColorModifying) block;
-                            nearestCol = mod.getColorModifier(world, mpos.toImmutable(), state);
+                            nearestCol = mod.getColorModifier(world, mpos.immutable(), state);
                         }
                     }
                 }

@@ -44,8 +44,8 @@ public final class MnBiomeMaker {
         return new MnBiomeBuilder(Midnight.id(id))
                    .depth(0.1f).scale(0.1f)
                    .temperature(1).downfall(0).precipitation(Biome.RainType.NONE)
-                   .category(Biome.Category.MUSHROOM)
-                   .effects(
+                   .biomeCategory(Biome.Category.MUSHROOM)
+                   .specialEffects(
                        new BiomeAmbience.Builder()
                            .fogColor(0) // TODO Look up from old version
                            .skyColor(0)
@@ -58,10 +58,10 @@ public final class MnBiomeMaker {
                            .surfaceBuilder(MnConfiguredSurfaceBuilders.DEFAULT_NIGHT_GRASS)
                            .build()
                    )
-                   .spawnSettings(
+                   .mobSpawnSettings(
                        new MobSpawnInfo.Builder().build()
                    )
-                   .temperatureModifier(Biome.TemperatureModifier.NONE)
+                   .temperatureAdjustment(Biome.TemperatureModifier.NONE)
                    .coloring(
                        new BiomeColoring.Builder()
                            .grassColor(0x8F54A1)
@@ -89,8 +89,8 @@ public final class MnBiomeMaker {
         return new MnBiomeBuilder(Midnight.id(id))
                    .depth(0.1f).scale(0.1f)
                    .temperature(1).downfall(0).precipitation(Biome.RainType.NONE)
-                   .category(Biome.Category.FOREST)
-                   .effects(
+                   .biomeCategory(Biome.Category.FOREST)
+                   .specialEffects(
                        new BiomeAmbience.Builder()
                            .fogColor(0) // TODO Look up from old version
                            .skyColor(0)
@@ -103,10 +103,10 @@ public final class MnBiomeMaker {
                            .surfaceBuilder(MnConfiguredSurfaceBuilders.DEFAULT_NIGHT_GRASS)
                            .build()
                    )
-                   .spawnSettings(
+                   .mobSpawnSettings(
                        new MobSpawnInfo.Builder().build()
                    )
-                   .temperatureModifier(Biome.TemperatureModifier.NONE)
+                   .temperatureAdjustment(Biome.TemperatureModifier.NONE)
                    .coloring(
                        new BiomeColoring.Builder()
                            .grassColor(0x5B527D)
@@ -134,8 +134,8 @@ public final class MnBiomeMaker {
         return new MnBiomeBuilder(Midnight.id(id))
                    .depth(0.1f).scale(0.1f)
                    .temperature(1).downfall(0).precipitation(Biome.RainType.NONE)
-                   .category(Biome.Category.FOREST)
-                   .effects(
+                   .biomeCategory(Biome.Category.FOREST)
+                   .specialEffects(
                        new BiomeAmbience.Builder()
                            .fogColor(0) // TODO Look up from old version
                            .skyColor(0)
@@ -148,10 +148,10 @@ public final class MnBiomeMaker {
                            .surfaceBuilder(MnConfiguredSurfaceBuilders.DECEITFUL_BOG)
                            .build()
                    )
-                   .spawnSettings(
+                   .mobSpawnSettings(
                        new MobSpawnInfo.Builder().build()
                    )
-                   .temperatureModifier(Biome.TemperatureModifier.NONE)
+                   .temperatureAdjustment(Biome.TemperatureModifier.NONE)
                    .coloring(
                        new BiomeColoring.Builder()
                            .grassColor(0x765E8A)

@@ -19,6 +19,8 @@ import net.minecraft.world.IWorldReader;
 
 import java.util.function.Predicate;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class FloatingPlantBlock extends PlantBlock implements ICustomBlockItem {
     private final Predicate<Fluid> requiredFluid;
 
@@ -28,14 +30,14 @@ public class FloatingPlantBlock extends PlantBlock implements ICustomBlockItem {
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader world, BlockPos pos) {
-        return requiredFluid.test(state.getFluidState().getFluid());
+    protected boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
+        return requiredFluid.test(state.getFluidState().getType());
     }
 
     @Override
-    public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos) {
-        BlockPos down = pos.down();
-        return isValidGround(world.getBlockState(down), world, down);
+    public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos) {
+        BlockPos down = pos.below();
+        return mayPlaceOn(world.getBlockState(down), world, down);
     }
 
     @Override

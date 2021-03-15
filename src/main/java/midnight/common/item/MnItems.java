@@ -276,7 +276,7 @@ public abstract class MnItems {
     }
 
     private static Item item(Block block, MnItemCategory cat, ItemGroup group) {
-        return item(block, cat, new Item.Properties().group(group));
+        return item(block, cat, new Item.Properties().tab(group));
     }
 
     private static Item item(String id, MnItemCategory cat, Item item) {
@@ -291,24 +291,24 @@ public abstract class MnItems {
     }
 
     private static Item item(String id, MnItemCategory cat, ItemGroup group) {
-        return item(id, cat, new Item.Properties().group(group));
+        return item(id, cat, new Item.Properties().tab(group));
     }
 
     private static Item item(String id, MnItemCategory cat, ItemGroup group, int stackability) {
-        return item(id, cat, new Item.Properties().group(group).maxStackSize(stackability));
+        return item(id, cat, new Item.Properties().tab(group).stacksTo(stackability));
     }
 
     private static Item edible(String id, MnItemCategory cat, ItemGroup group, Food food) {
-        return item(id, cat, new Item.Properties().group(group).food(food));
+        return item(id, cat, new Item.Properties().tab(group).food(food));
     }
 
     private static Item rawSuavis(String id, MnItemCategory cat, ItemGroup group) {
-        return item(id, cat, new RawSuavisItem(new Item.Properties().group(group).food(MnFoods.RAW_SUAVIS)));
+        return item(id, cat, new RawSuavisItem(new Item.Properties().tab(group).food(MnFoods.RAW_SUAVIS)));
     }
 
     private static Item geode(String id, MnItemCategory cat, ItemGroup group) {
         return item(id, cat, new ThrowableItem(
-            new Item.Properties().group(group).maxStackSize(16),
+            new Item.Properties().tab(group).stacksTo(16),
             () -> MnSoundEvents.ENTITY_GEODE_THROW,
             ThrownGeodeEntity::new
         ));

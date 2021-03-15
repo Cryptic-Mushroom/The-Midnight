@@ -22,6 +22,8 @@ import net.minecraft.world.server.ServerWorld;
 import java.util.Random;
 import java.util.function.Supplier;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class HangingLeavesGrowingBlock extends LeavesBlock implements IGrowable {
     private final Supplier<Block> hangingLeaves;
 
@@ -32,17 +34,17 @@ public class HangingLeavesGrowingBlock extends LeavesBlock implements IGrowable 
 
 
     @Override
-    public boolean canGrow(IBlockReader world, BlockPos pos, BlockState state, boolean client) {
+    public boolean isValidBonemealTarget(IBlockReader world, BlockPos pos, BlockState state, boolean client) {
         return true;
     }
 
     @Override
-    public boolean canUseBonemeal(World world, Random rng, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(World world, Random rng, BlockPos pos, BlockState state) {
         return true;
     }
 
     @Override
-    public void grow(ServerWorld world, Random rng, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerWorld world, Random rng, BlockPos pos, BlockState state) {
         try {
             HangingLeavesBlock hangLeaves = (HangingLeavesBlock) hangingLeaves.get();
             BlockPos.Mutable mpos = new BlockPos.Mutable();
@@ -52,27 +54,27 @@ public class HangingLeavesGrowingBlock extends LeavesBlock implements IGrowable 
                 int randy = rng.nextInt(2) - rng.nextInt(2) + rng.nextInt(2) - rng.nextInt(2);
                 int randz = rng.nextInt(2) - rng.nextInt(2) + rng.nextInt(2) - rng.nextInt(2);
 
-                mpos.setPos(pos).move(randx, randy, randz);
+                mpos.set(pos).move(randx, randy, randz);
                 BlockState nearState = world.getBlockState(mpos);
 
                 // Only grow on other leaves, even though placing on log blocks is possible
-                if (!nearState.isIn(this) && !nearState.isIn(hangLeaves)) continue;
+                if (!nearState.is(this) && !nearState.is(hangLeaves)) continue;
 
                 mpos.move(Direction.DOWN);
                 BlockState belowState = world.getBlockState(mpos);
 
                 if (!belowState.isAir(world, mpos)) continue;
-                if (!hangLeaves.isValidPosition(belowState, world, mpos)) continue;
+                if (!hangLeaves.canSurvive(belowState, world, mpos)) continue;
 
-                boolean root = !nearState.isIn(hangLeaves);
+                boolean root = !nearState.is(hangLeaves);
                 if (!root) {
                     // Make sure blockstates match when placing on other hanging leaves
                     mpos.move(Direction.UP);
-                    world.setBlockState(mpos, nearState.with(HangingLeavesBlock.END, false));
+                    world.setBlockAndUpdate(mpos, nearState.setValue(HangingLeavesBlock.END, false));
                     mpos.move(Direction.DOWN);
                 }
 
-                world.setBlockState(mpos, hangLeaves.getDefaultState().with(HangingLeavesBlock.ROOT, root).with(HangingLeavesBlock.END, true));
+                world.setBlockAndUpdate(mpos, hangLeaves.defaultBlockState().setValue(HangingLeavesBlock.ROOT, root).setValue(HangingLeavesBlock.END, true));
             }
         } catch (ClassCastException exc) {
             // This isn't a good reason to crash, an error in the console is enough

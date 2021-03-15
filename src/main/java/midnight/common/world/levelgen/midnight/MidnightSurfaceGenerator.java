@@ -41,8 +41,8 @@ public class MidnightSurfaceGenerator extends MidnightGenerator {
         SharedSeedRandom rng = new SharedSeedRandom();
         rng.setBaseChunkSeed(cx, cz);
 
-        int rx = cp.getXStart();
-        int rz = cp.getZStart();
+        int rx = cp.getMinBlockX();
+        int rz = cp.getMinBlockZ();
 
         BlockPos.Mutable mpos = new BlockPos.Mutable();
 
@@ -50,14 +50,14 @@ public class MidnightSurfaceGenerator extends MidnightGenerator {
             for (int z = 0; z < 16; z++) {
                 int gx = rx + x;
                 int gz = rz + z;
-                int hgt = chunk.getTopBlockY(Heightmap.Type.WORLD_SURFACE_WG, x, z) + 1;
+                int hgt = chunk.getHeight(Heightmap.Type.WORLD_SURFACE_WG, x, z) + 1;
                 double snoise = MnMath.unlerp(-1, 1, surfaceNoise.generate(gx, gz));
 
-                world.getBiome(mpos.setPos(rx + x, hgt, rz + z))
-                     .buildSurface(
+                world.getBiome(mpos.set(rx + x, hgt, rz + z))
+                     .buildSurfaceAt(
                          rng, chunk, gx, gz, hgt, snoise,
-                         MnBlocks.NIGHTSTONE.getDefaultState(), //chunkGenerator.getSettings().getDefaultBlock(),
-                         Blocks.WATER.getDefaultState(),
+                         MnBlocks.NIGHTSTONE.defaultBlockState(), //chunkGenerator.getSettings().getDefaultBlock(),
+                         Blocks.WATER.defaultBlockState(),
                          chunkGenerator.getSeaLevel(),
                          world.getSeed()
                      );

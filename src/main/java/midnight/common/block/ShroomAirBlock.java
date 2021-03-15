@@ -24,6 +24,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import java.util.ArrayList;
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 /**
  * The block that represents air near the inside of fungi caps. This air emits light and spore particles to give better
  * ambience to giant shrooms. This block emits light rather than the cap itself, since the cap might not need light from
@@ -40,17 +42,17 @@ public class ShroomAirBlock extends AirBlock {
     }
 
     @Override
-    public BlockState updatePostPlacement(BlockState state, Direction dir, BlockState adjState, IWorld world, BlockPos pos, BlockPos adjPos) {
-        state = super.updatePostPlacement(state, dir, adjState, world, pos, adjPos);
+    public BlockState updateShape(BlockState state, Direction dir, BlockState adjState, IWorld world, BlockPos pos, BlockPos adjPos) {
+        state = super.updateShape(state, dir, adjState, world, pos, adjPos);
 
         for (Direction direction : Direction.values()) {
-            BlockState side = world.getBlockState(pos.offset(direction));
-            boolean shouldBeShroomAir = side.getBlock() instanceof ShroomCapBlock && !side.get(ShroomCapBlock.getProp(direction.getOpposite()));
+            BlockState side = world.getBlockState(pos.relative(direction));
+            boolean shouldBeShroomAir = side.getBlock() instanceof ShroomCapBlock && !side.getValue(ShroomCapBlock.getProp(direction.getOpposite()));
             if (shouldBeShroomAir) return state;
         }
 
-        world.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
-        return Blocks.AIR.getDefaultState();
+        world.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+        return Blocks.AIR.defaultBlockState();
     }
 
     @Override
@@ -59,9 +61,9 @@ public class ShroomAirBlock extends AirBlock {
         // Add little spories for nearby shroom caps
         ArrayList<Integer> colors = new ArrayList<>();
         for (Direction dir : Direction.values()) {
-            BlockState adjState = world.getBlockState(pos.offset(dir));
+            BlockState adjState = world.getBlockState(pos.relative(dir));
             Block adj = adjState.getBlock();
-            if (adj instanceof ShroomCapBlock && !adjState.get(ShroomCapBlock.getProp(dir.getOpposite()))) {
+            if (adj instanceof ShroomCapBlock && !adjState.getValue(ShroomCapBlock.getProp(dir.getOpposite()))) {
                 colors.add(((ShroomCapBlock) adj).getSporeColor());
             }
         }

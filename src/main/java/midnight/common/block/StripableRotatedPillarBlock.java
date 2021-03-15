@@ -20,6 +20,8 @@ import net.minecraftforge.common.ToolType;
 import javax.annotation.Nullable;
 import java.util.function.Supplier;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class StripableRotatedPillarBlock extends RotatedPillarBlock {
     private final Supplier<Block> stripped;
 
@@ -32,7 +34,7 @@ public class StripableRotatedPillarBlock extends RotatedPillarBlock {
     @Override
     public BlockState getToolModifiedState(BlockState state, World world, BlockPos pos, PlayerEntity player, ItemStack stack, ToolType toolType) {
         if (toolType == ToolType.AXE) {
-            return stripped.get().getDefaultState().with(AXIS, state.get(AXIS));
+            return stripped.get().defaultBlockState().setValue(AXIS, state.getValue(AXIS));
         }
         return null;
     }

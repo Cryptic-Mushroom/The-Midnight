@@ -34,13 +34,13 @@ public enum BlockLayer {
         switch (this) {
             default:
             case SOLID:
-                return RenderType.getSolid();
+                return RenderType.solid();
             case CUTOUT:
-                return RenderType.getCutout();
+                return RenderType.cutout();
             case CUTOUT_MIPPED:
-                return RenderType.getCutoutMipped();
+                return RenderType.cutoutMipped();
             case TRANSLUCENT:
-                return RenderType.getTranslucent();
+                return RenderType.translucent();
         }
     }
 
@@ -49,10 +49,10 @@ public enum BlockLayer {
      */
     @OnlyIn(Dist.CLIENT)
     public static BlockLayer getFromRenderType(RenderType type) {
-        if (type == RenderType.getSolid()) return SOLID;
-        if (type == RenderType.getCutout()) return CUTOUT;
-        if (type == RenderType.getCutoutMipped()) return CUTOUT_MIPPED;
-        if (type == RenderType.getTranslucent()) return TRANSLUCENT;
+        if (type == RenderType.solid()) return SOLID;
+        if (type == RenderType.cutout()) return CUTOUT;
+        if (type == RenderType.cutoutMipped()) return CUTOUT_MIPPED;
+        if (type == RenderType.translucent()) return TRANSLUCENT;
         return SOLID;
     }
 }

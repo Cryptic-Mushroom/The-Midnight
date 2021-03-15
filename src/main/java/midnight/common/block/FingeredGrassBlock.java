@@ -13,6 +13,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class FingeredGrassBlock extends PlantBlock implements INightGrassColorModifying {
     protected FingeredGrassBlock(Properties props) {
         super(props);

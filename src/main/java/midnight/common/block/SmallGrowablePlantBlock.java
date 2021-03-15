@@ -18,6 +18,8 @@ import net.minecraft.world.server.ServerWorld;
 import java.util.Random;
 import java.util.function.Supplier;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class SmallGrowablePlantBlock extends PlantBlock implements IGrowable {
     private final Supplier<TallPlantBlock> largePlant;
 
@@ -27,19 +29,19 @@ public class SmallGrowablePlantBlock extends PlantBlock implements IGrowable {
     }
 
     @Override
-    public boolean canGrow(IBlockReader world, BlockPos pos, BlockState state, boolean isClient) {
+    public boolean isValidBonemealTarget(IBlockReader world, BlockPos pos, BlockState state, boolean isClient) {
         return true;
     }
 
     @Override
-    public boolean canUseBonemeal(World world, Random rand, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(World world, Random rand, BlockPos pos, BlockState state) {
         return true;
     }
 
     @Override
-    public void grow(ServerWorld world, Random rand, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerWorld world, Random rand, BlockPos pos, BlockState state) {
         TallPlantBlock large = getDoubleBlock(world, rand, pos, state);
-        if (large.getDefaultState().isValidPosition(world, pos) && world.isAirBlock(pos.up())) {
+        if (large.defaultBlockState().canSurvive(world, pos) && world.isEmptyBlock(pos.above())) {
             large.placeAt(world, pos, 2);
         }
     }

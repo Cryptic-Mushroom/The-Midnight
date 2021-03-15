@@ -152,7 +152,7 @@ public class ExtrudedSquareModelGen implements IModelGen {
 
         // Add face culling only if needed (wantCull is true when the face hits the exact side of the full block)
         if (wantCull && cull && cullface != null) {
-            face.addProperty("cullface", cullface.getName2());
+            face.addProperty("cullface", cullface.getName());
         }
 
         // Add tintindex if wanted

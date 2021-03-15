@@ -35,10 +35,10 @@ public final class MnParticleTypes {
 
     @OnlyIn(Dist.CLIENT)
     public static void setupClient() {
-        ParticleManager particles = Minecraft.getInstance().particles;
-        particles.registerFactory(SHROOM_SPORE, RisingSporeParticle.ShroomFactory::new);
-        particles.registerFactory(TENDRIL_POLLEN, RisingSporeParticle.TendrilweedFactory::new);
-        particles.registerFactory(SPORE, SporeParticle.Factory::new);
+        ParticleManager particles = Minecraft.getInstance().particleEngine;
+        particles.register(SHROOM_SPORE, RisingSporeParticle.ShroomFactory::new);
+        particles.register(TENDRIL_POLLEN, RisingSporeParticle.TendrilweedFactory::new);
+        particles.register(SPORE, SporeParticle.Factory::new);
     }
 
     public static void registerParticleTypes(IRegistry<ParticleType<?>> registry) {

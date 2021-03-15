@@ -44,7 +44,7 @@ public class VioleafHealPacket implements MnPacket {
     @Override
     @OnlyIn(Dist.CLIENT)
     public void handle(NetworkEvent.Context ctx) {
-        ctx.enqueueWork(() -> VioleafBlock.spawnParticles(Minecraft.getInstance().world, vec));
+        ctx.enqueueWork(() -> VioleafBlock.spawnParticles(Minecraft.getInstance().level, vec));
     }
 
     public static VioleafHealPacket read(PacketBuffer buf) {

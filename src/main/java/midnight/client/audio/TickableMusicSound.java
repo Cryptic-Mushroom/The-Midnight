@@ -33,7 +33,7 @@ public class TickableMusicSound extends TickableSound {
     public TickableMusicSound(SoundEvent soundEvent, SoundCategory soundCategory, boolean repeat) {
         super(soundEvent, soundCategory);
         this.soundEvent = soundEvent;
-        this.repeat = repeat;
+        this.looping = repeat;
     }
 
     /**
@@ -60,8 +60,8 @@ public class TickableMusicSound extends TickableSound {
     }
 
     @Override
-    public boolean isDonePlaying() {
-        return super.isDonePlaying();
+    public boolean isStopped() {
+        return super.isStopped();
     }
 
     /**

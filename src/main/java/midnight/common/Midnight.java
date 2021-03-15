@@ -56,7 +56,7 @@ public abstract class Midnight extends MidnightCore {
     private final PluginManager pluginManager = new PluginManager();
 
 
-    public static final RegistryKey<World> MIDNIGHT = RegistryKey.of(Registry.DIMENSION, id("midnight"));
+    public static final RegistryKey<World> MIDNIGHT = RegistryKey.create(Registry.DIMENSION_REGISTRY, id("midnight"));
 
     /*
      * INITIALIZATION HANDLERS

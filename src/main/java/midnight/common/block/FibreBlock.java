@@ -20,6 +20,8 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 @SuppressWarnings("deprecation")
 public class FibreBlock extends PlantBlock {
     public static final BooleanProperty DENSE = MnBlockStateProperties.DENSE;
@@ -28,29 +30,29 @@ public class FibreBlock extends PlantBlock {
         super(props);
         hitbox(16, 1.5);
 
-        setDefaultState(getStateContainer().getBaseState().with(DENSE, false));
+        registerDefaultState(getStateDefinition().any().setValue(DENSE, false));
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(DENSE);
     }
 
     @Override
-    public boolean isReplaceable(BlockState state, BlockItemUseContext ctx) {
-        ItemStack stack = ctx.getItem();
-        return stack.getItem() == asItem() && ctx.getFace() == Direction.UP && !state.get(DENSE);
+    public boolean canBeReplaced(BlockState state, BlockItemUseContext ctx) {
+        ItemStack stack = ctx.getItemInHand();
+        return stack.getItem() == asItem() && ctx.getClickedFace() == Direction.UP && !state.getValue(DENSE);
     }
 
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext ctx) {
-        World world = ctx.getWorld();
-        BlockPos pos = ctx.getPos();
+        World world = ctx.getLevel();
+        BlockPos pos = ctx.getClickedPos();
         BlockState state = world.getBlockState(pos);
-        if (state.isIn(this) && ctx.getFace() == Direction.UP && !state.get(DENSE)) {
-            return getDefaultState().with(DENSE, true);
+        if (state.is(this) && ctx.getClickedFace() == Direction.UP && !state.getValue(DENSE)) {
+            return defaultBlockState().setValue(DENSE, true);
         }
-        return getDefaultState();
+        return defaultBlockState();
     }
 }

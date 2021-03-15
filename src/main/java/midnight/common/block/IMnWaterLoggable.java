@@ -23,18 +23,18 @@ import net.minecraft.world.World;
 
 public interface IMnWaterLoggable extends IBucketPickupHandler, ILiquidContainer {
     @Override
-    default boolean canContainFluid(IBlockReader world, BlockPos pos, BlockState state, Fluid fluid) {
-        return !state.get(BlockStateProperties.WATERLOGGED) && fluid == Fluids.WATER;
+    default boolean canPlaceLiquid(IBlockReader world, BlockPos pos, BlockState state, Fluid fluid) {
+        return !state.getValue(BlockStateProperties.WATERLOGGED) && fluid == Fluids.WATER;
     }
 
     @Override
-    default boolean receiveFluid(IWorld world, BlockPos pos, BlockState state, FluidState fstate) {
-        if (!state.get(BlockStateProperties.WATERLOGGED) && fstate.getFluid() == Fluids.WATER) {
-            if (!world.isRemote()) {
-                world.setBlockState(pos, state.with(BlockStateProperties.WATERLOGGED, true), 3);
+    default boolean placeLiquid(IWorld world, BlockPos pos, BlockState state, FluidState fstate) {
+        if (!state.getValue(BlockStateProperties.WATERLOGGED) && fstate.getType() == Fluids.WATER) {
+            if (!world.isClientSide()) {
+                world.setBlock(pos, state.setValue(BlockStateProperties.WATERLOGGED, true), 3);
 
-                Fluid fluid = fstate.getFluid();
-                world.getPendingFluidTicks().scheduleTick(pos, fluid, fluid.getTickRate(world));
+                Fluid fluid = fstate.getType();
+                world.getLiquidTicks().scheduleTick(pos, fluid, fluid.getTickDelay(world));
             }
             return true;
         } else {
@@ -43,9 +43,9 @@ public interface IMnWaterLoggable extends IBucketPickupHandler, ILiquidContainer
     }
 
     @Override
-    default Fluid pickupFluid(IWorld world, BlockPos pos, BlockState state) {
-        if (state.get(BlockStateProperties.WATERLOGGED)) {
-            world.setBlockState(pos, state.with(BlockStateProperties.WATERLOGGED, false), 3);
+    default Fluid takeLiquid(IWorld world, BlockPos pos, BlockState state) {
+        if (state.getValue(BlockStateProperties.WATERLOGGED)) {
+            world.setBlock(pos, state.setValue(BlockStateProperties.WATERLOGGED, false), 3);
             return Fluids.WATER;
         } else {
             return Fluids.EMPTY;
@@ -53,25 +53,25 @@ public interface IMnWaterLoggable extends IBucketPickupHandler, ILiquidContainer
     }
 
     default void tickFluid(IWorld world, BlockPos pos, BlockState state) {
-        if (state.get(BlockStateProperties.WATERLOGGED)) {
-            Fluid fluid = world.getFluidState(pos).getFluid();
-            world.getPendingFluidTicks().scheduleTick(pos, fluid, fluid.getTickRate(world));
+        if (state.getValue(BlockStateProperties.WATERLOGGED)) {
+            Fluid fluid = world.getFluidState(pos).getType();
+            world.getLiquidTicks().scheduleTick(pos, fluid, fluid.getTickDelay(world));
         }
     }
 
     default BlockState waterlog(BlockState state, World world, BlockPos pos) {
         if (state == null) return null;
-        boolean waterlogged = world.getFluidState(pos).getFluid() == Fluids.WATER;
-        return state.with(BlockStateProperties.WATERLOGGED, waterlogged);
+        boolean waterlogged = world.getFluidState(pos).getType() == Fluids.WATER;
+        return state.setValue(BlockStateProperties.WATERLOGGED, waterlogged);
     }
 
     default BlockState waterlog(BlockState state, BlockItemUseContext ctx) {
-        return waterlog(state, ctx.getWorld(), ctx.getPos());
+        return waterlog(state, ctx.getLevel(), ctx.getClickedPos());
     }
 
     default FluidState fluidState(BlockState state) {
-        return state.get(BlockStateProperties.WATERLOGGED)
-               ? Fluids.WATER.getDefaultState()
-               : Fluids.EMPTY.getDefaultState();
+        return state.getValue(BlockStateProperties.WATERLOGGED)
+               ? Fluids.WATER.defaultFluidState()
+               : Fluids.EMPTY.defaultFluidState();
     }
 }

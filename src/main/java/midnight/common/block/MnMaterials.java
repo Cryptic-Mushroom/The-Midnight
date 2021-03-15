@@ -14,15 +14,15 @@ import net.minecraft.block.material.MaterialColor;
 import net.minecraft.block.material.PushReaction;
 
 public abstract class MnMaterials {
-    public static final Material CRYSTAL_ROCK = new Builder(MaterialColor.PINK)
+    public static final Material CRYSTAL_ROCK = new Builder(MaterialColor.COLOR_PINK)
                                                     .build();
-    public static final Material CRYSTAL = new Builder(MaterialColor.PINK)
+    public static final Material CRYSTAL = new Builder(MaterialColor.COLOR_PINK)
                                                .notSolid()
                                                .notOpaque()
                                                .allowMovement()
                                                .pushDestroys()
                                                .build();
-    public static final Material VIRILUX = new Builder(MaterialColor.LIME)
+    public static final Material VIRILUX = new Builder(MaterialColor.COLOR_LIGHT_GREEN)
                                                .build();
 
     public static class Builder {

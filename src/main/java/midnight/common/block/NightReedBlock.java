@@ -29,6 +29,8 @@ import net.minecraft.world.server.ServerWorld;
 import javax.annotation.Nullable;
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 /**
  * A block resembling Night Reed. This block grows higher over a certain time, up to 12 blocks if fully waterlogged. As
  * such, this block is waterloggable. Night reed can be placed on blocks in the {@link MnBlockTags#NIGHT_REED_GROWABLE
@@ -54,26 +56,26 @@ import java.util.Random;
 @SuppressWarnings("deprecation")
 public class NightReedBlock extends UpwardPlantBlock implements IMnWaterLoggable {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_0_15;
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
 
     public NightReedBlock(Properties props) {
         super(props);
 
         // Since we inherit from UpwardPlantBlock, and the constructor of that already initializes the default state
         // we only need to update it - hence not getStateContainer().getBaseState()
-        setDefaultState(getDefaultState().with(WATERLOGGED, false).with(AGE, 0));
+        registerDefaultState(defaultBlockState().setValue(WATERLOGGED, false).setValue(AGE, 0));
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        super.fillStateContainer(builder);
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
         builder.add(WATERLOGGED, AGE);
     }
 
     @Override
-    public BlockState updatePostPlacement(BlockState state, Direction dir, BlockState adjState, IWorld world, BlockPos pos, BlockPos adjPos) {
+    public BlockState updateShape(BlockState state, Direction dir, BlockState adjState, IWorld world, BlockPos pos, BlockPos adjPos) {
         tickFluid(world, pos, state);
-        return super.updatePostPlacement(state, dir, adjState, world, pos, adjPos);
+        return super.updateShape(state, dir, adjState, world, pos, adjPos);
     }
 
     @Nullable
@@ -90,22 +92,22 @@ public class NightReedBlock extends UpwardPlantBlock implements IMnWaterLoggable
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random rng) {
         // We cannot grow if we are unstable - instead play dead
-        BlockPos down = pos.down();
+        BlockPos down = pos.below();
         BlockState stateDown = world.getBlockState(down);
-        if (!stateDown.isIn(this) && !isValidGround(stateDown, world, down)) {
+        if (!stateDown.is(this) && !mayPlaceOn(stateDown, world, down)) {
             world.destroyBlock(pos, true);
             return;
         }
 
         // Grow older
-        int age = state.get(AGE);
+        int age = state.getValue(AGE);
         if (age < 15) {
-            world.setBlockState(pos, state.with(AGE, age + 1));
+            world.setBlockAndUpdate(pos, state.setValue(AGE, age + 1));
         } else {
             // Attempt grow and reset age to 0
             // Note that age resets even though it might not have grown - this is intentional!
-            state = state.with(AGE, 0);
-            world.setBlockState(pos, state);
+            state = state.setValue(AGE, 0);
+            world.setBlockAndUpdate(pos, state);
             growUp(world, pos, state);
         }
     }
@@ -124,12 +126,12 @@ public class NightReedBlock extends UpwardPlantBlock implements IMnWaterLoggable
      */
     private boolean canGrowHigher(World world, BlockPos pos) {
         BlockPos.Mutable mpos = new BlockPos.Mutable();
-        mpos.setPos(pos);
+        mpos.set(pos);
 
         int h = 0;
         while (mpos.getY() > 0) {
             BlockState state = world.getBlockState(mpos);
-            if (!state.isIn(this))
+            if (!state.is(this))
                 return true;
 
             if (state.getFluidState().isEmpty())
@@ -157,30 +159,30 @@ public class NightReedBlock extends UpwardPlantBlock implements IMnWaterLoggable
      * @since 0.6.0
      */
     private void growUp(World world, BlockPos pos, BlockState state) {
-        BlockPos up = pos.up();
+        BlockPos up = pos.above();
         BlockState stateUp = world.getBlockState(up);
-        if (stateUp.isAir(world, up) || stateUp.getFluidState().isTagged(FluidTags.WATER)) {
+        if (stateUp.isAir(world, up) || stateUp.getFluidState().is(FluidTags.WATER)) {
             if (canGrowHigher(world, pos)) { // Check height cost
-                world.setBlockState(up, waterlog(getDefaultState().with(END, true), world, up));
-                world.setBlockState(pos, state.with(END, false));
+                world.setBlockAndUpdate(up, waterlog(defaultBlockState().setValue(END, true), world, up));
+                world.setBlockAndUpdate(pos, state.setValue(END, false));
             }
         }
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader world, BlockPos pos) {
+    protected boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
         // Need appropriate soil
-        if (!state.isIn(MnBlockTags.NIGHT_REED_GROWABLE))
+        if (!state.is(MnBlockTags.NIGHT_REED_GROWABLE))
             return false;
 
         // Need water inside or ...
-        if (world.getFluidState(pos.up()).getFluid() == Fluids.WATER) {
+        if (world.getFluidState(pos.above()).getType() == Fluids.WATER) {
             return true;
         }
 
         // ... need water nearby
         for (Direction dir : Direction.Plane.HORIZONTAL) {
-            if (world.getFluidState(pos.offset(dir)).getFluid() == Fluids.WATER) {
+            if (world.getFluidState(pos.relative(dir)).getType() == Fluids.WATER) {
                 return true;
             }
         }

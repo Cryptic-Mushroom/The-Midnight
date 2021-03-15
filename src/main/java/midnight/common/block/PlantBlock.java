@@ -18,8 +18,11 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.PlantType;
 
+import net.minecraft.block.AbstractBlock.OffsetType;
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class PlantBlock extends BushBlock {
-    private VoxelShape hitbox = VoxelShapes.fullCube();
+    private VoxelShape hitbox = VoxelShapes.block();
     private OffsetType offsetType = OffsetType.NONE;
     private PlantType plantType = MnPlantTypes.MIDNIGHT;
 
@@ -58,7 +61,7 @@ public class PlantBlock extends BushBlock {
      */
     public PlantBlock hitbox(double size, double height) {
         double radius = size / 2;
-        hitbox(makeCuboidShape(8 - radius, 0, 8 - radius, 8 + radius, height, 8 + radius));
+        hitbox(box(8 - radius, 0, 8 - radius, 8 + radius, height, 8 + radius));
         return this;
     }
 
@@ -104,7 +107,7 @@ public class PlantBlock extends BushBlock {
     @SuppressWarnings("deprecation")
     public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
         Vector3d off = state.getOffset(world, pos);
-        return hitbox.withOffset(off.x, off.y, off.z);
+        return hitbox.move(off.x, off.y, off.z);
     }
 
     @Override
@@ -114,8 +117,8 @@ public class PlantBlock extends BushBlock {
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader world, BlockPos pos) {
-        return state.getBlock() instanceof NightDirtBlock || state.isIn(MnBlocks.NIGHT_MYCELIUM) || super.isValidGround(state, world, pos);
+    protected boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
+        return state.getBlock() instanceof NightDirtBlock || state.is(MnBlocks.NIGHT_MYCELIUM) || super.mayPlaceOn(state, world, pos);
     }
 
     @Override

@@ -43,10 +43,10 @@ public final class MnDimensions {
     }
 
     public static boolean isTheMidnight(World world) {
-        return world.getRegistryKey().equals(THE_MIDNIGHT);
+        return world.dimension().equals(THE_MIDNIGHT);
     }
 
     public static World getTheMidnight(MinecraftServer server) {
-        return server.getWorld(THE_MIDNIGHT);
+        return server.getLevel(THE_MIDNIGHT);
     }
 }

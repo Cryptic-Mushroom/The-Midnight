@@ -17,7 +17,7 @@ public final class MnFluidTags {
 
     private static ITag.INamedTag<Fluid> tag(String id) {
         id = Midnight.idStr(id);
-        ITag.INamedTag<Fluid> tag = FluidTags.makeWrapperTag(id);
+        ITag.INamedTag<Fluid> tag = FluidTags.bind(id);
         return tag;
     }
 

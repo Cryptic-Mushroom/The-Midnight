@@ -81,7 +81,7 @@ public class MidnightClient extends Midnight {
 
     @Override
     public DynamicRegistries getDynamicRegistries() {
-        return ((MinecraftServer) LogicalSidedProvider.INSTANCE.get(LogicalSide.SERVER)).getRegistryManager();
+        return ((MinecraftServer) LogicalSidedProvider.INSTANCE.get(LogicalSide.SERVER)).registryAccess();
     }
 
     public MnMusicTicker getMusicTicker() {

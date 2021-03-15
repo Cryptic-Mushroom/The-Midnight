@@ -17,8 +17,8 @@ public abstract class MnFoods {
 
     public static final Food RAW_SUAVIS =
         new Food.Builder()
-            .hunger(3).saturation(0.6f)
-            .effect(() -> new EffectInstance(Effects.NAUSEA, 300, 0, false, true), 0.96f)
+            .nutrition(3).saturationMod(0.6f)
+            .effect(() -> new EffectInstance(Effects.CONFUSION, 300, 0, false, true), 0.96f)
             .build();
 
     public static final Food COOKED_SUAVIS = simple(5, 0.6);
@@ -27,10 +27,10 @@ public abstract class MnFoods {
     }
 
     private static Food simple(int hunger, double saturation) {
-        return new Food.Builder().hunger(hunger).saturation((float) saturation).build();
+        return new Food.Builder().nutrition(hunger).saturationMod((float) saturation).build();
     }
 
     private static Food meat(int hunger, double saturation) {
-        return new Food.Builder().hunger(hunger).saturation((float) saturation).meat().build();
+        return new Food.Builder().nutrition(hunger).saturationMod((float) saturation).meat().build();
     }
 }

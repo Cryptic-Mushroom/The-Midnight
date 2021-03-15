@@ -60,65 +60,65 @@ public class ThrownGeodeEntity extends FlyingItemEntity {
     }
 
     @Override
-    protected void onEntityHit(EntityRayTraceResult rtr) {
-        super.onEntityHit(rtr);
+    protected void onHitEntity(EntityRayTraceResult rtr) {
+        super.onHitEntity(rtr);
 
         // Damage entities
-        rtr.getEntity().attackEntityFrom(DamageSource.causeThrownDamage(this, getOwner()), 0);
+        rtr.getEntity().hurt(DamageSource.thrown(this, getOwner()), 0);
 
         // Spawn geode item
-        ItemEntity itemEntity = new ItemEntity(world, getX(), getY(), getZ(), getItem());
-        world.addEntity(itemEntity);
+        ItemEntity itemEntity = new ItemEntity(level, getX(), getY(), getZ(), getItem());
+        level.addFreshEntity(itemEntity);
 
         // Kill self, we're item now
         remove();
     }
 
     @Override
-    protected void onBlockHit(BlockRayTraceResult rtr) {
-        super.onBlockHit(rtr);
+    protected void onHitBlock(BlockRayTraceResult rtr) {
+        super.onHitBlock(rtr);
 
-        BlockState state = world.getBlockState(rtr.getPos());
+        BlockState state = level.getBlockState(rtr.getBlockPos());
 
         // Sound to play on hit - if the geode did not break open it is the block's hit sound but louder
-        SoundEvent sound = state.getSoundType(world, rtr.getPos(), null).getHitSound();
-        float pitch = state.getSoundType(world, rtr.getPos(), null).getPitch();
+        SoundEvent sound = state.getSoundType(level, rtr.getBlockPos(), null).getHitSound();
+        float pitch = state.getSoundType(level, rtr.getBlockPos(), null).getPitch();
         float volume = 1.7f;
 
         if (GeodeHardMaterials.isHard(state)) {
 
             // Causes break particles to appear
-            world.setEntityState(this, (byte) 3);
+            level.broadcastEntityEvent(this, (byte) 3);
 
             // If pear cracks, play the crack sound instead
             sound = MnSoundEvents.ENTITY_GEODE_BREAK;
-            pitch = rand.nextFloat() * 0.3f + 0.85f;
+            pitch = random.nextFloat() * 0.3f + 0.85f;
             volume = 1;
 
             // Spawn loot
-            MinecraftServer server = world.getServer();
+            MinecraftServer server = level.getServer();
             if (server != null) {
-                LootTable loot = server.getLootTableManager().getLootTableFromLocation(MnLootTables.GAMEPLAY_GEODE);
-                LootContext.Builder ctxbuilder = new LootContext.Builder((ServerWorld) world)
-                                                     .withParameter(LootParameters.ORIGIN, getPositionVec())
+                LootTable loot = server.getLootTables().get(MnLootTables.GAMEPLAY_GEODE);
+                LootContext.Builder ctxbuilder = new LootContext.Builder((ServerWorld) level)
+                                                     .withParameter(LootParameters.ORIGIN, position())
                                                      .withParameter(LootParameters.THIS_ENTITY, this)
                                                      .withParameter(LootParameters.BLOCK_STATE, state)
-                                                     .withRandom(rand);
+                                                     .withRandom(random);
 
                 // Spawn item stacks
-                List<ItemStack> stacks = loot.generate(ctxbuilder.build(MnLootParameterSets.GEODE));
+                List<ItemStack> stacks = loot.getRandomItems(ctxbuilder.create(MnLootParameterSets.GEODE));
                 for (ItemStack stack : stacks) {
-                    world.addEntity(new ItemEntity(world, getX(), getY(), getZ(), stack));
+                    level.addFreshEntity(new ItemEntity(level, getX(), getY(), getZ(), stack));
                 }
             }
         } else {
             // If we did not break, spawn ourselves
-            ItemEntity itemEntity = new ItemEntity(world, getX(), getY(), getZ(), getItem());
-            world.addEntity(itemEntity);
+            ItemEntity itemEntity = new ItemEntity(level, getX(), getY(), getZ(), getItem());
+            level.addFreshEntity(itemEntity);
         }
 
         // Play sound
-        world.playSound(getX(), getY(), getZ(), sound, SoundCategory.PLAYERS, volume, pitch, false);
+        level.playLocalSound(getX(), getY(), getZ(), sound, SoundCategory.PLAYERS, volume, pitch, false);
 
         // Kill self, we're item now or we broke open
         remove();
@@ -126,15 +126,15 @@ public class ThrownGeodeEntity extends FlyingItemEntity {
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public void handleStatusUpdate(byte status) {
+    public void handleEntityEvent(byte status) {
         if (status == 3) {
             for (int i = 0; i < 8; ++i) {
-                world.addParticle(
+                level.addParticle(
                     new ItemParticleData(ParticleTypes.ITEM, getItem()),
                     getX(), getY(), getZ(),
-                    (rand.nextDouble() - 0.5) * 0.08,
-                    (rand.nextDouble() - 0.5) * 0.08,
-                    (rand.nextDouble() - 0.5) * 0.08
+                    (random.nextDouble() - 0.5) * 0.08,
+                    (random.nextDouble() - 0.5) * 0.08,
+                    (random.nextDouble() - 0.5) * 0.08
                 );
             }
         }

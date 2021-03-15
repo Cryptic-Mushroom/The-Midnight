@@ -33,7 +33,7 @@ public class CrashReportMixin {
      */
     @Inject(method = "getCompleteReport()Ljava/lang/String;", at = @At("HEAD"))
     private void getCompleteReport(CallbackInfoReturnable<String> info) {
-        if (((CrashReport) (Object) this).getCauseStackTraceOrString().contains("midnight.") || this.description.contains("Manually triggered debug crash")) {
+        if (((CrashReport) (Object) this).getExceptionMessage().contains("midnight.") || this.description.contains("Manually triggered debug crash")) {
             funnyMidnightCrashReport = true;
         }
     }

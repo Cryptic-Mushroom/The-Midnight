@@ -23,6 +23,8 @@ import net.minecraft.world.World;
 
 import java.util.function.Supplier;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 @SuppressWarnings("deprecation")
 public class ShearableBlock extends Block {
     private final Supplier<Block> sheared;
@@ -33,15 +35,15 @@ public class ShearableBlock extends Block {
     }
 
     @Override
-    public ActionResultType onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult rtr) {
-        ItemStack usedItem = player.getHeldItem(hand);
+    public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult rtr) {
+        ItemStack usedItem = player.getItemInHand(hand);
         if (usedItem.getItem() == Items.SHEARS) {
-            world.setBlockState(pos, sheared.get().getDefaultState());
-            usedItem.damageItem(1, player, p -> {});
-            world.playSound(null, pos, SoundEvents.BLOCK_WART_BLOCK_HIT, SoundCategory.BLOCKS, 1, 1);
+            world.setBlockAndUpdate(pos, sheared.get().defaultBlockState());
+            usedItem.hurtAndBreak(1, player, p -> {});
+            world.playSound(null, pos, SoundEvents.WART_BLOCK_HIT, SoundCategory.BLOCKS, 1, 1);
 
             return ActionResultType.SUCCESS;
         }
-        return super.onUse(state, world, pos, player, hand, rtr);
+        return super.use(state, world, pos, player, hand, rtr);
     }
 }

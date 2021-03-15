@@ -13,6 +13,8 @@ import net.minecraft.util.math.MathHelper;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class XPDroppingBlock extends OreBlock {
     private final int minxp;
     private final int maxxp;
@@ -24,7 +26,7 @@ public class XPDroppingBlock extends OreBlock {
     }
 
     @Override
-    protected int getExperience(Random rng) {
+    protected int xpOnDrop(Random rng) {
         return MathHelper.nextInt(rng, minxp, maxxp);
     }
 }

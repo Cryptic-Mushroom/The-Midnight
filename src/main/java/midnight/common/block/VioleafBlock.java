@@ -33,6 +33,8 @@ import net.minecraftforge.fml.network.PacketDistributor;
 import javax.annotation.Nullable;
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 @SuppressWarnings("deprecation")
 public class VioleafBlock extends PlantBlock implements IGrowable {
     public static final BooleanProperty GROWN = MnBlockStateProperties.GROWN;
@@ -40,52 +42,52 @@ public class VioleafBlock extends PlantBlock implements IGrowable {
 
     protected VioleafBlock(Properties props) {
         super(props);
-        setDefaultState(getStateContainer().getBaseState().with(GROWN, true));
+        registerDefaultState(getStateDefinition().any().setValue(GROWN, true));
     }
 
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext ctx) {
-        return getDefaultState().with(GROWN, false);
+        return defaultBlockState().setValue(GROWN, false);
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(GROWN);
     }
 
     @Override
-    public boolean canGrow(IBlockReader world, BlockPos pos, BlockState state, boolean client) {
-        return !state.get(GROWN);
+    public boolean isValidBonemealTarget(IBlockReader world, BlockPos pos, BlockState state, boolean client) {
+        return !state.getValue(GROWN);
     }
 
     @Override
-    public boolean canUseBonemeal(World world, Random rng, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(World world, Random rng, BlockPos pos, BlockState state) {
         return true;
     }
 
     @Override
-    public void grow(ServerWorld world, Random rng, BlockPos pos, BlockState state) {
-        world.setBlockState(pos, state.with(GROWN, true), 3);
+    public void performBonemeal(ServerWorld world, Random rng, BlockPos pos, BlockState state) {
+        world.setBlock(pos, state.setValue(GROWN, true), 3);
     }
 
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random rand) {
-        if (canGrow(world, pos, state, world.isRemote) && ForgeHooks.onCropsGrowPre(world, pos, state, rand.nextInt(5) == 0)) {
-            grow(world, rand, pos, state);
+        if (isValidBonemealTarget(world, pos, state, world.isClientSide) && ForgeHooks.onCropsGrowPre(world, pos, state, rand.nextInt(5) == 0)) {
+            performBonemeal(world, rand, pos, state);
             ForgeHooks.onCropsGrowPost(world, pos, state);
         }
     }
 
     @Override
-    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (!world.isRemote && state.get(GROWN) && entity instanceof LivingEntity && entity.ticksExisted % 20 == 0) {
+    public void entityInside(BlockState state, World world, BlockPos pos, Entity entity) {
+        if (!world.isClientSide && state.getValue(GROWN) && entity instanceof LivingEntity && entity.tickCount % 20 == 0) {
             LivingEntity livingEntity = (LivingEntity) entity;
-            if (livingEntity.isPotionActive(Effects.NAUSEA)) {
-                livingEntity.removePotionEffect(Effects.NAUSEA);
+            if (livingEntity.hasEffect(Effects.CONFUSION)) {
+                livingEntity.removeEffect(Effects.CONFUSION);
 
-                world.setBlockState(pos, state.with(GROWN, false), 2);
-                world.playSound(null, pos, SoundEvents.BLOCK_CHORUS_FLOWER_DEATH, SoundCategory.BLOCKS, 1, world.rand.nextFloat() * 0.4f + 0.8f);
+                world.setBlock(pos, state.setValue(GROWN, false), 2);
+                world.playSound(null, pos, SoundEvents.CHORUS_FLOWER_DEATH, SoundCategory.BLOCKS, 1, world.random.nextFloat() * 0.4f + 0.8f);
 
                 Vector3d offset = state.getOffset(world, pos);
                 double posX = pos.getX() + 0.5 + offset.x;
@@ -103,20 +105,20 @@ public class VioleafBlock extends PlantBlock implements IGrowable {
 
         for (int i = 0; i < PARTICLE_COUNT; i++) {
             Vector3d vel = new Vector3d( // Velocity
-                                         world.rand.nextDouble() * 2 - 1,
-                                         world.rand.nextDouble() * 2 - 1,
-                                         world.rand.nextDouble() * 2 - 1
-            ).normalize().scale(world.rand.nextDouble() * 0.02 + 0.02);
+                                         world.random.nextDouble() * 2 - 1,
+                                         world.random.nextDouble() * 2 - 1,
+                                         world.random.nextDouble() * 2 - 1
+            ).normalize().scale(world.random.nextDouble() * 0.02 + 0.02);
 
             Vector3d loc = new Vector3d( // Location
-                                         world.rand.nextDouble() * 2 - 1,
-                                         world.rand.nextDouble() * 2 - 1,
-                                         world.rand.nextDouble() * 2 - 1
+                                         world.random.nextDouble() * 2 - 1,
+                                         world.random.nextDouble() * 2 - 1,
+                                         world.random.nextDouble() * 2 - 1
             ).scale(0.2)
              .add(pos);
 
             // Extra vertical upwards velocity
-            double extraYV = world.rand.nextDouble() * 0.1;
+            double extraYV = world.random.nextDouble() * 0.1;
             vel = vel.add(0, extraYV, 0);
 
             world.addParticle(

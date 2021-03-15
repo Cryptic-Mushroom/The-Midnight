@@ -13,15 +13,17 @@ import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class ShroomRootsBlock extends HangingPlantBlock {
     protected ShroomRootsBlock(Properties props) {
         super(props);
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader world, BlockPos pos) {
-        return state.isIn(MnBlockTags.SHROOM_STEMS)
-                   || state.isIn(MnBlockTags.SHROOM_CAPS)
-                   || state.isIn(MnBlockTags.SHROOM_PLANKS);
+    protected boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
+        return state.is(MnBlockTags.SHROOM_STEMS)
+                   || state.is(MnBlockTags.SHROOM_CAPS)
+                   || state.is(MnBlockTags.SHROOM_PLANKS);
     }
 }

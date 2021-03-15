@@ -25,12 +25,12 @@ public class MnEntityTypeTagsProvider extends TagsProvider<EntityType<?>> {
     }
 
     @Override
-    protected void registerTags() {
-        getOrCreateTagBuilder(MnEntityTypeTags.IGNORE_MUD);
+    protected void addTags() {
+        tag(MnEntityTypeTags.IGNORE_MUD);
     }
 
     @Override
-    protected Path makePath(ResourceLocation id) {
+    protected Path getPath(ResourceLocation id) {
         return generator.getOutputFolder().resolve("data/" + id.getNamespace() + "/tags/entity_types/" + id.getPath() + ".json");
     }
 

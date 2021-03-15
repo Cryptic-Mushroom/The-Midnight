@@ -22,6 +22,8 @@ import net.minecraft.world.World;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
+import net.minecraft.item.Item.Properties;
+
 public class ThrowableItem extends Item {
     private final Supplier<SoundEvent> throwSound;
     private final BiFunction<? super PlayerEntity, ? super World, ? extends ProjectileItemEntity> throwableFactory;
@@ -33,30 +35,30 @@ public class ThrowableItem extends Item {
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
-        ItemStack stack = player.getHeldItem(hand);
+    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+        ItemStack stack = player.getItemInHand(hand);
 
         world.playSound(
             null,
             player.getX(), player.getY(), player.getZ(),
             throwSound.get(),
             SoundCategory.PLAYERS,
-            0.5f, 0.4f / (world.rand.nextFloat() * 0.4f + 0.8f)
+            0.5f, 0.4f / (world.random.nextFloat() * 0.4f + 0.8f)
         );
 
-        if (!world.isRemote) {
+        if (!world.isClientSide) {
             ProjectileItemEntity entity = throwableFactory.apply(player, world);
             entity.setItem(stack);
-            entity.setProperties(player, player.rotationPitch, player.rotationYaw, 0, 1.5f, 1);
-            world.addEntity(entity);
+            entity.shootFromRotation(player, player.xRot, player.yRot, 0, 1.5f, 1);
+            world.addFreshEntity(entity);
         }
 
-        player.addStat(Stats.ITEM_USED.get(this));
+        player.awardStat(Stats.ITEM_USED.get(this));
 
-        if (!player.abilities.isCreativeMode) {
+        if (!player.abilities.instabuild) {
             stack.shrink(1);
         }
 
-        return ActionResult.success(stack, world.isRemote());
+        return ActionResult.sidedSuccess(stack, world.isClientSide());
     }
 }

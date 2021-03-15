@@ -23,6 +23,8 @@ import net.minecraft.world.IWorld;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 @SuppressWarnings("deprecation")
 public class CrystalBlock extends PlantBlock implements IMnWaterLoggable {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -30,19 +32,19 @@ public class CrystalBlock extends PlantBlock implements IMnWaterLoggable {
     protected CrystalBlock(Properties props) {
         super(props);
 
-        setDefaultState(getDefaultState().with(WATERLOGGED, false));
+        registerDefaultState(defaultBlockState().setValue(WATERLOGGED, false));
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader world, BlockPos pos) {
+    protected boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
         // Mud and soul sand are not solid, but appear to be so - include them as a special exception
-        return state.isSideSolidFullSquare(world, pos, Direction.UP)
-                   || state.isIn(MnBlocks.DECEITFUL_MUD)
-                   || state.isIn(Blocks.SOUL_SAND);
+        return state.isFaceSturdy(world, pos, Direction.UP)
+                   || state.is(MnBlocks.DECEITFUL_MUD)
+                   || state.is(Blocks.SOUL_SAND);
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(WATERLOGGED);
     }
 
@@ -53,9 +55,9 @@ public class CrystalBlock extends PlantBlock implements IMnWaterLoggable {
     }
 
     @Override
-    public BlockState updatePostPlacement(BlockState state, Direction dir, BlockState adjState, IWorld world, BlockPos pos, BlockPos adjPos) {
+    public BlockState updateShape(BlockState state, Direction dir, BlockState adjState, IWorld world, BlockPos pos, BlockPos adjPos) {
         tickFluid(world, pos, state);
-        return super.updatePostPlacement(state, dir, adjState, world, pos, adjPos);
+        return super.updateShape(state, dir, adjState, world, pos, adjPos);
     }
 
     @Override

@@ -28,6 +28,8 @@ import net.minecraftforge.fml.network.PacketDistributor;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class RockshroomBlock extends Block {
     private static final int SPORE_COUNT = 32;
     private static final double SPORE_SPEED = 0.3;
@@ -49,12 +51,12 @@ public class RockshroomBlock extends Block {
     }
 
     private void handleSporeDamage(World world, BlockPos pos, PlayerEntity player) {
-        ItemStack heldItem = player.getHeldItemMainhand();
-        if (player.isCreative() || EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, heldItem) > 0) {
+        ItemStack heldItem = player.getMainHandItem();
+        if (player.isCreative() || EnchantmentHelper.getItemEnchantmentLevel(Enchantments.SILK_TOUCH, heldItem) > 0) {
             return;
         }
 
-        if (!world.isRemote) {
+        if (!world.isClientSide) {
             // Send particle effect to all players watching the broken block
             RockshroomAttackPacket message = new RockshroomAttackPacket(pos);
             MnNetwork.CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> world.getChunkAt(pos)), message);
@@ -67,18 +69,18 @@ public class RockshroomBlock extends Block {
         Vector3d origin = new Vector3d(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
         Vector3d target = player.getEyePosition(1);
 
-        if (target.subtract(origin).lengthSquared() > DAMAGE_RANGE_SQ)
+        if (target.subtract(origin).lengthSqr() > DAMAGE_RANGE_SQ)
             return;
 
 
-        RayTraceResult rtr = world.rayTraceBlocks(new RayTraceContext(
+        RayTraceResult rtr = world.clip(new RayTraceContext(
             origin, target,
             RayTraceContext.BlockMode.COLLIDER,
             RayTraceContext.FluidMode.NONE,
             player
         ));
         if (rtr.getType() == RayTraceResult.Type.MISS) {
-            player.attackEntityFrom(MnDamageSources.ROCKSHROOM, world.rand.nextFloat() * 3.5f + 0.5f);
+            player.hurt(MnDamageSources.ROCKSHROOM, world.random.nextFloat() * 3.5f + 0.5f);
         }
     }
 
@@ -86,7 +88,7 @@ public class RockshroomBlock extends Block {
         if (world == null)
             return;
 
-        Random rng = world.rand;
+        Random rng = world.random;
         for (int i = 0; i < SPORE_COUNT; i++) {
             Vector3d direction = new Vector3d(
                 rng.nextFloat() * 2 - 1,

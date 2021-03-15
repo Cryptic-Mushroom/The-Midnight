@@ -10,6 +10,8 @@ package midnight.common.block;
 
 import net.minecraft.block.BreakableBlock;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class GhostPlantBlock extends BreakableBlock {
     protected GhostPlantBlock(Properties properties) {
         super(properties);
