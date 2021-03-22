@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 2 - 27
+ * Last updated: 2021 - 3 - 22
  */
 
 package midnight.common.block;
@@ -239,6 +239,38 @@ public abstract class MnBlocks {
     public static final Block DEAD_CORE = core("dead_core", CoreBlock.Type.DEAD);
     public static final Block ACTIVE_NIGHTSTONE = stone("active_nightstone", 3, 8, MaterialColor.BLACK);
     public static final Block DETORIATED_TRENCHSTONE = detoriatedTrenchstone("detoriated_trenchstone");
+
+    // Random
+    public static final Block BLOCK_OF_FURRY = block("block_of_furry", new Block(
+        AbstractBlock.Properties.create(Material.NETHER_WOOD, MaterialColor.YELLOW_TERRACOTTA)
+                                .sound(SoundType.CLOTH)
+                                .hardnessAndResistance(0.5f, 100)
+    ));
+    public static final Block BLOCK_OF_FOXYGEN = block("block_of_foxygen", new Block(
+        AbstractBlock.Properties.create(Material.NETHER_WOOD, MaterialColor.BLUE_TERRACOTTA)
+                                .sound(SoundType.CLOTH)
+                                .hardnessAndResistance(0.5f, 100)
+    ));
+    public static final Block BRAINLESS_BLOCK = block("brainless_block", new Block(
+        AbstractBlock.Properties.create(Material.NETHER_WOOD, MaterialColor.WHITE_TERRACOTTA)
+                                .sound(SoundType.SLIME)
+                                .hardnessAndResistance(0.5f, 100)
+    ));
+    public static final Block BLOCK_OF_RYAN = block("block_of_ryan", new Block(
+        AbstractBlock.Properties.create(Material.NETHER_WOOD, MaterialColor.GREEN_TERRACOTTA)
+                                .sound(SoundType.BASALT)
+                                .hardnessAndResistance(0.5f, 100)
+    ));
+    public static final Block BLOCK_OF_NYA = block("block_of_nya", new Block(
+        AbstractBlock.Properties.create(Material.NETHER_WOOD, MaterialColor.WHITE_TERRACOTTA)
+                                .sound(SoundType.LODESTONE)
+                                .hardnessAndResistance(0.5f, 100)
+    ));
+    public static final Block BLOCK_OF_FYRE = block("block_of_fyre", new Block(
+        AbstractBlock.Properties.create(Material.NETHER_WOOD, MaterialColor.PINK)
+                                .sound(SoundType.LODESTONE)
+                                .hardnessAndResistance(0.5f, 100)
+    ));
 
 
 

@@ -43,5 +43,14 @@
   "block.midnight.dark_willow_leaves": "Dark Willow Leaves",
   "block.midnight.hanging_dark_willow_leaves": "Hanging Dark Willow Leaves",
 
+  "block.midnight.block_of_furry": "Block Of Furry",
+  "block.midnight.block_of_foxygen": "Block Of Foxygen",
+  "block.midnight.brainless_block": "Brainless Block",
+  "block.midnight.block_of_ryan": "Block Of Ryan",
+  "block.midnight.block_of_nya": "Block Of Nya",
+  "block.midnight.block_of_fyre": "Block Of Fyre",
+
+  "item.midnight.missing_brain": "Missing Brain",
+
   "biome.midnight.night_plains": "Night Plains"
 }

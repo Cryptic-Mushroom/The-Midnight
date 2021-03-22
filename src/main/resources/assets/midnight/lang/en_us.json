@@ -52,5 +52,14 @@
   "block.midnight.core.status_out_of_range": "The Midnight reactor needs to be built lower down or higher up.",
   "block.midnight.core.status_missing_players": "All players need to be close to the reactor.",
 
+  "block.midnight.block_of_furry": "Block Of Furry",
+  "block.midnight.block_of_foxygen": "Block Of Foxygen",
+  "block.midnight.brainless_block": "Brainless Block",
+  "block.midnight.block_of_ryan": "Block Of Ryan",
+  "block.midnight.block_of_nya": "Block Of Nya",
+  "block.midnight.block_of_fyre": "Block Of Fyre",
+
+  "item.midnight.missing_brain": "Missing Brain",
+
   "biome.midnight.night_plains": "Night Plains"
 }

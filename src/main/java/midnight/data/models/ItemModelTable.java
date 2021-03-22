@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 2 - 27
+ * Last updated: 2021 - 3 - 22
  */
 
 package midnight.data.models;
@@ -201,6 +201,15 @@ public final class ItemModelTable {
         register(MnBlocks.ARCHAIC_ORE, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.ARCHAIC_GLASS, item -> inherit(name(item, "block/%s")));
         register(MnBlocks.ARCHAIC_GLASS_PANE, item -> generated(name(item, "block/archaic_glass")));
+
+        register(MnBlocks.BLOCK_OF_FURRY, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.BLOCK_OF_FOXYGEN, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.BRAINLESS_BLOCK, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.BLOCK_OF_RYAN, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.BLOCK_OF_NYA, item -> inherit(name(item, "block/%s")));
+        register(MnBlocks.BLOCK_OF_FYRE, item -> inherit(name(item, "block/%s")));
+
+        register(MnItems.MISSING_BRAIN, item -> generated(name(item, "item/%s")));
     }
 
 

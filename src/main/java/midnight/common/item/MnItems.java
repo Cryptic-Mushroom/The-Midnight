@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 2 - 27
+ * Last updated: 2021 - 3 - 22
  */
 
 package midnight.common.item;
@@ -221,6 +221,13 @@ public abstract class MnItems {
     public static final Item DEAD_CORE = item(MnBlocks.DEAD_CORE, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS);
     public static final Item ACTIVE_NIGHTSTONE = item(MnBlocks.ACTIVE_NIGHTSTONE, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS);
 
+    // Random
+    public static final Item BLOCK_OF_FURRY = item(MnBlocks.BLOCK_OF_FURRY, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS);
+    public static final Item BLOCK_OF_FOXYGEN = item(MnBlocks.BLOCK_OF_FOXYGEN, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS);
+    public static final Item BRAINLESS_BLOCK = item(MnBlocks.BRAINLESS_BLOCK, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS);
+    public static final Item BLOCK_OF_RYAN = item(MnBlocks.BLOCK_OF_RYAN, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS);
+    public static final Item BLOCK_OF_NYA = item(MnBlocks.BLOCK_OF_NYA, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS);
+    public static final Item BLOCK_OF_FYRE = item(MnBlocks.BLOCK_OF_FYRE, MnItemCategory.UNCATEGORIZED, MnItemGroup.BLOCKS);
 
 
 
@@ -256,6 +263,10 @@ public abstract class MnItems {
     public static final Item RAW_SUAVIS = rawSuavis("raw_suavis", MnItemCategory.FOOD, MnItemGroup.MISC);
     public static final Item COOKED_SUAVIS = edible("cooked_suavis", MnItemCategory.FOOD, MnItemGroup.MISC, MnFoods.COOKED_SUAVIS);
     public static final Item ARCHAIC_SHARD = item("archaic_shard", MnItemCategory.COMMON_ITEMS, MnItemGroup.MISC);
+
+    public static final Item MISSING_BRAIN = item("missing_brain", MnItemCategory.UNCATEGORIZED, new MissingBrainItem(
+        new Item.Properties().group(MnItemGroup.MISC)
+    ));
 
     private MnItems() {
     }

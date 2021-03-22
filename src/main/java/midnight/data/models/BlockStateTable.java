@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 2 - 27
+ * Last updated: 2021 - 3 - 22
  */
 
 package midnight.data.models;
@@ -194,6 +194,13 @@ public final class BlockStateTable {
         register(MnBlocks.DEAD_CORE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.ACTIVE_NIGHTSTONE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
         register(MnBlocks.DETORIATED_TRENCHSTONE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/trenchstone"))));
+
+        register(MnBlocks.BLOCK_OF_FURRY, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.BLOCK_OF_FOXYGEN, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.BRAINLESS_BLOCK, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.BLOCK_OF_FYRE, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.BLOCK_OF_NYA, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
+        register(MnBlocks.BLOCK_OF_RYAN, block -> simple(name(block, "block/%s"), cubeAll(name(block, "block/%s"))));
     }
 
     private static IBlockStateGen none() {

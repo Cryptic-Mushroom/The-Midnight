@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2021 - 2 - 27
+ * Last updated: 2021 - 3 - 22
  */
 
 package midnight.data.loottables;
@@ -198,6 +198,13 @@ public class MnBlockLootTables extends BlockLootTables {
         registerDropSelfLootTable(MnBlocks.DEAD_CORE);
         registerDropSelfLootTable(MnBlocks.ACTIVE_NIGHTSTONE);
         registerLootTable(MnBlocks.DETORIATED_TRENCHSTONE, block -> dropping(MnBlocks.TRENCHSTONE));
+
+        registerDropSelfLootTable(MnBlocks.BLOCK_OF_FURRY);
+        registerDropSelfLootTable(MnBlocks.BLOCK_OF_FOXYGEN);
+        registerDropSelfLootTable(MnBlocks.BRAINLESS_BLOCK);
+        registerDropSelfLootTable(MnBlocks.BLOCK_OF_NYA);
+        registerDropSelfLootTable(MnBlocks.BLOCK_OF_RYAN);
+        registerDropSelfLootTable(MnBlocks.BLOCK_OF_FYRE);
     }
 
     protected static LootTable.Builder droppingNothing() {
