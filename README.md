@@ -25,10 +25,11 @@ If you are a contributor on this list and want your name to link to a different 
 ### The Midnight Development Team
 
 [Cipher Zero X](https://github.com/cipherzerox) - Project Lead, Lead Designer, Modeler  
-[Shadew](https://shadew.net/) - Project Lead, Lead Programmer, Designer  
+[Shadew](https://shadew.net/) - Project Lead, Lead Programmer, Designer, Sound Designer
 [Jonathing](https://github.com/Jonathing) - Project Lead, Community Manager, Programmer, Musician  
 [Lachney](https://xjon.me) - Lead Sound Designer, Lead Musician  
 [123wdog](https://www.curseforge.com/members/123wdog/) - Lead Modeler
+[FlashFyre](https://github.com/Fla5hFyre) - Programmer, Texturer
 
 ### Active Collaborators
 
