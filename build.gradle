@@ -3,7 +3,7 @@
  * This file belongs to the Midnight mod and is licensed under the terms and conditions of Cryptic Mushroom. See
  * https://github.com/Cryptic-Mushroom/The-Midnight/blob/rewrite/LICENSE.md for the full license.
  *
- * Last updated: 2020 - 12 - 23
+ * Last updated: 2021 - 3 - 22
  */
 // To all contributors
 // PLEASE REFRAIN FROM EDITING THIS build.gradle FILE UNLESS ABSOLUTELY NEEDED!!!
@@ -11,7 +11,7 @@
 buildscript {
     repositories {
         maven { url 'https://files.minecraftforge.net/maven' }
-        maven { url 'https://dist.creeper.host/Sponge/maven' }
+        maven { url 'https://repo.spongepowered.org/maven' }
         maven { url 'https://maven.shadew.net/' }
         jcenter()
         mavenCentral()
