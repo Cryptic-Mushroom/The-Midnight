@@ -60,7 +60,7 @@ public final class MnUtil {
 
     /**
      * Modifies the given base night grass color to adapt to nearby color modifiers (see {@link
-     * INightGrassColorModifying}). Takes {@link Minecraft#world} to sample blocks.
+     * INightGrassColorModifying}). Takes {@link Minecraft#level} to sample blocks.
      *
      * @param base The base color computed by the color provider
      * @param pos  The location to search nearby color modifiers at

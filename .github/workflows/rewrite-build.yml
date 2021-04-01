@@ -72,7 +72,7 @@ jobs:
     - name: Build The Midnight
       uses: eskatos/gradle-command-action@v1
       with:
-        gradle-version: 4.10.3
+        gradle-version: 6.8.1
         arguments: build -x genData --no-daemon --warning-mode none
 
     - name: Prepare to upload the build outputs
@@ -143,7 +143,7 @@ jobs:
       - name: Generate The Midnight Javadoc Documentation
         uses: eskatos/gradle-command-action@v1
         with:
-          gradle-version: 4.10.3
+          gradle-version: 6.8.1
           arguments: javadoc -x genData --no-daemon --warning-mode none
 
       - name: Prepare to upload the build outputs
@@ -211,7 +211,7 @@ jobs:
         uses: eskatos/gradle-command-action@v1
         continue-on-error: true
         with:
-          gradle-version: 4.10.3
+          gradle-version: 6.8.1
           arguments: runTestServer -x genData --max-workers 1 -x downloadAssets
 
       - name: Read server test result
