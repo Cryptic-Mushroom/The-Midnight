@@ -86,7 +86,7 @@ task genData(type: JavaExec) {
             "$id%%${project(":api").projectDir}/build/resources/main;" +
             "$id%%${project(":api").projectDir}/build/classes/java/main",
         MCP_MAPPINGS: "${mcpCh}_${mcpVer}",
-        MCP_VERSION: "20201102.104115", // TODO Get this value dynamically?
+        MCP_VERSION: "20210115.111550", // TODO Get this value dynamically?
         FORGE_VERSION: "$fgVer",
         FORGE_GROUP: "net.minecraftforge",
         target: "fmluserdevdata",

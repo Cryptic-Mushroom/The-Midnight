@@ -42,7 +42,6 @@ dependencies {
     def ciVer = project.ext.getVariable("env.ci-server.version")
     def jeiVer = project.ext.getVariable("env.jei.version")
     def bopFileid = project.ext.getVariable("env.bop.fileid")
-    def bopApiFileid = project.ext.getVariable("env.bop-api.fileid")
 
     // Minecraft/Forge
     minecraft "net.minecraftforge:forge:$mcVer-$fgVer"
@@ -64,6 +63,5 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-$jeiVer")
 
     // Biomes O' Plenty
-    compileOnly fg.deobf("curse.maven:bop-220318:$bopApiFileid")
-    implementation fg.deobf("curse.maven:bop-220318:$bopFileid")
+    implementation fg.deobf("curse.maven:biomes-o-plenty-220318:3135698")
 }
