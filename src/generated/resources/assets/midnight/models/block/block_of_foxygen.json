@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "midnight:block/another_block_of_furry"
+    "all": "midnight:block/block_of_foxygen"
   }
 }

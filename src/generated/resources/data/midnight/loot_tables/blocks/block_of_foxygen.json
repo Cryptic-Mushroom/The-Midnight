@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "midnight:another_block_of_furry"
+          "name": "midnight:block_of_foxygen"
         }
       ],
       "conditions": [
