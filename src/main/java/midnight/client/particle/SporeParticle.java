@@ -21,42 +21,42 @@ public class SporeParticle extends SpriteTexturedParticle {
     private SporeParticle(ClientWorld world, double x, double y, double z, double xv, double yv, double zv, IAnimatedSprite sprites) {
         super(world, x, y, z, xv, yv, zv);
 
-        float shade = rand.nextFloat() * 0.1f + 0.9f;
-        particleRed = shade;
-        particleGreen = shade;
-        particleBlue = shade;
-        particleAlpha = 1;
+        float shade = random.nextFloat() * 0.1f + 0.9f;
+        rCol = shade;
+        gCol = shade;
+        bCol = shade;
+        alpha = 1;
 
-        motionX = xv;
-        motionY = yv;
-        motionZ = zv;
+        xd = xv;
+        yd = yv;
+        zd = zv;
 
         setSize(0.2f, 0.2f);
-        particleScale *= (rand.nextFloat() * 0.6f + 1) * 0.7f;
-        maxAge = 60;
-        canCollide = true;
-        selectSpriteWithAge(spriteSet = sprites);
+        quadSize *= (random.nextFloat() * 0.6f + 1) * 0.7f;
+        lifetime = 60;
+        hasPhysics = true;
+        setSpriteFromAge(spriteSet = sprites);
     }
 
     @Override
     public void tick() {
-        if (age++ < maxAge) {
-            selectSpriteWithAge(spriteSet);
+        if (age++ < lifetime) {
+            setSpriteFromAge(spriteSet);
         }
-        prevPosX = posX;
-        prevPosY = posY;
-        prevPosZ = posZ;
+        xo = x;
+        yo = y;
+        zo = z;
 
-        motionX *= 0.98;
-        motionY *= 0.98;
-        motionZ *= 0.98;
+        xd *= 0.98;
+        yd *= 0.98;
+        zd *= 0.98;
 
-        motionY -= 0.04;
+        yd -= 0.04;
 
-        move(motionX, motionY, motionZ);
+        move(xd, yd, zd);
 
-        if (age++ >= maxAge || onGround) {
-            setExpired();
+        if (age++ >= lifetime || onGround) {
+            remove();
         }
     }
 
@@ -66,7 +66,7 @@ public class SporeParticle extends SpriteTexturedParticle {
     }
 
     @Override
-    public int getBrightnessForRender(float partialTicks) {
+    public int getLightColor(float partialTicks) {
         int skylight = 10;
         int blocklight = 5;
         return skylight << 20 | blocklight << 4;
@@ -80,7 +80,7 @@ public class SporeParticle extends SpriteTexturedParticle {
         }
 
         @Override
-        public Particle makeParticle(BasicParticleType particleType, ClientWorld world, double x, double y, double z, double xv, double yv, double zv) {
+        public Particle createParticle(BasicParticleType particleType, ClientWorld world, double x, double y, double z, double xv, double yv, double zv) {
             return new SporeParticle(world, x, y, z, xv, yv, zv, spriteSet);
         }
     }

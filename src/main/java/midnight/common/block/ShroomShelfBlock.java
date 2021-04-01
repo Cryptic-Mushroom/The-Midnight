@@ -25,45 +25,48 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.block.AbstractBlock.OffsetType;
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class ShroomShelfBlock extends PlantBlock {
     public static final DirectionProperty FACING = MnBlockStateProperties.FACING_EXCEPT_DOWN;
     private static final VoxelShape[] SHAPES = { // Order as specified in net.minecraft.util.Direction:
         null,                                    // DOWN
-        makeCuboidShape(0, 0, 0, 16, 4, 16),     // UP
-        makeCuboidShape(0, 6, 7, 16, 10, 16),    // NORTH
-        makeCuboidShape(0, 6, 0, 16, 10, 9),     // SOUTH
-        makeCuboidShape(7, 6, 0, 16, 10, 16),    // WEST
-        makeCuboidShape(0, 6, 0, 9, 10, 16)      // EAST
+        box(0, 0, 0, 16, 4, 16),     // UP
+        box(0, 6, 7, 16, 10, 16),    // NORTH
+        box(0, 6, 0, 16, 10, 9),     // SOUTH
+        box(7, 6, 0, 16, 10, 16),    // WEST
+        box(0, 6, 0, 9, 10, 16)      // EAST
     };
 
     protected ShroomShelfBlock(Properties props) {
         super(props);
 
-        setDefaultState(getStateContainer().getBaseState().with(FACING, Direction.UP));
+        registerDefaultState(getStateDefinition().any().setValue(FACING, Direction.UP));
     }
 
     @Override
-    public BlockState updatePostPlacement(BlockState state, Direction dir, BlockState adjState, IWorld world, BlockPos pos, BlockPos adjPos) {
-        Direction myDir = state.get(FACING);
+    public BlockState updateShape(BlockState state, Direction dir, BlockState adjState, IWorld world, BlockPos pos, BlockPos adjPos) {
+        Direction myDir = state.getValue(FACING);
         if (!canRemain(world, pos, myDir)) {
-            return Blocks.AIR.getDefaultState();
+            return Blocks.AIR.defaultBlockState();
         }
         return state;
     }
 
     @Override
-    public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos) {
-        if (!state.isIn(this)) return true;
-        Direction myDir = state.get(FACING);
+    public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos) {
+        if (!state.is(this)) return true;
+        Direction myDir = state.getValue(FACING);
         return canRemain(world, pos, myDir);
     }
 
     protected boolean isValidBlockSide(BlockState state, IWorldReader world, BlockPos pos, Direction face) {
-        return state.isSideSolidFullSquare(world, pos, face);
+        return state.isFaceSturdy(world, pos, face);
     }
 
     private boolean canRemain(IWorldReader world, BlockPos pos, Direction facing) {
-        BlockPos adjPos = pos.offset(facing, -1);
+        BlockPos adjPos = pos.relative(facing, -1);
         BlockState adjState = world.getBlockState(adjPos);
         return isValidBlockSide(adjState, world, adjPos, facing);
     }
@@ -71,33 +74,33 @@ public class ShroomShelfBlock extends PlantBlock {
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext ctx) {
-        World world = ctx.getWorld();
-        BlockPos pos = ctx.getPos();
+        World world = ctx.getLevel();
+        BlockPos pos = ctx.getClickedPos();
 
-        Direction mainDir = ctx.getFace();
+        Direction mainDir = ctx.getClickedFace();
         if (mainDir != Direction.DOWN) {
             if (canRemain(world, pos, mainDir)) {
-                return getDefaultState().with(FACING, mainDir);
+                return defaultBlockState().setValue(FACING, mainDir);
             }
         }
 
         for (Direction dir : ctx.getNearestLookingDirections()) {
             if (dir == Direction.DOWN) continue;
             if (canRemain(world, pos, dir)) {
-                return getDefaultState().with(FACING, dir);
+                return defaultBlockState().setValue(FACING, dir);
             }
         }
         return null; // Cancel placement, return null
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(FACING);
     }
 
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
-        return SHAPES[state.get(FACING).ordinal()];
+        return SHAPES[state.getValue(FACING).ordinal()];
     }
 
     /**

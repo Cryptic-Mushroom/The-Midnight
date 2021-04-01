@@ -11,13 +11,13 @@
 buildscript {
     repositories {
         maven { url 'https://files.minecraftforge.net/maven' }
-        maven { url 'https://dist.creeper.host/Sponge/maven' }
+        maven { url 'https://repo.spongepowered.org/maven' }
         maven { url 'https://maven.shadew.net/' }
         jcenter()
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
         classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
         classpath group: 'net.shadew', name: 'modutil', version: '1.0-beta.10'
     }
@@ -44,6 +44,7 @@ allprojects {
     // Initialize basic environment properties
     apply from: "$rootDir/environment.gradle"
 
+    // These gotta be "compile" and not "implementation" or else genData won't work
     configurations {
         embed // External deps embedded into the JAR file
         compile.extendsFrom(embed)
@@ -174,7 +175,8 @@ minecraft {
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'info'
-            property 'mixin.env.disableRefMap', 'true'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg".toString()
             property 'midnight.iside', 'true'
 
             mods {
@@ -189,7 +191,8 @@ minecraft {
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'info'
-            property 'mixin.env.disableRefMap', 'true'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg".toString()
             property 'midnight.iside', 'true'
 
             args 'nogui'
@@ -212,7 +215,8 @@ minecraft {
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'info'
-            property 'mixin.env.disableRefMap', 'true'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg".toString()
             property 'midnight.iside', 'true'
             property 'midnight.datagen', 'true'
 

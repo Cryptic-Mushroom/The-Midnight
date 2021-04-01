@@ -16,46 +16,48 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class BouncyShroomCapBlock extends Block {
     public BouncyShroomCapBlock(Properties props) {
         super(props);
     }
 
     @Override
-    public void onFallenUpon(World world, BlockPos pos, Entity entity, float fallDistance) {
-        if (entity.bypassesLandingEffects()) {
-            super.onFallenUpon(world, pos, entity, fallDistance);
+    public void fallOn(World world, BlockPos pos, Entity entity, float fallDistance) {
+        if (entity.isSuppressingBounce()) {
+            super.fallOn(world, pos, entity, fallDistance);
         } else {
-            entity.handleFallDamage(fallDistance, 0);
+            entity.causeFallDamage(fallDistance, 0);
         }
 
     }
 
     @Override
-    public void onLanded(IBlockReader world, Entity entity) {
-        if (entity.bypassesLandingEffects()) {
-            super.onLanded(world, entity);
+    public void updateEntityAfterFallOn(IBlockReader world, Entity entity) {
+        if (entity.isSuppressingBounce()) {
+            super.updateEntityAfterFallOn(world, entity);
         } else {
             bounce(entity);
         }
     }
 
     private void bounce(Entity entity) {
-        Vector3d motion = entity.getMotion();
+        Vector3d motion = entity.getDeltaMovement();
         if (motion.y < 0) {
             double bounceFactor = entity instanceof LivingEntity ? 1 : 0.8;
-            entity.setMotion(motion.x, -motion.y * bounceFactor, motion.z);
+            entity.setDeltaMovement(motion.x, -motion.y * bounceFactor, motion.z);
         }
     }
 
     @Override
-    public void onEntityWalk(World world, BlockPos pos, Entity entity) {
-        double vspeed = Math.abs(entity.getMotion().y);
-        if (vspeed < 0.1 && !entity.bypassesSteppingEffects()) {
+    public void stepOn(World world, BlockPos pos, Entity entity) {
+        double vspeed = Math.abs(entity.getDeltaMovement().y);
+        if (vspeed < 0.1 && !entity.isSteppingCarefully()) {
             double hspeedMul = 0.4 + vspeed * 0.2;
-            entity.setMotion(entity.getMotion().mul(hspeedMul, 1, hspeedMul));
+            entity.setDeltaMovement(entity.getDeltaMovement().multiply(hspeedMul, 1, hspeedMul));
         }
 
-        super.onEntityWalk(world, pos, entity);
+        super.stepOn(world, pos, entity);
     }
 }

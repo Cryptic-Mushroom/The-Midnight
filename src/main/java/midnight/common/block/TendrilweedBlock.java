@@ -26,6 +26,8 @@ import net.minecraftforge.fml.network.PacketDistributor;
 
 import java.util.Random;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 @SuppressWarnings("deprecation")
 public class TendrilweedBlock extends PlantBlock {
     protected TendrilweedBlock(Properties props) {
@@ -34,14 +36,14 @@ public class TendrilweedBlock extends PlantBlock {
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader world, BlockPos pos) {
+    protected boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
         return state.getBlock() == MnBlocks.NIGHTSTONE;
     }
 
     @Override
-    public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos) {
-        BlockPos down = pos.down();
-        return isValidGround(world.getBlockState(down), world, down);
+    public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos) {
+        BlockPos down = pos.below();
+        return mayPlaceOn(world.getBlockState(down), world, down);
     }
 
 
@@ -49,19 +51,19 @@ public class TendrilweedBlock extends PlantBlock {
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random rng) {
         for (int i = 0; i < 3; i++) {
 
-            BlockPos nearby = pos.add(rng.nextInt(5) - 2, rng.nextInt(3) - 1, rng.nextInt(5) - 2);
-            if (isValidPosition(world.getBlockState(nearby), world, nearby) && world.isAirBlock(nearby)) {
+            BlockPos nearby = pos.offset(rng.nextInt(5) - 2, rng.nextInt(3) - 1, rng.nextInt(5) - 2);
+            if (canSurvive(world.getBlockState(nearby), world, nearby) && world.isEmptyBlock(nearby)) {
 
                 // Find neaby tendrilweeds, don't grow too much tendrilweeds in one place
                 int nearTendrilweeds = 0;
-                for (BlockPos lookPos : BlockPos.getAllInBoxMutable(pos.add(-2, -1, -2), pos.add(2, 1, 2))) {
-                    if (world.getBlockState(lookPos).isIn(this)) {
+                for (BlockPos lookPos : BlockPos.betweenClosed(pos.offset(-2, -1, -2), pos.offset(2, 1, 2))) {
+                    if (world.getBlockState(lookPos).is(this)) {
                         nearTendrilweeds++;
                     }
                 }
 
                 if (nearTendrilweeds < 6) {
-                    world.setBlockState(nearby, getDefaultState(), 3);
+                    world.setBlock(nearby, defaultBlockState(), 3);
 
                     // Notify clients to create a pollen cloud
                     TendrilweedGrowPacket pkt = new TendrilweedGrowPacket(nearby);
@@ -72,9 +74,9 @@ public class TendrilweedBlock extends PlantBlock {
     }
 
     @Override // Spawn particles as entities move through the block
-    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (world.isRemote) { // Only compute this on the client
-            Vector3d velo = entity.getMotion();
+    public void entityInside(BlockState state, World world, BlockPos pos, Entity entity) {
+        if (world.isClientSide) { // Only compute this on the client
+            Vector3d velo = entity.getDeltaMovement();
             double speed = velo.length();
 
             // Do not spawn a particle when entity is not moving
@@ -120,7 +122,7 @@ public class TendrilweedBlock extends PlantBlock {
             return;
 
         BlockState state = world.getBlockState(pos);
-        Random rng = world.rand;
+        Random rng = world.random;
         for (int i = 0; i < 10; i++) {
             spawnPollen(world, pos, state, rng, new Vector3d(
                 rng.nextDouble() * 2 - 1,

@@ -44,7 +44,7 @@ public class MnStateModelProvider implements IDataProvider {
     }
 
     @Override
-    public void act(DirectoryCache cache) {
+    public void run(DirectoryCache cache) {
         blockStateData.clear();
         blockModelData.clear();
         itemModelData.clear();

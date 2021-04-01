@@ -24,18 +24,18 @@ public class DeadLogFeature extends Feature<DeadLogFeatureConfig> {
     }
 
     @Override
-    public boolean generate(ISeedReader world, ChunkGenerator gen, Random rand, BlockPos pos, DeadLogFeatureConfig config) {
+    public boolean place(ISeedReader world, ChunkGenerator gen, Random rand, BlockPos pos, DeadLogFeatureConfig config) {
         int lenMinL = config.getLengthMin();
         int lenMaxL = config.getLengthMax();
         int lenMin = Math.min(lenMinL, lenMaxL); // Fix negative ranges, java.util.Random doesn't like that
         int lenMax = Math.max(lenMinL, lenMaxL);
 
-        BlockState xState = config.getXAxisLog().getBlockState(rand, pos);
-        BlockState zState = config.getZAxisLog().getBlockState(rand, pos);
+        BlockState xState = config.getXAxisLog().getState(rand, pos);
+        BlockState zState = config.getZAxisLog().getState(rand, pos);
 
         int len = rand.nextInt(lenMax - lenMin + 1) + lenMin;
         Direction dir = rand.nextBoolean() ? Direction.EAST : Direction.SOUTH;
-        BlockPos off = pos.offset(dir, -len / 2); // Offset, so center of log is at 'pos'
+        BlockPos off = pos.relative(dir, -len / 2); // Offset, so center of log is at 'pos'
 
         return generate(
             world, off, rand,
@@ -61,7 +61,7 @@ public class DeadLogFeature extends Feature<DeadLogFeatureConfig> {
      * @return True when something has been generated
      */
     protected boolean generate(ISeedReader world, BlockPos pos, Random rand, int branchChance, int branchLenMax, int len, BlockState state, BlockState oppositeAxis, Direction dir) {
-        BlockPos.Mutable mpos = new BlockPos.Mutable().setPos(pos);
+        BlockPos.Mutable mpos = new BlockPos.Mutable().set(pos);
 
         // Check valid space
         for (int i = 0; i < len; i++) {
@@ -79,18 +79,18 @@ public class DeadLogFeature extends Feature<DeadLogFeatureConfig> {
             mpos.move(dir);
         }
 
-        mpos.setPos(pos);
+        mpos.set(pos);
 
         // Place
         for (int i = 0; i < len; i++) {
-            world.setBlockState(mpos, state, 2);
+            world.setBlock(mpos, state, 2);
 
             // Generate branches recursively
             if (branchChance > 0 && branchLenMax > 0 && rand.nextInt(branchChance) == 0) {
                 // Biased random, shorter lengths are more common
                 int branchLen = rand.nextInt(rand.nextInt(branchLenMax + 1) + 1) + 1;
-                Direction branchDir = rand.nextBoolean() ? dir.rotateYCCW() : dir.rotateY();
-                BlockPos branchPos = mpos.toImmutable().offset(branchDir);
+                Direction branchDir = rand.nextBoolean() ? dir.getCounterClockWise() : dir.getClockWise();
+                BlockPos branchPos = mpos.immutable().relative(branchDir);
                 // Note that we swap state and oppositeAxis, because the branch is rotated the axis it goes in flips
                 // We also set branchChance and branchLenMax to 0 since we don't want branches to actually have
                 // other branches
@@ -104,12 +104,12 @@ public class DeadLogFeature extends Feature<DeadLogFeatureConfig> {
     }
 
     protected boolean isValidGround(ISeedReader world, BlockPos pos, BlockState state) {
-        return state.isSideSolidFullSquare(world, pos, Direction.UP);
+        return state.isFaceSturdy(world, pos, Direction.UP);
     }
 
     protected boolean isValidMedium(ISeedReader world, BlockPos pos, BlockState state) {
-        return state.getMaterial().isLiquid() || !state.getMaterial().blocksMovement()
+        return state.getMaterial().isLiquid() || !state.getMaterial().blocksMotion()
                    // Leave block movement but logs usually replace them so special check for 'em
-                   || state.isIn(BlockTags.LEAVES);
+                   || state.is(BlockTags.LEAVES);
     }
 }

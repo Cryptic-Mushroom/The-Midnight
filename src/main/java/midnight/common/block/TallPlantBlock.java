@@ -19,9 +19,12 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.PlantType;
 
+import net.minecraft.block.AbstractBlock.OffsetType;
+import net.minecraft.block.AbstractBlock.Properties;
+
 public class TallPlantBlock extends DoublePlantBlock {
-    private VoxelShape hitboxLo = VoxelShapes.fullCube();
-    private VoxelShape hitboxHi = VoxelShapes.fullCube();
+    private VoxelShape hitboxLo = VoxelShapes.block();
+    private VoxelShape hitboxHi = VoxelShapes.block();
     private OffsetType offsetType = OffsetType.NONE;
     private PlantType plantType = PlantType.PLAINS;
 
@@ -66,11 +69,11 @@ public class TallPlantBlock extends DoublePlantBlock {
     public TallPlantBlock hitbox(double size, double height) {
         double radius = size / 2;
         if (height < 16) {
-            hitbox(makeCuboidShape(8 - radius, 0, 8 - radius, 8 + radius, height, 8 + radius), VoxelShapes.empty());
+            hitbox(box(8 - radius, 0, 8 - radius, 8 + radius, height, 8 + radius), VoxelShapes.empty());
         } else {
             hitbox(
-                makeCuboidShape(8 - radius, 0, 8 - radius, 8 + radius, 16, 8 + radius),
-                makeCuboidShape(8 - radius, 0, 8 - radius, 8 + radius, height - 16, 8 + radius)
+                box(8 - radius, 0, 8 - radius, 8 + radius, 16, 8 + radius),
+                box(8 - radius, 0, 8 - radius, 8 + radius, height - 16, 8 + radius)
             );
         }
         return this;
@@ -115,15 +118,15 @@ public class TallPlantBlock extends DoublePlantBlock {
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader world, BlockPos pos) {
-        return state.getBlock() instanceof NightDirtBlock || super.isValidGround(state, world, pos);
+    protected boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
+        return state.getBlock() instanceof NightDirtBlock || super.mayPlaceOn(state, world, pos);
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
         Vector3d off = state.getOffset(world, pos);
-        return (state.get(HALF) == DoubleBlockHalf.LOWER ? hitboxLo : hitboxHi).withOffset(off.x, off.y, off.z);
+        return (state.getValue(HALF) == DoubleBlockHalf.LOWER ? hitboxLo : hitboxHi).move(off.x, off.y, off.z);
     }
 
     @Override

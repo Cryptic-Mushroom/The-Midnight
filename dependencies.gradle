@@ -10,6 +10,13 @@ repositories {
     mavenLocal()
     mavenCentral()
     maven {
+        name = "Curse Maven"
+        url = "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+    maven {
         name = "Shadew's Maven Repository"
         url = "https://maven.shadew.net/"
     }
@@ -25,14 +32,6 @@ repositories {
         name = "Progwml6 maven"
         url = "https://dvs1.progwml6.com/files/maven/"
     }
-    // maven {
-    //     name = "ModMaven"
-    //     url = "https://modmaven.k-4u.nl/"
-    // }
-    // maven {
-    //     name = "TerraForged Maven Repository"
-    //     url = "https://io.terraforged.com/repository/maven/"
-    // }
 }
 
 dependencies {
@@ -42,7 +41,8 @@ dependencies {
     def vutilVer = project.ext.getVariable("env.vutil.version")
     def ciVer = project.ext.getVariable("env.ci-server.version")
     def jeiVer = project.ext.getVariable("env.jei.version")
-    def bopVer = project.ext.getVariable("env.bop.version")
+    def bopFileid = project.ext.getVariable("env.bop.fileid")
+    def shutupExpSettingsFileid = project.ext.getVariable("env.shutup.fileid")
 
     // Minecraft/Forge
     minecraft "net.minecraftforge:forge:$mcVer-$fgVer"
@@ -57,13 +57,15 @@ dependencies {
     embed "me.jonathing.minecraft:verification-util:$vutilVer"
 
     // CI Test Server Plugin
-    compile fg.deobf("me.jonathing.minecraft:ci_testserver:$mcVer-$ciVer")
+    implementation fg.deobf("me.jonathing.minecraft:ci_testserver:$ciVer")
 
     // Just Enough Items
-    compileOnly fg.deobf("mezz.jei:jei-$mcVer:$jeiVer:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-$mcVer:$jeiVer")
+    compileOnly fg.deobf("mezz.jei:jei-$jeiVer:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-$jeiVer")
 
     // Biomes O' Plenty
-    compileOnly fg.deobf("com.github.glitchfiend:biomesoplenty:$mcVer-$bopVer:api-obf")
-    compile fg.deobf("com.github.glitchfiend:biomesoplenty:$mcVer-$bopVer:universal-obf")
+    implementation fg.deobf("curse.maven:biomes-o-plenty-220318:$bopFileid")
+
+    // Shutup Experimental Settings!
+    runtimeOnly fg.deobf("curse.maven:shutup-experimental-settings-407174:$shutupExpSettingsFileid")
 }

@@ -19,20 +19,20 @@ import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
 public final class MnConfiguredSurfaceBuilders {
     public static final ConfiguredSurfaceBuilder<?> DEFAULT_NIGHT_GRASS = register(
         "default_night_grass",
-        SurfaceBuilder.DEFAULT.withConfig(
+        SurfaceBuilder.DEFAULT.configured(
             new SurfaceBuilderConfig(
-                MnBlocks.NIGHT_GRASS_BLOCK.getDefaultState(),
-                MnBlocks.NIGHT_DIRT.getDefaultState(),
-                MnBlocks.NIGHT_DIRT.getDefaultState()
+                MnBlocks.NIGHT_GRASS_BLOCK.defaultBlockState(),
+                MnBlocks.NIGHT_DIRT.defaultBlockState(),
+                MnBlocks.NIGHT_DIRT.defaultBlockState()
             )
         )
     );
     public static final ConfiguredSurfaceBuilder<?> DECEITFUL_BOG = register(
         "deceitful_bog",
-        MnSurfaceBuilders.DECEITFUL_BOG.withConfig(new SurfaceBuilderConfig(
-            MnBlocks.NIGHT_GRASS_BLOCK.getDefaultState(),
-            MnBlocks.NIGHT_DIRT.getDefaultState(),
-            MnBlocks.NIGHT_DIRT.getDefaultState()
+        MnSurfaceBuilders.DECEITFUL_BOG.configured(new SurfaceBuilderConfig(
+            MnBlocks.NIGHT_GRASS_BLOCK.defaultBlockState(),
+            MnBlocks.NIGHT_DIRT.defaultBlockState(),
+            MnBlocks.NIGHT_DIRT.defaultBlockState()
         ))
     );
 
@@ -40,6 +40,6 @@ public final class MnConfiguredSurfaceBuilders {
     }
 
     private static <SC extends ISurfaceBuilderConfig> ConfiguredSurfaceBuilder<SC> register(String id, ConfiguredSurfaceBuilder<SC> builder) {
-        return WorldGenRegistries.add(WorldGenRegistries.CONFIGURED_SURFACE_BUILDER, Midnight.idStr(id), builder);
+        return WorldGenRegistries.register(WorldGenRegistries.CONFIGURED_SURFACE_BUILDER, Midnight.idStr(id), builder);
     }
 }

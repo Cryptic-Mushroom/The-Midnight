@@ -24,10 +24,10 @@ public class MnGeodeLootTables implements Consumer<BiConsumer<ResourceLocation, 
     public void accept(BiConsumer<ResourceLocation, LootTable.Builder> tableConsumer) {
         tableConsumer.accept(
             MnLootTables.GAMEPLAY_GEODE,
-            LootTable.builder().addLootPool(
-                LootPool.builder()
-                        .rolls(ConstantRange.of(1))
-                        .addEntry(ItemLootEntry.builder(MnItems.DARK_PEARL))
+            LootTable.lootTable().withPool(
+                LootPool.lootPool()
+                        .setRolls(ConstantRange.exactly(1))
+                        .add(ItemLootEntry.lootTableItem(MnItems.DARK_PEARL))
             )
         );
     }

@@ -30,7 +30,7 @@ import java.util.OptionalLong;
 
 public final class TheMidnightDimension {
     static final ResourceLocation ID = Midnight.id("the_midnight");
-    static final RegistryKey<World> KEY = RegistryKey.of(Registry.DIMENSION, ID);
+    static final RegistryKey<World> KEY = RegistryKey.create(Registry.DIMENSION_REGISTRY, ID);
 
     private static final DimensionType TYPE = new MnDimensionType(
         OptionalLong.of(18000), // Fixed time
@@ -51,12 +51,12 @@ public final class TheMidnightDimension {
         0      // Ambient lighting
     );
 
-    private static final RegistryKey<Dimension> DIMENSION_KEY = RegistryKey.of(Registry.DIMENSION_OPTIONS, ID);
-    private static final RegistryKey<DimensionType> TYPE_KEY = RegistryKey.of(Registry.DIMENSION_TYPE_KEY, ID);
+    private static final RegistryKey<Dimension> DIMENSION_KEY = RegistryKey.create(Registry.LEVEL_STEM_REGISTRY, ID);
+    private static final RegistryKey<DimensionType> TYPE_KEY = RegistryKey.create(Registry.DIMENSION_TYPE_REGISTRY, ID);
 
 
     public static void addRegistryDefaults(DynamicRegistries.Impl dynaRegs) {
-        MutableRegistry<DimensionType> registry = dynaRegs.get(Registry.DIMENSION_TYPE_KEY);
+        MutableRegistry<DimensionType> registry = dynaRegs.registryOrThrow(Registry.DIMENSION_TYPE_REGISTRY);
         registry.register(TYPE_KEY, TYPE, Lifecycle.stable());
     }
 

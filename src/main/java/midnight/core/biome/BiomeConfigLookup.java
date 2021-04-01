@@ -33,12 +33,12 @@ public final class BiomeConfigLookup {
     }
 
     public static BiomeColoring getColoring(Biome biome) {
-        ResourceLocation id = MidnightCore.get().getDynamicRegistries().get(Registry.BIOME_KEY).getKey(biome);
+        ResourceLocation id = MidnightCore.get().getDynamicRegistries().registryOrThrow(Registry.BIOME_REGISTRY).getKey(biome);
         return COLORING_MAP.computeIfAbsent(id, k -> new BiomeColoring.Builder().build());
     }
 
     public static TerrainFactors getTerrainFactors(Biome biome) {
-        ResourceLocation id = MidnightCore.get().getDynamicRegistries().get(Registry.BIOME_KEY).getKey(biome);
+        ResourceLocation id = MidnightCore.get().getDynamicRegistries().registryOrThrow(Registry.BIOME_REGISTRY).getKey(biome);
         return TERRAIN_FACTORS_MAP.computeIfAbsent(id, k -> new TerrainFactors.Builder().build());
     }
 }

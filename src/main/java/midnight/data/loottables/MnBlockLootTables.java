@@ -31,266 +31,266 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 
 public class MnBlockLootTables extends BlockLootTables {
-    private static final ILootCondition.IBuilder SILK_TOUCH = MatchTool.builder(ItemPredicate.Builder.create().enchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.IntBound.atLeast(1))));
-    private static final ILootCondition.IBuilder NO_SILK_TOUCH = SILK_TOUCH.inverted();
-    private static final ILootCondition.IBuilder SHEARS = MatchTool.builder(ItemPredicate.Builder.create().item(Items.SHEARS));
-    private static final ILootCondition.IBuilder SILK_TOUCH_OR_SHEARS = SHEARS.alternative(SILK_TOUCH);
-    private static final ILootCondition.IBuilder NOT_SILK_TOUCH_OR_SHEARS = SILK_TOUCH_OR_SHEARS.inverted();
+    private static final ILootCondition.IBuilder SILK_TOUCH = MatchTool.toolMatches(ItemPredicate.Builder.item().hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.IntBound.atLeast(1))));
+    private static final ILootCondition.IBuilder NO_SILK_TOUCH = SILK_TOUCH.invert();
+    private static final ILootCondition.IBuilder SHEARS = MatchTool.toolMatches(ItemPredicate.Builder.item().of(Items.SHEARS));
+    private static final ILootCondition.IBuilder SILK_TOUCH_OR_SHEARS = SHEARS.or(SILK_TOUCH);
+    private static final ILootCondition.IBuilder NOT_SILK_TOUCH_OR_SHEARS = SILK_TOUCH_OR_SHEARS.invert();
     private static final float[] DEFAULT_SAPLING_DROP_RATES = {1 / 20F, 1 / 16F, 1 / 12F, 1 / 10F};
     private static final float[] DEFAULT_GLOB_DROP_RATES = {1 / 5F, 1 / 3F, 2 / 3F, 1};
 
     @Override
     protected void addTables() {
-        registerDropSelfLootTable(MnBlocks.NIGHTSTONE);
-        registerDropSelfLootTable(MnBlocks.TRENCHSTONE);
-        registerLootTable(MnBlocks.NIGHT_BEDROCK, block -> droppingNothing());
+        dropSelf(MnBlocks.NIGHTSTONE);
+        dropSelf(MnBlocks.TRENCHSTONE);
+        add(MnBlocks.NIGHT_BEDROCK, block -> droppingNothing());
 
-        registerDropSelfLootTable(MnBlocks.NIGHT_DIRT);
-        registerLootTable(MnBlocks.NIGHT_GRASS_BLOCK, block -> droppingWithSilkTouch(block, MnBlocks.NIGHT_DIRT));
-        registerDropSelfLootTable(MnBlocks.DECEITFUL_PEAT);
-        registerDropSelfLootTable(MnBlocks.DECEITFUL_MUD);
-        registerDropSelfLootTable(MnBlocks.STRANGE_SAND);
-        registerDropSelfLootTable(MnBlocks.COARSE_NIGHT_DIRT);
-        registerLootTable(MnBlocks.NIGHT_MYCELIUM, block -> droppingWithSilkTouch(block, MnBlocks.NIGHTSTONE));
+        dropSelf(MnBlocks.NIGHT_DIRT);
+        add(MnBlocks.NIGHT_GRASS_BLOCK, block -> createSingleItemTableWithSilkTouch(block, MnBlocks.NIGHT_DIRT));
+        dropSelf(MnBlocks.DECEITFUL_PEAT);
+        dropSelf(MnBlocks.DECEITFUL_MUD);
+        dropSelf(MnBlocks.STRANGE_SAND);
+        dropSelf(MnBlocks.COARSE_NIGHT_DIRT);
+        add(MnBlocks.NIGHT_MYCELIUM, block -> createSingleItemTableWithSilkTouch(block, MnBlocks.NIGHTSTONE));
 
-        registerDropSelfLootTable(MnBlocks.NIGHTSTONE_BRICKS);
-        registerDropSelfLootTable(MnBlocks.TRENCHSTONE_BRICKS);
-        registerDropSelfLootTable(MnBlocks.SHROOMBRICKS);
+        dropSelf(MnBlocks.NIGHTSTONE_BRICKS);
+        dropSelf(MnBlocks.TRENCHSTONE_BRICKS);
+        dropSelf(MnBlocks.SHROOMBRICKS);
 
-        registerDropSelfLootTable(MnBlocks.GHOST_PLANT_LEAF);
-        registerDropSelfLootTable(MnBlocks.GHOST_PLANT_STEM);
-        registerDropSelfLootTable(MnBlocks.GHOST_PLANT);
+        dropSelf(MnBlocks.GHOST_PLANT_LEAF);
+        dropSelf(MnBlocks.GHOST_PLANT_STEM);
+        dropSelf(MnBlocks.GHOST_PLANT);
 
-        registerLootTable(MnBlocks.NIGHT_GRASS, BlockLootTables::onlyWithShears);
-        registerLootTable(MnBlocks.TALL_NIGHT_GRASS, BlockLootTables::onlyWithShears);
+        add(MnBlocks.NIGHT_GRASS, BlockLootTables::createShearsOnlyDrop);
+        add(MnBlocks.TALL_NIGHT_GRASS, BlockLootTables::createShearsOnlyDrop);
 
-        registerDropSelfLootTable(MnBlocks.DEAD_WOOD);
-        registerDropSelfLootTable(MnBlocks.DEAD_WOOD_LOG);
-        registerDropSelfLootTable(MnBlocks.DEAD_WOOD_PLANKS);
-        registerDropSelfLootTable(MnBlocks.STRIPPED_DEAD_WOOD);
-        registerDropSelfLootTable(MnBlocks.STRIPPED_DEAD_WOOD_LOG);
-        registerDropSelfLootTable(MnBlocks.DEAD_SAPLING);
+        dropSelf(MnBlocks.DEAD_WOOD);
+        dropSelf(MnBlocks.DEAD_WOOD_LOG);
+        dropSelf(MnBlocks.DEAD_WOOD_PLANKS);
+        dropSelf(MnBlocks.STRIPPED_DEAD_WOOD);
+        dropSelf(MnBlocks.STRIPPED_DEAD_WOOD_LOG);
+        dropSelf(MnBlocks.DEAD_SAPLING);
 
-        registerDropSelfLootTable(MnBlocks.SHADOWROOT_WOOD);
-        registerDropSelfLootTable(MnBlocks.SHADOWROOT_LOG);
-        registerDropSelfLootTable(MnBlocks.SHADOWROOT_PLANKS);
-        registerDropSelfLootTable(MnBlocks.SHADOWROOT_SAPLING);
-        registerLootTable(MnBlocks.SHADOWROOT_LEAVES, block -> droppingWithChancesAndDarkSticks(block, MnBlocks.SHADOWROOT_SAPLING, DEFAULT_SAPLING_DROP_RATES));
-        registerDropSelfLootTable(MnBlocks.STRIPPED_SHADOWROOT_WOOD);
-        registerDropSelfLootTable(MnBlocks.STRIPPED_SHADOWROOT_LOG);
-        registerDropSelfLootTable(MnBlocks.SHADOWROOT_BOOKSHELF);
+        dropSelf(MnBlocks.SHADOWROOT_WOOD);
+        dropSelf(MnBlocks.SHADOWROOT_LOG);
+        dropSelf(MnBlocks.SHADOWROOT_PLANKS);
+        dropSelf(MnBlocks.SHADOWROOT_SAPLING);
+        add(MnBlocks.SHADOWROOT_LEAVES, block -> droppingWithChancesAndDarkSticks(block, MnBlocks.SHADOWROOT_SAPLING, DEFAULT_SAPLING_DROP_RATES));
+        dropSelf(MnBlocks.STRIPPED_SHADOWROOT_WOOD);
+        dropSelf(MnBlocks.STRIPPED_SHADOWROOT_LOG);
+        dropSelf(MnBlocks.SHADOWROOT_BOOKSHELF);
 
-        registerDropSelfLootTable(MnBlocks.DARK_WILLOW_WOOD);
-        registerDropSelfLootTable(MnBlocks.DARK_WILLOW_LOG);
-        registerDropSelfLootTable(MnBlocks.DARK_WILLOW_PLANKS);
-        registerDropSelfLootTable(MnBlocks.DARK_WILLOW_SAPLING);
-        registerLootTable(MnBlocks.DARK_WILLOW_LEAVES, block -> droppingWithChancesAndDarkSticks(block, MnBlocks.DARK_WILLOW_SAPLING, DEFAULT_SAPLING_DROP_RATES));
-        registerLootTable(MnBlocks.HANGING_DARK_WILLOW_LEAVES, onlyWithShears(MnBlocks.HANGING_DARK_WILLOW_LEAVES));
-        registerDropSelfLootTable(MnBlocks.STRIPPED_DARK_WILLOW_WOOD);
-        registerDropSelfLootTable(MnBlocks.STRIPPED_DARK_WILLOW_LOG);
-        registerDropSelfLootTable(MnBlocks.DARK_WILLOW_BOOKSHELF);
+        dropSelf(MnBlocks.DARK_WILLOW_WOOD);
+        dropSelf(MnBlocks.DARK_WILLOW_LOG);
+        dropSelf(MnBlocks.DARK_WILLOW_PLANKS);
+        dropSelf(MnBlocks.DARK_WILLOW_SAPLING);
+        add(MnBlocks.DARK_WILLOW_LEAVES, block -> droppingWithChancesAndDarkSticks(block, MnBlocks.DARK_WILLOW_SAPLING, DEFAULT_SAPLING_DROP_RATES));
+        add(MnBlocks.HANGING_DARK_WILLOW_LEAVES, createShearsOnlyDrop(MnBlocks.HANGING_DARK_WILLOW_LEAVES));
+        dropSelf(MnBlocks.STRIPPED_DARK_WILLOW_WOOD);
+        dropSelf(MnBlocks.STRIPPED_DARK_WILLOW_LOG);
+        dropSelf(MnBlocks.DARK_WILLOW_BOOKSHELF);
 
-        registerDropSelfLootTable(MnBlocks.NIGHTSHROOM_STEM);
-        registerDropSelfLootTable(MnBlocks.NIGHTSHROOM_PLANKS);
-        registerDropSelfLootTable(MnBlocks.NIGHTSHROOM);
-        registerDropSelfLootTable(MnBlocks.NIGHTSHROOM_SHELF);
-        registerLootTable(MnBlocks.NIGHTSHROOM_FIBRE, MnBlockLootTables::droppingFibre);
-        registerLootTable(MnBlocks.NIGHTSHROOM_ROOTS, BlockLootTables::onlyWithShears);
-        registerLootTable(MnBlocks.FLOWERING_NIGHTSHROOM_ROOTS, BlockLootTables::onlyWithShears);
-        registerLootTable(MnBlocks.TALL_NIGHTSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        registerLootTable(MnBlocks.NIGHTSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.NIGHTSHROOM_POWDER, MnBlocks.NIGHTSHROOM, MnBlocks.TALL_NIGHTSHROOM));
+        dropSelf(MnBlocks.NIGHTSHROOM_STEM);
+        dropSelf(MnBlocks.NIGHTSHROOM_PLANKS);
+        dropSelf(MnBlocks.NIGHTSHROOM);
+        dropSelf(MnBlocks.NIGHTSHROOM_SHELF);
+        add(MnBlocks.NIGHTSHROOM_FIBRE, MnBlockLootTables::droppingFibre);
+        add(MnBlocks.NIGHTSHROOM_ROOTS, BlockLootTables::createShearsOnlyDrop);
+        add(MnBlocks.FLOWERING_NIGHTSHROOM_ROOTS, BlockLootTables::createShearsOnlyDrop);
+        add(MnBlocks.TALL_NIGHTSHROOM, block -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+        add(MnBlocks.NIGHTSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.NIGHTSHROOM_POWDER, MnBlocks.NIGHTSHROOM, MnBlocks.TALL_NIGHTSHROOM));
 
-        registerDropSelfLootTable(MnBlocks.DEWSHROOM_STEM);
-        registerDropSelfLootTable(MnBlocks.DEWSHROOM_PLANKS);
-        registerDropSelfLootTable(MnBlocks.DEWSHROOM);
-        registerDropSelfLootTable(MnBlocks.DEWSHROOM_SHELF);
-        registerLootTable(MnBlocks.DEWSHROOM_FIBRE, MnBlockLootTables::droppingFibre);
-        registerLootTable(MnBlocks.DEWSHROOM_ROOTS, BlockLootTables::onlyWithShears);
-        registerLootTable(MnBlocks.FLOWERING_DEWSHROOM_ROOTS, BlockLootTables::onlyWithShears);
-        registerLootTable(MnBlocks.TALL_DEWSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        registerLootTable(MnBlocks.DEWSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.DEWSHROOM_POWDER, MnBlocks.DEWSHROOM, MnBlocks.TALL_DEWSHROOM));
+        dropSelf(MnBlocks.DEWSHROOM_STEM);
+        dropSelf(MnBlocks.DEWSHROOM_PLANKS);
+        dropSelf(MnBlocks.DEWSHROOM);
+        dropSelf(MnBlocks.DEWSHROOM_SHELF);
+        add(MnBlocks.DEWSHROOM_FIBRE, MnBlockLootTables::droppingFibre);
+        add(MnBlocks.DEWSHROOM_ROOTS, BlockLootTables::createShearsOnlyDrop);
+        add(MnBlocks.FLOWERING_DEWSHROOM_ROOTS, BlockLootTables::createShearsOnlyDrop);
+        add(MnBlocks.TALL_DEWSHROOM, block -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+        add(MnBlocks.DEWSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.DEWSHROOM_POWDER, MnBlocks.DEWSHROOM, MnBlocks.TALL_DEWSHROOM));
 
-        registerDropSelfLootTable(MnBlocks.VIRIDSHROOM_STEM);
-        registerDropSelfLootTable(MnBlocks.VIRIDSHROOM_PLANKS);
-        registerDropSelfLootTable(MnBlocks.VIRIDSHROOM);
-        registerDropSelfLootTable(MnBlocks.VIRIDSHROOM_SHELF);
-        registerLootTable(MnBlocks.VIRIDSHROOM_FIBRE, MnBlockLootTables::droppingFibre);
-        registerLootTable(MnBlocks.VIRIDSHROOM_ROOTS, BlockLootTables::onlyWithShears);
-        registerLootTable(MnBlocks.FLOWERING_VIRIDSHROOM_ROOTS, BlockLootTables::onlyWithShears);
-        registerLootTable(MnBlocks.TALL_VIRIDSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        registerLootTable(MnBlocks.VIRIDSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.VIRIDSHROOM_POWDER, MnBlocks.VIRIDSHROOM, MnBlocks.TALL_VIRIDSHROOM));
+        dropSelf(MnBlocks.VIRIDSHROOM_STEM);
+        dropSelf(MnBlocks.VIRIDSHROOM_PLANKS);
+        dropSelf(MnBlocks.VIRIDSHROOM);
+        dropSelf(MnBlocks.VIRIDSHROOM_SHELF);
+        add(MnBlocks.VIRIDSHROOM_FIBRE, MnBlockLootTables::droppingFibre);
+        add(MnBlocks.VIRIDSHROOM_ROOTS, BlockLootTables::createShearsOnlyDrop);
+        add(MnBlocks.FLOWERING_VIRIDSHROOM_ROOTS, BlockLootTables::createShearsOnlyDrop);
+        add(MnBlocks.TALL_VIRIDSHROOM, block -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+        add(MnBlocks.VIRIDSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.VIRIDSHROOM_POWDER, MnBlocks.VIRIDSHROOM, MnBlocks.TALL_VIRIDSHROOM));
 
-        registerDropSelfLootTable(MnBlocks.MOONSHROOM_STEM);
-        registerDropSelfLootTable(MnBlocks.MOONSHROOM_PLANKS);
-        registerDropSelfLootTable(MnBlocks.MOONSHROOM);
-        registerDropSelfLootTable(MnBlocks.MOONSHROOM_SHELF);
-        registerLootTable(MnBlocks.MOONSHROOM_FIBRE, MnBlockLootTables::droppingFibre);
-        registerLootTable(MnBlocks.MOONSHROOM_ROOTS, BlockLootTables::onlyWithShears);
-        registerLootTable(MnBlocks.FLOWERING_MOONSHROOM_ROOTS, BlockLootTables::onlyWithShears);
-        registerLootTable(MnBlocks.TALL_MOONSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        registerLootTable(MnBlocks.MOONSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.MOONSHROOM_POWDER, MnBlocks.MOONSHROOM, MnBlocks.TALL_MOONSHROOM));
+        dropSelf(MnBlocks.MOONSHROOM_STEM);
+        dropSelf(MnBlocks.MOONSHROOM_PLANKS);
+        dropSelf(MnBlocks.MOONSHROOM);
+        dropSelf(MnBlocks.MOONSHROOM_SHELF);
+        add(MnBlocks.MOONSHROOM_FIBRE, MnBlockLootTables::droppingFibre);
+        add(MnBlocks.MOONSHROOM_ROOTS, BlockLootTables::createShearsOnlyDrop);
+        add(MnBlocks.FLOWERING_MOONSHROOM_ROOTS, BlockLootTables::createShearsOnlyDrop);
+        add(MnBlocks.TALL_MOONSHROOM, block -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+        add(MnBlocks.MOONSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.MOONSHROOM_POWDER, MnBlocks.MOONSHROOM, MnBlocks.TALL_MOONSHROOM));
 
-        registerDropSelfLootTable(MnBlocks.BOGSHROOM_STEM);
-        registerDropSelfLootTable(MnBlocks.BOGSHROOM_PLANKS);
-        registerDropSelfLootTable(MnBlocks.BOGSHROOM);
-        registerDropSelfLootTable(MnBlocks.BOGSHROOM_SHELF);
-        registerLootTable(MnBlocks.BOGSHROOM_FIBRE, MnBlockLootTables::droppingFibre);
-        registerLootTable(MnBlocks.TALL_BOGSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        registerLootTable(MnBlocks.BOGSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.BOGSHROOM_POWDER, MnBlocks.BOGSHROOM, MnBlocks.TALL_BOGSHROOM));
+        dropSelf(MnBlocks.BOGSHROOM_STEM);
+        dropSelf(MnBlocks.BOGSHROOM_PLANKS);
+        dropSelf(MnBlocks.BOGSHROOM);
+        dropSelf(MnBlocks.BOGSHROOM_SHELF);
+        add(MnBlocks.BOGSHROOM_FIBRE, MnBlockLootTables::droppingFibre);
+        add(MnBlocks.TALL_BOGSHROOM, block -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+        add(MnBlocks.BOGSHROOM_CAP, block -> droppingShroomOrPowder(block, MnItems.BOGSHROOM_POWDER, MnBlocks.BOGSHROOM, MnBlocks.TALL_BOGSHROOM));
 
-        registerDropSelfLootTable(MnBlocks.GLOB_FUNGUS);
-        registerLootTable(MnBlocks.GLOB_FUNGUS_CAP, block -> droppingWithChances(block, MnBlocks.GLOB_FUNGUS, DEFAULT_GLOB_DROP_RATES));
-        registerLootTable(MnBlocks.GLOB_FUNGUS_STEM, block -> droppingSilkTouchOrRanged(block, MnItems.GLOB_FUNGUS_HAND, 2, 4));
-        registerLootTable(MnBlocks.INFESTED_GLOB_FUNGUS_STEM, block -> droppingNothing());
-        registerLootTable(MnBlocks.GLOB_FUNGUS_HYPHAE, block -> droppingSilkTouchOrRanged(block, MnItems.GLOB_FUNGUS_HAND, 2, 4));
-        registerDropSelfLootTable(MnBlocks.GLOB_FUNGUS_THATCH);
+        dropSelf(MnBlocks.GLOB_FUNGUS);
+        add(MnBlocks.GLOB_FUNGUS_CAP, block -> droppingWithChances(block, MnBlocks.GLOB_FUNGUS, DEFAULT_GLOB_DROP_RATES));
+        add(MnBlocks.GLOB_FUNGUS_STEM, block -> droppingSilkTouchOrRanged(block, MnItems.GLOB_FUNGUS_HAND, 2, 4));
+        add(MnBlocks.INFESTED_GLOB_FUNGUS_STEM, block -> droppingNothing());
+        add(MnBlocks.GLOB_FUNGUS_HYPHAE, block -> droppingSilkTouchOrRanged(block, MnItems.GLOB_FUNGUS_HAND, 2, 4));
+        dropSelf(MnBlocks.GLOB_FUNGUS_THATCH);
 
-        registerDropSelfLootTable(MnBlocks.REED_THATCH);
-        registerDropSelfLootTable(MnBlocks.CUT_REED_THATCH);
+        dropSelf(MnBlocks.REED_THATCH);
+        dropSelf(MnBlocks.CUT_REED_THATCH);
 
-        registerDropSelfLootTable(MnBlocks.MISTSHROOM);
-        registerLootTable(MnBlocks.TALL_MISTSHROOM, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        registerDropSelfLootTable(MnBlocks.FINGERED_GRASS);
-        registerDropSelfLootTable(MnBlocks.LUMEN_BUD);
-        registerLootTable(MnBlocks.TALL_LUMEN_BUD, block -> droppingWhen(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        registerDropSelfLootTable(MnBlocks.RUNEBUSH);
-        registerDropSelfLootTable(MnBlocks.BOGWEED);
-        registerDropSelfLootTable(MnBlocks.CRYSTALOTUS);
-        registerLootTable(MnBlocks.SUAVIS, MnBlockLootTables::droppingSuavis);
-        registerLootTable(MnBlocks.VIOLEAF, BlockLootTables::onlyWithShears);
-        registerDropSelfLootTable(MnBlocks.TENDRILWEED);
-        registerDropSelfLootTable(MnBlocks.NIGHT_REED);
-        registerLootTable(MnBlocks.DECEITFUL_MOSS, BlockLootTables::onlyWithShears);
-        registerLootTable(MnBlocks.DECEITFUL_ALGAE, BlockLootTables::onlyWithShears);
+        dropSelf(MnBlocks.MISTSHROOM);
+        add(MnBlocks.TALL_MISTSHROOM, block -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+        dropSelf(MnBlocks.FINGERED_GRASS);
+        dropSelf(MnBlocks.LUMEN_BUD);
+        add(MnBlocks.TALL_LUMEN_BUD, block -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+        dropSelf(MnBlocks.RUNEBUSH);
+        dropSelf(MnBlocks.BOGWEED);
+        dropSelf(MnBlocks.CRYSTALOTUS);
+        add(MnBlocks.SUAVIS, MnBlockLootTables::droppingSuavis);
+        add(MnBlocks.VIOLEAF, BlockLootTables::createShearsOnlyDrop);
+        dropSelf(MnBlocks.TENDRILWEED);
+        dropSelf(MnBlocks.NIGHT_REED);
+        add(MnBlocks.DECEITFUL_MOSS, BlockLootTables::createShearsOnlyDrop);
+        add(MnBlocks.DECEITFUL_ALGAE, BlockLootTables::createShearsOnlyDrop);
 
-        registerLootTable(MnBlocks.ROCKSHROOM, block -> droppingSilkTouchOrRanged(block, MnItems.ROCKSHROOM_CLUMP, 2, 3));
+        add(MnBlocks.ROCKSHROOM, block -> droppingSilkTouchOrRanged(block, MnItems.ROCKSHROOM_CLUMP, 2, 3));
 
-        registerDropSelfLootTable(MnBlocks.ROUXE_ROCK);
-        registerDropSelfLootTable(MnBlocks.BLOOMCRYSTAL_ROCK);
-        registerDropSelfLootTable(MnBlocks.ROUXE);
-        registerDropSelfLootTable(MnBlocks.BLOOMCRYSTAL);
-        registerDropSelfLootTable(MnBlocks.CRYSTAL_FLOWER);
+        dropSelf(MnBlocks.ROUXE_ROCK);
+        dropSelf(MnBlocks.BLOOMCRYSTAL_ROCK);
+        dropSelf(MnBlocks.ROUXE);
+        dropSelf(MnBlocks.BLOOMCRYSTAL);
+        dropSelf(MnBlocks.CRYSTAL_FLOWER);
 
-        registerLootTable(MnBlocks.DARK_PEARL_ORE, block -> droppingItemWithFortune(block, MnItems.GEODE));
-        registerDropSelfLootTable(MnBlocks.DARK_PEARL_BLOCK);
+        add(MnBlocks.DARK_PEARL_ORE, block -> createOreDrop(block, MnItems.GEODE));
+        dropSelf(MnBlocks.DARK_PEARL_BLOCK);
 
-        registerSilkTouch(MnBlocks.STRANGE_GLASS);
-        registerSilkTouch(MnBlocks.STRANGE_GLASS_PANE);
+        dropWhenSilkTouch(MnBlocks.STRANGE_GLASS);
+        dropWhenSilkTouch(MnBlocks.STRANGE_GLASS_PANE);
 
-        registerLootTable(MnBlocks.ARCHAIC_ORE, block -> droppingItemWithFortune(block, MnItems.ARCHAIC_SHARD));
-        registerSilkTouch(MnBlocks.ARCHAIC_GLASS);
-        registerSilkTouch(MnBlocks.ARCHAIC_GLASS_PANE);
+        add(MnBlocks.ARCHAIC_ORE, block -> createOreDrop(block, MnItems.ARCHAIC_SHARD));
+        dropWhenSilkTouch(MnBlocks.ARCHAIC_GLASS);
+        dropWhenSilkTouch(MnBlocks.ARCHAIC_GLASS_PANE);
 
-        registerDropSelfLootTable(MnBlocks.TENEBRUM_ORE);
-        registerDropSelfLootTable(MnBlocks.TENEBRUM_BLOCK);
+        dropSelf(MnBlocks.TENEBRUM_ORE);
+        dropSelf(MnBlocks.TENEBRUM_BLOCK);
 
-        registerDropSelfLootTable(MnBlocks.NAGRILITE_ORE);
-        registerDropSelfLootTable(MnBlocks.NAGRILITE_BLOCK);
+        dropSelf(MnBlocks.NAGRILITE_ORE);
+        dropSelf(MnBlocks.NAGRILITE_BLOCK);
 
-        registerLootTable(MnBlocks.EBONITE_ORE, block -> droppingItemWithFortune(block, MnItems.EBONITE));
-        registerDropSelfLootTable(MnBlocks.EBONITE_BLOCK);
+        add(MnBlocks.EBONITE_ORE, block -> createOreDrop(block, MnItems.EBONITE));
+        dropSelf(MnBlocks.EBONITE_BLOCK);
 
-        registerLootTable(MnBlocks.VIRILUX_ORE, block -> droppingItemWithFortune(block, MnItems.VIRILUX));
-        registerDropSelfLootTable(MnBlocks.VIRILUX_BLOCK);
+        add(MnBlocks.VIRILUX_ORE, block -> createOreDrop(block, MnItems.VIRILUX));
+        dropSelf(MnBlocks.VIRILUX_BLOCK);
     }
 
     protected static LootTable.Builder droppingNothing() {
-        return LootTable.builder().addLootPool(LootPool.builder().rolls(ConstantRange.of(0)));
+        return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantRange.exactly(0)));
     }
 
     protected static LootTable.Builder droppingSuavis(Block block) {
         StatePropertiesPredicate.Builder suavisStage1 = StatePropertiesPredicate.Builder
-                                                            .create()
-                                                            .exactMatch(SuavisBlock.STAGE, 1);
+                                                            .properties()
+                                                            .hasProperty(SuavisBlock.STAGE, 1);
         StatePropertiesPredicate.Builder suavisStage2 = StatePropertiesPredicate.Builder
-                                                            .create()
-                                                            .exactMatch(SuavisBlock.STAGE, 2);
+                                                            .properties()
+                                                            .hasProperty(SuavisBlock.STAGE, 2);
         StatePropertiesPredicate.Builder suavisStage3 = StatePropertiesPredicate.Builder
-                                                            .create()
-                                                            .exactMatch(SuavisBlock.STAGE, 3);
-        return droppingWithSilkTouchOrShears(
+                                                            .properties()
+                                                            .hasProperty(SuavisBlock.STAGE, 3);
+        return createSilkTouchOrShearsDispatchTable(
             block,
-            withExplosionDecay(block, ItemLootEntry.builder(MnItems.RAW_SUAVIS))
-                .acceptFunction(
-                    SetCount.builder(ConstantRange.of(2))
-                            .acceptCondition(BlockStateProperty.builder(block).properties(suavisStage1))
+            applyExplosionDecay(block, ItemLootEntry.lootTableItem(MnItems.RAW_SUAVIS))
+                .apply(
+                    SetCount.setCount(ConstantRange.exactly(2))
+                            .when(BlockStateProperty.hasBlockStateProperties(block).setProperties(suavisStage1))
                 )
-                .acceptFunction(
-                    SetCount.builder(ConstantRange.of(3))
-                            .acceptCondition(BlockStateProperty.builder(block).properties(suavisStage2))
+                .apply(
+                    SetCount.setCount(ConstantRange.exactly(3))
+                            .when(BlockStateProperty.hasBlockStateProperties(block).setProperties(suavisStage2))
                 )
-                .acceptFunction(
-                    SetCount.builder(ConstantRange.of(4))
-                            .acceptCondition(BlockStateProperty.builder(block).properties(suavisStage3))
+                .apply(
+                    SetCount.setCount(ConstantRange.exactly(4))
+                            .when(BlockStateProperty.hasBlockStateProperties(block).setProperties(suavisStage3))
                 )
-                .acceptFunction(ApplyBonus.binomialWithBonusCount(Enchantments.FORTUNE, 0.3f, 3))
+                .apply(ApplyBonus.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.3f, 3))
         );
     }
 
     protected static LootTable.Builder droppingWithChances(Block block, IItemProvider drop, float... saplingBonus) {
-        return droppingWithSilkTouchOrShears(
+        return createSilkTouchOrShearsDispatchTable(
             block,
-            withSurvivesExplosion(block, ItemLootEntry.builder(drop))
-                .acceptCondition(TableBonus.builder(Enchantments.FORTUNE, saplingBonus))
+            applyExplosionCondition(block, ItemLootEntry.lootTableItem(drop))
+                .when(TableBonus.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, saplingBonus))
         );
     }
 
     protected static LootTable.Builder droppingSilkTouchOrRanged(Block block, IItemProvider item, int min, int max) {
-        return droppingWithSilkTouch(
+        return createSilkTouchDispatchTable(
             block,
-            withSurvivesExplosion(block, ItemLootEntry.builder(item))
-                .acceptFunction(SetCount.builder(RandomValueRange.of(min, max)))
-                .acceptFunction(ApplyBonus.uniformBonusCount(Enchantments.FORTUNE, 1))
+            applyExplosionCondition(block, ItemLootEntry.lootTableItem(item))
+                .apply(SetCount.setCount(RandomValueRange.between(min, max)))
+                .apply(ApplyBonus.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 1))
         );
     }
 
     protected static LootTable.Builder droppingWithChancesAndDarkSticks(Block leaves, Block sapling, float... saplingBonus) {
-        return droppingWithSilkTouchOrShears(
+        return createSilkTouchOrShearsDispatchTable(
             leaves,
-            withSurvivesExplosion(leaves, ItemLootEntry.builder(sapling))
-                .acceptCondition(TableBonus.builder(Enchantments.FORTUNE, saplingBonus))
-        ).addLootPool(
-            LootPool.builder()
-                    .rolls(ConstantRange.of(1))
-                    .acceptCondition(NOT_SILK_TOUCH_OR_SHEARS)
-                    .addEntry(
-                        withExplosionDecay(
+            applyExplosionCondition(leaves, ItemLootEntry.lootTableItem(sapling))
+                .when(TableBonus.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, saplingBonus))
+        ).withPool(
+            LootPool.lootPool()
+                    .setRolls(ConstantRange.exactly(1))
+                    .when(NOT_SILK_TOUCH_OR_SHEARS)
+                    .add(
+                        applyExplosionDecay(
                             leaves,
-                            ItemLootEntry.builder(MnItems.DARK_STICK)
-                                         .acceptFunction(SetCount.builder(RandomValueRange.of(1, 2)))
-                        ).acceptCondition(
-                            TableBonus.builder(Enchantments.FORTUNE, 1 / 50F, 1 / 45F, 1 / 40F, 1 / 30F, 1 / 10F)
+                            ItemLootEntry.lootTableItem(MnItems.DARK_STICK)
+                                         .apply(SetCount.setCount(RandomValueRange.between(1, 2)))
+                        ).when(
+                            TableBonus.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, 1 / 50F, 1 / 45F, 1 / 40F, 1 / 30F, 1 / 10F)
                         )
                     )
         );
     }
 
     protected static LootTable.Builder droppingShroomOrPowder(Block block, IItemProvider item, IItemProvider shroom, IItemProvider tall_shroom) {
-        return droppingWithSilkTouch(
+        return createSilkTouchDispatchTable(
             block,
-            withSurvivesExplosion(
+            applyExplosionCondition(
                 block,
-                AlternativesLootEntry.builder(ItemLootEntry.builder(item).acceptCondition(RandomChance.builder(1 / 2F)))
-                                     .alternatively(ItemLootEntry.builder(shroom).acceptCondition(RandomChance.builder(2 / 3F)))
-                                     .alternatively(ItemLootEntry.builder(tall_shroom).acceptCondition(RandomChance.builder(1 / 2F)))
+                AlternativesLootEntry.alternatives(ItemLootEntry.lootTableItem(item).when(RandomChance.randomChance(1 / 2F)))
+                                     .otherwise(ItemLootEntry.lootTableItem(shroom).when(RandomChance.randomChance(2 / 3F)))
+                                     .otherwise(ItemLootEntry.lootTableItem(tall_shroom).when(RandomChance.randomChance(1 / 2F)))
             )
         );
     }
 
     protected static LootTable.Builder droppingFibre(Block block) {
-        return LootTable.builder().addLootPool(
-            LootPool.builder().addEntry(
-                ItemLootEntry.builder(block)
-                             .acceptFunction(
-                                 SetCount.builder(ConstantRange.of(2))
-                                         .acceptCondition(BlockStateProperty.builder(block).properties(
-                                             StatePropertiesPredicate.Builder.create().exactMatch(
+        return LootTable.lootTable().withPool(
+            LootPool.lootPool().add(
+                ItemLootEntry.lootTableItem(block)
+                             .apply(
+                                 SetCount.setCount(ConstantRange.exactly(2))
+                                         .when(BlockStateProperty.hasBlockStateProperties(block).setProperties(
+                                             StatePropertiesPredicate.Builder.properties().hasProperty(
                                                  MnBlockStateProperties.DENSE,
                                                  true
                                              )
                                          ))
                              )
-                             .acceptCondition(
+                             .when(
                                  SILK_TOUCH_OR_SHEARS
                              )
             )

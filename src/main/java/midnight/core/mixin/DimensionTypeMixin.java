@@ -31,13 +31,13 @@ import java.util.Map;
 // TODO Not sure exactly what this does. Do you mind making a Javadoc comment for this, Shadew?
 @Mixin(DimensionType.class)
 public abstract class DimensionTypeMixin {
-    @Inject(method = "addRegistryDefaults", at = @At("RETURN"))
-    private static void onAddRegistryDefaults(DynamicRegistries.Impl dynaRegs, CallbackInfoReturnable<DynamicRegistries.Impl> info) {
+    @Inject(method = "registerBuiltin", at = @At("RETURN"))
+    private static void onRegisterBuiltin(DynamicRegistries.Impl dynaRegs, CallbackInfoReturnable<DynamicRegistries.Impl> info) {
         MnDimensions.addRegistryDefaults(dynaRegs);
     }
 
-    @Inject(method = "createDefaultDimensionOptions", at = @At("RETURN"))
-    private static void onCreateDefaultDimensionOptions(Registry<DimensionType> typereg, Registry<Biome> biomereg, Registry<DimensionSettings> settingsreg, long seed, CallbackInfoReturnable<SimpleRegistry<Dimension>> info) {
+    @Inject(method = "defaultDimensions", at = @At("RETURN"))
+    private static void onDefaultDimensions(Registry<DimensionType> typereg, Registry<Biome> biomereg, Registry<DimensionSettings> settingsreg, long seed, CallbackInfoReturnable<SimpleRegistry<Dimension>> info) {
         SimpleRegistry<Dimension> reg = info.getReturnValue();
         for(Map.Entry<RegistryKey<DimensionType>, Pair<Pair<RegistryKey<Dimension>, DimensionType>, IChunkGenFactory>> entry : DimensionUtil.CHUNK_GEN_FACTORIES.entrySet()) {
             Pair<Pair<RegistryKey<Dimension>, DimensionType>, IChunkGenFactory> pair = entry.getValue();

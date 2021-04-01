@@ -36,7 +36,7 @@ public class MnItemTagsProvider extends TagsProvider<Item> {
     }
 
     @Override
-    protected void registerTags() {
+    protected void addTags() {
         copy(Tags.Blocks.ORES, Tags.Items.ORES);
         copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
 
@@ -67,7 +67,7 @@ public class MnItemTagsProvider extends TagsProvider<Item> {
         copy(MnBlockTags.WET_SOILS, MnItemTags.WET_SOILS);
         copy(MnBlockTags.SOILS, MnItemTags.SOILS);
 
-        getOrCreateTagBuilder(MnItemTags.MINERALS)
+        tag(MnItemTags.MINERALS)
             .add(MnItems.DARK_PEARL)
             .add(MnItems.TENEBRUM_INGOT)
             .add(MnItems.TENEBRUM_NUGGET)
@@ -78,12 +78,12 @@ public class MnItemTagsProvider extends TagsProvider<Item> {
     }
 
     @Override
-    protected Path makePath(ResourceLocation id) {
+    protected Path getPath(ResourceLocation id) {
         return generator.getOutputFolder().resolve("data/" + id.getNamespace() + "/tags/items/" + id.getPath() + ".json");
     }
 
     protected ITag.Builder getBuilder(ITag.INamedTag<Item> namedTag) {
-        return tagToBuilder.computeIfAbsent(namedTag.getId(), id -> new ITag.Builder());
+        return builders.computeIfAbsent(namedTag.getName(), id -> new ITag.Builder());
     }
 
     /**
@@ -97,7 +97,7 @@ public class MnItemTagsProvider extends TagsProvider<Item> {
     protected void copy(ITag.INamedTag<Block> blockTag, ITag.INamedTag<Item> itemTag) {
         ITag.Builder itemBuilder = getBuilder(itemTag);
         ITag.Builder blockBuilder = builderGetter.apply(blockTag);
-        blockBuilder.streamEntries().forEach(itemBuilder::add);
+        blockBuilder.getEntries().forEach(itemBuilder::add);
     }
 
     @Override

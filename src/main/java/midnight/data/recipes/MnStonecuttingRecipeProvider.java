@@ -48,7 +48,7 @@ public class MnStonecuttingRecipeProvider extends RecipeProvider {
 
 
     @Override
-    protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
+    protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
         this.consumer = consumer;
 
         // Add stonecutting recipes here
@@ -109,9 +109,9 @@ public class MnStonecuttingRecipeProvider extends RecipeProvider {
                 // register already. We can assume that when a recipe is registered twice, they are exactly the same and
                 // the latter one can be safely omitted...
                 if (!flushed.contains(name)) {
-                    SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(from), to, count)
-                                           .addCriterion(criterionName(from), hasItem(from))
-                                           .build(consumer, Midnight.id(name));
+                    SingleItemRecipeBuilder.stonecutting(Ingredient.of(from), to, count)
+                                           .unlocks(criterionName(from), has(from))
+                                           .save(consumer, Midnight.id(name));
                     flushed.add(name);
                 }
             }

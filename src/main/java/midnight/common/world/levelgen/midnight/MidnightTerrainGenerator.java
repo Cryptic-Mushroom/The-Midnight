@@ -82,13 +82,13 @@ public class MidnightTerrainGenerator extends MidnightGenerator {
         for (int y = 0; y < 256; y++) {
             for (int x = 0; x < 16; x++) {
                 for (int z = 0; z < 16; z++) {
-                    mpos.setPos(cx * 16 + x, y, cz * 16 + z);
+                    mpos.set(cx * 16 + x, y, cz * 16 + z);
                     double noise = getNoiseAt(mpos);
 
                     if (noise > 0) {
-                        chunk.setBlockState(mpos, MnBlocks.NIGHTSTONE.getDefaultState(), false);
+                        chunk.setBlockState(mpos, MnBlocks.NIGHTSTONE.defaultBlockState(), false);
                     } else if (y < chunkGenerator.getSeaLevel()) {
-                        chunk.setBlockState(mpos, Blocks.WATER.getDefaultState(), false);
+                        chunk.setBlockState(mpos, Blocks.WATER.defaultBlockState(), false);
                     }
                 }
             }
@@ -156,7 +156,7 @@ public class MidnightTerrainGenerator extends MidnightGenerator {
                 int gx = lx + cx * 4;
                 int gz = lz + cz * 4;
 
-                Biome biome = biomeProvider.getBiomeForNoiseGen(gx, (int) baseHeight + 1, gz);
+                Biome biome = biomeProvider.getNoiseBiome(gx, (int) baseHeight + 1, gz);
 
                 buf[x * 11 + z] = biome;
             }

@@ -29,7 +29,7 @@ public class TheMidnightChunkGenerator extends ChunkGenerator {
                       .stable()
                       .forGetter(gen -> gen.seed),
             BiomeProvider.CODEC.fieldOf("biome_source")
-                               .forGetter(gen -> gen.biomeProvider)
+                               .forGetter(gen -> gen.biomeSource)
         ).apply(instance, instance.stable(TheMidnightChunkGenerator::new))
     );
 
@@ -48,28 +48,28 @@ public class TheMidnightChunkGenerator extends ChunkGenerator {
     }
 
     @Override
-    protected Codec<? extends ChunkGenerator> getCodec() {
+    protected Codec<? extends ChunkGenerator> codec() {
         return CODEC;
     }
 
     @Override
     public ChunkGenerator withSeed(long seed) {
-        return new TheMidnightChunkGenerator(seed, biomeProvider);
+        return new TheMidnightChunkGenerator(seed, biomeSource);
     }
 
     @Override
-    public void buildSurface(WorldGenRegion world, IChunk chunk) {
+    public void buildSurfaceAndBedrock(WorldGenRegion world, IChunk chunk) {
         surfaceGen.generateSurface(world, chunk);
         bedrockGen.generateBedrock(chunk);
     }
 
     @Override
-    public int getGroundHeight() {
+    public int getSpawnHeight() {
         return 72;
     }
 
     @Override
-    public void populateNoise(IWorld world, StructureManager structureManager, IChunk chunk) {
+    public void fillFromNoise(IWorld world, StructureManager structureManager, IChunk chunk) {
         terrainGen.generateTerrain(world, chunk);
     }
 
@@ -83,12 +83,12 @@ public class TheMidnightChunkGenerator extends ChunkGenerator {
     }
 
     @Override // Once again nobody seems to care about the name of this function...
-    public int func_222529_a(int x, int z, Heightmap.Type type) {
+    public int getBaseHeight(int x, int z, Heightmap.Type type) {
         return getHeight(x, z, type);
     }
 
     @Override
-    public IBlockReader getColumnSample(int x, int z) {
+    public IBlockReader getBaseColumn(int x, int z) {
         return null; // TODO Fine to be null but for datapack support this is mandatory some day (otherwise NPEs occur)
     }
 

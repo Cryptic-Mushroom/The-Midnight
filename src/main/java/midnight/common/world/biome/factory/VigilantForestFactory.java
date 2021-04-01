@@ -25,28 +25,28 @@ import net.minecraft.world.gen.feature.Features;
 public class VigilantForestFactory extends BiomeFactory {
 
     private static final ConfiguredFeature<?, ?> GRASS =
-        MnFeatureFactory.simplePatch(MnBlocks.NIGHT_GRASS.getDefaultState(), 32)
-                        .decorate(Features.Placements.SQUARE_HEIGHTMAP_SPREAD_DOUBLE)
-                        .repeat(2);
+        MnFeatureFactory.simplePatch(MnBlocks.NIGHT_GRASS.defaultBlockState(), 32)
+                        .decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE)
+                        .count(2);
 
     private static final ConfiguredFeature<?, ?> TALL_GRASS =
-        MnFeatureFactory.doublePlantPatch(MnBlocks.TALL_NIGHT_GRASS.getDefaultState(), 32)
-                        .decorate(Features.Placements.SPREAD_32_ABOVE)
-                        .decorate(Features.Placements.SQUARE_HEIGHTMAP);
+        MnFeatureFactory.doublePlantPatch(MnBlocks.TALL_NIGHT_GRASS.defaultBlockState(), 32)
+                        .decorated(Features.Placements.ADD_32)
+                        .decorated(Features.Placements.HEIGHTMAP_SQUARE);
 
     private static final ConfiguredFeature<?, ?> DEAD_LOG
         = MnFeatureFactory.deadLog(MnBlocks.DEAD_WOOD_LOG)
-                          .decorate(Features.Placements.SQUARE_HEIGHTMAP)
-                          .applyChance(2);
+                          .decorated(Features.Placements.HEIGHTMAP_SQUARE)
+                          .chance(2);
 
     @Override
     public Biome makeBiome(MnBiomeBuilder builder) {
         return builder
                    .depth(0.1f).scale(0.1f)
                    .temperature(1).downfall(0).precipitation(Biome.RainType.NONE)
-                   .temperatureModifier(Biome.TemperatureModifier.NONE)
-                   .category(Biome.Category.FOREST)
-                   .effects(
+                   .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                   .biomeCategory(Biome.Category.FOREST)
+                   .specialEffects(
                        new BiomeAmbience.Builder()
                            .fogColor(0) // TODO Look up from old version
                            .skyColor(0)
@@ -57,12 +57,12 @@ public class VigilantForestFactory extends BiomeFactory {
                    .generationSettings(
                        new BiomeGenerationSettings.Builder()
                            .surfaceBuilder(MnConfiguredSurfaceBuilders.DEFAULT_NIGHT_GRASS)
-                           .feature(GenerationStage.Decoration.VEGETAL_DECORATION, DEAD_LOG)
-                           .feature(GenerationStage.Decoration.VEGETAL_DECORATION, GRASS)
-                           .feature(GenerationStage.Decoration.VEGETAL_DECORATION, TALL_GRASS)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, DEAD_LOG)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, GRASS)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TALL_GRASS)
                            .build()
                    )
-                   .spawnSettings(
+                   .mobSpawnSettings(
                        new MobSpawnInfo.Builder().build()
                    )
                    .coloring(

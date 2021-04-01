@@ -66,11 +66,11 @@ public abstract class MnSoundTypes {
     public static final SoundType BRITTLE_METAL = sound(
         "brittle_metal",
         1.0, 1.5,
-        SoundEvents.BLOCK_ANCIENT_DEBRIS_BREAK,
-        SoundEvents.BLOCK_ANCIENT_DEBRIS_STEP,
-        SoundEvents.BLOCK_ANCIENT_DEBRIS_PLACE,
-        SoundEvents.BLOCK_ANCIENT_DEBRIS_HIT,
-        SoundEvents.BLOCK_ANCIENT_DEBRIS_FALL
+        SoundEvents.ANCIENT_DEBRIS_BREAK,
+        SoundEvents.ANCIENT_DEBRIS_STEP,
+        SoundEvents.ANCIENT_DEBRIS_PLACE,
+        SoundEvents.ANCIENT_DEBRIS_HIT,
+        SoundEvents.ANCIENT_DEBRIS_FALL
     );
 
     public static final SoundType JEWEL = sound(

@@ -38,7 +38,7 @@ public final class MnItemTags {
 
     private static ITag.INamedTag<Item> tag(String id) {
         id = Midnight.idStr(id);
-        ITag.INamedTag<Item> tag = ItemTags.makeWrapperTag(id);
+        ITag.INamedTag<Item> tag = ItemTags.bind(id);
         MnObjects.addItemTag(id, tag);
         return tag;
     }

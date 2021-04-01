@@ -33,7 +33,7 @@ public final class MnBiomes {
     public static final RegistryKey<Biome> CRYSTAL_SPIRES = key("crystal_spires");
 
     private static RegistryKey<Biome> key(String key) {
-        RegistryKey<Biome> rk = RegistryKey.of(Registry.BIOME_KEY, Midnight.id(key));
+        RegistryKey<Biome> rk = RegistryKey.create(Registry.BIOME_REGISTRY, Midnight.id(key));
         MnObjects.addBiome(key, rk);
         return rk;
     }
@@ -52,9 +52,9 @@ public final class MnBiomes {
     }
 
     public static RegistryKey<Biome> getKeyFromBiome(World world, Biome biome) {
-        Optional<RegistryKey<Biome>> biomeKey = world.getRegistryManager()
-                                                     .get(Registry.BIOME_KEY)
-                                                     .getKeyOptional(biome);
+        Optional<RegistryKey<Biome>> biomeKey = world.registryAccess()
+                                                     .registryOrThrow(Registry.BIOME_REGISTRY)
+                                                     .getResourceKey(biome);
 
         if (biomeKey.isPresent())
             return biomeKey.get();

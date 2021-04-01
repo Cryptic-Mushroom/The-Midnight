@@ -21,7 +21,7 @@ import net.minecraft.world.gen.feature.Feature;
 
 public abstract class MnFeatureFactory {
     public static ConfiguredFeature<?, ?> patch(BlockClusterFeatureConfig.Builder config) {
-        return Feature.RANDOM_PATCH.configure(config.build());
+        return Feature.RANDOM_PATCH.configured(config.build());
     }
 
     public static ConfiguredFeature<?, ?> simplePatch(BlockState state, int tries) {
@@ -49,9 +49,9 @@ public abstract class MnFeatureFactory {
 
 
     public static ConfiguredFeature<?, ?> deadLog(Block log) {
-        return MnFeatures.DEAD_LOG.configure(new DeadLogFeatureConfig(
-            new SimpleBlockStateProvider(log.getDefaultState().with(RotatedPillarBlock.AXIS, Direction.Axis.X)),
-            new SimpleBlockStateProvider(log.getDefaultState().with(RotatedPillarBlock.AXIS, Direction.Axis.Z))
+        return MnFeatures.DEAD_LOG.configured(new DeadLogFeatureConfig(
+            new SimpleBlockStateProvider(log.defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X)),
+            new SimpleBlockStateProvider(log.defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z))
         ));
     }
 }

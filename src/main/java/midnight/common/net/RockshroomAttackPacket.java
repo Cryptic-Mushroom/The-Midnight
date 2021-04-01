@@ -36,16 +36,16 @@ public class RockshroomAttackPacket implements MnPacket {
 
     @Override
     public void write(PacketBuffer buf) {
-        buf.writeLong(pos.toLong());
+        buf.writeLong(pos.asLong());
     }
 
     @Override
     @OnlyIn(Dist.CLIENT)
     public void handle(NetworkEvent.Context ctx) {
-        ctx.enqueueWork(() -> RockshroomBlock.spawnSpores(Minecraft.getInstance().world, pos));
+        ctx.enqueueWork(() -> RockshroomBlock.spawnSpores(Minecraft.getInstance().level, pos));
     }
 
     public static RockshroomAttackPacket read(PacketBuffer buf) {
-        return new RockshroomAttackPacket(BlockPos.fromLong(buf.readLong()));
+        return new RockshroomAttackPacket(BlockPos.of(buf.readLong()));
     }
 }

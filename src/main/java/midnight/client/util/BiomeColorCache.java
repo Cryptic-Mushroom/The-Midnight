@@ -25,15 +25,15 @@ public class BiomeColorCache {
 
     public int getColor(BlockPos pos, ColorResolver resolver) {
         if (pos == null) pos = BlockPos.ZERO;
-        if (Minecraft.getInstance().world == null) return 0xFFFFFF;
+        if (Minecraft.getInstance().level == null) return 0xFFFFFF;
         BlockPos finalPos = pos;
-        return getColor(pos, () -> Minecraft.getInstance().world.calculateColor(finalPos, resolver));
+        return getColor(pos, () -> Minecraft.getInstance().level.calculateBlockTint(finalPos, resolver));
     }
 
     public int getColor(BlockPos pos, IntSupplier supplier) {
         if (pos == null) pos = BlockPos.ZERO;
 
-        SectionPos sectPos = SectionPos.from(pos);
+        SectionPos sectPos = SectionPos.of(pos);
 
         lock.readLock().lock();
         int[] cacheBuf = cache.get(sectPos);
@@ -95,7 +95,7 @@ public class BiomeColorCache {
 
     private void invalidateAll(ChunkPos pos) {
         for (int i = 0; i < 16; i++) {
-            SectionPos sp = SectionPos.from(pos, i);
+            SectionPos sp = SectionPos.of(pos, i);
 
             lock.writeLock().lock();
             cache.remove(sp);

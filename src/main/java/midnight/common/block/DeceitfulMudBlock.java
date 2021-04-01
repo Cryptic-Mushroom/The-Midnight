@@ -21,9 +21,11 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 @SuppressWarnings("deprecation")
 public class DeceitfulMudBlock extends NightDirtBlock {
-    private static final VoxelShape SHAPE = makeCuboidShape(0, 0, 0, 16, 14, 16);
+    private static final VoxelShape SHAPE = box(0, 0, 0, 16, 14, 16);
 
     public DeceitfulMudBlock(Properties props) {
         super(props);
@@ -35,9 +37,9 @@ public class DeceitfulMudBlock extends NightDirtBlock {
     }
 
     @Override
-    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
+    public void entityInside(BlockState state, World world, BlockPos pos, Entity entity) {
         if (!entity.isInWater() && !MnEntityTypeTags.IGNORE_MUD.contains(entity.getType()))
-            entity.setMotion(entity.getMotion().mul(0.5, 1, 0.5));
+            entity.setDeltaMovement(entity.getDeltaMovement().multiply(0.5, 1, 0.5));
     }
 
     @Nullable

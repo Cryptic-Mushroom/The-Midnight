@@ -30,8 +30,8 @@ public final class DimensionUtil {
     }
 
     public static void addDimension(ResourceLocation location, DimensionType type, IChunkGenFactory factory) {
-        RegistryKey<Dimension> dimKey = RegistryKey.of(Registry.DIMENSION_OPTIONS, location);
-        RegistryKey<DimensionType> typeKey = RegistryKey.of(Registry.DIMENSION_TYPE_KEY, location);
+        RegistryKey<Dimension> dimKey = RegistryKey.create(Registry.LEVEL_STEM_REGISTRY, location);
+        RegistryKey<DimensionType> typeKey = RegistryKey.create(Registry.DIMENSION_TYPE_REGISTRY, location);
         DIMENSIONS.add(dimKey);
         DIMENSION_TYPES.put(typeKey, type);
         CHUNK_GEN_FACTORIES.put(typeKey, Pair.of(Pair.of(dimKey, type), factory));

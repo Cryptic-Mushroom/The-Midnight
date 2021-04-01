@@ -52,8 +52,8 @@ public final class WarningMessageHandler {
         // Null-check the player
         if (player != null) {
             LOGGER.warn(MnConstants.DEV_WARNING);
-            Minecraft.getInstance().ingameGUI.getChatGUI().printChatMessage(
-                new TranslationTextComponent(MnConstants.DEV_WARNING).formatted(TextFormatting.RED)
+            Minecraft.getInstance().gui.getChat().addMessage(
+                new TranslationTextComponent(MnConstants.DEV_WARNING).withStyle(TextFormatting.RED)
             );
         }
     }

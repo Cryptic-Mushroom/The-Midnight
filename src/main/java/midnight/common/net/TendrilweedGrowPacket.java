@@ -35,16 +35,16 @@ public class TendrilweedGrowPacket implements MnPacket {
 
     @Override
     public void write(PacketBuffer buf) {
-        buf.writeLong(pos.toLong());
+        buf.writeLong(pos.asLong());
     }
 
     @Override
     @OnlyIn(Dist.CLIENT)
     public void handle(NetworkEvent.Context ctx) {
-        ctx.enqueueWork(() -> TendrilweedBlock.spawnPollenCloud(Minecraft.getInstance().world, pos));
+        ctx.enqueueWork(() -> TendrilweedBlock.spawnPollenCloud(Minecraft.getInstance().level, pos));
     }
 
     public static TendrilweedGrowPacket read(PacketBuffer buf) {
-        return new TendrilweedGrowPacket(BlockPos.fromLong(buf.readLong()));
+        return new TendrilweedGrowPacket(BlockPos.of(buf.readLong()));
     }
 }

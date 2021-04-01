@@ -264,14 +264,14 @@ public final class BlockStateTable {
     private static IBlockStateGen facingOrient(String name, IModelGen model, boolean uvlock) {
         VariantBlockStateGen gen = new VariantBlockStateGen();
         for (Direction direction : Direction.values()) {
-            String variant = "facing=" + direction.getString();
+            String variant = "facing=" + direction.getSerializedName();
             int x = 0, y = 0;
 
             if (direction == Direction.DOWN) {
                 x = 180;
             } else if (direction != Direction.UP) {
                 x = 90;
-                y = direction.getOpposite().getHorizontalIndex() * 90;
+                y = direction.getOpposite().get2DDataValue() * 90;
             }
 
             gen.variant(variant, ModelInfo.create(name, model).rotate(x, y).uvlock(uvlock));
@@ -379,24 +379,24 @@ public final class BlockStateTable {
 
     private static IBlockStateGen shroomCap(Block block, String name, String capTex, String innerTex) {
         VariantBlockStateGen gen = new VariantBlockStateGen();
-        StateContainer<Block, BlockState> states = block.getStateContainer();
+        StateContainer<Block, BlockState> states = block.getStateDefinition();
 
         // Yay data generation - skips us writing 64 different variants in a JSON file
-        for (BlockState state : states.getValidStates()) {
-            String up = state.get(ShroomCapBlock.UP) ? capTex : innerTex;
-            String down = state.get(ShroomCapBlock.DOWN) ? capTex : innerTex;
-            String north = state.get(ShroomCapBlock.NORTH) ? capTex : innerTex;
-            String east = state.get(ShroomCapBlock.EAST) ? capTex : innerTex;
-            String south = state.get(ShroomCapBlock.SOUTH) ? capTex : innerTex;
-            String west = state.get(ShroomCapBlock.WEST) ? capTex : innerTex;
+        for (BlockState state : states.getPossibleStates()) {
+            String up = state.getValue(ShroomCapBlock.UP) ? capTex : innerTex;
+            String down = state.getValue(ShroomCapBlock.DOWN) ? capTex : innerTex;
+            String north = state.getValue(ShroomCapBlock.NORTH) ? capTex : innerTex;
+            String east = state.getValue(ShroomCapBlock.EAST) ? capTex : innerTex;
+            String south = state.getValue(ShroomCapBlock.SOUTH) ? capTex : innerTex;
+            String west = state.getValue(ShroomCapBlock.WEST) ? capTex : innerTex;
 
             String side = "";
-            if (!state.get(ShroomCapBlock.UP)) side += "u";
-            if (!state.get(ShroomCapBlock.DOWN)) side += "d";
-            if (!state.get(ShroomCapBlock.NORTH)) side += "n";
-            if (!state.get(ShroomCapBlock.EAST)) side += "e";
-            if (!state.get(ShroomCapBlock.SOUTH)) side += "s";
-            if (!state.get(ShroomCapBlock.WEST)) side += "w";
+            if (!state.getValue(ShroomCapBlock.UP)) side += "u";
+            if (!state.getValue(ShroomCapBlock.DOWN)) side += "d";
+            if (!state.getValue(ShroomCapBlock.NORTH)) side += "n";
+            if (!state.getValue(ShroomCapBlock.EAST)) side += "e";
+            if (!state.getValue(ShroomCapBlock.SOUTH)) side += "s";
+            if (!state.getValue(ShroomCapBlock.WEST)) side += "w";
             if (!side.isEmpty()) side = "_" + side;
 
             gen.variant(state, ModelInfo.create(name + side, cube(north, east, south, west, up, down).texture("particle", innerTex)));

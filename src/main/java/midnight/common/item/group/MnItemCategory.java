@@ -47,7 +47,7 @@ public class MnItemCategory implements IItemCategory {
 
     public void fill(ItemGroup group, NonNullList<ItemStack> list, Set<Item> doneItems) {
         for (Item item : items) {
-            item.fillItemGroup(group, list);
+            item.fillItemCategory(group, list);
             doneItems.add(item);
         }
     }

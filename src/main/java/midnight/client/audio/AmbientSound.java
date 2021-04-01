@@ -30,17 +30,17 @@ public class AmbientSound extends TickableSound {
         super(soundEvent, SoundCategory.AMBIENT);
         this.pitch = pitch;
         this.player = player;
-        this.repeat = false;
-        this.repeatDelay = 0;
+        this.looping = false;
+        this.delay = 0;
         this.volume = volume;
         this.priority = true;
-        this.global = true;
+        this.relative = true;
     }
 
     @Override
     public void tick() {
-        if (!this.player.isAlive() || Minecraft.getInstance().isGamePaused()) {
-            this.setDone();
+        if (!this.player.isAlive() || Minecraft.getInstance().isPaused()) {
+            this.stop();
         }
     }
 }

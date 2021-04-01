@@ -28,10 +28,10 @@ public class MidnightBedrockGenerator extends MidnightGenerator {
         for (int y = 0; y < 5; y++) {
             for (int x = 0; x < 16; x++) {
                 for (int z = 0; z < 16; z++) {
-                    mpos.setPos(x, y, z);
+                    mpos.set(x, y, z);
 
                     if (ssr.nextInt(5) < 5 - y) {
-                        chunk.setBlockState(mpos, MnBlocks.NIGHT_BEDROCK.getDefaultState(), false);
+                        chunk.setBlockState(mpos, MnBlocks.NIGHT_BEDROCK.defaultBlockState(), false);
                     }
                 }
             }

@@ -26,7 +26,7 @@ public class TheMidnightBiomeProvider extends BiomeProvider {
     public static final Codec<TheMidnightBiomeProvider> CODEC = RecordCodecBuilder.create(
         instance -> instance.group(
             Codec.LONG.fieldOf("seed").stable().forGetter(p -> p.seed),
-            RegistryLookupCodec.of(Registry.BIOME_KEY).forGetter(p -> p.biomeRegistry)
+            RegistryLookupCodec.create(Registry.BIOME_REGISTRY).forGetter(p -> p.biomeRegistry)
         ).apply(instance, instance.stable(TheMidnightBiomeProvider::new))
     );
 
@@ -68,7 +68,7 @@ public class TheMidnightBiomeProvider extends BiomeProvider {
                        .makeGenerator(region -> new FractalGenerator<Biome>(region) {
                            @Override
                            protected Biome toValue(int id) {
-                               return biomeRegistry.getByValue(id);
+                               return biomeRegistry.byId(id);
                            }
 
                            @Override
@@ -79,12 +79,12 @@ public class TheMidnightBiomeProvider extends BiomeProvider {
     }
 
     @Override
-    public Biome getBiomeForNoiseGen(int x, int y, int z) {
+    public Biome getNoiseBiome(int x, int y, int z) {
         return generator.generate(x, z);
     }
 
     @Override
-    protected Codec<? extends BiomeProvider> getCodec() {
+    protected Codec<? extends BiomeProvider> codec() {
         return CODEC;
     }
 

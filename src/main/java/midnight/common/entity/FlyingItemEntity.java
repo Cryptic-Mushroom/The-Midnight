@@ -37,43 +37,43 @@ public abstract class FlyingItemEntity extends ProjectileItemEntity { // aka IBe
     @Override
     public void shoot(double dx, double dy, double dz, float speed, float accuracy) {
         Vector3d motion = new Vector3d(dx, dy, dz).normalize().add(
-            rand.nextGaussian() * 0.0075 * accuracy,
-            rand.nextGaussian() * 0.0075 * accuracy,
-            rand.nextGaussian() * 0.0075 * accuracy
+            random.nextGaussian() * 0.0075 * accuracy,
+            random.nextGaussian() * 0.0075 * accuracy,
+            random.nextGaussian() * 0.0075 * accuracy
         ).scale(speed);
-        setMotion(motion);
+        setDeltaMovement(motion);
 
-        float horizSpeed = MathHelper.sqrt(horizontalMag(motion));
+        float horizSpeed = MathHelper.sqrt(getHorizontalDistanceSqr(motion));
 
-        rotationYaw = (float) (MathHelper.atan2(motion.x, motion.z) * (180F / Math.PI));
-        rotationPitch = (float) (MathHelper.atan2(motion.y, horizSpeed) * (180F / Math.PI));
+        yRot = (float) (MathHelper.atan2(motion.x, motion.z) * (180F / Math.PI));
+        xRot = (float) (MathHelper.atan2(motion.y, horizSpeed) * (180F / Math.PI));
 
-        prevRotationYaw = rotationYaw;
-        prevRotationPitch = rotationPitch;
+        yRotO = yRot;
+        xRotO = xRot;
     }
 
     @Override
-    protected void onImpact(RayTraceResult rtr) {
+    protected void onHit(RayTraceResult rtr) {
         RayTraceResult.Type rtrType = rtr.getType();
         if (rtrType == RayTraceResult.Type.ENTITY) {
-            onEntityHit((EntityRayTraceResult) rtr);
+            onHitEntity((EntityRayTraceResult) rtr);
         } else if (rtrType == RayTraceResult.Type.BLOCK) {
-            onBlockHit((BlockRayTraceResult) rtr);
+            onHitBlock((BlockRayTraceResult) rtr);
         }
     }
 
     @Override
-    protected void onEntityHit(EntityRayTraceResult rtr) {
+    protected void onHitEntity(EntityRayTraceResult rtr) {
     }
 
     @Override
-    protected void onBlockHit(BlockRayTraceResult rtr) {
-        BlockState state = world.getBlockState(rtr.getPos());
-        state.onProjectileCollision(world, state, rtr, this);
+    protected void onHitBlock(BlockRayTraceResult rtr) {
+        BlockState state = level.getBlockState(rtr.getBlockPos());
+        state.onProjectileHit(level, state, rtr, this);
     }
 
     @Override
-    public IPacket<?> createSpawnPacket() {
+    public IPacket<?> getAddEntityPacket() {
         // Forge provides us an easy way to send entities to client without restrictions of SSpawnObjectPacket
         return NetworkHooks.getEntitySpawningPacket(this);
     }

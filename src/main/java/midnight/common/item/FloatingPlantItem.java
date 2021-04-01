@@ -27,17 +27,17 @@ public class FloatingPlantItem extends BlockItem {
     }
 
     @Override
-    public ActionResultType onItemUse(ItemUseContext ctx) {
+    public ActionResultType useOn(ItemUseContext ctx) {
         return ActionResultType.PASS;
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand hand) {
+    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         // Raytrace with fluid blocks
-        BlockRayTraceResult rtr = rayTrace(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
-        rtr = rtr.withBlockPos(rtr.getPos().up()); // withPos - it returns a new RayTraceResult with a different position
+        BlockRayTraceResult rtr = getPlayerPOVHitResult(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
+        rtr = rtr.withPosition(rtr.getBlockPos().above()); // withPos - it returns a new RayTraceResult with a different position
 
-        ActionResultType result = super.onItemUse(new ItemUseContext(player, hand, rtr));
-        return new ActionResult<>(result, player.getHeldItem(hand));
+        ActionResultType result = super.useOn(new ItemUseContext(player, hand, rtr));
+        return new ActionResult<>(result, player.getItemInHand(hand));
     }
 }

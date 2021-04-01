@@ -39,7 +39,7 @@ public final class MnBlockTags {
 
     private static ITag.INamedTag<Block> tag(String id) {
         id = Midnight.idStr(id);
-        ITag.INamedTag<Block> tag = BlockTags.makeWrapperTag(id);
+        ITag.INamedTag<Block> tag = BlockTags.bind(id);
         MnObjects.addBlockTag(id, tag);
         return tag;
     }

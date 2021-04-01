@@ -23,11 +23,11 @@ import net.shadew.ptg.noise.Noise3D;
 import net.shadew.ptg.noise.opensimplex.FractalOpenSimplex3D;
 
 public class DeceitfulBogSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderConfig> {
-    private static final BlockState COARSE_DIRT = MnBlocks.COARSE_NIGHT_DIRT.getDefaultState();
-    private static final BlockState DIRT = MnBlocks.NIGHT_DIRT.getDefaultState();
-    private static final BlockState GRASS = MnBlocks.NIGHT_GRASS_BLOCK.getDefaultState();
-    private static final BlockState MUD = MnBlocks.DECEITFUL_MUD.getDefaultState();
-    private static final BlockState PEAT = MnBlocks.DECEITFUL_PEAT.getDefaultState();
+    private static final BlockState COARSE_DIRT = MnBlocks.COARSE_NIGHT_DIRT.defaultBlockState();
+    private static final BlockState DIRT = MnBlocks.NIGHT_DIRT.defaultBlockState();
+    private static final BlockState GRASS = MnBlocks.NIGHT_GRASS_BLOCK.defaultBlockState();
+    private static final BlockState MUD = MnBlocks.DECEITFUL_MUD.defaultBlockState();
+    private static final BlockState PEAT = MnBlocks.DECEITFUL_PEAT.defaultBlockState();
 
     private static final BlockState[] TOP_BLOCKS = {
         GRASS, COARSE_DIRT, MUD, PEAT
@@ -45,8 +45,8 @@ public class DeceitfulBogSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderCon
     }
 
     @Override
-    public void buildSurface(Random rand, IChunk chunk, Biome biome, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config) {
-        this.buildSurface(rand, chunk, biome, x, z, startHeight, noise, defaultBlock, defaultFluid, config.getTop(), config.getUnder(), config.getUnderWaterMaterial(), seaLevel);
+    public void apply(Random rand, IChunk chunk, Biome biome, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config) {
+        this.buildSurface(rand, chunk, biome, x, z, startHeight, noise, defaultBlock, defaultFluid, config.getTopMaterial(), config.getUnderMaterial(), config.getUnderwaterMaterial(), seaLevel);
     }
 
     protected void buildSurface(Random rand, IChunk chunk, Biome biome, int x, int z, int startHeight, double noise, BlockState defaultBlock, BlockState defaultFluid, BlockState top, BlockState under, BlockState underwater, int sealevel) {
@@ -59,7 +59,7 @@ public class DeceitfulBogSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderCon
         int lz = z & 15;
 
         for (int y = startHeight; y >= 0; --y) {
-            mpos.setPos(lx, y, lz);
+            mpos.set(lx, y, lz);
             BlockState currentState = chunk.getBlockState(mpos);
             if (currentState.isAir(chunk, mpos)) {
                 control = -1;
@@ -110,7 +110,7 @@ public class DeceitfulBogSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderCon
     }
 
     @Override
-    public void setSeed(long seed) {
+    public void initNoise(long seed) {
         Random rand = new Random(seed);
         mainSoilNoise = new FractalOpenSimplex3D(rand.nextInt(), 42.971075, 16);
         dirtSoilNoise = new FractalOpenSimplex3D(rand.nextInt(), 17.5722318, 7);

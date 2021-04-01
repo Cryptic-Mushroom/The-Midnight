@@ -29,7 +29,7 @@ public class MnRecipeProvider extends RecipeProvider {
     }
 
     @Override
-    protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
+    protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
         this.consumer = consumer;
 
         generic2x2("nightstone_bricks_2x2", MnBlocks.NIGHTSTONE, MnBlocks.NIGHTSTONE_BRICKS, 4);
@@ -130,128 +130,128 @@ public class MnRecipeProvider extends RecipeProvider {
     }
 
     private void generic3x3(String id, IItemProvider from, IItemProvider to, int count) {
-        ShapedRecipeBuilder.shapedRecipe(to, count)
-                           .key('#', from)
-                           .patternLine("###")
-                           .patternLine("###")
-                           .patternLine("###")
-                           .addCriterion("has_ingredient", hasItem(from))
-                           .build(consumer, Midnight.id(id));
+        ShapedRecipeBuilder.shaped(to, count)
+                           .define('#', from)
+                           .pattern("###")
+                           .pattern("###")
+                           .pattern("###")
+                           .unlockedBy("has_ingredient", has(from))
+                           .save(consumer, Midnight.id(id));
     }
 
     private void generic2x2(String id, IItemProvider from, IItemProvider to, int count) {
-        ShapedRecipeBuilder.shapedRecipe(to, count)
-                           .key('#', from)
-                           .patternLine("##")
-                           .patternLine("##")
-                           .addCriterion("has_ingredient", hasItem(from))
-                           .build(consumer, Midnight.id(id));
+        ShapedRecipeBuilder.shaped(to, count)
+                           .define('#', from)
+                           .pattern("##")
+                           .pattern("##")
+                           .unlockedBy("has_ingredient", has(from))
+                           .save(consumer, Midnight.id(id));
     }
 
     private void shapeless(String id, IItemProvider from, IItemProvider to, int count) {
-        ShapelessRecipeBuilder.shapelessRecipe(to, count)
-                              .addIngredient(from)
-                              .addCriterion("has_ingredient", hasItem(from))
-                              .build(consumer, Midnight.id(id));
+        ShapelessRecipeBuilder.shapeless(to, count)
+                              .requires(from)
+                              .unlockedBy("has_ingredient", has(from))
+                              .save(consumer, Midnight.id(id));
     }
 
     private void shapeless(String id, Tag<Item> tag, IItemProvider to, int count) {
-        ShapelessRecipeBuilder.shapelessRecipe(to, count)
-                              .addIngredient(tag)
-                              .addCriterion("has_ingredient", hasItem(tag))
-                              .build(consumer, Midnight.id(id));
+        ShapelessRecipeBuilder.shapeless(to, count)
+                              .requires(tag)
+                              .unlockedBy("has_ingredient", has(tag))
+                              .save(consumer, Midnight.id(id));
     }
 
     private void fence(String id, IItemProvider from, IItemProvider to, int count) {
-        ShapedRecipeBuilder.shapedRecipe(to, count)
-                           .key('#', from)
-                           .key('/', Items.STICK)
-                           .patternLine("#/#")
-                           .patternLine("#/#")
-                           .addCriterion("has_ingredient", hasItem(from))
-                           .build(consumer, Midnight.id(id));
+        ShapedRecipeBuilder.shaped(to, count)
+                           .define('#', from)
+                           .define('/', Items.STICK)
+                           .pattern("#/#")
+                           .pattern("#/#")
+                           .unlockedBy("has_ingredient", has(from))
+                           .save(consumer, Midnight.id(id));
     }
 
     private void generic1x2(String id, IItemProvider from, IItemProvider to, int count) {
-        ShapedRecipeBuilder.shapedRecipe(to, count)
-                           .key('#', from)
-                           .patternLine("#")
-                           .patternLine("#")
-                           .addCriterion("has_ingredient", hasItem(from))
-                           .build(consumer, Midnight.id(id));
+        ShapedRecipeBuilder.shaped(to, count)
+                           .define('#', from)
+                           .pattern("#")
+                           .pattern("#")
+                           .unlockedBy("has_ingredient", has(from))
+                           .save(consumer, Midnight.id(id));
     }
 
     private void generic1x3(String id, IItemProvider from, IItemProvider to, int count) {
-        ShapedRecipeBuilder.shapedRecipe(to, count)
-                           .key('#', from)
-                           .patternLine("#")
-                           .patternLine("#")
-                           .patternLine("#")
-                           .addCriterion("has_ingredient", hasItem(from))
-                           .build(consumer, Midnight.id(id));
+        ShapedRecipeBuilder.shaped(to, count)
+                           .define('#', from)
+                           .pattern("#")
+                           .pattern("#")
+                           .pattern("#")
+                           .unlockedBy("has_ingredient", has(from))
+                           .save(consumer, Midnight.id(id));
     }
 
     private void generic3x1(String id, IItemProvider from, IItemProvider to, int count) {
-        ShapedRecipeBuilder.shapedRecipe(to, count)
-                           .key('#', from)
-                           .patternLine("###")
-                           .addCriterion("has_ingredient", hasItem(from))
-                           .build(consumer, Midnight.id(id));
+        ShapedRecipeBuilder.shaped(to, count)
+                           .define('#', from)
+                           .pattern("###")
+                           .unlockedBy("has_ingredient", has(from))
+                           .save(consumer, Midnight.id(id));
     }
 
     private void generic3x2(String id, IItemProvider from, IItemProvider to, int count) {
-        ShapedRecipeBuilder.shapedRecipe(to, count)
-                           .key('#', from)
-                           .patternLine("###")
-                           .patternLine("###")
-                           .addCriterion("has_ingredient", hasItem(from))
-                           .build(consumer, Midnight.id(id));
+        ShapedRecipeBuilder.shaped(to, count)
+                           .define('#', from)
+                           .pattern("###")
+                           .pattern("###")
+                           .unlockedBy("has_ingredient", has(from))
+                           .save(consumer, Midnight.id(id));
     }
 
     private void stairs(String id, IItemProvider from, IItemProvider to, int count) {
-        ShapedRecipeBuilder.shapedRecipe(to, count)
-                           .key('#', from)
-                           .patternLine("#  ")
-                           .patternLine("## ")
-                           .patternLine("###")
-                           .addCriterion("has_ingredient", hasItem(from))
-                           .build(consumer, Midnight.id(id));
+        ShapedRecipeBuilder.shaped(to, count)
+                           .define('#', from)
+                           .pattern("#  ")
+                           .pattern("## ")
+                           .pattern("###")
+                           .unlockedBy("has_ingredient", has(from))
+                           .save(consumer, Midnight.id(id));
     }
 
     private void step(String id, IItemProvider from, IItemProvider to, int count) {
-        ShapedRecipeBuilder.shapedRecipe(to, count)
-                           .key('#', from)
-                           .patternLine("#  ")
-                           .patternLine("## ")
-                           .addCriterion("has_ingredient", hasItem(from))
-                           .build(consumer, Midnight.id(id));
+        ShapedRecipeBuilder.shaped(to, count)
+                           .define('#', from)
+                           .pattern("#  ")
+                           .pattern("## ")
+                           .unlockedBy("has_ingredient", has(from))
+                           .save(consumer, Midnight.id(id));
     }
 
     private void smelting(String id, IItemProvider from, IItemProvider to, double xp) {
-        CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(from), to, (float) xp, 200)
-                            .addCriterion("has_ingredient", hasItem(from))
-                            .build(consumer, Midnight.id(id));
+        CookingRecipeBuilder.smelting(Ingredient.of(from), to, (float) xp, 200)
+                            .unlockedBy("has_ingredient", has(from))
+                            .save(consumer, Midnight.id(id));
     }
 
     private void cooking(String id, IItemProvider from, IItemProvider to, double xp) {
-        CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(from), to, (float) xp, 200)
-                            .addCriterion("has_ingredient", hasItem(from))
-                            .build(consumer, Midnight.id(id));
-        CookingRecipeBuilder.cookingRecipe(Ingredient.fromItems(from), to, (float) xp, 100, IRecipeSerializer.SMOKING)
-                            .addCriterion("has_ingredient", hasItem(from))
-                            .build(consumer, Midnight.id(id + "_smoking"));
-        CookingRecipeBuilder.cookingRecipe(Ingredient.fromItems(from), to, (float) xp, 600, IRecipeSerializer.CAMPFIRE_COOKING)
-                            .addCriterion("has_ingredient", hasItem(from))
-                            .build(consumer, Midnight.id(id + "_campfire"));
+        CookingRecipeBuilder.smelting(Ingredient.of(from), to, (float) xp, 200)
+                            .unlockedBy("has_ingredient", has(from))
+                            .save(consumer, Midnight.id(id));
+        CookingRecipeBuilder.cooking(Ingredient.of(from), to, (float) xp, 100, IRecipeSerializer.SMOKING_RECIPE)
+                            .unlockedBy("has_ingredient", has(from))
+                            .save(consumer, Midnight.id(id + "_smoking"));
+        CookingRecipeBuilder.cooking(Ingredient.of(from), to, (float) xp, 600, IRecipeSerializer.CAMPFIRE_COOKING_RECIPE)
+                            .unlockedBy("has_ingredient", has(from))
+                            .save(consumer, Midnight.id(id + "_campfire"));
     }
 
     private void blasting(String id, IItemProvider from, IItemProvider to, double xp) {
-        CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(from), to, (float) xp, 200)
-                            .addCriterion("has_ingredient", hasItem(from))
-                            .build(consumer, Midnight.id(id));
-        CookingRecipeBuilder.cookingRecipe(Ingredient.fromItems(from), to, (float) xp, 100, IRecipeSerializer.BLASTING)
-                            .addCriterion("has_ingredient", hasItem(from))
-                            .build(consumer, Midnight.id(id + "_blasting"));
+        CookingRecipeBuilder.smelting(Ingredient.of(from), to, (float) xp, 200)
+                            .unlockedBy("has_ingredient", has(from))
+                            .save(consumer, Midnight.id(id));
+        CookingRecipeBuilder.cooking(Ingredient.of(from), to, (float) xp, 100, IRecipeSerializer.BLASTING_RECIPE)
+                            .unlockedBy("has_ingredient", has(from))
+                            .save(consumer, Midnight.id(id + "_blasting"));
     }
 
     @Override

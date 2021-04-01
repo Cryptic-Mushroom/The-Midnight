@@ -19,7 +19,7 @@ public final class MnEntityTypeTags {
 
     private static ITag.INamedTag<EntityType<?>> tag(String id) {
         id = Midnight.idStr(id);
-        ITag.INamedTag<EntityType<?>> tag = EntityTypeTags.register(id);
+        ITag.INamedTag<EntityType<?>> tag = EntityTypeTags.bind(id);
         MnObjects.addEntityTypeTag(id, tag);
         return tag;
     }

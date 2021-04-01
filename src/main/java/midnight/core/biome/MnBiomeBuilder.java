@@ -40,8 +40,8 @@ public class MnBiomeBuilder extends Biome.Builder {
     }
 
     @Override
-    public MnBiomeBuilder category(Biome.Category category) {
-        return (MnBiomeBuilder) super.category(category);
+    public MnBiomeBuilder biomeCategory(Biome.Category category) {
+        return (MnBiomeBuilder) super.biomeCategory(category);
     }
 
     @Override
@@ -65,13 +65,13 @@ public class MnBiomeBuilder extends Biome.Builder {
     }
 
     @Override
-    public MnBiomeBuilder effects(BiomeAmbience ambience) {
-        return (MnBiomeBuilder) super.effects(ambience);
+    public MnBiomeBuilder specialEffects(BiomeAmbience ambience) {
+        return (MnBiomeBuilder) super.specialEffects(ambience);
     }
 
     @Override
-    public MnBiomeBuilder spawnSettings(MobSpawnInfo spawns) {
-        return (MnBiomeBuilder) super.spawnSettings(spawns);
+    public MnBiomeBuilder mobSpawnSettings(MobSpawnInfo spawns) {
+        return (MnBiomeBuilder) super.mobSpawnSettings(spawns);
     }
 
     @Override
@@ -80,8 +80,8 @@ public class MnBiomeBuilder extends Biome.Builder {
     }
 
     @Override
-    public MnBiomeBuilder temperatureModifier(Biome.TemperatureModifier temperature) {
-        return (MnBiomeBuilder) super.temperatureModifier(temperature);
+    public MnBiomeBuilder temperatureAdjustment(Biome.TemperatureModifier temperature) {
+        return (MnBiomeBuilder) super.temperatureAdjustment(temperature);
     }
 
     @Override

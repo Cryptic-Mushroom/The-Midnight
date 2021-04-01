@@ -24,11 +24,11 @@ public class MnFluidTagsProvider extends TagsProvider<Fluid> {
     }
 
     @Override
-    protected void registerTags() {
+    protected void addTags() {
     }
 
     @Override
-    protected Path makePath(ResourceLocation id) {
+    protected Path getPath(ResourceLocation id) {
         return generator.getOutputFolder().resolve("data/" + id.getNamespace() + "/tags/fluids/" + id.getPath() + ".json");
     }
 

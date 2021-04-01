@@ -20,6 +20,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nullable;
 import java.util.Map;
 
+import net.minecraft.item.Item.Properties;
+
 /**
  * Item resembling a raw suavis slice. Can be eaten, cooked or be placed on the ground to grow more suavis. This is an
  * alternative item for placing suavis, unlike the block item it places only one slice of suavis.
@@ -35,23 +37,23 @@ public class RawSuavisItem extends BlockItem {
     // Enchanted glint on suavis - just for the effect, it's not really enchanted
     @Override
     @OnlyIn(Dist.CLIENT)
-    public boolean hasEffect(ItemStack stack) {
+    public boolean isFoil(ItemStack stack) {
         return true;
     }
 
     // Place stage 0 suavis - not stage 3 as the suavis block item does
     @Nullable
     @Override
-    protected BlockState getStateForPlacement(BlockItemUseContext context) {
-        BlockState state = MnBlocks.SUAVIS.getDefaultState().with(SuavisBlock.STAGE, 0);
+    protected BlockState getPlacementState(BlockItemUseContext context) {
+        BlockState state = MnBlocks.SUAVIS.defaultBlockState().setValue(SuavisBlock.STAGE, 0);
         return canPlace(context, state) ? state : null;
     }
 
     // BlockItem adds the item mapped to the block to the item group, but since we are not mapped to suavis we have
     // to add ourselves
     @Override
-    public void fillItemGroup(ItemGroup group, NonNullList<ItemStack> list) {
-        if (isInGroup(group)) {
+    public void fillItemCategory(ItemGroup group, NonNullList<ItemStack> list) {
+        if (allowdedIn(group)) {
             list.add(new ItemStack(this));
         }
     }
@@ -59,7 +61,7 @@ public class RawSuavisItem extends BlockItem {
     // Make sure we do not add this item to the block-to-item-map, since suavis as a block is already in here,
     // mapped to its own block item
     @Override
-    public void addToBlockToItemMap(Map<Block, Item> map, Item item) {
+    public void registerBlocks(Map<Block, Item> map, Item item) {
     }
 
     @Override
@@ -68,7 +70,7 @@ public class RawSuavisItem extends BlockItem {
 
     // Use item translation key, BlockItem use block's translation key by default
     @Override
-    public String getTranslationKey() {
-        return getDefaultTranslationKey();
+    public String getDescriptionId() {
+        return getOrCreateDescriptionId();
     }
 }

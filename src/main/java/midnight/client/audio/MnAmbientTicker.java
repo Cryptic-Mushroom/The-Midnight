@@ -52,13 +52,13 @@ public class MnAmbientTicker {
 
     public void tick(MnMusicTicker musicTicker) {
         if (this.mc.player != null) {
-            if (MnDimensions.isTheMidnight(this.mc.player.world) && this.mc.player.isAlive() && this.delay <= 0) {
-                float ambientRandom = this.mc.player.world.rand.nextFloat();
+            if (MnDimensions.isTheMidnight(this.mc.player.level) && this.mc.player.isAlive() && this.delay <= 0) {
+                float ambientRandom = this.mc.player.level.random.nextFloat();
 
                 if (ambientRandom < (musicTicker.isPlayingTrueMusic() ? 0.001F : 0.01F)) {
                     this.delay = 140;
                     float volume = musicTicker.isPlayingTrueMusic() ? 0.55F : 0.85F;
-                    float pitch = (this.mc.player.world.rand.nextFloat() - this.mc.player.world.rand.nextFloat()) * 0.2F + 1.0F;
+                    float pitch = (this.mc.player.level.random.nextFloat() - this.mc.player.level.random.nextFloat()) * 0.2F + 1.0F;
                     LOGGER.debug("Playing a short ambient sound with a pitch of " + pitch + " and a volume of " + volume + ".");
                     this.playAmbience(MnSoundEvents.AMBIENT_MIDNIGHT_SHORT, volume, pitch);
                 }
@@ -77,6 +77,6 @@ public class MnAmbientTicker {
     }
 
     public void playAmbience(SoundEvent soundEvent, float volume, float pitch) {
-        this.mc.getSoundHandler().play(new AmbientSound(this.mc.player, soundEvent, volume, pitch));
+        this.mc.getSoundManager().play(new AmbientSound(this.mc.player, soundEvent, volume, pitch));
     }
 }

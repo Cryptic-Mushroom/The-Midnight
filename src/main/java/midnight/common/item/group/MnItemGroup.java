@@ -71,18 +71,18 @@ public class MnItemGroup extends ItemGroup {
     }
 
     @Override
-    public ITextComponent getTranslationKey() {
+    public ITextComponent getDisplayName() {
         return translationKey;
     }
 
     @Override
-    public ItemStack createIcon() {
+    public ItemStack makeIcon() {
         return new ItemStack(icon.get());
     }
 
     @Override
     @SuppressWarnings("deprecation")
-    public void fill(NonNullList<ItemStack> list) {
+    public void fillItemList(NonNullList<ItemStack> list) {
         Set<Item> doneItems = new HashSet<>();
         for (MnItemCategory cat : categories) { // Meow
             cat.fill(this, list, doneItems);
@@ -90,7 +90,7 @@ public class MnItemGroup extends ItemGroup {
 
         for (Item item : Registry.ITEM) {
             if (!doneItems.contains(item)) {
-                item.fillItemGroup(this, list);
+                item.fillItemCategory(this, list);
             }
         }
     }

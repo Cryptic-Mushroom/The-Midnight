@@ -58,7 +58,7 @@ public final class AmbienceHandler {
 
         if (phase == TickEvent.Phase.END) {
             if (type == TickEvent.Type.CLIENT) {
-                if (!mc.isGamePaused()) {
+                if (!mc.isPaused()) {
                     if (!MnInfo.MUSIC_DISABLED) {
                         musicTicker.tick();
                     }
@@ -79,11 +79,11 @@ public final class AmbienceHandler {
         if (MnInfo.MUSIC_DISABLED) return;
 
         ISound sound = event.getSound();
-        SoundCategory category = sound.getCategory();
+        SoundCategory category = sound.getSource();
 
         if (category == SoundCategory.MUSIC) {
-            if (mc.player != null && MnDimensions.isTheMidnight(mc.player.world)) {
-                if (!sound.getSoundLocation().toString().contains(MnInfo.MODID) && (musicTicker.isPlayingTrueMusic() || !musicTicker.isPlayingTrueMusic())) {
+            if (mc.player != null && MnDimensions.isTheMidnight(mc.player.level)) {
+                if (!sound.getLocation().toString().contains(MnInfo.MODID) && (musicTicker.isPlayingTrueMusic() || !musicTicker.isPlayingTrueMusic())) {
                     event.setResultSound(null);
                 }
             }

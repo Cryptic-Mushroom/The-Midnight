@@ -27,20 +27,20 @@ import net.minecraft.world.gen.placement.Placement;
 public class NightPlainsFactory extends BiomeFactory {
 
     private static final ConfiguredFeature<?, ?> GRASS =
-        MnFeatureFactory.simplePatch(MnBlocks.NIGHT_GRASS.getDefaultState(), 32)
-                        .decorate(Features.Placements.SQUARE_HEIGHTMAP_SPREAD_DOUBLE)
-                        .decorate(Placement.COUNT_NOISE.configure(new NoiseDependant(-0.8, 5, 10)));
+        MnFeatureFactory.simplePatch(MnBlocks.NIGHT_GRASS.defaultBlockState(), 32)
+                        .decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE)
+                        .decorated(Placement.COUNT_NOISE.configured(new NoiseDependant(-0.8, 5, 10)));
 
     private static final ConfiguredFeature<?, ?> TALL_GRASS =
-        MnFeatureFactory.doublePlantPatch(MnBlocks.TALL_NIGHT_GRASS.getDefaultState(), 32)
-                        .decorate(Features.Placements.SPREAD_32_ABOVE)
-                        .decorate(Features.Placements.HEIGHTMAP)
-                        .spreadHorizontally()
-                        .decorate(Placement.COUNT_NOISE.configure(new NoiseDependant(-0.8, 0, 7)));
+        MnFeatureFactory.doublePlantPatch(MnBlocks.TALL_NIGHT_GRASS.defaultBlockState(), 32)
+                        .decorated(Features.Placements.ADD_32)
+                        .decorated(Features.Placements.HEIGHTMAP)
+                        .squared()
+                        .decorated(Placement.COUNT_NOISE.configured(new NoiseDependant(-0.8, 0, 7)));
 
     private static final ConfiguredFeature<?, ?> GHOST_PLANTS =
-        MnFeatureFactory.simplePatch(MnBlocks.GHOST_PLANT.getDefaultState(), 32)
-                        .decorate(Features.Placements.SQUARE_HEIGHTMAP_SPREAD_DOUBLE);
+        MnFeatureFactory.simplePatch(MnBlocks.GHOST_PLANT.defaultBlockState(), 32)
+                        .decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE);
 
 
     @Override
@@ -48,9 +48,9 @@ public class NightPlainsFactory extends BiomeFactory {
         return builder
                    .depth(0.1f).scale(0.1f)
                    .temperature(1).downfall(0).precipitation(Biome.RainType.NONE)
-                   .category(Biome.Category.MUSHROOM)
-                   .temperatureModifier(Biome.TemperatureModifier.NONE)
-                   .effects(
+                   .biomeCategory(Biome.Category.MUSHROOM)
+                   .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                   .specialEffects(
                        new BiomeAmbience.Builder()
                            .fogColor(0) // TODO Look up from old version
                            .skyColor(0)
@@ -61,12 +61,12 @@ public class NightPlainsFactory extends BiomeFactory {
                    .generationSettings(
                        new BiomeGenerationSettings.Builder()
                            .surfaceBuilder(MnConfiguredSurfaceBuilders.DEFAULT_NIGHT_GRASS)
-                           .feature(GenerationStage.Decoration.VEGETAL_DECORATION, GRASS)
-                           .feature(GenerationStage.Decoration.VEGETAL_DECORATION, TALL_GRASS)
-                           .feature(GenerationStage.Decoration.VEGETAL_DECORATION, GHOST_PLANTS)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, GRASS)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TALL_GRASS)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, GHOST_PLANTS)
                            .build()
                    )
-                   .spawnSettings(
+                   .mobSpawnSettings(
                        new MobSpawnInfo.Builder().build()
                    )
                    .coloring(

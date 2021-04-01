@@ -25,28 +25,28 @@ import net.minecraft.world.gen.feature.Features;
 public class CrystalSpiresFactory extends BiomeFactory {
 
     private static final ConfiguredFeature<?, ?> GRASS =
-        MnFeatureFactory.simplePatch(MnBlocks.NIGHT_GRASS.getDefaultState(), 32)
-                        .decorate(Features.Placements.SQUARE_HEIGHTMAP_SPREAD_DOUBLE)
-                        .repeat(2);
+        MnFeatureFactory.simplePatch(MnBlocks.NIGHT_GRASS.defaultBlockState(), 32)
+                        .decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE)
+                        .count(2);
 
     private static final ConfiguredFeature<?, ?> TALL_GRASS =
-        MnFeatureFactory.doublePlantPatch(MnBlocks.TALL_NIGHT_GRASS.getDefaultState(), 32)
-                        .decorate(Features.Placements.SPREAD_32_ABOVE)
-                        .decorate(Features.Placements.SQUARE_HEIGHTMAP);
+        MnFeatureFactory.doublePlantPatch(MnBlocks.TALL_NIGHT_GRASS.defaultBlockState(), 32)
+                        .decorated(Features.Placements.ADD_32)
+                        .decorated(Features.Placements.HEIGHTMAP_SQUARE);
 
     private static final ConfiguredFeature<?, ?> CRYSTAL_FLOWERS =
-        MnFeatureFactory.simplePatch(MnBlocks.CRYSTAL_FLOWER.getDefaultState(), 48)
-                        .decorate(Features.Placements.SQUARE_HEIGHTMAP_SPREAD_DOUBLE)
-                        .repeat(2);
+        MnFeatureFactory.simplePatch(MnBlocks.CRYSTAL_FLOWER.defaultBlockState(), 48)
+                        .decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE)
+                        .count(2);
 
     @Override
     public Biome makeBiome(MnBiomeBuilder builder) {
         return builder
                    .depth(0.1f).scale(0.1f)
                    .temperature(1).downfall(0).precipitation(Biome.RainType.NONE)
-                   .temperatureModifier(Biome.TemperatureModifier.NONE)
-                   .category(Biome.Category.FOREST)
-                   .effects(
+                   .temperatureAdjustment(Biome.TemperatureModifier.NONE)
+                   .biomeCategory(Biome.Category.FOREST)
+                   .specialEffects(
                        new BiomeAmbience.Builder()
                            .fogColor(0) // TODO Look up from old version
                            .skyColor(0)
@@ -57,12 +57,12 @@ public class CrystalSpiresFactory extends BiomeFactory {
                    .generationSettings(
                        new BiomeGenerationSettings.Builder()
                            .surfaceBuilder(MnConfiguredSurfaceBuilders.DEFAULT_NIGHT_GRASS)
-                           .feature(GenerationStage.Decoration.VEGETAL_DECORATION, GRASS)
-                           .feature(GenerationStage.Decoration.VEGETAL_DECORATION, TALL_GRASS)
-                           .feature(GenerationStage.Decoration.VEGETAL_DECORATION, CRYSTAL_FLOWERS)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, GRASS)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TALL_GRASS)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, CRYSTAL_FLOWERS)
                            .build()
                    )
-                   .spawnSettings(
+                   .mobSpawnSettings(
                        new MobSpawnInfo.Builder().build()
                    )
                    .coloring(

@@ -32,7 +32,7 @@ public final class MnEntityTypes {
 
     public static final EntityType<ThrownGeodeEntity> THROWN_GEODE = type(
         "thrown_geode",
-        EntityType.Builder.create(ThrownGeodeEntity::new, EntityClassification.MISC),
+        EntityType.Builder.of(ThrownGeodeEntity::new, EntityClassification.MISC),
         ThrownGeodeEntity.class
     );
 

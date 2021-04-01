@@ -27,6 +27,9 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.block.AbstractBlock.OffsetType;
+import net.minecraft.block.AbstractBlock.Properties;
+
 /**
  * A plant block that can be oriented to grow in a certain direction. All directions are allowed, meaning that the plant
  * is placeable on the floor, a wall or on the ceiling. Other than a direction, the plant has no other orientations.
@@ -41,22 +44,22 @@ public class DirectionalPlantBlock extends PlantBlock {
 
     protected DirectionalPlantBlock(Properties props) {
         super(props);
-        hitbox(VoxelShapes.fullCube());
+        hitbox(VoxelShapes.block());
 
-        setDefaultState(getStateContainer().getBaseState().with(FACING, Direction.UP));
+        registerDefaultState(getStateDefinition().any().setValue(FACING, Direction.UP));
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(FACING);
     }
 
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext ctx) {
-        World world = ctx.getWorld();
-        BlockPos pos = ctx.getPos();
-        Direction facing = ctx.getFace();
+        World world = ctx.getLevel();
+        BlockPos pos = ctx.getClickedPos();
+        Direction facing = ctx.getClickedFace();
         Direction[] nearestDirs = ctx.getNearestLookingDirections();
 
         // Find best facing, if any... Tries 'facing' first, and if not possible updates 'facing' to the best possible
@@ -74,19 +77,19 @@ public class DirectionalPlantBlock extends PlantBlock {
             return null;
         }
 
-        return getDefaultState().with(FACING, facing);
+        return defaultBlockState().setValue(FACING, facing);
     }
 
     @Override
-    public BlockState updatePostPlacement(BlockState state, Direction dir, BlockState adjState, IWorld world, BlockPos pos, BlockPos adjPos) {
-        Direction facing = state.get(FACING);
+    public BlockState updateShape(BlockState state, Direction dir, BlockState adjState, IWorld world, BlockPos pos, BlockPos adjPos) {
+        Direction facing = state.getValue(FACING);
         if (!canHang(world, pos, facing))
-            return Blocks.AIR.getDefaultState();
+            return Blocks.AIR.defaultBlockState();
         return state;
     }
 
     @Override
-    public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos) {
+    public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos) {
         return true; // Return true - placement check goes in getStateForPlacement
     }
 
@@ -100,7 +103,7 @@ public class DirectionalPlantBlock extends PlantBlock {
      * @return True if the given position allows the plant to hang in the given direction
      */
     protected boolean canHang(IBlockReader world, BlockPos pos, Direction facing) {
-        BlockPos supportPos = pos.offset(facing.getOpposite());
+        BlockPos supportPos = pos.relative(facing.getOpposite());
         BlockState supportState = world.getBlockState(supportPos);
         return isValidSupportBlock(supportState, world, supportPos, facing);
     }
@@ -116,7 +119,7 @@ public class DirectionalPlantBlock extends PlantBlock {
      */
     protected boolean isValidSupportBlock(BlockState state, IBlockReader world, BlockPos pos, Direction facing) {
         // Mud has no solid side or top - we still want the ability to grow on that though
-        return state.isSideSolidFullSquare(world, pos, facing) || state.isIn(MnBlocks.DECEITFUL_MUD);
+        return state.isFaceSturdy(world, pos, facing) || state.is(MnBlocks.DECEITFUL_MUD);
     }
 
     /**
@@ -124,13 +127,13 @@ public class DirectionalPlantBlock extends PlantBlock {
      */
     @Override
     @Deprecated
-    protected final boolean isValidGround(BlockState state, IBlockReader world, BlockPos pos) {
+    protected final boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
         return true;
     }
 
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
-        return shapes[state.get(FACING).ordinal()];
+        return shapes[state.getValue(FACING).ordinal()];
     }
 
     /**
@@ -175,11 +178,11 @@ public class DirectionalPlantBlock extends PlantBlock {
 
             VoxelShape shape;
             if (axis == Direction.Axis.X) {
-                shape = makeCuboidShape(e0, c0, c0, e1, c1, c1);
+                shape = box(e0, c0, c0, e1, c1, c1);
             } else if (axis == Direction.Axis.Y) {
-                shape = makeCuboidShape(c0, e0, c0, c1, e1, c1);
+                shape = box(c0, e0, c0, c1, e1, c1);
             } else {
-                shape = makeCuboidShape(c0, c0, e0, c1, c1, e1);
+                shape = box(c0, c0, e0, c1, c1, e1);
             }
 
             shapes[dir.ordinal()] = shape;
