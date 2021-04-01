@@ -70,7 +70,6 @@ allprojects {
     // ModUtil setup
     modutil {
         shade('net.shadew.ptg', "${project.ext.shadePackage}.net.shadew.ptg")
-        shade('me.jonathing.minecraft.verificationutil', "midnight.core.security")
 
         changelogJson file("$rootDir/changelog.json")
 
@@ -80,7 +79,6 @@ allprojects {
         constant('version_name', changelogInfo.versionName)
         constant('group', project.group)
         constant('build_time', project.ext.timeOfExecution)
-        constant('expected_sha256', project.getProjectFingerprint())
 
         constantAnnotation "$project.ext.constAnnotation"
     }

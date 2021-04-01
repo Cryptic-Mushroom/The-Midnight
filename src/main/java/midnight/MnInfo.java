@@ -68,13 +68,6 @@ public final class MnInfo implements IMidnightInfo {
     public static final String VERSION_NAME = "Not A Version";
 
     /**
-     * The expected SHA256 fingerprint of the Midnight, for verification of the signature. This is dynamically injected
-     * on build. Defaults to an empty string.
-     */
-    @DynamicConstant("expected_sha256")
-    public static final String EXPECTED_SHA256 = "";
-
-    /**
      * The build time of the Midnight, which is dynamically injected on build. Defaults to {@code 2038-01-19T03:14:08Z},
      * referring to the <a href="https://en.wikipedia.org/wiki/Year_2038_problem">2038 Problem</a>.
      */
