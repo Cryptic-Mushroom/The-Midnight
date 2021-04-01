@@ -27,8 +27,6 @@ import net.minecraft.block.AbstractBlock.Properties;
  * @since 0.6.0
  */
 public class HorizontalFacingBlock extends HorizontalBlock {
-    public static final DirectionProperty FACING = FACING; // For smaller code, map to FACING
-
     protected HorizontalFacingBlock(Properties props) {
         super(props);
 
