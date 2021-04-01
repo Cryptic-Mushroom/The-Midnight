@@ -47,6 +47,8 @@ dependencies {
     // Minecraft/Forge
     minecraft "net.minecraftforge:forge:$mcVer-$fgVer"
 
+    annotationProcessor "org.spongepowered:mixin:0.8.2:processor".toString()
+
     // PTG
     embed ("net.shadew:ptg:$ptgVer") {
         transitive false // FastUtil is the only transitive, and is included in minecraft
