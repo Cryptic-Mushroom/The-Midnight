@@ -42,6 +42,7 @@ dependencies {
     def ciVer = project.ext.getVariable("env.ci-server.version")
     def jeiVer = project.ext.getVariable("env.jei.version")
     def bopFileid = project.ext.getVariable("env.bop.fileid")
+    def shutupExpSettingsFileid = project.ext.getVariable("env.shutup.fileid")
 
     // Minecraft/Forge
     minecraft "net.minecraftforge:forge:$mcVer-$fgVer"
@@ -63,5 +64,8 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-$jeiVer")
 
     // Biomes O' Plenty
-    implementation fg.deobf("curse.maven:biomes-o-plenty-220318:3135698")
+    implementation fg.deobf("curse.maven:biomes-o-plenty-220318:$bopFileid")
+
+    // Shutup Experimental Settings!
+    runtimeOnly fg.deobf("curse.maven:shutup-experimental-settings-407174:$shutupExpSettingsFileid")
 }

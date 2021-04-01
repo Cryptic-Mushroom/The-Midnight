@@ -30,9 +30,9 @@ public abstract class DimensionMixin {
      */
     @Shadow
     @Final
-    private static LinkedHashSet<RegistryKey<Dimension>> BASE_DIMENSIONS;
+    private static LinkedHashSet<RegistryKey<Dimension>> BUILTIN_ORDER;
 
     static {
-        BASE_DIMENSIONS.addAll(DimensionUtil.DIMENSIONS);
+        BUILTIN_ORDER.addAll(DimensionUtil.DIMENSIONS);
     }
 }

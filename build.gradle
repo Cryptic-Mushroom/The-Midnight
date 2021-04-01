@@ -44,12 +44,13 @@ allprojects {
     // Initialize basic environment properties
     apply from: "$rootDir/environment.gradle"
 
+    // These gotta be "compile" and not "implementation" or else genData won't work
     configurations {
         embed // External deps embedded into the JAR file
-        implementation.extendsFrom(embed)
+        compile.extendsFrom(embed)
 
         internal // Internal deps (subprojects) embedded into the JAR file
-        implementation.extendsFrom(internal) // TODO Do we actually use this?
+        compile.extendsFrom(internal) // TODO Do we actually use this?
     }
 
     apply from: "$rootDir/dependencies.gradle"

@@ -24,16 +24,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class CrashReportMixin {
     @Shadow
     @Final
-    private String description;
+    private String title;
     private static boolean funnyMidnightCrashReport = false;
 
-    /*
+    /**
      * This basically just dictates that we should only fuck with the crash report if the stacktrace contains
      * "midnight." or if it's a manually triggered debug crash.
+     *
+     * @see CrashReport#getFriendlyReport()
      */
-    @Inject(method = "getCompleteReport()Ljava/lang/String;", at = @At("HEAD"))
-    private void getCompleteReport(CallbackInfoReturnable<String> info) {
-        if (((CrashReport) (Object) this).getExceptionMessage().contains("midnight.") || this.description.contains("Manually triggered debug crash")) {
+    @Inject(method = "getFriendlyReport()Ljava/lang/String;", at = @At("HEAD"))
+    private void getFriendlyReport(CallbackInfoReturnable<String> info) {
+        if (((CrashReport) (Object) this).getExceptionMessage().contains("midnight.") || this.title.contains("Manually triggered debug crash")) {
             funnyMidnightCrashReport = true;
         }
     }
@@ -43,10 +45,10 @@ public class CrashReportMixin {
      * this on release.
      *
      * @param wittyComments Our witty comments to be used in the crash report
-     * @see CrashReport#getWittyComment()
+     * @see CrashReport#getErrorComment()
      */
-    @ModifyVariable(method = "getWittyComment()Ljava/lang/String;", at = @At("STORE"), index = 0)
-    private static String[] getWittyComment(String[] wittyComments) {
+    @ModifyVariable(method = "getErrorComment()Ljava/lang/String;", at = @At("STORE"), index = 0)
+    private static String[] getErrorComment(String[] wittyComments) {
         if (!funnyMidnightCrashReport) return wittyComments;
 
         return new String[] {
@@ -83,7 +85,7 @@ public class CrashReportMixin {
         };
     }
 
-    @ModifyVariable(method = "getCompleteReport()Ljava/lang/String;", at = @At(value = "LOAD", ordinal = 1), index = 1)
+    @ModifyVariable(method = "getFriendlyReport()Ljava/lang/String;", at = @At(value = "LOAD", ordinal = 1), index = 1)
     private StringBuilder modifyCrashHeader(StringBuilder stringbuilder) {
         if (!funnyMidnightCrashReport) return stringbuilder;
 
