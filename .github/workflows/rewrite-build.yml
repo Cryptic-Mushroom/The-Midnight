@@ -173,7 +173,7 @@ jobs:
     name: Server Test
     strategy:
       matrix:
-        os: [ ubuntu-latest, macos-latest, windows-latest ]
+        os: [ ubuntu-latest, windows-latest ]
       fail-fast: false
     runs-on: ${{ matrix.os }}
 
