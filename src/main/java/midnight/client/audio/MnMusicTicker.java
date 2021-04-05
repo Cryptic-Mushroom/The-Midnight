@@ -132,13 +132,15 @@ public class MnMusicTicker {
                     if (this.trueMusic == null && this.ambientMusic == null && this.timeUntilNextMusic-- <= 0) {
                         this.playMusic(musicTrackType);
                         LOGGER.debug(String.format("Now playing music track: %s", musicTrackType.toString()));
-                        hasPlayedTrueMusic = true;
+                        this.hasPlayedTrueMusic = true;
+                        this.lastMusicPlayed = musicTrackType;
                     }
                 } else {
                     if (this.trueMusic == null && this.ambientMusic == null && this.timeUntilNextMusic-- <= 0) {
                         this.playAmbientMusic(ambientTrackType);
                         LOGGER.debug(String.format("Now playing ambient-like music track: %s", ambientTrackType.toString()));
-                        hasPlayedTrueMusic = false;
+                        this.hasPlayedTrueMusic = false;
+                        this.lastMusicPlayed = musicTrackType;
                     }
                 }
             }
@@ -210,7 +212,7 @@ public class MnMusicTicker {
         if (biome == MnBiomes.VIGILANT_FOREST) result = TrackType.DARK_WILLOW;
         else if (biome == MnBiomes.CRYSTAL_SPIRES) result = TrackType.CRYSTALS;
 
-        return lastMusicPlayed != result ? result : null;
+        return this.lastMusicPlayed != result ? result : null;
     }
 
     /**
