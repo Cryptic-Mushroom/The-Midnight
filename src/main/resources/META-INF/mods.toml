@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[35,)"
+loaderVersion = "[36,)"
 issueTrackerURL = "https://github.com/Cryptic-Mushroom/The-Midnight/issues"
 license = "Custom License, see GitHub"
 
@@ -16,7 +16,7 @@ description = '''The Midnight has been rewritten from the ground up and is curre
 
 This mod is a huge collaborative effort with tons of different ideas, coding, and textures pitched in by varying individuals who came together to build something great. We wouldn't be where we are today without the help of those here today and those who worked on this mod in the past.
 
-The Midnight Development Team Active Developers
+The Midnight Team Active Developers
 Cipher Zero X - Project Lead, Lead Designer, Modeler
 Shadew - Lead Programmer, Designer
 Jonathing - Project Lead, Community Manager, Lead QA, Programmer, Musician
@@ -40,13 +40,13 @@ The Midnight is still in active development and we'd love to hear your feedback!
 [[dependencies.midnight]]
 modId = "forge"
 mandatory = true
-versionRange = "[35.1.4,)"
+versionRange = "[36.1.0,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.midnight]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.16.4]"
+versionRange = "[1.16.5]"
 ordering = "NONE"
 side = "BOTH"

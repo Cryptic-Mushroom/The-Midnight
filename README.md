@@ -53,7 +53,7 @@ If you are a contributor on this list and want your name to link to a different 
 
 If you want to discuss the mod, come visit us in the Cryptic Mushroom Official Discord server!
 
-[![Discord Server Banner](https://discordapp.com/api/guilds/382958565125521412/widget.png?style=banner3)](https://discord.gg/h7u4Tc7)
+[![Discord Server Banner](https://discordapp.com/api/guilds/382958565125521412/widget.png?style=banner3)](https://discord.gg/jgpKYYB9M6)
 
 If you would like to support our work, consider donating to our [Patreon](https://www.patreon.com/crypticmushroom).  
 [Follow us on Twitter](https://twitter.com/CrypticMushroom) for significant updates on development!
