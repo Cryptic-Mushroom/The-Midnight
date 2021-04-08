@@ -177,7 +177,7 @@ public abstract class MnBlocks {
     // Misc plants
     public static final Block MISTSHROOM = smallShroom("mistshroom", 0, 0, Material.PLANT, MaterialColor.TERRACOTTA_CYAN, getBlock("tall_mistshroom")).hitbox(13, 13).offset(AbstractBlock.OffsetType.XZ);
     public static final Block TALL_MISTSHROOM = tallShroom("tall_mistshroom", 0, 0, Material.PLANT, MaterialColor.TERRACOTTA_CYAN).hitbox(13, 30).offset(AbstractBlock.OffsetType.XZ);
-    public static final Block FINGERED_GRASS = fingeredGrass("fingered_grass").hitbox(12, 12).offset(AbstractBlock.OffsetType.XYZ);
+    public static final Block BRISTLY_GRASS = bristlyGrass("bristly_grass").hitbox(12, 12).offset(AbstractBlock.OffsetType.XYZ);
     public static final Block LUMEN_BUD = smallGlowingGrowable("lumen_bud", 0, 0, 10, Material.PLANT, MaterialColor.TERRACOTTA_CYAN, getBlock("tall_lumen_bud")).hitbox(13, 14).offset(AbstractBlock.OffsetType.XZ);
     public static final Block TALL_LUMEN_BUD = tallGlowingPlant("tall_lumen_bud", 0, 0, 10, Material.PLANT, MaterialColor.TERRACOTTA_CYAN).hitbox(13, 30).offset(AbstractBlock.OffsetType.XZ);
     public static final Block RUNEBUSH = glowingBush("runebush", 0, 0, 10, Material.PLANT, MaterialColor.COLOR_CYAN).hitbox(12, 13).offset(AbstractBlock.OffsetType.XZ);
@@ -318,7 +318,7 @@ public abstract class MnBlocks {
 
         RenderTypeLookup.setRenderLayer(MISTSHROOM, RenderType.cutout());
         RenderTypeLookup.setRenderLayer(TALL_MISTSHROOM, RenderType.cutout());
-        RenderTypeLookup.setRenderLayer(FINGERED_GRASS, RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(BRISTLY_GRASS, RenderType.cutout());
         RenderTypeLookup.setRenderLayer(LUMEN_BUD, RenderType.cutout());
         RenderTypeLookup.setRenderLayer(TALL_LUMEN_BUD, RenderType.cutout());
         RenderTypeLookup.setRenderLayer(RUNEBUSH, RenderType.cutout());
@@ -617,8 +617,8 @@ public abstract class MnBlocks {
         ));
     }
 
-    private static PlantBlock fingeredGrass(String id) {
-        return block(id, new FingeredGrassBlock(
+    private static PlantBlock bristlyGrass(String id) {
+        return block(id, new BristlyGrassBlock(
             AbstractBlock.Properties.of(Material.PLANT, MaterialColor.COLOR_BLUE)
                                     .noOcclusion()
                                     .sound(SoundType.GRASS)

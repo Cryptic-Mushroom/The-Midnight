@@ -150,7 +150,7 @@ public class MnBlockLootTables extends BlockLootTables {
 
         dropSelf(MnBlocks.MISTSHROOM);
         add(MnBlocks.TALL_MISTSHROOM, block -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
-        dropSelf(MnBlocks.FINGERED_GRASS);
+        dropSelf(MnBlocks.BRISTLY_GRASS);
         dropSelf(MnBlocks.LUMEN_BUD);
         add(MnBlocks.TALL_LUMEN_BUD, block -> createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
         dropSelf(MnBlocks.RUNEBUSH);

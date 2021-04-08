@@ -142,7 +142,7 @@ public final class BlockStateTable {
 
         register(MnBlocks.MISTSHROOM, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
         register(MnBlocks.TALL_MISTSHROOM, block -> doublePlant(name(block, "block/%s_lower"), cross(name(block, "block/%s_lower")), name(block, "block/%s_upper"), cross(name(block, "block/%s_upper"))));
-        register(MnBlocks.FINGERED_GRASS, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
+        register(MnBlocks.BRISTLY_GRASS, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
         register(MnBlocks.LUMEN_BUD, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));
         register(MnBlocks.TALL_LUMEN_BUD, block -> doublePlant(name(block, "block/%s_lower"), cross(name(block, "block/%s_lower")), name(block, "block/%s_upper"), cross(name(block, "block/%s_upper"))));
         register(MnBlocks.RUNEBUSH, block -> simple(name(block, "block/%s"), cross(name(block, "block/%s"))));

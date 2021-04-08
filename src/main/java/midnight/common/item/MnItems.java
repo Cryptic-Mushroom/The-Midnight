@@ -161,7 +161,7 @@ public abstract class MnItems {
     // Misc plants
     public static final Item MISTSHROOM = item(MnBlocks.MISTSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR);
     public static final Item TALL_MISTSHROOM = item(MnBlocks.TALL_MISTSHROOM, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR);
-    public static final Item FINGERED_GRASS = item(MnBlocks.FINGERED_GRASS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR);
+    public static final Item BRISTLY_GRASS = item(MnBlocks.BRISTLY_GRASS, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR);
     public static final Item LUMEN_BUD = item(MnBlocks.LUMEN_BUD, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR);
     public static final Item TALL_LUMEN_BUD = item(MnBlocks.TALL_LUMEN_BUD, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR);
     public static final Item RUNEBUSH = item(MnBlocks.RUNEBUSH, MnItemCategory.COMMON_PLANTS, MnItemGroup.DECOR);

@@ -130,7 +130,7 @@ public final class ItemModelTable {
 
         register(MnBlocks.MISTSHROOM, item -> generated(name(item, "block/%s")));
         register(MnBlocks.TALL_MISTSHROOM, item -> generated(name(item, "block/%s_upper")));
-        register(MnBlocks.FINGERED_GRASS, item -> generated(name(item, "block/%s")));
+        register(MnBlocks.BRISTLY_GRASS, item -> generated(name(item, "block/%s")));
         register(MnBlocks.LUMEN_BUD, item -> generated(name(item, "block/%s")));
         register(MnBlocks.TALL_LUMEN_BUD, item -> generated(name(item, "block/%s_upper")));
         register(MnBlocks.RUNEBUSH, item -> generated(name(item, "block/%s")));

@@ -15,8 +15,8 @@ import net.minecraft.world.IWorld;
 
 import net.minecraft.block.AbstractBlock.Properties;
 
-public class FingeredGrassBlock extends PlantBlock implements INightGrassColorModifying {
-    protected FingeredGrassBlock(Properties props) {
+public class BristlyGrassBlock extends PlantBlock implements INightGrassColorModifying {
+    protected BristlyGrassBlock(Properties props) {
         super(props);
     }
 

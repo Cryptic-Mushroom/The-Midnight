@@ -14,7 +14,7 @@ import net.minecraft.world.IWorld;
 
 /**
  * Blocks implementing this interface indicate that Night Grass should adapt to a certain color when this block is
- * placed nearby, such as fingered grass causing night grass to turn blue.
+ * placed nearby, such as bristly grass causing night grass to turn blue.
  *
  * @author Shadew
  * @since 0.6.0

@@ -185,7 +185,7 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
         tag(MnBlockTags.SMALL_PLANTS)
             .add(MnBlocks.BOGWEED)
             .add(MnBlocks.VIOLEAF)
-            .add(MnBlocks.FINGERED_GRASS)
+            .add(MnBlocks.BRISTLY_GRASS)
             .add(MnBlocks.LUMEN_BUD)
             .add(MnBlocks.RUNEBUSH)
             .add(MnBlocks.GHOST_PLANT)
