@@ -37,11 +37,6 @@ public interface IMidnightInfo {
     String versionName();
 
     /**
-     * Returns the expected SHA256 fingerprint of the Midnight.
-     */
-    String expectedSHA256();
-
-    /**
      * Returns the build date of the available Midnight build, in RFC-3339 format.
      */
     String buildDate();

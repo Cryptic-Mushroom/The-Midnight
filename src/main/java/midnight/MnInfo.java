@@ -118,11 +118,6 @@ public final class MnInfo implements IMidnightInfo {
     }
 
     @Override
-    public String expectedSHA256() {
-        return EXPECTED_SHA256;
-    }
-
-    @Override
     public String buildDate() {
         return BUILD_DATE;
     }
