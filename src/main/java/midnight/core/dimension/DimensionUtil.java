@@ -9,6 +9,7 @@
 package midnight.core.dimension;
 
 import com.google.common.collect.ImmutableMap;
+import midnight.common.world.dimension.AbstractMnDimension;
 import midnight.common.world.dimension.MnDimension;
 import midnight.common.world.dimension.TheMidnightDimension;
 import net.minecraft.server.MinecraftServer;
@@ -31,8 +32,8 @@ import java.util.Map;
  * @since 0.6.0
  */
 public final class DimensionUtil {
-    public static final Map<MnDimension, IMidnightDimension> DIMENSIONS =
-        ImmutableMap.<MnDimension, IMidnightDimension>builder()
+    public static final Map<MnDimension, AbstractMnDimension> DIMENSIONS =
+        ImmutableMap.<MnDimension, AbstractMnDimension>builder()
                     .put(MnDimension.THE_MIDNIGHT, new TheMidnightDimension())
                     .build();
 
