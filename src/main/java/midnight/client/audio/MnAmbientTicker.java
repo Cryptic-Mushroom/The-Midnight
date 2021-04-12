@@ -9,7 +9,8 @@
 package midnight.client.audio;
 
 import midnight.common.misc.MnSoundEvents;
-import midnight.common.world.dimension.MnDimensions;
+import midnight.common.world.dimension.MnDimension;
+import midnight.core.dimension.DimensionUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.api.distmarker.Dist;
@@ -52,7 +53,7 @@ public class MnAmbientTicker {
 
     public void tick(MnMusicTicker musicTicker) {
         if (this.mc.player != null) {
-            if (MnDimensions.isTheMidnight(this.mc.player.level) && this.mc.player.isAlive() && this.delay <= 0) {
+            if (DimensionUtil.isInDimension(this.mc.player.level, MnDimension.THE_MIDNIGHT) && this.mc.player.isAlive() && this.delay <= 0) {
                 float ambientRandom = this.mc.player.level.random.nextFloat();
 
                 if (ambientRandom < (musicTicker.isPlayingTrueMusic() ? 0.001F : 0.01F)) {

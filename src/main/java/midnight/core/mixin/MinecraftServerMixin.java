@@ -8,7 +8,7 @@
 
 package midnight.core.mixin;
 
-import midnight.common.world.dimension.TheMidnightDimension;
+import midnight.core.dimension.DimensionUtil;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.registry.DynamicRegistries;
 import net.minecraft.util.registry.Registry;
@@ -31,7 +31,7 @@ public class MinecraftServerMixin {
 
     @Inject(at = @At("HEAD"), method = "loadLevel()V")
     private void initServer(CallbackInfo info) {
-        TheMidnightDimension.createDefaultDimensionOptions(
+        DimensionUtil.registerDimensions(
             this.worldData.worldGenSettings().dimensions(),
             this.registryHolder.registryOrThrow(Registry.BIOME_REGISTRY),
             this.registryHolder.registryOrThrow(Registry.NOISE_GENERATOR_SETTINGS_REGISTRY),

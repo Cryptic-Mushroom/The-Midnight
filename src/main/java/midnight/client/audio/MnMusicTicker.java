@@ -8,11 +8,11 @@
 
 package midnight.client.audio;
 
-import com.google.common.collect.ImmutableList;
 import midnight.client.handler.AmbienceHandler;
 import midnight.common.misc.MnSoundEvents;
 import midnight.common.world.biome.MnBiomes;
-import midnight.common.world.dimension.MnDimensions;
+import midnight.common.world.dimension.MnDimension;
+import midnight.core.dimension.DimensionUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
@@ -81,7 +81,7 @@ public class MnMusicTicker {
      */
     public void tick() {
         if (this.mc.player != null && !this.mc.getSoundManager().isActive(this.playingRecord)) {
-            if (MnDimensions.isTheMidnight(this.mc.player.level)) {
+            if (DimensionUtil.isInDimension(this.mc.player.level, MnDimension.THE_MIDNIGHT)) {
                 if (this.trueMusic != null && this.trueMusic.getVolume() <= 0) {
                     this.trueMusic = null;
                     LOGGER.debug("Setting this.trueMusic to null since its volume is below 0...");

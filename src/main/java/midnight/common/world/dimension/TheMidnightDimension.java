@@ -12,10 +12,10 @@ import com.mojang.serialization.Lifecycle;
 import midnight.common.Midnight;
 import midnight.common.world.biome.TheMidnightBiomeProvider;
 import midnight.common.world.levelgen.midnight.TheMidnightChunkGenerator;
+import midnight.core.dimension.IChunkGenFactory;
+import midnight.core.dimension.IMidnightDimension;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.DynamicRegistries;
-import net.minecraft.util.registry.MutableRegistry;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.SimpleRegistry;
 import net.minecraft.world.Dimension;
@@ -28,11 +28,10 @@ import net.minecraft.world.gen.DimensionSettings;
 
 import java.util.OptionalLong;
 
-public final class TheMidnightDimension {
+public final class TheMidnightDimension implements IMidnightDimension, IChunkGenFactory {
     static final ResourceLocation ID = Midnight.id("the_midnight");
     static final RegistryKey<World> KEY = RegistryKey.create(Registry.DIMENSION_REGISTRY, ID);
-
-    private static final DimensionType TYPE = new MnDimensionType(
+    static final DimensionType TYPE = new MnDimensionType(
         OptionalLong.of(18000), // Fixed time
         false, // Sky light
         false, // Ceiling
@@ -52,22 +51,18 @@ public final class TheMidnightDimension {
     );
 
     private static final RegistryKey<Dimension> DIMENSION_KEY = RegistryKey.create(Registry.LEVEL_STEM_REGISTRY, ID);
-    private static final RegistryKey<DimensionType> TYPE_KEY = RegistryKey.create(Registry.DIMENSION_TYPE_REGISTRY, ID);
 
 
-    public static void addRegistryDefaults(DynamicRegistries.Impl dynaRegs) {
-        MutableRegistry<DimensionType> registry = dynaRegs.registryOrThrow(Registry.DIMENSION_TYPE_REGISTRY);
-        registry.register(TYPE_KEY, TYPE, Lifecycle.stable());
-    }
-
-    public static void createDefaultDimensionOptions(SimpleRegistry<Dimension> registry, Registry<Biome> biomeReg, Registry<DimensionSettings> settingsReg, long seed) {
-        registry.register(DIMENSION_KEY, new Dimension(
+    @Override
+    public void createDefaultDimensionOptions(SimpleRegistry<Dimension> dimensionReg, Registry<Biome> biomeReg, Registry<DimensionSettings> settingsReg, long seed) {
+        dimensionReg.register(DIMENSION_KEY, new Dimension(
             () -> TYPE,
-            createChunkGenerator(biomeReg, settingsReg, seed)
+            this.createChunkGenerator(biomeReg, settingsReg, seed)
         ), Lifecycle.stable());
     }
 
-    private static ChunkGenerator createChunkGenerator(Registry<Biome> biomes, Registry<DimensionSettings> configs, long seed) {
+    @Override
+    public ChunkGenerator createChunkGenerator(Registry<Biome> biomes, Registry<DimensionSettings> configs, long seed) {
         return new TheMidnightChunkGenerator(
             seed,
             new TheMidnightBiomeProvider(seed, biomes)

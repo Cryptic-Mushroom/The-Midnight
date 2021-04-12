@@ -8,36 +8,35 @@
 
 package midnight.core.dimension;
 
-import com.mojang.datafixers.util.Pair;
-import net.minecraft.util.RegistryKey;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.MutableRegistry;
+import com.google.common.collect.ImmutableMap;
+import midnight.common.world.dimension.MnDimension;
+import midnight.common.world.dimension.TheMidnightDimension;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.SimpleRegistry;
 import net.minecraft.world.Dimension;
-import net.minecraft.world.DimensionType;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.DimensionSettings;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
-// TODO Since this is in Midnight Core, we might want to document this.
 public final class DimensionUtil {
-    public static final Set<RegistryKey<Dimension>> DIMENSIONS = new HashSet<>();
-    public static final Map<RegistryKey<DimensionType>, DimensionType> DIMENSION_TYPES = new HashMap<>();
-    public static final Map<RegistryKey<DimensionType>, Pair<Pair<RegistryKey<Dimension>, DimensionType>, IChunkGenFactory>> CHUNK_GEN_FACTORIES = new HashMap<>();
+    public static final ImmutableMap<MnDimension, IMidnightDimension> DIMENSIONS =
+        ImmutableMap.<MnDimension, IMidnightDimension>builder()
+                    .put(MnDimension.THE_MIDNIGHT, new TheMidnightDimension())
+                    .build();
 
     private DimensionUtil() {
     }
 
-    public static void addDimension(ResourceLocation location, DimensionType type, IChunkGenFactory factory) {
-        RegistryKey<Dimension> dimKey = RegistryKey.create(Registry.LEVEL_STEM_REGISTRY, location);
-        RegistryKey<DimensionType> typeKey = RegistryKey.create(Registry.DIMENSION_TYPE_REGISTRY, location);
-        DIMENSIONS.add(dimKey);
-        DIMENSION_TYPES.put(typeKey, type);
-        CHUNK_GEN_FACTORIES.put(typeKey, Pair.of(Pair.of(dimKey, type), factory));
+    public static void registerDimensions(SimpleRegistry<Dimension> registry, Registry<Biome> biomeReg, Registry<DimensionSettings> settingsReg, long seed) {
+        DIMENSIONS.forEach((identifier, dim) -> dim.createDefaultDimensionOptions(registry, biomeReg, settingsReg, seed));
+    }
+
+    public static boolean isInDimension(World world, MnDimension identifer) {
+        return world.dimension().equals(identifer.getKey());
+    }
+
+    public static World getDimensionInServer(MinecraftServer server, MnDimension identifer) {
+        return server.getLevel(identifer.getKey());
     }
 }
