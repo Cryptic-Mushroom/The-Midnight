@@ -29,8 +29,6 @@ import net.minecraft.world.gen.DimensionSettings;
 import java.util.OptionalLong;
 
 public final class TheMidnightDimension implements IMidnightDimension, IChunkGenFactory {
-    static final ResourceLocation ID = Midnight.id("the_midnight");
-    static final RegistryKey<World> KEY = RegistryKey.create(Registry.DIMENSION_REGISTRY, ID);
     static final DimensionType TYPE = new MnDimensionType(
         OptionalLong.of(18000), // Fixed time
         false, // Sky light
@@ -49,9 +47,12 @@ public final class TheMidnightDimension implements IMidnightDimension, IChunkGen
         ID,    // Environment renderer type
         0      // Ambient lighting
     );
+    public static final MnDimension REFERENCE = MnDimension.THE_MIDNIGHT;
 
-    private static final RegistryKey<Dimension> DIMENSION_KEY = RegistryKey.create(Registry.LEVEL_STEM_REGISTRY, ID);
+    private static final RegistryKey<Dimension> DIMENSION_KEY = RegistryKey.create(Registry.LEVEL_STEM_REGISTRY, REFERENCE.getId());
 
+    public TheMidnightDimension() {
+    }
 
     @Override
     public void createDefaultDimensionOptions(SimpleRegistry<Dimension> dimensionReg, Registry<Biome> biomeReg, Registry<DimensionSettings> settingsReg, long seed) {

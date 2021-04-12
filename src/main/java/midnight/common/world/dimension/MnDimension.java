@@ -8,8 +8,11 @@
 
 package midnight.common.world.dimension;
 
+import midnight.common.Midnight;
+import midnight.core.dimension.IMidnightDimension;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
 
@@ -21,16 +24,16 @@ import net.minecraft.world.World;
  * @since 0.6.0
  */
 public enum MnDimension {
-    THE_MIDNIGHT(TheMidnightDimension.ID, TheMidnightDimension.KEY, TheMidnightDimension.TYPE);
+    THE_MIDNIGHT("the_midnight", TheMidnightDimension.TYPE);
     // TODO funny for 0.7.0 ;)
 
     private final ResourceLocation id;
     private final RegistryKey<World> key;
     private final DimensionType type;
 
-    MnDimension(ResourceLocation id, RegistryKey<World> key, DimensionType type) {
-        this.id = id;
-        this.key = key;
+    MnDimension(String name, DimensionType type) {
+        this.id = Midnight.id(name);
+        this.key = RegistryKey.create(Registry.DIMENSION_REGISTRY, this.id);
         this.type = type;
     }
 
