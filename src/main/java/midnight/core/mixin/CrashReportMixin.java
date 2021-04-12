@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -85,12 +86,19 @@ public class CrashReportMixin {
         };
     }
 
-    @ModifyVariable(method = "getFriendlyReport()Ljava/lang/String;", at = @At(value = "LOAD", ordinal = 1), index = 1)
-    private StringBuilder modifyCrashHeader(StringBuilder stringbuilder) {
-        if (!funnyMidnightCrashReport) return stringbuilder;
+    @ModifyArg(
+        method = "getFriendlyReport()Ljava/lang/String;",
+        at = @At(
+            value = "INVOKE",
+            target = "java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+            ordinal = 0
+        )
+    )
+    private String modify$String(String s) {
+        if (funnyMidnightCrashReport) {
+            return "---- Midnight Crash Report ----\n";
+        }
 
-        stringbuilder = new StringBuilder();
-        stringbuilder.append("---- Midnight Crash Report ----\n");
-        return stringbuilder;
+        return s;
     }
 }
