@@ -8,6 +8,7 @@
 
 package midnight.client.audio;
 
+import midnight.MidnightMod;
 import midnight.common.misc.MnSoundEvents;
 import midnight.common.world.dimension.MnDimension;
 import midnight.core.dimension.DimensionUtil;
@@ -17,6 +18,8 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Marker;
+import org.apache.logging.log4j.MarkerManager;
 
 import java.util.Random;
 
@@ -25,19 +28,8 @@ import java.util.Random;
  */
 @OnlyIn(Dist.CLIENT)
 public class MnAmbientTicker {
-    /**
-     * A {@link Logger} specifically for the {@link MnAmbientTicker}. I think this is necessary so we can keep track of
-     * what the music system is doing. When the ticker is near completion, I will make all output go to the debug log
-     * instead of the info log.
-     */
-    private static final Logger LOGGER = LogManager.getLogger();
-    /**
-     * A {@link Random} instance just in case we might need it later.
-     */
+    private static final Marker MARKER = MarkerManager.getMarker("Ambient Ticker");
     private final Random rand = new Random();
-    /**
-     * The current {@link Minecraft} instance given by the constructor.
-     */
     private final Minecraft mc;
     private int delay = 140;
 
@@ -60,7 +52,7 @@ public class MnAmbientTicker {
                     this.delay = 140;
                     float volume = musicTicker.isPlayingTrueMusic() ? 0.55F : 0.85F;
                     float pitch = (this.mc.player.level.random.nextFloat() - this.mc.player.level.random.nextFloat()) * 0.2F + 1.0F;
-                    LOGGER.debug("Playing a short ambient sound with a pitch of " + pitch + " and a volume of " + volume + ".");
+                    MidnightMod.LOGGER.debug(MARKER, "Playing a short ambient sound with a pitch of " + pitch + " and a volume of " + volume + ".");
                     this.playAmbience(MnSoundEvents.AMBIENT_MIDNIGHT_SHORT, volume, pitch);
                 }
             } else {

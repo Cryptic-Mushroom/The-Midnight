@@ -31,7 +31,7 @@ import org.apache.logging.log4j.Logger;
  */
 @Mod(MnInfo.MODID)
 public class MidnightMod {
-    private static final Logger LOGGER = LogManager.getLogger("Midnight Mod");
+    public static final Logger LOGGER = LogManager.getLogger("Midnight Mod");
 
     /**
      * The general {@link Midnight} instance. Don't use - use {@link Midnight#get()} instead.

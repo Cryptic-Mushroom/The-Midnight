@@ -8,6 +8,7 @@
 
 package midnight.client.audio;
 
+import midnight.MidnightMod;
 import midnight.client.handler.AmbienceHandler;
 import midnight.common.misc.MnSoundEvents;
 import midnight.common.world.biome.MnBiomes;
@@ -27,6 +28,8 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Marker;
+import org.apache.logging.log4j.MarkerManager;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -43,19 +46,8 @@ import java.util.Random;
  */
 @OnlyIn(Dist.CLIENT)
 public class MnMusicTicker {
-    /**
-     * A {@link Logger} specifically for the {@link MnMusicTicker}. I think this is necessary so we can keep track of
-     * what the music system is doing. When the ticker is near completion, I will make all output go to the debug log
-     * instead of the info log.
-     */
-    private static final Logger LOGGER = LogManager.getLogger();
-    /**
-     * A {@link Random} instance just in case we might need it later.
-     */
+    private static final Marker MARKER = MarkerManager.getMarker("Music Ticker");
     private final Random rand = new Random();
-    /**
-     * The current {@link Minecraft} instance given by the constructor.
-     */
     private final Minecraft mc;
     /**
      * {@link ISound} variables that are used to feed into {@link Minecraft}'s {@code getSoundHandler().play()} method.
@@ -86,12 +78,12 @@ public class MnMusicTicker {
             if (DimensionUtil.isInDimension(this.mc.player.level, MnDimension.THE_MIDNIGHT)) {
                 if (this.trueMusic != null && this.trueMusic.getVolume() <= 0) {
                     this.trueMusic = null;
-                    LOGGER.debug("Setting this.trueMusic to null since its volume is below 0...");
+                    MidnightMod.LOGGER.debug(MARKER, "Setting this.trueMusic to null since its volume is below 0...");
                 }
 
                 if (this.ambientMusic != null && this.ambientMusic.getVolume() <= 0) {
                     this.ambientMusic = null;
-                    LOGGER.debug("Setting this.ambientMusic to null since its volume is below 0...");
+                    MidnightMod.LOGGER.debug(MARKER, "Setting this.ambientMusic to null since its volume is below 0...");
                 }
 
                 TrackType musicTrackType = this.getMusicTrack();
@@ -100,10 +92,10 @@ public class MnMusicTicker {
                 if (this.ambientMusic != null) {
                     if (!this.mc.getSoundManager().isActive(this.ambientMusic)) {
                         this.ambientMusic = null;
-                        LOGGER.debug("Setting this.ambientMusic to null since it's not playing or has finished...");
+                        MidnightMod.LOGGER.debug(MARKER, "Setting this.ambientMusic to null since it's not playing or has finished...");
                         if (musicTrackType != null && this.trueMusic == null) {
                             this.timeUntilNextMusic = Math.min(MathHelper.nextInt(this.rand, musicTrackType.getMinDelay(), musicTrackType.getMaxDelay()), this.timeUntilNextMusic);
-                            LOGGER.debug(String.format("Approximate time until next track is played: %d seconds.", this.timeUntilNextMusic / 20));
+                            MidnightMod.LOGGER.debug(MARKER, String.format("Approximate time until next track is played: %d seconds.", this.timeUntilNextMusic / 20));
                         }
                     }
                 }
@@ -111,10 +103,10 @@ public class MnMusicTicker {
                 if (this.trueMusic != null) {
                     if (!this.mc.getSoundManager().isActive(this.trueMusic)) {
                         this.trueMusic = null;
-                        LOGGER.debug("Set this.trueMusic to null since it's not playing or has finished...");
+                        MidnightMod.LOGGER.debug(MARKER, "Set this.trueMusic to null since it's not playing or has finished...");
                         if (this.ambientMusic == null) {
                             this.timeUntilNextMusic = Math.min(MathHelper.nextInt(this.rand, ambientTrackType.getMinDelay(), ambientTrackType.getMaxDelay()), this.timeUntilNextMusic);
-                            LOGGER.debug(String.format("Approximate time until next track is played: %d seconds.", this.timeUntilNextMusic / 20));
+                            MidnightMod.LOGGER.debug(MARKER, String.format("Approximate time until next track is played: %d seconds.", this.timeUntilNextMusic / 20));
                         }
                     }
                 }
@@ -133,14 +125,14 @@ public class MnMusicTicker {
                 if (musicTrackType != null && !hasPlayedTrueMusic) {
                     if (this.trueMusic == null && this.ambientMusic == null && this.timeUntilNextMusic-- <= 0) {
                         this.playMusic(musicTrackType);
-                        LOGGER.debug(String.format("Now playing music track: %s", musicTrackType.toString()));
+                        MidnightMod.LOGGER.debug(MARKER, String.format("Now playing music track: %s", musicTrackType.toString()));
                         this.hasPlayedTrueMusic = true;
                         this.lastMusicPlayed = musicTrackType;
                     }
                 } else {
                     if (this.trueMusic == null && this.ambientMusic == null && this.timeUntilNextMusic-- <= 0) {
                         this.playAmbientMusic(ambientTrackType);
-                        LOGGER.debug(String.format("Now playing ambient-like music track: %s", ambientTrackType.toString()));
+                        MidnightMod.LOGGER.debug(MARKER, String.format("Now playing ambient-like music track: %s", ambientTrackType.toString()));
                         this.hasPlayedTrueMusic = false;
                         this.lastMusicPlayed = musicTrackType;
                     }

@@ -16,8 +16,10 @@ package midnight;
  * @since 0.6.0
  */
 public final class MnConstants {
-    public static final String DEV_WARNING = "The Midnight: Rewritten is still under active development. " +
-                                                 "Many features will be missing and/or completely unusable. You have been warned!";
+    public static final String DEV_WARNING =
+        "The Midnight: Rewritten is still under active development. " +
+            "Many features will be missing and/or are completely unusable. " +
+            "You have been warned!";
 
     private MnConstants() {
     }
