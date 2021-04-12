@@ -29,10 +29,11 @@ public abstract class AbstractMnDimension implements IChunkGenFactory {
     /**
      * This constructor instantializes this abstract dimension with a given reference, containing the information needed
      * for the methods in this class to function for its subclasses.
+     * <p>
+     * It is recommended for the subclass to use a constructor with empty parameters and feed its own static reference
+     * to this constructor.
      *
      * @param reference The enum reference to use for this dimension.
-     * @implNote It is recommended for the subclass to use a constructor with empty parameters and feed its own
-     *     static reference to this constructor.
      */
     public AbstractMnDimension(MnDimension reference) {
         this.reference = reference;
