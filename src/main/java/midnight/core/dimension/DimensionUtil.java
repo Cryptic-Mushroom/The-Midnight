@@ -19,8 +19,19 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.DimensionSettings;
 
+import java.util.Map;
+
+/**
+ * This class registers and stores the list of Midnight dimensions. This used to
+ * be {@code MnDimensions} job, but it has since been moved here since all
+ * dimension logic can be centeralized here.
+ *
+ * @author Shadew
+ * @author Jonathing
+ * @since 0.6.0
+ */
 public final class DimensionUtil {
-    public static final ImmutableMap<MnDimension, IMidnightDimension> DIMENSIONS =
+    public static final Map<MnDimension, IMidnightDimension> DIMENSIONS =
         ImmutableMap.<MnDimension, IMidnightDimension>builder()
                     .put(MnDimension.THE_MIDNIGHT, new TheMidnightDimension())
                     .build();

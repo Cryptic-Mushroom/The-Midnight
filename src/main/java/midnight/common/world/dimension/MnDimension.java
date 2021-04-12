@@ -14,9 +14,10 @@ import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
 
 /**
- * This class registers and stores the list of Midnight dimensions. Go figure.
+ * This enum contains all of our dimensions along with getters for their ids,
+ * registry keys, and dimension types.
  *
- * @author Shadew
+ * @author Jonathing
  * @since 0.6.0
  */
 public enum MnDimension {
