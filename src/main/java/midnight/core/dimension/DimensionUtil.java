@@ -11,9 +11,13 @@ package midnight.core.dimension;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.MutableRegistry;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.SimpleRegistry;
 import net.minecraft.world.Dimension;
 import net.minecraft.world.DimensionType;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.DimensionSettings;
 
 import java.util.HashMap;
 import java.util.HashSet;

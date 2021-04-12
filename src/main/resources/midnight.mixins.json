@@ -5,10 +5,8 @@
   "refmap": "midnight.refmap.json",
   "mixins": [
     "BiomeMixin",
-    "BOPDimensionTypeMixin",
     "CrashReportMixin",
-    "DimensionMixin",
-    "DimensionTypeMixin"
+    "MinecraftServerMixin"
   ],
   "minVersion": "0.8.2"
 }
