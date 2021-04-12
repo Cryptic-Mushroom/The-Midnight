@@ -9,6 +9,8 @@
 package midnight.common.world.dimension;
 
 import mcp.MethodsReturnNonnullByDefault;
+import midnight.common.Midnight;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.biome.FuzzedBiomeMagnifier;
@@ -20,6 +22,11 @@ import java.util.OptionalLong;
 
 @MethodsReturnNonnullByDefault
 public class MnDimensionType extends DimensionType {
+    private final OptionalLong fixedTime;
+    private final ResourceLocation infiniburn;
+    private final ResourceLocation effectsLocation;
+    private final float ambientLight;
+
     public static Builder builder() {
         return new Builder();
     }
@@ -27,87 +34,155 @@ public class MnDimensionType extends DimensionType {
     /**
      * This constructor is used to create the dimension type to use for a dimension.
      *
-     * @param fixedTime   An optinal long containing a fixed time for the dimension to use. If you prefer not to use a
-     *                    fixed time, use {@link OptionalLong#empty()}.
-     * @param skylight    Whether or not to use skylight in this dimension.
-     * @param ceiling     Whether or not this dimension has a ceiling.
-     * @param ultrawarm   Whether or not this dimension is ultra warm.
-     * @param natural     Whether or not this dimension is natural.
-     * @param coordsScale The coordinates scale (in comparison to the Overworld) for this dimension.
-     * @param dragon      Whether or not a dragon can spawn in this dimension.
-     * @param piglins     Whether or not piglins are safe in this dimension.
-     * @param bed         Whether or not you can use a bed in this dimension.
-     * @param anchor      Whether or not you can use a respawn anchor in this dimension..
-     * @param raid        Whether or not raids are allowed to occur in this dimension.
-     * @param height      The block height limit of this dimension.
-     * @param magnifier   The biome magnifier to use for this dimension.
-     * @param infiniburn  The infiniburn tag to use for this dimension.
-     * @param sky         The sky renderer type to use for this dimension.
-     * @param lighting    The default ambient lighting to have for this dimension.
+     * @param fixedTime          An optinal long containing a fixed time for the dimension to use. If you prefer not to
+     *                           use a fixed time, use {@link OptionalLong#empty()}.
+     * @param hasSkylight        Whether or not to use skylight in this dimension.
+     * @param hasCeiling         Whether or not this dimension has a ceiling.
+     * @param ultraWarm          Whether or not this dimension is ultra warm.
+     * @param natural            Whether or not this dimension is natural.
+     * @param coordinateScale    The coordinates scale (in comparison to the Overworld) for this dimension.
+     * @param createDragonFight  Whether or not a dragon can spawn in this dimension.
+     * @param piglinSafe         Whether or not piglins are safe in this dimension.
+     * @param bedWorks           Whether or not you can use a bed in this dimension.
+     * @param respawnAnchorWorks Whether or not you can use a respawn anchor in this dimension..
+     * @param hasRaids           Whether or not raids are allowed to occur in this dimension.
+     * @param logicalHeight      The block height limit of this dimension.
+     * @param biomeZoomer        The biome magnifier to use for this dimension.
+     * @param infiniburn         The infiniburn tag to use for this dimension.
+     * @param effectsLocation    The sky renderer type to use for this dimension.
+     * @param ambientLight       The default ambient lighting to have for this dimension.
      */
-    private MnDimensionType(OptionalLong fixedTime, boolean skylight, boolean ceiling, boolean ultrawarm, boolean natural, double coordsScale, boolean dragon, boolean piglins, boolean bed, boolean anchor, boolean raid, int height, IBiomeMagnifier magnifier, ResourceLocation infiniburn, ResourceLocation sky, float lighting) {
-        super(fixedTime, skylight, ceiling, ultrawarm, natural, coordsScale, dragon, piglins, bed, anchor, raid, height, magnifier, infiniburn, sky, lighting);
+    private MnDimensionType(OptionalLong fixedTime, boolean hasSkylight, boolean hasCeiling, boolean ultraWarm, boolean natural, double coordinateScale, boolean createDragonFight, boolean piglinSafe, boolean bedWorks, boolean respawnAnchorWorks, boolean hasRaids, int logicalHeight, IBiomeMagnifier biomeZoomer, ResourceLocation infiniburn, ResourceLocation effectsLocation, float ambientLight) {
+        super(fixedTime, hasSkylight, hasCeiling, ultraWarm, natural, coordinateScale, createDragonFight, piglinSafe, bedWorks, respawnAnchorWorks, hasRaids, logicalHeight, biomeZoomer, infiniburn, effectsLocation, ambientLight);
+        this.fixedTime = fixedTime;
+        this.infiniburn = infiniburn;
+        this.effectsLocation = effectsLocation;
+        this.ambientLight = ambientLight;
     }
 
-    /*
-     * PLEASE NOTE THAT I'M USING MOJMAP NAMES FOR THESE VARIABLES. I'LL PUT IN JAVADOC COMMENTS WHAT THEIR MCP NAMES
-     * WERE FOR CONVENIENCE.
+    /**
+     * This builder provides an easier way to create midnight dimension types by specifying which values need to be
+     * changed from  their default, if any. All of the attributes are set to {@code 0}, {@code false}, or {@code null}
+     * except for {@link #fixedTime}, {@link #coordinateScale} {@link #logicalHeight}, and {@link #biomeZoomer} which
+     * are all set to {@link OptionalLong#empty()}, {@code 1.0}, {@code 256}, and {@link FuzzedBiomeMagnifier#INSTANCE}
+     * respectively.
+     *
+     * @author Jonathing
+     * @since 0.6.0
      */
     public static class Builder {
         private OptionalLong fixedTime;
-        private boolean skylight;
-        private boolean ceiling;
-        private boolean ultrawarm;
+        private boolean hasSkylight;
+        private boolean hasCeiling;
+        private boolean ultraWarm;
         private boolean natural;
-        private double coordsScale;
-        private boolean dragon;
-        private boolean piglins;
-        private boolean bed;
-        private boolean anchor;
-        private boolean raid;
-        private int height;
-        private IBiomeMagnifier magnifier;
+        private double coordinateScale;
+        private boolean createDragonFight;
+        private boolean piglinSafe;
+        private boolean bedWorks;
+        private boolean respawnAnchorWorks;
+        private boolean hasRaids;
+        private int logicalHeight;
+        private IBiomeMagnifier biomeZoomer;
         private ResourceLocation infiniburn;
-        private ResourceLocation sky;
-        private float lighting;
+        private ResourceLocation effectsLocation;
+        private float ambientLight;
 
-        public Builder() {
-            this.fixedTime = OptionalLong.empty();
-            this.skylight = false;
-            this.ceiling = false;
-            this.ultrawarm = false;
-            this.natural = false;
-            this.coordsScale = 1.0;
-            this.dragon = false;
-            this.piglins = false;
-            this.bed = false;
-            this.anchor = false;
-            this.raid = false;
-            this.height = 256;
-            this.magnifier = FuzzedBiomeMagnifier.INSTANCE;
-            this.infiniburn = null;
-            this.sky = null;
-            this.lighting = 0.0F;
+        private Builder(OptionalLong fixedTime, boolean hasSkylight, boolean hasCeiling, boolean ultraWarm, boolean natural, double coordinateScale, boolean createDragonFight, boolean piglinSafe, boolean bedWorks, boolean respawnAnchorWorks, boolean hasRaids, int logicalHeight, IBiomeMagnifier biomeZoomer, ResourceLocation infiniburn, ResourceLocation effectsLocation, float ambientLight) {
+            this.fixedTime = fixedTime;
+            this.hasSkylight = hasSkylight;
+            this.hasCeiling = hasCeiling;
+            this.ultraWarm = ultraWarm;
+            this.natural = natural;
+            this.coordinateScale = coordinateScale;
+            this.createDragonFight = createDragonFight;
+            this.piglinSafe = piglinSafe;
+            this.bedWorks = bedWorks;
+            this.respawnAnchorWorks = respawnAnchorWorks;
+            this.hasRaids = hasRaids;
+            this.logicalHeight = logicalHeight;
+            this.biomeZoomer = biomeZoomer;
+            this.infiniburn = infiniburn;
+            this.effectsLocation = effectsLocation;
+            this.ambientLight = ambientLight;
         }
 
+        /**
+         * This constructor creates a new builder with the default values mentioned in the documentation for the {@link
+         * Builder} class.
+         *
+         * @see Builder
+         */
+        public Builder() {
+            this(
+                OptionalLong.empty(),
+                false,
+                false,
+                false,
+                false,
+                1.0,
+                false,
+                false,
+                false,
+                false,
+                false,
+                256,
+                FuzzedBiomeMagnifier.INSTANCE,
+                BlockTags.INFINIBURN_OVERWORLD.getName(),
+                DimensionType.OVERWORLD_EFFECTS,
+                0.0F
+            );
+        }
+
+        /**
+         * This constructor creates a new builder with a given {@link MnDimensionType}. Note that it does <em>not</em>
+         * accept a normal {@link DimensionType}.
+         *
+         * @param type The midnight dimension type to base this builder off of.
+         */
+        public Builder(MnDimensionType type) {
+            this(
+                type.fixedTime,
+                type.hasSkyLight(),
+                type.hasCeiling(),
+                type.ultraWarm(),
+                type.natural(),
+                type.coordinateScale(),
+                type.createDragonFight(),
+                type.piglinSafe(),
+                type.bedWorks(),
+                type.respawnAnchorWorks(),
+                type.hasRaids(),
+                type.logicalHeight(),
+                type.getBiomeZoomer(),
+                type.infiniburn,
+                type.effectsLocation,
+                type.ambientLight
+            );
+        }
+
+        /**
+         * This method takes all of the {@link Builder}'s attributes and uses them to create a new {@link
+         * MnDimensionType}.
+         */
         public MnDimensionType build() {
             return new MnDimensionType(
                 this.fixedTime,
-                this.skylight,
-                this.ceiling,
-                this.ultrawarm,
+                this.hasSkylight,
+                this.hasCeiling,
+                this.ultraWarm,
                 this.natural,
-                this.coordsScale,
-                this.dragon,
-                this.piglins,
-                this.bed,
-                this.anchor,
-                this.raid,
-                this.height,
-                this.magnifier,
-                nullCheck(this.infiniburn, "infiniburn"),
-                nullCheck(this.sky, "effects location"),
-                this.lighting
+                this.coordinateScale,
+                this.createDragonFight,
+                this.piglinSafe,
+                this.bedWorks,
+                this.respawnAnchorWorks,
+                this.hasRaids,
+                this.logicalHeight,
+                this.biomeZoomer,
+                this.infiniburn,
+                this.effectsLocation,
+                this.ambientLight
             );
         }
 
@@ -116,18 +191,18 @@ public class MnDimensionType extends DimensionType {
             return this;
         }
 
-        public Builder skylight(boolean skylight) {
-            this.skylight = skylight;
+        public Builder hasSkylight(boolean hasSkylight) {
+            this.hasSkylight = hasSkylight;
             return this;
         }
 
-        public Builder ceiling(boolean ceiling) {
-            this.ceiling = ceiling;
+        public Builder hasCeiling(boolean hasCeiling) {
+            this.hasCeiling = hasCeiling;
             return this;
         }
 
-        public Builder ultrawarm(boolean ultrawarm) {
-            this.ultrawarm = ultrawarm;
+        public Builder ultraWarm(boolean ultraWarm) {
+            this.ultraWarm = ultraWarm;
             return this;
         }
 
@@ -136,43 +211,43 @@ public class MnDimensionType extends DimensionType {
             return this;
         }
 
-        public Builder coordsScale(double coordsScale) {
-            this.coordsScale = coordsScale;
+        public Builder coordinateScale(double coordinateScale) {
+            this.coordinateScale = coordinateScale;
             return this;
         }
 
-        public Builder dragon(boolean dragon) {
-            this.dragon = dragon;
+        public Builder createDragonFight(boolean createDragonFight) {
+            this.createDragonFight = createDragonFight;
             return this;
         }
 
-        public Builder piglins(boolean piglins) {
-            this.piglins = piglins;
+        public Builder piglinSafe(boolean piglinSafe) {
+            this.piglinSafe = piglinSafe;
             return this;
         }
 
-        public Builder bed(boolean bed) {
-            this.bed = bed;
+        public Builder bedWorks(boolean bedWorks) {
+            this.bedWorks = bedWorks;
             return this;
         }
 
-        public Builder anchor(boolean anchor) {
-            this.anchor = anchor;
+        public Builder respawnAnchorWorks(boolean respawnAnchorWorks) {
+            this.respawnAnchorWorks = respawnAnchorWorks;
             return this;
         }
 
-        public Builder raid(boolean raid) {
-            this.raid = raid;
+        public Builder hasRaids(boolean hasRaids) {
+            this.hasRaids = hasRaids;
             return this;
         }
 
-        public Builder height(int height) {
-            this.height = heightCheck(height);
+        public Builder logicalHeight(int logicalHeight) {
+            this.logicalHeight = heightCheck(logicalHeight);
             return this;
         }
 
-        public Builder magnifier(@Nonnull IBiomeMagnifier magnifier) {
-            this.magnifier = nullCheck(magnifier, "biome zoomer");
+        public Builder biomeZoomer(@Nonnull IBiomeMagnifier biomeZoomer) {
+            this.biomeZoomer = nullCheck(biomeZoomer, "biome zoomer");
             return this;
         }
 
@@ -181,13 +256,21 @@ public class MnDimensionType extends DimensionType {
             return this;
         }
 
-        public Builder sky(ResourceLocation sky) {
-            this.sky = nullCheck(sky, "effects location");
+        public Builder infiniburn(@Nonnull String infiniburn) {
+            return infiniburn(Midnight.id(infiniburn));
+        }
+
+        public Builder effectsLocation(@Nonnull ResourceLocation effectsLocation) {
+            this.effectsLocation = nullCheck(effectsLocation, "effects location");
             return this;
         }
 
-        public Builder lighting(float lighting) {
-            this.lighting = lighting;
+        public Builder effectsLocation(@Nonnull String effectsLocation) {
+            return effectsLocation(Midnight.id(effectsLocation));
+        }
+
+        public Builder ambientLight(float ambientLight) {
+            this.ambientLight = ambientLight;
             return this;
         }
 

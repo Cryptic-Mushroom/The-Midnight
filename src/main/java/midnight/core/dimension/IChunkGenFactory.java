@@ -15,5 +15,13 @@ import net.minecraft.world.gen.DimensionSettings;
 
 @FunctionalInterface
 public interface IChunkGenFactory {
-    ChunkGenerator createChunkGenerator(Registry<Biome> biomes, Registry<DimensionSettings> configs, long seed);
+    /**
+     * This method generates the chunk generator for this factory.
+     *
+     * @param biomeReg    The biome registry to use for the chunk generator.
+     * @param settingsReg The dimension settings registry to use for the chunk generator.
+     * @param seed        The seed to use for the chunk generator.
+     * @return The newly created chunk generator.
+     */
+    ChunkGenerator createChunkGenerator(Registry<Biome> biomeReg, Registry<DimensionSettings> settingsReg, long seed);
 }
