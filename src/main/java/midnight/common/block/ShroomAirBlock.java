@@ -24,8 +24,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import java.util.ArrayList;
 import java.util.Random;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 /**
  * The block that represents air near the inside of fungi caps. This air emits light and spore particles to give better
  * ambience to giant shrooms. This block emits light rather than the cap itself, since the cap might not need light from

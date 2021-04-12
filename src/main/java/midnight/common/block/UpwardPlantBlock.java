@@ -26,8 +26,6 @@ import net.minecraft.world.server.ServerWorld;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 @SuppressWarnings("deprecation")
 public class UpwardPlantBlock extends PlantBlock {
     public static final BooleanProperty ROOT = MnBlockStateProperties.ROOT;

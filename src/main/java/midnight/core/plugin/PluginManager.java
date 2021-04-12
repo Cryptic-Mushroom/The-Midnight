@@ -151,13 +151,13 @@ public final class PluginManager {
             if (annotationData.getTargetType() == ElementType.TYPE) {
                 if (PLUGIN_ANNOTATION.equals(annotationData.getAnnotationType())) {
                     pluginASM.add(new ASMPluginData(
-                            annotationData.getClassType(),
-                            distFromAnnotationValue(annotationData.getAnnotationData().get("side"))
+                        annotationData.getClassType(),
+                        distFromAnnotationValue(annotationData.getAnnotationData().get("side"))
                     ));
                 } else if (EVENT_SUB_ANNOTATION.equals(annotationData.getAnnotationType())) {
                     eventSubASM.add(new ASMPluginData(
-                            annotationData.getClassType(),
-                            distFromAnnotationValue(annotationData.getAnnotationData().get("side"))
+                        annotationData.getClassType(),
+                        distFromAnnotationValue(annotationData.getAnnotationData().get("side"))
                     ));
                 }
             }

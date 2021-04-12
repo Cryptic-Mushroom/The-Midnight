@@ -127,7 +127,7 @@ public final class ColorUtil {
         int hi = (int) (h / 60);
 
         float ra, ga, ba;
-        switch(hi) {
+        switch (hi) {
             default:
             case 0:
                 ra = c;
@@ -262,7 +262,7 @@ public final class ColorUtil {
     }
 
     public static int darker(int rgb, float amount) {
-        if(amount < 0) lighter(rgb, -amount);
+        if (amount < 0) lighter(rgb, -amount);
         float a = alphaf(rgb);
         float r = redf(rgb);
         float g = greenf(rgb);
@@ -275,7 +275,7 @@ public final class ColorUtil {
     }
 
     public static int lighter(int rgb, float amount) {
-        if(amount < 0) darker(rgb, -amount);
+        if (amount < 0) darker(rgb, -amount);
         float a = alphaf(rgb);
         float r = 1 - redf(rgb);
         float g = 1 - greenf(rgb);
@@ -534,13 +534,13 @@ public final class ColorUtil {
         float cmin = Math.min(r, Math.min(g, b));
 
         float delta = cmax - cmin;
-        if(delta == 0) return 0;
+        if (delta == 0) return 0;
 
-        if(cmax == r) {
+        if (cmax == r) {
             return (g - b) / delta % 6 * 60;
         }
 
-        if(cmax == g) {
+        if (cmax == g) {
             return ((b - r) / delta + 2) * 60;
         }
 
@@ -556,13 +556,13 @@ public final class ColorUtil {
         double cmin = Math.min(r, Math.min(g, b));
 
         double delta = cmax - cmin;
-        if(delta == 0) return 0;
+        if (delta == 0) return 0;
 
-        if(cmax == r) {
+        if (cmax == r) {
             return (g - b) / delta % 6 * 60;
         }
 
-        if(cmax == g) {
+        if (cmax == g) {
             return ((b - r) / delta + 2) * 60;
         }
 
@@ -577,7 +577,7 @@ public final class ColorUtil {
         int hi = (int) (h / 60);
 
         float ra, ga, ba;
-        switch(hi) {
+        switch (hi) {
             default:
             case 0:
                 ra = c;
@@ -721,11 +721,11 @@ public final class ColorUtil {
     }
 
     private static int hexChar(char c) {
-        if(c >= '0' && c <= '9') {
+        if (c >= '0' && c <= '9') {
             return c - '0';
-        } else if(c >= 'a' && c <= 'f') {
+        } else if (c >= 'a' && c <= 'f') {
             return c - 'a' + 10;
-        } else if(c >= 'A' && c <= 'F') {
+        } else if (c >= 'A' && c <= 'F') {
             return c - 'A' + 10;
         } else {
             throw new NumberFormatException("Not a hex char: '" + c + "'");
@@ -741,13 +741,13 @@ public final class ColorUtil {
     }
 
     public static int hex(String hex) {
-        if(hex.length() == 3) {
+        if (hex.length() == 3) {
             int r = d(hexChar(hex.charAt(0)));
             int g = d(hexChar(hex.charAt(1)));
             int b = d(hexChar(hex.charAt(2)));
             return rgb(r, g, b);
         }
-        if(hex.length() == 6) {
+        if (hex.length() == 6) {
             int r = d(hexChar(hex.charAt(0)), hexChar(hex.charAt(1)));
             int g = d(hexChar(hex.charAt(2)), hexChar(hex.charAt(3)));
             int b = d(hexChar(hex.charAt(4)), hexChar(hex.charAt(5)));
@@ -757,26 +757,26 @@ public final class ColorUtil {
     }
 
     public static int hexa(String hex) {
-        if(hex.length() == 3) {
+        if (hex.length() == 3) {
             int r = d(hexChar(hex.charAt(0)));
             int g = d(hexChar(hex.charAt(1)));
             int b = d(hexChar(hex.charAt(2)));
             return rgba(r, g, b);
         }
-        if(hex.length() == 4) {
+        if (hex.length() == 4) {
             int r = d(hexChar(hex.charAt(1)));
             int g = d(hexChar(hex.charAt(2)));
             int b = d(hexChar(hex.charAt(3)));
             int a = d(hexChar(hex.charAt(0)));
             return rgba(r, g, b, a);
         }
-        if(hex.length() == 6) {
+        if (hex.length() == 6) {
             int r = d(hexChar(hex.charAt(0)), hexChar(hex.charAt(1)));
             int g = d(hexChar(hex.charAt(2)), hexChar(hex.charAt(3)));
             int b = d(hexChar(hex.charAt(4)), hexChar(hex.charAt(5)));
             return rgba(r, g, b);
         }
-        if(hex.length() == 8) {
+        if (hex.length() == 8) {
             int r = d(hexChar(hex.charAt(2)), hexChar(hex.charAt(3)));
             int g = d(hexChar(hex.charAt(4)), hexChar(hex.charAt(5)));
             int b = d(hexChar(hex.charAt(6)), hexChar(hex.charAt(7)));

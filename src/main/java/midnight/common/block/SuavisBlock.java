@@ -39,8 +39,6 @@ import net.minecraftforge.common.ForgeHooks;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 @SuppressWarnings("deprecation")
 public class SuavisBlock extends Block implements IGrowable {
     public static final IntegerProperty STAGE = MnBlockStateProperties.STAGE_0_3;

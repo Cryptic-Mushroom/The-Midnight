@@ -18,8 +18,6 @@ import net.minecraft.world.server.ServerWorld;
 import java.util.Random;
 import java.util.function.Supplier;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class SmallGrowablePlantBlock extends PlantBlock implements IGrowable {
     private final Supplier<TallPlantBlock> largePlant;
 

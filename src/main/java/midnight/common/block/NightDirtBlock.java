@@ -10,8 +10,6 @@ package midnight.common.block;
 
 import net.minecraft.block.Block;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class NightDirtBlock extends Block {
     public NightDirtBlock(Properties props) {
         super(props);

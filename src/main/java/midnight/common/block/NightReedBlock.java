@@ -29,8 +29,6 @@ import net.minecraft.world.server.ServerWorld;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 /**
  * A block resembling Night Reed. This block grows higher over a certain time, up to 12 blocks if fully waterlogged. As
  * such, this block is waterloggable. Night reed can be placed on blocks in the {@link MnBlockTags#NIGHT_REED_GROWABLE

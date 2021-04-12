@@ -13,8 +13,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class BristlyGrassBlock extends PlantBlock implements INightGrassColorModifying {
     protected BristlyGrassBlock(Properties props) {
         super(props);

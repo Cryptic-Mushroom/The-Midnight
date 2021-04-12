@@ -25,9 +25,6 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.block.AbstractBlock.OffsetType;
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class ShroomShelfBlock extends PlantBlock {
     public static final DirectionProperty FACING = MnBlockStateProperties.FACING_EXCEPT_DOWN;
     private static final VoxelShape[] SHAPES = { // Order as specified in net.minecraft.util.Direction:

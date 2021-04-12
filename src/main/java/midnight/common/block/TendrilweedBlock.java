@@ -26,8 +26,6 @@ import net.minecraftforge.fml.network.PacketDistributor;
 
 import java.util.Random;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 @SuppressWarnings("deprecation")
 public class TendrilweedBlock extends PlantBlock {
     protected TendrilweedBlock(Properties props) {

@@ -26,8 +26,6 @@ import javax.annotation.Nullable;
 import java.util.Random;
 import java.util.function.Supplier;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class HangingLeavesBlock extends HangingPlantBlock implements IGrowable {
     public static final BooleanProperty END = MnBlockStateProperties.END;
     public static final BooleanProperty ROOT = MnBlockStateProperties.ROOT;
@@ -41,8 +39,8 @@ public class HangingLeavesBlock extends HangingPlantBlock implements IGrowable {
         this.logBlockTag = logBlockTag;
         registerDefaultState(
             getStateDefinition().any()
-                               .setValue(ROOT, true)
-                               .setValue(END, false)
+                                .setValue(ROOT, true)
+                                .setValue(END, false)
         );
     }
 

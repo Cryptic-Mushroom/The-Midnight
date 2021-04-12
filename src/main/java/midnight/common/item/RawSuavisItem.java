@@ -20,8 +20,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import javax.annotation.Nullable;
 import java.util.Map;
 
-import net.minecraft.item.Item.Properties;
-
 /**
  * Item resembling a raw suavis slice. Can be eaten, cooked or be placed on the ground to grow more suavis. This is an
  * alternative item for placing suavis, unlike the block item it places only one slice of suavis.

@@ -18,9 +18,6 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.PlantType;
 
-import net.minecraft.block.AbstractBlock.OffsetType;
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class PlantBlock extends BushBlock {
     private VoxelShape hitbox = VoxelShapes.block();
     private OffsetType offsetType = OffsetType.NONE;

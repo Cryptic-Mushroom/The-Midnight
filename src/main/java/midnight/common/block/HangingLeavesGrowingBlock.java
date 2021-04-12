@@ -22,8 +22,6 @@ import net.minecraft.world.server.ServerWorld;
 import java.util.Random;
 import java.util.function.Supplier;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class HangingLeavesGrowingBlock extends LeavesBlock implements IGrowable {
     private final Supplier<Block> hangingLeaves;
 

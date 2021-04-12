@@ -13,8 +13,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class ShroomRootsBlock extends HangingPlantBlock {
     protected ShroomRootsBlock(Properties props) {
         super(props);

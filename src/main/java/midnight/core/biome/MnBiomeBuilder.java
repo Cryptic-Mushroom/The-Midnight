@@ -88,9 +88,9 @@ public class MnBiomeBuilder extends Biome.Builder {
     public Biome build() {
         Biome biome = super.build();
         biome.setRegistryName(id);
-        if(coloring != null)
+        if (coloring != null)
             BiomeConfigLookup.putColoring(id, coloring);
-        if(terrainFactors != null)
+        if (terrainFactors != null)
             BiomeConfigLookup.putTerrainFactors(id, terrainFactors);
         return biome;
     }

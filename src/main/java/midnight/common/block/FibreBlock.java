@@ -20,8 +20,6 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 @SuppressWarnings("deprecation")
 public class FibreBlock extends PlantBlock {
     public static final BooleanProperty DENSE = MnBlockStateProperties.DENSE;

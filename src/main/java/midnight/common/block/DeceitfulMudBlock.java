@@ -21,8 +21,6 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 @SuppressWarnings("deprecation")
 public class DeceitfulMudBlock extends NightDirtBlock {
     private static final VoxelShape SHAPE = box(0, 0, 0, 16, 14, 16);

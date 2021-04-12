@@ -15,8 +15,6 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class CrystalotusBlock extends PlantBlock {
     private static final VoxelShape SELECTION_HITBOX = box(2, 0, 2, 14, 2, 14);
     private static final VoxelShape COLLISION_HITBOX = box(6.5, 0, 6.5, 9.5, 2, 9.5);

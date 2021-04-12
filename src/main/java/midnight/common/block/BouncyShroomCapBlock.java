@@ -16,8 +16,6 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class BouncyShroomCapBlock extends Block {
     public BouncyShroomCapBlock(Properties props) {
         super(props);

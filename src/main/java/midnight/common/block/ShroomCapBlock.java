@@ -25,8 +25,6 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 @SuppressWarnings("deprecation")
 public class ShroomCapBlock extends Block {
     public static final BooleanProperty UP = BlockStateProperties.UP;
@@ -44,12 +42,12 @@ public class ShroomCapBlock extends Block {
 
         registerDefaultState(
             getStateDefinition().any()
-                               .setValue(UP, true)
-                               .setValue(DOWN, true)
-                               .setValue(NORTH, true)
-                               .setValue(EAST, true)
-                               .setValue(SOUTH, true)
-                               .setValue(WEST, true)
+                                .setValue(UP, true)
+                                .setValue(DOWN, true)
+                                .setValue(NORTH, true)
+                                .setValue(EAST, true)
+                                .setValue(SOUTH, true)
+                                .setValue(WEST, true)
         );
     }
 

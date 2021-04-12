@@ -21,12 +21,12 @@ public class BiomeMixin implements IMidnightBiome {
     private TerrainFactors terrainFactors;
 
     private BiomeColoring getColoring() {
-        if(coloring != null) return coloring;
+        if (coloring != null) return coloring;
         return coloring = BiomeConfigLookup.getColoring(Biome.class.cast(this));
     }
 
     private TerrainFactors getTerrainFactors() {
-        if(terrainFactors != null) return terrainFactors;
+        if (terrainFactors != null) return terrainFactors;
         return terrainFactors = BiomeConfigLookup.getTerrainFactors(Biome.class.cast(this));
     }
 

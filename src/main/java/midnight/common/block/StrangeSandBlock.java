@@ -10,8 +10,6 @@ package midnight.common.block;
 
 import net.minecraft.block.FallingBlock;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class StrangeSandBlock extends FallingBlock {
     public StrangeSandBlock(Properties props) {
         super(props);

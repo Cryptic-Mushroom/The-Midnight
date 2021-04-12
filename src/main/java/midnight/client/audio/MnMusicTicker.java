@@ -29,7 +29,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /**
  * This class is the music ticker for The Midnight. I have based my code off of Bailey's music ticker and from Blue
@@ -226,7 +228,7 @@ public class MnMusicTicker {
         ambientTracks.add(TrackType.ULTRAVIOLET);
         ambientTracks.remove(lastMusicPlayed);
 
-        return ambientTracks.get((int)(Util.getNanos() % (long) ambientTracks.size()));
+        return ambientTracks.get((int) (Util.getNanos() % (long) ambientTracks.size()));
     }
 
     /**

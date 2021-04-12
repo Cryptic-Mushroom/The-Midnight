@@ -27,9 +27,6 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.block.AbstractBlock.OffsetType;
-import net.minecraft.block.AbstractBlock.Properties;
-
 /**
  * A plant block that can be oriented to grow in a certain direction. All directions are allowed, meaning that the plant
  * is placeable on the floor, a wall or on the ceiling. Other than a direction, the plant has no other orientations.

@@ -23,8 +23,6 @@ import net.minecraft.world.IWorld;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 @SuppressWarnings("deprecation")
 public class CrystalBlock extends PlantBlock implements IMnWaterLoggable {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;

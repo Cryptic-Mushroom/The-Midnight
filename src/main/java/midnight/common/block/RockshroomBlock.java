@@ -28,8 +28,6 @@ import net.minecraftforge.fml.network.PacketDistributor;
 
 import java.util.Random;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class RockshroomBlock extends Block {
     private static final int SPORE_COUNT = 32;
     private static final double SPORE_SPEED = 0.3;

@@ -22,8 +22,6 @@ import net.minecraft.world.World;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
-import net.minecraft.item.Item.Properties;
-
 public class ThrowableItem extends Item {
     private final Supplier<SoundEvent> throwSound;
     private final BiFunction<? super PlayerEntity, ? super World, ? extends ProjectileItemEntity> throwableFactory;

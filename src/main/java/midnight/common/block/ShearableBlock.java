@@ -23,8 +23,6 @@ import net.minecraft.world.World;
 
 import java.util.function.Supplier;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 @SuppressWarnings("deprecation")
 public class ShearableBlock extends Block {
     private final Supplier<Block> sheared;

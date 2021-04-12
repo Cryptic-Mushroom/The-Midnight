@@ -20,8 +20,6 @@ import net.minecraftforge.common.ToolType;
 import javax.annotation.Nullable;
 import java.util.function.Supplier;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class StripableRotatedPillarBlock extends RotatedPillarBlock {
     private final Supplier<Block> stripped;
 

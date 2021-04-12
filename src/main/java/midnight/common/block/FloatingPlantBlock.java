@@ -19,8 +19,6 @@ import net.minecraft.world.IWorldReader;
 
 import java.util.function.Predicate;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class FloatingPlantBlock extends PlantBlock implements ICustomBlockItem {
     private final Predicate<Fluid> requiredFluid;
 

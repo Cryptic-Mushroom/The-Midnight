@@ -33,8 +33,6 @@ import net.minecraftforge.fml.network.PacketDistributor;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 @SuppressWarnings("deprecation")
 public class VioleafBlock extends PlantBlock implements IGrowable {
     public static final BooleanProperty GROWN = MnBlockStateProperties.GROWN;

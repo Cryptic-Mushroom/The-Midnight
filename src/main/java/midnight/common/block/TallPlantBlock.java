@@ -19,9 +19,6 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.PlantType;
 
-import net.minecraft.block.AbstractBlock.OffsetType;
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class TallPlantBlock extends DoublePlantBlock {
     private VoxelShape hitboxLo = VoxelShapes.block();
     private VoxelShape hitboxHi = VoxelShapes.block();

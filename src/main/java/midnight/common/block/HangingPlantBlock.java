@@ -15,8 +15,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 
-import net.minecraft.block.AbstractBlock.Properties;
-
 public class HangingPlantBlock extends PlantBlock {
     protected HangingPlantBlock(Properties props) {
         super(props);
