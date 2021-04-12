@@ -9,7 +9,6 @@
 package midnight.common.world.dimension;
 
 import com.mojang.serialization.Lifecycle;
-import midnight.common.Midnight;
 import midnight.common.world.biome.TheMidnightBiomeProvider;
 import midnight.common.world.levelgen.midnight.TheMidnightChunkGenerator;
 import midnight.core.dimension.IChunkGenFactory;
@@ -20,34 +19,18 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.SimpleRegistry;
 import net.minecraft.world.Dimension;
 import net.minecraft.world.DimensionType;
-import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.FuzzedBiomeMagnifier;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.DimensionSettings;
 
-import java.util.OptionalLong;
-
 public final class TheMidnightDimension implements IMidnightDimension, IChunkGenFactory {
-    static final DimensionType TYPE = new MnDimensionType(
-        OptionalLong.of(18000), // Fixed time
-        false, // Sky light
-        false, // Ceiling
-        false, // Ultra warm
-        false, // Natural
-        1,     // Coordinate scaling
-        false, // Ender dragon
-        false, // Piglin-safe
-        false, // Bed allowed
-        false, // Respawn anchor allowed
-        false, // Raids
-        256,   // Height
-        FuzzedBiomeMagnifier.INSTANCE, // Biome magnifier
-        new ResourceLocation("infiniburn_overworld"), // Infiniburn tag         TODO Midnight infiniburn
-        ID,    // Environment renderer type
-        0      // Ambient lighting
-    );
     public static final MnDimension REFERENCE = MnDimension.THE_MIDNIGHT;
+    static final DimensionType TYPE =
+        MnDimensionType.builder()
+                       .fixedTime(18000)
+                       .infiniburn(new ResourceLocation("infiniburn_overworld"))
+                       .sky(REFERENCE.getId())
+                       .build();
 
     private static final RegistryKey<Dimension> DIMENSION_KEY = RegistryKey.create(Registry.LEVEL_STEM_REGISTRY, REFERENCE.getId());
 
