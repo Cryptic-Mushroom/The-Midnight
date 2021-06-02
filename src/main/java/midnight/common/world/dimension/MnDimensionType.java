@@ -32,7 +32,8 @@ public class MnDimensionType extends DimensionType {
     }
 
     /**
-     * This constructor is used to create the dimension type to use for a dimension.
+     * This constructor is used to create the dimension type to use for a dimension. It is intentionally private; please
+     * use a {@link MnDimensionType.Builder}.
      *
      * @param fixedTime          An optinal long containing a fixed time for the dimension to use. If you prefer not to
      *                           use a fixed time, use {@link OptionalLong#empty()}.
@@ -51,6 +52,7 @@ public class MnDimensionType extends DimensionType {
      * @param infiniburn         The infiniburn tag to use for this dimension.
      * @param effectsLocation    The sky renderer type to use for this dimension.
      * @param ambientLight       The default ambient lighting to have for this dimension.
+     * @see Builder#Builder()
      */
     private MnDimensionType(OptionalLong fixedTime, boolean hasSkylight, boolean hasCeiling, boolean ultraWarm, boolean natural, double coordinateScale, boolean createDragonFight, boolean piglinSafe, boolean bedWorks, boolean respawnAnchorWorks, boolean hasRaids, int logicalHeight, IBiomeMagnifier biomeZoomer, ResourceLocation infiniburn, ResourceLocation effectsLocation, float ambientLight) {
         super(fixedTime, hasSkylight, hasCeiling, ultraWarm, natural, coordinateScale, createDragonFight, piglinSafe, bedWorks, respawnAnchorWorks, hasRaids, logicalHeight, biomeZoomer, infiniburn, effectsLocation, ambientLight);

@@ -22,6 +22,12 @@ import net.minecraftforge.common.util.NonNullLazy;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class holds all dimensions used by The Midnight mod and has methods to add dimensions to be managed by the mod.
+ *
+ * @author Jonathan Colmenares
+ * @since 0.6.0
+ */
 public final class MnDimensions {
     /**
      * This list is used by {@link DimensionUtil#registerDimensions(SimpleRegistry, Registry, Registry, long)} to
@@ -30,12 +36,16 @@ public final class MnDimensions {
      */
     public static final List<AbstractMnDimension> ALL = new ArrayList<>();
 
+    // Dimensions (use these!)
     public static final AbstractMnDimension THE_MIDNIGHT = createMidnightDimension();
+
+    private MnDimensions() {
+    }
 
     private static AbstractMnDimension createMidnightDimension() {
         final String name = "the_midnight";
         NonNullLazy<DimensionType> type =
-            () -> MnDimensionType.builder()
+            () -> new MnDimensionType.Builder()
                                  .fixedTime(18000)
                                  .effectsLocation(name)
                                  .build();
