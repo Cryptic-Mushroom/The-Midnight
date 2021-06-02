@@ -8,7 +8,7 @@
 
 package midnight.client.environment;
 
-import midnight.common.world.dimension.MnDimension;
+import midnight.common.world.dimension.MnDimensions;
 import net.minecraft.client.world.DimensionRenderInfo;
 import net.minecraft.util.math.vector.Vector3d;
 
@@ -16,7 +16,7 @@ public class TheMidnightRenderInfo extends DimensionRenderInfo {
     public static final TheMidnightRenderInfo INSTANCE = new TheMidnightRenderInfo(Float.NaN, true, FogType.NONE, false, true);
 
     public static void init() {
-        EFFECTS.put(MnDimension.THE_MIDNIGHT.getId(), INSTANCE);
+        EFFECTS.put(MnDimensions.THE_MIDNIGHT.getId(), INSTANCE);
     }
 
     public TheMidnightRenderInfo(float cloudHeight, boolean alternateSkyColor, FogType type, boolean shouldRender, boolean darkened) {

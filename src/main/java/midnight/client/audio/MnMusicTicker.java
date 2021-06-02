@@ -12,7 +12,7 @@ import midnight.MidnightMod;
 import midnight.client.handler.AmbienceHandler;
 import midnight.common.misc.MnSoundEvents;
 import midnight.common.world.biome.MnBiomes;
-import midnight.common.world.dimension.MnDimension;
+import midnight.common.world.dimension.MnDimensions;
 import midnight.core.dimension.DimensionUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
@@ -26,8 +26,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
 
@@ -75,7 +73,7 @@ public class MnMusicTicker {
      */
     public void tick() {
         if (this.mc.player != null && !this.mc.getSoundManager().isActive(this.playingRecord)) {
-            if (DimensionUtil.isInDimension(this.mc.player.level, MnDimension.THE_MIDNIGHT)) {
+            if (DimensionUtil.isInDimension(this.mc.player.level, MnDimensions.THE_MIDNIGHT)) {
                 if (this.trueMusic != null && this.trueMusic.getVolume() <= 0) {
                     this.trueMusic = null;
                     MidnightMod.LOGGER.debug(MARKER, "Setting this.trueMusic to null since its volume is below 0...");

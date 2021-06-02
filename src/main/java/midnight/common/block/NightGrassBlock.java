@@ -8,6 +8,8 @@
 
 package midnight.common.block;
 
+import midnight.common.world.dimension.MnDimensions;
+import midnight.core.dimension.DimensionUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.IGrowable;
@@ -46,7 +48,9 @@ public class NightGrassBlock extends NightDirtBlock implements IGrowable {
     }
 
     private static int getGrowStatusAt(ServerWorld world, BlockPos pos) {
-        if (true) { // TODO world.getDimension().getType() == MnDimensions.midnight()
+        // world.getDimension().getType() == MnDimensions.midnight()
+        // TODO double check condition logic
+        if (DimensionUtil.isInDimension(world, MnDimensions.THE_MIDNIGHT)) {
             BlockPos up = pos.above();
             BlockState upstate = world.getBlockState(up);
             if (!doesLightGoThroughBlockAbove(world.getBlockState(pos), world, pos, upstate, up)) {

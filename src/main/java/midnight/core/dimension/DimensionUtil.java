@@ -8,8 +8,8 @@
 
 package midnight.core.dimension;
 
-import com.google.common.collect.ImmutableList;
-import midnight.common.world.dimension.MnDimension;
+import midnight.common.world.dimension.AbstractMnDimension;
+import midnight.common.world.dimension.MnDimensions;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.SimpleRegistry;
@@ -27,23 +27,18 @@ import net.minecraft.world.gen.DimensionSettings;
  * @since 0.6.0
  */
 public final class DimensionUtil {
-    public static final ImmutableList<MnDimension> DIMENSIONS =
-        ImmutableList.<MnDimension>builder()
-                     .add(MnDimension.THE_MIDNIGHT)
-                     .build();
-
     private DimensionUtil() {
     }
 
     public static void registerDimensions(SimpleRegistry<Dimension> registry, Registry<Biome> biomeReg, Registry<DimensionSettings> settingsReg, long seed) {
-        DIMENSIONS.forEach(dim -> dim.getInstance().createDefaultDimensionOptions(registry, biomeReg, settingsReg, seed));
+        MnDimensions.ALL.forEach(dim -> dim.createDefaultDimensionOptions(registry, biomeReg, settingsReg, seed));
     }
 
-    public static boolean isInDimension(World world, MnDimension reference) {
-        return world.dimension().equals(reference.getKey());
+    public static boolean isInDimension(World world, AbstractMnDimension dimension) {
+        return world.dimension().equals(dimension.getKey());
     }
 
-    public static World getDimensionInServer(MinecraftServer server, MnDimension reference) {
-        return server.getLevel(reference.getKey());
+    public static World getDimensionInServer(MinecraftServer server, AbstractMnDimension dimension) {
+        return server.getLevel(dimension.getKey());
     }
 }
