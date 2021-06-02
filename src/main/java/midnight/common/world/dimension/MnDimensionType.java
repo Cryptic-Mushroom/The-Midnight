@@ -135,8 +135,9 @@ public class MnDimensionType extends DimensionType {
         }
 
         /**
-         * This constructor creates a new builder with a given {@link MnDimensionType}. Note that it does <em>not</em>
-         * accept a normal {@link DimensionType}.
+         * This constructor creates a new builder with a given {@link MnDimensionType}. The benefit of using this over
+         * {@link #Builder(DimensionType)} is that our dimension types keep track of fixed time, infiniburn, effects
+         * location, and the ambient light level.
          *
          * @param type The midnight dimension type to base this builder off of.
          */
@@ -158,6 +159,33 @@ public class MnDimensionType extends DimensionType {
                 type.infiniburn,
                 type.effectsLocation,
                 type.ambientLight
+            );
+        }
+
+        /**
+         * This constructor creates a new builder with a given {@link DimensionType}. Fixed time, infiniburn, effects
+         * location, and the ambient light level are not copied over.
+         *
+         * @param type The dimension type to base this builder off of.
+         */
+        public Builder(DimensionType type) {
+            this(
+                OptionalLong.empty(),
+                type.hasSkyLight(),
+                type.hasCeiling(),
+                type.ultraWarm(),
+                type.natural(),
+                type.coordinateScale(),
+                type.createDragonFight(),
+                type.piglinSafe(),
+                type.bedWorks(),
+                type.respawnAnchorWorks(),
+                type.hasRaids(),
+                type.logicalHeight(),
+                type.getBiomeZoomer(),
+                BlockTags.INFINIBURN_OVERWORLD.getName(),
+                DimensionType.OVERWORLD_EFFECTS,
+                0.0F
             );
         }
 
