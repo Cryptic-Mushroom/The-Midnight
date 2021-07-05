@@ -6,12 +6,6 @@
  * Last updated: 2020 - 12 - 23
  */
 
-dependencies {
-    internal(project(':api')) {
-        transitive false
-    }
-}
-
 build {
     dependsOn 'signJar'
     dependsOn 'signClientJar'
@@ -47,6 +41,7 @@ modutil {
  * - Shadew
  */
 
+/*
 task copyBaseResources(type: Copy) {
     into "$buildDir/resources/main"
     from "$projectDir/src/main/resources"
@@ -99,7 +94,7 @@ processResources {
     if (!System.getenv().containsKey("SKIP_DATAGEN"))
         dependsOn 'genData'
 }
-
+*/
 
 
 // ====================

@@ -13,7 +13,6 @@ buildscript {
         maven { url 'https://files.minecraftforge.net/maven' }
         maven { url 'https://repo.spongepowered.org/maven' }
         maven { url 'https://maven.shadew.net/' }
-        jcenter()
         mavenCentral()
     }
     dependencies {
@@ -27,148 +26,110 @@ ext {
     timeOfExecution = new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
 }
 
-// ==================
-// ALL PROJECTS SETUP
-// ==================
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'org.spongepowered.mixin'
+apply plugin: 'net.shadew.modutil'
+apply plugin: 'idea'
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
 
-allprojects {
-    project.ext.implName = "The Midnight"
+// Initialize basic environment properties
+apply from: "$rootDir/environment.gradle"
 
-    apply plugin: 'net.minecraftforge.gradle'
-    apply plugin: 'org.spongepowered.mixin'
-    apply plugin: 'net.shadew.modutil'
-    apply plugin: 'idea'
-    apply plugin: 'maven-publish'
-    apply plugin: 'signing'
+// These gotta be "compile" and not "implementation" or else genData won't work
+configurations {
+    embed // External deps embedded into the JAR file
+    compile.extendsFrom(embed)
 
-    // Initialize basic environment properties
-    apply from: "$rootDir/environment.gradle"
+    internal // Internal deps (subprojects) embedded into the JAR file
+    compile.extendsFrom(internal) // TODO Do we actually use this?
+}
 
-    // These gotta be "compile" and not "implementation" or else genData won't work
-    configurations {
-        embed // External deps embedded into the JAR file
-        compile.extendsFrom(embed)
+apply from: "$rootDir/dependencies.gradle"
 
-        internal // Internal deps (subprojects) embedded into the JAR file
-        compile.extendsFrom(internal) // TODO Do we actually use this?
+// Mixin setup
+mixin {
+    add sourceSets.main, project.ext.mixinRefmap
+}
+
+// ModUtil setup
+modutil {
+    shade('net.shadew.ptg', "${project.ext.shadePackage}.net.shadew.ptg")
+    shade('me.jonathing.minecraft.verificationutil', "midnight.core.security")
+
+    changelogJson file("$rootDir/changelog.json")
+
+    constant('mod_id', project.ext.modid)
+    constant('mod_name', project.ext.implName)
+    constant('version', changelogInfo.versionNumber)
+    constant('version_name', changelogInfo.versionName)
+    constant('group', project.group)
+    constant('build_time', project.ext.timeOfExecution)
+    constant('expected_sha256', project.getProjectFingerprint())
+
+    constantAnnotation "$project.ext.constAnnotation"
+}
+
+jar {
+    // Include necessary dependencies into the jar file
+    doFirst {
+        from configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }
+        from configurations.internal.collect { it.isDirectory() ? it : zipTree(it) }
     }
 
-    apply from: "$rootDir/dependencies.gradle"
-
-    // ForgeGradle setup
-    minecraft {
-        mappings channel: "${project.ext.getVariable("env.mappings.channel")}",
-                 version: "${project.ext.getVariable("env.mappings.version")}"
-
-        accessTransformer = file("$rootDir/src/main/resources/META-INF/accesstransformer.cfg")
-    }
-
-    // Mixin setup
-    mixin {
-        add sourceSets.main, project.ext.mixinRefmap
-    }
-
-    // ModUtil setup
-    modutil {
-        shade('net.shadew.ptg', "${project.ext.shadePackage}.net.shadew.ptg")
-        shade('me.jonathing.minecraft.verificationutil', "midnight.core.security")
-
-        changelogJson file("$rootDir/changelog.json")
-
-        constant('mod_id', project.ext.modid)
-        constant('mod_name', project.ext.implName)
-        constant('version', changelogInfo.versionNumber)
-        constant('version_name', changelogInfo.versionName)
-        constant('group', project.group)
-        constant('build_time', project.ext.timeOfExecution)
-        constant('expected_sha256', project.getProjectFingerprint())
-
-        constantAnnotation "$project.ext.constAnnotation"
-    }
-
-    jar {
-        // Include necessary dependencies into the jar file
-        doFirst {
-            from configurations.embed.collect { it.isDirectory() ? it : zipTree(it) }
-            from configurations.internal.collect { it.isDirectory() ? it : zipTree(it) }
-        }
-
-        // Manifest properties
-        manifest {
-            attributes(
-                [
-                    "Specification-Title"     : "${project.ext.implName}",
-                    "Specification-Vendor"    : "${project.ext.implAuthor}",
-                    "Specification-Version"   : "${project.ext.version}",
-                    "Implementation-Title"    : "${project.ext.implName}",
-                    "Implementation-Vendor"   : "${project.ext.implAuthor}",
-                    "Implementation-Version"  : "${project.ext.version}",
-                    "Implementation-Timestamp": "${project.ext.timeOfExecution}",
-                    "MixinConnector"          : "${project.ext.mixinConnector}"
-                ]
-            )
-        }
-    }
-
-    injectConstants {
-        doFirst { delete "$buildDir/sources" }
-    }
-
-    //    // Make sure we use core's mixin-generated TSRG maps when reobfing mod, since mixin does not do this automatically
-    //    afterEvaluate {
-    //        tasks.each { mytask ->
-    //            if (mytask instanceof RenameJarInPlace) {
-    //                mytask.doFirst {
-    //                    project(":MidnightCore").tasks.each { task ->
-    //                        if (task instanceof JavaCompile) {
-    //                            def file = file("${task.temporaryDir}/${task.name}-mappings.tsrg")
-    //                            if (file.exists()) {
-    //                                mytask.extraMapping file
-    //                            }
-    //                        }
-    //                    }
-    //                }
-    //            }
-    //        }
-    //    }
-
-    project.shade.create("jar")
-
-    processResources {
-        doFirst {
-            delete "$buildDir/resources" // Delete resources to fully clean up unused items
-        }
-        // Import png and ogg apart from other files as we don't want lines to be
-        // replaced in such files...
-        from( 'src/main/resources' ) {
-            exclude '**/*.png'
-            exclude '**/*.ogg'
-            filter { line ->
-                line.replaceAll( '\\$\\{version\\}', "$project.version" )
-                    .replaceAll( '\\$\\{verName\\}', "$project.versionName" )
-            }
-        }
-        from( 'src/main/resources' ) {
-            include '**/*.png'
-            include '**/*.ogg'
-        }
-
-        exclude '**/unused/**'
-        exclude 'src/main/resources/templates/**'
+    // Manifest properties
+    manifest {
+        attributes(
+            [
+                "Specification-Title"     : "${project.ext.implName}",
+                "Specification-Vendor"    : "${project.ext.implAuthor}",
+                "Specification-Version"   : "${project.ext.version}",
+                "Implementation-Title"    : "${project.ext.implName}",
+                "Implementation-Vendor"   : "${project.ext.implAuthor}",
+                "Implementation-Version"  : "${project.ext.version}",
+                "Implementation-Timestamp": "${project.ext.timeOfExecution}",
+                "MixinConnector"          : "${project.ext.mixinConnector}"
+            ]
+        )
     }
 }
 
+injectConstants {
+    doFirst { delete "$buildDir/sources" }
+}
 
-// ==================
-// ROOT PROJECT SETUP
-// ==================
+project.shade.create("jar")
 
-build {
-    dependsOn ':api:build'
+processResources {
+    doFirst {
+        delete "$buildDir/resources" // Delete resources to fully clean up unused items
+    }
+    // Import png and ogg apart from other files as we don't want lines to be
+    // replaced in such files...
+    from( 'src/main/resources' ) {
+        exclude '**/*.png'
+        exclude '**/*.ogg'
+        filter { line ->
+            line.replaceAll( '\\$\\{version\\}', "$project.version" )
+                .replaceAll( '\\$\\{verName\\}', "$project.versionName" )
+        }
+    }
+    from( 'src/main/resources' ) {
+        include '**/*.png'
+        include '**/*.ogg'
+    }
+
+    exclude '**/unused/**'
+    exclude 'src/main/resources/templates/**'
 }
 
 // Configure run configurations only for root project
 minecraft {
+    mappings channel: "${project.ext.getVariable("env.mappings.channel")}",
+             version: "${project.ext.getVariable("env.mappings.version")}"
+
+    accessTransformer = file("$rootDir/src/main/resources/META-INF/accesstransformer.cfg")
+
     runs {
         client {
             workingDirectory project.file('run/client')
@@ -234,74 +195,3 @@ minecraft {
 }
 
 apply from: "$rootDir/root.gradle"
-
-
-// Collect classes and resources from other projects so that running includes all classes
-
-def remake(String path) {
-    file(path).mkdirs()
-}
-
-task collectClassPath {
-    dependsOn ':api:classes'
-    dependsOn ':compileJava'
-    dependsOn ':processResources'
-
-    doFirst {
-        remake "$buildDir/resources/main"
-        remake "$buildDir/classes/java/main"
-    }
-    doLast {
-        configurations.collectMany {
-            it.allDependencies
-        }.findAll {
-            it instanceof ProjectDependency
-        }.each {
-            ProjectDependency dep = (ProjectDependency) it
-            copy {
-                from("$dep.dependencyProject.buildDir/resources/main")
-                into("$buildDir/resources/main")
-            }
-            copy {
-                from("$dep.dependencyProject.buildDir/classes/java/main")
-                into("$buildDir/classes/java/main")
-            }
-        }
-    }
-}
-
-task collectTestClassPath {
-    dependsOn ':api:testClasses'
-    dependsOn ':compileTestJava'
-    dependsOn ':processTestResources'
-
-    doFirst {
-        remake "$buildDir/resources/test"
-        remake "$buildDir/classes/java/test"
-    }
-    doLast {
-        configurations.collectMany {
-            it.allDependencies
-        }.findAll {
-            it instanceof ProjectDependency
-        }.each {
-            ProjectDependency dep = (ProjectDependency) it
-            copy {
-                from("$dep.dependencyProject.buildDir/resources/test")
-                into("$buildDir/resources/test")
-            }
-            copy {
-                from("$dep.dependencyProject.buildDir/classes/java/test")
-                into("$buildDir/classes/java/test")
-            }
-        }
-    }
-}
-
-classes {
-    dependsOn 'collectClassPath'
-}
-
-testClasses {
-    dependsOn 'collectTestClassPath'
-}
