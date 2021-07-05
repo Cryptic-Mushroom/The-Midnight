@@ -8,8 +8,6 @@
 
 package midnight;
 
-import midnight.common.Midnight;
-
 /**
  * Contains various important pieces of information about the instance of The Midnight.
  *

@@ -46,9 +46,9 @@ public final class MnDimensions {
         final String name = "the_midnight";
         NonNullLazy<DimensionType> type =
             () -> new MnDimensionType.Builder()
-                                 .fixedTime(18000)
-                                 .effectsLocation(name)
-                                 .build();
+                      .fixedTime(18000)
+                      .effectsLocation(name)
+                      .build();
 
         AbstractMnDimension dimension = new AbstractMnDimension(name, type) {
             @Override

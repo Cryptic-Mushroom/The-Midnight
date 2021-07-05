@@ -12,7 +12,6 @@ import midnight.MnInfo;
 import midnight.client.MidnightClient;
 import midnight.client.audio.MnAmbientTicker;
 import midnight.client.audio.MnMusicTicker;
-import midnight.common.Midnight;
 import midnight.common.world.dimension.MnDimensions;
 import midnight.core.dimension.DimensionUtil;
 import net.minecraft.client.Minecraft;

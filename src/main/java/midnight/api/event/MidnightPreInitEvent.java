@@ -22,7 +22,7 @@ import net.minecraftforge.api.distmarker.Dist;
 public class MidnightPreInitEvent extends AbstractMidnightInitEvent {
     /**
      * @param midnight The {@link IMidnight} instance.
-     * @param dist The {@link Dist} to run the pre-initialization event.
+     * @param dist     The {@link Dist} to run the pre-initialization event.
      */
     public MidnightPreInitEvent(IMidnight midnight, Dist dist) {
         super(midnight, dist);

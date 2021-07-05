@@ -121,6 +121,7 @@ public abstract class Midnight extends MidnightCore {
      *
      * @param path The resource path.
      * @return The created {@link ResourceLocation} instance.
+     *
      * @see #idStr(String)
      */
     public static ResourceLocation id(String path) {
@@ -136,6 +137,7 @@ public abstract class Midnight extends MidnightCore {
      *
      * @param path The resource path.
      * @return The created resource id.
+     *
      * @see #id(String)
      */
     public static String idStr(String path) {

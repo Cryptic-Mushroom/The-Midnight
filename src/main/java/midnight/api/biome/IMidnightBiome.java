@@ -89,7 +89,7 @@ public interface IMidnightBiome {
      */
     @SuppressWarnings("ConstantConditions")
     static IMidnightBiome get(Biome biome) {
-        if(IMidnightBiome.class.isInstance(biome)) {
+        if (IMidnightBiome.class.isInstance(biome)) {
             return IMidnightBiome.class.cast(biome);
         }
         return DefaultMidnightBiomeWrapper.get(biome);

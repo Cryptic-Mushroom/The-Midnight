@@ -21,7 +21,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 public class MidnightInitEvent extends AbstractMidnightInitEvent {
     /**
      * @param midnight The {@link IMidnight} instance.
-     * @param dist The {@link Dist} to run the initialization event.
+     * @param dist     The {@link Dist} to run the initialization event.
      */
     public MidnightInitEvent(IMidnight midnight, Dist dist) {
         super(midnight, dist);

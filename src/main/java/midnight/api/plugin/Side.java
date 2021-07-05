@@ -15,9 +15,8 @@ import net.minecraftforge.api.distmarker.Dist;
  * make them exclusive to a specific distribution.
  *
  * @author Shadew
- * @since 0.6.0
- *
  * @see Dist
+ * @since 0.6.0
  */
 public enum Side {
     /**

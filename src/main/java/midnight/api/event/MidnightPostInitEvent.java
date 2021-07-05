@@ -21,7 +21,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 public class MidnightPostInitEvent extends AbstractMidnightInitEvent {
     /**
      * @param midnight The {@link IMidnight} instance.
-     * @param dist The {@link Dist} to run the post-initialization event.
+     * @param dist     The {@link Dist} to run the post-initialization event.
      */
     public MidnightPostInitEvent(IMidnight midnight, Dist dist) {
         super(midnight, dist);
