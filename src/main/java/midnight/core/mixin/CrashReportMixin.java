@@ -82,7 +82,7 @@ public class CrashReportMixin {
             "Cresh raport",
             "Who invoked /time set noon in the Midnight?",
             "There are no lights!",
-            "Missing refmap confirmed again"
+            "God damnit gradle not again!"
         };
     }
 

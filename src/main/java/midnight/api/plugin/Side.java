@@ -37,7 +37,7 @@ public enum Side {
     /**
      * The server side includes only the server distribution.
      *
-     * @see Dist#CLIENT
+     * @see Dist#DEDICATED_SERVER
      */
-    SERVER
+    DEDICATED_SERVER
 }

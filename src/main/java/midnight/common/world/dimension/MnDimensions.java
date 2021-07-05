@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * This class holds all dimensions used by The Midnight mod and has methods to add dimensions to be managed by the mod.
  *
- * @author Jonathan Colmenares
+ * @author Jonathing
  * @since 0.6.0
  */
 public final class MnDimensions {

@@ -54,7 +54,6 @@ jobs:
         echo "mnKeyStoreKeyPass=${{ secrets.JKS_PASS }}" >> gradle.properties
         echo "mnKeyStoreSHA256=${{ secrets.JKS_SHA256 }}" >> gradle.properties
         cp ${{ secrets.PRIVATE_REPO_NAME }}/${{ secrets.JKS_NAME }} ./${{ secrets.JKS_NAME }}
-        cp ${{ secrets.PRIVATE_REPO_NAME }}/${{ secrets.JKS_NAME }} api/${{ secrets.JKS_NAME }}
         rm -rf ${{ secrets.PRIVATE_REPO_NAME }}
         echo "Ready to build and sign The Midnight."
 
