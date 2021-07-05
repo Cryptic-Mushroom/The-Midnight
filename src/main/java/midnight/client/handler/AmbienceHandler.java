@@ -20,6 +20,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -32,7 +33,6 @@ import net.minecraftforge.fml.common.Mod;
  * @author KingPhygieBoo
  * @since 0.6.0
  */
-@Mod.EventBusSubscriber(modid = "midnight", value = Dist.CLIENT)
 public final class AmbienceHandler {
     /**
      * The current {@link Minecraft} instance.
@@ -46,14 +46,18 @@ public final class AmbienceHandler {
     private static MnMusicTicker musicTicker = MidnightClient.get().getMusicTicker();
     private static MnAmbientTicker ambientTicker = MidnightClient.get().getAmbientTicker();
 
+    public static void addEventListeners(IEventBus mod, IEventBus forge) {
+        forge.addListener(AmbienceHandler::onClientTick);
+        forge.addListener(AmbienceHandler::onMusicControl);
+    }
+
     /**
      * This method runs on every client tick. It essentially makes sure that the music ticker runs on tick except for
      * when the game is paused. We may add to this later.
      *
      * @param event The {@link TickEvent.ClientTickEvent} event.
      */
-    @SubscribeEvent
-    public static void onClientTick(TickEvent.ClientTickEvent event) {
+    private static void onClientTick(TickEvent.ClientTickEvent event) {
         TickEvent.Phase phase = event.phase;
         TickEvent.Type type = event.type;
 
@@ -75,8 +79,7 @@ public final class AmbienceHandler {
      *
      * @param event The {@link TickEvent.ClientTickEvent} event.
      */
-    @SubscribeEvent
-    public static void onMusicControl(PlaySoundEvent event) {
+    private static void onMusicControl(PlaySoundEvent event) {
         if (MnInfo.MUSIC_DISABLED) return;
 
         ISound sound = event.getSound();

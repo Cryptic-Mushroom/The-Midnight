@@ -28,6 +28,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -37,52 +38,54 @@ import net.minecraftforge.fml.common.Mod;
  * @author Shadew
  * @since 0.6.0
  */
-@Mod.EventBusSubscriber(modid = "midnight", bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class RegistryHandler {
     private RegistryHandler() {
     }
 
-    @SubscribeEvent
+    public static void addEventListeners(IEventBus mod, IEventBus forge) {
+        mod.addGenericListener(Block.class, RegistryHandler::registerBlocks);
+        mod.addGenericListener(Item.class, RegistryHandler::registerItems);
+        mod.addGenericListener(Fluid.class, RegistryHandler::registerFluids);
+        mod.addGenericListener(EntityType.class, RegistryHandler::registerEntityTypes);
+        mod.addGenericListener(SoundEvent.class, RegistryHandler::registerSoundEvents);
+        mod.addGenericListener(Biome.class, RegistryHandler::registerBiomes);
+        mod.addGenericListener(SurfaceBuilder.class, RegistryHandler::registerSurfaceBuilders);
+        mod.addGenericListener(ParticleType.class, RegistryHandler::registerParticleTypes);
+        mod.addGenericListener(Feature.class, RegistryHandler::registerFeatures);
+    }
+
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
         MnBlocks.registerBlocks(IRegistry.forge(event.getRegistry()));
     }
 
-    @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         MnItems.registerItems(IRegistry.forge(event.getRegistry()));
     }
 
-    @SubscribeEvent
     public static void registerFluids(RegistryEvent.Register<Fluid> event) {
         MnFluids.registerFluids(IRegistry.forge(event.getRegistry()));
     }
 
-    @SubscribeEvent
     public static void registerEntityTypes(RegistryEvent.Register<EntityType<?>> event) {
         MnEntityTypes.registerEntityTypes(IRegistry.forge(event.getRegistry()));
     }
 
-    @SubscribeEvent
     public static void registerSoundEvents(RegistryEvent.Register<SoundEvent> event) {
         MnSoundEvents.registerSoundEvents(IRegistry.forge(event.getRegistry()));
     }
 
-    @SubscribeEvent
     public static void registerBiomes(RegistryEvent.Register<Biome> event) {
         MnBiomes.registerBiomes(event.getRegistry());
     }
 
-    @SubscribeEvent
     public static void registerSurfaceBuilders(RegistryEvent.Register<SurfaceBuilder<?>> event) {
         MnSurfaceBuilders.registerSurfaceBuilders(IRegistry.forge(event.getRegistry()));
     }
 
-    @SubscribeEvent
     public static void registerParticleTypes(RegistryEvent.Register<ParticleType<?>> event) {
         MnParticleTypes.registerParticleTypes(IRegistry.forge(event.getRegistry()));
     }
 
-    @SubscribeEvent
     public static void registerFeatures(RegistryEvent.Register<Feature<?>> event) {
         MnFeatures.registerFeatures(event.getRegistry());
     }

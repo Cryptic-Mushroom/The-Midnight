@@ -13,6 +13,9 @@ import midnight.core.util.MnObjects;
 import net.minecraft.block.SoundType;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
+import net.minecraftforge.common.util.ForgeSoundType;
+
+import java.util.function.Supplier;
 
 /**
  * This class holds all the different sound types for various blocks, entities, the dimension, etc.
@@ -84,13 +87,13 @@ public abstract class MnSoundTypes {
     );
 
     private static SoundType sound(String id, double volume, double pitch, SoundEvent destroy, SoundEvent step, SoundEvent place, SoundEvent hit, SoundEvent fall) {
-        SoundType type = new SoundType(
+        SoundType type = new ForgeSoundType(
             (float) volume, (float) pitch,
-            destroy,
-            step,
-            place,
-            hit,
-            fall
+            () -> destroy,
+            () -> step,
+            () -> place,
+            () -> hit,
+            () -> fall
         );
         MnObjects.addSoundType(id, type);
         return type;

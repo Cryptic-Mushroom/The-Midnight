@@ -13,23 +13,26 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.world.ChunkEvent;
 import net.minecraftforge.event.world.WorldEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = "midnight", value = Dist.CLIENT)
 public final class BiomeColorCacheHandler {
     private BiomeColorCacheHandler() {
     }
 
-    @SubscribeEvent
-    public static void onWorldLoad(WorldEvent.Load load) {
+    public static void addEventListeners(IEventBus mod, IEventBus forge) {
+        forge.addListener(BiomeColorCacheHandler::onWorldLoad);
+        forge.addListener(BiomeColorCacheHandler::onChunkLoad);
+    }
+
+    private static void onWorldLoad(WorldEvent.Load load) {
         if (load.getWorld() instanceof ClientWorld) {
             MidnightClient.get().getColorCacheManager().reset();
         }
     }
 
-    @SubscribeEvent
-    public static void onChunkLoad(ChunkEvent.Load load) {
+    private static void onChunkLoad(ChunkEvent.Load load) {
         if (load.getWorld() instanceof ClientWorld) {
             MidnightClient.get().getColorCacheManager().chunkLoad(load.getChunk().getPos());
         }

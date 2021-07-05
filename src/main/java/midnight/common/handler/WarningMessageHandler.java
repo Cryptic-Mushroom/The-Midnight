@@ -16,11 +16,12 @@ import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
 
@@ -31,7 +32,6 @@ import org.apache.logging.log4j.MarkerManager;
  * @author Shadew
  * @since 0.6.0
  */
-@Mod.EventBusSubscriber(modid = MnInfo.MOD_ID)
 public final class WarningMessageHandler {
     private static final Marker MARKER = MarkerManager.getMarker("WarningMessageHandler");
 
@@ -41,13 +41,17 @@ public final class WarningMessageHandler {
     private WarningMessageHandler() {
     }
 
+    public static void addEventListeners(IEventBus mod, IEventBus forge) {
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> forge.addListener(WarningMessageHandler::warningForClient));
+        DistExecutor.unsafeRunWhenOn(Dist.DEDICATED_SERVER, () -> () -> forge.addListener(WarningMessageHandler::warningForServer));
+    }
+
     /**
-     * This method is fired whenever LoggedInEvent is called. It is currently used to display the warning message to the
-     * player when logging into a world. The message is also sent to the console at WARN level.
+     * This method is fired whenever {@link ClientPlayerNetworkEvent.LoggedInEvent} is fired on a {@link Dist#CLIENT}.
+     * It is currently used to display the warning message to the player when logging into a world. The message is also
+     * sent to the console at {@link Level#WARN} level.
      */
-    @SubscribeEvent
-    @OnlyIn(Dist.CLIENT)
-    public static void loggedInEvent(ClientPlayerNetworkEvent.LoggedInEvent event) {
+    private static void warningForClient(ClientPlayerNetworkEvent.LoggedInEvent event) {
         ClientPlayerEntity player = event.getPlayer();
 
         // Null-check the player
@@ -60,12 +64,11 @@ public final class WarningMessageHandler {
     }
 
     /**
-     * This method is fired whenever FMLServerStartedEvent is called. It is currently used to display the warning
-     * message to the server owner when the world has loaded. The message is sent at WARN level.
+     * This method is fired whenever an {@link FMLServerStartingEvent} is fired on a {@link Dist#DEDICATED_SERVER}. It
+     * is currently used to display the warning message to the server owner when the world has loaded. The message is
+     * sent at {@link Level#WARN} level.
      */
-    @SubscribeEvent
-    @OnlyIn(Dist.DEDICATED_SERVER)
-    public static void serverStarting(FMLServerStartingEvent event) {
+    private static void warningForServer(FMLServerStartingEvent event) {
         if (!warningShown) {
             Midnight.LOGGER.warn(MARKER, MnConstants.DEV_WARNING);
             warningShown = true;

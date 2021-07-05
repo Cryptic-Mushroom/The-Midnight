@@ -10,8 +10,10 @@ package midnight;
 
 import midnight.client.MidnightClient;
 import midnight.common.Midnight;
+import midnight.data.MidnightData;
 import midnight.server.MidnightServer;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -45,13 +47,21 @@ public class MidnightMod {
         printInfo();
 
         // Register event listeners
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::loadComplete);
-        MinecraftForge.EVENT_BUS.register(MIDNIGHT);
-        FMLJavaModLoadingContext.get().getModEventBus().register(MIDNIGHT);
+        LOGGER.debug(MARKER, "Registering event listeners");
+        IEventBus mod = FMLJavaModLoadingContext.get().getModEventBus();
+        IEventBus forge = MinecraftForge.EVENT_BUS;
+        MidnightMod.addEventListeners(mod, forge);
+        Midnight.addEventListeners(mod, forge);
+        MidnightData.addEventListeners(mod, forge);
 
+        // Run pre-init for the Midnight
         MIDNIGHT.preInit();
         LOGGER.debug("Midnight pre-initialized");
+    }
+
+    private static void addEventListeners(IEventBus mod, IEventBus forge) {
+        mod.addListener(MidnightMod::setup);
+        mod.addListener(MidnightMod::loadComplete);
     }
 
     private void printInfo() {
@@ -64,12 +74,12 @@ public class MidnightMod {
         LOGGER.log(level, MARKER, String.format(" - Environment: %s", MnInfo.IDE ? MnInfo.TESTSERVER ? "GitHub Actions Test Server" : "IDE/Gradle" : "Normal"));
     }
 
-    private void setup(FMLCommonSetupEvent event) {
+    private static void setup(FMLCommonSetupEvent event) {
         MIDNIGHT.init();
         LOGGER.debug("Midnight initialized");
     }
 
-    private void loadComplete(FMLLoadCompleteEvent event) {
+    private static void loadComplete(FMLLoadCompleteEvent event) {
         MIDNIGHT.postInit();
         LOGGER.debug("Midnight post-initialized");
     }

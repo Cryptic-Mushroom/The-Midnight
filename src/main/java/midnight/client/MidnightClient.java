@@ -11,6 +11,8 @@ package midnight.client;
 import midnight.client.audio.MnAmbientTicker;
 import midnight.client.audio.MnMusicTicker;
 import midnight.client.environment.TheMidnightRenderInfo;
+import midnight.client.handler.AmbienceHandler;
+import midnight.client.handler.BiomeColorCacheHandler;
 import midnight.client.util.BiomeColorCache;
 import midnight.client.util.BiomeColorCacheManager;
 import midnight.common.Midnight;
@@ -23,6 +25,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.registry.DynamicRegistries;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.LogicalSidedProvider;
@@ -58,8 +61,14 @@ public class MidnightClient extends Midnight {
         return Dist.CLIENT;
     }
 
-    @SubscribeEvent
-    public void onRegisterParticles(ParticleFactoryRegisterEvent event) {
+    public static void addEventListeners(IEventBus mod, IEventBus forge) {
+        mod.addListener(MidnightClient::onRegisterParticles);
+
+        BiomeColorCacheHandler.addEventListeners(mod, forge);
+        AmbienceHandler.addEventListeners(mod, forge);
+    }
+
+    private static void onRegisterParticles(ParticleFactoryRegisterEvent event) {
         MnParticleTypes.setupClient();
     }
 

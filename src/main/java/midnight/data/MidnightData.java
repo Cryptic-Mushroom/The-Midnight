@@ -18,6 +18,7 @@ import midnight.data.tags.MnFluidTagsProvider;
 import midnight.data.tags.MnItemTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
@@ -29,13 +30,15 @@ import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
  * @author Shadew
  * @since 0.6.0
  */
-@Mod.EventBusSubscriber(modid = "midnight", bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class MidnightData {
     private MidnightData() {
     }
 
-    @SubscribeEvent
-    public static void gatherData(GatherDataEvent event) {
+    public static void addEventListeners(IEventBus mod, IEventBus forge) {
+        mod.addListener(MidnightData::gatherData);
+    }
+
+    private static void gatherData(GatherDataEvent event) {
         DataGenerator gen = event.getGenerator();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 

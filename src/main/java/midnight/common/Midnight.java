@@ -16,6 +16,7 @@ import midnight.api.event.MidnightPreInitEvent;
 import midnight.api.util.IMidnightObjects;
 import midnight.client.MidnightClient;
 import midnight.common.block.MnBlocks;
+import midnight.common.handler.RegistryHandler;
 import midnight.common.net.MnNetwork;
 import midnight.common.world.levelgen.MnLevelgen;
 import midnight.core.MidnightCore;
@@ -23,6 +24,9 @@ import midnight.core.plugin.PluginManager;
 import midnight.core.util.MnObjects;
 import midnight.server.MidnightServer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import org.apache.logging.log4j.LogManager;
@@ -49,6 +53,18 @@ public abstract class Midnight extends MidnightCore {
     public static final Logger LOGGER = LogManager.getLogger("Midnight");
 
     private final PluginManager pluginManager = new PluginManager();
+
+    /*
+     * EVENT LISTENERS
+     */
+
+    public static void addEventListeners(IEventBus mod, IEventBus forge) {
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> MidnightClient.addEventListeners(mod, forge));
+        DistExecutor.unsafeRunWhenOn(Dist.DEDICATED_SERVER, () -> () -> MidnightServer.addEventListeners(mod, forge));
+
+        RegistryHandler.addEventListeners(mod, forge);
+
+    }
 
     /*
      * INITIALIZATION HANDLERS

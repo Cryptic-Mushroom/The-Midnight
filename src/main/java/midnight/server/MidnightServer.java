@@ -8,10 +8,12 @@
 
 package midnight.server;
 
+import midnight.client.MidnightClient;
 import midnight.common.Midnight;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.registry.DynamicRegistries;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.LogicalSidedProvider;
 
@@ -34,6 +36,9 @@ public class MidnightServer extends Midnight {
      */
     public static MidnightServer get() {
         return (MidnightServer) Midnight.get();
+    }
+
+    public static void addEventListeners(IEventBus mod, IEventBus forge) {
     }
 
     @Override
