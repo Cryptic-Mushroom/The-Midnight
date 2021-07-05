@@ -3,10 +3,9 @@
   "package": "midnight.core.mixin",
   "compatibilityLevel": "JAVA_8",
   "refmap": "midnight.refmap.json",
-  "mixins": [
-    "BiomeMixin",
-    "CrashReportMixin",
-    "MinecraftServerMixin"
-  ],
+  "plugin": "midnight.core.MidnightMixins",
+  "injectors": {
+    "defaultRequire": 1
+  },
   "minVersion": "0.8.2"
 }
