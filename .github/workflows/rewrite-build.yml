@@ -72,7 +72,7 @@ jobs:
       uses: eskatos/gradle-command-action@v1
       with:
         gradle-version: 6.8.1
-        arguments: build -x genData --no-daemon --warning-mode none
+        arguments: build --no-daemon --warning-mode none
 
     - name: Prepare to upload the build outputs
       env:
@@ -81,37 +81,13 @@ jobs:
         echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
         echo "Ready to upload the build output to GitHub."
 
-    - name: Upload The Midnight API to GitHub
-      uses: actions/upload-artifact@v2
-      with:
-        # Artifact name
-        name: midnight-api-${{ env.SHORT_SHA }}
-        # A file, directory or wildcard pattern that describes what to upload
-        path: api/build/libs/*.jar
-
-    - name: Upload The Midnight Client to GitHub
-      uses: actions/upload-artifact@v2
-      with:
-        # Artifact name
-        name: midnight-client-${{ env.SHORT_SHA }}
-        # A file, directory or wildcard pattern that describes what to upload
-        path: build/libs/*client*.jar
-
-    - name: Upload The Midnight Server to GitHub
-      uses: actions/upload-artifact@v2
-      with:
-        # Artifact name
-        name: midnight-server-${{ env.SHORT_SHA }}
-        # A file, directory or wildcard pattern that describes what to upload
-        path: build/libs/*server*.jar
-
     - name: Upload The Midnight to GitHub
       uses: actions/upload-artifact@v2
       with:
         # Artifact name
         name: midnight-universal-${{ env.SHORT_SHA }}
         # A file, directory or wildcard pattern that describes what to upload
-        path: build/libs/*universal*.jar
+        path: build/libs/*.jar
 
   javadoc:
     name: Javadoc Documentation
@@ -143,7 +119,7 @@ jobs:
         uses: eskatos/gradle-command-action@v1
         with:
           gradle-version: 6.8.1
-          arguments: javadoc -x genData --no-daemon --warning-mode none
+          arguments: javadoc --no-daemon --warning-mode none
 
       - name: Prepare to upload the build outputs
         env:
@@ -151,14 +127,6 @@ jobs:
         run: |
           echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
           echo "Ready to upload the javadocs output to GitHub."
-
-      - name: Upload The Midnight API Javadoc Documentation to GitHub
-        uses: actions/upload-artifact@v2
-        with:
-          # Artifact name
-          name: midnight-api-javadoc-${{ env.SHORT_SHA }}
-          # A file, directory or wildcard pattern that describes what to upload
-          path: api/build/docs/javadoc
 
       - name: Upload The Midnight Javadoc Documentation to GitHub
         uses: actions/upload-artifact@v2
@@ -211,7 +179,7 @@ jobs:
         continue-on-error: true
         with:
           gradle-version: 6.8.1
-          arguments: runTestServer -x genData --max-workers 1 -x downloadAssets
+          arguments: runTestServer --max-workers 1 -x downloadAssets
 
       - name: Read server test result
         id: log
