@@ -37,7 +37,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Map;
 
-// TODO If this is deprecated, what will we be replacing it with?
+// TODO I still have no idea what the fuck this is or why it is deprecated. I'll figure out what to do with this later.
 @Deprecated
 public class MnObjects implements IMidnightObjects {
     public static final MnObjects INSTANCE = new MnObjects();

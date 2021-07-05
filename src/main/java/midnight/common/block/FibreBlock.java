@@ -20,7 +20,6 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-@SuppressWarnings("deprecation")
 public class FibreBlock extends PlantBlock {
     public static final BooleanProperty DENSE = MnBlockStateProperties.DENSE;
 
@@ -37,6 +36,7 @@ public class FibreBlock extends PlantBlock {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public boolean canBeReplaced(BlockState state, BlockItemUseContext ctx) {
         ItemStack stack = ctx.getItemInHand();
         return stack.getItem() == asItem() && ctx.getClickedFace() == Direction.UP && !state.getValue(DENSE);

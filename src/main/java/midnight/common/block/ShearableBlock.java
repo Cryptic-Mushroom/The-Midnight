@@ -23,7 +23,6 @@ import net.minecraft.world.World;
 
 import java.util.function.Supplier;
 
-@SuppressWarnings("deprecation")
 public class ShearableBlock extends Block {
     private final Supplier<Block> sheared;
 
@@ -33,6 +32,7 @@ public class ShearableBlock extends Block {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult rtr) {
         ItemStack usedItem = player.getItemInHand(hand);
         if (usedItem.getItem() == Items.SHEARS) {

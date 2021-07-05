@@ -25,7 +25,6 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-@SuppressWarnings("deprecation")
 public class ShroomCapBlock extends Block {
     public static final BooleanProperty UP = BlockStateProperties.UP;
     public static final BooleanProperty DOWN = BlockStateProperties.DOWN;
@@ -57,12 +56,13 @@ public class ShroomCapBlock extends Block {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public BlockState updateShape(BlockState state, Direction dir, BlockState adjState, IWorld world, BlockPos pos, BlockPos adjPos) {
         state = super.updateShape(state, dir, adjState, world, pos, adjPos);
         if (adjState.is(this) || adjState.isFaceSturdy(world, adjPos, dir.getOpposite())) {
             state = state.setValue(getProp(dir), false);
         }
-        if (adjState.isAir(world, adjPos) && !(adjState.getBlock() instanceof ShroomAirBlock) && !state.getValue(getProp(dir))) {
+        if (adjState.getBlock().isAir(adjState, world, adjPos) && !(adjState.getBlock() instanceof ShroomAirBlock) && !state.getValue(getProp(dir))) {
             placeShroomAir(world, adjPos);
         }
         return state;
@@ -70,12 +70,13 @@ public class ShroomCapBlock extends Block {
 
     private static void placeShroomAir(IWorld world, BlockPos pos) {
         BlockState state = world.getBlockState(pos);
-        if (state.isAir(world, pos) && !(state.getBlock() instanceof ShroomAirBlock)) {
+        if (state.getBlock().isAir(state, world, pos) && !(state.getBlock() instanceof ShroomAirBlock)) {
             world.setBlock(pos, MnBlocks.SHROOM_AIR.defaultBlockState(), 3);
         }
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult rtr) {
         ItemStack usedItem = player.getItemInHand(hand);
         if (usedItem.getItem() == Items.SHEARS) {
@@ -126,6 +127,7 @@ public class ShroomCapBlock extends Block {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public BlockState mirror(BlockState state, Mirror mirror) {
         boolean n = state.getValue(NORTH);
         boolean e = state.getValue(EAST);

@@ -26,7 +26,6 @@ import net.minecraft.world.server.ServerWorld;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-@SuppressWarnings("deprecation")
 public class UpwardPlantBlock extends PlantBlock {
     public static final BooleanProperty ROOT = MnBlockStateProperties.ROOT;
     public static final BooleanProperty END = MnBlockStateProperties.END;
@@ -69,7 +68,7 @@ public class UpwardPlantBlock extends PlantBlock {
     protected BlockState updateRootEnd(BlockState state, IBlockReader world, BlockPos pos) {
         BlockPos down = pos.below();
         BlockState stateDown = world.getBlockState(down);
-        boolean root = !stateDown.is(this) && !stateDown.isAir(world, down);
+        boolean root = !stateDown.is(this) && !stateDown.getBlock().isAir(stateDown, world, down);
         boolean end = !world.getBlockState(pos.above()).is(this);
 
         return state.setValue(ROOT, root).setValue(END, end);
@@ -91,6 +90,7 @@ public class UpwardPlantBlock extends PlantBlock {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public void tick(BlockState state, ServerWorld world, BlockPos pos, Random rng) {
         if (!canRemain(state, world, pos)) {
             world.destroyBlock(pos, true);

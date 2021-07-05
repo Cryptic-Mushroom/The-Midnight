@@ -21,7 +21,6 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-@SuppressWarnings("deprecation")
 public class DeceitfulMudBlock extends NightDirtBlock {
     private static final VoxelShape SHAPE = box(0, 0, 0, 16, 14, 16);
 
@@ -30,11 +29,13 @@ public class DeceitfulMudBlock extends NightDirtBlock {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public VoxelShape getCollisionShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
         return SHAPE;
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public void entityInside(BlockState state, World world, BlockPos pos, Entity entity) {
         if (!entity.isInWater() && !MnEntityTypeTags.IGNORE_MUD.contains(entity.getType()))
             entity.setDeltaMovement(entity.getDeltaMovement().multiply(0.5, 1, 0.5));

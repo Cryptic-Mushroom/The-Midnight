@@ -77,7 +77,7 @@ public class NightGrassBlock extends NightDirtBlock implements IGrowable {
     public boolean isValidBonemealTarget(IBlockReader world, BlockPos pos, BlockState state, boolean isClient) {
         BlockPos up = pos.above();
         BlockState upState = world.getBlockState(up);
-        return upState.isAir(world, up);
+        return upState.getBlock().isAir(upState, world, up);
     }
 
     @Override
@@ -101,7 +101,7 @@ public class NightGrassBlock extends NightDirtBlock implements IGrowable {
                         ((IGrowable) plant.getBlock()).performBonemeal(world, rand, placePos, currState);
                     }
 
-                    if (!currState.isAir(world, placePos)) {
+                    if (!currState.getBlock().isAir(currState, world, placePos)) {
                         break;
                     }
 

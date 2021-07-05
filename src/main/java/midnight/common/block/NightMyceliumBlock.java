@@ -8,6 +8,8 @@
 
 package midnight.common.block;
 
+import midnight.common.world.dimension.MnDimensions;
+import midnight.core.dimension.DimensionUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.IGrowable;
@@ -37,7 +39,7 @@ public class NightMyceliumBlock extends NightDirtBlock implements IGrowable {
     }
 
     private static int getGrowStatusAt(ServerWorld world, BlockPos pos) {
-        if (true) { // TODO world.getDimension().getType() == MnDimensions.midnight()
+        if (DimensionUtil.isInDimension(world, MnDimensions.THE_MIDNIGHT)) {
             BlockPos up = pos.above();
             BlockState upstate = world.getBlockState(up);
             if (!doesLightGoThroughBlockAbove(world.getBlockState(pos), world, pos, upstate, up)) {
@@ -62,7 +64,7 @@ public class NightMyceliumBlock extends NightDirtBlock implements IGrowable {
     public boolean isValidBonemealTarget(IBlockReader world, BlockPos pos, BlockState state, boolean isClient) {
         BlockPos up = pos.above();
         BlockState upState = world.getBlockState(up);
-        return upState.isAir(world, up);
+        return upState.getBlock().isAir(upState, world, up);
     }
 
     @Override
@@ -86,7 +88,7 @@ public class NightMyceliumBlock extends NightDirtBlock implements IGrowable {
                         ((IGrowable) plant.getBlock()).performBonemeal(world, rand, placePos, currState);
                     }
 
-                    if (!currState.isAir(world, placePos)) {
+                    if (!currState.getBlock().isAir(currState, world, placePos)) {
                         break;
                     }
 

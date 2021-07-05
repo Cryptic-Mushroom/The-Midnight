@@ -51,7 +51,6 @@ import java.util.Random;
  * @author Shadew
  * @since 0.6.0
  */
-@SuppressWarnings("deprecation")
 public class NightReedBlock extends UpwardPlantBlock implements IMnWaterLoggable {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
@@ -83,11 +82,13 @@ public class NightReedBlock extends UpwardPlantBlock implements IMnWaterLoggable
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public FluidState getFluidState(BlockState state) {
         return fluidState(state);
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random rng) {
         // We cannot grow if we are unstable - instead play dead
         BlockPos down = pos.below();
@@ -159,7 +160,7 @@ public class NightReedBlock extends UpwardPlantBlock implements IMnWaterLoggable
     private void growUp(World world, BlockPos pos, BlockState state) {
         BlockPos up = pos.above();
         BlockState stateUp = world.getBlockState(up);
-        if (stateUp.isAir(world, up) || stateUp.getFluidState().is(FluidTags.WATER)) {
+        if (stateUp.getBlock().isAir(stateUp, world, up) || stateUp.getFluidState().is(FluidTags.WATER)) {
             if (canGrowHigher(world, pos)) { // Check height cost
                 world.setBlockAndUpdate(up, waterlog(defaultBlockState().setValue(END, true), world, up));
                 world.setBlockAndUpdate(pos, state.setValue(END, false));

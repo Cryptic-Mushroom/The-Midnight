@@ -61,7 +61,7 @@ public class HangingLeavesGrowingBlock extends LeavesBlock implements IGrowable 
                 mpos.move(Direction.DOWN);
                 BlockState belowState = world.getBlockState(mpos);
 
-                if (!belowState.isAir(world, mpos)) continue;
+                if (!belowState.getBlock().isAir(belowState, world, mpos)) continue;
                 if (!hangLeaves.canSurvive(belowState, world, mpos)) continue;
 
                 boolean root = !nearState.is(hangLeaves);

@@ -65,6 +65,7 @@ public class Selector {
         return new Selector(false);
     }
 
+    @SafeVarargs
     public static <T extends Comparable<T>> Selector and(Property<T> property, T... values) {
         return and().condition(property, values);
     }

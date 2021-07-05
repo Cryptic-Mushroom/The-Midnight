@@ -32,7 +32,6 @@ import java.util.Random;
  * @author Shadew
  * @since 0.6.0
  */
-@SuppressWarnings("deprecation")
 public class ShroomAirBlock extends AirBlock {
 
     public ShroomAirBlock(Properties props) {
@@ -40,6 +39,7 @@ public class ShroomAirBlock extends AirBlock {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public BlockState updateShape(BlockState state, Direction dir, BlockState adjState, IWorld world, BlockPos pos, BlockPos adjPos) {
         state = super.updateShape(state, dir, adjState, world, pos, adjPos);
 

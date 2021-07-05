@@ -26,7 +26,6 @@ import net.minecraftforge.fml.network.PacketDistributor;
 
 import java.util.Random;
 
-@SuppressWarnings("deprecation")
 public class TendrilweedBlock extends PlantBlock {
     protected TendrilweedBlock(Properties props) {
         super(props);
@@ -46,6 +45,7 @@ public class TendrilweedBlock extends PlantBlock {
 
 
     @Override
+    @SuppressWarnings("deprecation")
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random rng) {
         for (int i = 0; i < 3; i++) {
 
@@ -72,6 +72,7 @@ public class TendrilweedBlock extends PlantBlock {
     }
 
     @Override // Spawn particles as entities move through the block
+    @SuppressWarnings("deprecation")
     public void entityInside(BlockState state, World world, BlockPos pos, Entity entity) {
         if (world.isClientSide) { // Only compute this on the client
             Vector3d velo = entity.getDeltaMovement();

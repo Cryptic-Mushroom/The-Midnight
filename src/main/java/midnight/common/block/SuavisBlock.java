@@ -39,7 +39,6 @@ import net.minecraftforge.common.ForgeHooks;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-@SuppressWarnings("deprecation")
 public class SuavisBlock extends Block implements IGrowable {
     public static final IntegerProperty STAGE = MnBlockStateProperties.STAGE_0_3;
 
@@ -146,6 +145,7 @@ public class SuavisBlock extends Block implements IGrowable {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public void tick(BlockState state, ServerWorld world, BlockPos pos, Random rng) {
         if (state.getValue(STAGE) < 3 && ForgeHooks.onCropsGrowPre(world, pos, state, rng.nextInt(5) == 0)) {
             performBonemeal(world, rng, pos, state);
@@ -157,6 +157,7 @@ public class SuavisBlock extends Block implements IGrowable {
     // PLACEMENT LOGIC
 
     @Override
+    @SuppressWarnings("deprecation")
     public BlockState updateShape(BlockState state, Direction dir, BlockState adjState, IWorld world, BlockPos pos, BlockPos adjPos) {
         if (dir == Direction.DOWN) {
             // Check support, if we are unstable we should break
@@ -170,6 +171,7 @@ public class SuavisBlock extends Block implements IGrowable {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos) {
         return canRemain(world, pos); // We must be stable in order to be placed
     }
@@ -203,11 +205,13 @@ public class SuavisBlock extends Block implements IGrowable {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return BOUNDS[state.getValue(STAGE)];
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public boolean isPathfindable(BlockState state, IBlockReader world, BlockPos pos, PathType type) {
         return state.getValue(STAGE) < 2;
     }

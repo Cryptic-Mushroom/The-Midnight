@@ -61,7 +61,7 @@ public class DeceitfulBogSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderCon
         for (int y = startHeight; y >= 0; --y) {
             mpos.set(lx, y, lz);
             BlockState currentState = chunk.getBlockState(mpos);
-            if (currentState.isAir(chunk, mpos)) {
+            if (currentState.getBlock().isAir(currentState, chunk, mpos)) {
                 control = -1;
             } else if (currentState.getBlock() == defaultBlock.getBlock()) {
                 if (control == -1) {

@@ -83,7 +83,7 @@ public class HangingLeavesBlock extends HangingPlantBlock implements IGrowable {
         if (!state.getValue(ROOT) || !state.getValue(END)) return false;
         BlockPos down = pos.below();
         BlockState below = world.getBlockState(down);
-        return below.isAir(world, down);
+        return below.getBlock().isAir(below, world, down);
     }
 
     @Override
