@@ -71,3 +71,27 @@ publishing {
         }
     }
 }
+
+
+/*
+ * Midnight specific changes
+ */
+
+task apiJar(type: Jar, dependsOn: classes) {
+    if (!(project.hasProperty('use_forgegradle3') && "${use_forgegradle3}".toString() == 'true')) {
+        archiveClassifier.set('api')
+    } else {
+        classifier = 'api'
+    }
+
+    from(sourceSets.main.allJava) {
+        include 'midnight/api/**'
+    }
+    from (sourceSets.main.output) {
+        include 'midnight/api/**'
+    }
+}
+
+build {
+    dependsOn 'apiJar'
+}
