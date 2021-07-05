@@ -5,7 +5,7 @@ license = "Custom License, see GitHub"
 
 [[mods]]
 modId = "midnight"
-version = "${version}"
+version = "${file.jarVersion}"
 displayName = "The Midnight"
 updateJSONURL = "https://raw.githubusercontent.com/Cryptic-Mushroom/The-Midnight/rewrite/versioninfo/update.json"
 displayURL = "https://www.curseforge.com/minecraft/mc-mods/the-midnight"

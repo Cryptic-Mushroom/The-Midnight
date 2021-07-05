@@ -13,7 +13,6 @@ on:
       - 'versioninfo/**'
       - 'README.md'
       - 'LICENSE.md'
-      - 'GRADLE.md'
       - 'changelog.json'
       - '.gitignore'
       - '.gitattributes'

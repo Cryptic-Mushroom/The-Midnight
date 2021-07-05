@@ -8,7 +8,6 @@
 
 package midnight.common;
 
-import me.jonathing.minecraft.verificationutil.VerificationUtil;
 import midnight.MidnightMod;
 import midnight.MnInfo;
 import midnight.api.IMidnightInfo;
@@ -80,9 +79,6 @@ public abstract class Midnight extends MidnightCore {
      */
     public void init() {
         EVENT_BUS.post(new MidnightInitEvent(this, getRuntimeDist()));
-
-        if (!MnInfo.IDE)
-            VerificationUtil.validateMod(MnInfo.MODID, MnInfo.EXPECTED_SHA256);
 
         MnBlocks.setup();
     }

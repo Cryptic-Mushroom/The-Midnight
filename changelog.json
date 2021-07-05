@@ -11,7 +11,7 @@
   "changelog": [
     "The Midnight jars are now signed. See The Midnight's new license for more information.",
     "Updated Minecraft to 1.16.4",
-    "Updated Minecraft Forge to 35.0.18",
+    "Updated Minecraft Forge to 36.1.0",
     "Introduced the Midnight API for creating addons for the mod."
   ]
 }

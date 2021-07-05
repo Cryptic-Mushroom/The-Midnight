@@ -6,4 +6,9 @@
  * Last updated: 2020 - 12 - 23
  */
 
-rootProject.name = 'The-Midnight'
+import org.gradle.util.GradleVersion
+
+// Enable the stable publishing preview feature
+if (GradleVersion.current().getVersion().split('\\.').head().toInteger() < 5) {
+    enableFeaturePreview('STABLE_PUBLISHING')
+}

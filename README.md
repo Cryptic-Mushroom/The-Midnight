@@ -12,10 +12,6 @@ We are currently not accepting public contributions as we continue to form the b
 
 On the other hand, if you just want to pitch suggestions and ideas our way, feel free to start your own idea thread on our new [GitHub Discussions tab](https://github.com/Cryptic-Mushroom/The-Midnight/discussions)!
 
-## Gradle
-
-For instructions about the new Gradle structure, see [GRADLE.md](GRADLE.md).
-
 ## Credits
 
 This mod is a huge collaborative effort with tons of different ideas, coding, and textures pitched in by varying individuals who came together to build something great. We wouldn't be where we are today without the help of those here today and those who worked on this mod in the past. Below is a list of members who participated in the development of The Midnight.
