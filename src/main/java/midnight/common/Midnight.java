@@ -10,7 +10,6 @@ package midnight.common;
 
 import midnight.MidnightMod;
 import midnight.MnInfo;
-import midnight.api.IMidnightInfo;
 import midnight.api.event.MidnightInitEvent;
 import midnight.api.event.MidnightPostInitEvent;
 import midnight.api.event.MidnightPreInitEvent;
@@ -23,10 +22,7 @@ import midnight.core.MidnightCore;
 import midnight.core.plugin.PluginManager;
 import midnight.core.util.MnObjects;
 import midnight.server.MidnightServer;
-import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import org.apache.logging.log4j.LogManager;
@@ -53,9 +49,6 @@ public abstract class Midnight extends MidnightCore {
     public static final Logger LOGGER = LogManager.getLogger("Midnight");
 
     private final PluginManager pluginManager = new PluginManager();
-
-
-    public static final RegistryKey<World> MIDNIGHT = RegistryKey.create(Registry.DIMENSION_REGISTRY, id("midnight"));
 
     /*
      * INITIALIZATION HANDLERS
@@ -105,15 +98,6 @@ public abstract class Midnight extends MidnightCore {
         return pluginManager;
     }
 
-
-
-
-
-    @Override
-    public final IMidnightInfo getInfo() {
-        return MnInfo.INSTANCE;
-    }
-
     @Override
     public IMidnightObjects getObjects() {
         return MnObjects.INSTANCE;
@@ -128,7 +112,7 @@ public abstract class Midnight extends MidnightCore {
     }
 
     /**
-     * Create a {@link ResourceLocation} with {@link MnInfo#MODID midnight} as default namespace.
+     * Create a {@link ResourceLocation} with {@link MnInfo#MOD_ID midnight} as default namespace.
      * <ul>
      * <li>{@code "minecraft:path"} will yield {@code minecraft:path}</li>
      * <li>{@code "midnight:path"} will yield {@code midnight:path}</li>
@@ -137,26 +121,24 @@ public abstract class Midnight extends MidnightCore {
      *
      * @param path The resource path.
      * @return The created {@link ResourceLocation} instance.
+     * @see #idStr(String)
      */
     public static ResourceLocation id(String path) {
         int colon = path.indexOf(':');
         if (colon >= 0) {
             return new ResourceLocation(path.substring(0, colon), path.substring(colon + 1));
         }
-        return new ResourceLocation(MnInfo.MODID, path);
+        return new ResourceLocation(MnInfo.MOD_ID, path);
     }
 
     /**
-     * Create a stringified {@link ResourceLocation} with {@link MnInfo#MODID midnight} as default namespace. See {@link
-     * #id}.
+     * Create a stringified {@link ResourceLocation} with {@link MnInfo#MOD_ID midnight} as default namespace.
      *
      * @param path The resource path.
      * @return The created resource id.
+     * @see #id(String)
      */
     public static String idStr(String path) {
-        if (path.indexOf(':') >= 0) {
-            return path;
-        }
-        return MnInfo.MODID + ":" + path;
+        return id(path).toString();
     }
 }

@@ -8,6 +8,7 @@
 
 package midnight.api;
 
+import midnight.MnInfo;
 import midnight.api.plugin.MidnightEventSubscriber;
 import midnight.api.util.IMidnightObjects;
 import net.minecraft.block.Block;
@@ -42,11 +43,6 @@ public interface IMidnight {
      * Returns the {@link Dist} the Midnight is running on.
      */
     Dist getRuntimeDist();
-
-    /**
-     * Returns the mod and build info of the Midnight.
-     */
-    IMidnightInfo getInfo();
 
     /**
      * Returns the object manager of the Midnight. This is the base access to all Midnight objects, giving access to
@@ -106,7 +102,7 @@ public interface IMidnight {
         if (colon >= 0) {
             return new ResourceLocation(path.substring(0, colon), path.substring(colon + 1));
         }
-        return new ResourceLocation(get().getInfo().modid(), path);
+        return new ResourceLocation(MnInfo.MOD_ID, path);
     }
 
     /**
@@ -120,6 +116,6 @@ public interface IMidnight {
         if (path.indexOf(':') >= 0) {
             return path;
         }
-        return get().getInfo().modid() + ":" + path;
+        return MnInfo.MOD_ID + ":" + path;
     }
 }

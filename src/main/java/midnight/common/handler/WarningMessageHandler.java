@@ -31,7 +31,7 @@ import org.apache.logging.log4j.MarkerManager;
  * @author Shadew
  * @since 0.6.0
  */
-@Mod.EventBusSubscriber(modid = MnInfo.MODID)
+@Mod.EventBusSubscriber(modid = MnInfo.MOD_ID)
 public final class WarningMessageHandler {
     private static final Marker MARKER = MarkerManager.getMarker("WarningMessageHandler");
 

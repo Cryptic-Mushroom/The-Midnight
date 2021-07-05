@@ -8,7 +8,7 @@
 
 package midnight;
 
-import midnight.api.IMidnightInfo;
+import midnight.common.Midnight;
 
 /**
  * Contains various important pieces of information about the instance of The Midnight.
@@ -17,13 +17,11 @@ import midnight.api.IMidnightInfo;
  * @author Jonathing
  * @since 0.6.0
  */
-public final class MnInfo implements IMidnightInfo {
-    public static final MnInfo INSTANCE = new MnInfo();
-
+public final class MnInfo {
     /**
      * The Mod ID of the Midnight, which is fixed to {@code midnight}.
      */
-    public static final String MODID = "midnight";
+    public static final String MOD_ID = "midnight";
 
     /**
      * The Mod Name of the Midnight, which is fixed to 'The Midnight'.
@@ -34,19 +32,19 @@ public final class MnInfo implements IMidnightInfo {
      * This constant is true when the system property {@code midnight.iside} is {@code "true"}. This property is set in
      * all run configurations gradle.
      */
-    public static final boolean IDE = isRunningFromIDE();
+    public static final boolean IDE = checkIDE();
 
     /**
      * This constant is true when the system property {@code midnight.datagen} is {@code "true"}. This property is set
      * in the {@code data} run configration (for the {@code runData} task).
      */
-    public static final boolean DATAGEN = isRunningDatagen();
+    public static final boolean DATAGEN = checkDatagen();
 
     /**
      * This constant is true when the system property {@code midnight.istestserver} is {@code "true"}. This property is
      * set in the {@code testserver} run configration (for the {@code runTestServer} task).
      */
-    public static final boolean TESTSERVER = isRunningTestServer();
+    public static final boolean TESTSERVER = checkTestServer();
 
     /**
      * This constant is true when the system property {@code midnight.disablemusic} is {@code "true"}.
@@ -84,17 +82,17 @@ public final class MnInfo implements IMidnightInfo {
     private MnInfo() {
     }
 
-    private static boolean isRunningFromIDE() {
+    private static boolean checkIDE() {
         String p = System.getProperty("midnight.iside");
         return Boolean.parseBoolean(p);
     }
 
-    private static boolean isRunningDatagen() {
+    private static boolean checkDatagen() {
         String p = System.getProperty("midnight.datagen");
         return Boolean.parseBoolean(p);
     }
 
-    private static boolean isRunningTestServer() {
+    private static boolean checkTestServer() {
         String p = System.getProperty("minecraftdev.ci.istestserver");
         return Boolean.parseBoolean(p);
     }
@@ -102,55 +100,5 @@ public final class MnInfo implements IMidnightInfo {
     private static boolean forceDisableMidnightMusic() {
         String p = System.getProperty("midnight.disablemusic");
         return Boolean.parseBoolean(p);
-    }
-
-    @Override
-    public String modid() {
-        return MODID;
-    }
-
-    @Override
-    public String name() {
-        return NAME;
-    }
-
-    @Override
-    public String version() {
-        return VERSION;
-    }
-
-    @Override
-    public String versionName() {
-        return VERSION_NAME;
-    }
-
-    @Override
-    public String expectedSHA256() {
-        return EXPECTED_SHA256;
-    }
-
-    @Override
-    public String buildDate() {
-        return BUILD_DATE;
-    }
-
-    @Override
-    public boolean ide() {
-        return IDE;
-    }
-
-    @Override
-    public boolean data() {
-        return DATAGEN;
-    }
-
-    @Override
-    public boolean testServer() {
-        return TESTSERVER;
-    }
-
-    @Override
-    public boolean musicDisabled() {
-        return MUSIC_DISABLED;
     }
 }

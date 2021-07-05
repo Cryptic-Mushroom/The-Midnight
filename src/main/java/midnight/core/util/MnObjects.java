@@ -241,6 +241,6 @@ public class MnObjects implements IMidnightObjects {
         if (colon >= 0) {
             return new ResourceLocation(path.substring(0, colon), path.substring(colon + 1));
         }
-        return new ResourceLocation(MnInfo.MODID, path);
+        return new ResourceLocation(MnInfo.MOD_ID, path);
     }
 }

@@ -12,6 +12,7 @@ import midnight.MnInfo;
 import midnight.client.MidnightClient;
 import midnight.client.audio.MnAmbientTicker;
 import midnight.client.audio.MnMusicTicker;
+import midnight.common.Midnight;
 import midnight.common.world.dimension.MnDimensions;
 import midnight.core.dimension.DimensionUtil;
 import net.minecraft.client.Minecraft;
@@ -84,7 +85,7 @@ public final class AmbienceHandler {
 
         if (category == SoundCategory.MUSIC) {
             if (mc.player != null && DimensionUtil.isInDimension(mc.player.level, MnDimensions.THE_MIDNIGHT)) {
-                if (!sound.getLocation().toString().contains(MnInfo.MODID) && (musicTicker.isPlayingTrueMusic() || !musicTicker.isPlayingTrueMusic())) {
+                if (!sound.getLocation().toString().contains(MnInfo.MOD_ID) && (musicTicker.isPlayingTrueMusic() || !musicTicker.isPlayingTrueMusic())) {
                     event.setResultSound(null);
                 }
             }

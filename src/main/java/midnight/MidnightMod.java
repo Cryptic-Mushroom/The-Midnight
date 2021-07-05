@@ -18,8 +18,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.*;
 
 /**
  * Bootstrap class of the Midnight. This is the first class of the Midnight that is being loaded by Forge. From here we
@@ -29,9 +28,10 @@ import org.apache.logging.log4j.Logger;
  * @author Jonathing
  * @since 0.6.0
  */
-@Mod(MnInfo.MODID)
+@Mod(MnInfo.MOD_ID)
 public class MidnightMod {
     public static final Logger LOGGER = LogManager.getLogger("Midnight Mod");
+    private static final Marker MARKER = MarkerManager.getMarker("Init");
 
     /**
      * The general {@link Midnight} instance. Don't use - use {@link Midnight#get()} instead.
@@ -39,11 +39,14 @@ public class MidnightMod {
     public static final Midnight MIDNIGHT = DistExecutor.safeRunForDist(() -> MidnightClient::new, () -> MidnightServer::new);
 
     public MidnightMod() {
-        printVersion();
+        LOGGER.info(MARKER, String.format("Initializing %s.%s", MnInfo.NAME, !MnInfo.IDE ? " See the debug log for build information." : ""));
 
+        // Print info to debug or IDE console
+        printInfo();
+
+        // Register event listeners
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::loadComplete);
-
         MinecraftForge.EVENT_BUS.register(MIDNIGHT);
         FMLJavaModLoadingContext.get().getModEventBus().register(MIDNIGHT);
 
@@ -51,25 +54,14 @@ public class MidnightMod {
         LOGGER.debug("Midnight pre-initialized");
     }
 
-    private void printVersion() {
-        LOGGER.info("Initializing The Midnight");
-        LOGGER.info(" - Version: " + MnInfo.VERSION);
-        LOGGER.info(" - Build Date: " + MnInfo.BUILD_DATE);
-        LOGGER.info(" - Dist: " + FMLEnvironment.dist);
+    private void printInfo() {
+        Level level = MnInfo.IDE ? Level.INFO : Level.DEBUG;
 
-        if (MnInfo.IDE && !MnInfo.TESTSERVER) {
-            LOGGER.info(" - Running in an IDE or via Gradle");
-        } else if (MnInfo.TESTSERVER) {
-            LOGGER.info(" - Running a GitHub Actions test server");
-        }
-
-        if (MnInfo.DATAGEN) {
-            LOGGER.info(" - Running data generator");
-        }
-
-        if (MnInfo.MUSIC_DISABLED) {
-            LOGGER.info(" - Music system disabled");
-        }
+        LOGGER.log(level, MARKER, String.format("%s Build Information", MnInfo.NAME));
+        LOGGER.log(level, MARKER, String.format(" - Version:     %s - %s", MnInfo.VERSION, MnInfo.VERSION_NAME));
+        LOGGER.log(level, MARKER, String.format(" - Build Date:  %s", MnInfo.BUILD_DATE));
+        LOGGER.log(level, MARKER, String.format(" - Dist:        %s", MnInfo.DATAGEN ? "DATAGEN" : FMLEnvironment.dist.toString()));
+        LOGGER.log(level, MARKER, String.format(" - Environment: %s", MnInfo.IDE ? MnInfo.TESTSERVER ? "GitHub Actions Test Server" : "IDE/Gradle" : "Normal"));
     }
 
     private void setup(FMLCommonSetupEvent event) {
