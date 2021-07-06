@@ -19,11 +19,13 @@ public final class MnInfo {
     /**
      * The Mod ID of the Midnight, which is fixed to {@code midnight}.
      */
+    @DynamicConstant("mod_id")
     public static final String MOD_ID = "midnight";
 
     /**
      * The Mod Name of the Midnight, which is fixed to 'The Midnight'.
      */
+    @DynamicConstant("mod_name")
     public static final String NAME = "The Midnight";
 
     /**
@@ -62,13 +64,6 @@ public final class MnInfo {
      */
     @DynamicConstant("version_name")
     public static final String VERSION_NAME = "Not A Version";
-
-    /**
-     * The expected SHA256 fingerprint of the Midnight, for verification of the signature. This is dynamically injected
-     * on build. Defaults to an empty string.
-     */
-    @DynamicConstant("expected_sha256")
-    public static final String EXPECTED_SHA256 = "";
 
     /**
      * The build time of the Midnight, which is dynamically injected on build. Defaults to {@code 2038-01-19T03:14:08Z},

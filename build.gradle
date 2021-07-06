@@ -194,7 +194,7 @@ modutil {
     // Constants to inject
     constant('mod_id', mod_id)
     constant('mod_name', mod_name)
-    constant('version', changelogInfo.versionName)
+    constant('version', project.version)
     constant('version_name', changelogInfo.versionName)
     constant('group', project.group)
     constant('build_time', project.ext.timeOfExecution)
