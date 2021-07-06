@@ -29,16 +29,16 @@ public abstract class AbstractMidnightInitEvent extends Event {
     }
 
     /**
-     * Returns the {@link IMidnight} instance.
+     * @return The {@link IMidnight} instance.
      */
     public IMidnight getMidnight() {
-        return midnight;
+        return this.midnight;
     }
 
     /**
-     * Returns the runtime distribution ({@link Dist}) of the Midnight.
+     * @return The runtime {@link Dist} of the Midnight.
      */
     public Dist getRuntimeDist() {
-        return dist;
+        return this.dist;
     }
 }

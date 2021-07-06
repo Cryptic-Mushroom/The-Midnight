@@ -64,6 +64,7 @@ public class InheritingModelGen implements IModelGen {
      * </pre>
      *
      * @param parent The parent model name
+     * @return An inheritance instruction for the model generator.
      */
     public static InheritingModelGen inherit(String parent) {
         return new InheritingModelGen(parent);
@@ -81,6 +82,7 @@ public class InheritingModelGen implements IModelGen {
      * </pre>
      *
      * @param texture The texture
+     * @return A {@code block/cube_all} instruction for the model generator.
      */
     public static InheritingModelGen cubeAll(String texture) {
         return new InheritingModelGen("block/cube_all")
@@ -99,6 +101,7 @@ public class InheritingModelGen implements IModelGen {
      * </pre>
      *
      * @param texture The texture
+     * @return A {@code block/leaves} instruction for the model generator.
      */
     public static InheritingModelGen leaves(String texture) {
         return new InheritingModelGen("block/leaves")
@@ -117,6 +120,7 @@ public class InheritingModelGen implements IModelGen {
      * </pre>
      *
      * @param texture The texture
+     * @return A {@code block/cube_mirrored_all} instruction for the model generator.
      */
     public static InheritingModelGen cubeMirroredAll(String texture) {
         return new InheritingModelGen("block/cube_mirrored_all")
@@ -137,6 +141,7 @@ public class InheritingModelGen implements IModelGen {
      *
      * @param end  The end texture
      * @param side The side texture
+     * @return A {@code block/cube_column} instruction for the model generator.
      */
     public static InheritingModelGen cubeColumn(String end, String side) {
         return new InheritingModelGen("block/cube_column")
@@ -158,6 +163,7 @@ public class InheritingModelGen implements IModelGen {
      *
      * @param end  The end texture
      * @param side The side texture
+     * @return A {@code block/cube_column_horizontal} instruction for the model generator.
      */
     public static InheritingModelGen cubeColumnHoriz(String end, String side) {
         return new InheritingModelGen("block/cube_column_horizontal")
@@ -181,6 +187,7 @@ public class InheritingModelGen implements IModelGen {
      * @param bottom The bottom texture
      * @param top    The top texture
      * @param side   The side texture
+     * @return A {@code block/cube_buttom_top} instruction for the model generator.
      */
     public static InheritingModelGen cubeBottomTop(String bottom, String top, String side) {
         return new InheritingModelGen("block/cube_bottom_top")
@@ -211,6 +218,7 @@ public class InheritingModelGen implements IModelGen {
      * @param west  The west texture
      * @param up    The up texture
      * @param down  The down texture
+     * @return A {@code block/cube} instruction for the model generator.
      */
     public static InheritingModelGen cube(String north, String east, String south, String west, String up, String down) {
         return new InheritingModelGen("block/cube")
@@ -244,6 +252,7 @@ public class InheritingModelGen implements IModelGen {
      * @param west  The west texture
      * @param up    The up texture
      * @param down  The down texture
+     * @return A {@code block/cube_mirrored} instruction for the model generator.
      */
     public static InheritingModelGen cubeMirrored(String north, String east, String south, String west, String up, String down) {
         return new InheritingModelGen("block/cube_mirrored")
@@ -276,6 +285,7 @@ public class InheritingModelGen implements IModelGen {
      * @param side   The side (east, south, west) texture
      * @param top    The top (up) texture
      * @param bottom The bottom (down) texture
+     * @return A {@code block/cube} instruction for the model generator.
      */
     public static InheritingModelGen cubeFrontSided(String front, String side, String top, String bottom) {
         return new InheritingModelGen("block/cube")
@@ -310,6 +320,7 @@ public class InheritingModelGen implements IModelGen {
      * @param side   The side (east, west) texture
      * @param top    The top (up) texture
      * @param bottom The bottom (down) texture
+     * @return A {@code block/cube} instruction for the model generator.
      */
     public static InheritingModelGen cubeFrontBackSided(String front, String back, String side, String top, String bottom) {
         return new InheritingModelGen("block/cube")

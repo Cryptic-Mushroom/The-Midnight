@@ -194,6 +194,8 @@ public class MnDimensionType extends DimensionType {
         /**
          * This method takes all of the {@link Builder}'s attributes and uses them to create a new {@link
          * MnDimensionType}.
+         *
+         * @return The newly-built {@link MnDimensionType}.
          */
         public MnDimensionType build() {
             return new MnDimensionType(

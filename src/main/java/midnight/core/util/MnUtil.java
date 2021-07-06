@@ -35,6 +35,9 @@ public final class MnUtil {
     /**
      * Returns null and deliberately violates its contract of returning a non-null value. Used for fields that get
      * injected by ASM.
+     *
+     * @param <T> A {@code null} type.
+     * @return {@code null}.
      */
     @Nonnull
     @SuppressWarnings("ConstantConditions")
@@ -43,7 +46,10 @@ public final class MnUtil {
     }
 
     /**
-     * Gets an instance specifically for data generation, or another instance if we're not running the data generator.
+     * @param <T>        The {@link Callable Callable's} type for data generation.
+     * @param datagen    The callable used to call for data generation.
+     * @param production Another instance if we're not running data generation.
+     * @return An instance specifically for data generation, or another instance if we're not running data generation.
      */
     public static <T> T callForDatagen(Supplier<Callable<T>> datagen, Supplier<Callable<T>> production) {
         try {
@@ -59,12 +65,14 @@ public final class MnUtil {
 
 
     /**
-     * Modifies the given base night grass color to adapt to nearby color modifiers (see {@link
-     * INightGrassColorModifying}). Takes {@link Minecraft#level} to sample blocks.
+     * Modifies the given base night grass color to adapt to nearby color modifiers. Uses {@link Minecraft#level} to
+     * sample blocks.
      *
      * @param base The base color computed by the color provider
      * @param pos  The location to search nearby color modifiers at
      * @return The modified color
+     *
+     * @see INightGrassColorModifying
      */
     @OnlyIn(Dist.CLIENT)
     public static int modifyGrassColor(int base, BlockPos pos) {

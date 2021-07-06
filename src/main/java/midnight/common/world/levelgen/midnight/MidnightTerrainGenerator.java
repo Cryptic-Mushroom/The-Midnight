@@ -99,6 +99,7 @@ public class MidnightTerrainGenerator extends MidnightGenerator {
      * Computes the noise value at a given block coordinate, by interpolating the nearest values from the current
      * buffer.
      *
+     * @param pos The block pos to get noise at.
      * @return The result of the noise computation.
      */
     protected double getNoiseAt(BlockPos pos) {
@@ -136,7 +137,11 @@ public class MidnightTerrainGenerator extends MidnightGenerator {
     }
 
     /**
-     * Returns the noise value in the given buffer.
+     * @param buf The buffer to get the cached noise for.
+     * @param x   The x level on the 3D noise plane.
+     * @param y   The y level on the 3D noise plane.
+     * @param z   The z level on the 3D noise plane.
+     * @return The noise value in the given buffer.
      */
     protected double getCachedNoiseAt(double[] buf, int x, int y, int z) {
         return buf[(x * 5 + z) * 65 + y];
@@ -144,6 +149,9 @@ public class MidnightTerrainGenerator extends MidnightGenerator {
 
     /**
      * Generates the biome field for the given chunk and nearby.
+     *
+     * @param cx The x coordinate for the chunk.
+     * @param cz The z coordiante for the chunk.
      */
     protected void generateBiomeField(int cx, int cz) {
         Biome[] buf = biomeBuffer.get();
@@ -165,6 +173,9 @@ public class MidnightTerrainGenerator extends MidnightGenerator {
 
     /**
      * Generate the noise field buffer for the given chunk coordinates.
+     *
+     * @param cz The x coordinate for the chunk.
+     * @param cx The z coordinate for the chunk.
      */
     protected void generateNoiseField(int cx, int cz) {
         double[] buf = noiseBuffer.get();
@@ -181,6 +192,11 @@ public class MidnightTerrainGenerator extends MidnightGenerator {
     /**
      * Generate hill noise for the given coordinates and granularity. Higher granularity values result in a rougher and
      * cliffier noise field.
+     *
+     * @param x           The x coordinate.
+     * @param z           The z coordinate.
+     * @param granularity The granularity to use for generating the hill noise.
+     * @return The hill noise.
      */
     protected double genDepthNoise(double x, double z, double granularity) {
         double n = depthNoise.generate(x, z);
@@ -204,6 +220,10 @@ public class MidnightTerrainGenerator extends MidnightGenerator {
      * coordinates and uses them to generate a lower and a higher value. The final noise field is interpolated between
      * these two values.
      *
+     * @param rx The root x coordinate.
+     * @param rz The root z coordinate.
+     * @param x  The x coordinate.
+     * @param z  The z coordinate.
      * @return The generated lower and higher values.
      */
     protected double[] getTerrainInterpolationRange(int rx, int rz, int x, int z) {
@@ -265,6 +285,9 @@ public class MidnightTerrainGenerator extends MidnightGenerator {
      * Generates the buffer of terrain heights, combining the results of {@link #getTerrainInterpolationRange} into one
      * large buffer. Saves performance a lot as we would otherwise call {@link #getTerrainInterpolationRange} many times
      * for the same column.
+     *
+     * @param cx The x coordinate for the chunk.
+     * @param cz The z coordinate for the chunk.
      */
     protected void generateTerrainHeights(int cx, int cz) {
         double[] buf = terrainBuffer.get();
@@ -287,6 +310,7 @@ public class MidnightTerrainGenerator extends MidnightGenerator {
      * @param z  The cell z
      * @param rx The chunk root x in cell coords
      * @param rz The chunk root z in cell coords
+     * @return The noise for the gicen cell coordinates.
      */
     protected double generateNoiseAt(int x, int y, int z, int rx, int rz) {
         double[] terrain = terrainBuffer.get();

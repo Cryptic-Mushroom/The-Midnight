@@ -17,12 +17,9 @@ import midnight.core.dimension.DimensionUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.util.SoundCategory;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 
 /**
  * This class is the handler for music events in The Midnight. I have based my code off of Bailey's music handler from

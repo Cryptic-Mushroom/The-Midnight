@@ -25,7 +25,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface MidnightEventSubscriber {
     /**
-     * The {@link Side} this event handler is exclusive to.
+     * @return The {@link Side} that this event handler is exclusive to.
      */
     Side side() default Side.COMMON;
 }
