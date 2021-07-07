@@ -12,6 +12,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.mojang.datafixers.util.Pair;
+import midnight.MnInfo;
 import midnight.common.Midnight;
 import midnight.common.block.MnBlocks;
 import net.minecraft.data.DataGenerator;
@@ -46,6 +47,11 @@ public class MnStonecuttingRecipeProvider extends RecipeProvider {
         super(gen);
     }
 
+
+    @Override
+    public String getName() {
+        return String.format("%s - Stonecutting Recipes", MnInfo.NAME);
+    }
 
     @Override
     protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
@@ -131,10 +137,5 @@ public class MnStonecuttingRecipeProvider extends RecipeProvider {
         assert fromId != null && toId != null; // If they were null they wouldn't have been registered at all...
 
         return String.format("%s:%s_to_%s_stonecutting", toId.getNamespace(), fromId.getPath(), toId.getPath());
-    }
-
-    @Override
-    public String getName() {
-        return "Midnight - Stonecutting recipes";
     }
 }

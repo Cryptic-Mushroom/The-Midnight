@@ -8,6 +8,7 @@
 
 package midnight.data.recipes;
 
+import midnight.MnInfo;
 import midnight.common.Midnight;
 import midnight.common.block.MnBlocks;
 import midnight.common.item.MnItems;
@@ -26,6 +27,11 @@ public class MnRecipeProvider extends RecipeProvider {
 
     public MnRecipeProvider(DataGenerator gen) {
         super(gen);
+    }
+
+    @Override
+    public String getName() {
+        return String.format("%s - Recipes", MnInfo.NAME);
     }
 
     @Override
@@ -252,10 +258,5 @@ public class MnRecipeProvider extends RecipeProvider {
         CookingRecipeBuilder.cooking(Ingredient.of(from), to, (float) xp, 100, IRecipeSerializer.BLASTING_RECIPE)
                             .unlockedBy("has_ingredient", has(from))
                             .save(consumer, Midnight.id(id + "_blasting"));
-    }
-
-    @Override
-    public String getName() {
-        return "Midnight - Recipes";
     }
 }

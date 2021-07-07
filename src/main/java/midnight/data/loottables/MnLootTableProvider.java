@@ -10,6 +10,7 @@ package midnight.data.loottables;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
+import midnight.MnInfo;
 import midnight.common.misc.MnLootParameterSets;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.LootTableProvider;
@@ -36,16 +37,16 @@ public class MnLootTableProvider extends LootTableProvider {
     }
 
     @Override
+    public String getName() {
+        return String.format("%s - Loot Tables", MnInfo.NAME);
+    }
+
+    @Override
     public List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootParameterSet>> getTables() {
         return tables;
     }
 
     @Override
     protected void validate(Map<ResourceLocation, LootTable> map, ValidationTracker tracker) {
-    }
-
-    @Override
-    public String getName() {
-        return "Midnight - Loot tables";
     }
 }

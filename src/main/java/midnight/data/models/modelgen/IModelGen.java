@@ -12,6 +12,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.minecraft.util.ResourceLocation;
 
+@Deprecated
 @FunctionalInterface
 public interface IModelGen {
     IModelGen EMPTY = name -> new JsonObject();

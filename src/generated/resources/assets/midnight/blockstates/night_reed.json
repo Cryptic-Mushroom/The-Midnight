@@ -1,16 +1,16 @@
 {
   "variants": {
-    "waterlogged=true,end=false": {
-      "model": "midnight:block/night_reed_flooded"
-    },
-    "waterlogged=true,end=true": {
-      "model": "midnight:block/night_reed_flooded_end"
-    },
-    "waterlogged=false,end=false": {
+    "end=false,waterlogged=false": {
       "model": "midnight:block/night_reed"
     },
-    "waterlogged=false,end=true": {
+    "end=true,waterlogged=false": {
       "model": "midnight:block/night_reed_end"
+    },
+    "end=false,waterlogged=true": {
+      "model": "midnight:block/night_reed_flooded"
+    },
+    "end=true,waterlogged=true": {
+      "model": "midnight:block/night_reed_flooded_end"
     }
   }
 }

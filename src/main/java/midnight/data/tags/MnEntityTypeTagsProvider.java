@@ -8,6 +8,7 @@
 
 package midnight.data.tags;
 
+import midnight.MnInfo;
 import midnight.common.misc.tags.MnEntityTypeTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.TagsProvider;
@@ -36,6 +37,6 @@ public class MnEntityTypeTagsProvider extends TagsProvider<EntityType<?>> {
 
     @Override
     public String getName() {
-        return "Midnight - Entity type tags";
+        return String.format("%s - Entity Type Tags", MnInfo.NAME);
     }
 }

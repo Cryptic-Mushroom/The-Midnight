@@ -15,6 +15,7 @@ import midnight.data.models.modelgen.IModelGen;
 
 import java.util.function.BiConsumer;
 
+@Deprecated
 public final class ModelInfo {
     private final String model;
     private IModelGen modelgen;
