@@ -162,7 +162,13 @@ public class MnBlockStateProvider extends BlockStateProvider {
         this.simple(MnBlocks.GLOB_FUNGUS_THATCH, this::cubeAll);
         this.simple(MnBlocks.GLOB_FUNGUS, this::cross);
         this.rotatedPillar(MnBlocks.GLOB_FUNGUS_STEM, this::cubeColumn);
-        this.horizRotated(MnBlocks.INFESTED_GLOB_FUNGUS_STEM, block -> this.cubeFrontSided(block, this.blockTexture(block), this.blockFolder("glob_fungus_stem_side", true), this.blockFolder("glob_fungus_stem_end", true), this.blockFolder("glob_fungus_stem_end", true)), true);
+        this.horizRotated(MnBlocks.INFESTED_GLOB_FUNGUS_STEM, block -> this.cubeFrontSided(
+            block, // name
+            this.blockTexture(block), // front
+            this.blockFolder("glob_fungus_stem_side", true), // side
+            this.blockFolder("glob_fungus_stem_end", true), // bottom
+            this.blockFolder("glob_fungus_stem_end", true) // top
+        ), true);
 
         this.simple(MnBlocks.MISTSHROOM, this::cross);
         this.doublePlant(MnBlocks.TALL_MISTSHROOM, this::cross);
@@ -172,7 +178,7 @@ public class MnBlockStateProvider extends BlockStateProvider {
         this.simple(MnBlocks.RUNEBUSH, this::cross);
         this.simple(MnBlocks.BOGWEED, this::cross);
         this.simple(MnBlocks.CRYSTALOTUS, this::crystalotus);
-        // MnBlocks.SUAVIS is currently generated using the custom generator.
+        // MnBlocks.SUAVIS block state and models has been moved to the main/resources folder.
         this.growableRotY(MnBlocks.VIOLEAF, this::flatPlant, VioleafBlock.GROWN);
         this.simple(MnBlocks.TENDRILWEED, this::cross);
         this.nightReed(MnBlocks.NIGHT_REED, this::cross);
