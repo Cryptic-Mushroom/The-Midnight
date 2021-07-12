@@ -46,7 +46,8 @@ public class VigilantForestFactory extends BiomeFactory {
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.GHOST_PLANTS)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, MnFeatures.ConfiguredFeatures.CRYSTALOTUS)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, MnFeatures.ConfiguredFeatures.VIOLEAF)
-                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.SUAVIS_SPARSE)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.TENDRILWEED)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.SUAVIS_SPARSE)           
                            .build()
                    )
                    .mobSpawnSettings(
