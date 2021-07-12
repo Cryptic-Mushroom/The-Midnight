@@ -8,7 +8,6 @@
 
 package midnight.server;
 
-import midnight.client.MidnightClient;
 import midnight.common.Midnight;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.registry.DynamicRegistries;
@@ -31,8 +30,8 @@ public class MidnightServer extends Midnight {
     }
 
     /**
-     * Returns the direct instance of {@link MidnightServer}, or throws a {@link ClassCastException} when not running on
-     * the dedicated server (that would already have caused a class loading failure in most cases).
+     * @return The direct instance of {@link MidnightServer}, or throws a {@link ClassCastException} when not running on
+     *     the dedicated server (that would already have caused a class loading failure in most cases).
      */
     public static MidnightServer get() {
         return (MidnightServer) Midnight.get();

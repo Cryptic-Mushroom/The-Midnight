@@ -27,7 +27,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface MidnightPlugin {
     /**
-     * The {@link Side} this plugin is exclusive to.
+     * @return The {@link Side} that this plugin is exclusive to.
      */
     Side side() default Side.COMMON;
 }

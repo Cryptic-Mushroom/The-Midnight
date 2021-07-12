@@ -1,22 +1,22 @@
 {
   "variants": {
-    "facing=east": {
-      "model": "midnight:block/nightshroom_shelf",
-      "y": 90
+    "facing=up": {
+      "model": "midnight:block/nightshroom_fan"
+    },
+    "facing=north": {
+      "model": "midnight:block/nightshroom_shelf"
     },
     "facing=south": {
       "model": "midnight:block/nightshroom_shelf",
       "y": 180
     },
-    "facing=north": {
-      "model": "midnight:block/nightshroom_shelf"
-    },
-    "facing=up": {
-      "model": "midnight:block/nightshroom_fan"
-    },
     "facing=west": {
       "model": "midnight:block/nightshroom_shelf",
       "y": 270
+    },
+    "facing=east": {
+      "model": "midnight:block/nightshroom_shelf",
+      "y": 90
     }
   }
 }

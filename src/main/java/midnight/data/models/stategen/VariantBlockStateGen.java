@@ -10,11 +10,13 @@ package midnight.data.models.stategen;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import midnight.data.models.MnBlockStateProvider;
 import midnight.data.models.modelgen.IModelGen;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.state.Property;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.generators.VariantBlockStateBuilder;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,6 +24,13 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * @see MnBlockStateProvider
+ * @see VariantBlockStateBuilder
+ * @deprecated This class is an artifact of the old custom block state generator we used to use. For new block state
+ *     generation using Forge's system, see {@link MnBlockStateProvider}.
+ */
+@Deprecated
 public class VariantBlockStateGen implements IBlockStateGen {
 
     private static final Function<Map.Entry<Property<?>, Comparable<?>>, String> PROPERTY_MAP_PRINTER = new Function<Map.Entry<Property<?>, Comparable<?>>, String>() {

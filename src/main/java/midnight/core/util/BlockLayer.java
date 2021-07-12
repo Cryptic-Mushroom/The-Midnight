@@ -27,7 +27,7 @@ public enum BlockLayer {
     TRANSLUCENT;
 
     /**
-     * Returns the corresponding {@link RenderType} for this render layer.
+     * @return The corresponding {@link RenderType} for this render layer.
      */
     @OnlyIn(Dist.CLIENT)
     public RenderType getRenderType() {
@@ -45,7 +45,8 @@ public enum BlockLayer {
     }
 
     /**
-     * Returns the render layer corresponding to the specified {@link RenderType}, or {@link #SOLID} if not found.
+     * @param type The render type to get the {@link BlockLayer} from.
+     * @return The render layer corresponding to the specified {@link RenderType}, or {@link #SOLID} if not found.
      */
     @OnlyIn(Dist.CLIENT)
     public static BlockLayer getFromRenderType(RenderType type) {

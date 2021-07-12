@@ -26,7 +26,6 @@ import net.minecraft.util.registry.DynamicRegistries;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.LogicalSidedProvider;
 
@@ -102,8 +101,8 @@ public class MidnightClient extends Midnight {
     }
 
     /**
-     * Returns the direct instance of {@link MidnightClient}, or throws a {@link ClassCastException} when not on the
-     * client (that would already have caused a class loading failure in most cases).
+     * @return The direct instance of {@link MidnightClient}, or throws a {@link ClassCastException} when not on the
+     *     client (that would already have caused a class loading failure in most cases).
      */
     public static MidnightClient get() {
         return (MidnightClient) Midnight.get();

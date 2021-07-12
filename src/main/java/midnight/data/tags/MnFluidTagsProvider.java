@@ -8,6 +8,7 @@
 
 package midnight.data.tags;
 
+import midnight.MnInfo;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.TagsProvider;
 import net.minecraft.fluid.Fluid;
@@ -24,16 +25,16 @@ public class MnFluidTagsProvider extends TagsProvider<Fluid> {
     }
 
     @Override
+    public String getName() {
+        return String.format("%s - Fluid Tags", MnInfo.NAME);
+    }
+
+    @Override
     protected void addTags() {
     }
 
     @Override
     protected Path getPath(ResourceLocation id) {
         return generator.getOutputFolder().resolve("data/" + id.getNamespace() + "/tags/fluids/" + id.getPath() + ".json");
-    }
-
-    @Override
-    public String getName() {
-        return "Midnight - Fluid tags";
     }
 }

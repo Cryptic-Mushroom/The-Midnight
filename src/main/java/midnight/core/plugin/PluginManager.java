@@ -125,7 +125,8 @@ public final class PluginManager {
     /**
      * Gets all plugin instances of a specific type, cast to that specific type.
      *
-     * @param type The type class
+     * @param type The {@link Class} holding the type.
+     * @param <T>  The specific type to cast to.
      * @return A list of cast plugin instances.
      */
     public <T> List<T> getAllOfType(Class<T> type) {

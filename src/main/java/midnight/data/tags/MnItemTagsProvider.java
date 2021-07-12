@@ -8,6 +8,7 @@
 
 package midnight.data.tags;
 
+import midnight.MnInfo;
 import midnight.common.item.MnItems;
 import midnight.common.misc.tags.MnBlockTags;
 import midnight.common.misc.tags.MnItemTags;
@@ -33,6 +34,11 @@ public class MnItemTagsProvider extends TagsProvider<Item> {
     public MnItemTagsProvider(DataGenerator gen, MnBlockTagsProvider blockTags, ExistingFileHelper helper) {
         super(gen, Registry.ITEM, "midnight", helper);
         this.builderGetter = blockTags::getBuilder;
+    }
+
+    @Override
+    public String getName() {
+        return String.format("%s - Item Tags", MnInfo.NAME);
     }
 
     @Override
@@ -98,10 +104,5 @@ public class MnItemTagsProvider extends TagsProvider<Item> {
         ITag.Builder itemBuilder = getBuilder(itemTag);
         ITag.Builder blockBuilder = builderGetter.apply(blockTag);
         blockBuilder.getEntries().forEach(itemBuilder::add);
-    }
-
-    @Override
-    public String getName() {
-        return "Midnight - Item tags";
     }
 }

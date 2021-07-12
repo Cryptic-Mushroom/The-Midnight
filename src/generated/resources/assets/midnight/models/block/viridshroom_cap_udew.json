@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:block/cube",
   "textures": {
-    "north": "midnight:block/viridshroom_cap",
-    "east": "midnight:block/viridshroom_cap_inner",
-    "south": "midnight:block/viridshroom_cap",
-    "west": "midnight:block/viridshroom_cap_inner",
-    "up": "midnight:block/viridshroom_cap_inner",
     "down": "midnight:block/viridshroom_cap_inner",
+    "up": "midnight:block/viridshroom_cap_inner",
+    "north": "midnight:block/viridshroom_cap",
+    "south": "midnight:block/viridshroom_cap",
+    "east": "midnight:block/viridshroom_cap_inner",
+    "west": "midnight:block/viridshroom_cap_inner",
     "particle": "midnight:block/viridshroom_cap_inner"
   }
 }

@@ -21,7 +21,6 @@ import net.minecraft.world.biome.Biome;
  * @author Shadew
  * @since 0.6.0
  */
-// TODO Mix this class into Biome
 /* (Removed part of javadoc)
  * Notable is that builtin Midnight biomes dignore any Features, Carvers, Structures and Spawns that were added via the
  * default biome methods, in order to prevent features etc. from mods that modify all registered biomes to their
@@ -29,10 +28,11 @@ import net.minecraft.world.biome.Biome;
  * interface and not via the biome class itself. For example, to add a feature to a Midnight biome, one should use
  * {@link IMidnightBiome#addMidnightFeature} instead of {@link Biome#addFeature}.
  */
+// TODO Mix this class into Biome
 public interface IMidnightBiome {
 
     /**
-     * Returns the {@link Biome} that implemented this interface.
+     * @return The {@link Biome} that implemented this interface.
      */
     default Biome getBiome() {
         // Biome is final, cast
@@ -40,52 +40,61 @@ public interface IMidnightBiome {
     }
 
     /**
-     * Returns the Night Grass color for this biome at a specific position. For most biomes this color is independent of
-     * the position but a single biome may use noise to alter the color for a specific location.
+     * @param x The x coordinate.
+     * @param z The z coordinate.
+     * @return The Night Grass color for this biome at a specific position. For most biomes this color is independent of
+     *     the position but a single biome may use noise to alter the color for a specific location.
      */
     int getMidnightGrassColor(double x, double z);
 
     /**
-     * Returns the Dark Water color for this biome at a specific position. For most biomes this color is independent of
-     * the position but a single biome may use noise to alter the color for a specific location.
+     * @param x The x coordinate.
+     * @param z The z coordinate.
+     * @return The Dark Water color for this biome at a specific position. For most biomes this color is independent of
+     *     the position but a single biome may use noise to alter the color for a specific location.
      */
     int getMidnightWaterColor(double x, double z);
 
     /**
-     * Returns the Shadowroot Leaves color for this biome at a specific position. For most biomes this color is
-     * independent of the position but a single biome may use noise to alter the color for a specific location.
+     * @param x The x coordinate.
+     * @param z The z coordinate.
+     * @return The Shadowroot Leaves color for this biome at a specific position. For most biomes this color is
+     *     independent of the position but a single biome may use noise to alter the color for a specific location.
      */
     int getShadowrootColor(double x, double z);
 
     /**
-     * Returns the base terrain height of this biome, as an offset from the water level. This height factor is scaled by
-     * 4, so if this returns 1 the terrain is raised by 4 blocks.
+     * @return The base terrain height of this biome, as an offset from the water level. This height factor is scaled by
+     *     4, so if this returns 1 the terrain is raised by 4 blocks.
      */
     double getTerrainHeight();
 
     /**
-     * Returns the noise interpolation range of this biome - the difference. This range factor is scaled by 4, so if
-     * this returns 1 the terrain differs 4 blocks in height.
+     * @return The noise interpolation range of this biome - the difference. This range factor is scaled by 4, so if
+     *     this returns 1 the terrain differs 4 blocks in height.
      */
     double getTerrainDifference();
 
     /**
-     * Returns the variation in the base terrain height of this biome - the hilliness. This hilliness factor is scaled
-     * by 4, so if this returns 1 the base height differs by 4 blocks.
+     * @return The variation in the base terrain height of this biome - the hilliness. This hilliness factor is scaled
+     *     by 4, so if this returns 1 the base height differs by 4 blocks.
      */
     double getTerrainHilliness();
 
     /**
-     * Returns the granularity of the terrain, determining how cliffy and eroded the terrain looks. Lower values make a
-     * smoother terrain, while higher values make a more granulated terrain.
+     * @return The granularity of the terrain, determining how cliffy and eroded the terrain looks. Lower values make a
+     *     smoother terrain, while higher values make a more granulated terrain.
      */
     double getTerrainGranularity();
 
     /**
-     * Get the {@link IMidnightBiome} for a specific biome. This will always return a valid {@link IMidnightBiome}
-     * instance, even for biomes that do not implement that interface - if there is no implementation present, a default
-     * implementation wrapper will be returned. This means that you <b>CANNOT</b> cast the result of this method to
-     * {@link Biome} directly (it may return a wrapper) - use {@link #getBiome} for that instead.
+     * Gets the {@link IMidnightBiome} for a specific {@link Biome}. This will always return a valid {@link
+     * IMidnightBiome} instance, even for biomes that do not implement that interface - if there is no implementation
+     * present, a default implementation wrapper will be returned. This means that you <b>CANNOT</b> cast the result of
+     * this method to {@link Biome} directly (it may return a wrapper) - use {@link #getBiome()} for that instead.
+     *
+     * @param biome The biome to get the {@link IMidnightBiome} for.
+     * @return The {@link IMidnightBiome} for the given {@link Biome}.
      */
     @SuppressWarnings("ConstantConditions")
     static IMidnightBiome get(Biome biome) {

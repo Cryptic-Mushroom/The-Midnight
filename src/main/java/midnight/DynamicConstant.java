@@ -26,7 +26,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.SOURCE)
 public @interface DynamicConstant {
     /**
-     * The constant name to inject, set in the Gradle buildscript.
+     * @return The constant name to inject, set in the Gradle buildscript.
      */
     String value();
 }

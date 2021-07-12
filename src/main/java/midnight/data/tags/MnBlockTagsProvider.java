@@ -8,6 +8,7 @@
 
 package midnight.data.tags;
 
+import midnight.MnInfo;
 import midnight.common.block.MnBlocks;
 import midnight.common.misc.tags.MnBlockTags;
 import net.minecraft.block.Block;
@@ -26,6 +27,11 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
     @SuppressWarnings("deprecation") // We need Registry.BLOCK. Sorry Forge...
     public MnBlockTagsProvider(DataGenerator gen, ExistingFileHelper helper) {
         super(gen, Registry.BLOCK, "midnight", helper);
+    }
+
+    @Override
+    public String getName() {
+        return String.format("%s - Block Tags", MnInfo.NAME);
     }
 
     @Override
@@ -209,10 +215,5 @@ public class MnBlockTagsProvider extends TagsProvider<Block> {
     @Override
     protected Path getPath(ResourceLocation id) {
         return generator.getOutputFolder().resolve("data/" + id.getNamespace() + "/tags/blocks/" + id.getPath() + ".json");
-    }
-
-    @Override
-    public String getName() {
-        return "Midnight - Block tags";
     }
 }

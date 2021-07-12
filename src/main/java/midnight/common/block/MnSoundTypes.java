@@ -15,8 +15,6 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraftforge.common.util.ForgeSoundType;
 
-import java.util.function.Supplier;
-
 /**
  * This class holds all the different sound types for various blocks, entities, the dimension, etc.
  *

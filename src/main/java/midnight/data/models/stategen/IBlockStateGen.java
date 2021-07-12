@@ -15,6 +15,7 @@ import net.minecraft.util.ResourceLocation;
 
 import java.util.function.BiConsumer;
 
+@Deprecated
 public interface IBlockStateGen {
     JsonElement makeJson(ResourceLocation id, Block block);
     void getModels(BiConsumer<String, IModelGen> consumer);

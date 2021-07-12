@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column",
   "textures": {
-    "end": "midnight:block/glob_fungus_stem_end",
-    "side": "midnight:block/glob_fungus_stem_side"
+    "side": "midnight:block/glob_fungus_stem_side",
+    "end": "midnight:block/glob_fungus_stem_end"
   }
 }

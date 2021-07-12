@@ -115,13 +115,14 @@ public abstract class Midnight extends MidnightCore {
     }
 
     @Override
+    @Deprecated
     public IMidnightObjects getObjects() {
         return MnObjects.INSTANCE;
     }
 
     /**
-     * Returns the current {@link Midnight} instance, as in {@link MidnightMod#MIDNIGHT}. Prefer using this over using
-     * {@link MidnightMod#MIDNIGHT} itself.
+     * @return The current {@link Midnight} instance, as in {@link MidnightMod#MIDNIGHT}. Prefer using this over using
+     *     {@link MidnightMod#MIDNIGHT} itself.
      */
     public static Midnight get() {
         return MidnightMod.MIDNIGHT;

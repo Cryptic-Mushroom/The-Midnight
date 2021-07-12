@@ -40,15 +40,16 @@ public interface IMidnight {
     IEventBus EVENT_BUS = BusBuilder.builder().startShutdown().build();
 
     /**
-     * Returns the {@link Dist} the Midnight is running on.
+     * @return The {@link Dist} the Midnight is currently running on.
      */
     Dist getRuntimeDist();
 
     /**
-     * Returns the object manager of the Midnight. This is the base access to all Midnight objects, giving access to
-     * registered objects ({@link Block}, {@link Item}, {@link Fluid}), but also to unregistered objects ({@link
-     * Material}, {@link Food}, {@link SoundType}).
+     * @return The object manager of the Midnight. This is the base access to all Midnight objects, giving access to
+     *     registered objects ({@link Block}, {@link Item}, {@link Fluid}), but also to unregistered objects ({@link
+     *     Material}, {@link Food}, {@link SoundType}).
      */
+    @Deprecated
     IMidnightObjects getObjects();
 
     /**
@@ -86,7 +87,7 @@ public interface IMidnight {
 
 
     /**
-     * Create a {@link ResourceLocation} with {@link IMidnightInfo#modid() midnight} as default namespace.
+     * Create a {@link ResourceLocation} with {@link MnInfo#MOD_ID midnight} as default namespace.
      * <ul>
      * <li>{@code "minecraft:path"} will yield {@code minecraft:path}</li>
      * <li>{@code "midnight:path"} will yield {@code midnight:path}</li>
@@ -106,8 +107,8 @@ public interface IMidnight {
     }
 
     /**
-     * Create a stringified {@link ResourceLocation} with {@link IMidnightInfo#modid() midnight} as default namespace.
-     * See {@link #id}.
+     * Create a stringified {@link ResourceLocation} with {@link MnInfo#MOD_ID midnight} as default namespace. See
+     * {@link #id}.
      *
      * @param path The resource path.
      * @return The created resource id.

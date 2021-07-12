@@ -8,8 +8,10 @@
 
 package midnight.data;
 
+import midnight.MnInfo;
 import midnight.data.loottables.MnLootTableProvider;
-import midnight.data.models.MnStateModelProvider;
+import midnight.data.models.MnBlockStateProvider;
+import midnight.data.models.MnItemModelProvider;
 import midnight.data.recipes.MnRecipeProvider;
 import midnight.data.recipes.MnStonecuttingRecipeProvider;
 import midnight.data.tags.MnBlockTagsProvider;
@@ -19,8 +21,6 @@ import midnight.data.tags.MnItemTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 
 /**
@@ -43,7 +43,8 @@ public final class MidnightData {
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
         if (event.includeClient()) {
-            gen.addProvider(new MnStateModelProvider(gen));
+            gen.addProvider(new MnBlockStateProvider(gen, MnInfo.MOD_ID, existingFileHelper));
+            gen.addProvider(new MnItemModelProvider(gen, MnInfo.MOD_ID, existingFileHelper));
         }
 
         if (event.includeServer()) {

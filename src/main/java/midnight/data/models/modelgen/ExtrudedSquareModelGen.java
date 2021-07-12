@@ -31,6 +31,8 @@ import net.minecraft.util.ResourceLocation;
  * {@code * - *-------------* x>*}
  * </pre>
  */
+@Deprecated
+// TODO Figure out Suavis asset generation using Forge's client data generation.
 public class ExtrudedSquareModelGen implements IModelGen {
     private final ResourceLocation top;
     private final ResourceLocation side;

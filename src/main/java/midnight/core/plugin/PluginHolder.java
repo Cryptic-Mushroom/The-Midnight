@@ -79,21 +79,21 @@ public class PluginHolder {
     }
 
     /**
-     * Returns the plugin class.
+     * @return The plugin {@link Class}.
      */
     public Class<?> getClazz() {
         return clazz;
     }
 
     /**
-     * Returns the plugin annotation instance.
+     * @return The plugin annotation instance.
      */
     public MidnightPlugin getPlugin() {
         return plugin;
     }
 
     /**
-     * Returns the plugin instance.
+     * @return The plugin instance.
      */
     public Object getInstance() {
         return instance;
