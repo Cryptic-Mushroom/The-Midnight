@@ -45,9 +45,7 @@ public abstract class MnFeatureFactory {
             DoublePlantBlockPlacer.INSTANCE
         );
     }
-
-
-
+    
     public static ConfiguredFeature<?, ?> deadLog(Block log) {
         return MnFeatures.DEAD_LOG.configured(new DeadLogFeatureConfig(
             new SimpleBlockStateProvider(log.defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X)),

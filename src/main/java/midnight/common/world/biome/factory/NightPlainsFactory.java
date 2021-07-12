@@ -8,8 +8,7 @@
 
 package midnight.common.world.biome.factory;
 
-import midnight.common.block.MnBlocks;
-import midnight.common.world.levelgen.feature.MnFeatureFactory;
+import midnight.common.world.levelgen.feature.MnFeatures;
 import midnight.common.world.levelgen.surface.MnConfiguredSurfaceBuilders;
 import midnight.core.biome.BiomeColoring;
 import midnight.core.biome.MnBiomeBuilder;
@@ -19,29 +18,8 @@ import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.Features;
-import net.minecraft.world.gen.placement.NoiseDependant;
-import net.minecraft.world.gen.placement.Placement;
 
 public class NightPlainsFactory extends BiomeFactory {
-
-    private static final ConfiguredFeature<?, ?> GRASS =
-        MnFeatureFactory.simplePatch(MnBlocks.NIGHT_GRASS.defaultBlockState(), 32)
-                        .decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE)
-                        .decorated(Placement.COUNT_NOISE.configured(new NoiseDependant(-0.8, 5, 10)));
-
-    private static final ConfiguredFeature<?, ?> TALL_GRASS =
-        MnFeatureFactory.doublePlantPatch(MnBlocks.TALL_NIGHT_GRASS.defaultBlockState(), 32)
-                        .decorated(Features.Placements.ADD_32)
-                        .decorated(Features.Placements.HEIGHTMAP)
-                        .squared()
-                        .decorated(Placement.COUNT_NOISE.configured(new NoiseDependant(-0.8, 0, 7)));
-
-    private static final ConfiguredFeature<?, ?> GHOST_PLANTS =
-        MnFeatureFactory.simplePatch(MnBlocks.GHOST_PLANT.defaultBlockState(), 32)
-                        .decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE);
-
 
     @Override
     public Biome makeBiome(MnBiomeBuilder builder) {
@@ -61,9 +39,12 @@ public class NightPlainsFactory extends BiomeFactory {
                    .generationSettings(
                        new BiomeGenerationSettings.Builder()
                            .surfaceBuilder(MnConfiguredSurfaceBuilders.DEFAULT_NIGHT_GRASS)
-                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, GRASS)
-                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, TALL_GRASS)
-                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, GHOST_PLANTS)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, MnFeatures.ConfiguredFeatures.GRASS_PLAIN)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, MnFeatures.ConfiguredFeatures.TALL_GRASS_FOREST)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, MnFeatures.ConfiguredFeatures.GHOST_PLANTS)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, MnFeatures.ConfiguredFeatures.GLOB_FUNGUS)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, MnFeatures.ConfiguredFeatures.BRISTLY_GRASS)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, MnFeatures.ConfiguredFeatures.CRYSTALOTUS)
                            .build()
                    )
                    .mobSpawnSettings(
@@ -71,7 +52,7 @@ public class NightPlainsFactory extends BiomeFactory {
                    )
                    .coloring(
                        new BiomeColoring.Builder()
-                           .grassColor(0x8F54A1)
+                           .grassColor(0x8e609c)
                            .waterColor(0x2C0266)
                            .build()
                    )
