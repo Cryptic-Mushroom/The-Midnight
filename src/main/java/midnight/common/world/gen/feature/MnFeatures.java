@@ -9,6 +9,7 @@
 package midnight.common.world.gen.feature;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import midnight.common.Midnight;
@@ -16,7 +17,9 @@ import midnight.common.block.MnBlocks;
 import midnight.common.block.SuavisBlock;
 import midnight.common.block.VioleafBlock;
 import net.minecraft.util.registry.WorldGenRegistries;
+import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
+import net.minecraft.world.gen.feature.BlockClusterFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.Features;
@@ -53,6 +56,7 @@ public abstract class MnFeatures {
     		return WorldGenRegistries.register(WorldGenRegistries.CONFIGURED_FEATURE, Midnight.id(id), feature); 
         }
     	
+    	// To-Do: Java rng bad, causes features to generate very clumpy. Fix by giving each feature a different number of .chance(1) configs OR find out if fixed in 1.17.
     	public static final ConfiguredFeature<?, ?> NIGHTSTONE_BOULDER = register("nightstone_boulder",
     			MnFeatures.NIGHTSTONE_BOULDER.configured(new TwoBlockStateProvidingFeatureConfig(new SimpleBlockStateProvider(MnBlocks.NIGHTSTONE.defaultBlockState()), new SimpleBlockStateProvider(MnBlocks.NIGHTSTONE.defaultBlockState())))
     			.decorated(Features.Placements.HEIGHTMAP_WORLD_SURFACE)
@@ -113,7 +117,7 @@ public abstract class MnFeatures {
     	        .chance(7));
     	
     	public static final ConfiguredFeature<?, ?> CRYSTALOTUS = register("crystalotus",
-    	        MnFeatureFactory.simplePatch(MnBlocks.CRYSTALOTUS.defaultBlockState(), 16)
+    	        Feature.RANDOM_PATCH.configured((new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(MnBlocks.CRYSTALOTUS.defaultBlockState()), SimpleBlockPlacer.INSTANCE)).tries(32).build())
     	        .decorated(Features.Placements.HEIGHTMAP_DOUBLE_SQUARE)
     	        .chance(6));
     	

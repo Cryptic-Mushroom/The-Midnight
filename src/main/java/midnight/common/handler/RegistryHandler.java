@@ -15,6 +15,7 @@ import midnight.common.item.MnItems;
 import midnight.common.misc.MnParticleTypes;
 import midnight.common.misc.MnSoundEvents;
 import midnight.common.world.biome.MnBiomes;
+import midnight.common.world.gen.carver.MnCarvers;
 import midnight.common.world.gen.feature.MnFeatures;
 import midnight.common.world.gen.surface.MnSurfaceBuilders;
 import midnight.core.util.IRegistry;
@@ -25,6 +26,7 @@ import net.minecraft.item.Item;
 import net.minecraft.particles.ParticleType;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.carver.WorldCarver;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraftforge.event.RegistryEvent;
@@ -50,6 +52,7 @@ public final class RegistryHandler {
         mod.addGenericListener(SurfaceBuilder.class, RegistryHandler::registerSurfaceBuilders);
         mod.addGenericListener(ParticleType.class, RegistryHandler::registerParticleTypes);
         mod.addGenericListener(Feature.class, RegistryHandler::registerFeatures);
+        mod.addGenericListener(WorldCarver.class, RegistryHandler::registerCarvers);
     }
 
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
@@ -86,5 +89,9 @@ public final class RegistryHandler {
 
     public static void registerFeatures(RegistryEvent.Register<Feature<?>> event) {
         MnFeatures.registerFeatures(event.getRegistry());
+    }
+    
+    public static void registerCarvers(RegistryEvent.Register<WorldCarver<?>> event) {
+    	MnCarvers.registerCarvers(event.getRegistry());
     }
 }

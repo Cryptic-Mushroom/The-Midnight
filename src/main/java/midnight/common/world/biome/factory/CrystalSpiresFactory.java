@@ -8,6 +8,7 @@
 
 package midnight.common.world.biome.factory;
 
+import midnight.common.world.gen.carver.MnCarvers;
 import midnight.common.world.gen.feature.MnFeatures.ConfiguredFeatures;
 import midnight.common.world.gen.surface.MnConfiguredSurfaceBuilders;
 import midnight.core.biome.BiomeColoring;
@@ -18,9 +19,9 @@ import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.GenerationStage.Carving;
 
-public final class CrystalSpiresFactory implements IBiomeFactory {
-    
+public final class CrystalSpiresFactory implements IBiomeFactory {    
 
     @Override
     public Biome makeBiome(MnBiomeBuilder builder) {
@@ -40,6 +41,7 @@ public final class CrystalSpiresFactory implements IBiomeFactory {
                    .generationSettings(
                        new BiomeGenerationSettings.Builder()
                            .surfaceBuilder(MnConfiguredSurfaceBuilders.DEFAULT_NIGHT_GRASS)
+                           .addCarver(Carving.AIR, MnCarvers.ConfiguredCarvers.MIDNIGHT_CAVE)
                            .addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, ConfiguredFeatures.HUGE_CRYSTAL_SPIRE)
                            .addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, ConfiguredFeatures.CRYSTAL_SPIRE)
                            .addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, ConfiguredFeatures.CRYSTAL_CLUSTER)

@@ -11,6 +11,9 @@ import net.minecraft.world.ISeedReader;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 
+/**
+ * Ported class
+ */
 public class BoulderFeature extends Feature<TwoBlockStateProvidingFeatureConfig> {
 
 	public BoulderFeature(Codec<TwoBlockStateProvidingFeatureConfig> codec) {

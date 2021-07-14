@@ -13,12 +13,15 @@ import net.minecraft.world.ISeedReader;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 
+/**
+ * Ported class
+ */
 public class CrystalClusterFeature extends Feature<TwoBlockStateProvidingFeatureConfig> {
 	
 	private final int radius;
 	private final int maxHeight;
 
-	public CrystalClusterFeature(Codec<TwoBlockStateProvidingFeatureConfig> codec, int radius, int maxHeight) { // Might want to make this datapack configurable
+	public CrystalClusterFeature(Codec<TwoBlockStateProvidingFeatureConfig> codec, int radius, int maxHeight) { //To-Do: Might want to make this datapack configurable instead
 		super(codec);
 		this.radius = radius;
 		this.maxHeight = maxHeight;

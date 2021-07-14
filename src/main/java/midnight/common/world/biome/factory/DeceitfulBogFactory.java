@@ -8,6 +8,7 @@
 
 package midnight.common.world.biome.factory;
 
+import midnight.common.world.gen.carver.MnCarvers;
 import midnight.common.world.gen.feature.MnFeatures.ConfiguredFeatures;
 import midnight.common.world.gen.surface.MnConfiguredSurfaceBuilders;
 import midnight.core.biome.BiomeColoring;
@@ -18,6 +19,7 @@ import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.GenerationStage.Carving;
 
 public final class DeceitfulBogFactory implements IBiomeFactory {
 
@@ -39,6 +41,7 @@ public final class DeceitfulBogFactory implements IBiomeFactory {
                    .generationSettings(
                        new BiomeGenerationSettings.Builder()
                            .surfaceBuilder(MnConfiguredSurfaceBuilders.DECEITFUL_BOG)
+                           .addCarver(Carving.AIR, MnCarvers.ConfiguredCarvers.MIDNIGHT_CAVE)
                            .addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ConfiguredFeatures.DARK_PEARL_ORE)
                            .addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ConfiguredFeatures.EBONITE_ORE)
                            .addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ConfiguredFeatures.NAGRILITE_ORE)
