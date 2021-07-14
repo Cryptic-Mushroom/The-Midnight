@@ -11,6 +11,6 @@ package midnight.common.world.biome.factory;
 import midnight.core.biome.MnBiomeBuilder;
 import net.minecraft.world.biome.Biome;
 
-public abstract class BiomeFactory {
-    public abstract Biome makeBiome(MnBiomeBuilder builder);
+public interface IBiomeFactory {
+    Biome makeBiome(MnBiomeBuilder builder);
 }

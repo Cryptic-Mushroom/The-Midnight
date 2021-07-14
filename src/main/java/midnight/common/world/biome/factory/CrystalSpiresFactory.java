@@ -19,7 +19,7 @@ import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.gen.GenerationStage;
 
-public class CrystalSpiresFactory extends BiomeFactory {
+public final class CrystalSpiresFactory implements IBiomeFactory {
     
 
     @Override

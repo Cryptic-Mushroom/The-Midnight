@@ -19,7 +19,7 @@ import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.gen.GenerationStage;
 
-public class NightPlainsFactory extends BiomeFactory {
+public final class NightPlainsFactory implements IBiomeFactory {
 
     @Override
     public Biome makeBiome(MnBiomeBuilder builder) {

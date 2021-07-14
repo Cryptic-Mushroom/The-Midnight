@@ -47,7 +47,7 @@ public final class MnBiomes {
         );
     }
 
-    private static Biome make(String id, BiomeFactory factory) {
+    private static Biome make(String id, IBiomeFactory factory) {
         return factory.makeBiome(new MnBiomeBuilder(Midnight.id(id)));
     }
 

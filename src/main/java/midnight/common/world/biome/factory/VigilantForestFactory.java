@@ -19,7 +19,7 @@ import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.gen.GenerationStage;
 
-public class VigilantForestFactory extends BiomeFactory {
+public final class VigilantForestFactory implements IBiomeFactory {
 
     @Override
     public Biome makeBiome(MnBiomeBuilder builder) {
