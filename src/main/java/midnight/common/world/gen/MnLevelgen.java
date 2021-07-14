@@ -6,11 +6,11 @@
  * Last updated: 2021 - 1 - 18
  */
 
-package midnight.common.world.levelgen;
+package midnight.common.world.gen;
 
 import com.google.common.reflect.Reflection;
 import midnight.common.world.biome.TheMidnightBiomeProvider;
-import midnight.common.world.levelgen.midnight.TheMidnightChunkGenerator;
+import midnight.common.world.gen.midnight.TheMidnightChunkGenerator;
 
 public final class MnLevelgen {
     private MnLevelgen() {

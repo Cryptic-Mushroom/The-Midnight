@@ -18,7 +18,7 @@ import midnight.client.MidnightClient;
 import midnight.common.block.MnBlocks;
 import midnight.common.handler.RegistryHandler;
 import midnight.common.net.MnNetwork;
-import midnight.common.world.levelgen.MnLevelgen;
+import midnight.common.world.gen.MnLevelgen;
 import midnight.core.MidnightCore;
 import midnight.core.plugin.PluginManager;
 import midnight.core.util.MnObjects;

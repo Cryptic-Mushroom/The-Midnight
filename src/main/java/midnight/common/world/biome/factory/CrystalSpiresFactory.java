@@ -8,8 +8,8 @@
 
 package midnight.common.world.biome.factory;
 
-import midnight.common.world.levelgen.feature.MnFeatures.ConfiguredFeatures;
-import midnight.common.world.levelgen.surface.MnConfiguredSurfaceBuilders;
+import midnight.common.world.gen.feature.MnFeatures.ConfiguredFeatures;
+import midnight.common.world.gen.surface.MnConfiguredSurfaceBuilders;
 import midnight.core.biome.BiomeColoring;
 import midnight.core.biome.MnBiomeBuilder;
 import midnight.core.biome.TerrainFactors;
@@ -43,6 +43,10 @@ public class CrystalSpiresFactory extends BiomeFactory {
                            .addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, ConfiguredFeatures.HUGE_CRYSTAL_SPIRE)
                            .addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, ConfiguredFeatures.CRYSTAL_SPIRE)
                            .addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, ConfiguredFeatures.CRYSTAL_CLUSTER)
+                           .addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ConfiguredFeatures.DARK_PEARL_ORE)
+                           .addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ConfiguredFeatures.EBONITE_ORE)
+                           .addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ConfiguredFeatures.NAGRILITE_ORE)
+                           .addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ConfiguredFeatures.TENEBRUM_ORE)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.GRASS_FOREST)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.TALL_GRASS_FOREST)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.CRYSTAL_FLOWERS)
@@ -62,7 +66,7 @@ public class CrystalSpiresFactory extends BiomeFactory {
                        new TerrainFactors.Builder()
                            .height(0.75)
                            .difference(2)
-                           .hilliness(2)
+                           .hilliness(1.5D)
                            .granularity(0.7)
                            .build()
                    )

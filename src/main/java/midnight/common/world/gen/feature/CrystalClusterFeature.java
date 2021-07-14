@@ -1,4 +1,4 @@
-package midnight.common.world.levelgen.feature;
+package midnight.common.world.gen.feature;
 
 import java.util.Random;
 
@@ -13,12 +13,12 @@ import net.minecraft.world.ISeedReader;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 
-public class CrystalClusterFeature extends Feature<CrystalClusterFeatureConfig> {
+public class CrystalClusterFeature extends Feature<TwoBlockStateProvidingFeatureConfig> {
 	
 	private final int radius;
 	private final int maxHeight;
 
-	public CrystalClusterFeature(Codec<CrystalClusterFeatureConfig> codec, int radius, int maxHeight) {		
+	public CrystalClusterFeature(Codec<TwoBlockStateProvidingFeatureConfig> codec, int radius, int maxHeight) { // Might want to make this datapack configurable
 		super(codec);
 		this.radius = radius;
 		this.maxHeight = maxHeight;
@@ -26,7 +26,7 @@ public class CrystalClusterFeature extends Feature<CrystalClusterFeatureConfig> 
 
 	@Override
 	public boolean place(ISeedReader world, ChunkGenerator chunkGen, Random rand, BlockPos pos,
-			CrystalClusterFeatureConfig config) {
+			TwoBlockStateProvidingFeatureConfig config) {
 		int size = (this.radius * 2) + 1;
 
         int[] heights = new int[size * size];
@@ -62,15 +62,15 @@ public class CrystalClusterFeature extends Feature<CrystalClusterFeatureConfig> 
         return true;
     }
 
-    private void generatePillar(ISeedReader world, Random rand, BlockPos.Mutable mutablePos, int height, CrystalClusterFeatureConfig config) {
+    private void generatePillar(ISeedReader world, Random rand, BlockPos.Mutable mutablePos, int height, TwoBlockStateProvidingFeatureConfig config) {
         int originY = mutablePos.getY();
         for (int offsetY = 0; offsetY < height; offsetY++) {
             mutablePos.setY(originY + offsetY);
-            world.setBlock(mutablePos, config.rockStateProvider.getState(rand, mutablePos), 2);
+            world.setBlock(mutablePos, config.stateProvider1.getState(rand, mutablePos), 2);
         }
         if (rand.nextInt(2) == 0) {
             mutablePos.setY(originY + height);
-            world.setBlock(mutablePos, config.crystalStateProvider.getState(rand, mutablePos), 2);
+            world.setBlock(mutablePos, config.stateProvider2.getState(rand, mutablePos), 2);
         }
     }
     

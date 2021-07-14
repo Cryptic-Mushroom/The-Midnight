@@ -69,7 +69,6 @@ public class VioleafBlock extends PlantBlock implements IGrowable {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random rand) {
         if (isValidBonemealTarget(world, pos, state, world.isClientSide) && ForgeHooks.onCropsGrowPre(world, pos, state, rand.nextInt(5) == 0)) {
             performBonemeal(world, rand, pos, state);
@@ -78,7 +77,6 @@ public class VioleafBlock extends PlantBlock implements IGrowable {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public void entityInside(BlockState state, World world, BlockPos pos, Entity entity) {
         if (!world.isClientSide && state.getValue(GROWN) && entity instanceof LivingEntity && entity.tickCount % 20 == 0) {
             LivingEntity livingEntity = (LivingEntity) entity;

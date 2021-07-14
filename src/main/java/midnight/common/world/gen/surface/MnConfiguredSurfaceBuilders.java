@@ -6,7 +6,7 @@
  * Last updated: 2021 - 1 - 16
  */
 
-package midnight.common.world.levelgen.surface;
+package midnight.common.world.gen.surface;
 
 import midnight.common.Midnight;
 import midnight.common.block.MnBlocks;

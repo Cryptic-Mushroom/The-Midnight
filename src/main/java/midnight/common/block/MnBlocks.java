@@ -8,6 +8,11 @@
 
 package midnight.common.block;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.function.Supplier;
+
 import midnight.api.util.GeodeHardMaterials;
 import midnight.client.MidnightClient;
 import midnight.common.Midnight;
@@ -16,7 +21,15 @@ import midnight.common.world.biome.MnBiomeColors;
 import midnight.core.util.ColorUtil;
 import midnight.core.util.IRegistry;
 import midnight.core.util.MnUtil;
-import net.minecraft.block.*;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.FlowingFluidBlock;
+import net.minecraft.block.GlassBlock;
+import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.PaneBlock;
+import net.minecraft.block.RotatedPillarBlock;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.Minecraft;
@@ -32,11 +45,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.registries.ObjectHolder;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
 /**
  * This class registers and stores the list of Midnight blocks and their respective block items.
@@ -185,7 +193,7 @@ public abstract class MnBlocks {
     public static final Block CRYSTALOTUS = crystalotus("crystalotus");
     public static final Block SUAVIS = suavis("suavis");
     public static final Block VIOLEAF = violeaf("violeaf").hitbox(7, 10).offset(AbstractBlock.OffsetType.XYZ);
-    public static final Block TENDRILWEED = tendrilweed("tendrilweed").hitbox(9, 14).offset(AbstractBlock.OffsetType.XZ);
+    public static final Block TENDRILWEED = tendrilweed("tendrilweed").hitbox(9, 14).offset(AbstractBlock.OffsetType.XZ); //Supposed to only be placed on nightstone?
     public static final Block NIGHT_REED = nightReed("night_reed").hitbox(13, 11);
     public static final Block DECEITFUL_MOSS = directionalPlant("deceitful_moss", 0.3, 0, Material.PLANT, MaterialColor.TERRACOTTA_BLUE).hitbox(16, 2);
     public static final Block DECEITFUL_ALGAE = floatingAlgae("deceitful_algae", 0, 0, Material.WATER_PLANT, MaterialColor.TERRACOTTA_BLUE).hitbox(16, 1);
@@ -767,7 +775,6 @@ public abstract class MnBlocks {
                                     .noOcclusion()
                                     .sound(SoundType.WET_GRASS)
                                     .randomTicks()
-                                    .emissiveRendering((state, world, pos) -> true)
                                     .strength(0)
         ));
     }

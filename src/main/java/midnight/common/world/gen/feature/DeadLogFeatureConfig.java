@@ -6,7 +6,7 @@
  * Last updated: 2020 - 12 - 23
  */
 
-package midnight.common.world.levelgen.feature;
+package midnight.common.world.gen.feature;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

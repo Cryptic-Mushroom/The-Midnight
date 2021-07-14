@@ -8,9 +8,8 @@
 
 package midnight.common.world.biome.factory;
 
-import midnight.common.world.levelgen.feature.MnFeatures;
-import midnight.common.world.levelgen.feature.MnFeatures.ConfiguredFeatures;
-import midnight.common.world.levelgen.surface.MnConfiguredSurfaceBuilders;
+import midnight.common.world.gen.feature.MnFeatures.ConfiguredFeatures;
+import midnight.common.world.gen.surface.MnConfiguredSurfaceBuilders;
 import midnight.core.biome.BiomeColoring;
 import midnight.core.biome.MnBiomeBuilder;
 import midnight.core.biome.TerrainFactors;
@@ -40,12 +39,16 @@ public class VigilantForestFactory extends BiomeFactory {
                    .generationSettings(
                        new BiomeGenerationSettings.Builder()
                            .surfaceBuilder(MnConfiguredSurfaceBuilders.DEFAULT_NIGHT_GRASS)
+                           .addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ConfiguredFeatures.DARK_PEARL_ORE)
+                           .addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ConfiguredFeatures.EBONITE_ORE)
+                           .addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ConfiguredFeatures.NAGRILITE_ORE)
+                           .addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ConfiguredFeatures.TENEBRUM_ORE)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.DEAD_LOG)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.GRASS_FOREST)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.TALL_GRASS_FOREST)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.GHOST_PLANTS)
-                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, MnFeatures.ConfiguredFeatures.CRYSTALOTUS)
-                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, MnFeatures.ConfiguredFeatures.VIOLEAF)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.CRYSTALOTUS)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.VIOLEAF)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.TENDRILWEED)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.SUAVIS_SPARSE)           
                            .build()
@@ -63,7 +66,7 @@ public class VigilantForestFactory extends BiomeFactory {
                        new TerrainFactors.Builder()
                            .height(0.75)
                            .difference(2)
-                           .hilliness(2)
+                           .hilliness(1.5D)
                            .granularity(0.7)
                            .build()
                    )

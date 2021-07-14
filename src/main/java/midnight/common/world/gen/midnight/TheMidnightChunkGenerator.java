@@ -6,7 +6,7 @@
  * Last updated: 2021 - 1 - 18
  */
 
-package midnight.common.world.levelgen.midnight;
+package midnight.common.world.gen.midnight;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

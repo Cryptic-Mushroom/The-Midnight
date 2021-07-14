@@ -8,8 +8,8 @@
 
 package midnight.common.world.biome.factory;
 
-import midnight.common.world.levelgen.feature.MnFeatures.ConfiguredFeatures;
-import midnight.common.world.levelgen.surface.MnConfiguredSurfaceBuilders;
+import midnight.common.world.gen.feature.MnFeatures.ConfiguredFeatures;
+import midnight.common.world.gen.surface.MnConfiguredSurfaceBuilders;
 import midnight.core.biome.BiomeColoring;
 import midnight.core.biome.MnBiomeBuilder;
 import midnight.core.biome.TerrainFactors;
@@ -24,7 +24,7 @@ public class DeceitfulBogFactory extends BiomeFactory {
     @Override
     public Biome makeBiome(MnBiomeBuilder builder) {
         return builder
-                   .depth(-1.0f).scale(0.2f)
+                   .depth(-1.2f).scale(0.2f)
                    .temperature(1).downfall(0).precipitation(Biome.RainType.NONE)
                    .biomeCategory(Biome.Category.SWAMP)
                    .temperatureAdjustment(Biome.TemperatureModifier.NONE)
@@ -39,11 +39,16 @@ public class DeceitfulBogFactory extends BiomeFactory {
                    .generationSettings(
                        new BiomeGenerationSettings.Builder()
                            .surfaceBuilder(MnConfiguredSurfaceBuilders.DECEITFUL_BOG)
+                           .addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ConfiguredFeatures.DARK_PEARL_ORE)
+                           .addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ConfiguredFeatures.EBONITE_ORE)
+                           .addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ConfiguredFeatures.NAGRILITE_ORE)
+                           .addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, ConfiguredFeatures.TENEBRUM_ORE)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.DEAD_LOG)
-                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.GRASS_FOREST)
-                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.GLOB_FUNGUS)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.GRASS_FOREST)                           
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.BOGSHROOM)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.TALL_BOGSHROOM)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.BOGWEED)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.GLOB_FUNGUS)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.GHOST_PLANTS)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.CRYSTALOTUS)
                            .build()

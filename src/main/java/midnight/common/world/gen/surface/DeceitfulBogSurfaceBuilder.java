@@ -6,7 +6,7 @@
  * Last updated: 2020 - 12 - 23
  */
 
-package midnight.common.world.levelgen.surface;
+package midnight.common.world.gen.surface;
 
 import com.mojang.serialization.Codec;
 import midnight.common.block.MnBlocks;

@@ -8,6 +8,8 @@
 
 package midnight.common.block;
 
+import java.util.Random;
+
 import midnight.common.misc.MnParticleTypes;
 import midnight.common.net.MnNetwork;
 import midnight.common.net.TendrilweedGrowPacket;
@@ -16,7 +18,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -24,17 +25,10 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.PacketDistributor;
 
-import java.util.Random;
-
 public class TendrilweedBlock extends PlantBlock {
     protected TendrilweedBlock(Properties props) {
         super(props);
         plantType(MnPlantTypes.TENDRILWEED);
-    }
-
-    @Override
-    protected boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
-        return state.getBlock() == MnBlocks.NIGHTSTONE;
     }
 
     @Override
@@ -45,7 +39,6 @@ public class TendrilweedBlock extends PlantBlock {
 
 
     @Override
-    @SuppressWarnings("deprecation")
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random rng) {
         for (int i = 0; i < 3; i++) {
 
@@ -72,7 +65,6 @@ public class TendrilweedBlock extends PlantBlock {
     }
 
     @Override // Spawn particles as entities move through the block
-    @SuppressWarnings("deprecation")
     public void entityInside(BlockState state, World world, BlockPos pos, Entity entity) {
         if (world.isClientSide) { // Only compute this on the client
             Vector3d velo = entity.getDeltaMovement();

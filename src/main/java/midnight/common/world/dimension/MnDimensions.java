@@ -9,7 +9,7 @@
 package midnight.common.world.dimension;
 
 import midnight.common.world.biome.TheMidnightBiomeProvider;
-import midnight.common.world.levelgen.midnight.TheMidnightChunkGenerator;
+import midnight.common.world.gen.midnight.TheMidnightChunkGenerator;
 import midnight.core.dimension.DimensionUtil;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.SimpleRegistry;
