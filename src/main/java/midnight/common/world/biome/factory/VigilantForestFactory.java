@@ -25,7 +25,7 @@ public class VigilantForestFactory extends BiomeFactory {
     @Override
     public Biome makeBiome(MnBiomeBuilder builder) {
         return builder
-                   .depth(0.1f).scale(0.1f)
+                   .depth(0.155f).scale(0.07f)
                    .temperature(1).downfall(0).precipitation(Biome.RainType.NONE)
                    .temperatureAdjustment(Biome.TemperatureModifier.NONE)
                    .biomeCategory(Biome.Category.FOREST)

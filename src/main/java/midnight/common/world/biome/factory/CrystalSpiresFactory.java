@@ -25,10 +25,10 @@ public class CrystalSpiresFactory extends BiomeFactory {
     @Override
     public Biome makeBiome(MnBiomeBuilder builder) {
         return builder
-                   .depth(0.1f).scale(0.1f)
+                   .depth(0.6f).scale(0.2f)
                    .temperature(1).downfall(0).precipitation(Biome.RainType.NONE)
                    .temperatureAdjustment(Biome.TemperatureModifier.NONE)
-                   .biomeCategory(Biome.Category.FOREST)
+                   .biomeCategory(Biome.Category.PLAINS)
                    .specialEffects(
                        new BiomeAmbience.Builder()
                            .fogColor(0) // TODO Look up from old version
@@ -40,6 +40,9 @@ public class CrystalSpiresFactory extends BiomeFactory {
                    .generationSettings(
                        new BiomeGenerationSettings.Builder()
                            .surfaceBuilder(MnConfiguredSurfaceBuilders.DEFAULT_NIGHT_GRASS)
+                           .addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, ConfiguredFeatures.HUGE_CRYSTAL_SPIRE)
+                           .addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, ConfiguredFeatures.CRYSTAL_SPIRE)
+                           .addFeature(GenerationStage.Decoration.LOCAL_MODIFICATIONS, ConfiguredFeatures.CRYSTAL_CLUSTER)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.GRASS_FOREST)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.TALL_GRASS_FOREST)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.CRYSTAL_FLOWERS)

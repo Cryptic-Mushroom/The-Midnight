@@ -24,9 +24,9 @@ public class DeceitfulBogFactory extends BiomeFactory {
     @Override
     public Biome makeBiome(MnBiomeBuilder builder) {
         return builder
-                   .depth(0.1f).scale(0.1f)
+                   .depth(-1.0f).scale(0.2f)
                    .temperature(1).downfall(0).precipitation(Biome.RainType.NONE)
-                   .biomeCategory(Biome.Category.FOREST)
+                   .biomeCategory(Biome.Category.SWAMP)
                    .temperatureAdjustment(Biome.TemperatureModifier.NONE)
                    .specialEffects(
                        new BiomeAmbience.Builder()
@@ -41,10 +41,11 @@ public class DeceitfulBogFactory extends BiomeFactory {
                            .surfaceBuilder(MnConfiguredSurfaceBuilders.DECEITFUL_BOG)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.DEAD_LOG)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.GRASS_FOREST)
-                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.TALL_GRASS_FOREST)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.GLOB_FUNGUS)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.BOGSHROOM)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.TALL_BOGSHROOM)
                            .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.GHOST_PLANTS)
+                           .addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ConfiguredFeatures.CRYSTALOTUS)
                            .build()
                    )
                    .mobSpawnSettings(

@@ -24,9 +24,9 @@ public class NightPlainsFactory extends BiomeFactory {
     @Override
     public Biome makeBiome(MnBiomeBuilder builder) {
         return builder
-                   .depth(0.1f).scale(0.1f)
+                   .depth(0.12f).scale(0.2f)
                    .temperature(1).downfall(0).precipitation(Biome.RainType.NONE)
-                   .biomeCategory(Biome.Category.MUSHROOM)
+                   .biomeCategory(Biome.Category.PLAINS)
                    .temperatureAdjustment(Biome.TemperatureModifier.NONE)
                    .specialEffects(
                        new BiomeAmbience.Builder()
